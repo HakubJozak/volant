@@ -1,0 +1,32 @@
+cz:
+  emails:
+    subject: Předmět
+    to: Komu
+    from: Od
+    body: Text zprávy
+
+    remove_attachment: Odebrat přílohu
+    add_attachment: Přidat přílohu
+    attachment: Příloha
+    attachments: Přilohy
+
+    send: Odeslat
+    confirm_not_send: Pouze změnit stav, neposílat email
+    cancel: Storno
+    success: Email byl úspěšně odeslán.
+    failure: Nepodařilo se odeslat email, zkontrolujte prosím adresy přijemce a odesílatele. Pokud jsou v pořádku, kontaktujte správce Volantu.
+
+    accept:
+      subject: Prihlaska na projekt '{{wcname}}' byla uspesna!
+
+    infosheet:
+      subject: Posilame Ti infosheet na workcamp '{{wcname}}'
+
+    ask:
+      subject: "VEF: {{volname}} for {{wcname}}({{wccode}})"
+
+    reject:
+      subject: Nepodarilo se Te prihlasit na zadny projekt
+
+    submitted:
+      subject: Prihlaska byla prijata do systemu INEX-SDA

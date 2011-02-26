@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>should_validate (PaperclipTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/paperclip_test.rb, line 247</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">should_validate</span> <span class="ruby-identifier">validation</span>, <span class="ruby-identifier">options</span>, <span class="ruby-identifier">valid_file</span>, <span class="ruby-identifier">invalid_file</span>
+      <span class="ruby-identifier">context</span> <span class="ruby-node">&quot;with #{validation} validation and #{options.inspect} options&quot;</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">setup</span> <span class="ruby-keyword kw">do</span>
+          <span class="ruby-constant">Dummy</span>.<span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;validates_attachment_#{validation}&quot;</span><span class="ruby-node">&quot;validates_attachment_#{validation}&quot;</span>, <span class="ruby-identifier">:avatar</span>, <span class="ruby-identifier">options</span>)
+          <span class="ruby-ivar">@dummy</span> = <span class="ruby-constant">Dummy</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">context</span> <span class="ruby-value str">&quot;and assigning nil&quot;</span> <span class="ruby-keyword kw">do</span>
+          <span class="ruby-identifier">setup</span> <span class="ruby-keyword kw">do</span>
+            <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">avatar</span> = <span class="ruby-keyword kw">nil</span>
+            <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">valid?</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">validation</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:presence</span>
+            <span class="ruby-identifier">should</span> <span class="ruby-value str">&quot;have an error on the attachment&quot;</span> <span class="ruby-keyword kw">do</span>
+              <span class="ruby-identifier">assert</span> <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">on</span>(<span class="ruby-identifier">:avatar_file_name</span>)
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">should</span> <span class="ruby-value str">&quot;not have an error on the attachment&quot;</span> <span class="ruby-keyword kw">do</span>
+              <span class="ruby-identifier">assert_nil</span> <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">on</span>(<span class="ruby-identifier">:avatar_file_name</span>), <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">full_messages</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;, &quot;</span>)
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">context</span> <span class="ruby-value str">&quot;and assigned a valid file&quot;</span> <span class="ruby-keyword kw">do</span>
+          <span class="ruby-identifier">setup</span> <span class="ruby-keyword kw">do</span>
+            <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">avatar</span> = <span class="ruby-identifier">valid_file</span>
+            <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">valid?</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">should</span> <span class="ruby-value str">&quot;not have an error when assigned a valid file&quot;</span> <span class="ruby-keyword kw">do</span>
+            <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">length</span>, <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">full_messages</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;, &quot;</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">context</span> <span class="ruby-value str">&quot;and assigned an invalid file&quot;</span> <span class="ruby-keyword kw">do</span>
+          <span class="ruby-identifier">setup</span> <span class="ruby-keyword kw">do</span>
+            <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">avatar</span> = <span class="ruby-identifier">invalid_file</span>
+            <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">valid?</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">should</span> <span class="ruby-value str">&quot;have an error when assigned a valid file&quot;</span> <span class="ruby-keyword kw">do</span>
+            <span class="ruby-identifier">assert</span> <span class="ruby-ivar">@dummy</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,21 @@
+!!!
+%html{html_attrs}
+  %head
+    %title Workcamp Search
+    %link{ :href => '/stylesheets/blueprint/screen.css', :type => "text/css", :rel => 'stylesheet', :media => "screen, projection" }
+    %link{ :href => '/stylesheets/blueprint/print.css', :type => "text/css", :rel => 'stylesheet', :media => "print" }
+    <!--[if lt IE 8]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+    %link{ :href => '/public.css', :type => "text/css", :rel => 'stylesheet', :media => "screen,projection" }
+    %style
+      \ body { background-color: green; }
+      \ .container { background-color: white; }
+        
+  %body
+    .container
+      = yield
+
+      #footer.span-24.last
+        %center
+        Powered by Volant
+        %br
+        %a{ :href => 'mailto:jakub.hozak@gmail.com' } Jakub Hozak

@@ -1,0 +1,30 @@
+normal:
+  amount: 2299
+  received: 2008-10-10
+  description: na hovno
+  mean: CASH
+  apply_form: hana_accepted_to_xaverov
+
+from_bank:
+  amount: 2200
+  received: 2008-10-10
+  description: na hovno
+  mean: BANK
+  account: 1225559083/0800
+  apply_form: jakub_rejected_from_kytlice
+
+returned:
+  amount: 2200
+  received: 2008-10-10
+  description: na hovno
+  mean: CASH
+  returned_amount: 150
+  returned_date: 2008-10-11
+  return_reason: rozbil nam okno cihlou
+
+radkas:
+  amount: 2200
+  received: 2008-10-10
+  description: na hovno
+  mean: CASH
+  apply_form: radka_paid

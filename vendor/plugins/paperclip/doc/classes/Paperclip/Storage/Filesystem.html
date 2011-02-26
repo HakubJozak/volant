@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Paperclip::Storage::Filesystem</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Paperclip::Storage::Filesystem 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/lib/paperclip/storage_rb.html">lib/paperclip/storage.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+The default place to store attachments is in the filesystem. Files on the
+local filesystem can be very easily served by Apache without requiring a
+hit to your app. They also can be processed more easily after they&#8217;ve
+been saved, as they&#8217;re just normal files. There is one
+Filesystem-specific option for has_attached_file.
+</p>
+<ul>
+<li><tt>path</tt>: The location of the repository of attachments on disk. This
+can (and, in almost all cases, should) be coordinated with the value of the
+<tt>url</tt> option to allow files to be saved into a place where Apache
+can serve them without hitting your app. Defaults to
+&#8220;:rails_root/public/:attachment/:id/:style/:basename.:extension&#8221;
+By default this places the files in the app&#8217;s public directory which
+can be served directly. If you are using capistrano for deployment, a good
+idea would be to make a symlink to the capistrano-created system directory
+from inside your app&#8217;s public directory. See
+Paperclip::Attachment#interpolate for more information on variable
+interpolaton.
+
+<pre>
+  :path =&gt; &quot;/var/app/attachments/:class/:id/:style/:basename.:extension&quot;
+</pre>
+</li>
+</ul>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000164">exists?</a>,</li>
+                
+                <li><a href="#M000163">extended</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000165">to_file</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000163">
+                    
+                    <a name="M000163"></a><b>extended</b>(base)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000163_source')" id="l_M000163_source">show</a>
+                        
+                    </p>
+                    <div id="M000163_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/storage.rb, line 20</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">extended</span> <span class="ruby-identifier">base</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000164">
+                    
+                    <a name="M000164"></a><b>exists?</b>(style = default_style)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000164_source')" id="l_M000164_source">show</a>
+                        
+                    </p>
+                    <div id="M000164_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/storage.rb, line 23</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">style</span> = <span class="ruby-identifier">default_style</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">original_filename</span>
+          <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">path</span>(<span class="ruby-identifier">style</span>))
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-keyword kw">false</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000165">
+                    
+                    <a name="M000165"></a><b>to_file</b>(style = default_style)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns representation of the data of the file assigned to the given style,
+in the format most representative of the current storage.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000165_source')" id="l_M000165_source">show</a>
+                        
+                    </p>
+                    <div id="M000165_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/storage.rb, line 33</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_file</span> <span class="ruby-identifier">style</span> = <span class="ruby-identifier">default_style</span>
+        <span class="ruby-ivar">@queued_for_write</span>[<span class="ruby-identifier">style</span>] <span class="ruby-operator">||</span> (<span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">path</span>(<span class="ruby-identifier">style</span>), <span class="ruby-value str">'rb'</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">style</span>))
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

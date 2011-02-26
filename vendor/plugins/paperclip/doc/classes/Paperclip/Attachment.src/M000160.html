@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>instance_read (Paperclip::Attachment)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 244</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">instance_read</span>(<span class="ruby-identifier">attr</span>)
+      <span class="ruby-identifier">getter</span> = <span class="ruby-node">&quot;#{name}_#{attr}&quot;</span><span class="ruby-node">&quot;#{name}_#{attr}&quot;</span>
+      <span class="ruby-identifier">responds</span> = <span class="ruby-identifier">instance</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">getter</span>)
+      <span class="ruby-identifier">cached</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-node">&quot;@_#{getter}&quot;</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">cached</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">cached</span>
+      <span class="ruby-identifier">instance</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">getter</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">responds</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;file_name&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

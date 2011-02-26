@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>paperclip_migration.rb.erb</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            paperclip_migration.rb.erb
+        </h1>
+        <ul class="files">
+            <li>generators/paperclip/templates/paperclip_migration.rb.erb</li>
+            <li>Last modified: Mon Dec 14 11:09:10 +0100 2009</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+class <%= migration_name %> < ActiveRecord::Migration
+</p>
+<pre>
+  def self.up
+</pre>
+<p>
+<% attachments.each do |attachment| -%>
+</p>
+<pre>
+    add_column :&lt;%= class_name.underscore.camelize.tableize %&gt;, :&lt;%= attachment %&gt;_file_name, :string
+    add_column :&lt;%= class_name.underscore.camelize.tableize %&gt;, :&lt;%= attachment %&gt;_content_type, :string
+    add_column :&lt;%= class_name.underscore.camelize.tableize %&gt;, :&lt;%= attachment %&gt;_file_size, :integer
+    add_column :&lt;%= class_name.underscore.camelize.tableize %&gt;, :&lt;%= attachment %&gt;_updated_at, :datetime
+</pre>
+<p>
+<% end -%>
+</p>
+<pre>
+  end
+
+  def self.down
+</pre>
+<p>
+<% attachments.each do |attachment| -%>
+</p>
+<pre>
+    remove_column :&lt;%= class_name.underscore.camelize.tableize %&gt;, :&lt;%= attachment %&gt;_file_name
+    remove_column :&lt;%= class_name.underscore.camelize.tableize %&gt;, :&lt;%= attachment %&gt;_content_type
+    remove_column :&lt;%= class_name.underscore.camelize.tableize %&gt;, :&lt;%= attachment %&gt;_file_size
+    remove_column :&lt;%= class_name.underscore.camelize.tableize %&gt;, :&lt;%= attachment %&gt;_updated_at
+</pre>
+<p>
+<% end -%>
+</p>
+<pre>
+  end
+</pre>
+<p>
+end
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+    </div>
+  </body>
+</html>

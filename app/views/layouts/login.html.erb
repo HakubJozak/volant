@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <title>Volant</title>
+	    <%= javascript_include_tag :defaults %>
+	    <%= stylesheet_links_for_controller %>
+            <style>
+              width: 443px;
+	      margin: 40px auto auto auto;              
+            </style>
+	</head>
+  <body>
+    <div style="clear: both"></div> 
+    <div id="content">
+      <%= yield %>
+    </div>
+    <div style="clear: both"></div> 
+  </body>	
+</html>

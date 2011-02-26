@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (Paperclip)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/paperclip.rb, line 96</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span> <span class="ruby-identifier">cmd</span>, <span class="ruby-identifier">params</span> = <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">expected_outcodes</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">command</span> = <span class="ruby-node">%Q[#{path_for_command(cmd)} #{params}]</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/\s+/</span>, <span class="ruby-value str">&quot; &quot;</span>)
+      <span class="ruby-identifier">command</span> = <span class="ruby-node">&quot;#{command} 2&gt;#{bit_bucket}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Paperclip</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:swallow_stderr</span>]
+      <span class="ruby-constant">Paperclip</span>.<span class="ruby-identifier">log</span>(<span class="ruby-identifier">command</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Paperclip</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:log_command</span>]
+      <span class="ruby-identifier">output</span> = <span class="ruby-node">`#{command}`</span>
+      <span class="ruby-keyword kw">unless</span> [<span class="ruby-identifier">expected_outcodes</span>].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">$?</span>.<span class="ruby-identifier">exitstatus</span>)
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">PaperclipCommandLineError</span>, <span class="ruby-node">&quot;Error while running #{cmd}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">output</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

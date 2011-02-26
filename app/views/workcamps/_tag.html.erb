@@ -1,0 +1,8 @@
+<td>
+  <% id = "tag-#{tag.id}" -%>
+  <a class="tag" style="color:<%=tag.text_color%>; background-color: <%=tag.color%>"
+     href="#" id="<%=id%>">
+    <%= tag.name %>
+    <%= javascript_tag "$('#{id}').observe('mouseover', highlight_tag);" %>
+  </a>
+</td>

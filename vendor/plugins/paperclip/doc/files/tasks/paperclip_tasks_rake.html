@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>paperclip_tasks.rake</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            paperclip_tasks.rake
+        </h1>
+        <ul class="files">
+            <li>tasks/paperclip_tasks.rake</li>
+            <li>Last modified: Mon Dec 14 11:09:10 +0100 2009</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+def obtain_class
+</p>
+<pre>
+  class_name = ENV['CLASS'] || ENV['class']
+  raise &quot;Must specify CLASS&quot; unless class_name
+  @klass = Object.const_get(class_name)
+</pre>
+<p>
+end
+</p>
+<p>
+def obtain_attachments
+</p>
+<pre>
+  name = ENV['ATTACHMENT'] || ENV['attachment']
+  raise &quot;Class #{@klass.name} has no attachments specified&quot; unless @klass.respond_to?(:attachment_definitions)
+  if !name.blank? &amp;&amp; @klass.attachment_definitions.keys.include?(name)
+    [ name ]
+  else
+    @klass.attachment_definitions.keys
+  end
+</pre>
+<p>
+end
+</p>
+<p>
+def for_all_attachments
+</p>
+<pre>
+  klass = obtain_class
+  names = obtain_attachments
+  ids   = klass.connection.select_values(klass.send(:construct_finder_sql, :select =&gt; 'id'))
+
+  ids.each do |id|
+    instance = klass.find(id)
+    names.each do |name|
+      result = if instance.send(&quot;#{ name }?&quot;)
+                 yield(instance, name)
+               else
+                 true
+               end
+      print result ? &quot;.&quot; : &quot;x&quot;; $stdout.flush
+    end
+  end
+  puts &quot; Done.&quot;
+</pre>
+<p>
+end
+</p>
+<p>
+namespace :paperclip do
+</p>
+<pre>
+  desc &quot;Refreshes both metadata and thumbnails.&quot;
+  task :refresh =&gt; [&quot;paperclip:refresh:metadata&quot;, &quot;paperclip:refresh:thumbnails&quot;]
+
+  namespace :refresh do
+    desc &quot;Regenerates thumbnails for a given CLASS (and optional ATTACHMENT).&quot;
+    task :thumbnails =&gt; :environment do
+      errors = []
+      for_all_attachments do |instance, name|
+        result = instance.send(name).reprocess!
+        errors &lt;&lt; [instance.id, instance.errors] unless instance.errors.blank?
+        result
+      end
+      errors.each{|e| puts &quot;#{e.first}: #{e.last.full_messages.inspect}&quot; }
+    end
+
+    desc &quot;Regenerates content_type/size metadata for a given CLASS (and optional ATTACHMENT).&quot;
+    task :metadata =&gt; :environment do
+      for_all_attachments do |instance, name|
+        if file = instance.send(name).to_file
+          instance.send(&quot;#{name}_file_name=&quot;, instance.send(&quot;#{name}_file_name&quot;).strip)
+          instance.send(&quot;#{name}_content_type=&quot;, file.content_type.strip)
+          instance.send(&quot;#{name}_file_size=&quot;, file.size) if instance.respond_to?(&quot;#{name}_file_size&quot;)
+          instance.save(false)
+        else
+          true
+        end
+      end
+    end
+  end
+
+  desc &quot;Cleans out invalid attachments. Useful after you've added new validations.&quot;
+  task :clean =&gt; :environment do
+    for_all_attachments do |instance, name|
+      instance.send(name).send(:validate)
+      if instance.send(name).valid?
+        true
+      else
+        instance.send(&quot;#{name}=&quot;, nil)
+        instance.save
+      end
+    end
+  end
+</pre>
+<p>
+end
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+    </div>
+  </body>
+</html>

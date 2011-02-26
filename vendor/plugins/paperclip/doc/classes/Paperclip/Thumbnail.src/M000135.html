@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Paperclip::Thumbnail)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/paperclip/thumbnail.rb, line 13</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-identifier">attachment</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-keyword kw">super</span>
+      <span class="ruby-identifier">geometry</span>             = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:geometry</span>]
+      <span class="ruby-ivar">@file</span>                = <span class="ruby-identifier">file</span>
+      <span class="ruby-ivar">@crop</span>                = <span class="ruby-identifier">geometry</span>[<span class="ruby-value">-1</span>,<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'#'</span>
+      <span class="ruby-ivar">@target_geometry</span>     = <span class="ruby-constant">Geometry</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">geometry</span>
+      <span class="ruby-ivar">@current_geometry</span>    = <span class="ruby-constant">Geometry</span>.<span class="ruby-identifier">from_file</span> <span class="ruby-ivar">@file</span>
+      <span class="ruby-ivar">@source_file_options</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:source_file_options</span>]
+      <span class="ruby-ivar">@convert_options</span>     = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:convert_options</span>]
+      <span class="ruby-ivar">@whiny</span>               = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:whiny</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">true</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:whiny</span>]
+      <span class="ruby-ivar">@format</span>              = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:format</span>]
+
+      <span class="ruby-ivar">@current_format</span>      = <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-ivar">@file</span>.<span class="ruby-identifier">path</span>)
+      <span class="ruby-ivar">@basename</span>            = <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-ivar">@file</span>.<span class="ruby-identifier">path</span>, <span class="ruby-ivar">@current_format</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<center>
+  <img class="header" src="/images/volant.png" alt="Volant - VOLunteering ANT"/>
+</center>
+<br/>
+
+<!--
+<p>
+  <em>Disclaimer:</em> You are about to enter demo version of <strong>Volant</strong> (<b>VOL</b>unteering <b>ANT</b>), a volunteer placement system designed for typical workcamp running organizations with simple standard workflow. However, it was originally developed for <%= link_to 'http://www.inexsda.cz' %>
+</p>
+-->
+
+
+<center>
+<%= flash[:notice] %>
+
+<% form_tag session_path do -%>
+<p><label for="login">Login</label><br/>
+<%= text_field_tag 'login' %></p>
+
+<p><label for="password">Password</label><br/>
+<%= password_field_tag 'password' %></p>
+
+<p><label for="remember_me">Remember me:</label>
+<%= check_box_tag 'remember_me' %></p>
+
+<p><%= submit_tag 'Log in' %></p>
+<% end -%>
+</center>
+

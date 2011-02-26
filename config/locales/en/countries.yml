@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    models:
+      country:
+        other: Countries
+        one: Country
+
+    attributes:
+      country:
+        flag: Flag
+        code: Code
+        name_cz: Czech Name
+        name_en: English Name
+        triple_code: Three letters Code

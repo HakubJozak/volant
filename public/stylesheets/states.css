@@ -1,0 +1,41 @@
+/*
+.active-scaffold tr.empty td.sorted,
+.active-scaffold tr.empty td
+{ 
+ background-color: #69a772;
+}
+
+
+.active-scaffold tr.almost_full td.sorted,
+.active-scaffold tr.almost_full td
+{ 
+ background-color: #ffe148;                                                             
+ background-color: green;
+}
+*/
+
+
+
+.active-scaffold tr.almost_full td.sorted,
+.active-scaffold tr.full td.sorted
+{ 
+ background-color: #cdcdcd;
+ border-bottom: 1px solid #cecece;
+}
+
+.active-scaffold tr.cancelled td,
+.active-scaffold tr.almost_full td,
+.active-scaffold tr.full td
+{ 
+ background-color: #e4e4e4;
+ border-left: 1px solid #cecece;
+ border-bottom: 1px solid #cecece;
+}
+
+.active-scaffold tr.alert td.sorted,
+.active-scaffold tr.alert td
+{ 
+ background-color: #ff9696;
+ border-left: 1px solid #ff7a7a;
+ border-bottom: 1px solid #ff7a7a;
+}

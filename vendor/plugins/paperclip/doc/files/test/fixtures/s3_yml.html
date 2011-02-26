@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>s3.yml</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            s3.yml
+        </h1>
+        <ul class="files">
+            <li>test/fixtures/s3.yml</li>
+            <li>Last modified: Mon Dec 14 11:09:10 +0100 2009</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+development:
+</p>
+<pre>
+  key: 54321
+</pre>
+<p>
+production:
+</p>
+<pre>
+  key: 12345
+</pre>
+<p>
+test:
+</p>
+<pre>
+  bucket: &lt;%= ENV['S3_BUCKET'] %&gt;
+  access_key_id: &lt;%= ENV['S3_KEY'] %&gt;
+  secret_access_key: &lt;%= ENV['S3_SECRET'] %&gt;
+</pre>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+    </div>
+  </body>
+</html>

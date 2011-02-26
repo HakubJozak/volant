@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exportfile lastupdate="2008-08-01" network="alliance" version="1.0">
+        <workcamps organization="SEEDS">
+                <workcamp>
+                        <code>ABC-04</code>
+                        <work>ENVI</work>
+                        <start_date>2008-01-19</start_date>
+                        <end_date>2008-01-31</end_date>
+                        <name>PEAK PARK 1 MARSH FARM</name>
+                        <location>Lincoln, MA</location>
+                        <region>Maine</region>
+                        <airport>LAX</airport>
+                        <train_station>Grand Central, NY</train_station>
+                        <country>USA</country>
+                        <languages>en,fr</languages>
+                        <extrafee currency="EUR">150</extrafee>
+                        <min_age>18</min_age>
+                        <max_age>40</max_age>
+                        <disabled_vols>yes</disabled_vols>
+                        <numvol>14</numvol>
+                        <vegetarian>0</vegetarian>
+                        <family>true</family>
+                        <description>
+                                This project is hosted by the Peak National Park Authority our longest running environmental project. It involves conservation work in one of the biggest national parks in the UK. The project will take place at Marsh Farm near Leek. International volunteers will work alongside rangers and local volunteers helping with seasonal conservation tasks in the National Park. The will be a variety of tasks to undertake, which are likely to include building handrails, footpath construction and habit at management.
+                        </description>
+                        <notes>
+                                ATTENTION: Winter is very cold and long. Average temperature is -5°C to +5°C. No heating. Hot water available twice a day from 6.30 to 7.30 a.m.;  from 4.00 to 5.00 p.m. Please note that there is no internet connection available at the Convent; telephone is available only with international prepaid phone-cards. Work will often be outside. Inscription fee to be paid at the arrival
+                        </notes>
+                        <numvol_m>7</numvol_m>
+                        <numvol_f>7</numvol_f>
+                        <max_vols_per_country>1</max_vols_per_country>
+                        <max_teenagers>3</max_teenagers>
+                        <max_national_vols>4</max_national_vols>
+                </workcamp>
+                <workcamp>
+                        <code>ABC-05</code>
+                        <work>ENVI</work>
+                        <start_date>2008-01-31</start_date>
+                        <end_date>2008-02-12</end_date>
+                        <name>PEAK PARK 1 MARSH FARM</name>
+                        <location>Lincoln, MA</location>
+                        <region>Maine</region>
+                        <country>USA</country>
+                        <languages>en,fr</languages>
+                        <extrafee currency="EUR">150</extrafee>
+                        <min_age>18</min_age>
+                        <max_age>40</max_age>
+                        <disabled_vols>yes</disabled_vols>
+                        <numvol>14</numvol>
+                        <vegetarian>0</vegetarian>
+                        <family>Yes</family>
+                        <description>
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                        </description>
+                        <notes>
+                                ATTENTION: Winter is very cold and long. Average temperature is -5°C to +5°C. No heating. Hot water available twice a day from 6.30 to 7.30 a.m.;  from 4.00 to 5.00 p.m. Please note that there is no internet connection available at the Convent; telephone is available only with international prepaid phone-cards. Work will often be outside. Inscription fee to be paid at the arrival
+                        </notes>
+                        <airport>LAX</airport>
+                        <train_station>Grand Central, NY</train_station>
+                        <numvol_m>7</numvol_m>
+                        <numvol_f>7</numvol_f>
+                        <max_vols_per_country>1</max_vols_per_country>
+                        <max_teenagers>0</max_teenagers>
+                        <max_national_vols>3</max_national_vols>
+                </workcamp>
+        </workcamps>
+</exportfile>
+
+
+

@@ -1,0 +1,51 @@
+= The Acts As Convertible To Csv
+
+== Installation
+
+To install or update the gem, simply execute:
+
+gem install acts_as_convertible_to_csv
+
+To use the 'acts_as_convertible_to_csv' library in your Rails application after installing
+the gem, add this line at the end of your 'config/environment.rb' file:
+
+require 'convertible_to_csv'
+
+== Usage Instructions
+
+:header may be true or false, or not given. :header => true means the csv output will have the first row as a header (with field names)
+:fields should be an array of field names. If :fields is not specified, all the human_readable fields will be used.
+
+In your model declaration:
+
+  class Customer < ActiveRecord::Base
+    acts_as_convertible_to_csv :header => true, 
+                               :fields => %w(id firstname lastname email_address)
+  end
+
+Getting the csv data from a collection of records:
+
+  Customer.find(:all).to_csv
+
+You can pass a block:
+
+  Customer.find(:all).to_csv do |line|
+    # write the line to a file or something
+  end
+
+You can also convert individual records to csv:
+
+  Customer.find(:first).to_csv
+  
+
+== Testing
+
+The test code requires a database. modify the test/config.yml to point to the database you want to use for testing (acts_as_convertible_to_csv is default). Creation of test table is taken care of by the test code.
+
+== Bugs/Patches
+
+Please submit any patches or bug reports to keith@rubygreenblue.com.
+
+== Author
+
+Keith Rowell of rubygreenblue.com

@@ -1,0 +1,87 @@
+ <div id="menu">
+        <ul >
+          <% submenu :outgoing do %>
+          <% MenuHelper::recent_years.each do |year| %>
+            <% submenu :yearly, :year => year, :html_id => "#{year}-menu" do %>
+              <% submenu :apply_forms, :html_id => "#{year}-apply-forms-menu" do  %>
+
+                  <!-- states tree -->
+                  <% submenu 'by_state.title',
+                              :html_id => "#{year}-by-states-apply-forms-menu",
+                              :cache => true  do %>
+                    <% [ :accepted, :asked, :cancelled,
+                         :rejected, :pending,
+                         :without_payment ].each do |state| %>
+                      <%= apply_form_menu_item( year, :state => state)  %>
+                    <% end %>
+                  <% end %>
+
+                  <!-- tags tree -->
+                  <% submenu 'by_tag',
+                             :html_id => "#{year}-by-tags-apply-forms-menu",
+                             :cache => true do %>
+                     <% ColoredTag.find_by_model(ApplyForm).each do |tag| %>
+                       <%= apply_form_menu_item( year, :tag => tag) %>
+                     <% end %>
+                  <% end %>
+
+                  <!-- all & problematic apply forms -->
+                  <%= apply_form_menu_item( year, :state => :all)  %>
+                  <%= apply_form_menu_item( year, :state => :alerts)  %>
+
+                <% end %>
+
+                <!-- workcamps tree -->
+                <% submenu :workcamps, :html_id => "#{year}-workcamps-menu" do  %>
+
+                  <!-- tags tree -->
+                   <% submenu 'by_tag', :html_id => "#{year}-by-tags-workcamps-menu", :cache => true do %>
+                      <% ColoredTag.find_by_model(Workcamp).each do |tag| %>
+                        <%= workcamp_menu_item( year, tag) %>
+                       <% end %>
+                   <% end %>
+
+                  <!-- organizations tree -->
+                   <% submenu 'by_organization', :html_id => "#{year}-by-organizations-workcamps-menu", :cache => true do %>
+                         <% Organization.find_all_ordered_by_countries.each do |org| %>
+                           <%= workcamp_menu_item( year, nil, org ) %>
+                         <% end %>
+                   <% end %>
+
+                   <%= workcamp_menu_item( year)  %>
+                <% end %>
+
+              <% end %>
+          <% end %>
+
+
+             <%= model_menu_item Volunteer, 'outgoing_' %>
+             <%= model_menu_item ApplyForm, 'outgoing_' %>
+             <%= model_menu_item Workcamp, 'outgoing_'%>
+             <%= model_menu_item Payment %>
+
+
+          <% end %>
+
+          <% submenu :incoming do %>
+            <%= menu_item flag(Organization.default_organization.country) + Workcamp.human_name(:count => 2), incoming_workcamps_path %>
+            <li><%= link_to icon('leaders', Incoming::Leader.human_name(:count => 2)), incoming_leaders_path %></li>
+            <li><%= link_to icon('participants', Incoming::Participant.human_name(:count => 2)), incoming_participants_path %></li>
+            <%= model_menu_item Incoming::Partner %>
+          <% end %>
+
+          <% submenu :contacts do %>
+             <%= model_menu_item Organization %>
+             <%= model_menu_item Network %>
+          <% end %>
+
+          <% submenu :settings do %>
+             <%= model_menu_item EmailTemplate %>
+             <%= model_menu_item WorkcampIntention %>
+             <%= model_menu_item Tag %>
+             <%= model_menu_item User %>
+             <%= model_menu_item Country  %>
+             <%= model_menu_item Language  %>
+          <% end %>
+        </ul
+</div>

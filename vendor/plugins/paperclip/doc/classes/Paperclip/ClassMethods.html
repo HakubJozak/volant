@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Paperclip::ClassMethods</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Paperclip::ClassMethods 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/paperclip_rb.html">lib/paperclip.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000194">attachment_definitions</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>H</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000183">has_attached_file</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>V</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000193">validates_attachment_content_type</a>,</li>
+                
+                <li><a href="#M000192">validates_attachment_presence</a>,</li>
+                
+                <li><a href="#M000188">validates_attachment_size</a>,</li>
+                
+                <li><a href="#M000191">validates_attachment_thumbnails</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="Storage/S3.html">Paperclip::Storage::S3</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000194">
+                    
+                    <a name="M000194"></a><b>attachment_definitions</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the attachment definitions defined by each call to
+has_attached_file.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000194_source')" id="l_M000194_source">show</a>
+                        
+                    </p>
+                    <div id="M000194_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip.rb, line 317</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">attachment_definitions</span>
+      <span class="ruby-identifier">read_inheritable_attribute</span>(<span class="ruby-identifier">:attachment_definitions</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000183">
+                    
+                    <a name="M000183"></a><b>has_attached_file</b>(name, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+<tt><a href="ClassMethods.html#M000183">has_attached_file</a></tt> gives
+the class it is called on an attribute that maps to a file. This is
+typically a file stored somewhere on the filesystem and has been uploaded
+by a user. The attribute returns a <a
+href="Attachment.html">Paperclip::Attachment</a> object which handles the
+management of that file. The intent is to make the attachment as much like
+a normal attribute. The thumbnails will be created when the new file is
+assigned, but they will <b>not</b> be saved until <tt>save</tt> is called
+on the record. Likewise, if the attribute is set to <tt>nil</tt> is called
+on it, the attachment will <b>not</b> be deleted until <tt>save</tt> is
+called. See the <a href="Attachment.html">Paperclip::Attachment</a>
+documentation for more specifics. There are a number of options you can set
+to change the behavior of a <a href="../Paperclip.html">Paperclip</a>
+attachment:
+</p>
+<ul>
+<li><tt>url</tt>: The full URL of where the attachment is publically
+accessible. This can just as easily point to a directory served directly
+through Apache as it can to an action that can control permissions. You can
+specify the full domain and path, but usually just an absolute path is
+sufficient. The leading slash <b>must</b> be included manually for absolute
+paths. The default value is
+&#8220;/system/:attachment/:id/:style/:filename&#8221;. See
+Paperclip::Attachment#interpolate for more information on variable
+interpolaton.
+
+<pre>
+  :url =&gt; &quot;/:class/:attachment/:id/:style_:filename&quot;
+  :url =&gt; &quot;http://some.other.host/stuff/:class/:id_:extension&quot;
+</pre>
+</li>
+<li><tt>default_url</tt>: The URL that will be returned if there is no
+attachment assigned. This field is interpolated just as the url is. The
+default value is &#8220;/:attachment/:style/missing.png&#8220;
+
+<pre>
+  has_attached_file :avatar, :default_url =&gt; &quot;/images/default_:style_avatar.png&quot;
+  User.new.avatar_url(:small) # =&gt; &quot;/images/default_small_avatar.png&quot;
+</pre>
+</li>
+<li><tt>styles</tt>: A hash of thumbnail styles and their geometries. You can
+find more about geometry strings at the ImageMagick website (<a
+href="http://www.imagemagick.org/script/command-line-options.php#resize">www.imagemagick.org/script/command-line-options.php#resize</a>).
+<a href="../Paperclip.html">Paperclip</a> also adds the &#8220;#&#8221;
+option (e.g. &#8220;50x50#&#8221;), which will resize the image to fit
+maximally inside the dimensions and then crop the rest off (weighted at the
+center). The default value is to generate no thumbnails.
+
+</li>
+<li><tt>default_style</tt>: The thumbnail style that will be used by default
+URLs. Defaults to <tt>original</tt>.
+
+<pre>
+  has_attached_file :avatar, :styles =&gt; { :normal =&gt; &quot;100x100#&quot; },
+                    :default_style =&gt; :normal
+  user.avatar.url # =&gt; &quot;/avatars/23/normal_me.png&quot;
+</pre>
+</li>
+<li><tt>whiny</tt>: Will raise an error if <a
+href="../Paperclip.html">Paperclip</a> cannot post_process an uploaded file
+due to a command line error. This will override the global setting for this
+attachment. Defaults to true. This option used to be called
+:whiny_thumbanils, but this is deprecated.
+
+</li>
+<li><tt>convert_options</tt>: When creating thumbnails, use this free-form
+options field to pass in various convert command options. Typical options
+are &#8220;-strip&#8221; to remove all Exif data from the image (save space
+for thumbnails and avatars) or &#8220;-depth 8&#8221; to specify the bit
+depth of the resulting conversion. See ImageMagick convert documentation
+for more options: (<a
+href="http://www.imagemagick.org/script/convert.php">www.imagemagick.org/script/convert.php</a>)
+Note that this option takes a hash of options, each of which correspond to
+the style of thumbnail being generated. You can also specify :all as a key,
+which will apply to all of the thumbnails being generated. If you specify
+options for the :original, it would be best if you did not specify
+destructive options, as the intent of keeping the original around is to
+regenerate all the thumbnails when requirements change.
+
+<pre>
+  has_attached_file :avatar, :styles =&gt; { :large =&gt; &quot;300x300&quot;, :negative =&gt; &quot;100x100&quot; }
+                             :convert_options =&gt; {
+                               :all =&gt; &quot;-strip&quot;,
+                               :negative =&gt; &quot;-negate&quot;
+                             }
+</pre>
+<p>
+NOTE: While not deprecated yet, it is not recommended to specify options
+this way. It is recommended that :convert_options option be included in the
+hash passed to each :styles for compatability with future versions.
+</p>
+</li>
+<li><tt>storage</tt>: Chooses the storage backend where the files will be
+stored. The current choices are :filesystem and :s3. The default is
+:filesystem. Make sure you read the documentation for <a
+href="Storage/Filesystem.html">Paperclip::Storage::Filesystem</a> and <a
+href="Storage/S3.html">Paperclip::Storage::S3</a> for backend-specific
+options.
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000183_source')" id="l_M000183_source">show</a>
+                        
+                    </p>
+                    <div id="M000183_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip.rb, line 215</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_attached_file</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-identifier">include</span> <span class="ruby-constant">InstanceMethods</span>
+
+      <span class="ruby-identifier">write_inheritable_attribute</span>(<span class="ruby-identifier">:attachment_definitions</span>, {}) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">attachment_definitions</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-identifier">attachment_definitions</span>[<span class="ruby-identifier">name</span>] = {<span class="ruby-identifier">:validations</span> =<span class="ruby-operator">&gt;</span> []}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
+
+      <span class="ruby-identifier">after_save</span> <span class="ruby-identifier">:save_attached_files</span>
+      <span class="ruby-identifier">before_destroy</span> <span class="ruby-identifier">:destroy_attached_files</span>
+
+      <span class="ruby-identifier">define_callbacks</span> <span class="ruby-identifier">:before_post_process</span>, <span class="ruby-identifier">:after_post_process</span>
+      <span class="ruby-identifier">define_callbacks</span> <span class="ruby-identifier">:&quot;before_#{name}_post_process&quot;</span>, <span class="ruby-identifier">:&quot;after_#{name}_post_process&quot;</span>
+     
+      <span class="ruby-identifier">define_method</span> <span class="ruby-identifier">name</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">a</span> = <span class="ruby-identifier">attachment_for</span>(<span class="ruby-identifier">name</span>)
+        (<span class="ruby-identifier">args</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">define_method</span> <span class="ruby-node">&quot;#{name}=&quot;</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">attachment_for</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">assign</span>(<span class="ruby-identifier">file</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">define_method</span> <span class="ruby-node">&quot;#{name}?&quot;</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">attachment_for</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">file?</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">validates_each</span>(<span class="ruby-identifier">name</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">record</span>, <span class="ruby-identifier">attr</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">attachment</span> = <span class="ruby-identifier">record</span>.<span class="ruby-identifier">attachment_for</span>(<span class="ruby-identifier">name</span>)
+        <span class="ruby-identifier">attachment</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:flush_errors</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">attachment</span>.<span class="ruby-identifier">valid?</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000193">
+                    
+                    <a name="M000193"></a><b>validates_attachment_content_type</b>(name, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Places ActiveRecord-style validations on the content type of the file
+assigned. The possible options are:
+</p>
+<ul>
+<li><tt>content_type</tt>: Allowed content types. Can be a single content type
+or an array. Each type can be a String or a Regexp. It should be noted that
+Internet Explorer upload files with content_types that you may not expect.
+For example, JPEG images are given image/pjpeg and PNGs are image/x-png, so
+keep that in mind when determining how you match. Allows all by default.
+
+</li>
+<li><tt>message</tt>: The message to display when the uploaded file has an
+invalid content type.
+
+</li>
+<li><tt>if</tt>: A lambda or name of a method on the instance. Validation will
+only be run is this lambda or method returns true.
+
+</li>
+<li><tt>unless</tt>: Same as <tt>if</tt> but validates if lambda or method
+returns false.
+
+</li>
+</ul>
+<p>
+NOTE: If you do not specify an [attachment]_content_type field on your
+model, content_type validation will work _ONLY upon assignment_ and
+re-validation after the instance has been reloaded will always succeed.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000193_source')" id="l_M000193_source">show</a>
+                        
+                    </p>
+                    <div id="M000193_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip.rb, line 306</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validates_attachment_content_type</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-identifier">types</span> = [<span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:content_type</span>)].<span class="ruby-identifier">flatten</span>
+      <span class="ruby-identifier">validates_each</span>(<span class="ruby-identifier">:&quot;#{name}_content_type&quot;</span>, <span class="ruby-identifier">options</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">record</span>, <span class="ruby-identifier">attr</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">types</span>.<span class="ruby-identifier">any?</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">value</span> }
+          <span class="ruby-identifier">record</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">:&quot;#{name}_content_type&quot;</span>, <span class="ruby-identifier">:inclusion</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:message</span>], <span class="ruby-identifier">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">value</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000192">
+                    
+                    <a name="M000192"></a><b>validates_attachment_presence</b>(name, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Places ActiveRecord-style validations on the presence of a file. Options:
+</p>
+<ul>
+<li><tt>if</tt>: A lambda or name of a method on the instance. Validation will
+only be run is this lambda or method returns true.
+
+</li>
+<li><tt>unless</tt>: Same as <tt>if</tt> but validates if lambda or method
+returns false.
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000192_source')" id="l_M000192_source">show</a>
+                        
+                    </p>
+                    <div id="M000192_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip.rb, line 282</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validates_attachment_presence</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-identifier">message</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:message</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">&quot;must be set.&quot;</span>
+      <span class="ruby-identifier">validates_presence_of</span> <span class="ruby-identifier">:&quot;#{name}_file_name&quot;</span>, 
+                            <span class="ruby-identifier">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">message</span>,
+                            <span class="ruby-identifier">:if</span>      =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:if</span>],
+                            <span class="ruby-identifier">:unless</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:unless</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000188">
+                    
+                    <a name="M000188"></a><b>validates_attachment_size</b>(name, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Places ActiveRecord-style validations on the size of the file assigned. The
+possible options are:
+</p>
+<ul>
+<li><tt>in</tt>: a Range of bytes (i.e. <tt>1..1.megabyte</tt>),
+
+</li>
+<li><tt>less_than</tt>: equivalent to :in => 0..options[:less_than]
+
+</li>
+<li><tt>greater_than</tt>: equivalent to :in =>
+options[:greater_than]..Infinity
+
+</li>
+<li><tt>message</tt>: error message to display, use :min and :max as
+replacements
+
+</li>
+<li><tt>if</tt>: A lambda or name of a method on the instance. Validation will
+only be run is this lambda or method returns true.
+
+</li>
+<li><tt>unless</tt>: Same as <tt>if</tt> but validates if lambda or method
+returns false.
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000188_source')" id="l_M000188_source">show</a>
+                        
+                    </p>
+                    <div id="M000188_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip.rb, line 255</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validates_attachment_size</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-identifier">min</span>     = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:greater_than</span>] <span class="ruby-operator">||</span> (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:in</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:in</span>].<span class="ruby-identifier">first</span>) <span class="ruby-operator">||</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">max</span>     = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:less_than</span>]    <span class="ruby-operator">||</span> (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:in</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:in</span>].<span class="ruby-identifier">last</span>)  <span class="ruby-operator">||</span> (<span class="ruby-value">1.0</span><span class="ruby-operator">/</span><span class="ruby-value">0</span>)
+      <span class="ruby-identifier">range</span>   = (<span class="ruby-identifier">min</span><span class="ruby-operator">..</span><span class="ruby-identifier">max</span>)
+      <span class="ruby-identifier">message</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:message</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">&quot;file size must be between :min and :max bytes.&quot;</span>
+      <span class="ruby-identifier">message</span> = <span class="ruby-identifier">message</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/:min/</span>, <span class="ruby-identifier">min</span>.<span class="ruby-identifier">to_s</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/:max/</span>, <span class="ruby-identifier">max</span>.<span class="ruby-identifier">to_s</span>)
+
+      <span class="ruby-identifier">validates_inclusion_of</span> <span class="ruby-identifier">:&quot;#{name}_file_size&quot;</span>,
+                             <span class="ruby-identifier">:in</span>      =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">range</span>,
+                             <span class="ruby-identifier">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">message</span>,
+                             <span class="ruby-identifier">:if</span>      =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:if</span>],
+                             <span class="ruby-identifier">:unless</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:unless</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000191">
+                    
+                    <a name="M000191"></a><b>validates_attachment_thumbnails</b>(name, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Adds errors if thumbnail creation fails. The same as specifying
+:whiny_thumbnails => true.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000191_source')" id="l_M000191_source">show</a>
+                        
+                    </p>
+                    <div id="M000191_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip.rb, line 270</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validates_attachment_thumbnails</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-identifier">warn</span>(<span class="ruby-value str">'[DEPRECATION] validates_attachment_thumbnail is deprecated. '</span> <span class="ruby-operator">+</span>
+           <span class="ruby-value str">'This validation is on by default and will be removed from future versions. '</span> <span class="ruby-operator">+</span>
+           <span class="ruby-value str">'If you wish to turn it off, supply :whiny =&gt; false in your definition.'</span>)
+      <span class="ruby-identifier">attachment_definitions</span>[<span class="ruby-identifier">name</span>][<span class="ruby-identifier">:whiny_thumbnails</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

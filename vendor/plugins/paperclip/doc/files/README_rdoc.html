@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>README.rdoc</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            README.rdoc
+        </h1>
+        <ul class="files">
+            <li>README.rdoc</li>
+            <li>Last modified: Mon Dec 14 11:09:10 +0100 2009</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <h1><a href="../classes/Paperclip.html">Paperclip</a></h1>
+<p>
+<a href="../classes/Paperclip.html">Paperclip</a> is intended as an easy
+file attachment library for ActiveRecord. The intent behind it was to keep
+setup as easy as possible and to treat files as much like other attributes
+as possible. This means they aren&#8217;t saved to their final locations on
+disk, nor are they deleted if set to nil, until ActiveRecord::Base#save is
+called. It manages validations based on size and presence, if required. It
+can transform its assigned image into thumbnails if needed, and the
+prerequisites are as simple as installing ImageMagick (which, for most
+modern Unix-based systems, is as easy as installing the right packages).
+Attached files are saved to the filesystem and referenced in the browser by
+an easily understandable specification, which has sensible and useful
+defaults.
+</p>
+<p>
+See the documentation for <tt>has_attached_file</tt> in <a
+href="../classes/Paperclip/ClassMethods.html">Paperclip::ClassMethods</a>
+for more detailed options.
+</p>
+<h2>Quick Start</h2>
+<p>
+In your model:
+</p>
+<pre>
+  class User &lt; ActiveRecord::Base
+    has_attached_file :avatar, :styles =&gt; { :medium =&gt; &quot;300x300&gt;&quot;, :thumb =&gt; &quot;100x100&gt;&quot; }
+  end
+</pre>
+<p>
+In your migrations:
+</p>
+<pre>
+  class AddAvatarColumnsToUser &lt; ActiveRecord::Migration
+    def self.up
+      add_column :users, :avatar_file_name,    :string
+      add_column :users, :avatar_content_type, :string
+      add_column :users, :avatar_file_size,    :integer
+      add_column :users, :avatar_updated_at,   :datetime
+    end
+
+    def self.down
+      remove_column :users, :avatar_file_name
+      remove_column :users, :avatar_content_type
+      remove_column :users, :avatar_file_size
+      remove_column :users, :avatar_updated_at
+    end
+  end
+</pre>
+<p>
+In your edit and new views:
+</p>
+<pre>
+  &lt;% form_for :user, @user, :url =&gt; user_path, :html =&gt; { :multipart =&gt; true } do |form| %&gt;
+    &lt;%= form.file_field :avatar %&gt;
+  &lt;% end %&gt;
+</pre>
+<p>
+In your controller:
+</p>
+<pre>
+  def create
+    @user = User.create( params[:user] )
+  end
+</pre>
+<p>
+In your show view:
+</p>
+<pre>
+  &lt;%= image_tag @user.avatar.url %&gt;
+  &lt;%= image_tag @user.avatar.url(:medium) %&gt;
+  &lt;%= image_tag @user.avatar.url(:thumb) %&gt;
+</pre>
+<h2>Usage</h2>
+<p>
+The basics of paperclip are quite simple: Declare that your model has an
+attachment with the has_attached_file method, and give it a name. <a
+href="../classes/Paperclip.html">Paperclip</a> will wrap up up to four
+attributes (all prefixed with that attachment&#8217;s name, so you can have
+multiple attachments per model if you wish) and give the a friendly front
+end. The attributes are <attachment>_file_name, <attachment>_file_size,
+<attachment>_content_type, and <attachment>_updated_at. Only
+<attachment>_file_name is required for paperclip to operate. More
+information about the options to has_attached_file is available in the
+documentation of <a
+href="../classes/Paperclip/ClassMethods.html">Paperclip::ClassMethods</a>.
+</p>
+<p>
+Attachments can be validated with Paperclip&#8217;s validation methods,
+validates_attachment_presence, validates_attachment_content_type, and
+validates_attachment_size.
+</p>
+<h2>Storage</h2>
+<p>
+The files that are assigned as attachments are, by default, placed in the
+directory specified by the :path option to has_attached_file. By default,
+this location is
+&#8220;:rails_root/public/system/:attachment/:id/:style/:filename&#8221;.
+This location was chosen because on standard Capistrano deployments, the
+public/system directory is symlinked to the app&#8217;s shared directory,
+meaning it will survive between deployments. For example, using that :path,
+you may have a file at
+</p>
+<pre>
+  /data/myapp/releases/20081229172410/public/system/avatars/13/small/my_pic.png
+</pre>
+<p>
+NOTE: This is a change from previous versions of <a
+href="../classes/Paperclip.html">Paperclip</a>, but is overall a safer
+choice for the default file store.
+</p>
+<p>
+You may also choose to store your files using Amazon&#8217;s S3 service.
+You can find more information about S3 storage at the description for <a
+href="../classes/Paperclip/Storage/S3.html">Paperclip::Storage::S3</a>.
+</p>
+<p>
+Files on the local filesystem (and in the Rails app&#8217;s public
+directory) will be available to the internet at large. If you require
+access control, it&#8217;s possible to place your files in a different
+location. You will need to change both the :path and :url options in order
+to make sure the files are unavailable to the public. Both :path and :url
+allow the same set of interpolated variables.
+</p>
+<h2>Post Processing</h2>
+<p>
+<a href="../classes/Paperclip.html">Paperclip</a> supports an extensible
+selection of post-processors. When you define a set of styles for an
+attachment, by default it is expected that those &#8220;styles&#8221; are
+actually &#8220;thumbnails&#8221;. However, you can do much more than just
+thumbnail images. By defining a subclass of <a
+href="../classes/Paperclip/Processor.html">Paperclip::Processor</a>, you
+can perform any processing you want on the files that are attached. Any
+file in your Rails app&#8217;s lib/paperclip_processors directory is
+automatically loaded by paperclip, allowing you to easily define custom
+processors. You can specify a processor with the :processors option to
+has_attached_file:
+</p>
+<pre>
+  has_attached_file :scan, :styles =&gt; { :text =&gt; { :quality =&gt; :better } },
+                           :processors =&gt; [:ocr]
+</pre>
+<p>
+This would load the hypothetical class Paperclip::Ocr, which would have the
+hash &#8220;{ :quality => :better }&#8221; passed to it along with the
+uploaded file. For more information about defining processors, see <a
+href="../classes/Paperclip/Processor.html">Paperclip::Processor</a>.
+</p>
+<p>
+The default processor is <a
+href="../classes/Paperclip/Thumbnail.html">Paperclip::Thumbnail</a>. For
+backwards compatability reasons, you can pass a single geometry string or
+an array containing a geometry and a format, which the file will be
+converted to, like so:
+</p>
+<pre>
+  has_attached_file :avatar, :styles =&gt; { :thumb =&gt; [&quot;32x32#&quot;, :png] }
+</pre>
+<p>
+This will convert the &#8220;thumb&#8221; style to a 32x32 square in png
+format, regardless of what was uploaded. If the format is not specified, it
+is kept the same (i.e. jpgs will remain jpgs).
+</p>
+<p>
+Multiple processors can be specified, and they will be invoked in the order
+they are defined in the :processors array. Each successive processor will
+be given the result of the previous processor&#8217;s execution. All
+processors will receive the same parameters, which are what you define in
+the :styles hash. For example, assuming we had this definition:
+</p>
+<pre>
+  has_attached_file :scan, :styles =&gt; { :text =&gt; { :quality =&gt; :better } },
+                           :processors =&gt; [:rotator, :ocr]
+</pre>
+<p>
+then both the :rotator processor and the :ocr processor would receive the
+options &#8220;{ :quality => :better }&#8221;. This parameter may not mean
+anything to one or more or the processors, and they are expected to ignore
+it.
+</p>
+<p>
+NOTE: Because processors operate by turning the original attachment into
+the styles, no processors will be run if there are no styles defined.
+</p>
+<h2>Events</h2>
+<p>
+Before and after the Post Processing step, <a
+href="../classes/Paperclip.html">Paperclip</a> calls back to the model with
+a few callbacks, allowing the model to change or cancel the processing
+step. The callbacks are &#8220;before_post_process&#8220; and
+&#8220;after_post_process&#8220; (which are called before and after the
+processing of each attachment), and the attachment-specific
+&#8220;before_<attachment>_post_process&#8220; and
+&#8220;after_<attachment>_post_process&#8220;. The callbacks are intended
+to be as close to normal ActiveRecord callbacks as possible, so if you
+return false (specifically
+</p>
+<ul>
+<li>returning nil is not the same) in a before_ filter, the post processing
+step
+
+</li>
+</ul>
+<p>
+will halt. Returning false in an after_ filter will not halt anything, but
+you can access the model and the attachment if necessary.
+</p>
+<p>
+NOTE: Post processing will not even <b>start</b> if the attachment is not
+valid according to the validations. Your callbacks and processors will
+<b>only</b> be called with valid attachments.
+</p>
+<h2>Contributing</h2>
+<p>
+If you&#8217;d like to contribute a feature or bugfix: Thanks! To make sure
+your fix/feature has a high chance of being included, please read the
+following guidelines:
+</p>
+<ol>
+<li>Ask on the mailing list, or post a new GitHub Issue.
+
+</li>
+<li>Make sure there are tests! We will not accept any patch that is not tested.
+It&#8217;s a rare time when explicit tests aren&#8217;t needed. If you have
+questions about writing tests for paperclip, please ask the mailing list.
+
+</li>
+</ol>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+    </div>
+  </body>
+</html>

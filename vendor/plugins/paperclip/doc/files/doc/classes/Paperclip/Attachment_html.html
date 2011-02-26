@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Attachment.html</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            Attachment.html
+        </h1>
+        <ul class="files">
+            <li>doc/classes/Paperclip/Attachment.html</li>
+            <li>Last modified: Mon Dec 14 11:22:38 +0100 2009</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+<?xml version=&#8220;1.0&#8220; encoding=&#8220;iso-8859-1&#8221;?>
+<!DOCTYPE html
+</p>
+<pre>
+     PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+     &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+</pre>
+<p>
+<html xmlns=&#8220;<a
+href="http://www.w3.org/1999/xhtml">www.w3.org/1999/xhtml</a>&#8220;
+xml:lang=&#8220;en&#8221; lang=&#8220;en&#8221;> <head>
+</p>
+<pre>
+  &lt;title&gt;Class: Paperclip::Attachment&lt;/title&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=iso-8859-1&quot; /&gt;
+  &lt;meta http-equiv=&quot;Content-Script-Type&quot; content=&quot;text/javascript&quot; /&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;../.././rdoc-style.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot; /&gt;
+  &lt;script type=&quot;text/javascript&quot;&gt;
+  // &lt;![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, &quot;Code&quot;, &quot;resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400&quot;)
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( &quot;document.all.&quot; + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+
+    if ( elemStyle.display != &quot;block&quot; ) {
+      elemStyle.display = &quot;block&quot;
+    } else {
+      elemStyle.display = &quot;none&quot;
+    }
+
+    return true;
+  }
+
+  // Make codeblocks hidden by default
+  document.writeln( &quot;&lt;style type=\&quot;text/css\&quot;&gt;div.method-source-code { display: none }&lt;/style&gt;&quot; )
+
+  // ]]&gt;
+  &lt;/script&gt;
+</pre>
+<p>
+</head> <body>
+</p>
+<pre>
+    &lt;div id=&quot;classHeader&quot;&gt;
+        &lt;table class=&quot;header-table&quot;&gt;
+        &lt;tr class=&quot;top-aligned-row&quot;&gt;
+          &lt;td&gt;&lt;strong&gt;Class&lt;/strong&gt;&lt;/td&gt;
+          &lt;td class=&quot;class-name-in-header&quot;&gt;Paperclip::Attachment&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr class=&quot;top-aligned-row&quot;&gt;
+            &lt;td&gt;&lt;strong&gt;In:&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;
+                &lt;a href=&quot;../../files/lib/paperclip/attachment_rb.html&quot;&gt;
+                lib/paperclip/attachment.rb
+                &lt;/a&gt;
+        &lt;br /&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr class=&quot;top-aligned-row&quot;&gt;
+            &lt;td&gt;&lt;strong&gt;Parent:&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;
+                Object
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+  &lt;!-- banner header --&gt;
+
+  &lt;div id=&quot;bodyContent&quot;&gt;
+
+  &lt;div id=&quot;contextContent&quot;&gt;
+
+    &lt;div id=&quot;description&quot;&gt;
+      &lt;p&gt;
+</pre>
+<p>
+The <a href=&#8220;Attachment.html&#8220;>Attachment</a> class manages the
+files for a given attachment. It saves when the model saves, deletes when
+the model is destroyed, and processes the file upon assignment. </p>
+</p>
+<pre>
+    &lt;/div&gt;
+
+   &lt;/div&gt;
+
+    &lt;div id=&quot;method-list&quot;&gt;
+      &lt;h3 class=&quot;section-bar&quot;&gt;Methods&lt;/h3&gt;
+
+      &lt;div class=&quot;name-list&quot;&gt;
+      &lt;a href=&quot;#M000142&quot;&gt;assign&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000150&quot;&gt;clear&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000154&quot;&gt;content_type&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000140&quot;&gt;default_options&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000151&quot;&gt;destroy&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000148&quot;&gt;dirty?&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000147&quot;&gt;errors&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000158&quot;&gt;file?&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000160&quot;&gt;instance_read&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000159&quot;&gt;instance_write&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000156&quot;&gt;interpolations&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000141&quot;&gt;new&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000152&quot;&gt;original_filename&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000144&quot;&gt;path&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000157&quot;&gt;reprocess!&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000149&quot;&gt;save&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000153&quot;&gt;size&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000145&quot;&gt;to_s&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000155&quot;&gt;updated_at&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000143&quot;&gt;url&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000146&quot;&gt;valid?&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+    &lt;!-- if includes --&gt;
+
+    &lt;div id=&quot;section&quot;&gt;
+
+    &lt;div id=&quot;attribute-list&quot;&gt;
+      &lt;h3 class=&quot;section-bar&quot;&gt;Attributes&lt;/h3&gt;
+
+      &lt;div class=&quot;name-list&quot;&gt;
+        &lt;table&gt;
+        &lt;tr class=&quot;top-aligned-row context-row&quot;&gt;
+          &lt;td class=&quot;context-item-name&quot;&gt;convert_options&lt;/td&gt;
+          &lt;td class=&quot;context-item-value&quot;&gt;&amp;nbsp;[R]&amp;nbsp;&lt;/td&gt;
+          &lt;td class=&quot;context-item-desc&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr class=&quot;top-aligned-row context-row&quot;&gt;
+          &lt;td class=&quot;context-item-name&quot;&gt;default_style&lt;/td&gt;
+          &lt;td class=&quot;context-item-value&quot;&gt;&amp;nbsp;[R]&amp;nbsp;&lt;/td&gt;
+          &lt;td class=&quot;context-item-desc&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr class=&quot;top-aligned-row context-row&quot;&gt;
+          &lt;td class=&quot;context-item-name&quot;&gt;instance&lt;/td&gt;
+          &lt;td class=&quot;context-item-value&quot;&gt;&amp;nbsp;[R]&amp;nbsp;&lt;/td&gt;
+          &lt;td class=&quot;context-item-desc&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr class=&quot;top-aligned-row context-row&quot;&gt;
+          &lt;td class=&quot;context-item-name&quot;&gt;name&lt;/td&gt;
+          &lt;td class=&quot;context-item-value&quot;&gt;&amp;nbsp;[R]&amp;nbsp;&lt;/td&gt;
+          &lt;td class=&quot;context-item-desc&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr class=&quot;top-aligned-row context-row&quot;&gt;
+          &lt;td class=&quot;context-item-name&quot;&gt;options&lt;/td&gt;
+          &lt;td class=&quot;context-item-value&quot;&gt;&amp;nbsp;[R]&amp;nbsp;&lt;/td&gt;
+          &lt;td class=&quot;context-item-desc&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr class=&quot;top-aligned-row context-row&quot;&gt;
+          &lt;td class=&quot;context-item-name&quot;&gt;queued_for_write&lt;/td&gt;
+          &lt;td class=&quot;context-item-value&quot;&gt;&amp;nbsp;[R]&amp;nbsp;&lt;/td&gt;
+          &lt;td class=&quot;context-item-desc&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr class=&quot;top-aligned-row context-row&quot;&gt;
+          &lt;td class=&quot;context-item-name&quot;&gt;styles&lt;/td&gt;
+          &lt;td class=&quot;context-item-value&quot;&gt;&amp;nbsp;[R]&amp;nbsp;&lt;/td&gt;
+          &lt;td class=&quot;context-item-desc&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- if method_list --&gt;
+    &lt;div id=&quot;methods&quot;&gt;
+      &lt;h3 class=&quot;section-bar&quot;&gt;Public Class methods&lt;/h3&gt;
+
+      &lt;div id=&quot;method-M000140&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000140&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000140.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000140.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;default_options&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000156&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000156&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000156.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000156.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;interpolations&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Paths and URLs can have a number of variables interpolated into them to
+vary the storage location based on name, id, style, class, etc. This method
+is a deprecated access into supplying and retrieving these <a
+href=&#8220;Attachment.html#M000156&#8220;>interpolations</a>. Future
+access should use either <a href=&#8221;../Paperclip.html#M000029&#8220;><a
+href="../../../../classes/Paperclip.html#M000170">Paperclip.interpolates</a></a>
+or extend the <a
+href=&#8220;Interpolations.html&#8220;>Paperclip::Interpolations</a> module
+directly. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000141&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000141&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000141.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000141.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(name, instance, options = {})&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Creates an <a href=&#8220;Attachment.html&#8220;>Attachment</a> object.
+<tt>name</tt> is the name of the attachment, <tt>instance</tt> is the
+ActiveRecord object instance it&amp;8216;s attached to, and
+<tt>options</tt> is the same as the hash passed to
+<tt>has_attached_file</tt>. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;h3 class=&quot;section-bar&quot;&gt;Public Instance methods&lt;/h3&gt;
+
+      &lt;div id=&quot;method-M000142&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000142&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000142.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000142.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(uploaded_file)&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+What gets called when you call instance.attachment = File. It clears <a
+href=&#8220;Attachment.html#M000147&#8220;>errors</a>, assigns attributes,
+processes the file, and runs validations. It also queues up the previous
+file for deletion, to be flushed away on <a
+href=&#8220;Attachment.html#M000149&#8220;>save</a> of its host. In
+addition to form uploads, you can also <a
+href=&#8220;Attachment.html#M000142&#8220;>assign</a> another <a
+href=&#8221;../Paperclip.html&#8220;>Paperclip</a> attachment: </p> <pre>
+</p>
+<pre>
+  new_user.avatar = old_user.avatar
+</pre>
+<p>
+</pre> <p> If the file that is assigned is not valid, the processing (i.e.
+thumbnailing, etc) will NOT be run. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000150&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000150&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000150.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000150.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Clears out the attachment. Has the same effect as previously assigning nil
+to the attachment. Does NOT <a
+href=&#8220;Attachment.html#M000149&#8220;>save</a>. If you wish to <a
+href=&#8220;Attachment.html#M000150&#8220;>clear</a> AND <a
+href=&#8220;Attachment.html#M000149&#8220;>save</a>, use <a
+href=&#8220;Attachment.html#M000151&#8220;>destroy</a>. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000154&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000154&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000154.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000154.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;content_type&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Returns the <a href=&#8220;Attachment.html#M000154&#8220;>content_type</a>
+of the file as originally assigned, and lives in the
+&amp;lt;attachment&amp;gt;_content_type attribute of the model. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000151&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000151&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000151.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000151.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;destroy&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Destroys the attachment. Has the same effect as previously assigning nil to
+the attachment *and saving*. This is permanent. If you wish to wipe out the
+existing attachment but not <a
+href=&#8220;Attachment.html#M000149&#8220;>save</a>, use <a
+href=&#8220;Attachment.html#M000150&#8220;>clear</a>. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000148&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000148&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000148.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000148.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;dirty?&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Returns true if there are changes that need to be saved. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000147&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000147&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000147.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000147.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Returns an array containing the <a
+href=&#8220;Attachment.html#M000147&#8220;>errors</a> on this attachment.
+</p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000158&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000158&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000158.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000158.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;file?&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Returns true if a file has been assigned. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000160&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000160&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000160.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000160.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;instance_read&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(attr)&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Reads the attachment-specific attribute on the instance. See <a
+href=&#8220;Attachment.html#M000159&#8220;>instance_write</a> for more
+details. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000159&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000159&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000159.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000159.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;instance_write&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(attr, value)&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Writes the attachment-specific attribute on the instance. For example, <a
+href=&#8220;Attachment.html#M000159&#8220;>instance_write</a>(:file_name,
+&amp;quot;me.jpg&amp;quot;) will write &amp;quot;me.jpg&amp;quot; to the
+instance&amp;8216;s &amp;quot;avatar_file_name&amp;quot; field (assuming
+the attachment is called avatar). </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000152&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000152&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000152.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000152.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;original_filename&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Returns the name of the file as originally assigned, and lives in the
+&amp;lt;attachment&amp;gt;_file_name attribute of the model. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000144&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000144&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000144.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000144.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(style = default_style)&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Returns the <a href=&#8220;Attachment.html#M000144&#8220;>path</a> of the
+attachment as defined by the :<a
+href=&#8220;Attachment.html#M000144&#8220;>path</a> option. If the file is
+stored in the filesystem the <a
+href=&#8220;Attachment.html#M000144&#8220;>path</a> refers to the <a
+href=&#8220;Attachment.html#M000144&#8220;>path</a> of the file on disk. If
+the file is stored in S3, the <a
+href=&#8220;Attachment.html#M000144&#8220;>path</a> is the
+&amp;quot;key&amp;quot; part of the URL, and the :bucket option refers to
+the S3 bucket. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000157&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000157&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000157.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000157.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;reprocess!&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+This method really shouldn&amp;8216;t be called that often. It&amp;8216;s
+expected use is in the paperclip:refresh rake task and that&amp;8216;s it.
+It will regenerate all thumbnails forcefully, by reobtaining the original
+file and going through the post-process again. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000149&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000149&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000149.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000149.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Saves the file, if there are no <a
+href=&#8220;Attachment.html#M000147&#8220;>errors</a>. If there are, it
+flushes them to the instance&amp;8216;s <a
+href=&#8220;Attachment.html#M000147&#8220;>errors</a> and returns false,
+cancelling the <a href=&#8220;Attachment.html#M000149&#8220;>save</a>. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000153&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000153&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000153.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000153.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Returns the <a href=&#8220;Attachment.html#M000153&#8220;>size</a> of the
+file as originally assigned, and lives in the
+&amp;lt;attachment&amp;gt;_file_size attribute of the model. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000145&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000145&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000145.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000145.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;to_s&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(style = nil)&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Alias to <tt>&lt;a
+href=&quot;Attachment.html#M000143&quot;&gt;url&lt;/a&gt;</tt> </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000155&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000155&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000155.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000155.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;updated_at&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Returns the last modified time of the file as originally assigned, and
+lives in the &amp;lt;attachment&amp;gt;_updated_at attribute of the model.
+</p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000143&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000143&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000143.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000143.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(style = default_style, include_updated_timestamp = true)&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Returns the public URL of the attachment, with a given style. Note that
+this does not necessarily need to point to a file that your web server can
+access and can point to an action in your app, if you need fine grained
+security. This is not recommended if you don&amp;8216;t need the security,
+however, for performance reasons. set include_updated_timestamp to false if
+you want to stop the attachment update time appended to the <a
+href=&#8220;Attachment.html#M000143&#8220;>url</a> </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000146&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000146&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;Attachment.src/M000146.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('Attachment.src/M000146.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;valid?&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Returns true if there are no <a
+href=&#8220;Attachment.html#M000147&#8220;>errors</a> on this attachment.
+</p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+</pre>
+<p>
+<div id=&#8220;validator-badges&#8221;>
+</p>
+<pre>
+  &lt;p&gt;&lt;small&gt;&lt;a href=&quot;http://validator.w3.org/check/referer&quot;&gt;[Validate]&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</pre>
+<p>
+</div>
+</p>
+<p>
+</body> </html>
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+    </div>
+  </body>
+</html>

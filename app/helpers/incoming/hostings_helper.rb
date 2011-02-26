@@ -1,0 +1,2 @@
+module Incoming::HostingsHelper
+end

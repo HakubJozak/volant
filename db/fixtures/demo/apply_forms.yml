@@ -1,0 +1,20 @@
+hana_accepted_to_xaverov:
+  fee: 2200
+  volunteer: hana
+  created_at: 2007-03-03
+  general_remarks: Poznamka!
+
+jakub_rejected_from_kytlice:
+  volunteer: jakub
+  created_at: 2007-03-03
+  motivation: __motivation__
+  general_remarks: __general_remarks__
+
+jakub_cancelled:
+  volunteer: jakub
+  created_at: 2007-03-03
+  cancelled: 2007-03-03
+
+radka_paid:
+  volunteer: jakub
+  created_at: 2007-03-03

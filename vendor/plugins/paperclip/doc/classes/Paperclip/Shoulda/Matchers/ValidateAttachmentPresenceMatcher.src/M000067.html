@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>error_when_not_valid? (Paperclip::Shoulda::Matchers::ValidateAttachmentPresenceMatcher)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_presence_matcher.rb, line 32</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">error_when_not_valid?</span>
+          (<span class="ruby-identifier">subject</span> = <span class="ruby-ivar">@subject</span>.<span class="ruby-identifier">new</span>).<span class="ruby-identifier">send</span>(<span class="ruby-ivar">@attachment_name</span>).<span class="ruby-identifier">assign</span>(<span class="ruby-keyword kw">nil</span>)
+          <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">valid?</span>
+          <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">on</span>(<span class="ruby-node">&quot;#{@attachment_name}_file_name&quot;</span><span class="ruby-node">&quot;#{@attachment_name}_file_name&quot;</span>).<span class="ruby-identifier">blank?</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

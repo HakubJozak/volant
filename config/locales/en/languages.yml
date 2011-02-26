@@ -1,0 +1,13 @@
+en:
+  activerecord:
+    models:
+      language:
+        other: Language
+        one: Languages
+
+    attributes:
+      language:
+        code: Code
+        name_cz: Czech name
+        name_en: English name
+        triple_code: Triple code

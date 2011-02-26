@@ -1,0 +1,33 @@
+<%
+   # TODO - remote form
+   form_tag({ :overwrite_params => { :action => @action } }, { :multipart => true }) do
+%>
+
+<h4><%= t("activerecord.attributes.apply_form.apply_form_actions.#{@action}") %></h4>
+
+<ol class="form">
+  <%= as_field "emails.confirm_not_send", check_box_tag(:confirm_not_send) %>
+  <%= as_field "emails.to", text_field(:mail, :to, :class => 'text-input') %>
+  <%= as_field "emails.from", text_field(:mail, :from, :class => 'text-input') %>
+  <%= as_field "emails.subject", text_field(:mail, :subject, :class => 'text-input') %>
+
+  <%= as_field "emails.attachments", add_attachment_button %>
+  <% @mail.attachments.each do |attachment| %>
+    <%= as_field nil, render_attachment(attachment) %>
+  <% end -%>
+
+  <%= as_field "emails.body", text_area(:mail, :body, :class => 'text-input long-text-area', :rows => 50) %>
+</ol>
+
+
+
+<p class="form-footer">
+  <!--
+  <%= submit_tag t("emails.send"), :class => "submit" %>
+  -->
+  <%= submit_tag t("emails.send"), :class => "submit" %>
+  <%= link_to t("emails.cancel"), '', :class => 'cancel' %>
+  <%= loading_indicator_tag(:action => :update, :id => params[:id]) %>
+</p>
+
+<% end %>

@@ -1,0 +1,27 @@
+<% embedded ||= false %>
+
+<div id="cart" >
+<% unless cart.empty? %>
+                <%= "<h1>#{bt('wc_cart_title')}</h1>" unless embedded %>
+
+                <%= render :partial => 'workcamps/workcamps',
+                           :object => cart.workcamps,
+                           :locals => { :prefix => 'cart_', :display_order => true } %>
+
+                <% unless embedded %>
+                        <center id="cart_links">
+                                <%= link_to_remote bt('wc_empty_cart',:edit_allowed => false),
+                                                                      :url => {:action => 'empty_cart',
+                                                                      :controller => 'workcamps/cart_handling' } %>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <%= link_to bt('wc_to_apply_form',:edit_allowed => false), apply_form_url %>
+                        </center>
+                <% end %>
+<% end %>
+</div>
+
+<%= sortable_element("cart_workcamps_tbody", :url => "/#{@current_language.code}/fn/workcamps/cart_handling/sort_workcamps",
+                                             :handle => "handle",
+                                             :after => "number_workcamps()",
+                                             :tag => "tr")
+%>

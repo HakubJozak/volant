@@ -1,0 +1,10 @@
+en:
+  yes: Yes
+  no: No
+  "yes": Yes
+  "no": No
+
+  activerecord:
+    attributes:
+      lastname: Surname
+      firstname: Name

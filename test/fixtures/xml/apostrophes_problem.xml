@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exportfile lastupdate="2009-03-04" network="alliance" version="1.0">
+
+
+  <!-- known organization -->
+  <workcamps organization="SEEDS" >
+
+<workcamp>
+<code>JR09/307</code>
+<work>RENO/FEST</work>
+<start_date>2009-08-02</start_date>
+<end_date>2009-08-22</end_date>
+<location>BRAMEVAQUE </location>
+<country>FRA</country>
+<region>Midi-Pyrénées</region>
+<languages>en,fr</languages>
+<extrafee> </extrafee>
+<min_age>17</min_age>
+<max_age>30</max_age>
+<disabled_vols>false</disabled_vols>
+<numvol>15</numvol>
+<vegetarian>false</vegetarian>
+<family>false</family>
+−
+<description>
+Work: Supervised by an experienced mason, you will continue the conservation of the remains of the castle of the Earls of Comminges: clearing of the overgrowth, masonry, building of small stone walls. The site hosts several hundreds of visitors in the summer months. Furthermore you participate in the medieval show organised by Mr Marrot, president of the district council of Barousse: this show talks about the history of the valley. You will participate in 3 rehearsal sessions and one live performance, as extras.
+Location: Bramevaque is a small rural village of 30 inhabitants, at the foot of the Pyrenees mountains which mark the border with Spain. The site offers beautiful landscapes and view points. The Barousse valley is one of the most remarquable valleys of the Pyrenees; it is also on the itinerary of the Tour de France cycling race. Possible free time activities : hiking, swimming in the river, visit of prehistorical caves, the famous abbey of St Bertrand de Comminges, the watersports resort of Antignac, the Barousse museum. Please browse: www.visit-midi-pyrenees.com .
+Partner: The municipality of Bramevaque and the district council of Barousse are mobilized to maintain and to restore the remains of the castle of the Earls of Comminges which attracts many visitors. For more than 15 years, the small village of Bramevaque has been hosting international workcamps every summer which makes it possible to carry out this task and to create an original event in the village.
+</description>
+<airport> </airport>
+<train_station>Montréjeau-Gourdan-Polignan </train_station>
+<numvol_m>7</numvol_m>
+<numvol_f>8</numvol_f>
+<max_vols_per_country>5</max_vols_per_country>
+<max_teenagers>3</max_teenagers>
+<max_national_vols>2</max_national_vols>
+<notes> </notes>
+<name>BRAMEVAQUE</name>
+</workcamp>
+
+  </workcamps>
+
+</exportfile>

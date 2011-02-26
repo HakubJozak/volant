@@ -1,0 +1,94 @@
+cz:
+  fees: Poplatky
+  wcinfo_group: Další informace
+  place_limits: Volná místa
+  capacity_group: Kapacity
+  
+  activerecord:
+    models:
+      workcamp: &workcamp_model
+        other: Workcampy
+        one: Workcamp
+
+      incoming/workcamp:
+        <<: *workcamp_model
+
+      outgoing/workcamp:
+        <<: *workcamp_model
+
+    attributes:
+      workcamp: &workcamp_attributes
+        publish_mode_desc: Kdy se bude workcamp zobrazovat na webových stránkách?
+        alliance_export: XML Alliance
+        accepted_forms: Akceptované
+        description: Popis
+        comments: Komentáře
+        intentions: Zaměření
+        taggings: Nálepky
+        organization: Organizace
+        country: Země
+        name: Jméno
+        code: Kód
+        begin: Od
+        end: Do
+        language: Jazyky
+        fees: Poplatky
+        wcinfo_group: Podrobné informace
+        capacity_group: Kapacita
+        place_limits: Míst
+        begin_string: Začíná
+        end_string: Končí
+        publish_mode: Zveřejňovat
+        publish_mode_always: Vždy
+        publish_mode_season: Pouze v sezóně
+        publish_mode_never: Nikdy
+        train: Vlakové nádraží
+        airport: Letiště
+        region: Region
+        extra_fee: Poplatek
+        extra_fee_currency: Měna poplatku
+        capacity: Celkem
+        capacity_males: Muži
+        capacity_females: Ženy
+        capacity_teenagers: Teenageři
+        capacity_natives: Z pořádající země
+        places: Míst celkem
+        places_for_males: Míst pro muže
+        places_for_females: Míst pro ženy
+        free_places: Volných/Zažádaných míst
+        free_places_for_males: Volných/Zažádaných míst pro muže
+        free_places_for_females: Volných/Zažádaných míst pro ženy
+        free_places_list: V
+        free_places_for_males_list: M
+        free_places_for_females_list: Ž
+        places_info: Místa
+        minimal_age: Minimální věk
+        maximal_age: Maximální věk
+        area: Místo
+        accomodation: Ubytování
+        workdesc: Popis práce
+        notes: Poznámky
+        en_desc: Popis v angličtině
+        cz_desc: Popis v češtině
+        infosheets: Infosheety
+        taggings: Nálepky
+        tags: Nálepky
+
+
+      incoming/workcamp:
+        <<: *workcamp_attributes
+        quick_contact: Kontakty
+        free_places: Volných míst
+        free_places_for_males: Volných míst pro muže
+        free_places_for_females: Volných míst pro ženy
+        leaderships: Vedoucí
+        participants: Účastníci
+        partners_contacts: Kontaktní osoby
+        partners_emails: Emaily
+        partners_phones: Telefony
+        partners_address: Adresy
+        hostings: Partneři
+        bookings: Rezervace
+
+      outgoing/workcamp:
+        <<: *workcamp_attributes

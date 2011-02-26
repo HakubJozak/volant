@@ -1,0 +1,10 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    awesome_print (0.3.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  awesome_print

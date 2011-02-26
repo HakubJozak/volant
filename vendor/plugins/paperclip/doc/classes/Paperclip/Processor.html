@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Paperclip::Processor</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Paperclip::Processor 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/paperclip/processor_rb.html">lib/paperclip/processor.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+<a href="../Paperclip.html">Paperclip</a> processors allow you to modify
+attached files when they are attached in any way you are able. <a
+href="../Paperclip.html">Paperclip</a> itself uses command-line programs
+for its included <a href="Thumbnail.html">Thumbnail</a> processor, but
+custom processors are not required to follow suit.
+</p>
+<p>
+Processors are required to be defined inside the <a
+href="../Paperclip.html">Paperclip</a> module and are also required to be a
+subclass of <a href="Processor.html">Paperclip::Processor</a>. There is
+only one method you <b>must</b> implement to properly be a subclass: <a
+href="Processor.html#M000066">make</a>, but initialize may also be of use.
+Both methods accept 3 arguments: the file that will be operated on (which
+is an instance of File), a hash of options that were defined in
+has_attached_file&#8217;s style hash, and the <a
+href="Attachment.html">Paperclip::Attachment</a> itself.
+</p>
+<p>
+All <a href="Processor.html#M000066">make</a> needs to return is an
+instance of File (<a href="Tempfile.html">Tempfile</a> is acceptable) which
+contains the results of the processing.
+</p>
+<p>
+See <a href="../Paperclip.html#M000171">Paperclip.run</a> for more
+information about using command-line utilities from within Processors.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>M</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000067">make</a>,</li>
+                
+                <li><a href="#M000066">make</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000065">new</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>file</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>options</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>attachment</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000067">
+                    
+                    <a name="M000067"></a><b>make</b>(file, options = {})
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000067_source')" id="l_M000067_source">show</a>
+                        
+                    </p>
+                    <div id="M000067_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/processor.rb, line 32</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">make</span> <span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-identifier">attachment</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">new</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>, <span class="ruby-identifier">attachment</span>).<span class="ruby-identifier">make</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000065">
+                    
+                    <a name="M000065"></a><b>new</b>(file, options = {})
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000065_source')" id="l_M000065_source">show</a>
+                        
+                    </p>
+                    <div id="M000065_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/processor.rb, line 23</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-identifier">attachment</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-ivar">@file</span> = <span class="ruby-identifier">file</span>
+      <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+      <span class="ruby-ivar">@attachment</span> = <span class="ruby-identifier">attachment</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000066">
+                    
+                    <a name="M000066"></a><b>make</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000066_source')" id="l_M000066_source">show</a>
+                        
+                    </p>
+                    <div id="M000066_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/processor.rb, line 29</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">make</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

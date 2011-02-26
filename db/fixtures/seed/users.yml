@@ -1,0 +1,24 @@
+<% LOGINS =   [ ['admin','inexsda@inexsda.cz'],
+                ['radka','evs@inexsda.cz'],
+                ['kuba','jakub.hozak@gmail.com'],
+                ]
+  WEB_PASSWORD = '3pQpda9WSn6'
+%>
+
+<% LOGINS.each do |login,email| %>
+<%=login%>:
+  login: <%=login%>
+  firstname: <%=login%>
+  salt: <%= salt = User::make_salt(login) %>
+  crypted_password: <%= User::encrypt(login,salt) %>
+  email: <%= email %>
+<% end %>
+
+web_access:
+  login: inex_web_user
+  firstname: inex_web_user
+  salt: <%= salt = User::make_salt(WEB_PASSWORD) %>
+  crypted_password: <%= User::encrypt(WEB_PASSWORD,salt) %>
+  email: none
+
+

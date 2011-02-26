@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Paperclip::Shoulda</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Paperclip::Shoulda 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/shoulda_macros/paperclip_rb.html">shoulda_macros/paperclip.rb</a></li>
+            
+            <li><a href="../../files/lib/paperclip/matchers/validate_attachment_presence_matcher_rb.html">lib/paperclip/matchers/validate_attachment_presence_matcher.rb</a></li>
+            
+            <li><a href="../../files/lib/paperclip/matchers/validate_attachment_content_type_matcher_rb.html">lib/paperclip/matchers/validate_attachment_content_type_matcher.rb</a></li>
+            
+            <li><a href="../../files/lib/paperclip/matchers/have_attached_file_matcher_rb.html">lib/paperclip/matchers/have_attached_file_matcher.rb</a></li>
+            
+            <li><a href="../../files/lib/paperclip/matchers/validate_attachment_size_matcher_rb.html">lib/paperclip/matchers/validate_attachment_size_matcher.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <h1><a href="../Paperclip.html">Paperclip</a> <a href="Shoulda.html">Shoulda</a> Macros</h1>
+<p>
+These macros are intended for use with shoulda, and will be included into
+your tests automatically. All of the macros use the standard shoulda
+assumption that the name of the test is based on the name of the model
+you&#8217;re testing (that is, UserTest is the test for the User model),
+and will load that class for testing purposes.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000005">paperclip_fixture</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000000">should_have_attached_file</a>,</li>
+                
+                <li><a href="#M000002">should_validate_attachment_content_type</a>,</li>
+                
+                <li><a href="#M000001">should_validate_attachment_presence</a>,</li>
+                
+                <li><a href="#M000003">should_validate_attachment_size</a>,</li>
+                
+                <li><a href="#M000004">stub_paperclip_s3</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="Shoulda.html">Paperclip::Shoulda</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">MODULE</span> <a href="Shoulda/Matchers.html">Paperclip::Shoulda::Matchers</a></li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000005">
+                    
+                    <a name="M000005"></a><b>paperclip_fixture</b>(model, attachment, extension)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Stub S3 and return a file for attachment. Best with <a
+href="../Factory.html">Factory</a> Girl. Uses a strict directory
+convention:
+</p>
+<pre>
+    features/support/paperclip
+</pre>
+<p>
+This method is used by the Paperclip-provided Cucumber step:
+</p>
+<pre>
+    When I attach a &quot;demo_tape&quot; &quot;mp3&quot; file to a &quot;band&quot; on S3
+</pre>
+<p>
+@example
+</p>
+<pre>
+  Factory.define :band_with_demo_tape, :parent =&gt; :band do |band|
+    band.demo_tape { band.paperclip_fixture(&quot;band&quot;, &quot;demo_tape&quot;, &quot;png&quot;) }
+  end
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000005_source')" id="l_M000005_source">show</a>
+                        
+                    </p>
+                    <div id="M000005_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File shoulda_macros/paperclip.rb, line 98</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">paperclip_fixture</span>(<span class="ruby-identifier">model</span>, <span class="ruby-identifier">attachment</span>, <span class="ruby-identifier">extension</span>)
+      <span class="ruby-identifier">stub_paperclip_s3</span>(<span class="ruby-identifier">model</span>, <span class="ruby-identifier">attachment</span>, <span class="ruby-identifier">extension</span>)
+      <span class="ruby-identifier">base_path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>), <span class="ruby-value str">&quot;..&quot;</span>, <span class="ruby-value str">&quot;..&quot;</span>,
+                            <span class="ruby-value str">&quot;features&quot;</span>, <span class="ruby-value str">&quot;support&quot;</span>, <span class="ruby-value str">&quot;paperclip&quot;</span>)
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">base_path</span>, <span class="ruby-identifier">model</span>, <span class="ruby-node">&quot;#{attachment}.#{extension}&quot;</span>))
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000000">
+                    
+                    <a name="M000000"></a><b>should_have_attached_file</b>(name)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+This will test whether you have defined your attachment correctly by
+checking for all the required fields exist after the definition of the
+attachment.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000000_source')" id="l_M000000_source">show</a>
+                        
+                    </p>
+                    <div id="M000000_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File shoulda_macros/paperclip.rb, line 17</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">should_have_attached_file</span> <span class="ruby-identifier">name</span>
+      <span class="ruby-identifier">klass</span>   = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/Test$/</span>, <span class="ruby-value str">''</span>).<span class="ruby-identifier">constantize</span>
+      <span class="ruby-identifier">matcher</span> = <span class="ruby-identifier">have_attached_file</span> <span class="ruby-identifier">name</span>
+      <span class="ruby-identifier">should</span> <span class="ruby-identifier">matcher</span>.<span class="ruby-identifier">description</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">assert_accepts</span>(<span class="ruby-identifier">matcher</span>, <span class="ruby-identifier">klass</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000002">
+                    
+                    <a name="M000002"></a><b>should_validate_attachment_content_type</b>(name, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Tests that you have content_type validations specified. There are two
+options, :valid and :invalid. Both accept an array of strings. The strings
+should be a list of content types which will pass and fail validation,
+respectively.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000002_source')" id="l_M000002_source">show</a>
+                        
+                    </p>
+                    <div id="M000002_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File shoulda_macros/paperclip.rb, line 38</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">should_validate_attachment_content_type</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-identifier">klass</span>   = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/Test$/</span>, <span class="ruby-value str">''</span>).<span class="ruby-identifier">constantize</span>
+      <span class="ruby-identifier">valid</span>   = [<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:valid</span>]].<span class="ruby-identifier">flatten</span>
+      <span class="ruby-identifier">invalid</span> = [<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:invalid</span>]].<span class="ruby-identifier">flatten</span>
+      <span class="ruby-identifier">matcher</span> = <span class="ruby-identifier">validate_attachment_content_type</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">allowing</span>(<span class="ruby-identifier">valid</span>).<span class="ruby-identifier">rejecting</span>(<span class="ruby-identifier">invalid</span>)
+      <span class="ruby-identifier">should</span> <span class="ruby-identifier">matcher</span>.<span class="ruby-identifier">description</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">assert_accepts</span>(<span class="ruby-identifier">matcher</span>, <span class="ruby-identifier">klass</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000001">
+                    
+                    <a name="M000001"></a><b>should_validate_attachment_presence</b>(name)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Tests for validations on the presence of the attachment.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000001_source')" id="l_M000001_source">show</a>
+                        
+                    </p>
+                    <div id="M000001_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File shoulda_macros/paperclip.rb, line 26</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">should_validate_attachment_presence</span> <span class="ruby-identifier">name</span>
+      <span class="ruby-identifier">klass</span>   = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/Test$/</span>, <span class="ruby-value str">''</span>).<span class="ruby-identifier">constantize</span>
+      <span class="ruby-identifier">matcher</span> = <span class="ruby-identifier">validate_attachment_presence</span> <span class="ruby-identifier">name</span>
+      <span class="ruby-identifier">should</span> <span class="ruby-identifier">matcher</span>.<span class="ruby-identifier">description</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">assert_accepts</span>(<span class="ruby-identifier">matcher</span>, <span class="ruby-identifier">klass</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000003">
+                    
+                    <a name="M000003"></a><b>should_validate_attachment_size</b>(name, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Tests to ensure that you have file size validations turned on. You can pass
+the same options to this that you can to validate_attachment_file_size -
+:less_than, :greater_than, and :in. :less_than checks that a file is less
+than a certain size, :greater_than checks that a file is more than a
+certain size, and :in takes a Range or Array which specifies the lower and
+upper limits of the file size.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000003_source')" id="l_M000003_source">show</a>
+                        
+                    </p>
+                    <div id="M000003_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File shoulda_macros/paperclip.rb, line 54</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">should_validate_attachment_size</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-identifier">klass</span>   = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/Test$/</span>, <span class="ruby-value str">''</span>).<span class="ruby-identifier">constantize</span>
+      <span class="ruby-identifier">min</span>     = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:greater_than</span>] <span class="ruby-operator">||</span> (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:in</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:in</span>].<span class="ruby-identifier">first</span>) <span class="ruby-operator">||</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">max</span>     = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:less_than</span>]    <span class="ruby-operator">||</span> (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:in</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:in</span>].<span class="ruby-identifier">last</span>)  <span class="ruby-operator">||</span> (<span class="ruby-value">1.0</span><span class="ruby-operator">/</span><span class="ruby-value">0</span>)
+      <span class="ruby-identifier">range</span>   = (<span class="ruby-identifier">min</span><span class="ruby-operator">..</span><span class="ruby-identifier">max</span>)
+      <span class="ruby-identifier">matcher</span> = <span class="ruby-identifier">validate_attachment_size</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">in</span>(<span class="ruby-identifier">range</span>)
+      <span class="ruby-identifier">should</span> <span class="ruby-identifier">matcher</span>.<span class="ruby-identifier">description</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">assert_accepts</span>(<span class="ruby-identifier">matcher</span>, <span class="ruby-identifier">klass</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000004">
+                    
+                    <a name="M000004"></a><b>stub_paperclip_s3</b>(model, attachment, extension)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Stubs the HTTP PUT for an attachment using S3 storage.
+</p>
+<p>
+@example
+</p>
+<pre>
+  stub_paperclip_s3('user', 'avatar', 'png')
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000004_source')" id="l_M000004_source">show</a>
+                        
+                    </p>
+                    <div id="M000004_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File shoulda_macros/paperclip.rb, line 69</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stub_paperclip_s3</span>(<span class="ruby-identifier">model</span>, <span class="ruby-identifier">attachment</span>, <span class="ruby-identifier">extension</span>)
+      <span class="ruby-identifier">definition</span> = <span class="ruby-identifier">model</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot; &quot;</span>, <span class="ruby-value str">&quot;_&quot;</span>).<span class="ruby-identifier">classify</span>.<span class="ruby-identifier">constantize</span>.
+                         <span class="ruby-identifier">attachment_definitions</span>[<span class="ruby-identifier">attachment</span>.<span class="ruby-identifier">to_sym</span>]
+
+      <span class="ruby-identifier">path</span> = <span class="ruby-node">&quot;http://s3.amazonaws.com/:id/#{definition[:path]}&quot;</span>
+      <span class="ruby-identifier">path</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/:([^\/\.]+)/</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">match</span><span class="ruby-operator">|</span>
+        <span class="ruby-value str">&quot;([^\/\.]+)&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-constant">FakeWeb</span>.<span class="ruby-identifier">register_uri</span>(<span class="ruby-identifier">:put</span>, <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">path</span>), <span class="ruby-identifier">:body</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;OK&quot;</span>)
+      <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NameError</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">NameError</span>, <span class="ruby-value str">&quot;the stub_paperclip_s3 shoulda macro requires the fakeweb gem.&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

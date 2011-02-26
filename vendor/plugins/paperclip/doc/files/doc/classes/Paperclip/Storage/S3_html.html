@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>S3.html</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            S3.html
+        </h1>
+        <ul class="files">
+            <li>doc/classes/Paperclip/Storage/S3.html</li>
+            <li>Last modified: Mon Dec 14 11:22:38 +0100 2009</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+<?xml version=&#8220;1.0&#8220; encoding=&#8220;iso-8859-1&#8221;?>
+<!DOCTYPE html
+</p>
+<pre>
+     PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+     &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+</pre>
+<p>
+<html xmlns=&#8220;<a
+href="http://www.w3.org/1999/xhtml">www.w3.org/1999/xhtml</a>&#8220;
+xml:lang=&#8220;en&#8221; lang=&#8220;en&#8221;> <head>
+</p>
+<pre>
+  &lt;title&gt;Module: Paperclip::Storage::S3&lt;/title&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=iso-8859-1&quot; /&gt;
+  &lt;meta http-equiv=&quot;Content-Script-Type&quot; content=&quot;text/javascript&quot; /&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;../../.././rdoc-style.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot; /&gt;
+  &lt;script type=&quot;text/javascript&quot;&gt;
+  // &lt;![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, &quot;Code&quot;, &quot;resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400&quot;)
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( &quot;document.all.&quot; + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+
+    if ( elemStyle.display != &quot;block&quot; ) {
+      elemStyle.display = &quot;block&quot;
+    } else {
+      elemStyle.display = &quot;none&quot;
+    }
+
+    return true;
+  }
+
+  // Make codeblocks hidden by default
+  document.writeln( &quot;&lt;style type=\&quot;text/css\&quot;&gt;div.method-source-code { display: none }&lt;/style&gt;&quot; )
+
+  // ]]&gt;
+  &lt;/script&gt;
+</pre>
+<p>
+</head> <body>
+</p>
+<pre>
+    &lt;div id=&quot;classHeader&quot;&gt;
+        &lt;table class=&quot;header-table&quot;&gt;
+        &lt;tr class=&quot;top-aligned-row&quot;&gt;
+          &lt;td&gt;&lt;strong&gt;Module&lt;/strong&gt;&lt;/td&gt;
+          &lt;td class=&quot;class-name-in-header&quot;&gt;Paperclip::Storage::S3&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr class=&quot;top-aligned-row&quot;&gt;
+            &lt;td&gt;&lt;strong&gt;In:&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;
+                &lt;a href=&quot;../../../files/lib/paperclip/storage_rb.html&quot;&gt;
+                lib/paperclip/storage.rb
+                &lt;/a&gt;
+        &lt;br /&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;/table&gt;
+    &lt;/div&gt;
+  &lt;!-- banner header --&gt;
+
+  &lt;div id=&quot;bodyContent&quot;&gt;
+
+  &lt;div id=&quot;contextContent&quot;&gt;
+
+    &lt;div id=&quot;description&quot;&gt;
+      &lt;p&gt;
+</pre>
+<p>
+Amazon&amp;8216;s <a href=&#8220;S3.html&#8220;>S3</a> file hosting service
+is a scalable, easy place to store files for distribution. You can find out
+more about it at <a href=&#8220;<a
+href="http://aws.amazon.com/s3">aws.amazon.com/s3</a">aws.amazon.com/s3">aws.amazon.com/s3</a</a>>
+There are a few <a href=&#8220;S3.html&#8220;>S3</a>-specific options for
+has_attached_file: </p> <ul> <li><tt>s3_credentials</tt>: Takes a path, a
+File, or a Hash. The path (or File) must point to a YAML file containing
+the <tt>access_key_id</tt> and <tt>secret_access_key</tt> that Amazon gives
+you. You can &amp;8216;environment-space&amp;8217; this just like you do to
+your database.yml file, so different environments can use different
+accounts:
+</p>
+<p>
+<pre>
+</p>
+<pre>
+  development:
+    access_key_id: 123...
+    secret_access_key: 123...
+  test:
+    access_key_id: abc...
+    secret_access_key: abc...
+  production:
+    access_key_id: 456...
+    secret_access_key: 456...
+</pre>
+<p>
+</pre> <p> This is not required, however, and the file may simply look like
+this: </p> <pre>
+</p>
+<pre>
+  access_key_id: 456...
+  secret_access_key: 456...
+</pre>
+<p>
+</pre> <p> In which case, those access keys will be used in all
+environments. You can also put your bucket name in this file, instead of
+adding it to the code directly. This is useful when you want the same
+account but a different bucket for development versus production. </p>
+</li> <li><tt>s3_permissions</tt>: This is a String that should be one of
+the &amp;quot;canned&amp;quot; access policies that <a
+href=&#8220;S3.html&#8220;>S3</a> provides (more information can be found
+here: <a href=&#8220;<a
+href="http://docs.amazonwebservices.com/AmazonS3/2006-03-01/RESTAccessPolicy.html#RESTCannedAccessPolicies">docs.amazonwebservices.com/AmazonS3/2006-03-01/RESTAccessPolicy.html#RESTCannedAccessPolicies</a">docs.amazonwebservices.com/AmazonS3/2006-03-01/RESTAccessPolicy.html#RESTCannedAccessPolicies">docs.amazonwebservices.com/AmazonS3/2006-03-01/RESTAccessPolicy.html#RESTCannedAccessPolicies</a</a>>)
+The default for <a href=&#8221;../../Paperclip.html&#8220;>Paperclip</a> is
+:public_read.
+</p>
+<p>
+</li> <li>+<a href=&#8220;S3.html#M000115&#8220;>s3_protocol</a>+: The
+protocol for the URLs generated to your <a
+href=&#8220;S3.html&#8220;>S3</a> assets. Can be either
+&amp;8216;http&amp;8217; or &amp;8216;https&amp;8217;. Defaults to
+&amp;8216;http&amp;8217; when your :s3_permissions are :public_read (the
+default), and &amp;8216;https&amp;8217; when your :s3_permissions are
+anything else.
+</p>
+<p>
+</li> <li><tt>s3_headers</tt>: A hash of headers such as
+{&amp;8216;Expires&amp;8217; =&amp;gt; 1.year.from_now.httpdate}
+</p>
+<p>
+</li> <li><tt>bucket</tt>: This is the name of the <a
+href=&#8220;S3.html&#8220;>S3</a> bucket that will store your files.
+Remember that the bucket must be unique across all of Amazon <a
+href=&#8220;S3.html&#8220;>S3</a>. If the bucket does not exist <a
+href=&#8221;../../Paperclip.html&#8220;>Paperclip</a> will attempt to
+create it. The bucket name will not be interpolated. You can define the
+bucket as a Proc if you want to determine it&amp;8216;s name at runtime. <a
+href=&#8221;../../Paperclip.html&#8220;>Paperclip</a> will call that Proc
+with attachment as the only argument.
+</p>
+<p>
+</li> <li>+<a href=&#8220;S3.html#M000112&#8220;>s3_host_alias</a>+: The
+fully-qualified domain name (FQDN) that is the alias to the <a
+href=&#8220;S3.html&#8220;>S3</a> domain of your bucket. Used with the
+:s3_alias_url url interpolation. See the link in the <tt>url</tt> entry for
+more information about <a href=&#8220;S3.html&#8220;>S3</a> domains and
+buckets.
+</p>
+<p>
+</li> <li><tt>url</tt>: There are three options for the <a
+href=&#8220;S3.html&#8220;>S3</a> url. You can choose to have the
+bucket&amp;8216;s name placed domain-style (bucket.s3.amazonaws.com) or
+path-style (s3.amazonaws.com/bucket). Lastly, you can specify a CNAME
+(which requires the CNAME to be specified as :s3_alias_url. You can read
+more about CNAMEs and <a href=&#8220;S3.html&#8220;>S3</a> at <a
+href=&#8220;<a
+href="http://docs.amazonwebservices.com/AmazonS3/latest/index.html?VirtualHosting.html">docs.amazonwebservices.com/AmazonS3/latest/index.html?VirtualHosting.html</a">docs.amazonwebservices.com/AmazonS3/latest/index.html?VirtualHosting.html">docs.amazonwebservices.com/AmazonS3/latest/index.html?VirtualHosting.html</a</a>>
+Normally, this won&amp;8216;t matter in the slightest and you can leave the
+default (which is path-style, or :s3_path_url). But in some cases paths
+don&amp;8216;t work and you need to use the domain-style (:s3_domain_url).
+Anything else here will be treated like path-style. NOTE: If you use a
+CNAME for use with CloudFront, you can NOT specify https as your :<a
+href=&#8220;S3.html#M000115&#8220;>s3_protocol</a>; This is *not supported*
+by <a href=&#8220;S3.html&#8220;>S3</a>/CloudFront. Finally, when using the
+host alias, the :bucket parameter is ignored, as the hostname is used as
+the bucket name by <a href=&#8220;S3.html&#8220;>S3</a>.
+</p>
+<p>
+</li> <li><tt>path</tt>: This is the key under the bucket in which the file
+will be stored. The URL will be constructed from the bucket and the path.
+This is what you will want to interpolate. Keys should be unique, like
+filenames, and despite the fact that <a href=&#8220;S3.html&#8220;>S3</a>
+(strictly speaking) does not support directories, you can still use a / to
+separate parts of your file name.
+</p>
+<p>
+</li> </ul>
+</p>
+<pre>
+    &lt;/div&gt;
+
+   &lt;/div&gt;
+
+    &lt;div id=&quot;method-list&quot;&gt;
+      &lt;h3 class=&quot;section-bar&quot;&gt;Methods&lt;/h3&gt;
+
+      &lt;div class=&quot;name-list&quot;&gt;
+      &lt;a href=&quot;#M000111&quot;&gt;bucket_name&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000114&quot;&gt;exists?&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000110&quot;&gt;expiring_url&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000109&quot;&gt;extended&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000113&quot;&gt;parse_credentials&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000112&quot;&gt;s3_host_alias&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000115&quot;&gt;s3_protocol&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000116&quot;&gt;to_file&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+    &lt;!-- if includes --&gt;
+
+    &lt;div id=&quot;section&quot;&gt;
+
+    &lt;!-- if method_list --&gt;
+    &lt;div id=&quot;methods&quot;&gt;
+      &lt;h3 class=&quot;section-bar&quot;&gt;Public Class methods&lt;/h3&gt;
+
+      &lt;div id=&quot;method-M000109&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000109&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;S3.src/M000109.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('S3.src/M000109.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;extended&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(base)&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;h3 class=&quot;section-bar&quot;&gt;Public Instance methods&lt;/h3&gt;
+
+      &lt;div id=&quot;method-M000111&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000111&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;S3.src/M000111.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('S3.src/M000111.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;bucket_name&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000114&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000114&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;S3.src/M000114.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('S3.src/M000114.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;exists?&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(style = default_style)&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000110&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000110&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;S3.src/M000110.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('S3.src/M000110.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;expiring_url&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(time = 3600)&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000113&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000113&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;S3.src/M000113.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('S3.src/M000113.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;parse_credentials&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(creds)&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000112&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000112&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;S3.src/M000112.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('S3.src/M000112.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;s3_host_alias&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000115&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000115&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;S3.src/M000115.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('S3.src/M000115.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;s3_protocol&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000116&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000116&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;S3.src/M000116.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('S3.src/M000116.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;to_file&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(style = default_style)&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Returns representation of the data of the file assigned to the given style,
+in the format most representative of the current storage. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+</pre>
+<p>
+<div id=&#8220;validator-badges&#8221;>
+</p>
+<pre>
+  &lt;p&gt;&lt;small&gt;&lt;a href=&quot;http://validator.w3.org/check/referer&quot;&gt;[Validate]&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</pre>
+<p>
+</div>
+</p>
+<p>
+</body> </html>
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+    </div>
+  </body>
+</html>

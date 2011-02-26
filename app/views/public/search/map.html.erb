@@ -1,0 +1,44 @@
+<html>
+<head>
+  <script type='text/javascript' src='http://www.google.com/jsapi'></script>
+  <script type='text/javascript'>
+   google.load('visualization', '1', {'packages': ['geomap']});
+   google.setOnLoadCallback(drawMap);
+
+    function drawMap() {
+      var workcamps = new google.visualization.DataTable();
+     
+      <% countries = Workcamp.counts_by_country -%>
+      workcamps.addRows(<%= countries.size -%>);
+      workcamps.addColumn('string', '<%= bt('wc_country_code') %>');
+      workcamps.addColumn('number', '<%= bt('wc_workcamp_count') %>' );
+
+      <% countries.each_with_index do |data,i| -%>
+         workcamps.setValue( <%= i %>, 0, '<%= data[0] -%>' );
+         workcamps.setValue( <%= i %>, 1, <%= data[1] %> );
+      <% end -%>
+
+      var options = {};
+      options['width'] = "800px";
+      options['height'] = "600px";
+      options['dataMode'] = 'regions';
+      options['region'] = 'world';
+      //      options['showZoomOut'] = true;
+      //      options['zoomOutLabel'] = 'Cely svet';
+      options['showLegend'] = true;
+
+      var container = document.getElementById('map_canvas');
+      var geomap = new google.visualization.GeoMap(container);
+      geomap.draw(workcamps, options);
+      google.visualization.events.addListener(geomap, 'regionClick', function(e) {
+	  alert('Selected:' + e['region']);
+      });
+    };
+  </script>
+</head>
+
+<body>
+    <div id='map_canvas'></div>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+%table
+  %thead
+    %th
+      = t('.code')
+    %th
+      = t('.name')
+    %th
+      = t('.intention')
+    %th
+      = t('.from')
+    %th
+      = t('.to')
+    %th
+      = icon('person', t('.free_places'), true)
+    %th
+      = icon('male', t('.free_male'), true)
+    %th
+      = icon('female', t('.free_female'), true)
+    %th
+  %tbody
+    text...missing...
+
+  %tfoot
+    %th.paginator{ :colspan => "11" }
+      = will_paginate workcamps, :prev_label => t('previous_page') + "&nbsp;" * 6, :next_label => "&nbsp;" * 6 + t('next_page')

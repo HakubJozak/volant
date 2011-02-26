@@ -1,0 +1,34 @@
+jakub:
+  firstname: Jakub
+  lastname: Hozak
+  email: jakub.hozak@gmail.com
+  gender: m
+  phone: 777 855 359
+  birthdate: 1982-03-27
+  birthnumber: 8203270438
+  nationality: Czech
+  occupation: programator
+  city: Praha
+
+hana:
+  firstname: Hana
+  lastname: Hozakova
+  email: tajny@email.cz
+  gender: f
+  phone: 72903910
+  birthdate: 1985-03-27
+  birthnumber: 855327xxxx
+  nationality: Czech
+  occupation: vim ja?
+  city: Praha
+
+# has never been to a workcamp
+newbie:
+  firstname: New
+  lastname: Newbie
+  email: tajny@email.cz
+  gender: m
+  birthdate: 1985-03-27
+  birthnumber: 855327yxxx
+  nationality: Czech
+  occupation: vim ja?

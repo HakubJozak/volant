@@ -1,0 +1,2 @@
+module RestfulCountriesHelper
+end

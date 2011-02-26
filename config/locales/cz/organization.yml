@@ -1,0 +1,37 @@
+cz:
+  create: Vytvořit
+  update: Upravit
+  delete: Smazat
+  export: Export
+  workcamps: Workcampy
+  cancel: Storno
+        
+  activerecord:
+    attributes:
+      organization:
+        country: Země
+        name_with_link: Jméno
+        workcamps: Workcampy
+        partnerships: Partnerství
+        email_contacts: Emaily
+        name: Jméno
+        code: Kód
+        contact_person:
+        phone: Mobile
+        mobile: Phone
+        fax: Fax
+
+      network:
+        name: Jméno
+        code: Kód
+        organization: Organizace
+
+
+    models:
+      organization:
+        other: Organizace
+        one: Organizace
+
+      network:
+        one: Sítě
+        other: Sítě

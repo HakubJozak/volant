@@ -1,0 +1,1093 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Paperclip::Attachment</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Paperclip::Attachment 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/paperclip/attachment_rb.html">lib/paperclip/attachment.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+The <a href="Attachment.html">Attachment</a> class manages the files for a
+given attachment. It saves when the model saves, deletes when the model is
+destroyed, and processes the file upon assignment.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000064">assign</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000076">clear</a>,</li>
+                
+                <li><a href="#M000080">content_type</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000062">default_options</a>,</li>
+                
+                <li><a href="#M000077">destroy</a>,</li>
+                
+                <li><a href="#M000074">dirty?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000072">errors</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>F</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000084">file?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000086">instance_read</a>,</li>
+                
+                <li><a href="#M000085">instance_write</a>,</li>
+                
+                <li><a href="#M000082">interpolations</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000063">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>O</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000078">original_filename</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000069">path</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000083">reprocess!</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000075">save</a>,</li>
+                
+                <li><a href="#M000079">size</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000070">to_s</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>U</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000081">updated_at</a>,</li>
+                
+                <li><a href="#M000068">url</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>V</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000071">valid?</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>name</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>instance</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>styles</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>default_style</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>convert_options</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>queued_for_write</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>options</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000062">
+                    
+                    <a name="M000062"></a><b>default_options</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000062_source')" id="l_M000062_source">show</a>
+                        
+                    </p>
+                    <div id="M000062_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 8</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">default_options</span>
+      <span class="ruby-ivar">@default_options</span> <span class="ruby-operator">||=</span> {
+        <span class="ruby-identifier">:url</span>           =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;/system/:attachment/:id/:style/:filename&quot;</span>,
+        <span class="ruby-identifier">:path</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;:rails_root/public:url&quot;</span>,
+        <span class="ruby-identifier">:styles</span>        =<span class="ruby-operator">&gt;</span> {},
+        <span class="ruby-identifier">:default_url</span>   =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;/:attachment/:style/missing.png&quot;</span>,
+        <span class="ruby-identifier">:default_style</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:original</span>,
+        <span class="ruby-identifier">:validations</span>   =<span class="ruby-operator">&gt;</span> [],
+        <span class="ruby-identifier">:storage</span>       =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:filesystem</span>,
+        <span class="ruby-identifier">:whiny</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Paperclip</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:whiny</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Paperclip</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:whiny_thumbnails</span>]
+      }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000082">
+                    
+                    <a name="M000082"></a><b>interpolations</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Paths and URLs can have a number of variables interpolated into them to
+vary the storage location based on name, id, style, class, etc. This method
+is a deprecated access into supplying and retrieving these interpolations.
+Future access should use either <a
+href="../Paperclip.html#M000170">Paperclip.interpolates</a> or extend the
+<a href="Interpolations.html">Paperclip::Interpolations</a> module
+directly.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000082_source')" id="l_M000082_source">show</a>
+                        
+                    </p>
+                    <div id="M000082_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 198</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">interpolations</span>
+      <span class="ruby-identifier">warn</span>(<span class="ruby-value str">'[DEPRECATION] Paperclip::Attachment.interpolations is deprecated '</span> <span class="ruby-operator">+</span>
+           <span class="ruby-value str">'and will be removed from future versions. '</span> <span class="ruby-operator">+</span>
+           <span class="ruby-value str">'Use Paperclip.interpolates instead'</span>)
+      <span class="ruby-constant">Paperclip</span><span class="ruby-operator">::</span><span class="ruby-constant">Interpolations</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000063">
+                    
+                    <a name="M000063"></a><b>new</b>(name, instance, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Creates an <a href="Attachment.html">Attachment</a> object. <tt>name</tt>
+is the name of the attachment, <tt>instance</tt> is the ActiveRecord object
+instance it&#8217;s attached to, and <tt>options</tt> is the same as the
+hash passed to <tt>has_attached_file</tt>.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000063_source')" id="l_M000063_source">show</a>
+                        
+                    </p>
+                    <div id="M000063_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 26</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">instance</span>, <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-ivar">@name</span>              = <span class="ruby-identifier">name</span>
+      <span class="ruby-ivar">@instance</span>          = <span class="ruby-identifier">instance</span>
+
+      <span class="ruby-identifier">options</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">default_options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
+
+      <span class="ruby-ivar">@url</span>               = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:url</span>]
+      <span class="ruby-ivar">@url</span>               = <span class="ruby-ivar">@url</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword kw">self</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@url</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Proc</span>)
+      <span class="ruby-ivar">@path</span>              = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:path</span>]
+      <span class="ruby-ivar">@path</span>              = <span class="ruby-ivar">@path</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword kw">self</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@path</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Proc</span>)
+      <span class="ruby-ivar">@styles</span>            = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:styles</span>]
+      <span class="ruby-ivar">@styles</span>            = <span class="ruby-ivar">@styles</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword kw">self</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@styles</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Proc</span>)
+      <span class="ruby-ivar">@default_url</span>       = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:default_url</span>]
+      <span class="ruby-ivar">@validations</span>       = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:validations</span>]
+      <span class="ruby-ivar">@default_style</span>     = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:default_style</span>]
+      <span class="ruby-ivar">@storage</span>           = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:storage</span>]
+      <span class="ruby-ivar">@whiny</span>             = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:whiny_thumbnails</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:whiny</span>]
+      <span class="ruby-ivar">@convert_options</span>   = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:convert_options</span>] <span class="ruby-operator">||</span> {}
+      <span class="ruby-ivar">@processors</span>        = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:processors</span>] <span class="ruby-operator">||</span> [<span class="ruby-identifier">:thumbnail</span>]
+      <span class="ruby-ivar">@options</span>           = <span class="ruby-identifier">options</span>
+      <span class="ruby-ivar">@queued_for_delete</span> = []
+      <span class="ruby-ivar">@queued_for_write</span>  = {}
+      <span class="ruby-ivar">@errors</span>            = {}
+      <span class="ruby-ivar">@validation_errors</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-ivar">@dirty</span>             = <span class="ruby-keyword kw">false</span>
+
+      <span class="ruby-identifier">normalize_style_definition</span>
+      <span class="ruby-identifier">initialize_storage</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000064">
+                    
+                    <a name="M000064"></a><b>assign</b>(uploaded_file)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+What gets called when you call instance.attachment = File. It clears
+errors, assigns attributes, processes the file, and runs validations. It
+also queues up the previous file for deletion, to be flushed away on <a
+href="Attachment.html#M000075">save</a> of its host. In addition to form
+uploads, you can also assign another <a
+href="../Paperclip.html">Paperclip</a> attachment:
+</p>
+<pre>
+  new_user.avatar = old_user.avatar
+</pre>
+<p>
+If the file that is assigned is not valid, the processing (i.e.
+thumbnailing, etc) will NOT be run.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000064_source')" id="l_M000064_source">show</a>
+                        
+                    </p>
+                    <div id="M000064_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 64</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assign</span> <span class="ruby-identifier">uploaded_file</span>
+      <span class="ruby-identifier">ensure_required_accessors!</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">uploaded_file</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Paperclip</span><span class="ruby-operator">::</span><span class="ruby-constant">Attachment</span>)
+        <span class="ruby-identifier">uploaded_file</span> = <span class="ruby-identifier">uploaded_file</span>.<span class="ruby-identifier">to_file</span>(<span class="ruby-identifier">:original</span>)
+        <span class="ruby-identifier">close_uploaded_file</span> = <span class="ruby-identifier">uploaded_file</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:close</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">valid_assignment?</span>(<span class="ruby-identifier">uploaded_file</span>)
+
+      <span class="ruby-identifier">uploaded_file</span>.<span class="ruby-identifier">binmode</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">uploaded_file</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:binmode</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">clear</span>
+
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">uploaded_file</span>.<span class="ruby-identifier">nil?</span>
+
+      <span class="ruby-ivar">@queued_for_write</span>[<span class="ruby-identifier">:original</span>]   = <span class="ruby-identifier">uploaded_file</span>.<span class="ruby-identifier">to_tempfile</span>
+      <span class="ruby-identifier">instance_write</span>(<span class="ruby-identifier">:file_name</span>,       <span class="ruby-identifier">uploaded_file</span>.<span class="ruby-identifier">original_filename</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/[^A-Za-z\d\.\-_]+/</span>, <span class="ruby-value str">'_'</span>))
+      <span class="ruby-identifier">instance_write</span>(<span class="ruby-identifier">:content_type</span>,    <span class="ruby-identifier">uploaded_file</span>.<span class="ruby-identifier">content_type</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">strip</span>)
+      <span class="ruby-identifier">instance_write</span>(<span class="ruby-identifier">:file_size</span>,       <span class="ruby-identifier">uploaded_file</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_i</span>)
+      <span class="ruby-identifier">instance_write</span>(<span class="ruby-identifier">:updated_at</span>,      <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>)
+
+      <span class="ruby-ivar">@dirty</span> = <span class="ruby-keyword kw">true</span>
+
+      <span class="ruby-identifier">post_process</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">valid?</span>
+ 
+      <span class="ruby-comment cmt"># Reset the file size if the original file was reprocessed.</span>
+      <span class="ruby-identifier">instance_write</span>(<span class="ruby-identifier">:file_size</span>, <span class="ruby-ivar">@queued_for_write</span>[<span class="ruby-identifier">:original</span>].<span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_i</span>)
+    <span class="ruby-keyword kw">ensure</span>
+      <span class="ruby-identifier">uploaded_file</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">close_uploaded_file</span>
+      <span class="ruby-identifier">validate</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000076">
+                    
+                    <a name="M000076"></a><b>clear</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Clears out the attachment. Has the same effect as previously assigning nil
+to the attachment. Does NOT save. If you wish to clear AND save, use <a
+href="Attachment.html#M000077">destroy</a>.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000076_source')" id="l_M000076_source">show</a>
+                        
+                    </p>
+                    <div id="M000076_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 154</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear</span>
+      <span class="ruby-identifier">queue_existing_for_delete</span>
+      <span class="ruby-ivar">@errors</span>            = {}
+      <span class="ruby-ivar">@validation_errors</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000080">
+                    
+                    <a name="M000080"></a><b>content_type</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the <a href="Attachment.html#M000080">content_type</a> of the file
+as originally assigned, and lives in the <attachment>_content_type
+attribute of the model.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000080_source')" id="l_M000080_source">show</a>
+                        
+                    </p>
+                    <div id="M000080_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 182</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">content_type</span>
+      <span class="ruby-identifier">instance_read</span>(<span class="ruby-identifier">:content_type</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000077">
+                    
+                    <a name="M000077"></a><b>destroy</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Destroys the attachment. Has the same effect as previously assigning nil to
+the attachment *and saving*. This is permanent. If you wish to wipe out the
+existing attachment but not save, use <a
+href="Attachment.html#M000076">clear</a>.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000077_source')" id="l_M000077_source">show</a>
+                        
+                    </p>
+                    <div id="M000077_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 163</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
+      <span class="ruby-identifier">clear</span>
+      <span class="ruby-identifier">save</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000074">
+                    
+                    <a name="M000074"></a><b>dirty?</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns true if there are changes that need to be saved.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000074_source')" id="l_M000074_source">show</a>
+                        
+                    </p>
+                    <div id="M000074_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 133</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dirty?</span>
+      <span class="ruby-ivar">@dirty</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000072">
+                    
+                    <a name="M000072"></a><b>errors</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns an array containing the errors on this attachment.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000072_source')" id="l_M000072_source">show</a>
+                        
+                    </p>
+                    <div id="M000072_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 128</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">errors</span>
+      <span class="ruby-ivar">@errors</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000084">
+                    
+                    <a name="M000084"></a><b>file?</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns true if a file has been assigned.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000084_source')" id="l_M000084_source">show</a>
+                        
+                    </p>
+                    <div id="M000084_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 228</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">file?</span>
+      <span class="ruby-operator">!</span><span class="ruby-identifier">original_filename</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000086">
+                    
+                    <a name="M000086"></a><b>instance_read</b>(attr)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Reads the attachment-specific attribute on the instance. See <a
+href="Attachment.html#M000085">instance_write</a> for more details.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000086_source')" id="l_M000086_source">show</a>
+                        
+                    </p>
+                    <div id="M000086_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 244</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">instance_read</span>(<span class="ruby-identifier">attr</span>)
+      <span class="ruby-identifier">getter</span> = <span class="ruby-identifier">:&quot;#{name}_#{attr}&quot;</span>
+      <span class="ruby-identifier">responds</span> = <span class="ruby-identifier">instance</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">getter</span>)
+      <span class="ruby-identifier">cached</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-node">&quot;@_#{getter}&quot;</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">cached</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">cached</span>
+      <span class="ruby-identifier">instance</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">getter</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">responds</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;file_name&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000085">
+                    
+                    <a name="M000085"></a><b>instance_write</b>(attr, value)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Writes the attachment-specific attribute on the instance. For example, <a
+href="Attachment.html#M000085">instance_write</a>(:file_name,
+&#8220;me.jpg&#8220;) will write &#8220;me.jpg&#8220; to the
+instance&#8217;s &#8220;avatar_file_name&#8220; field (assuming the
+attachment is called avatar).
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000085_source')" id="l_M000085_source">show</a>
+                        
+                    </p>
+                    <div id="M000085_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 235</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">instance_write</span>(<span class="ruby-identifier">attr</span>, <span class="ruby-identifier">value</span>)
+      <span class="ruby-identifier">setter</span> = <span class="ruby-identifier">:&quot;#{name}_#{attr}=&quot;</span>
+      <span class="ruby-identifier">responds</span> = <span class="ruby-identifier">instance</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">setter</span>)
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@_#{setter.to_s.chop}&quot;</span>, <span class="ruby-identifier">value</span>)
+      <span class="ruby-identifier">instance</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">setter</span>, <span class="ruby-identifier">value</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">responds</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;file_name&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000078">
+                    
+                    <a name="M000078"></a><b>original_filename</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the name of the file as originally assigned, and lives in the
+<attachment>_file_name attribute of the model.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000078_source')" id="l_M000078_source">show</a>
+                        
+                    </p>
+                    <div id="M000078_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 170</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">original_filename</span>
+      <span class="ruby-identifier">instance_read</span>(<span class="ruby-identifier">:file_name</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000069">
+                    
+                    <a name="M000069"></a><b>path</b>(style = default_style)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the path of the attachment as defined by the :path option. If the
+file is stored in the filesystem the path refers to the path of the file on
+disk. If the file is stored in S3, the path is the &#8220;key&#8221; part
+of the URL, and the :bucket option refers to the S3 bucket.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000069_source')" id="l_M000069_source">show</a>
+                        
+                    </p>
+                    <div id="M000069_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 112</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">path</span> <span class="ruby-identifier">style</span> = <span class="ruby-identifier">default_style</span>
+      <span class="ruby-identifier">original_filename</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">interpolate</span>(<span class="ruby-ivar">@path</span>, <span class="ruby-identifier">style</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000083">
+                    
+                    <a name="M000083"></a><b>reprocess!</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+This method really shouldn&#8217;t be called that often. It&#8217;s
+expected use is in the paperclip:refresh rake task and that&#8217;s it. It
+will regenerate all thumbnails forcefully, by reobtaining the original file
+and going through the post-process again.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000083_source')" id="l_M000083_source">show</a>
+                        
+                    </p>
+                    <div id="M000083_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 209</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reprocess!</span>
+      <span class="ruby-identifier">new_original</span> = <span class="ruby-constant">Tempfile</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;paperclip-reprocess&quot;</span>)
+      <span class="ruby-identifier">new_original</span>.<span class="ruby-identifier">binmode</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">old_original</span> = <span class="ruby-identifier">to_file</span>(<span class="ruby-identifier">:original</span>)
+        <span class="ruby-identifier">new_original</span>.<span class="ruby-identifier">write</span>( <span class="ruby-identifier">old_original</span>.<span class="ruby-identifier">read</span> )
+        <span class="ruby-identifier">new_original</span>.<span class="ruby-identifier">rewind</span>
+
+        <span class="ruby-ivar">@queued_for_write</span> = { <span class="ruby-identifier">:original</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">new_original</span> }
+        <span class="ruby-identifier">post_process</span>
+
+        <span class="ruby-identifier">old_original</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">old_original</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:close</span>)
+
+        <span class="ruby-identifier">save</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-keyword kw">true</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000075">
+                    
+                    <a name="M000075"></a><b>save</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Saves the file, if there are no errors. If there are, it flushes them to
+the instance&#8217;s errors and returns false, cancelling the save.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000075_source')" id="l_M000075_source">show</a>
+                        
+                    </p>
+                    <div id="M000075_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 139</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">save</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">valid?</span>
+        <span class="ruby-identifier">flush_deletes</span>
+        <span class="ruby-identifier">flush_writes</span>
+        <span class="ruby-ivar">@dirty</span> = <span class="ruby-keyword kw">false</span>
+        <span class="ruby-keyword kw">true</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">flush_errors</span>
+        <span class="ruby-keyword kw">false</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000079">
+                    
+                    <a name="M000079"></a><b>size</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the size of the file as originally assigned, and lives in the
+<attachment>_file_size attribute of the model.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000079_source')" id="l_M000079_source">show</a>
+                        
+                    </p>
+                    <div id="M000079_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 176</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">size</span>
+      <span class="ruby-identifier">instance_read</span>(<span class="ruby-identifier">:file_size</span>) <span class="ruby-operator">||</span> (<span class="ruby-ivar">@queued_for_write</span>[<span class="ruby-identifier">:original</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@queued_for_write</span>[<span class="ruby-identifier">:original</span>].<span class="ruby-identifier">size</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000070">
+                    
+                    <a name="M000070"></a><b>to_s</b>(style = nil)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias to <tt>url</tt>
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000070_source')" id="l_M000070_source">show</a>
+                        
+                    </p>
+                    <div id="M000070_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 117</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span> <span class="ruby-identifier">style</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">url</span>(<span class="ruby-identifier">style</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000081">
+                    
+                    <a name="M000081"></a><b>updated_at</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the last modified time of the file as originally assigned, and
+lives in the <attachment>_updated_at attribute of the model.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000081_source')" id="l_M000081_source">show</a>
+                        
+                    </p>
+                    <div id="M000081_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 188</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">updated_at</span>
+      <span class="ruby-identifier">time</span> = <span class="ruby-identifier">instance_read</span>(<span class="ruby-identifier">:updated_at</span>)
+      <span class="ruby-identifier">time</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">time</span>.<span class="ruby-identifier">to_f</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000068">
+                    
+                    <a name="M000068"></a><b>url</b>(style = default_style, include_updated_timestamp = true)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the public URL of the attachment, with a given style. Note that
+this does not necessarily need to point to a file that your web server can
+access and can point to an action in your app, if you need fine grained
+security. This is not recommended if you don&#8217;t need the security,
+however, for performance reasons. set include_updated_timestamp to false if
+you want to stop the attachment update time appended to the url
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000068_source')" id="l_M000068_source">show</a>
+                        
+                    </p>
+                    <div id="M000068_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 103</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">url</span> <span class="ruby-identifier">style</span> = <span class="ruby-identifier">default_style</span>, <span class="ruby-identifier">include_updated_timestamp</span> = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-identifier">url</span> = <span class="ruby-identifier">original_filename</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-value">? </span><span class="ruby-identifier">interpolate</span>(<span class="ruby-ivar">@default_url</span>, <span class="ruby-identifier">style</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">interpolate</span>(<span class="ruby-ivar">@url</span>, <span class="ruby-identifier">style</span>)
+      <span class="ruby-identifier">include_updated_timestamp</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">updated_at</span> <span class="ruby-value">? </span>[<span class="ruby-identifier">url</span>, <span class="ruby-identifier">updated_at</span>].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">url</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value str">&quot;?&quot;</span>) <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;&amp;&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;?&quot;</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">url</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000071">
+                    
+                    <a name="M000071"></a><b>valid?</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns true if there are no errors on this attachment.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000071_source')" id="l_M000071_source">show</a>
+                        
+                    </p>
+                    <div id="M000071_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/attachment.rb, line 122</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">valid?</span>
+      <span class="ruby-identifier">validate</span>
+      <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

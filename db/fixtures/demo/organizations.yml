@@ -1,0 +1,13 @@
+seeds:
+  name: Seeds
+  code: SEEDS
+  website: http://www.seedsiceland.org/
+  country: CZ
+  contact_person: Oskar
+  phone: 777 666 666
+
+zelemin:
+  country: CZ
+  name: Zelemin
+  code: VDK
+  website: http://www.zelemin.ua

@@ -1,0 +1,2 @@
+module RestfulWorkcampsHelper
+end

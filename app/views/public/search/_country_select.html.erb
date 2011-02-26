@@ -1,0 +1,5 @@
+<div id="country_select" style="display:none;">
+  <p><%= bt('wc_country_select_info') %></p>
+  <%= collection_select( :query, :countries, @countries, :code, :name, {},
+                         { :onchange => 'addCountryFromSelect(this)', :size => 20 }) %>
+</div>

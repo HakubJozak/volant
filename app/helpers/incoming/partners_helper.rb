@@ -1,0 +1,2 @@
+module Incoming::PartnersHelper
+end

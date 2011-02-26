@@ -1,0 +1,44 @@
+cz:
+  locale:
+    czech: Czech
+    english: English
+
+  txt:
+    email_to_all: Napsat email všem
+    participants_to_csv: Seznam účastníků
+    friday_list_to_csv: Friday list
+    add_tag: Přidat nálepku
+    howto_templates: Jak na šablony emailů?
+    has_birthday: Má dnes narozeniny!
+    who_has_birthday: Kdo má dnes narozeniny?
+    close: Zavřít
+    open_popup: Otevřít v novém oknu
+    page_title: Volant
+    all: Všechny
+    menu:
+      all: Všechny
+      incoming: Incoming
+      outgoing: Outgoing
+      yearly: Rok {{year}}
+      complete: Všechny roky
+      workcamps: Workcampy
+      apply_forms: Přihlášky
+      by_tag: Nálepky
+      by_organization: Organizace
+      by_places: Místa
+
+      by_state:
+        title: Stavy
+        all: Všechny
+        alerts: Urgentní
+        accepted: Akceptované
+        cancelled: Stornované
+        asked: Zažádané
+        rejected: Zamítnuté
+        with_payment: S platbou
+        without_payment: Bez platby
+        pending: K vyřízení
+
+      contacts: Kontakty
+      settings: Nastavení
+      logout: Odhlásit

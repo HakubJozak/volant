@@ -1,0 +1,16 @@
+en:
+  activerecord:
+    models:
+      email_contact:
+        other: Emails
+        one: Email
+
+    attributes:
+      email_contact:
+        name: Name
+        address: Address
+        kind: Type
+        kind_desc: How will this address be used?
+        kind_outgoing: Use for 'Outgoing'
+        kind_incoming: Use for 'Incoming'
+        kind_off: Don't use

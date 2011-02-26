@@ -1,0 +1,16 @@
+en:
+  activerecord:
+    models:
+      incoming/leader:
+          other: Leader
+          one: Leader
+
+      incoming/leadership:
+          other: Leader
+          one: Leader
+
+    attributes:
+      incoming/leader:
+          gender_in_list: ""
+          birthday: ""
+

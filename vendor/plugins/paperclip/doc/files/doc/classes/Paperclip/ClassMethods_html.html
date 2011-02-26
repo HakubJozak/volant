@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ClassMethods.html</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            ClassMethods.html
+        </h1>
+        <ul class="files">
+            <li>doc/classes/Paperclip/ClassMethods.html</li>
+            <li>Last modified: Mon Dec 14 11:22:38 +0100 2009</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+<?xml version=&#8220;1.0&#8220; encoding=&#8220;iso-8859-1&#8221;?>
+<!DOCTYPE html
+</p>
+<pre>
+     PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+     &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+</pre>
+<p>
+<html xmlns=&#8220;<a
+href="http://www.w3.org/1999/xhtml">www.w3.org/1999/xhtml</a>&#8220;
+xml:lang=&#8220;en&#8221; lang=&#8220;en&#8221;> <head>
+</p>
+<pre>
+  &lt;title&gt;Module: Paperclip::ClassMethods&lt;/title&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=iso-8859-1&quot; /&gt;
+  &lt;meta http-equiv=&quot;Content-Script-Type&quot; content=&quot;text/javascript&quot; /&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;../.././rdoc-style.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot; /&gt;
+  &lt;script type=&quot;text/javascript&quot;&gt;
+  // &lt;![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, &quot;Code&quot;, &quot;resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400&quot;)
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( &quot;document.all.&quot; + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+
+    if ( elemStyle.display != &quot;block&quot; ) {
+      elemStyle.display = &quot;block&quot;
+    } else {
+      elemStyle.display = &quot;none&quot;
+    }
+
+    return true;
+  }
+
+  // Make codeblocks hidden by default
+  document.writeln( &quot;&lt;style type=\&quot;text/css\&quot;&gt;div.method-source-code { display: none }&lt;/style&gt;&quot; )
+
+  // ]]&gt;
+  &lt;/script&gt;
+</pre>
+<p>
+</head> <body>
+</p>
+<pre>
+    &lt;div id=&quot;classHeader&quot;&gt;
+        &lt;table class=&quot;header-table&quot;&gt;
+        &lt;tr class=&quot;top-aligned-row&quot;&gt;
+          &lt;td&gt;&lt;strong&gt;Module&lt;/strong&gt;&lt;/td&gt;
+          &lt;td class=&quot;class-name-in-header&quot;&gt;Paperclip::ClassMethods&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr class=&quot;top-aligned-row&quot;&gt;
+            &lt;td&gt;&lt;strong&gt;In:&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;
+                &lt;a href=&quot;../../files/lib/paperclip_rb.html&quot;&gt;
+                lib/paperclip.rb
+                &lt;/a&gt;
+        &lt;br /&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;/table&gt;
+    &lt;/div&gt;
+  &lt;!-- banner header --&gt;
+
+  &lt;div id=&quot;bodyContent&quot;&gt;
+
+  &lt;div id=&quot;contextContent&quot;&gt;
+
+   &lt;/div&gt;
+
+    &lt;div id=&quot;method-list&quot;&gt;
+      &lt;h3 class=&quot;section-bar&quot;&gt;Methods&lt;/h3&gt;
+
+      &lt;div class=&quot;name-list&quot;&gt;
+      &lt;a href=&quot;#M000037&quot;&gt;attachment_definitions&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000032&quot;&gt;has_attached_file&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000036&quot;&gt;validates_attachment_content_type&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000035&quot;&gt;validates_attachment_presence&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000033&quot;&gt;validates_attachment_size&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;a href=&quot;#M000034&quot;&gt;validates_attachment_thumbnails&lt;/a&gt;&amp;nbsp;&amp;nbsp;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+    &lt;!-- if includes --&gt;
+    &lt;div id=&quot;includes&quot;&gt;
+      &lt;h3 class=&quot;section-bar&quot;&gt;Included Modules&lt;/h3&gt;
+
+      &lt;div id=&quot;includes-list&quot;&gt;
+        &lt;span class=&quot;include-name&quot;&gt;InstanceMethods&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div id=&quot;section&quot;&gt;
+
+    &lt;!-- if method_list --&gt;
+    &lt;div id=&quot;methods&quot;&gt;
+      &lt;h3 class=&quot;section-bar&quot;&gt;Public Instance methods&lt;/h3&gt;
+
+      &lt;div id=&quot;method-M000037&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000037&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;ClassMethods.src/M000037.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('ClassMethods.src/M000037.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;attachment_definitions&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;()&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Returns the attachment definitions defined by each call to <a
+href=&#8220;ClassMethods.html#M000032&#8220;>has_attached_file</a>. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000032&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000032&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;ClassMethods.src/M000032.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('ClassMethods.src/M000032.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;has_attached_file&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(name, options = {})&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+<tt>&lt;a
+href=&quot;ClassMethods.html#M000032&quot;&gt;has_attached_file&lt;/a&gt;</tt>
+gives the class it is called on an attribute that maps to a file. This is
+typically a file stored somewhere on the filesystem and has been uploaded
+by a user. The attribute returns a <a
+href=&#8220;Attachment.html&#8220;>Paperclip::Attachment</a> object which
+handles the management of that file. The intent is to make the attachment
+as much like a normal attribute. The thumbnails will be created when the
+new file is assigned, but they will <b>not</b> be saved until <tt>save</tt>
+is called on the record. Likewise, if the attribute is set to <tt>nil</tt>
+is called on it, the attachment will <b>not</b> be deleted until
+<tt>save</tt> is called. See the <a
+href=&#8220;Attachment.html&#8220;>Paperclip::Attachment</a> documentation
+for more specifics. There are a number of options you can set to change the
+behavior of a <a href=&#8221;../Paperclip.html&#8220;>Paperclip</a>
+attachment: </p> <ul> <li><tt>url</tt>: The full URL of where the
+attachment is publically accessible. This can just as easily point to a
+directory served directly through Apache as it can to an action that can
+control permissions. You can specify the full domain and path, but usually
+just an absolute path is sufficient. The leading slash <b>must</b> be
+included manually for absolute paths. The default value is
+&amp;quot;/system/:attachment/:id/:style/:filename&amp;quot;. See
+Paperclip::Attachment#interpolate for more information on variable
+interpolaton.
+</p>
+<p>
+<pre>
+</p>
+<pre>
+  :url =&amp;gt; &amp;quot;/:class/:attachment/:id/:style_:filename&amp;quot;
+  :url =&amp;gt; &amp;quot;http://some.other.host/stuff/:class/:id_:extension&amp;quot;
+</pre>
+<p>
+</pre> </li> <li><tt>default_url</tt>: The URL that will be returned if
+there is no attachment assigned. This field is interpolated just as the url
+is. The default value is
+&amp;quot;/:attachment/:style/missing.png&amp;quot;
+</p>
+<p>
+<pre>
+</p>
+<pre>
+  has_attached_file :avatar, :default_url =&amp;gt; &amp;quot;/images/default_:style_avatar.png&amp;quot;
+  User.new.avatar_url(:small) # =&amp;gt; &amp;quot;/images/default_small_avatar.png&amp;quot;
+</pre>
+<p>
+</pre> </li> <li><tt>styles</tt>: A hash of thumbnail styles and their
+geometries. You can find more about geometry strings at the ImageMagick
+website (<a href=&#8220;<a
+href="http://www.imagemagick.org/script/command-line-options.php#resize">www.imagemagick.org/script/command-line-options.php#resize</a">www.imagemagick.org/script/command-line-options.php#resize">www.imagemagick.org/script/command-line-options.php#resize</a</a>>).
+<a href=&#8221;../Paperclip.html&#8220;>Paperclip</a> also adds the
+&amp;quot;#&amp;quot; option (e.g. &amp;quot;50x50#&amp;quot;), which will
+resize the image to fit maximally inside the dimensions and then crop the
+rest off (weighted at the center). The default value is to generate no
+thumbnails.
+</p>
+<p>
+</li> <li><tt>default_style</tt>: The thumbnail style that will be used by
+default URLs. Defaults to <tt>original</tt>.
+</p>
+<p>
+<pre>
+</p>
+<pre>
+  has_attached_file :avatar, :styles =&amp;gt; { :normal =&amp;gt; &amp;quot;100x100#&amp;quot; },
+                    :default_style =&amp;gt; :normal
+  user.avatar.url # =&amp;gt; &amp;quot;/avatars/23/normal_me.png&amp;quot;
+</pre>
+<p>
+</pre> </li> <li><tt>whiny</tt>: Will raise an error if <a
+href=&#8221;../Paperclip.html&#8220;>Paperclip</a> cannot post_process an
+uploaded file due to a command line error. This will override the global
+setting for this attachment. Defaults to true. This option used to be
+called :whiny_thumbanils, but this is deprecated.
+</p>
+<p>
+</li> <li><tt>convert_options</tt>: When creating thumbnails, use this
+free-form options field to pass in various convert command options. Typical
+options are &amp;quot;-strip&amp;quot; to remove all Exif data from the
+image (save space for thumbnails and avatars) or &amp;quot;-depth
+8&amp;quot; to specify the bit depth of the resulting conversion. See
+ImageMagick convert documentation for more options: (<a href=&#8220;<a
+href="http://www.imagemagick.org/script/convert.php">www.imagemagick.org/script/convert.php</a">www.imagemagick.org/script/convert.php">www.imagemagick.org/script/convert.php</a</a>>)
+Note that this option takes a hash of options, each of which correspond to
+the style of thumbnail being generated. You can also specify :all as a key,
+which will apply to all of the thumbnails being generated. If you specify
+options for the :original, it would be best if you did not specify
+destructive options, as the intent of keeping the original around is to
+regenerate all the thumbnails when requirements change.
+</p>
+<p>
+<pre>
+</p>
+<pre>
+  has_attached_file :avatar, :styles =&amp;gt; { :large =&amp;gt; &amp;quot;300x300&amp;quot;, :negative =&amp;gt; &amp;quot;100x100&amp;quot; }
+                             :convert_options =&amp;gt; {
+                               :all =&amp;gt; &amp;quot;-strip&amp;quot;,
+                               :negative =&amp;gt; &amp;quot;-negate&amp;quot;
+                             }
+</pre>
+<p>
+</pre> <p> NOTE: While not deprecated yet, it is not recommended to specify
+options this way. It is recommended that :convert_options option be
+included in the hash passed to each :styles for compatability with future
+versions. </p> </li> <li><tt>storage</tt>: Chooses the storage backend
+where the files will be stored. The current choices are :filesystem and
+:s3. The default is :filesystem. Make sure you read the documentation for
+<a
+href=&#8220;Storage/Filesystem.html&#8220;>Paperclip::Storage::Filesystem</a>
+and <a href=&#8220;Storage/S3.html&#8220;>Paperclip::Storage::S3</a> for
+backend-specific options.
+</p>
+<p>
+</li> </ul>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000036&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000036&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;ClassMethods.src/M000036.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('ClassMethods.src/M000036.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;validates_attachment_content_type&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(name, options = {})&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Places ActiveRecord-style validations on the content type of the file
+assigned. The possible options are: </p> <ul> <li><tt>content_type</tt>:
+Allowed content types. Can be a single content type or an array. Each type
+can be a String or a Regexp. It should be noted that Internet Explorer
+upload files with content_types that you may not expect. For example, JPEG
+images are given image/pjpeg and PNGs are image/x-png, so keep that in mind
+when determining how you match. Allows all by default.
+</p>
+<p>
+</li> <li><tt>message</tt>: The message to display when the uploaded file
+has an invalid content type.
+</p>
+<p>
+</li> <li><tt>if</tt>: A lambda or name of a method on the instance.
+Validation will only be run is this lambda or method returns true.
+</p>
+<p>
+</li> <li><tt>unless</tt>: Same as <tt>if</tt> but validates if lambda or
+method returns false.
+</p>
+<p>
+</li> </ul> <p> NOTE: If you do not specify an [attachment]_content_type
+field on your model, content_type validation will work _ONLY upon
+assignment_ and re-validation after the instance has been reloaded will
+always succeed. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000035&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000035&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;ClassMethods.src/M000035.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('ClassMethods.src/M000035.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;validates_attachment_presence&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(name, options = {})&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Places ActiveRecord-style validations on the presence of a file. Options:
+</p> <ul> <li><tt>if</tt>: A lambda or name of a method on the instance.
+Validation will only be run is this lambda or method returns true.
+</p>
+<p>
+</li> <li><tt>unless</tt>: Same as <tt>if</tt> but validates if lambda or
+method returns false.
+</p>
+<p>
+</li> </ul>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000033&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000033&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;ClassMethods.src/M000033.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('ClassMethods.src/M000033.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;validates_attachment_size&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(name, options = {})&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Places ActiveRecord-style validations on the size of the file assigned. The
+possible options are: </p> <ul> <li><tt>in</tt>: a Range of bytes (i.e.
+<tt>1..1.megabyte</tt>),
+</p>
+<p>
+</li> <li><tt>less_than</tt>: equivalent to :in =&amp;gt;
+0..options[:less_than]
+</p>
+<p>
+</li> <li><tt>greater_than</tt>: equivalent to :in =&amp;gt;
+options[:greater_than]..Infinity
+</p>
+<p>
+</li> <li><tt>message</tt>: error message to display, use :min and :max as
+replacements
+</p>
+<p>
+</li> <li><tt>if</tt>: A lambda or name of a method on the instance.
+Validation will only be run is this lambda or method returns true.
+</p>
+<p>
+</li> <li><tt>unless</tt>: Same as <tt>if</tt> but validates if lambda or
+method returns false.
+</p>
+<p>
+</li> </ul>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div id=&quot;method-M000034&quot; class=&quot;method-detail&quot;&gt;
+        &lt;a name=&quot;M000034&quot;&gt;&lt;/a&gt;
+
+        &lt;div class=&quot;method-heading&quot;&gt;
+          &lt;a href=&quot;ClassMethods.src/M000034.html&quot; target=&quot;Code&quot; class=&quot;method-signature&quot;
+            onclick=&quot;popupCode('ClassMethods.src/M000034.html');return false;&quot;&gt;
+          &lt;span class=&quot;method-name&quot;&gt;validates_attachment_thumbnails&lt;/span&gt;&lt;span class=&quot;method-args&quot;&gt;(name, options = {})&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;method-description&quot;&gt;
+          &lt;p&gt;
+</pre>
+<p>
+Adds errors if thumbnail creation fails. The same as specifying
+:whiny_thumbnails =&amp;gt; true. </p>
+</p>
+<pre>
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+</pre>
+<p>
+<div id=&#8220;validator-badges&#8221;>
+</p>
+<pre>
+  &lt;p&gt;&lt;small&gt;&lt;a href=&quot;http://validator.w3.org/check/referer&quot;&gt;[Validate]&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</pre>
+<p>
+</div>
+</p>
+<p>
+</body> </html>
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+    </div>
+  </body>
+</html>

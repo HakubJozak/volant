@@ -1,0 +1,6 @@
+en:
+  activerecord:
+    models:
+      workcamp_intention:
+        one: Workcamp Intention
+        other: Workcamp Intentions

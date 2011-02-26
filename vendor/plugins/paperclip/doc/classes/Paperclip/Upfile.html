@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Paperclip::Upfile</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Paperclip::Upfile 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/paperclip/upfile_rb.html">lib/paperclip/upfile.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+The <a href="Upfile.html">Upfile</a> module is a convenience module for
+adding uploaded-file-type methods to the <tt>File</tt> class. Useful for
+testing.
+</p>
+<pre>
+  user.avatar = File.new(&quot;test/test_avatar.jpg&quot;)
+</pre>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000137">content_type</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>O</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000141">original_filename</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000142">size</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000137">
+                    
+                    <a name="M000137"></a><b>content_type</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Infer the MIME-type of the file from the extension.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000137_source')" id="l_M000137_source">show</a>
+                        
+                    </p>
+                    <div id="M000137_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/upfile.rb, line 8</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">content_type</span>
+      <span class="ruby-identifier">type</span> = (<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">path</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/\.(\w+)$/</span>)[<span class="ruby-value">1</span>] <span class="ruby-keyword kw">rescue</span> <span class="ruby-value str">&quot;octet-stream&quot;</span>).<span class="ruby-identifier">downcase</span>
+      <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">type</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">%r&quot;jp(e|g|eg)&quot;</span>            <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;image/jpeg&quot;</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">%r&quot;tiff?&quot;</span>                 <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;image/tiff&quot;</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">%r&quot;png&quot;</span>, <span class="ruby-value str">&quot;gif&quot;</span>, <span class="ruby-value str">&quot;bmp&quot;</span>     <span class="ruby-keyword kw">then</span> <span class="ruby-node">&quot;image/#{type}&quot;</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;txt&quot;</span>                     <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;text/plain&quot;</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">%r&quot;html?&quot;</span>                 <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;text/html&quot;</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;js&quot;</span>                      <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;application/js&quot;</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;csv&quot;</span>, <span class="ruby-value str">&quot;xml&quot;</span>, <span class="ruby-value str">&quot;css&quot;</span>       <span class="ruby-keyword kw">then</span> <span class="ruby-node">&quot;text/#{type}&quot;</span>
+      <span class="ruby-keyword kw">else</span> <span class="ruby-node">&quot;application/x-#{type}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000141">
+                    
+                    <a name="M000141"></a><b>original_filename</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the file&#8217;s normal name.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000141_source')" id="l_M000141_source">show</a>
+                        
+                    </p>
+                    <div id="M000141_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/upfile.rb, line 23</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">original_filename</span>
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">path</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000142">
+                    
+                    <a name="M000142"></a><b>size</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the size of the file.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000142_source')" id="l_M000142_source">show</a>
+                        
+                    </p>
+                    <div id="M000142_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/upfile.rb, line 28</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">size</span>
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">size</span>(<span class="ruby-keyword kw">self</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

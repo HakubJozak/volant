@@ -1,0 +1,17 @@
+<table>
+  <tbody>
+  <% ((@tags.size / 3) + 1).times do |i| %>
+  <tr>
+     <%= render :partial => 'tag', :collection => @tags[i*3,3]  %>
+  </tr>
+  <% end -%>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <th colspan="3">
+        <%= icon_button('close','close_tags_popup') %>
+      </th>
+     </tr>
+  </tfoot>
+</table>

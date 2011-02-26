@@ -1,0 +1,28 @@
+<%= render :partial => "workcamps/cart", :object => @cart %>
+
+<!-- FIXME - bud uplne odstranit tabulky, nebo to aspon vysusit ... tohle je zlo, ZLOOOOOO! - sypu popel na hlavu -->
+<table class="form" id="query">
+        <% form_for :query, :url => { :action => :list }, :html => { :method => :get } do |f| %>
+
+                <%= form_head bt('wc_search_title'), 'search_form_head' %>
+
+                <%= simple_wrap bt('wc_has_places'), check_box_tag('query[free_only]', '1', true), 'search_bold_field' %>
+                <tr>
+                        <td><label><%= bt('sex') %></label></td>
+                        <td>
+                                <%= f.radio_button :sex, 'm' %><%= bt('male') %>
+                                &nbsp;&nbsp;&nbsp;
+                                <%= f.radio_button :sex, 'f' %><%= bt('female') %>
+                        </td>
+                </tr>
+
+                <%= simple_wrap bt('from'), calendar_date_select_tag("query[from]", Date.today), 'search_field' %>
+                <%= simple_wrap bt('to'), calendar_date_select_tag("query[to]", nil), 'search_field' %>
+                <%= form_text_field f, :age, bt('age'), {:tr_class => 'search_field'} %>
+
+                <%= simple_wrap bt('wc_intention'), render(:partial => 'workcamps/search/intentions_select') %>
+                <%= render :partial => 'workcamps/search/country_chooser' %>
+                <%= simple_wrap '', f.submit(bt('submit',:edit_allowed => false)) %>
+
+        <% end %>
+</table>

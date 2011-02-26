@@ -1,0 +1,85 @@
+<h1><%= bt 'wc_apply_form_title' %></h1>
+
+<% css_form_for :apply_form, @apply_form do |@f| %>
+     <%= error_messages_for 'apply_form' %>
+
+                <% group 'wc_workcamps' do %>
+                  <%= render :partial => 'workcamps/cart', :locals => { :embedded => true } %>
+                <% end %>
+
+                <% group 'personal_data' do %>
+                   <%= tfield :firstname %>
+                   <%= tfield :lastname %>
+                   <%= tfield :occupation %>
+                   <%= tfield :nationality %>
+                <% end %>
+
+                <% group 'birth_data' do %>
+                   <%= tfield :birthnumber %>
+                   <%= tfield :birthdate %>
+                   <%= tfield :birthplace %>
+                <% end %>
+
+                <% group 'contact' do %>
+                   <%= tfield :email %>
+                   <%= tfield :phone %>
+                <% end %>
+
+                <% group 'gender' do %>
+                   <%= @f.radio_button :gender, 'm', :label => bt('en_male') %>
+                   <%= @f.radio_button :gender, 'f', :label => bt('en_female') %>
+                <% end %>
+
+                <% group 'address' do %>
+                   <%= tfield :street, :class=>'double-size' %>
+                   <%= tfield :city, :class=>'double-size' %>
+                   <%= tfield :zipcode, :class=>'half-size' %>
+                <% end %>
+
+                <% group 'contact_address' do %>
+                   <%= tfield :contact_street, :class=>'double-size',  :label => bt('street') %>
+                   <%= tfield :contact_city, :class=>'double-size',  :label => bt('city') %>
+                   <%= tfield :contact_zipcode, :class=>'half-size',  :label => bt('zipcode') %>
+                <% end %>
+
+                <% group 'wc_emergency' do %>
+                        <% [ :emergency_name, :emergency_day, :emergency_night ].each do |field| %>
+                           <%= tfield field, :label => bt("wc_#{field.to_s}"), :label_class => 'double-size' %>
+                        <% end %>
+                <% end %>
+
+                <% group 'wc_languages' do %>
+                   <%= tfield :speak_well, :label => bt('wc_speak_well') %>
+                   <%= tfield :speak_some, :label => bt('wc_speak_some') %>
+                <% end %>
+
+                <% group 'other' do %>
+                   <%= tarea :motivation, :label_class => 'unlimited' %>
+                   <%= tarea :general_remarks, :label_class => 'unlimited' %>
+                   <%= tarea :special_needs, :label_class => 'unlimited' %>
+                   <%= tarea :past_experience, :label_class => 'unlimited' %>
+                <% end %>
+
+                <%= render :partial => 'agreement', :object => :terms_of_processing %>
+                <%= render :partial => 'agreement', :object => :terms_of_workcamps %>
+
+                <% group 'agreements' do %>
+                   <p>
+                    <%= check_box :apply_form, :terms_of_processing, :label => '' %>
+                    <%= bt("wc_terms_of_processing_body") %>
+                   </p>
+
+                   <p>
+                     <%= check_box :apply_form,  :terms_of_workcamps, :label => '' %>
+                     <%= bt("wc_terms_of_workcamps_body") %>
+                   </p>
+                <% end %>
+
+                <center class="links">
+
+                  <%= link_to bt('wc_back_to_search', :edit_allowed => false),
+                              workcamp_search_path(:language_code => @current_language.code)
+                  %>
+                  <%= submit_tag bt('wc_apply', :edit_allowed => false), :id => 'application_submit' %>
+                </center>
+<% end %>

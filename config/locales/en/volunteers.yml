@@ -1,0 +1,75 @@
+en:
+  activerecord:
+    models:
+      volunteer:
+        other: Volunteers
+        one: Volunteer
+
+      incoming/leader:
+          other: Leaders
+          one: Leader
+
+      incoming/leadership:
+          other: Leaders
+          one: Leader
+
+      incoming/participant:
+        other: Participants
+        one: Participant
+
+      incoming/participation:
+        other: Participants
+        one: Participant
+
+    attributes:
+      volunteer: &volunteer_attributes
+        gender_in_list: ""
+        empty: ""
+        birthday: ""
+        unknown_volunteer: Unknown
+        create_volunteer: New Volunteer
+        firstname: Name
+        lastname: lastname
+        email: Email
+        phone: Phone
+        apply_forms: Applications
+        tags: Tags
+        age: Age
+        gender: Gender
+        male: Male
+        female: Female
+        birthdate_string: Birthday
+        birthnumber: Social Security Number
+        nationality: Nationality
+        occupation: Occupation
+        city: City
+        street: Street
+        zipcode: Zipcode
+        address: Adsress
+        contact_address: Contact Address
+        contact_city: City (contact address)
+        contact_street: Street (contact address)
+        contact_zipcode: Zipcode (contact address)
+        account: Account Number
+        emergency: Emergency contact
+        emergency_name: Name
+        emergency_day: Emergency contact - day
+        emergency_night: Emergency contact - night
+        languages: Languages
+        speak_well: Speak Well
+        speak_some: Speak Some
+        special_needs: Special Needs
+        past_experience: Past Experience
+        active: Active
+        cancelled: Cancelled
+        general_remarks: General remarks
+        motivation: Motivace
+
+      incoming/leader: 
+        <<: *volunteer_attributes
+
+      incoming/participant: 
+        <<: *volunteer_attributes
+        country: Countries
+        organization: Organization
+        incoming_organization: Organizace

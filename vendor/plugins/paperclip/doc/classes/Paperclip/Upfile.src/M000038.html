@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>content_type (Paperclip::Upfile)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/paperclip/upfile.rb, line 8</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">content_type</span>
+      <span class="ruby-identifier">type</span> = (<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">path</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/\.(\w+)$/</span>)[<span class="ruby-value">1</span>] <span class="ruby-keyword kw">rescue</span> <span class="ruby-value str">&quot;octet-stream&quot;</span>).<span class="ruby-identifier">downcase</span>
+      <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">type</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">%r&quot;jp(e|g|eg)&quot;</span>            <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;image/jpeg&quot;</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">%r&quot;tiff?&quot;</span>                 <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;image/tiff&quot;</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">%r&quot;png&quot;</span>, <span class="ruby-value str">&quot;gif&quot;</span>, <span class="ruby-value str">&quot;bmp&quot;</span>     <span class="ruby-keyword kw">then</span> <span class="ruby-node">&quot;image/#{type}&quot;</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;txt&quot;</span>                     <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;text/plain&quot;</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">%r&quot;html?&quot;</span>                 <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;text/html&quot;</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;js&quot;</span>                      <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;application/js&quot;</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;csv&quot;</span>, <span class="ruby-value str">&quot;xml&quot;</span>, <span class="ruby-value str">&quot;css&quot;</span>       <span class="ruby-keyword kw">then</span> <span class="ruby-node">&quot;text/#{type}&quot;</span>
+      <span class="ruby-keyword kw">else</span> <span class="ruby-node">&quot;application/x-#{type}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

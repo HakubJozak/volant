@@ -1,0 +1,31 @@
+<h1>Jak na šablony workcampů?</h1>
+
+<p><i>V menu je pod záložkou 'Nastavení/Šablony emailů' ukryta
+    možnost měnit text emailů, které jsou generovány Volantem. Velmi
+    stručný návod jak na to, poskytuje tento text.</i></p>
+
+<p>Jak předmět, tak tělo emailu může obsahovat symboly ohraničené
+  dvěma složenými závorkami. Ty jsou při zobrazení emailu uživatelem
+  nahrazeny konkrétními daty. Například namísto <b>{{wc.name}}</b>
+  bude v textu jméno workcampu. Pokud je definována hodnota "Zabalit
+  do šablony", je celé tělo emailu ještě vloženo na místo symbolu
+  <b>{{content}}</b> do nadřazené šablony (tou je většinou šablona pro akci
+  "mail").
+</p>
+
+<p>
+ Symboly mají formát <b>{{objekt.atribut}}</b>, kde jako objekt mohou
+ vystupovat zkratky:
+<ul>
+  <li>wc - workcamp, kterého se týká odesílaný email</li>
+  <li>user - uživatel Volantu, který email posílá</li>
+  <li>form - přihláška, které se email týká</li>
+</ul>
+
+ Atributy objektů jsou anglické verze jejich názvů tak, jak je
+ vidíte při editaci, například <b>name, code, airport</b> atd. -
+ inspirujte se prosím existujícími texty, protože úplný seznam
+ atributů ani zatím není k dispozici.</p>
+</p>
+
+<center><h2>Hodně štěstí!</h2></center>

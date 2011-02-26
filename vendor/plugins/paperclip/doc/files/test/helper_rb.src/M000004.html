@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>rebuild_model (test/helper.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/helper.rb, line 52</span>
+<span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rebuild_model</span> <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">create_table</span> <span class="ruby-identifier">:dummies</span>, <span class="ruby-identifier">:force</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">table</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">table</span>.<span class="ruby-identifier">column</span> <span class="ruby-identifier">:other</span>, <span class="ruby-identifier">:string</span>
+    <span class="ruby-identifier">table</span>.<span class="ruby-identifier">column</span> <span class="ruby-identifier">:avatar_file_name</span>, <span class="ruby-identifier">:string</span>
+    <span class="ruby-identifier">table</span>.<span class="ruby-identifier">column</span> <span class="ruby-identifier">:avatar_content_type</span>, <span class="ruby-identifier">:string</span>
+    <span class="ruby-identifier">table</span>.<span class="ruby-identifier">column</span> <span class="ruby-identifier">:avatar_file_size</span>, <span class="ruby-identifier">:integer</span>
+    <span class="ruby-identifier">table</span>.<span class="ruby-identifier">column</span> <span class="ruby-identifier">:avatar_updated_at</span>, <span class="ruby-identifier">:datetime</span>
+  <span class="ruby-keyword kw">end</span>
+  <span class="ruby-identifier">rebuild_class</span> <span class="ruby-identifier">options</span>
+<span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Paperclip::Shoulda::Matchers::ValidateAttachmentSizeMatcher</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Paperclip::Shoulda::Matchers::ValidateAttachmentSizeMatcher 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/lib/paperclip/matchers/validate_attachment_size_matcher_rb.html">lib/paperclip/matchers/validate_attachment_size_matcher.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000148">description</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>F</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000144">failure_message</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>G</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000139">greater_than</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>H</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000154">higher_than_high?</a>,</li>
+                
+                <li><a href="#M000152">higher_than_low?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000140">in</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>L</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000138">less_than</a>,</li>
+                
+                <li><a href="#M000153">lower_than_high?</a>,</li>
+                
+                <li><a href="#M000151">lower_than_low?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>M</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000143">matches?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000145">negative_failure_message</a>,</li>
+                
+                <li><a href="#M000136">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>O</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000149">override_method</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000150">passes_validation_with_size</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000136">
+                    
+                    <a name="M000136"></a><b>new</b>(attachment_name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000136_source')" id="l_M000136_source">show</a>
+                        
+                    </p>
+                    <div id="M000136_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_size_matcher.rb, line 9</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">attachment_name</span>
+          <span class="ruby-ivar">@attachment_name</span> = <span class="ruby-identifier">attachment_name</span>
+          <span class="ruby-ivar">@low</span>, <span class="ruby-ivar">@high</span> = <span class="ruby-value">0</span>, (<span class="ruby-value">1.0</span><span class="ruby-operator">/</span><span class="ruby-value">0</span>)
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000148">
+                    
+                    <a name="M000148"></a><b>description</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000148_source')" id="l_M000148_source">show</a>
+                        
+                    </p>
+                    <div id="M000148_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_size_matcher.rb, line 42</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">description</span>
+          <span class="ruby-node">&quot;validate the size of attachment #{@attachment_name}&quot;</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000144">
+                    
+                    <a name="M000144"></a><b>failure_message</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000144_source')" id="l_M000144_source">show</a>
+                        
+                    </p>
+                    <div id="M000144_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_size_matcher.rb, line 34</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">failure_message</span>
+          <span class="ruby-node">&quot;Attachment #{@attachment_name} must be between #{@low} and #{@high} bytes&quot;</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000139">
+                    
+                    <a name="M000139"></a><b>greater_than</b>(size)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000139_source')" id="l_M000139_source">show</a>
+                        
+                    </p>
+                    <div id="M000139_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_size_matcher.rb, line 19</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">greater_than</span> <span class="ruby-identifier">size</span>
+          <span class="ruby-ivar">@low</span> = <span class="ruby-identifier">size</span>
+          <span class="ruby-keyword kw">self</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000140">
+                    
+                    <a name="M000140"></a><b>in</b>(range)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000140_source')" id="l_M000140_source">show</a>
+                        
+                    </p>
+                    <div id="M000140_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_size_matcher.rb, line 24</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">range</span>
+          <span class="ruby-ivar">@low</span>, <span class="ruby-ivar">@high</span> = <span class="ruby-identifier">range</span>.<span class="ruby-identifier">first</span>, <span class="ruby-identifier">range</span>.<span class="ruby-identifier">last</span>
+          <span class="ruby-keyword kw">self</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000138">
+                    
+                    <a name="M000138"></a><b>less_than</b>(size)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000138_source')" id="l_M000138_source">show</a>
+                        
+                    </p>
+                    <div id="M000138_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_size_matcher.rb, line 14</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">less_than</span> <span class="ruby-identifier">size</span>
+          <span class="ruby-ivar">@high</span> = <span class="ruby-identifier">size</span>
+          <span class="ruby-keyword kw">self</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000143">
+                    
+                    <a name="M000143"></a><b>matches?</b>(subject)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000143_source')" id="l_M000143_source">show</a>
+                        
+                    </p>
+                    <div id="M000143_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_size_matcher.rb, line 29</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">matches?</span> <span class="ruby-identifier">subject</span>
+          <span class="ruby-ivar">@subject</span> = <span class="ruby-identifier">subject</span>
+          <span class="ruby-identifier">lower_than_low?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">higher_than_low?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">lower_than_high?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">higher_than_high?</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000145">
+                    
+                    <a name="M000145"></a><b>negative_failure_message</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000145_source')" id="l_M000145_source">show</a>
+                        
+                    </p>
+                    <div id="M000145_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_size_matcher.rb, line 38</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">negative_failure_message</span>
+          <span class="ruby-node">&quot;Attachment #{@attachment_name} cannot be between #{@low} and #{@high} bytes&quot;</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Protected methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000154">
+                    
+                    <a name="M000154"></a><b>higher_than_high?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000154_source')" id="l_M000154_source">show</a>
+                        
+                    </p>
+                    <div id="M000154_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_size_matcher.rb, line 77</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">higher_than_high?</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@high</span> <span class="ruby-operator">==</span> (<span class="ruby-value">1.0</span><span class="ruby-operator">/</span><span class="ruby-value">0</span>)
+          <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">passes_validation_with_size</span>(<span class="ruby-ivar">@high</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000152">
+                    
+                    <a name="M000152"></a><b>higher_than_low?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000152_source')" id="l_M000152_source">show</a>
+                        
+                    </p>
+                    <div id="M000152_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_size_matcher.rb, line 68</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">higher_than_low?</span>
+          <span class="ruby-identifier">passes_validation_with_size</span>(<span class="ruby-ivar">@low</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000153">
+                    
+                    <a name="M000153"></a><b>lower_than_high?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000153_source')" id="l_M000153_source">show</a>
+                        
+                    </p>
+                    <div id="M000153_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_size_matcher.rb, line 72</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lower_than_high?</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@high</span> <span class="ruby-operator">==</span> (<span class="ruby-value">1.0</span><span class="ruby-operator">/</span><span class="ruby-value">0</span>)
+          <span class="ruby-identifier">passes_validation_with_size</span>(<span class="ruby-ivar">@high</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000151">
+                    
+                    <a name="M000151"></a><b>lower_than_low?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000151_source')" id="l_M000151_source">show</a>
+                        
+                    </p>
+                    <div id="M000151_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_size_matcher.rb, line 64</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lower_than_low?</span>
+          <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">passes_validation_with_size</span>(<span class="ruby-ivar">@low</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000149">
+                    
+                    <a name="M000149"></a><b>override_method</b>(object, method, &amp;replacement)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000149_source')" id="l_M000149_source">show</a>
+                        
+                    </p>
+                    <div id="M000149_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_size_matcher.rb, line 48</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">override_method</span> <span class="ruby-identifier">object</span>, <span class="ruby-identifier">method</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">replacement</span>
+          (<span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">object</span>; <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">end</span>).<span class="ruby-identifier">class_eval</span> <span class="ruby-keyword kw">do</span>
+            <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">method</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">replacement</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000150">
+                    
+                    <a name="M000150"></a><b>passes_validation_with_size</b>(new_size)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000150_source')" id="l_M000150_source">show</a>
+                        
+                    </p>
+                    <div id="M000150_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_size_matcher.rb, line 54</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">passes_validation_with_size</span>(<span class="ruby-identifier">new_size</span>)
+          <span class="ruby-identifier">file</span> = <span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;.&quot;</span>)
+          <span class="ruby-identifier">override_method</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">:size</span>){ <span class="ruby-identifier">new_size</span> }
+          <span class="ruby-identifier">override_method</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">:to_tempfile</span>){ <span class="ruby-identifier">file</span> }
+
+          (<span class="ruby-identifier">subject</span> = <span class="ruby-ivar">@subject</span>.<span class="ruby-identifier">new</span>).<span class="ruby-identifier">send</span>(<span class="ruby-ivar">@attachment_name</span>).<span class="ruby-identifier">assign</span>(<span class="ruby-identifier">file</span>)
+          <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">valid?</span>
+          <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">on</span>(<span class="ruby-identifier">:&quot;#{@attachment_name}_file_size&quot;</span>).<span class="ruby-identifier">blank?</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

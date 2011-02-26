@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>paperclip.gemspec</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            paperclip.gemspec
+        </h1>
+        <ul class="files">
+            <li>paperclip.gemspec</li>
+            <li>Last modified: Mon Dec 14 11:09:10 +0100 2009</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+# -*- encoding: utf-8 -*-
+</p>
+<p>
+Gem::Specification.new do |s|
+</p>
+<pre>
+  s.name = %q{paperclip}
+  s.version = &quot;2.3.1.1&quot;
+
+  s.required_rubygems_version = Gem::Requirement.new(&quot;&gt;= 0&quot;) if s.respond_to? :required_rubygems_version=
+  s.authors = [&quot;Jon Yurek&quot;]
+  s.date = %q{2009-10-09}
+  s.email = %q{jyurek@thoughtbot.com}
+  s.extra_rdoc_files = [&quot;README.rdoc&quot;]
+  s.files = [&quot;README.rdoc&quot;, &quot;LICENSE&quot;, &quot;Rakefile&quot;, &quot;init.rb&quot;, &quot;generators/paperclip&quot;, &quot;generators/paperclip/paperclip_generator.rb&quot;, &quot;generators/paperclip/templates&quot;, &quot;generators/paperclip/templates/paperclip_migration.rb.erb&quot;, &quot;generators/paperclip/USAGE&quot;, &quot;lib/paperclip&quot;, &quot;lib/paperclip/attachment.rb&quot;, &quot;lib/paperclip/callback_compatability.rb&quot;, &quot;lib/paperclip/geometry.rb&quot;, &quot;lib/paperclip/interpolations.rb&quot;, &quot;lib/paperclip/iostream.rb&quot;, &quot;lib/paperclip/matchers&quot;, &quot;lib/paperclip/matchers/have_attached_file_matcher.rb&quot;, &quot;lib/paperclip/matchers/validate_attachment_content_type_matcher.rb&quot;, &quot;lib/paperclip/matchers/validate_attachment_presence_matcher.rb&quot;, &quot;lib/paperclip/matchers/validate_attachment_size_matcher.rb&quot;, &quot;lib/paperclip/matchers.rb&quot;, &quot;lib/paperclip/processor.rb&quot;, &quot;lib/paperclip/storage.rb&quot;, &quot;lib/paperclip/thumbnail.rb&quot;, &quot;lib/paperclip/upfile.rb&quot;, &quot;lib/paperclip.rb&quot;, &quot;tasks/paperclip_tasks.rake&quot;, &quot;test/attachment_test.rb&quot;, &quot;test/database.yml&quot;, &quot;test/fixtures&quot;, &quot;test/fixtures/12k.png&quot;, &quot;test/fixtures/50x50.png&quot;, &quot;test/fixtures/5k.png&quot;, &quot;test/fixtures/bad.png&quot;, &quot;test/fixtures/s3.yml&quot;, &quot;test/fixtures/text.txt&quot;, &quot;test/fixtures/twopage.pdf&quot;, &quot;test/geometry_test.rb&quot;, &quot;test/helper.rb&quot;, &quot;test/integration_test.rb&quot;, &quot;test/interpolations_test.rb&quot;, &quot;test/iostream_test.rb&quot;, &quot;test/matchers&quot;, &quot;test/matchers/have_attached_file_matcher_test.rb&quot;, &quot;test/matchers/validate_attachment_content_type_matcher_test.rb&quot;, &quot;test/matchers/validate_attachment_presence_matcher_test.rb&quot;, &quot;test/matchers/validate_attachment_size_matcher_test.rb&quot;, &quot;test/paperclip_test.rb&quot;, &quot;test/processor_test.rb&quot;, &quot;test/storage_test.rb&quot;, &quot;test/thumbnail_test.rb&quot;, &quot;test/upfile_test.rb&quot;, &quot;shoulda_macros/paperclip.rb&quot;]
+  s.homepage = %q{http://www.thoughtbot.com/projects/paperclip}
+  s.rdoc_options = [&quot;--line-numbers&quot;, &quot;--inline-source&quot;]
+  s.require_paths = [&quot;lib&quot;]
+  s.requirements = [&quot;ImageMagick&quot;]
+  s.rubyforge_project = %q{paperclip}
+  s.rubygems_version = %q{1.3.5}
+  s.summary = %q{File attachments as attributes for ActiveRecord}
+
+  if s.respond_to? :specification_version then
+    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
+    s.specification_version = 3
+
+    if Gem::Version.new(Gem::RubyGemsVersion) &gt;= Gem::Version.new('1.2.0') then
+      s.add_development_dependency(%q&lt;thoughtbot-shoulda&gt;, [&quot;&gt;= 0&quot;])
+      s.add_development_dependency(%q&lt;jferris-mocha&gt;, [&quot;= 0.9.5.0.1241126838&quot;])
+      s.add_development_dependency(%q&lt;aws-s3&gt;, [&quot;&gt;= 0&quot;])
+      s.add_development_dependency(%q&lt;sqlite3-ruby&gt;, [&quot;&gt;= 0&quot;])
+      s.add_development_dependency(%q&lt;activerecord&gt;, [&quot;&gt;= 0&quot;])
+      s.add_development_dependency(%q&lt;activesupport&gt;, [&quot;&gt;= 0&quot;])
+    else
+      s.add_dependency(%q&lt;thoughtbot-shoulda&gt;, [&quot;&gt;= 0&quot;])
+      s.add_dependency(%q&lt;jferris-mocha&gt;, [&quot;= 0.9.5.0.1241126838&quot;])
+      s.add_dependency(%q&lt;aws-s3&gt;, [&quot;&gt;= 0&quot;])
+      s.add_dependency(%q&lt;sqlite3-ruby&gt;, [&quot;&gt;= 0&quot;])
+      s.add_dependency(%q&lt;activerecord&gt;, [&quot;&gt;= 0&quot;])
+      s.add_dependency(%q&lt;activesupport&gt;, [&quot;&gt;= 0&quot;])
+    end
+  else
+    s.add_dependency(%q&lt;thoughtbot-shoulda&gt;, [&quot;&gt;= 0&quot;])
+    s.add_dependency(%q&lt;jferris-mocha&gt;, [&quot;= 0.9.5.0.1241126838&quot;])
+    s.add_dependency(%q&lt;aws-s3&gt;, [&quot;&gt;= 0&quot;])
+    s.add_dependency(%q&lt;sqlite3-ruby&gt;, [&quot;&gt;= 0&quot;])
+    s.add_dependency(%q&lt;activerecord&gt;, [&quot;&gt;= 0&quot;])
+    s.add_dependency(%q&lt;activesupport&gt;, [&quot;&gt;= 0&quot;])
+  end
+</pre>
+<p>
+end
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+    </div>
+  </body>
+</html>

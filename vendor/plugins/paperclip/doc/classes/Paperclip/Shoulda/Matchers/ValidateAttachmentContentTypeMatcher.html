@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Paperclip::Shoulda::Matchers::ValidateAttachmentContentTypeMatcher</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Paperclip::Shoulda::Matchers::ValidateAttachmentContentTypeMatcher 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/lib/paperclip/matchers/validate_attachment_content_type_matcher_rb.html">lib/paperclip/matchers/validate_attachment_content_type_matcher.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000113">allow_types?</a>,</li>
+                
+                <li><a href="#M000115">allowed_types_allowed?</a>,</li>
+                
+                <li><a href="#M000107">allowing</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000112">description</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>F</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000110">failure_message</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>M</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000109">matches?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000111">negative_failure_message</a>,</li>
+                
+                <li><a href="#M000105">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000116">rejected_types_rejected?</a>,</li>
+                
+                <li><a href="#M000108">rejecting</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000105">
+                    
+                    <a name="M000105"></a><b>new</b>(attachment_name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000105_source')" id="l_M000105_source">show</a>
+                        
+                    </p>
+                    <div id="M000105_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_content_type_matcher.rb, line 9</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">attachment_name</span>
+          <span class="ruby-ivar">@attachment_name</span> = <span class="ruby-identifier">attachment_name</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000107">
+                    
+                    <a name="M000107"></a><b>allowing</b>(*types)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000107_source')" id="l_M000107_source">show</a>
+                        
+                    </p>
+                    <div id="M000107_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_content_type_matcher.rb, line 13</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">allowing</span> <span class="ruby-operator">*</span><span class="ruby-identifier">types</span>
+          <span class="ruby-ivar">@allowed_types</span> = <span class="ruby-identifier">types</span>.<span class="ruby-identifier">flatten</span>
+          <span class="ruby-keyword kw">self</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000112">
+                    
+                    <a name="M000112"></a><b>description</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000112_source')" id="l_M000112_source">show</a>
+                        
+                    </p>
+                    <div id="M000112_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_content_type_matcher.rb, line 39</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">description</span>
+          <span class="ruby-node">&quot;validate the content types allowed on attachment #{@attachment_name}&quot;</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000110">
+                    
+                    <a name="M000110"></a><b>failure_message</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000110_source')" id="l_M000110_source">show</a>
+                        
+                    </p>
+                    <div id="M000110_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_content_type_matcher.rb, line 29</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">failure_message</span>
+          <span class="ruby-node">&quot;Content types #{@allowed_types.join(&quot;, &quot;)} should be accepted&quot;</span> <span class="ruby-operator">+</span>
+          <span class="ruby-node">&quot; and #{@rejected_types.join(&quot;, &quot;)} rejected by #{@attachment_name}&quot;</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000109">
+                    
+                    <a name="M000109"></a><b>matches?</b>(subject)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000109_source')" id="l_M000109_source">show</a>
+                        
+                    </p>
+                    <div id="M000109_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_content_type_matcher.rb, line 23</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">matches?</span> <span class="ruby-identifier">subject</span>
+          <span class="ruby-ivar">@subject</span> = <span class="ruby-identifier">subject</span>
+          <span class="ruby-ivar">@allowed_types</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@rejected_types</span> <span class="ruby-operator">&amp;&amp;</span>
+          <span class="ruby-identifier">allowed_types_allowed?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">rejected_types_rejected?</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000111">
+                    
+                    <a name="M000111"></a><b>negative_failure_message</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000111_source')" id="l_M000111_source">show</a>
+                        
+                    </p>
+                    <div id="M000111_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_content_type_matcher.rb, line 34</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">negative_failure_message</span>
+          <span class="ruby-node">&quot;Content types #{@allowed_types.join(&quot;, &quot;)} should be rejected&quot;</span> <span class="ruby-operator">+</span> 
+          <span class="ruby-node">&quot; and #{@rejected_types.join(&quot;, &quot;)} accepted by #{@attachment_name}&quot;</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000108">
+                    
+                    <a name="M000108"></a><b>rejecting</b>(*types)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000108_source')" id="l_M000108_source">show</a>
+                        
+                    </p>
+                    <div id="M000108_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_content_type_matcher.rb, line 18</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rejecting</span> <span class="ruby-operator">*</span><span class="ruby-identifier">types</span>
+          <span class="ruby-ivar">@rejected_types</span> = <span class="ruby-identifier">types</span>.<span class="ruby-identifier">flatten</span>
+          <span class="ruby-keyword kw">self</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Protected methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000113">
+                    
+                    <a name="M000113"></a><b>allow_types?</b>(types)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000113_source')" id="l_M000113_source">show</a>
+                        
+                    </p>
+                    <div id="M000113_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_content_type_matcher.rb, line 45</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">allow_types?</span>(<span class="ruby-identifier">types</span>)
+          <span class="ruby-identifier">types</span>.<span class="ruby-identifier">all?</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">type</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">file</span> = <span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;.&quot;</span>)
+            <span class="ruby-identifier">file</span>.<span class="ruby-identifier">content_type</span> = <span class="ruby-identifier">type</span>
+            (<span class="ruby-identifier">subject</span> = <span class="ruby-ivar">@subject</span>.<span class="ruby-identifier">new</span>).<span class="ruby-identifier">attachment_for</span>(<span class="ruby-ivar">@attachment_name</span>).<span class="ruby-identifier">assign</span>(<span class="ruby-identifier">file</span>)
+            <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">valid?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">on</span>(<span class="ruby-identifier">:&quot;#{@attachment_name}_content_type&quot;</span>).<span class="ruby-identifier">blank?</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000115">
+                    
+                    <a name="M000115"></a><b>allowed_types_allowed?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000115_source')" id="l_M000115_source">show</a>
+                        
+                    </p>
+                    <div id="M000115_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_content_type_matcher.rb, line 54</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">allowed_types_allowed?</span>
+          <span class="ruby-identifier">allow_types?</span>(<span class="ruby-ivar">@allowed_types</span>)
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000116">
+                    
+                    <a name="M000116"></a><b>rejected_types_rejected?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000116_source')" id="l_M000116_source">show</a>
+                        
+                    </p>
+                    <div id="M000116_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_content_type_matcher.rb, line 58</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rejected_types_rejected?</span>
+          <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">allow_types?</span>(<span class="ruby-ivar">@rejected_types</span>)
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

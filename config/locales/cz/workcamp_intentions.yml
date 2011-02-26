@@ -1,0 +1,12 @@
+cz:
+  activerecord:
+    models:
+      workcamp_intention:
+        other: Zaměření
+        one: Zaměření
+
+      intention:
+        other: Zaměření
+        one: Zaměření
+
+

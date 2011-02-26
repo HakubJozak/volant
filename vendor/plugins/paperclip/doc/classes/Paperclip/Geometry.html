@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Paperclip::Geometry</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Paperclip::Geometry 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/paperclip/geometry_rb.html">lib/paperclip/geometry.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+Defines the geometry of an image.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000042">aspect</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>F</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000031">from_file</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>H</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000040">horizontal?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000050">inspect</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>L</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000043">larger</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000030">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000036">parse</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000047">smaller</a>,</li>
+                
+                <li><a href="#M000037">square?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000048">to_s</a>,</li>
+                
+                <li><a href="#M000051">transformation_to</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>V</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000041">vertical?</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>height</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>width</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>modifier</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000031">
+                    
+                    <a name="M000031"></a><b>from_file</b>(file)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Uses ImageMagick to determing the dimensions of a file, passed in as either
+a File or path.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000031_source')" id="l_M000031_source">show</a>
+                        
+                    </p>
+                    <div id="M000031_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/geometry.rb, line 16</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from_file</span> <span class="ruby-identifier">file</span>
+      <span class="ruby-identifier">file</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">path</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value str">&quot;path&quot;</span>
+      <span class="ruby-identifier">geometry</span> = <span class="ruby-keyword kw">begin</span>
+                   <span class="ruby-constant">Paperclip</span>.<span class="ruby-identifier">run</span>(<span class="ruby-value str">&quot;identify&quot;</span>, <span class="ruby-node">%Q[-format &quot;%wx%h&quot; &quot;#{file}&quot;[0]]</span>)
+                 <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">PaperclipCommandLineError</span>
+                   <span class="ruby-value str">&quot;&quot;</span>
+                 <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">geometry</span>) <span class="ruby-operator">||</span>
+        <span class="ruby-identifier">raise</span>(<span class="ruby-constant">NotIdentifiedByImageMagickError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{file} is not recognized by the 'identify' command.&quot;</span>))
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000030">
+                    
+                    <a name="M000030"></a><b>new</b>(width = nil, height = nil, modifier = nil)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Gives a <a href="Geometry.html">Geometry</a> representing the given height
+and width
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000030_source')" id="l_M000030_source">show</a>
+                        
+                    </p>
+                    <div id="M000030_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/geometry.rb, line 8</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">width</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">height</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">modifier</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-ivar">@height</span> = <span class="ruby-identifier">height</span>.<span class="ruby-identifier">to_f</span>
+      <span class="ruby-ivar">@width</span>  = <span class="ruby-identifier">width</span>.<span class="ruby-identifier">to_f</span>
+      <span class="ruby-ivar">@modifier</span> = <span class="ruby-identifier">modifier</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000036">
+                    
+                    <a name="M000036"></a><b>parse</b>(string)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Parses a &#8220;WxH&#8221; formatted string, where W is the width and H is
+the height.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000036_source')" id="l_M000036_source">show</a>
+                        
+                    </p>
+                    <div id="M000036_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/geometry.rb, line 28</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">string</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">match</span> = (<span class="ruby-identifier">string</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/\b(\d*)x?(\d*)\b([\&gt;\&lt;\#\@\%^!])?/i</span>))
+        <span class="ruby-constant">Geometry</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>,<span class="ruby-value">3</span>])
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000042">
+                    
+                    <a name="M000042"></a><b>aspect</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+The aspect ratio of the dimensions.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000042_source')" id="l_M000042_source">show</a>
+                        
+                    </p>
+                    <div id="M000042_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/geometry.rb, line 50</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">aspect</span>
+      <span class="ruby-identifier">width</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">height</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000040">
+                    
+                    <a name="M000040"></a><b>horizontal?</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+True if the dimensions represent a horizontal rectangle
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000040_source')" id="l_M000040_source">show</a>
+                        
+                    </p>
+                    <div id="M000040_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/geometry.rb, line 40</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">horizontal?</span>
+      <span class="ruby-identifier">height</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">width</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000050">
+                    
+                    <a name="M000050"></a><b>inspect</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Same as <a href="Geometry.html#M000048">to_s</a>
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000050_source')" id="l_M000050_source">show</a>
+                        
+                    </p>
+                    <div id="M000050_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/geometry.rb, line 74</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+      <span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000043">
+                    
+                    <a name="M000043"></a><b>larger</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the larger of the two dimensions
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000043_source')" id="l_M000043_source">show</a>
+                        
+                    </p>
+                    <div id="M000043_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/geometry.rb, line 55</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">larger</span>
+      [<span class="ruby-identifier">height</span>, <span class="ruby-identifier">width</span>].<span class="ruby-identifier">max</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000047">
+                    
+                    <a name="M000047"></a><b>smaller</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the smaller of the two dimensions
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000047_source')" id="l_M000047_source">show</a>
+                        
+                    </p>
+                    <div id="M000047_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/geometry.rb, line 60</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">smaller</span>
+      [<span class="ruby-identifier">height</span>, <span class="ruby-identifier">width</span>].<span class="ruby-identifier">min</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000037">
+                    
+                    <a name="M000037"></a><b>square?</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+True if the dimensions represent a square
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000037_source')" id="l_M000037_source">show</a>
+                        
+                    </p>
+                    <div id="M000037_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/geometry.rb, line 35</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">square?</span>
+      <span class="ruby-identifier">height</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">width</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000048">
+                    
+                    <a name="M000048"></a><b>to_s</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the width and height in a format suitable to be passed to <a
+href="Geometry.html#M000036">Geometry.parse</a>
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000048_source')" id="l_M000048_source">show</a>
+                        
+                    </p>
+                    <div id="M000048_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/geometry.rb, line 65</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+      <span class="ruby-identifier">s</span> = <span class="ruby-value str">&quot;&quot;</span>
+      <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">width</span>.<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">width</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;x#{height.to_i}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">height</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">modifier</span>.<span class="ruby-identifier">to_s</span>
+      <span class="ruby-identifier">s</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000051">
+                    
+                    <a name="M000051"></a><b>transformation_to</b>(dst, crop = false)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the scaling and cropping geometries (in string-based ImageMagick
+format) neccessary to transform this <a href="Geometry.html">Geometry</a>
+into the <a href="Geometry.html">Geometry</a> given. If crop is true, then
+it is assumed the destination <a href="Geometry.html">Geometry</a> will be
+the exact final resolution. In this case, the source <a
+href="Geometry.html">Geometry</a> is scaled so that an image containing the
+destination <a href="Geometry.html">Geometry</a> would be completely filled
+by the source image, and any overhanging image would be cropped. Useful for
+square thumbnail images. The cropping is weighted at the center of the <a
+href="Geometry.html">Geometry</a>.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000051_source')" id="l_M000051_source">show</a>
+                        
+                    </p>
+                    <div id="M000051_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/geometry.rb, line 85</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">transformation_to</span> <span class="ruby-identifier">dst</span>, <span class="ruby-identifier">crop</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">crop</span>
+        <span class="ruby-identifier">ratio</span> = <span class="ruby-constant">Geometry</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">dst</span>.<span class="ruby-identifier">width</span> <span class="ruby-operator">/</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">width</span>, <span class="ruby-identifier">dst</span>.<span class="ruby-identifier">height</span> <span class="ruby-operator">/</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">height</span> )
+        <span class="ruby-identifier">scale_geometry</span>, <span class="ruby-identifier">scale</span> = <span class="ruby-identifier">scaling</span>(<span class="ruby-identifier">dst</span>, <span class="ruby-identifier">ratio</span>)
+        <span class="ruby-identifier">crop_geometry</span>         = <span class="ruby-identifier">cropping</span>(<span class="ruby-identifier">dst</span>, <span class="ruby-identifier">ratio</span>, <span class="ruby-identifier">scale</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">scale_geometry</span>        = <span class="ruby-identifier">dst</span>.<span class="ruby-identifier">to_s</span>
+      <span class="ruby-keyword kw">end</span>
+
+      [ <span class="ruby-identifier">scale_geometry</span>, <span class="ruby-identifier">crop_geometry</span> ]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000041">
+                    
+                    <a name="M000041"></a><b>vertical?</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+True if the dimensions represent a vertical rectangle
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000041_source')" id="l_M000041_source">show</a>
+                        
+                    </p>
+                    <div id="M000041_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/geometry.rb, line 45</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">vertical?</span>
+      <span class="ruby-identifier">height</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">width</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

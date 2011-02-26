@@ -1,0 +1,141 @@
+.disabled { 
+  color: #999;
+}
+
+.active-scaffold a,
+.active-scaffold a:visited {
+color: #06c;
+}
+
+.active-scaffold a:hover {
+background-color: #FFE9AF;
+}
+
+
+.active-scaffold a,
+.active-scaffold a:visited {
+color: #3F3F3F;
+}
+
+.active-scaffold a.disabled {
+color: #9F9F9F;
+}
+
+.active-scaffold a:hover {
+background-color: #ff8;
+}
+
+/* Table :: Record Rows
+   ============================= */
+
+.active-scaffold tr.record td {
+ background-color:#FFE9AF;
+ border-bottom:1px solid #FFCF4F;
+ border-left:1px solid #FFCF4F;
+ color:#333333;
+ padding: 4px 4px;
+}
+
+.active-scaffold tr.even-record td {
+background-color:#FFFFFF;
+border-left:1px solid #DDDDDD;
+}
+
+.active-scaffold tr.record td.sorted {
+background-color:#FFD35F;
+border-bottom:1px solid #FFC21F;
+}
+
+.active-scaffold tr.record td.actions a {
+ padding: 0px;
+ margin: 0px;
+ cursor: pointer;
+}
+
+.active-scaffold tr.even-record td.sorted {
+background-color:#FFEEBF;
+border-bottom:1px solid #FFC21F;
+}
+
+.active-scaffold tbody.records td.empty {
+color: #999;
+}
+
+.active-scaffold .view {
+ background-color: #FFF4BF;
+ border: solid 1px #FFCF4F;
+}
+
+.active-scaffold h4,
+.active-scaffold h5 {
+ color: black;
+}
+
+.active-scaffold input.text-input,
+.active-scaffold select,
+.active-scaffold textarea
+ {
+ border: 1px solid gray;
+}
+
+.active-scaffold textarea {
+ width: 550px;
+ height: 120px;
+}
+
+/* FIX - nested scaffold actions were to low */
+table .active-scaffold .actions {
+ top: 0px;
+}
+
+/*
+.active-scaffold .show-view dt {
+color: #555;
+}
+
+.active-scaffold label {
+font: normal 11px verdana, sans-serif;
+color: #555;
+}
+
+
+.active-scaffold .description {
+color: #999;
+}
+
+.active-scaffold label.example {
+color: #888;
+}
+
+.active-scaffold input.example {
+color: #aaa;
+}
+
+.active-scaffold select:focus,
+.active-scaffold input.text-input:focus {
+background-color: #ffc;
+}
+
+.active-scaffold .sub-form table th {
+font: normal 10px verdana, sans-serif;
+color: #555;
+}
+
+.active-scaffold .sub-form .checkbox-list {
+background-color: #fff;
+border: solid 1px #1F7F00;
+}
+
+.active-scaffold .sub-form table td {
+background-color: transparent;
+color: #999;
+}
+
+.active-scaffold .sub-form table td.actions {
+ background-color: transparent;
+}
+
+.active-scaffold .sub-form .footer {
+color: #999;
+}
+*/

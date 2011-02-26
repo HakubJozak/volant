@@ -1,0 +1,2 @@
+module VisibilityHelper
+end

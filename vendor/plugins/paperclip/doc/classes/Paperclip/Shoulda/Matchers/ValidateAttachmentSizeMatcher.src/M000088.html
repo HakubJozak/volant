@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>passes_validation_with_size (Paperclip::Shoulda::Matchers::ValidateAttachmentSizeMatcher)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_size_matcher.rb, line 54</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">passes_validation_with_size</span>(<span class="ruby-identifier">new_size</span>)
+          <span class="ruby-identifier">file</span> = <span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;.&quot;</span>)
+          <span class="ruby-identifier">override_method</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">:size</span>){ <span class="ruby-identifier">new_size</span> }
+          <span class="ruby-identifier">override_method</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">:to_tempfile</span>){ <span class="ruby-identifier">file</span> }
+
+          (<span class="ruby-identifier">subject</span> = <span class="ruby-ivar">@subject</span>.<span class="ruby-identifier">new</span>).<span class="ruby-identifier">send</span>(<span class="ruby-ivar">@attachment_name</span>).<span class="ruby-identifier">assign</span>(<span class="ruby-identifier">file</span>)
+          <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">valid?</span>
+          <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">on</span>(<span class="ruby-node">&quot;#{@attachment_name}_file_size&quot;</span><span class="ruby-node">&quot;#{@attachment_name}_file_size&quot;</span>).<span class="ruby-identifier">blank?</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

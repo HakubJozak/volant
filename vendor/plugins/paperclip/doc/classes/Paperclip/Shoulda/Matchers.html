@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Paperclip::Shoulda::Matchers</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Paperclip::Shoulda::Matchers 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/lib/paperclip/matchers/validate_attachment_presence_matcher_rb.html">lib/paperclip/matchers/validate_attachment_presence_matcher.rb</a></li>
+            
+            <li><a href="../../../files/lib/paperclip/matchers/validate_attachment_content_type_matcher_rb.html">lib/paperclip/matchers/validate_attachment_content_type_matcher.rb</a></li>
+            
+            <li><a href="../../../files/lib/paperclip/matchers/have_attached_file_matcher_rb.html">lib/paperclip/matchers/have_attached_file_matcher.rb</a></li>
+            
+            <li><a href="../../../files/lib/paperclip/matchers/validate_attachment_size_matcher_rb.html">lib/paperclip/matchers/validate_attachment_size_matcher.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>H</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000123">have_attached_file</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>V</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000104">validate_attachment_content_type</a>,</li>
+                
+                <li><a href="#M000087">validate_attachment_presence</a>,</li>
+                
+                <li><a href="#M000135">validate_attachment_size</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">CLASS</span> <a href="Matchers/HaveAttachedFileMatcher.html">Paperclip::Shoulda::Matchers::HaveAttachedFileMatcher</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Matchers/ValidateAttachmentContentTypeMatcher.html">Paperclip::Shoulda::Matchers::ValidateAttachmentContentTypeMatcher</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Matchers/ValidateAttachmentPresenceMatcher.html">Paperclip::Shoulda::Matchers::ValidateAttachmentPresenceMatcher</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Matchers/ValidateAttachmentSizeMatcher.html">Paperclip::Shoulda::Matchers::ValidateAttachmentSizeMatcher</a></li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000123">
+                    
+                    <a name="M000123"></a><b>have_attached_file</b>(name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000123_source')" id="l_M000123_source">show</a>
+                        
+                    </p>
+                    <div id="M000123_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/have_attached_file_matcher.rb, line 4</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">have_attached_file</span> <span class="ruby-identifier">name</span>
+        <span class="ruby-constant">HaveAttachedFileMatcher</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000104">
+                    
+                    <a name="M000104"></a><b>validate_attachment_content_type</b>(name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000104_source')" id="l_M000104_source">show</a>
+                        
+                    </p>
+                    <div id="M000104_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_content_type_matcher.rb, line 4</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validate_attachment_content_type</span> <span class="ruby-identifier">name</span>
+        <span class="ruby-constant">ValidateAttachmentContentTypeMatcher</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000087">
+                    
+                    <a name="M000087"></a><b>validate_attachment_presence</b>(name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000087_source')" id="l_M000087_source">show</a>
+                        
+                    </p>
+                    <div id="M000087_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_presence_matcher.rb, line 4</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validate_attachment_presence</span> <span class="ruby-identifier">name</span>
+        <span class="ruby-constant">ValidateAttachmentPresenceMatcher</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000135">
+                    
+                    <a name="M000135"></a><b>validate_attachment_size</b>(name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000135_source')" id="l_M000135_source">show</a>
+                        
+                    </p>
+                    <div id="M000135_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/paperclip/matchers/validate_attachment_size_matcher.rb, line 4</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validate_attachment_size</span> <span class="ruby-identifier">name</span>
+        <span class="ruby-constant">ValidateAttachmentSizeMatcher</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

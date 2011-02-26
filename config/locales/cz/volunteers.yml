@@ -1,0 +1,78 @@
+cz:
+  add_participant: Přidat
+
+  activerecord:
+    models:
+      volunteer:
+        other: Dobrovolníci
+        one: Dobrovolník
+
+      incoming/leader:
+          other: Vedoucí
+          one: Vedoucí
+
+      incoming/leadership:
+          other: Vedoucí
+          one: Vedoucí
+
+      incoming/participant:
+        other: Účastníci
+        one: Účastník
+
+      incoming/participation:
+        other: Účastníci
+        one: Účastník
+
+    attributes:
+      volunteer: &volunteer_attributes
+        gender_in_list: ""
+        empty: ""
+        birthday: ""
+        unknown_volunteer: Neznámý
+        create_volunteer: Nový dobrovolník
+        firstname: Jméno
+        lastname: Příjmení
+        email: Email
+        phone: Telefon
+        apply_forms: Přihlášky
+        tags: Nálepky
+        age: Věk
+        gender: Pohlaví
+        male: Muž
+        female: Žena
+        birthdate: Datum narození
+        birthnumber: Rodné číslo
+        nationality: Národnost
+        occupation: Zaměstnání
+        city: Město
+        street: Ulice
+        zipcode: Směrovací číslo
+        address: Adresa
+        contact_address: Kontaktní adresa
+        contact_city: Město (kontaktní adresa)
+        contact_street: Ulice (kontaktní adresa)
+        contact_zipcode: Směrovací číslo (kontaktní adresa)
+        account: Číslo účtu
+        emergency: Pohotovostní kontakt
+        emergency_name: Jméno
+        emergency_day: Telefon ve dne
+        emergency_night: Telefon v noci
+        languages: Jazyky
+        speak_well: Mluvím dobře
+        speak_some: Mluvím trochu
+        special_needs: Speciální potřeby
+        past_experience: Zkušenosti
+        taggings: Nálepky
+        tags: Nálepky
+        active: Aktivní
+        cancelled: Účast stornována
+
+      incoming/leader: 
+        <<: *volunteer_attributes
+
+      incoming/participant: 
+        <<: *volunteer_attributes
+        country: Země
+        organization: Organizace
+        incoming_organization: Organizace
+        note: Poznámka
