@@ -24,7 +24,9 @@ end
 namespace :deploy do
   desc "Symlink shared configs and folders on each release."
   task :symlink_shared do
-    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    [ 'database.yml', 'volant.rb' ].each do |name|
+      run "ln -nfs #{shared_path}/config/#{name} #{release_path}/config/#{name}"
+    end
   end
 
   desc "Restart Application"

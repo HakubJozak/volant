@@ -9,5 +9,4 @@ gem 'will_paginate'
 
 group :test do
   gem "factory_girl", :source => "http://gemcutter.org"
-  gem "factory_girl", :source => "http://gemcutter.org"
 end
