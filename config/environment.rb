@@ -32,9 +32,7 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "factory_girl", :source => "http://gemcutter.org"
-#  config.gem "will_paginate"
-#  config.gem "fiveruns_tuneup"
-#  config.gem "newrelic_rpm"
+  config.gem "will_paginate"
   config.gem 'htmlentities'
   config.gem 'fastercsv'
   config.gem 'haml'
