@@ -23,16 +23,16 @@
     <%= stylesheet_link_tag 'color_picker/js_color_picker_v2' %>
   </head>
   <body id="body">
-        <%= render :partial => 'shared/admin_stripe' %>
+    <%= render :partial => 'shared/admin_stripe' %>
     <div id="contentwrapper">
       <div id="content">
-          <%= yield %>
-        </div>
+        <%= yield %>
+      </div>
     </div>
 
     <div id="sidebar">
       <% link_to root_path do %>
-      <img class="header" src="/images/volant.png" alt="Volant - VOLunteering ANT"/>
+        <img class="header" src="/images/volant.png" alt="Volant - VOLunteering ANT"/>
       <% end %>
       <%= render :partial => 'shared/menu' %>
     </div>
