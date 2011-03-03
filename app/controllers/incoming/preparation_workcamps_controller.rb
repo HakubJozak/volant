@@ -1,7 +1,7 @@
 require "#{RAILS_ROOT}/app/models/incoming/hosting"
 
 module Incoming
-  class WorkcampsController < ::WorkcampsController
+  class PreparationWorkcampsController < WorkcampsController
     #    helper 'incoming/workcamps'
 
     active_scaffold 'Incoming::Workcamp' do |config|
@@ -9,20 +9,13 @@ module Incoming
                              :code, :name,
                              :begin,
                              :end,
-                             :free_places,
-                             :free_places_for_males,
-                             :free_places_for_females,
-                             :participants,
-                             :participants_count,
-                             :bookings,
-                             :bookings_count,
                              # :partners_contacts,
                              # :partners_emails,
                              # :partners_phones,
                              # :partners_address,
+                             :quick_contact,
                              :leaderships,
                              :tags,
-                             :quick_contact,
                              :infosheets
                             ]
 

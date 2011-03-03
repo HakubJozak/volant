@@ -1,6 +1,10 @@
 module Incoming
   module WorkcampsHelper
 
+    def list_row_class(wc)
+      return 'running' if wc.running?
+      return 'over' if wc.over?
+    end
 
     def free_places_column(wc)
       "#{wc.free_places}/#{wc.capacity}"
@@ -45,12 +49,12 @@ module Incoming
       return icon('add_booking') if wc.bookings.empty?
       render_actors(wc.bookings)
     end
-    
+
     def participants_column(wc)
       participants = wc.participants.not_cancelled
 
       if participants.empty?
-        icon('add_participant') 
+        icon('add_participant')
       else
         sorted = participants.sort_by { |p| p.country.name }
         render_actors( sorted, :name => :lastname)
@@ -105,18 +109,18 @@ module Incoming
         slice.join(',') + '</br>'
       end
     end
-    
+
     def compact_table(labels)
       content_tag :table, :borders => 0 do
         labels.each_slice(2).collect do |slice|
           content_tag :tr do
             slice.collect do |label|
-              content_tag(:td, label)              
+              content_tag(:td, label)
             end
-          end          
+          end
         end
       end
     end
 
-  end  
+  end
 end

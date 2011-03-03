@@ -1,0 +1,24 @@
+<% submenu :incoming do %>
+  <% submenu :workcamps do %>
+     <%= menu_item flag(Organization.default_organization.country) + t("txt.menu.preparation"), incoming_preparation_workcamps_path %>
+     <%= menu_item flag(Organization.default_organization.country) + t("txt.menu.season"), incoming_season_workcamps_path %>
+   <% end %>
+
+   <li><%= link_to icon('leaders', Incoming::Leader.human_name(:count => 2)), incoming_leaders_path %></li>
+   <li><%= link_to icon('participants', Incoming::Participant.human_name(:count => 2)), incoming_participants_path %></li>
+   <%= model_menu_item Incoming::Partner %>
+<% end %>
+
+<% submenu :contacts do %>
+  <%= model_menu_item Organization %>
+  <%= model_menu_item Network %>
+<% end %>
+
+<% submenu :settings do %>
+  <%= model_menu_item EmailTemplate %>
+  <%= model_menu_item WorkcampIntention %>
+  <%= model_menu_item Tag %>
+  <%= model_menu_item User %>
+  <%= model_menu_item Country  %>
+  <%= model_menu_item Language  %>
+<% end %>

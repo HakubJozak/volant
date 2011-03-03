@@ -40,6 +40,17 @@ class Workcamp < ActiveRecord::Base
     "#{localize(self.begin)} - #{localize(self.end)}"
   end
 
+  def running?
+    return false unless self.begin && self.end
+    today = Date.today
+    self.begin <= today && self.end >= today
+  end
+
+  def over?
+    return false unless self.end
+    self.end < Date.today
+  end
+
   # TODO - implement
   def wanted
     false
@@ -80,7 +91,7 @@ class Workcamp < ActiveRecord::Base
     params.update :methods => [ :free_places_for_females, :free_places_for_males, :free_places ],
                   :except => [ :free_places_for_females, :free_places_for_males, :free_places ]
     super(params)
-  end  
+  end
 
   private
 

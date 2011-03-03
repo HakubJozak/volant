@@ -1,14 +1,13 @@
 require "#{RAILS_ROOT}/app/models/incoming/hosting"
 
 module Incoming
-  class WorkcampsController < ::WorkcampsController
+  class SeasonWorkcampsController < WorkcampsController
     #    helper 'incoming/workcamps'
 
     active_scaffold 'Incoming::Workcamp' do |config|
       config.list.columns = [
-                             :code, :name,
                              :begin,
-                             :end,
+                             :code,
                              :free_places,
                              :free_places_for_males,
                              :free_places_for_females,
@@ -16,14 +15,11 @@ module Incoming
                              :participants_count,
                              :bookings,
                              :bookings_count,
+                             :tags
                              # :partners_contacts,
                              # :partners_emails,
                              # :partners_phones,
                              # :partners_address,
-                             :leaderships,
-                             :tags,
-                             :quick_contact,
-                             :infosheets
                             ]
 
       config.columns << [ :bookings_count, :participants_count ]

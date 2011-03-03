@@ -34,7 +34,12 @@
       <% link_to root_path do %>
         <img class="header" src="/images/volant.png" alt="Volant - VOLunteering ANT"/>
       <% end %>
-      <%= render :partial => 'shared/menu' %>
+      <div id="menu">
+        <ul>
+          <%= render :partial => 'shared/outgoing_menu' %>
+          <%= render :partial => 'shared/incoming_menu' %>
+         </ul>
+      </div>
     </div>
 
     <%= render :partial => 'shared/footer' %>

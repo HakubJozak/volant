@@ -72,8 +72,10 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.namespace :incoming do |o|
-    o.resources :workcamps, :active_scaffold => true
-    o.resources :workcamps, :as => 'wc_with_partners', :controller => 'incoming/workcamps_with_partners', :active_scaffold => true
+    o.resources :preparation_workcamps, :active_scaffold => true
+    o.resources :season_workcamps, :active_scaffold => true
+
+    # o.resources :workcamps, :as => 'wc_with_partners', :controller => 'incoming/workcamps_with_partners', :active_scaffold => true
     o.resources :leaders, :active_scaffold => true
     o.resources :participations, :active_scaffold => true
     o.resources :participants, :active_scaffold => true
