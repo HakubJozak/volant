@@ -21,16 +21,16 @@
 /* GREEN */
 .active-scaffold tr.running td.sorted
 {
- background-color: green;
- border-bottom: 1px solid #cecece;
+ background-color: #68D459;
+ border-bottom: 1px solid #52C243;
 }
 
 
-.active-scaffold tr.running td,
+.active-scaffold tr.running td
 {
- background-color: green;
- border-left: 1px solid #cecece;
- border-bottom: 1px solid #cecece;
+  background-color: #B5DFAF;
+  border-left: 1px solid #AACFA5;
+  border-bottom: 1px solid #AACFA5;
 }
 
 
