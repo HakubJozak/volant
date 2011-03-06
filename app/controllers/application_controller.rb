@@ -30,7 +30,7 @@ class ApplicationController < VisibilityController
 
   def adjust_title
     if c = active_scaffold_config
-      label  = c.model.human_name(:count => 2) 
+      label  = c.model.human_name(:count => 2)
       label += ' (' + @title_suffixes.join(',') + ')' if @title_suffixes and !@title_suffixes.empty?
       c.list.label = label
     end
@@ -137,7 +137,7 @@ class ApplicationController < VisibilityController
     config.columns[:"#{prefix}places"].label = help.icon('places', Workcamp.human_attribute_name(:free_places), true)
     config.columns[:"#{prefix}places_for_males"].label = help.icon('male', Workcamp.human_attribute_name(:free_places_for_males), true)
     config.columns[:"#{prefix}places_for_females"].label = help.icon('female', Workcamp.human_attribute_name(:free_places_for_females), true)
-    
+
     config.columns[:"#{prefix}places"].sort_by :sql => "#{Workcamp.table_name}.places - #{Workcamp.table_name}.accepted_places"
     config.columns[:"#{prefix}places_for_males"].sort_by :sql => "#{Workcamp.table_name}.places - #{Workcamp.table_name}.accepted_places_males"
     config.columns[:"#{prefix}places_for_females"].sort_by :sql => "#{Workcamp.table_name}.places - #{Workcamp.table_name}.accepted_places_females"
@@ -165,14 +165,5 @@ class ApplicationController < VisibilityController
       params.update(options) if options
       config.action_links.add( action, params)
   end
-
-  # class << self
-  #   alias :old_inherited :inherited
-  # end
-
-  # def self.inherited(subclass)
-  #   logger.info("!!!!!!!! #{subclass}")
-  #   old_inherited(subclass)
-  # end
 
 end

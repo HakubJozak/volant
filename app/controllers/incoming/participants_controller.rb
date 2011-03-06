@@ -21,6 +21,7 @@ class Incoming::ParticipantsController < ::ApplicationController
                       :motivation
                      ]
 
+    config.list.per_page = 9999
     config.list.columns = [ :status, :gender_in_list, :country, :lastname, :firstname, :incoming_organization, :age, :tags, :workcamp ]
     group config, 'address', :street, :city, :zipcode
     group config, 'contact_address', :contact_street, :contact_city, :contact_zipcode, :collapsed => true
