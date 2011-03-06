@@ -25,14 +25,7 @@ class ApplyForm < ActiveRecord::Base
   end
 
   def toggle_cancelled
-    if cancelled?
-      self.cancelled = nil
-    else
-      self.cancelled = Time.now
-    end
-
-    save!
-    self
+    toggle_date(:cancelled)
   end
 
   # Cancels the form and returns self to enable method chaining.
@@ -44,6 +37,19 @@ class ApplyForm < ActiveRecord::Base
 
   def cancelled?
     not cancelled.nil?
+  end
+
+  private
+
+  def toggle_date(attr)
+    if send("#{attr}?")
+      self.send("#{attr}=", nil)
+    else
+      self.send("#{attr}=", Time.zone.now)
+    end
+
+    save!
+    self
   end
 
 end

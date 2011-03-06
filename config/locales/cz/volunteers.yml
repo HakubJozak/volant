@@ -67,12 +67,13 @@ cz:
         active: Aktivní
         cancelled: Účast stornována
 
-      incoming/leader: 
+      incoming/leader:
         <<: *volunteer_attributes
 
-      incoming/participant: 
+      incoming/participant:
         <<: *volunteer_attributes
         country: Země
+        confirmed: Účast potvrzena
         organization: Organizace
         incoming_organization: Organizace
         note: Poznámka

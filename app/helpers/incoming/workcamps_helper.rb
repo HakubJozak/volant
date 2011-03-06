@@ -56,7 +56,7 @@ module Incoming
       if participants.empty?
         icon('add_participant')
       else
-        sorted = participants.sort_by { |p| p.country.name }
+        sorted = participants.reject(&:cancelled).sort_by { |p| p.country.name }
         render_actors( sorted, :name => :lastname)
       end
     end

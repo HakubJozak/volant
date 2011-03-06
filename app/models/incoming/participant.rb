@@ -5,7 +5,7 @@ class Incoming::Participant < Person
   belongs_to :organization
   belongs_to :workcamp, :class_name => 'Incoming::Workcamp'
   has_one :apply_form, :dependent => :destroy, :class_name => 'Incoming::ApplyForm', :foreign_key => 'volunteer_id', :autosave => true
-  delegate :cancelled?, :cancel, :toggle_cancelled, :to => :apply_form
+  delegate :cancelled?, :cancel, :toggle_cancelled, :toggle_confirmed, :confirmed?, :confirm, :to => :apply_form
 
   validates_presence_of :country
   validates_presence_of :organization

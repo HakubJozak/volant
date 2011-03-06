@@ -5,6 +5,5 @@ class CancelledState < ApplyFormState
   end
 
   def info
-
   end
 end

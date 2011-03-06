@@ -3,6 +3,8 @@ require "#{RAILS_ROOT}/app/models/incoming/participant"
 class Incoming::ParticipantsController < ::ApplicationController
   helper 'incoming/participants'
 
+  before_filter :find_participant, :only => [ :confirm, :cancel ]
+
   active_scaffold 'Incoming::Participant' do |config|
     config.columns = [
                       :status,
@@ -10,7 +12,7 @@ class Incoming::ParticipantsController < ::ApplicationController
                       :organization,
                       :nationality,
                       :gender,
-                      :firstname, 
+                      :firstname,
                       :lastname,
                       :workcamp,
                       :email,
@@ -27,7 +29,10 @@ class Incoming::ParticipantsController < ::ApplicationController
     group config, 'details', :special_needs, :past_experience, :general_remarks, :motivation, :collapsed => true
     group config, 'comments', :taggings, :note
 
-    config.action_links.add :cancel, :label => help.icon('cancel', ApplyForm.human_attribute_name("toggle_cancel"), true), :type => :record, 
+    config.action_links.add :confirm, :label => help.icon('confirm', ApplyForm.human_attribute_name("toggle_confirmed"), true), :type => :record,
+                            :inline => false, :method => :post, :position => :replace
+
+    config.action_links.add :cancel, :label => help.icon('cancel', ApplyForm.human_attribute_name("toggle_cancel"), true), :type => :record,
                             :inline => false, :method => :post, :position => :replace
 
     setup_country_field(config)
@@ -44,16 +49,26 @@ class Incoming::ParticipantsController < ::ApplicationController
     super
 
     if nested?
-      active_scaffold_config.action_links.add(:new)       
+      active_scaffold_config.action_links.add(:new)
     else
-      active_scaffold_config.action_links.delete(:new) 
+      active_scaffold_config.action_links.delete(:new)
     end
   end
-  
+
+  def confirm
+    @participant.toggle_confirmed
+    redirect_to :back
+  end
+
   def cancel
-    @participant = Incoming::Participant.find(params[:id])
     @participant.toggle_cancelled
     redirect_to :back
+  end
+
+  private
+
+  def find_participant
+    @participant = Incoming::Participant.find(params[:id])
   end
 
 end

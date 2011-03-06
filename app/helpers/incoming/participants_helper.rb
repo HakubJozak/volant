@@ -6,16 +6,14 @@ module Incoming
     def status_column(participant)
       if participant.cancelled?
         icon('cancelled', Participant.human_attribute_name('cancelled'), true)
-      else
-        icon('active', Participant.human_attribute_name('active'), true)
+      elsif participant.confirmed?
+        icon('confirmed', Participant.human_attribute_name('confirmed'), true)
       end
     end
 
     def list_row_class(participant)
-      if participant.cancelled?
-        'cancelled'
-      end
-    end  
+      'cancelled' if participant.cancelled?
+    end
 
     def lastname_column(participant)
       participant.lastname.upcase
