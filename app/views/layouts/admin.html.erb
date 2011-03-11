@@ -3,10 +3,12 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title><%= t('txt.page_title') %></title>
-    <%= javascript_include_tag :defaults %>
-    <%= javascript_include_tag 'livepipe-ui/src/livepipe.js' %>
-    <%= javascript_include_tag 'livepipe-ui/src/window.js' %>
 
+    <%= javascript_include_tag 'vendor/jquery-1.4.4.js' %>
+    <%= javascript_include_tag 'vendor/jquery-ui-1.8.6.custom.min.js' %>
+
+
+    <%= javascript_include_tag :defaults %>
     <%= active_scaffold_includes %>
     <%= stylesheet_link_tag 'bubbles' %>
     <%= stylesheet_link_tag 'active_scaffold_overrides' %>
