@@ -2,7 +2,7 @@ set :application, "volant"
 server "bolen.onesim.net", :app, :web, :db, :primary => true
 
 set :scm, "git"
-set :repository,  "git@bolen.onesim.net:volant.git"
+set :repository,  "git://github.com/HakubJozak/volant.git"
 set :keep_releases, 2
 set :user, "volant"
 set :use_sudo, false
