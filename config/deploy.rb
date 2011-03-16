@@ -6,6 +6,7 @@ set :repository,  "git://github.com/HakubJozak/volant.git"
 set :keep_releases, 2
 set :user, "volant"
 set :use_sudo, false
+set :git_enable_submodules, true
 
 after "deploy:update_code", "deploy:symlink_shared"
 
