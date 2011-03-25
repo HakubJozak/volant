@@ -6,6 +6,13 @@ seeds:
   contact_person: Oskar
   phone: 777 666 666
 
+seeds:
+  name: ESTYES
+  code: EST
+  website: http://something.com
+  country: EST
+
+
 zelemin:
   country: CZ
   name: Zelemin

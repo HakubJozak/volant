@@ -21,7 +21,7 @@ module Import
 
       if fnode
         wc.extra_fee = to_integer(node, 'extrafee')
-        wc.extra_fee_currency = fnode.attributes['currency'] if wc.extra_fee
+        wc.extra_fee_currency = to_text(node, 'extrafee_currency') if wc.extra_fee
       end
     end
 
@@ -68,9 +68,9 @@ module Import
 
     def to_text(node, subnode)
       found = node.elements[subnode]
-      
-      if found.blank? 
-        nil 
+
+      if found.blank?
+        nil
       else
         # TODO - Optimize!
         result = XmlHelper::fix_quotes(found.text.strip)
@@ -79,7 +79,6 @@ module Import
         coder.decode(coder.decode(result))
       end
     rescue => e
-      debugger
       Rails.logger.error("Failed to extract text from subnode #{subnode}, #{e}")
       nil
     end
@@ -93,7 +92,7 @@ module Import
         return false if FALSE_VALS.include?(token)
         Rails.logger.warn("Invalid boolean value in XML: '#{token}'")
       end
-      
+
       false
     end
 

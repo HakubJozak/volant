@@ -1,0 +1,2289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<projectform>
+  <network>Alliance</network>
+  <application>E-vet</application>
+  <date_filed>2011-03-05</date_filed>
+  <version>1.0</version>
+  <pef_send_by>EST  Abiska</pef_send_by>
+  <pef_sender_email>hka@e-vet.fr</pef_sender_email>
+  <organization>ESTYES</organization>
+  <organization_code>EST</organization_code>
+  <projects>
+    <project id="25493">
+      <code>EST T5</code>
+      <project_type>TEE</project_type>
+      <work>CULT,</work>
+      <start_date>2011-07-25</start_date>
+      <end_date>2011-08-07</end_date>
+      <name>WHV DOWN TOWN TALLINN</name>
+      <location>TALLINN</location>
+
+      <country>EST</country>
+
+      <region></region>
+
+      <languages>eng,eng</languages>
+
+      <extrafee>200.00</extrafee>
+
+    <extrafee_currency>EUR</extrafee_currency>
+
+    <min_age>14</min_age>
+
+    <max_age>17</max_age>
+
+    <disabled_vols>0</disabled_vols>
+
+    <numvol>15</numvol>
+
+    <vegetarian></vegetarian>
+n
+    <family>0</family>
+
+    <description> </description>
+
+    <descr_partner>ProjectInternational language camp is organized for teenagers by non-profit educational association  Alternative Language Programs Satellite  within its annual activities on multicultural issues. The project s aim is to introduce the diversity of world cultures to the youth and provide them with good practices in intercultural communication by means of alternative English language practice which includes meetings, visits, direct contact to young people from abroad. The project gets 14 to 17 years old teens familiar with national traditions of the countries from all over the world, encourages them to develop their global thinking and individual initiative, tolerance and resistance to xenophobia and ethnic hatred. At the same time camp gives foreign participants a great chance to meet youngsters of Estonia and experience local life staying in the host families. NB This year the traditional project became the World Heritage Project with the aim to raise the awareness among the local community, especially young people, and visitors of Tallinn about the importance of the protection preservation and valuing the historical and cultural heritage.</descr_partner>
+
+    <descr_work>ProgramCamp program includes sightseeing in Estonian capital, visits to museums, meetings with organizations, games, discussions, presentations of the countries participants represent, team projects etc. Besides, there will be some practical work such as cleaning of some areas in the Old Town of Tallinn to keep it tidy on one hand as well as making guided tours for Old Town visitors with the emphasis on the importance of the WH preservation and ways to do it on the other hand. Volunteers will organize creative activities such as workshops, games, role plays, etc. around the topic of the WH protection, in particular the Old Town of Tallinn targeting local people and tourists. Activities will be documented, photos/ videos taken and exposed in the rooms of the School In Down Town. Teenagers will stay in the camp activities area from 10.00 to 17.00. There is one day-off in the camp which will be spent in the host family. Camp activities will take place in a learning centre situated in the very centre of the city. To activate teenagers and run the program there will be 8 international volunteers and members of a local school staff.</descr_work>
+
+    <descr_accomodation_and_food>In the apartments of the host families in Tallinn and suburbs. Travel cards or pick up will be provided. Participants will stay in a separate or shared room. You do NOT need a sleeping bag. Participants will have breakfasts and dinners in their host families, lunches i all together in the city.</descr_accomodation_and_food>
+
+    <descr_location_and_leisure>Camp will take place in Tallinn, the capital of Estonia listed in UNESCO WH List. In 2011 Tallinn carries the title of European Culture Capital. More on www.tallinn.ee TerminalAirport, bus et train station, harbor in Tallinn. Pick up by families at the point of arrival is possible upon request.</descr_location_and_leisure>
+
+    <descr_requirements>We will welcome any ideas to improve the program and your active participation in it. English is a camp language. The age of participants is 14 i 17. As you will be requested to make your country presentation, we ask you to bring some materials: postcards, posters, maps, symbols of your country or region, music, popular national games.Participation feeUnlike the traditional voluntary camp there will be mostly informal educational activities and alternative language practice; some work may occur only during camp actions. Camp program implementation involves costs for board, lodging, domestic transport and materials as well as expenses for excursions, visits, cultural activities and general administration. Since neither EstYES nor its camp partner ALPS receives any financial support for this camp from state or municipality, to make the camp happened we have to charge participation fee of 200 Euro which is different from your sending organization fee paid at home, and has to be paid by participants upon arrival to the camp.</descr_requirements>
+
+    <airport>TLL</airport>
+
+    <station>Talinn</station>
+
+    <numvol_m>7</numvol_m>
+
+    <numvol_f>8</numvol_f>
+
+    <max_vols_per_country>3</max_vols_per_country>
+
+    <max_teenagers>0</max_teenagers>
+
+    <max_national_vols>2</max_national_vols>
+
+    <lat_project>59.4388619</lat_project>
+
+    <lng_project>24.7544715</lng_project>
+
+    <notes></notes>
+
+    <lat_station>59.4388619</lat_station>
+
+    <lng_station>24.7544715</lng_station>
+
+    <bi_tri_multi>0</bi_tri_multi>
+
+  </project>
+
+  <project id="25485"><code>EST 19</code>
+
+  <project_type>STV</project_type>
+
+  <work>KIDS,</work>
+
+  <start_date>2011-08-08</start_date>
+
+  <end_date>2011-08-22</end_date>
+
+  <name>DOWN TOWN KIDS</name>
+
+  <location>TALLINN</location>
+
+  <country>EST</country>
+
+  <region></region>
+
+  <languages>eng,eng</languages>
+
+  <extrafee>.00</extrafee>
+
+  <extrafee_currency>EUR</extrafee_currency>
+
+  <min_age>19</min_age>
+
+  <max_age>99</max_age>
+
+  <disabled_vols>0</disabled_vols>
+
+  <numvol>8</numvol>
+
+  <vegetarian></vegetarian>
+
+  <family>0</family>
+
+  <description> </description>
+
+  <descr_partner>ProjectThis project is organized for local children by the non-profit educational association  Alternative Language Programs Satellite  within its annual activities on multicultural issues for kids. The project s aim is to introduce the diversity of world cultures to children and provide them with good practices in intercultural communication using the learning-by-doing method and organizing alternative English language practice. The project gets the kids of 10 to 13 years old familiar with customs and traditions of the countries from all over the world and encourages them to develop their cross-cultural thinking and tolerance.</descr_partner>
+
+  <descr_work>Activating kids in the city camp and providing them with cross-cultural learning experience. Volunteers will do it through informal methods of teaching and working in small group techniques. Among the activities to be held by team of volunteers are playing the games and music popular the countries the volunteers represent; training kids to perform pieces of amateur drama; preparing festivals, intellectual and sport games as well as discussions and excursions round the places of interest; actions for peace and nature protection; leading and supporting kids in their work on the team projects within themes like  Healthy body, healthy spirit ,  Good habits ,  My small home in the big world ,  War and peace , etc. Volunteers together with a local project coordinator are responsible for the day activities in the camp. The work can be pretty hard, involving long working hours, requiring high commitment and responsibility. You will stay with kids 10.00 i 17.00 and spend another hour to prepare next day activities. In the course of camp there is one day off and at least one day of travel outside Tallinn together with kids. Before the city camp activities start there will be training in camp methodology and preparation. Most of kids are Russian-speaking children from minority group of Tallinn. The total number of kids is 30 to 40. Volunteers will work in pairs facilitating and leading a smaller group of 10 - 12 kids during the day. The camp activities will take place in a learning centre situated in the centre of the city.</descr_work>
+
+  <descr_accomodation_and_food>In the furnished apartments in the Mustamae residential area of Tallinn, about 15 min by trolley-bus to the city centre. Travel cards will be provided. Volunteers will stay in the shared rooms: 2-4 persons in one room. You do NOT need a sleeping bag. Volunteers will cook and have their breakfasts at the place of accommodation; lunches will be organized for the whole camp in the city.</descr_accomodation_and_food>
+
+  <descr_location_and_leisure>Camp will take place in Tallinn, the capital of Estonia. Tallinn is the European Capital of Culture 2011. You can get a lot of information on www.tallinn.eeLeisure timeThere are a lot of possibilities for leisure time activities as camp will take place in the capital where one can find attractions for any taste: sightseeing, museums, festivals, concerts, pubs, etc. especially this year since Tallinn is the European Capital of Culture 2011.</descr_location_and_leisure>
+
+  <descr_requirements>You have to be really motivated to work with kids. Experience in work with children is an advantage. Your ideas and actual preparation to do the activities for kids are essential. We ask you to bring some materials like postcards, posters, maps, symbols of your country, music or popular games etc which are typical for your country or region which can be used by you during your country presentation. We expect active volunteers with a good knowledge of history and culture of their country as well as with an ability and wish to present it to others in a creative way. A good level of English is required. The min age of volunteers is 20. Motivation letter is required</descr_requirements>
+
+  <airport>TLL</airport>
+
+  <station>Tallinn</station>
+
+  <numvol_m>4</numvol_m>
+
+  <numvol_f>4</numvol_f>
+
+  <max_vols_per_country>2</max_vols_per_country>
+
+  <max_teenagers>0</max_teenagers>
+
+  <max_national_vols>1</max_national_vols>
+
+  <lat_project>59.4388619</lat_project>
+
+  <lng_project>24.7544715</lng_project>
+
+  <notes></notes>
+
+  <lat_station>59.4388619</lat_station>
+
+  <lng_station>24.7544715</lng_station>
+
+  <bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25488"><code>EST 24</code>
+
+<project_type>STV</project_type>
+
+<work>ENVI,</work>
+
+<start_date>2011-08-29</start_date>
+
+<end_date>2011-09-10</end_date>
+
+<name>RISTITEE FARM</name>
+
+<location>KAINA</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>7</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>Project Hiiumaa according to the Nordic sagas emerged from the Baltic Sea as a small islet more than 10 000 years ago. The island of Hiiumaa was first mentioned in historical documents as a deserted island called Dageida in 1228. The first inhabitants settled down at the end of the 13th century. Hiiumaa is the second biggest island of Estonia: its area is 965 sq. km, population around 10 000. It has many historical and nature sights, and there are kind people known for their hospitality and good sense of humor. Ristitee farm is situated on the small island Kassari (19 sq. km) which is linked to Hiiumaa. The farm has about 100 horses and it specializes in eco-tourism in Kassari and horse riding for tourists. Indeed the area provides a lot of possibilities for this - with its beautiful sand dunes, pine woods and the high coastal junipers Kassari Island is ideal for hiking, picnics, camping, sunbathing and swimming. Kaina Bay between Kassari and Kaina and the numerous islets form a bird sanctuary with 70 different species - ideal place for bird watchers and nature lovers. The aim of the camp is to assist the protection of the environmental object - coastal meadows, which are unique in Europe. Give hand to Kassari people and have the great chance to experience everyday Estonian country life on the beautiful island of Hiiumaa</descr_partner>
+
+<descr_work>Volunteers will be mainly working on preserving NATURA areas, e.g. coastal meadows. This work will include cleaning and tidying up, cutting unwanted grass and bushes, deleting plants not typical for the area. This is an outdoors work in the very wet area. Another work will be to remover rusted wire left from the Soviet period in many places around the island. The working day is 6 -7 hours. One day will be free.</descr_work>
+
+<descr_accomodation_and_food>In the separate house on the sleeping mats. Volunteers have to bring sleeping bags. Toilet, hot water, sauna is available. Volunteers will have to prepare meals themselves with the help of locals.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Hiiumaa Island lies in the Baltic Sea west of Tallinn, 22 km from the mainland. Ristitee farm is situated on the seashore near to the forest. The nearest village is 10km away.Leisure timeSunbathing and swimming, hiking, birds watching, etc. Very good camp for nature lovers Excursion around the island is planned. Since Ristitee is also a horse farm you will certainly get the possibility to exercise horse riding.</descr_location_and_leisure>
+
+<descr_requirements>This camp is not suitable for volunteers allergic to different plants or hay. Volunteers have to bring rubber boots and waterproof clothes.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>3</numvol_m>
+
+<numvol_f>4</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>35.8616600</lat_project>
+
+<lng_project>104.1953970</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25480"><code>EST 12</code>
+
+<project_type>STV</project_type>
+
+<work>ENVI,</work>
+
+<start_date>2011-07-11</start_date>
+
+<end_date>2011-07-23</end_date>
+
+<name>ZOO I</name>
+
+<location>TALLINN</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>70.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>6</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectThe World Zoo and Aquarium Conservation Strategy adopted in 2005 puts the emphasis on wildlife conservation as one of the highest priorities for the zoos around the world. Once offering only public entertainment, the zoos today must take the role of wildlife conservation centres, breeding endangered species and supporting their recovery in the wild. Tallinn Zoo (http://www.loomaaed.ee) participates in a numerous conservation projects, playing a leading role in the reintroduction project of the European mink (Mustela lutreola). It has also provided specimens for the reintroduction of the Black vulture. Tallinn Zoo introduces the public to a variety of animals and conveys information about wildlife through interpretative signs and boards, interactive devices, printed handouts and media representations. From autumn through spring classes for young animal lovers - schoolchildren of different age are regularly conducted in the Zoo</descr_partner>
+
+<descr_work>The work mainly consists of doing various gardening jobs in the green areas of the large zoo territory: clearing and tiding up, mowing grass, cutting bushes, planting flowers. Most of the work will be outdoors. In case of rainy weather alternative work indoors will be found. The work is planned as 6-7 hours a day. NB Work does not include direct contact with the animals</descr_work>
+
+<descr_accomodation_and_food>Volunteers will stay in the residential area of Tallinn in the EstYES apartment, where long-term volunteers are usually accommodated. It takes about 15 min by bus to get from there to the city centre and around 40 min to get to the Zoo from the flat. Volunteers will have two bed rooms, common room, equipped kitchen, shower and toilets at their disposal. They will sleep on mattresses on the floor or in beds. Please bring your sleeping bags Volunteers have to prepare their own meals for breakfasts and dinners. Lunches will be taken together with the Zoo gardening staff at the working place. Volunteers will use public transport to go to work; tickets will be provided by EstYES.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Tallinn is the capital of Estonia, the largest city with 400 000 inhabitants and nearly as many tourists during summer. Tallinn is the European Capital of Culture 2011. You can get a lot of information on www.tallinn.ee. Zoo lies to the west from the city centre, about 20min by public transport.Leisure timeBesides that volunteers will get well acquainted with the zoo and its inhabitants, there are a lot of possibilities for leisure time activities since camp will take place in the capital, where one can find attractions for any taste: sightseeing et museums, festivals and concerts, live music, pubs, etc. This camp provides an excellent opportunity to experience vivid local life of Tallinn., especially this year when Tallinn carries the title of European Culture Capital.</descr_location_and_leisure>
+
+<descr_requirements>No special skills required, but you have to be ready for some physical work and relatively long hours. This camp is not suitable for volunteers allergic to hay. Tools will be provided, just take your working clothes and gloves and a sleeping bag Participation feeAs EstYES does not have funds to support your participation in this camp neither from the state nor from the private sponsors, you are asked to contribute 70 Euro towards cost of board and lodging, local transport and the program. The fee has to be paid by volunteers upon arrival to the camp.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>3</numvol_m>
+
+<numvol_f>3</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>59.4388619</lat_project>
+
+<lng_project>24.7544715</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25491"><code>EST T1</code>
+
+<project_type>TEE</project_type>
+
+<work>LANG,</work>
+
+<start_date>2011-06-16</start_date>
+
+<end_date>2011-06-27</end_date>
+
+<name>DOWN TOWN PRE TEEN</name>
+
+<location>VILJANDI</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>200.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>10</min_age>
+
+<max_age>14</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>10</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectThis project is organized for kids by the non-profit educational association  Alternative Language Programs Satellite  within its annual activities on multicultural issues. The project s aim is to introduce the diversity of world cultures to kids and provide them with intercultural communication by means of alternative English language practice which includes project work, games, handicrafts, meetings, talks, direct contact to young people from abroad. The project gets kids of 10 to 13 years old familiar with customs and traditions of the participating countries. At the same time this camp gives foreign participants a great chance to meet youngsters of Estonia and experience local life living all together in one place as one family. This shift of the camp will be organised in the countryside, in the village of Vaibla near Viljandi town in the South of Estonia where one can enjoy a picturesque landscape of forests, meadows and lakes. Staying in an international team of young people from all over the world, away from the big cities, doing the things together will become a lifetime experience that will bring you a new vision of yourself and a lot of new friends from different countries.</descr_partner>
+
+<descr_work>ProgramCamp program includes presentations, social and sport games, performances in the open air, handicrafts sessions, talks and discussions at the round table, team projects etc. Each day of the camp will have a country presentation, a subject to discuss and a related activity, and party/ disco in the evening. To activate teenagers and run the program there will be 10 international volunteers and members of a local school staff.</descr_work>
+
+<descr_accomodation_and_food>Teenagers will stay in the shared rooms for 4-8 persons of the same camp house as the volunteers and local staff one. Toilets and showers are of common use. You do NOT need a sleeping bag, but please bring your own towels. Meals are provided in the camp house s canteen. More information about the camp site is on www.veldemani.ee</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Camp will take place in Vaibla near Viljandi, big town situated in South Estonia on Sakala Upland. Viljandi lies 160 km from Tallinn, 100 km from Parnu and 80 km from Tartu. More info about Viljandi on www.viljandi.ee/?id=506 and www.viljandimaa.ee/turismiinfo/?lg=eng</descr_location_and_leisure>
+
+<descr_requirements>We will welcome your active participation in the camp activities. English is a camp language. The age of participants is 10 i 14. As you will be requested to make your country simple presentation, we ask you to bring some materials: postcards, posters, maps, symbols of your country or region, music or popular national games etc typical for your country which can be used by you during your country presentation. Participation feeUnlike the traditional volunteering camp this is a study camp and there will be mostly informal educational activities and alternative language practice. The camp program implementation involves costs for board, lodging, domestic transport and materials as well as cultural activities and general administration. Since neither EstYES nor its camp partner ALPS receives any financial support for this camp from state or municipality, to make the camp happened we have to charge the local participation fee of 200 Euro which is different from your sending organization fee paid at home, and it has to be paid by participants upon arrival to the camp or by bank transfer before beginning of the camp.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>5</numvol_m>
+
+<numvol_f>5</numvol_f>
+
+<max_vols_per_country>3</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>58.3676544</lat_project>
+
+<lng_project>25.5953351</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25468"><code>EST 15</code>
+
+<project_type>STV</project_type>
+
+<work>MANU,</work>
+
+<start_date>2011-07-18</start_date>
+
+<end_date>2011-07-30</end_date>
+
+<name>ERVITA MANOR IV</name>
+
+<location>KOERU</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>8</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>Project The aim of this camp is to help renovation of the historical Landlord House of Ervita Manor, which is the important object of historical and cultural heritage of Koeru Parish of Jarvamaa County. In the future the Landlord House will be renovated to the botanical garden with the accommodation, pool and saunas with the aim to promote sustainable tourism and eco-friendly living. Renovation has been going on for 8 years, but still there is a lot of work to be done and help of volunteers will be very much appreciated.</descr_partner>
+
+<descr_work>The work will involve mainly carrying rocks and building ruined walls. Work is quite physical, mainly outdoors. Also there may be some hey making in the fields (for sheep of farm). Volunteers will be working 7-8 hours per day and 5 days a week under the supervision of group leader. There will be also work specialists and technical help. In addition to work some workshops on renovation techniques will be offered.</descr_work>
+
+<descr_accomodation_and_food>The Manor House complex is managed by a Finnish family with two children, so you will share accommodation with them. The volunteers will stay in the separate room of the manor house on beds. But please bring your sleeping bag and pillow. Bed lines are provided, volunteers are asked to bring their own towels. Toilet, hot water, shower is available. Volunteers have to make breakfasts on their own while the rest of the meals will be cooked and served by the locals. Volunteers will be asked to help cleaning and washing up. Possibility of making own food is limited.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Ervita is a small village (with around 260 inhabitants) located in Jarvamaa County, Koeru Parish in northern-central Estonia. The closest towns are Paide (35 km) and Rakvere (55 km). The whole area has a beautiful nature, and there is real countryside and forests with wildlife around. Leisure timeSunbathing and swimming, fishing, beach volley on near by lake Vainjarv (300m). Very good camp for nature lovers Endla Nature Reserve with the possibility of bird watching and hiking is around. (http://www.endlakaitseala.ee/?id=824)</descr_location_and_leisure>
+
+<descr_requirements>As the work can be quite physical sometimes, the volunteers have to be in a good physical shape. This camp is not suitable for volunteers allergic to different plants or hay. Volunteers have to bring sleeping bag and some work clothes.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>4</numvol_m>
+
+<numvol_f>4</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>58.9625075</lat_project>
+
+<lng_project>26.0239902</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25483"><code>EST 16</code>
+
+<project_type>STV</project_type>
+
+<work>ENVI,</work>
+
+<start_date>2011-07-19</start_date>
+
+<end_date>2011-07-29</end_date>
+
+<name>ESTONIAN NATURE FUND CAMP</name>
+
+<location>PARNU</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>90.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>8</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectThis project is run in the cooperation with the Estonian Fund for Nature (ELF). ELF s conservation work camps project, which is carried out from 1998, has two main goals. One is to carry out conservation work in nature parks and protected areas and second is to bring people closer to nature, to promote environment-friendly and sustainable lifestyle. International conservation work camps are important part of ELF s conservation holidays project. In international work camps ELF always involves local people to work alongside participants from other countries. The benefit in education, understanding, shared cultures is great, and the experience remembered by all. Also this kind of conservation work helps to raise awareness of local people about values of local nature and importance of old traditional land management.First part of the camp will take place in Luitemaa Nature Reserve known for its well preserved costal-meadows and sand dunes. The second part will be in Puhtu-Laelatu Nature Reserve known for its rich plant communities and birdlife.</descr_partner>
+
+<descr_work>Luitemaa is one of the areas where Natterjack Toad (http://en.wikipedia.org/wiki/Natterjack_Toad ) was re-introduced in mid 2000s after dramatic decline of its Baltic population. To improve the breeding conditions of this extraordinary species of amphibian fine tuning of spawning bonds is carried out every year. The task will be removing vegetation from the costal ponds and preventing the spawning ponds from growing over. Photos from last year on https://picasaweb.google.com/siljamall/LuitemaaTalgud68August2010- may help to get an idea of work. Besides this work, some days will be spent on helping locals in nature friendly farming.In Pivarootsi the work will take place on coastal meadows and alvars. Practically it consists of cutting and collecting of brushwood, mainly junipers. This is important habitat protection work - preserving the alvars, important habitat for migratory birds. The important aspect of the work is linking human activities and nature: management of traditional landscape, abandoned during Soviet times. Typical working hours per day 6 hours per day (for example: 9 -12 et 13-16)</descr_work>
+
+<descr_accomodation_and_food>In Luitemaa we stay in Kollamaa guesthouse. Suurkyla is an old coastal village, first mentioned in old maps 450 years ago. The ancient Riga-Parnu road used to roam through the village. The peaceful village atmosphere, old buildings and beautifully decorated gardens make Suurkula attractive all through the year. The village is bordered by Haademeeste coastal meadow from the coast, the meadow is part of Luitemaa Nature reserve and is full of resting and migrating birds in spring, summer and autumn. On the ground floor one can find also sauna and toilets. The kitchen corner is with fridge, stove and oven. See more at www.kollamaa.ee In Luitemaa volunteers will cook themselves from the ingredients provided by the project.In Pivarootsi we will stay in a small rental house of Pivarootsi manor. The house has 6 bedrooms with 14 beds, a kitchen, living-room and sauna. The house is 170 years old and is located just 200 m from the sea cost. Family running the place has horses, dogs and cats. It is nice little reasonably comfortable place. More on http://www.pivarootsimois.ee/?lang=en In Pivarootsi the food will be provided by the hosts.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Western Estonia. First part of the camp will take place in Luitemaa Nature Reserve - 35 km south of Parnu known for its well preserved costal-meadows and sand dunes. More on http://www.5dvision.ee/edelamaa/main_eng.htm The second part will be in Puhtu-Laelatu Nature Reserve, in Pivarootsi village. Puhtu-Laelatu is known for its rich plant communities and birdlife. It s located some 80 km north-west of Parnu.Leisure timeThere are two days off. One of them is for special boat trip on the sea and visiting little island with hiking and picnic. On the second day we ll have time off in Estonian most popular seaside resort town Parnu. In the evenings: sauna, sea, camp fires, swimming, hiking etc.</descr_location_and_leisure>
+
+<descr_requirements>Volunteers have to bring working clothes: closed hiking shoes or boots, wet weather clothing, scarf or hat (to protect from the sun), sleeping bag, swimwear, towel, insect spray and sun cream. Working tools and gloves will be provided.Participation fee You are kindly asked to contribute 90 Euro towards cost of board, lodging and the whole program. The fee has to be paid by volunteers to host upon arrival to the camp.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Parnu</station>
+
+<numvol_m>4</numvol_m>
+
+<numvol_f>4</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>58.3860150</lat_project>
+
+<lng_project>24.4986370</lng_project>
+
+<notes></notes>
+
+<lat_station>58.3860150</lat_station>
+
+<lng_station>24.4986370</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25475"><code>EST 07</code>
+
+<project_type>STV</project_type>
+
+<work>KIDS,</work>
+
+<start_date>2011-06-25</start_date>
+
+<end_date>2011-07-12</end_date>
+
+<name>PARIISI FRA</name>
+
+<location>TAPA</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>fra,fra</languages>
+
+<extrafee>.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>19</min_age>
+
+<max_age>50</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>3</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>Project                                                                                                              Do you want to spend two weeks working with kids in the village of Paris in Estonia? Then this camp is for you The camp is organized for kids and teenagers by the Association of Teachers of French in Estonia. The main aim of the camp is to provide intensive experience of learning and practicing French for kids and teenagers outside school curriculum using facilities of children camp Pariisi. The camp program includes games and activities, performances in the open air, hikes, excursions and visits, talks and discussions in the working groups. Naturally the language of this camp is French i what else would you speak in Pariisi?</descr_partner>
+
+<descr_work>Activating kids and teenagers, providing cross-cultural learning experience for them as well as French language environment. It will be done through the games, drama, sport activities, excursions, discussions, etc. Volunteers along with local coordinators will be responsible for the whole program of the camp. The work can be pretty hard, involving long working hours some days, requiring high commitment and responsibility for the camp program.There will be two shifts during the period of camp. The first one will involve kids aged 8-10, the second one i teenagers aged 11-13. There is going to be around 40 participants in each shift. In addition to teachers there will be local young volunteer assistants in the camp.</descr_work>
+
+<descr_accomodation_and_food>Camp has two buildings with 2-5 bedded rooms. Volunteers will have their one room. Beds are provided, but please bring your sleeping bag. Toilets, showers and sauna are available. There is a hall for performances, open air stage, swimming pool, sport facilities for ball games, table tennis, bicycles, etc. Volunteers and participants will have their meals in the local cafe.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Camp takes place in Pariisi village, about 100 km from Tallinn the capital of Estonia. Nearest towns are Rakvere (20km) and Tapa (15km). The picturesque area around the camp with many hills, streams, rivers and lakes is very suitable for hikes and bicycle tours. Famous Lahemaa National Park is about 20 km from the camp. More information on www.visitestonia.com , www.lahemaa.ee, www.rakvere.ee Leisure timeThere are a lot of possibilities for leisure time activities: swimming, hiking, sports, etc. Excursions to Lahemaa National Park and Rakvere are foreseen.</descr_location_and_leisure>
+
+<descr_requirements>Special requirementsThe minimum age of volunteers is 19. Good level of French, also a Motivation Letter is required You should be really motivated to work with kids and teenagers. Previous experience is an asset. All ideas of activities for youngsters, games etc. are welcomed. Please bring some materials, postcards, posters, maps, music, etc. from your country.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>1</numvol_m>
+
+<numvol_f>2</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>25.0910750</lat_project>
+
+<lng_project>121.5598345</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25467"><code>EST 10</code>
+
+<project_type>STV</project_type>
+
+<work>MANU,</work>
+
+<start_date>2011-07-04</start_date>
+
+<end_date>2011-07-16</end_date>
+
+<name>ERVITA MANOR III</name>
+
+<location>KOERU</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>8</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>Project The aim of this camp is to help renovation of the historical Landlord House of Ervita Manor, which is the important object of historical and cultural heritage of Koeru Parish of Jarvamaa County. In the future the Landlord House will be renovated to the botanical garden with the accommodation, pool and saunas with the aim to promote sustainable tourism and eco-friendly living. Renovation has been going on for 8 years, but still there is a lot of work to be done and help of volunteers will be very much appreciated.</descr_partner>
+
+<descr_work>The work will involve mainly carrying rocks and building ruined walls. Work is quite physical, mainly outdoors. Also there may be some hey making in the fields (for sheep of farm). Volunteers will be working 7-8 hours per day and 5 days a week under the supervision of group leader. There will be also work specialists and technical help. In addition to work some workshops on renovation techniques will be offered.</descr_work>
+
+<descr_accomodation_and_food>The Manor House complex is managed by a Finnish family with two children, so you will share accommodation with them. The volunteers will stay in the separate room of the manor house on beds. But please bring your sleeping bag and pillow. Bed lines are provided, volunteers are asked to bring their own towels. Toilet, hot water, shower is available. Volunteers have to make breakfasts on their own while the rest of the meals will be cooked and served by the locals. Volunteers will be asked to help cleaning and washing up. Possibility of making own food is limited.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Ervita is a small village (with around 260 inhabitants) located in Jarvamaa County, Koeru Parish in northern-central Estonia. The closest towns are Paide (35 km) and Rakvere (55 km). The whole area has a beautiful nature, and there is real countryside and forests with wildlife around. Leisure timeSunbathing and swimming, fishing, beach volley on near by lake Vainjarv (300m). Very good camp for nature lovers Endla Nature Reserve with the possibility of bird watching and hiking is around. (http://www.endlakaitseala.ee/?id=824)</descr_location_and_leisure>
+
+<descr_requirements>As the work can be quite physical sometimes, the volunteers have to be in a good physical shape. This camp is not suitable for volunteers allergic to different plants or hay. Volunteers have to bring sleeping bag and some work clothes.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>4</numvol_m>
+
+<numvol_f>4</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>58.9625075</lat_project>
+
+<lng_project>26.0239902</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25490"><code>EST 17</code>
+
+<project_type>STV</project_type>
+
+<work>CULT,</work>
+
+<start_date>2011-07-22</start_date>
+
+<end_date>2011-08-07</end_date>
+
+<name>WHV - TALLINN DOWN TOWN</name>
+
+<location>TALLINN</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>8</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectThis project is organized for teenagers by non-profit educational association  Alternative Language Programs Satellite  within its annual activities on multicultural issues for teens. The project s aim is to introduce the diversity of world cultures to the youth and provide them with practices in intercultural communication using the learning-by-doing method which includes meetings, visits, direct contact to young people from abroad as well as alternative English language practice. The project gets 14 to 17 years old teens familiar with national traditions of the countries from all over the world, encourages them to develop their global thinking and individual initiative as well as tolerance and resistance to xenophobia and ethnic hatred. NB This year the traditional project became the World Heritage Project with the aim to raise the awareness among the local community, especially young people, and visitors of Tallinn about the importance of the protection preservation and valuing the historical and cultural heritage. This is the main topic of this camp included to the CCIVS WHV projects list.</descr_partner>
+
+<descr_work>Activating teenage participants in the city camp and providing them with cross-cultural learning experience.  Volunteers will do it through informal methods of teaching and working in small group techniques. There will be some practical work such as cleaning of some areas in the Old Town of Tallinn to keep it tidy on one hand as well as making guided tours for Old Town visitors with the emphasis on the importance of the WH preservation and ways to do it on the other hand. Besides, volunteers will organize creative activities such as workshops, games, role plays, etc. around the topic of the WH protection, in particular the Old Town of Tallinn targeting local people and tourists The activities will be documented, photos/ videos taken and exposed in the rooms of the School In Down Town as well as on specially created website Volunteers together with a local project coordinator are responsible for the day activities in the camp. The work can be pretty hard, involving long working hours, requiring high commitment and responsibility for the camp program and the young participants. You will stay with teens 10.00 i 17.00 and spend another hour to prepare next day activities. In the course of camp there is one day off. Most of local teens in the camp are Russian-speaking youngsters from minority group of Tallinn. Besides local teens 15 teenage participants from abroad are expected to join this camp. The total number of participants is about 40. Volunteers will work in pairs facilitating and leading a smaller group of 10 - 12 teens during the day. The camp activities will take place in a learning centre situated in the centre of the city.</descr_work>
+
+<descr_accomodation_and_food>In the furnished apartments in Mustamae residential area of Tallinn, about 15 min by trolley-bus to the city centre. Travel cards will be provided. Volunteers will stay in the shared rooms: 2-4 persons in room. You do NOT need a sleeping bag. Volunteers will cook and have their breakfasts at the place of accommodation; lunches will be organized for the whole camp in the city. And there are several ways to organize dinner on the volunteers  wish.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Camp will take place in Tallinn, the capital of Estonia listed in UNESCO WH List. More on www.tallinn.ee Diverse activities of European Culture Capital 2011</descr_location_and_leisure>
+
+<descr_requirements>You have to be really motivated to work with teens. Experience in work with youth is an advantage. Your ideas and actual preparation to do the activities for teens are essential. We ask you to bring some materials like postcards, posters, symbols of your country, music or popular national games etc typical for your country or region which can be used during your country presentation. We expect active volunteers with a good knowledge of history and culture of their country as well as with ability and wish to present it to others in a creative way. Good level of English is required. The minimum age of volunteers is 20.  Please add a motivation letter.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>4</numvol_m>
+
+<numvol_f>4</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>59.4388619</lat_project>
+
+<lng_project>24.7544715</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25482"><code>EST 13</code>
+
+<project_type>STV</project_type>
+
+<work>KIDS,</work>
+
+<start_date>2011-07-15</start_date>
+
+<end_date>2011-07-30</end_date>
+
+<name>PARIISI ENG</name>
+
+<location>TAPA</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>19</min_age>
+
+<max_age>50</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>3</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>Project                                                                                                              Do you want to spend two weeks working with kids in the village of Paris in Estonia? Then this camp is for you The camp is organized for kids and teenagers by the Association of Teachers of English in Estonia. The main aim of the camp is to provide intensive experience of learning and practicing of English language for kids and teenagers outside school curriculum using facilities of children camp Pariisi. The camp program includes games and activities, performances in the open air, hikes, excursions and visits, talks and discussions in the working groups. The language of the camp is English i although the name Pariisi might provoke another expectation</descr_partner>
+
+<descr_work>Activating kids and teenagers, providing cross-cultural learning experience for them as well as English language environment. It will be done through the games, drama, sport activities, excursions, discussions, etc. Volunteers along with local coordinators will be responsible for the whole program of the camp. The work can be pretty hard, involving long working hours some days, requiring high commitment and responsibility for the camp program.Age of kids is 10-15. There is going to be around 50 teenage participants in the camp.</descr_work>
+
+<descr_accomodation_and_food>Camp has two buildings with 2-5 bedded rooms. Volunteers will stay in their own room. Beds are provided, but please bring your sleeping bag. Toilets, showers and sauna are available. There is a hall for performances, open air stage, swimming pool, sport facilities for ball games, table tennis, bicycles, etc. Volunteers and participants will have their meals in the local canteen.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Camp takes place in Pariisi village, about 100 km from Tallinn the capital of Estonia. Nearest towns are Rakvere (20km) and Tapa (15km). The picturesque area around the camp with many hills, streams, rivers and lakes is very suitable for hikes and bicycle tours. Famous Lahemaa National Park is about 20 km from the camp. More information on www.visitestonia.com, www.lahemaa.ee, www.rakvere.ee  Leisure timeThere are a lot of possibilities for leisure time activities: swimming, hiking, sports, horse riding, etc. Excursions to Lahemaa National Park and Rakvere are possible.</descr_location_and_leisure>
+
+<descr_requirements>The minimum age of volunteers is 19. Good level of English, also a Motivation Letter is required You should be really motivated to work with kids and teenagers. Previous experience is an asset. All ideas of activities for youngsters, games etc. are welcomed. Please bring some materials, postcards, posters, maps, music, games, etc. from your country.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>1</numvol_m>
+
+<numvol_f>2</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>25.0910750</lat_project>
+
+<lng_project>121.5598345</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25474"><code>EST 06</code>
+
+<project_type>STV</project_type>
+
+<work>KIDS,</work>
+
+<start_date>2011-06-15</start_date>
+
+<end_date>2011-06-27</end_date>
+
+<name>DOWN TOWN PRE TEEN</name>
+
+<location>VILJANDI</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>10</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectThis project is organized for teenagers by the non-profit educational association  Alternative Language Programs Satellite  within its annual activities on multicultural issues. The project s aim is to introduce the diversity of world cultures to the youth and provide them with good practices in intercultural communication using the learning-by-doing method which includes project work, games, handicrafts, meetings, discussions, direct contact to young people from abroad as well as alternative English language practice. The project gets 10 to 13 years old kids from all over the world, providing them the first experience of the intercultural learning, teaching them tolerance and resistance to xenophobia.  NB This shift will be prepared by volunteers in Tallinn first, but run in the village of Vaibla near Viljandi in the South of Estonia.</descr_partner>
+
+<descr_work>Activating teenage participants in the summer country camp and providing them with cross-cultural learning experience. The volunteers will do it through informal methods of teaching and working in small group techniques. Among the activities to be held by the team of volunteers are playing games and music popular in the countries the volunteers represent; drama and sports; preparing festivals and disco parties, intellectual and social games, common discussions, handicrafts; leading and supporting teens in their work on the team projects within the discussed themes of the camp etc.; preparing and leading the teen teams  presentations on the countries the camp participants and volunteers are from. Each day of the camp will have a country presentation, a subject to learn or discuss and a related activity, and finally party in the evening. Volunteers together with a local project coordinator are responsible for the day activities in the camp. The work can be pretty hard, involving long working hours, requiring high commitment and responsibility for the camp program and the young participants. Before the camp activities start there is a short training in Down-Town camp methodology and preparation, which takes place in Tallinn. Most of local kids in the camp are Russian-speaking youngsters from the minority groups of Estonia. Besides local youth, 10 kids from abroad are expected to join this camp making total number of teens about 30.</descr_work>
+
+<descr_accomodation_and_food>During first day in Tallinn volunteers will stay in the furnished apartments in the Mustamae residential area, 15 min by trolley-bus to the city centre. Tickets will be provided. During days in the country volunteers will stay in the shared rooms for 2-4 persons of the same camp house as the teens  one. Toilets and showers are of common use. You do NOT need a sleeping bag, but please bring your own towels. All meals are provided in the camp house s canteen. More information about the camp site and accommodation conditions is on www.veldemani.ee</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Vaibla kyla near Viljandi www.veldemani.eeLeisure time:Leisure timeThere are a lot of possibilities for leisure time activities: swimming, hiking, sports, fishing, etc. Excursions to Viljandi and Tartu are foreseen.</descr_location_and_leisure>
+
+<descr_requirements>You have to be really motivated to work with kids. Experience in work with children is an advantage. Your ideas and actual preparation to do the activities for teens are essential. We ask you to bring some materials: postcards, posters, symbols of your country, music or popular national games etc typical for your country which can be used during your country presentation. Also it will be great if you can bring any traditional food to present during intercultural evenings. We expect active volunteers with a good knowledge of history and culture of their country as well as with an ability and wish to present it to others in a creative way. A good level of English is required. Please add a motivation letter.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Talinn</station>
+
+<numvol_m>5</numvol_m>
+
+<numvol_f>5</numvol_f>
+
+<max_vols_per_country>3</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>58.3676544</lat_project>
+
+<lng_project>25.5953351</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25477"><code>EST 09</code>
+
+<project_type>STV</project_type>
+
+<work>ENVI,</work>
+
+<start_date>2011-07-04</start_date>
+
+<end_date>2011-07-16</end_date>
+
+<name>KOESTI WATERMILL I</name>
+
+<location>VILJANDI</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>10</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>Project The aim of this camp is to help renovation works of the historical watermill Koesti. This watermill dating from the end of 18th century is an important object of heritage for the local community. The oldest part of the building existing at present was built in the second half of 19th century. In 1930 the watermill was made two-storied and on the river side the engineering for producing electric power was built. After the Second World War several changes have been made there. Today association managing the watermill put a lot of effort into developing it into a hydroelectric plant, which started to give first energy now. And this is a very important step for the local community which goes along with the general plan to raise the production use of energy from alternative sources in Estonia. At present such generating alternative energy projects have not been developed in Estonia yet to the noticeable extend, therefore Koesti Watermill is an important initiative which should be supported.</descr_partner>
+
+<descr_work>The work will involve mainly cleaning up/ recovering of the hydro power station canal and the banks of Koesti creek. This means quite physical work in the water removing mud, stones, branches of trees, etc. Volunteers have to bring rubber boots. Also there may be some clearing up the green areas around the mill and occasionally simple conservation jobs in the building (e.g. cleaning the walls before painting). Volunteers will be working 7-8 hours per day 5 days a week under the supervision of local technical leader.</descr_work>
+
+<descr_accomodation_and_food>The accommodation facilities will be quite simple: you will stay in the mill house in camp beds. Please bring your own sleeping bag. Please note that the shower is a self-made  summer shower  with the warmed water though. And there is dry toilet only. But you will have a good chance to try Estonian sauna on weekend. Simple traditional local food will be prepared by the hosts, volunteers will be asked to help cleaning and washing up. Possibility of making own food is limited.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>The project is located at the border of Viljandi, a town situated in South Estonia on Sakala Upland. Town of Viljandi with its 20,000 inhabitants is an independent unit of local authority and the centre of the county. As a culture town it is well known for its valued Culture Academy, Ugala Drama Theatre and the famous international Folk Music Festival (http://www.folk.ee) held yearly at the end of July. Viljandi lies 160 km from Tallinn, 98 km from Parnu and 80 km from Tartu. More information about Viljandi on www.viljandi.ee/?id=506 and www.viljandimaa.ee/turismiinfo/?lg=engLeisure timeThere are a lot of possibilities for leisure time activities as camp will take place in the town where one can find attractions for all tastes: sightseeing and museums, festivals, concerts, live music, pubs, etc. You can also spend time at Viljandi Lake and go swimming. Or simply stay at the mill having bonfire, barbeque and sauna with locals.</descr_location_and_leisure>
+
+<descr_requirements>This camp is not suitable for volunteers allergic to different plants or hay. Be prepared for physical work. Please note rather simple washing facilities in this camp. You have to bring your sleeping bag, working clothes and rubber boots. Volunteers older than 35 are particularly welcome</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Viljandi</station>
+
+<numvol_m>5</numvol_m>
+
+<numvol_f>5</numvol_f>
+
+<max_vols_per_country>3</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>58.3676544</lat_project>
+
+<lng_project>25.5953351</lng_project>
+
+<notes></notes>
+
+<lat_station>58.3676544</lat_station>
+
+<lng_station>25.5953351</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25492"><code>EST T2</code>
+
+<project_type>TEE</project_type>
+
+<work>MANU,</work>
+
+<start_date>2011-07-04</start_date>
+
+<end_date>2011-07-17</end_date>
+
+<name>KOPU</name>
+
+<location>KOPU</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>120.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>15</min_age>
+
+<max_age>17</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>6</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectKopu village is a centre of Community of Kopu, one of the smallest in Estonia with total population of around one thousand people. International workcamps have been taken place there since 2001. During past summers volunteers helped to build sport facilities for local school, cleaned up the school park, and did some renovation jobs at the old graveyard. Besides practical help, the volunteers made a significant impact on community life bringing new dynamics, intercultural exchange and international contacts to local youth. Being inspired by the years of international volunteering experience Kopu Community authorities continue hosting international camps and invite international volunteers this summer again. This year international camp will be combined with the national teenage work- and leisure camp taking place in Kopu at the same time.</descr_partner>
+
+<descr_work>Kopu School occupies old German manor house and it is surrounded by the large park. There will be various jobs in the school park and around the school building. The work is mainly clearing and tidying up of the park as well as other objects of local importance of the community. One of possible jobs is preparing woods for the school heating in winter period. Work will be mostly outdoors. Volunteers will be working along side with local youngsters of the national camp. The work will last only 4 hours a day from 9 to till lunch. After lunch there will be various activities together with local youngsters and free time for the group own activities. The main age of local young people is 13-18.</descr_work>
+
+<descr_accomodation_and_food>In the Kopu school sport facilities. Vounteers will sleep on the mattresses. Mattresses are provided, but please bring your sleeping bags. Pillows, linnens, towels will be provided. Toilets and showers are available. Meals will be prepared by kitchen staff and served in the school cantine 3 times a day.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Kopu village lies about 20 km to the west from Viljandi, an administrative centre of the county with population of 22 000 people. Distance from Tallinn is 180 km. The area is very beautiful - hilly with many small lakes and rivers and a lot of forest with wild nature. Here begins Soomaa National Park i a very popular place for hikes and canoe trips. More information on www.visitestonia.com, www.viljandi.ee, www.soomaa.ee .Leisure timeSport activities at accommodation site, competitions, swimming, barbeque, hiking and canoeing in Soomaa National Park, biking in the area, visits to the places of interest in the area. In addition to the official programme, trip to Viljandi, the capital of County, visit to Tartu - second largest city in Estonia and the University centre, or to Parnu, lively spa town on the sea side can be done by volunteers in their free time.</descr_location_and_leisure>
+
+<descr_requirements>No special skills are needed. Tools for the work will be provided. Please bring sleeping bag, working clothes and gloves. English and Estonian are the camp languages. It is important that the volunteers follow the rules and schedules of the national camp (e.g. they have to be back at accommodation by 21:00, from 23:00 is a repose, etc).  The age of participants is 15-17.Participation feeDue to difficult economic situation this year and the lack of financial support for the project from local community the participation fee of 120 Euro is requested from volunteers to cover the costs of board, leisure time activities as well as administrative and pedagogical costs. This fee is different from sending organisation fee paid at home, and it has to be paid by volunteers on arrival to the camp.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>3</numvol_m>
+
+<numvol_f>3</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>58.9159702</lat_project>
+
+<lng_project>22.1996997</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25484"><code>EST 18</code>
+
+<project_type>STV</project_type>
+
+<work>KIDS,</work>
+
+<start_date>2011-07-25</start_date>
+
+<end_date>2011-08-06</end_date>
+
+<name>MAIDLA</name>
+
+<location>RAPLA</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>7</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectMaidla is an orphanage, which was established over 50 year ago on the site of the old German manor house. It caters for around 35 youngsters aged 4 to 18. Children attend school, gymnasium or professional school in the county. The aim of the institution is to take care of children, create good conditions for their living there, ensure necessary medical and psychological treatment, organize free time activities for them and finally, prepare them for the independent life in future. Besides the manor house and the park, which occupies 3 ha, Maidla has also a garden, which supplies institution with vegetables. Naturally there is a lot of practical work to do there, especially in summer, and assistance of international volunteers will be appreciated. Although many children will be away for the whole period of camp living in the support families, those staying in Maidla will join volunteers for work and leisure.</descr_partner>
+
+<descr_work>Maintenance works in the park and on the territory of institution, preparing and piling up fire woods for heating in winter and other odd jobs outdoors and indoors. Another important task of the camp will be to activate youngsters of Maidla involving them to the practical work and running a leisure time program for them - organizing games and sport activities, introducing volunteers  home countries and cultures, providing practice of English language, etc. There will be around 12 young people aged 10 to 17 in Maidla at the time of the camp.</descr_work>
+
+<descr_accomodation_and_food>Volunteers will stay in the separate house, which is normally occupied by the eldest children. They will have 2-3 bedded rooms, shower, toilet, washing mashine. Sauna is available as well. Meals will be prepared by volunteers themselves in the instituton s kitchen from the food provided by the institution.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Maidla is a really tiny village, which lies 10 km east from Rapla, an administrative centre of the county with 7 000 inhabitants. Distance from Tallinn is about 60 km. Area around has a lot of small rivers and lakes as well as forests with wild life i nice place for hikes, swimming, enjoying nature. More information on www.raplamaa.ee Leisure timeVarious joined activities with Maidla youngsters. Hikes in the forest. Sport activities using institution s facilities. Some excursions and visits to the places of interest in the area. Trip to the seaside in Parnu can be organised. Besides during this time of year, there will be various cultural events in Rapla and neighbour villages, like Marjamaa Folk Festival, which will be possible to attend.</descr_location_and_leisure>
+
+<descr_requirements>Please bring working clothes and gloves. It would be very helpful if you could bring games, songs popular in your countries, ideas for activities with children, anything you can use for work with kids and teenagers of Maidla. Your previous experience in work with kids is an advantage. English is the camp language.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>3</numvol_m>
+
+<numvol_f>4</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>59.0003841</lat_project>
+
+<lng_project>24.7954157</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25476"><code>EST 08</code>
+
+<project_type>STV</project_type>
+
+<work>KIDS,</work>
+
+<start_date>2011-06-25</start_date>
+
+<end_date>2011-07-09</end_date>
+
+<name>VIHASOO</name>
+
+<location>VOSU</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>6</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectYouth organization  Vihasoo  has been working in Estonia in the field of social work since 1994. The major objective is to provide children with healthy and active rest, get the younger generation involved in different projects and give them chance to get informal education to develop themselves. The main activities, linked with youth culture - theater, music, dance, art, are organizing of workshops and entertaining activities for children and teenagers like forum-theatre, juggling., games, media and communication, intercultural learning through international projects. Often activities are supported by municipalities or cultural, social, volunteer organizations. Besides, Vihasoo runs courses and deliver lectures for camp workers, leaders and youth workers. The staff consists of professionals of formal and non-formal education: youth workers, social workers, street-workers, teachers. The recreation centre  Vihasoo  is situated 70km from Tallinn on the territory of Lahemaa National Park. The wonderful nature and nearness to the sea (about 100m) make the camp a perfect place for leisure. The area of 1,8 hectares allows us to accommodate  about 70 people at time. Vihasoo camp invites international volunteers to join it as animators for kids. Most of children are Russian-speaking from minority community of Estonia. The age is 6-15. More information on www.vihasoo.ee</descr_partner>
+
+<descr_work>The purpose of this camp is to make children acquainted with contemporary art trends and tendencies. Masters of such contemporary art styles as hard bass, body art, rap, beat-boxing, tectonics, and C-Valk, break dance, hip hop, drums, shuffle and others are invited to lead the workshops for youngsters. At the end of the week campers will take a trip to the nearby town Vosu where they are going to invite locals and tourists for a party and a disco at the lovely sandy beach of Vosu. As a result, the children are going to give a live performance to demonstrate some newly acquired skills at contemporary music and dance styles. The program includes creating a newspaper  making videos, drug and alcohol abuse prevention seminars, flash mobs, meeting the volunteers and the intercultural evening, workshops and master classes. We welcome enthusiastic volunteers enjoying working and communicating with children. Volunteer will be working in the partnership with the professional local educators and youth workers and they are asked to be able to lead an educating workshop on a contemporary style, be prepared for the intercultural evening, which includes national food, dances, songs and introduction of own country, conduct games indoors as well as outdoors, prepare some national games and activities for children.</descr_work>
+
+<descr_accomodation_and_food>In the separate house with other staff members in 4-6-bedded rooms. Volunteers will eat together with children and staff in the canteen. Showers, dry toiltets and sauna are available.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Vihasoo is lies in the picturesque Lahemaa National Park, 70km from Tallinn.. Surrounded by forest, near to the sea, it is the ideal place for vacations. The nearest town (7km) is Vosu, spa town with about 1000 inhabitants.Leisure timeHiking, swimming, sunbathing, sports, games, excursions to the places of interest in the Lahemaa National Park.</descr_location_and_leisure>
+
+<descr_requirements>You have to love kids and be really motivated to work with them. The work demands 24-hours commitment and it can be pretty hard sometimes. Weekend is not free Experience in work with children is an advantage. All exciting ideas of activities for kids, games etc are welcome. English and Russian are the camp languages.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Talinn</station>
+
+<numvol_m>3</numvol_m>
+
+<numvol_f>3</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>59.5756967</lat_project>
+
+<lng_project>25.9610395</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25472"><code>EST 22</code>
+
+<project_type>STV</project_type>
+
+<work>MANU,</work>
+
+<start_date>2011-08-14</start_date>
+
+<end_date>2011-08-25</end_date>
+
+<name>SANNA CULTURE MANOR II</name>
+
+<location>ROUGE VALD</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>40.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>6</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectSanna is a sparsely populated village typical for Southern Estonia. There is an old manor house in the center of village where NGO Sanna Culture Manor is located. Organization works since summer 2009. Sanna Culture Manor arranges art and culture events, workshops, seminars, courses and retreats. Essential emphasis is drawn upon sustainable living and environmental protection. This offers people alternative tourism with local ecological food and hiking in Sanna manor park hiking trails. The manor was built in 1586 and it is a unique and beautiful wooden building surrounded by an ancient park and the clear water Parlijogi (Pearl River). NGO Sanna Culture Manor has begun the renovation of the manor in cooperation with Rouge Local Authorities. As of autumn 2009 the village club rooms were renovated and furnished with traditional broadlooms, sewing appliances, full kitchen, volunteers  apartments, and carpenters workshop with appliances for traditional and modern woodwork. It is the second year Sanna Culture Manor in cooperation with EstYES invites international volunteers to help with several works as well as to meet artists, experience various workshops and help preparing and running local activities.</descr_partner>
+
+<descr_work>The work will include building a hiking trail, cleaning manor park. Renovation of rooms in the manor with natural materials and paints will also be part of the work as well. Also work in Sanna organic garden - watering, weeding, planting i is planned. The working day is 6 -7 hours, mainly outdoors.</descr_work>
+
+<descr_accomodation_and_food>In the manor house, bunk-bed room for volunteers. Bed linens are provided, toilet and shower available. All meals will be prepared by host organisation members and volunteers together.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Sanna is a small village (with around 80 inhabitants) located in Voru county in southern part of Estonia. The closest town is Voru (20 km). The whole area has a beautiful nature and many heritage sites. This region is known for its bumpy hills and thick primeval forests with wild nature. Houses are located far away from each other so that they are not visible to each other as Estonians have always loved peace and privacy. Activities and surrounding area in pictures: http://picasaweb.google.com/Hendriknoor Culture Manor website: www.kultuurimois.kultuuritehas.ee/kultuurimoiseng.html Leisure timeOn site volunteers can take part in the workshops and get acquainted with the work of artists. Camp is very suitable for nature lovers - there is beautiful nature which provides peace and harmony, Pearl River flowing through the village and several lakes are good refreshing place in summer. Traditional smoke sauna next to the river is available. Modern-traditional hot tub is situated next to the river giving beautiful view while enjoying hot and relaxing water in wooden tub. Sport activities - volleyball and crocket. Old bicycles which have been collected from local surroundings and renovated by local youth are available in Sanna bicycle workshop with the opportunity to try ride freak-bikes which have been made in Sanna by Latvian metal art designers. Bicycle trips will be organised.</descr_location_and_leisure>
+
+<descr_requirements>The volunteers just have to be aware that the camp will take place in a very small village Please bring working clothes and gloves and proper shoes for working. Camp language is English.Participation feeDue to difficult economic situation this year and the lack of financial support for the project the participation fee of 40 Euro is requested from volunteers to cover the costs of board and leisure activities. It has to be paid by volunteers upon arrival to the camp.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Voru</station>
+
+<numvol_m>3</numvol_m>
+
+<numvol_f>3</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>57.7299909</lat_project>
+
+<lng_project>26.9178470</lng_project>
+
+<notes></notes>
+
+<lat_station>57.8452224</lat_station>
+
+<lng_station>27.0038851</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25495"><code>EST T3</code>
+
+<project_type>TEE</project_type>
+
+<work>ENVI,</work>
+
+<start_date>2011-07-07</start_date>
+
+<end_date>2011-07-18</end_date>
+
+<name>VOLUNTEERING AND SPORT I</name>
+
+<location>HAAPSALU</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>250.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>14</min_age>
+
+<max_age>20</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>20</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectThis camp is organized for teenagers by youth sport club Lukas-Basket which has been running national youth camps for 12 years. This year they will host international teenage camps on the seaside in the West of Estonia in Laanemaa County in the municipality of Nova. Beautiful nature, numerous historical places, nealy 200 year long tradition of a health resort and unique cultural events are the treasures of the County. Nova with warm sea, white sand, wild mushroom and berry crops, several lakes, cobble stone road and many places of interest is ideal place for leisure. The aims of Nova camp is to give young people possibility to have active, healthy and meaningful summer vacations with different sport adventures, to enjoy unspoiled nature and to learn how to live in harmony with it, also to explore and realize own capacities. The program will include water activities, ball and sport games, eco-hiking, bicycle trips to places of interest, fishing, etc.  NO  to passive life,  YES  to active, healthy life i this is the message of the camp Besides, camp gives possibility for intensive contacts between local youth and their peers from abroad, showing youngsters the diversity of world cultures, broadening their horizons and encouraging active communication through games and activities. Finally, besides adventure and sport, there will be some voluntary work for nature protection in the camp. The area of the camp is about 3 hectares and it can host about 40 youngsters on one shift. The age of local participants is 13-20. Local teenagers are mainly Russian-speaking of minority communities of Estonia. More information and video is on www.sport-travel.ee</descr_partner>
+
+<descr_work>ProgramIn the programme there are diverse activities: windsurfing, rowing, paintball in the forest, sport games - football, rugby, volleyball, athletics, eco-hiking, bicycle trips in the area, waterskiing, net fishing, table tennis, different competitions, visit to house farm and horse riding, visit to Padise monastery, picnic in the Perakula on the seaside, going with ATV on some forest trails, sport orientation, visit to Roosta Adventure Park (www.roosta.ee) etc. In addition you can see and try yourself how Estonian people made traditional capets, have excursion to Haapsalu to see historical Episcopal Castle and visit to the experimental laboratory introducing the medieval alchemy and medicine. It all be done togethers with local youth and under supervisoon of experienced instructors.                                                                                                                         WorkThere will be also some work such as making fodder boxes for wild animals, cleaning local beach and old seaport from garbage. The work will be organised in the cooperation with local forestry department and local authorities.</descr_work>
+
+<descr_accomodation_and_food>In the military and tourist tents near to local school (50m) on the seaside. Sleeping bag and mat are needed. All facilities, like showers, toilets are provided in the school. There is possibility to try Estonian sauna. Food will be prepared by professional cook in the school and camps kitchen</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Nova is one of 11 municipalities of Laanemaa with about 400 inhabitants, located on the seaside 80 km west from capital of Estonia Tallinn and 40 km north from Haapsalu, famous spa town with many histoirical and cultural sites. More information (on Estonian) on http://www.novavald.ee/index.php/1 TerminalAirport, bus station, harbor in Tallinn; specially arranged bus to Nova. Pick up upon arrival to Tallinn is possible at additional fee of 20 Euro.</descr_location_and_leisure>
+
+<descr_requirements>Participants have to be sporty and a good physical shape. Please inform us beforehand about allergies or dietary requirements you have. The main age of participants is 14-20, but exceptions are quite possible. Smoking, drinking alcohol, using drugs is absolutely prohibited in the camp. Camp languages are English and Russian.Participation feeUnlike the  normal  camp there will be not so much traditional work. Nevertheless participants will be provided with board, lodging, local transportation and all equipment necessary to realize camp program. Obviously, program involves extra costs for excursions, trips out, visits, sport activities and general administration. Since neither EstYES nor its local camp partner, does not receive sufficient financial support for this camp from municipality or private sources, to realize this camp we have to charge participation fee of 250 Euro, which has to be paid by participants upon arrival to the camp.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>10</numvol_m>
+
+<numvol_f>10</numvol_f>
+
+<max_vols_per_country>4</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>2</max_national_vols>
+
+<lat_project>58.9392874</lat_project>
+
+<lng_project>23.5415276</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="f8f6989547d30f1c1ba0ae1156224649                  "><code>EST 02</code>
+
+<project_type>STV</project_type>
+
+<work>ENVI,</work>
+
+<start_date>2011-04-17</start_date>
+
+<end_date>2011-04-29</end_date>
+
+<name>SPRING AT KIIDI FARM</name>
+
+<location>VORU</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>1</disabled_vols>
+
+<numvol>10</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>The charm of Haanja Uplands in South Estonia lies in its lovely hilly landscape, winding roads and numerous lakes. Most of its ancient villages, peculiar dialect, handicrafts and customs have been preserved until today. The whole area, called Vorumaa, is an area of outstanding beauty. It is famous for its diverse and very well preserved nature. Untouched forests with rich wildlife, deep valleys, hills, 170 small lakes with extremely clean water, rivers with sand caves in their steep banks - you can find everything there. With the support of the state and local authorities the eco- and farm sustainable tourism has been developed in this area. Besides promoting the environmental tourism, this initiative supports rural development which is very important issue for Estonia. Association of Farm Tourism launched several projects and Kiidi Farm, where the camp takes place, is one of them. This is one of the oldest EstYES local partners, who had hosted nearly 20 camps with EstYES in the previous years.</descr_partner>
+
+<descr_work>Various works in the forest: cutting unwanted trees and bushes, burning old tree brunches and brushwood, preparing firewood for heating the farm, laying paths for skiing in winter and hikes in summer, possibly some construction works around the farm. Most of the work will be outdoors.</descr_work>
+
+<descr_accomodation_and_food>In the farmhouse in 2-3-bedded rooms. Sleeping bag is NOT needed. WC, shower, hot water, et sauna are available. Hosts will prepare meals themselves, however volunteers will be asked to help the kitchen.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Kiidi Farm is situated 20 km south of Voru, capital of the County. It has a population of 15 000 people and lies about 250 km south-east of Tallinn, very close to the Latvian and Russian borders. The closest village to Kiidi Farm is Rouge (3km) with a population of about 1000 people. More information about Estonia www.visitestonia.com, South-Estonia www.werro.ee, www.southestonia.info and Kiidi Farm www.kiidi.ee Leisure timeThere are many possibilities for leisure time, especially for those who love nature: acquaintance with nature sights in the area, hiking, canoeing, etc. Excursions to the historical sites of the County of Voru are planned as well. It might be possible to go for a short trip to Latvia, which is just 30 km away. Volunteers will have a very good chance to get in close contact with the local people, to experience local traditions and learn some customs like enjoying hot Estonian sauna</descr_location_and_leisure>
+
+<descr_requirements>Volunteers have to be flexible, adventurous and be in the good shape for physical work.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Vru</station>
+
+<numvol_m>5</numvol_m>
+
+<numvol_f>5</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project></lat_project>
+
+<lng_project></lng_project>
+
+<notes></notes>
+
+<lat_station></lat_station>
+
+<lng_station></lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25487"><code>EST 23</code>
+
+<project_type>STV</project_type>
+
+<work>MANU,</work>
+
+<start_date>2011-08-15</start_date>
+
+<end_date>2011-08-28</end_date>
+
+<name>FAMILY CAMP AT KIIDI FARM</name>
+
+<location>VORU</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>70.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>3</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>20</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectEstYES promotes camps where parents and children can participate together. The idea is to create a sort of temporary community where adults and children can share the idea of voluntary activity for the benefit of rural area. The schedule of the camp allows adults to act as volunteers like in any other voluntary camp (4-6 hours a day for practical tasks). Meanwhile children  work  as well, in the sense that they take part in the activities helping parents and sharing easy tasks with them. Local organisers supported by parents care about the children during the working activities, providing snacks, proposing games, etc. In the daily free time and in the days off group excursions will be suggested by the local hosts. Parents can join the camp in pair or alone with their children. The age of children is 3 to 13. Some English is necessary for parents in order to communicate among them and with the campleader. This camp follows positive experience of last five years.VenueIt is a long tradition for EstYES to organize international workcamps in co-operation with Kiidi Farm located in the Voru County in the South of Estonia. With the support of the state and local authorities the eco- and farm sustainable tourism has been developed in this area. Besides promoting the environmental tourism, this initiative supports rural development, which is an important issue for Estonia. Estonian Association of Farm Tourism has launched several projects, and Kiidi Farm, where the camp takes place, is one of them. It is run by the large Piho family with 8 kids of different age. More information on Kiidi Farm is on site www.kiidi.ee</descr_partner>
+
+<descr_work>Various works in the forest: cutting unwanted trees and bushes, burning old tree brunches and brushwood, preparing firewood for heating the farm; also diverse odd jobs in the farm buildings as well as general household work. Most of the work will be outdoors. There can be also some light maintaining works indoors if weather is too rainy. The work will be usually 4-6 hours a day, the rest of the time will be spend to get acquainted with the area, its natural and historical sites as well as with local people. Some local families will join the camp for work and leisure.</descr_work>
+
+<descr_accomodation_and_food>In the farmhouse in 2-4-bedded rooms. WC, shower, hot water, sauna are available. Hosts will prepare meals themselves, however, participants will be asked to help out in the kitchen.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>The charm of Haanja Uplands in South Estonia lies in its lovely hilly landscape, winding roads and numerous lakes. Most of its ancient villages, special dialect, handicraft, and customs have been preserved until today. The whole area, called Vorumaa, is an area of outstanding beauty. It is famous for its diverse and very well preserved nature. Untouched forests with wildlife, deep valleys, hills, 170 small lakes with extremely clean water, rivers with caves in the steep banks - you can find everything there. Kiidi Farm is situated 15 km south of Voru, capital of the County, which has a population of 17 000 people and lies about 250 km south-east of Tallinn, very close to the Latvian and Russian borders. The closest village to Kiidi Farm is Rouge (3km) with a population of less than 1000 people. More information about Estonia www.visitestonia.com; South-Estonia www.werro.ee, www.southestonia.info Leisure timeThere are many possibilities for leisure time, especially for those who love nature: acquaintance with nature of the area, hiking, swimming, etc. Excursions to the historical places of the County of Voru are planned as well. Volunteers will have a very good chance to get in close contact with the local people, experience local traditions and learn some customs like hot Estonian sauna</descr_location_and_leisure>
+
+<descr_requirements>The camp is open for families with their children aged 3 to 13. Parents can come in pairs or alone. English is the camp language.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>10</numvol_m>
+
+<numvol_f>10</numvol_f>
+
+<max_vols_per_country>5</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>2</max_national_vols>
+
+<lat_project>57.8452224</lat_project>
+
+<lng_project>27.0038851</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25479"><code>EST 11</code>
+
+<project_type>STV</project_type>
+
+<work>DISA,</work>
+
+<start_date>2011-07-05</start_date>
+
+<end_date>2011-07-30</end_date>
+
+<name>IMASTU</name>
+
+<location>TAPA</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>5</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectImastu is an institution for mentally handicapped children and youngsters. It caters for over 100 kids and young adults aged 6 to 30 with severe mental and genetic deceases. Most of them are orphans. Youngsters are divided in to 5 family groups where they live under supervision of staff. Children attend a special school arranged for them in Imastu. Since 1994 Imastu has been hosting international workcamps in summer and since 1999 - long-term volunteers to assist staff with daily work, bringing new ideas and approaches to the daily routine. In summer the volunteers are particularly needed to support staff and assist work with kids, especially in July when it is possible to offer more diverse outdoor activities for kids.</descr_partner>
+
+<descr_work>Looking after the children, helping staff in teaching them basic skills, feeding children, playing with them, arranging their outings, assisting in all other required activities. Each volunteer will work in the own family group. Volunteers will work under supervision and with assistance of local staff 30-35 hours a week, 2 days a week are free.</descr_work>
+
+<descr_accomodation_and_food>In the Institution in 2-bedded rooms. Beds and linens are provided. You do not have to bring sleeping bag. Shower and toilet is in the corridor, shared with the staff. You will eat together with the staff in local canteen or in your family groups. Possibility to make own food is limited.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Imastu is a very tiny village. It lies 90km east from Tallinn and 25 km west from Rakvere, administrative center of the area. The nearest city is Tapa (3km), large railway junction with about 10 000 inhabitants. Useful links: www.tapa.ee and www.visitestonia.com for general information about the country.Leisure timeImastu is laying in a picturesque landscape: fields, forests, lakes and unspoiled nature. It is the ideal region for hiking and cycling tours. There are good possibilities for horse riding and fishing right in Imastu. Excursions to places of interest in the capital Tallinn, Rakvere (est.1226), Lahemaa National Park as well as trips to the seaside (30km from Imastu) are easy to arrange.</descr_location_and_leisure>
+
+<descr_requirements>You have to be really motivated and committed to the work with physically and mentally disable children. Some previous experience or special knowledge is an advantage. Although English is a camp language, any knowledge of Estonian or Russian will make communication with locals easier.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>2</numvol_m>
+
+<numvol_f>3</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>25.0910750</lat_project>
+
+<lng_project>121.5598345</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25494"><code>EST T4</code>
+
+<project_type>TEE</project_type>
+
+<work>ENVI,</work>
+
+<start_date>2011-07-17</start_date>
+
+<end_date>2011-07-28</end_date>
+
+<name>VOLUNTEERING AND SPORT II</name>
+
+<location>HAAPSALU</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>250.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>14</min_age>
+
+<max_age>20</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>20</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectThis camp is organized for teenagers by youth sport club Lukas-Basket which has been running national youth camps for 12 years. This year they will host international teenage camps on the seaside in the West of Estonia in Laanemaa County in the municipality of Nova. Beautiful nature, numerous historical places, nealy 200 year long tradition of a health resort and unique cultural events are the treasures of the County. Nova with warm sea, white sand, wild mushroom and berry crops, several lakes, cobble stone road and many places of interest is ideal place for leisure. The aims of Nova camp is to give young people possibility to have active, healthy and meaningful summer vacations with different sport adventures, to enjoy unspoiled nature and to learn how to live in harmony with it, also to explore and realize own capacities. The program will include water activities, ball and sport games, eco-hiking, bicycle trips to places of interest, fishing, etc.  NO  to passive life,  YES  to active, healthy life i this is the message of the camp Besides, camp gives possibility for intensive contacts between local youth and their peers from abroad, showing youngsters the diversity of world cultures, broadening their horizons and encouraging active communication through games and activities. Finally, besides adventure and sport, there will be some voluntary work for nature protection in the camp. The area of the camp is about 3 hectares and it can host about 40 youngsters on one shift. The age of local participants is 13-20. Local teenagers are mainly Russian-speaking of minority communities of Estonia. More information and video is on www.sport-travel.ee</descr_partner>
+
+<descr_work>ProgramIn the programme there are diverse activities: windsurfing, rowing, paintball in the forest, sport games - football, rugby, volleyball, athletics, eco-hiking, bicycle trips in the area, waterskiing, net fishing, table tennis, different competitions, visit to house farm and horse riding, visit to Padise monastery, picnic in the Perakula on the seaside, going with ATV on some forest trails, sport orientation, visit to Roosta Adventure Park (www.roosta.ee) etc. In addition you can see and try yourself how Estonian people made traditional capets, have excursion to Haapsalu to see historical Episcopal Castle and visit to the experimental laboratory introducing the medieval alchemy and medicine. It all be done togethers with local youth and under supervisoon of experienced instructors.                                                                                                                         WorkThere will be also some work such as making fodder boxes for wild animals, cleaning local beach and old seaport from garbage. The work will be organised in the cooperation with local forestry department and local authorities.</descr_work>
+
+<descr_accomodation_and_food>In the military and tourist tents near to local school (50m) on the seaside. Sleeping bag and mat are needed. All facilities, like showers, toilets are provided in the school. There is possibility to try Estonian sauna. Food will be prepared by professional cook in the school and camps kitchen</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Nova is one of 11 municipalities of Laanemaa with about 400 inhabitants, located on the seaside 80 km west from capital of Estonia Tallinn and 40 km north from Haapsalu, famous spa town with many histoirical and cultural sites. More information (on Estonian) on http://www.novavald.ee/index.php/1 TerminalAirport, bus station, harbor in Tallinn; specially arranged bus to Nova. Pick up upon arrival to Tallinn is possible at additional fee of 20 Euro.</descr_location_and_leisure>
+
+<descr_requirements>Participants have to be sporty and a good physical shape. Please inform us beforehand about allergies or dietary requirements you have. The main age of participants is 14-20, but exceptions are quite possible. Smoking, drinking alcohol, using drugs is absolutely prohibited in the camp. Camp languages are English and Russian.Participation feeUnlike the  normal  camp there will be not so much traditional work. Nevertheless participants will be provided with board, lodging, local transportation and all equipment necessary to realize camp program. Obviously, program involves extra costs for excursions, trips out, visits, sport activities and general administration. Since neither EstYES nor its local camp partner, does not receive sufficient financial support for this camp from municipality or private sources, to realize this camp we have to charge participation fee of 250 Euro, which has to be paid by participants upon arrival to the camp.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>10</numvol_m>
+
+<numvol_f>10</numvol_f>
+
+<max_vols_per_country>4</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>2</max_national_vols>
+
+<lat_project>58.9392874</lat_project>
+
+<lng_project>23.5415276</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25471"><code>EST 04</code>
+
+<project_type>STV</project_type>
+
+<work>MANU,</work>
+
+<start_date>2011-06-05</start_date>
+
+<end_date>2011-06-19</end_date>
+
+<name>SANNA CULTURE MANOR I</name>
+
+<location>ROUGE VALD</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>40.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>6</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectSanna is a sparsely populated village typical for Southern Estonia. There is an old manor house in the center of village where NGO Sanna Culture Manor is located. Organization works since summer 2009. Sanna Culture Manor arranges art and culture events, workshops, seminars, courses and retreats. Essential emphasis is drawn upon sustainable living and environmental protection. This offers people alternative tourism with local ecological food and hiking in Sanna manor park hiking trails. The manor was built in 1586 and it is a unique and beautiful wooden building surrounded by an ancient park and the clear water Parlijogi (Pearl River). NGO Sanna Culture Manor has begun the renovation of the manor in cooperation with Rouge Local Authorities. As of autumn 2009 the village club rooms were renovated and furnished with traditional broadlooms, sewing appliances, full kitchen, volunteers  apartments, and carpenters workshop with appliances for traditional and modern woodwork. It is the second year Sanna Culture Manor in cooperation with EstYES invites international volunteers to help with several works as well as to meet artists, experience various workshops and help preparing and running local activities.</descr_partner>
+
+<descr_work>The work will include building a hiking trail, cleaning manor park. Renovation of rooms in the manor with natural materials and paints will also be part of the work as well. Also work in Sanna organic garden - watering, weeding, planting i is planned. The working day is 6 -7 hours, mainly outdoors.</descr_work>
+
+<descr_accomodation_and_food>In the manor house, bunk-bed room for volunteers. Bed linens are provided, toilet and shower available. All meals will be prepared by host organisation members and volunteers together.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Sanna is a small village (with around 80 inhabitants) located in Voru county in southern part of Estonia. The closest town is Voru (20 km). The whole area has a beautiful nature and many heritage sites. This region is known for its bumpy hills and thick primeval forests with wild nature. Houses are located far away from each other so that they are not visible to each other as Estonians have always loved peace and privacy. Activities and surrounding area in pictures: http://picasaweb.google.com/Hendriknoor Culture Manor website: www.kultuurimois.kultuuritehas.ee/kultuurimoiseng.html Leisure timeOn site volunteers can take part in the workshops and get acquainted with the work of artists. Camp is very suitable for nature lovers - there is beautiful nature which provides peace and harmony, Pearl River flowing through the village and several lakes are good refreshing place in summer. Traditional smoke sauna next to the river is available. Modern-traditional hot tub is situated next to the river giving beautiful view while enjoying hot and relaxing water in wooden tub. Sport activities - volleyball and crocket. Old bicycles which have been collected from local surroundings and renovated by local youth are available in Sanna bicycle workshop with the opportunity to try ride freak-bikes which have been made in Sanna by Latvian metal art designers. Bicycle trips will be organised.</descr_location_and_leisure>
+
+<descr_requirements>The volunteers just have to be aware that the camp will take place in a very small village Please bring working clothes and gloves and proper shoes for working. Camp language is English.Participation feeDue to difficult economic situation this year and the lack of financial support for the project the participation fee of 40 Euro is requested from volunteers to cover the costs of board and leisure activities. It has to be paid by volunteers upon arrival to the camp.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Voru</station>
+
+<numvol_m>3</numvol_m>
+
+<numvol_f>3</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>57.7299909</lat_project>
+
+<lng_project>26.9178470</lng_project>
+
+<notes></notes>
+
+<lat_station>57.8452224</lat_station>
+
+<lng_station>27.0038851</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25486"><code>EST 21</code>
+
+<project_type>STV</project_type>
+
+<work>MANU,</work>
+
+<start_date>2011-08-08</start_date>
+
+<end_date>2011-08-21</end_date>
+
+<name>JARVAMAA CAMP</name>
+
+<location>PAIDE</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>35</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>8</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectJarvamaa - Jarva County lies in the very centre of Estonia, it covers area of 2700 km2 and has a total population of about 40 000 people. This area is known for he rich history, which left a lot of objects of historical and cultural heritage, as well as for its beautiful nature with hills, forests, springs, rivers and lakes. The idea of this camp, held in cooperation with local authorities and county youth centre, is to assist their general maintenance plan. But the most important aim of the camp is to introduce multiculturalism and offer intercultural exchange to local young people of this rural area, who will be involved to the project. Finally, participants are expected to pass strong message about voluntary service to the local youth.</descr_partner>
+
+<descr_work>The work will include landscaping, clearing and tidying up green areas and objects of local importance in villages and towns of Jarvamaa County. The first week of the camp will take place in the village of Imavere, where volunteers will be taking care of old historical cemetery. The second week will take place in the village of Tueri, where volunteers will work in and around local school and some objects of cultural heritage. The working day will be 5 -7 hours, 5 days a week. Work will be done under supervision of local technical leaders. Work is mainly physical and outdoors. Local young people will be joining international volunteers for work and leisure.</descr_work>
+
+<descr_accomodation_and_food>The accommodation will be changing since the work will be done in different places. In Imavere volunteers will stay in the community house building and in Tueri in the local school, sleeping on the mattresses. Please bring your sleeping bag and pillow. Toilets and showers are available, as well as kitchen with necessary equipment for cooking. Volunteers will have to make breakfasts on their own while the rest of the meals will be cooked and served by the locals.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Paide, the capital of Jarva County, lies in central-Estonia, half way from Tallinn to Tartu, where the main road turns to Viljandi. Distance from Tallinn is 120 km, from Tartu -100 km, from Viljandi - 70 km. More information on www.jarva.ee , www.visitestonia.com Leisure timeSwimming in lakes and rivers, hiking to marshes, playing ball games with local youth, partying, joining local festivities. It is planned to visit Estonian Diary Museum and sawmill in Imavere, also towns of Paide, Tueri and many others of Jarvamaa County.  This camp is absolutely suitable for people who can enjoy the rural life and want to learn more about history and culture of Estonia staying in the heart of it</descr_location_and_leisure>
+
+<descr_requirements>Volunteers should be interested in rural life, be ready to participate in the discussions about rural development with the local young people. It will be appreciated if the volunteers can tell about national voluntary schemes and youth work for the benefit of the local development in their own countries. As the work can be quite physical sometimes, the volunteers have to be in a good physical shape.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Talinn</station>
+
+<numvol_m>4</numvol_m>
+
+<numvol_f>4</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>58.8814809</lat_project>
+
+<lng_project>25.5490263</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25478"><code>EST 14</code>
+
+<project_type>STV</project_type>
+
+<work>ENVI,</work>
+
+<start_date>2011-07-18</start_date>
+
+<end_date>2011-07-30</end_date>
+
+<name>KOESTI WATERMILL II</name>
+
+<location>VILJANDI</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>10</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>Project The aim of this camp is to help renovation works of the historical watermill Koesti. This watermill dating from the end of 18th century is an important object of heritage for the local community. The oldest part of the building existing at present was built in the second half of 19th century. In 1930 the watermill was made two-storied and on the river side the engineering for producing electric power was built. After the Second World War several changes have been made there. Today association managing the watermill put a lot of effort into developing it into a hydroelectric plant, which started to give first energy now. And this is a very important step for the local community which goes along with the general plan to raise the production use of energy from alternative sources in Estonia. At present such generating alternative energy projects have not been developed in Estonia yet to the noticeable extend, therefore Koesti Watermill is an important initiative which should be supported.</descr_partner>
+
+<descr_work>The work will involve mainly cleaning up/ recovering of the hydro power station canal and the banks of Koesti creek. This means quite physical work in the water removing mud, stones, branches of trees, etc. Volunteers have to bring rubber boots. Also there may be some clearing up the green areas around the mill and occasionally simple conservation jobs in the building (e.g. cleaning the walls before painting). Volunteers will be working 7-8 hours per day 5 days a week under the supervision of local technical leader.</descr_work>
+
+<descr_accomodation_and_food>The accommodation facilities will be quite simple: you will stay in the mill house in camp beds. Please bring your own sleeping bag. Please note that the shower is a self-made  summer shower  with the warmed water though. And there is dry toilet only. But you will have a good chance to try Estonian sauna on weekend. Simple traditional local food will be prepared by the hosts, volunteers will be asked to help cleaning and washing up. Possibility of making own food is limited.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>The project is located at the border of Viljandi, a town situated in South Estonia on Sakala Upland. Town of Viljandi with its 20,000 inhabitants is an independent unit of local authority and the centre of the county. As a culture town it is well known for its valued Culture Academy, Ugala Drama Theatre and the famous international Folk Music Festival (http://www.folk.ee) held yearly at the end of July. Viljandi lies 160 km from Tallinn, 98 km from Parnu and 80 km from Tartu. More information about Viljandi on www.viljandi.ee/?id=506 and www.viljandimaa.ee/turismiinfo/?lg=engLeisure timeThere are a lot of possibilities for leisure time activities as camp will take place in the town where one can find attractions for all tastes: sightseeing and museums, festivals, concerts, live music, pubs, etc. You can also spend time at Viljandi Lake and go swimming. Or simply stay at the mill having bonfire, barbeque and sauna with locals.</descr_location_and_leisure>
+
+<descr_requirements>This camp is not suitable for volunteers allergic to different plants or hay. Be prepared for physical work. Please note rather simple washing facilities in this camp. You have to bring your sleeping bag, working clothes and rubber boots. Volunteers older than 35 are particularly welcome</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Viljandi</station>
+
+<numvol_m>5</numvol_m>
+
+<numvol_f>5</numvol_f>
+
+<max_vols_per_country>3</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>58.3676544</lat_project>
+
+<lng_project>25.5953351</lng_project>
+
+<notes></notes>
+
+<lat_station>58.3676544</lat_station>
+
+<lng_station>25.5953351</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25466"><code>EST 05</code>
+
+<project_type>STV</project_type>
+
+<work>MANU,</work>
+
+<start_date>2011-06-06</start_date>
+
+<end_date>2011-06-18</end_date>
+
+<name>ERVITA MANOR II</name>
+
+<location>KOERU</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>8</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>Project The aim of this camp is to help renovation of the historical Landlord House of Ervita Manor, which is the important object of historical and cultural heritage of Koeru Parish of Jarvamaa County. In the future the Landlord House will be renovated to the botanical garden with the accommodation, pool and saunas with the aim to promote sustainable tourism and eco-friendly living. Renovation has been going on for 8 years, but still there is a lot of work to be done and help of volunteers will be very much appreciated.</descr_partner>
+
+<descr_work>The work will involve mainly carrying rocks and building ruined walls. Work is quite physical, mainly outdoors. Also there may be some hey making in the fields (for sheep of farm). Volunteers will be working 7-8 hours per day and 5 days a week under the supervision of group leader. There will be also work specialists and technical help. In addition to work some workshops on renovation techniques will be offered.</descr_work>
+
+<descr_accomodation_and_food>The Manor House complex is managed by a Finnish family with two children, so you will share accommodation with them. The volunteers will stay in the separate room of the manor house on beds. But please bring your sleeping bag and pillow. Bed lines are provided, volunteers are asked to bring their own towels. Toilet, hot water, shower is available. Volunteers have to make breakfasts on their own while the rest of the meals will be cooked and served by the locals. Volunteers will be asked to help cleaning and washing up. Possibility of making own food is limited.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Ervita is a small village (with around 260 inhabitants) located in Jarvamaa County, Koeru Parish in northern-central Estonia. The closest towns are Paide (35 km) and Rakvere (55 km). The whole area has a beautiful nature, and there is real countryside and forests with wildlife around. Leisure timeSunbathing and swimming, fishing, beach volley on near by lake Vainjarv (300m). Very good camp for nature lovers Endla Nature Reserve with the possibility of bird watching and hiking is around. (http://www.endlakaitseala.ee/?id=824)</descr_location_and_leisure>
+
+<descr_requirements>As the work can be quite physical sometimes, the volunteers have to be in a good physical shape. This camp is not suitable for volunteers allergic to different plants or hay. Volunteers have to bring sleeping bag and some work clothes.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>4</numvol_m>
+
+<numvol_f>4</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>58.9625075</lat_project>
+
+<lng_project>26.0239902</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25497"><code>EST T7</code>
+
+<project_type>TEE</project_type>
+
+<work>ENVI,</work>
+
+<start_date>2011-08-08</start_date>
+
+<end_date>2011-08-17</end_date>
+
+<name>VOLUNTEERING AND SPORT IV</name>
+
+<location>HAAPSALU</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>250.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>14</min_age>
+
+<max_age>20</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>20</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectThis camp is organized for teenagers by youth sport club Lukas-Basket which has been running national youth camps for 12 years. This year they will host international teenage camps on the seaside in the West of Estonia in Laanemaa County in the municipality of Nova. Beautiful nature, numerous historical places, nealy 200 year long tradition of a health resort and unique cultural events are the treasures of the County. Nova with warm sea, white sand, wild mushroom and berry crops, several lakes, cobble stone road and many places of interest is ideal place for leisure. The aims of Nova camp is to give young people possibility to have active, healthy and meaningful summer vacations with different sport adventures, to enjoy unspoiled nature and to learn how to live in harmony with it, also to explore and realize own capacities. The program will include water activities, ball and sport games, eco-hiking, bicycle trips to places of interest, fishing, etc.  NO  to passive life,  YES  to active, healthy life i this is the message of the camp Besides, camp gives possibility for intensive contacts between local youth and their peers from abroad, showing youngsters the diversity of world cultures, broadening their horizons and encouraging active communication through games and activities. Finally, besides adventure and sport, there will be some voluntary work for nature protection in the camp. The area of the camp is about 3 hectares and it can host about 40 youngsters on one shift. The age of local participants is 13-20. Local teenagers are mainly Russian-speaking of minority communities of Estonia. More information and video is on www.sport-travel.ee</descr_partner>
+
+<descr_work>ProgramIn the programme there are diverse activities: windsurfing, rowing, paintball in the forest, sport games - football, rugby, volleyball, athletics, eco-hiking, bicycle trips in the area, waterskiing, net fishing, table tennis, different competitions, visit to house farm and horse riding, visit to Padise monastery, picnic in the Perakula on the seaside, going with ATV on some forest trails, sport orientation, visit to Roosta Adventure Park (www.roosta.ee) etc. In addition you can see and try yourself how Estonian people made traditional capets, have excursion to Haapsalu to see historical Episcopal Castle and visit to the experimental laboratory introducing the medieval alchemy and medicine. It all be done togethers with local youth and under supervisoon of experienced instructors.                                                                                                                         WorkThere will be also some work such as making fodder boxes for wild animals, cleaning local beach and old seaport from garbage. The work will be organised in the cooperation with local forestry department and local authorities.</descr_work>
+
+<descr_accomodation_and_food>In the military and tourist tents near to local school (50m) on the seaside. Sleeping bag and mat are needed. All facilities, like showers, toilets are provided in the school. There is possibility to try Estonian sauna. Food will be prepared by professional cook in the school and camps kitchen</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Nova is one of 11 municipalities of Laanemaa with about 400 inhabitants, located on the seaside 80 km west from capital of Estonia Tallinn and 40 km north from Haapsalu, famous spa town with many histoirical and cultural sites. More information (on Estonian) on http://www.novavald.ee/index.php/1 TerminalAirport, bus station, harbor in Tallinn; specially arranged bus to Nova. Pick up upon arrival to Tallinn is possible at additional fee of 20 Euro.</descr_location_and_leisure>
+
+<descr_requirements>Participants have to be sporty and a good physical shape. Please inform us beforehand about allergies or dietary requirements you have. The main age of participants is 14-20, but exceptions are quite possible. Smoking, drinking alcohol, using drugs is absolutely prohibited in the camp. Camp languages are English and Russian.Participation feeUnlike the  normal  camp there will be not so much traditional work. Nevertheless participants will be provided with board, lodging, local transportation and all equipment necessary to realize camp program. Obviously, program involves extra costs for excursions, trips out, visits, sport activities and general administration. Since neither EstYES nor its local camp partner, does not receive sufficient financial support for this camp from municipality or private sources, to realize this camp we have to charge participation fee of 250 Euro, which has to be paid by participants upon arrival to the camp.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>10</numvol_m>
+
+<numvol_f>10</numvol_f>
+
+<max_vols_per_country>4</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>2</max_national_vols>
+
+<lat_project>58.9392874</lat_project>
+
+<lng_project>23.5415276</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25481"><code>EST 20</code>
+
+<project_type>STV</project_type>
+
+<work>ENVI,</work>
+
+<start_date>2011-08-08</start_date>
+
+<end_date>2011-08-20</end_date>
+
+<name>ZOO II</name>
+
+<location>TALLINN</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>70.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>6</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectThe World Zoo and Aquarium Conservation Strategy adopted in 2005 puts the emphasis on wildlife conservation as one of the highest priorities for the zoos around the world. Once offering only public entertainment, the zoos today must take the role of wildlife conservation centres, breeding endangered species and supporting their recovery in the wild. Tallinn Zoo (http://www.loomaaed.ee) participates in a numerous conservation projects, playing a leading role in the reintroduction project of the European mink (Mustela lutreola). It has also provided specimens for the reintroduction of the Black vulture. Tallinn Zoo introduces the public to a variety of animals and conveys information about wildlife through interpretative signs and boards, interactive devices, printed handouts and media representations. From autumn through spring classes for young animal lovers - schoolchildren of different age are regularly conducted in the Zoo</descr_partner>
+
+<descr_work>The work mainly consists of doing various gardening jobs in the green areas of the large zoo territory: clearing and tiding up, mowing grass, cutting bushes, planting flowers. Most of the work will be outdoors. In case of rainy weather alternative work indoors will be found. The work is planned as 6-7 hours a day. NB Work does not include direct contact with the animals</descr_work>
+
+<descr_accomodation_and_food>Volunteers will stay in the residential area of Tallinn in the EstYES apartment, where long-term volunteers are usually accommodated. It takes about 15 min by bus to get from there to the city centre and around 40 min to get to the Zoo from the flat. Volunteers will have two bed rooms, common room, equipped kitchen, shower and toilets at their disposal. They will sleep on mattresses on the floor or in beds. Please bring your sleeping bags Volunteers have to prepare their own meals for breakfasts and dinners. Lunches will be taken together with the Zoo gardening staff at the working place. Volunteers will use public transport to go to work; tickets will be provided by EstYES.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Tallinn is the capital of Estonia, the largest city with 400 000 inhabitants and nearly as many tourists during summer. Tallinn is the European Capital of Culture 2011. You can get a lot of information on www.tallinn.ee. Zoo lies to the west from the city centre, about 20min by public transport.Leisure timeBesides that volunteers will get well acquainted with the zoo and its inhabitants, there are a lot of possibilities for leisure time activities since camp will take place in the capital, where one can find attractions for any taste: sightseeing et museums, festivals and concerts, live music, pubs, etc. This camp provides an excellent opportunity to experience vivid local life of Tallinn., especially this year when Tallinn carries the title of European Culture Capital.</descr_location_and_leisure>
+
+<descr_requirements>No special skills required, but you have to be ready for some physical work and relatively long hours. This camp is not suitable for volunteers allergic to hay. Tools will be provided, just take your working clothes and gloves and a sleeping bag Participation feeAs EstYES does not have funds to support your participation in this camp neither from the state nor from the private sponsors, you are asked to contribute 70 Euro towards cost of board and lodging, local transport and the program. The fee has to be paid by volunteers upon arrival to the camp.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>3</numvol_m>
+
+<numvol_f>3</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>59.4388619</lat_project>
+
+<lng_project>24.7544715</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="25496"><code>EST T6</code>
+
+<project_type>TEE</project_type>
+
+<work>ENVI,</work>
+
+<start_date>2011-07-27</start_date>
+
+<end_date>2011-08-07</end_date>
+
+<name>VOLUNTEERING AND SPORT III</name>
+
+<location>HAAPSALU</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>250.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>14</min_age>
+
+<max_age>20</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>20</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>ProjectThis camp is organized for teenagers by youth sport club Lukas-Basket which has been running national youth camps for 12 years. This year they will host international teenage camps on the seaside in the West of Estonia in Laanemaa County in the municipality of Nova. Beautiful nature, numerous historical places, nealy 200 year long tradition of a health resort and unique cultural events are the treasures of the County. Nova with warm sea, white sand, wild mushroom and berry crops, several lakes, cobble stone road and many places of interest is ideal place for leisure. The aims of Nova camp is to give young people possibility to have active, healthy and meaningful summer vacations with different sport adventures, to enjoy unspoiled nature and to learn how to live in harmony with it, also to explore and realize own capacities. The program will include water activities, ball and sport games, eco-hiking, bicycle trips to places of interest, fishing, etc.  NO  to passive life,  YES  to active, healthy life i this is the message of the camp Besides, camp gives possibility for intensive contacts between local youth and their peers from abroad, showing youngsters the diversity of world cultures, broadening their horizons and encouraging active communication through games and activities. Finally, besides adventure and sport, there will be some voluntary work for nature protection in the camp. The area of the camp is about 3 hectares and it can host about 40 youngsters on one shift. The age of local participants is 13-20. Local teenagers are mainly Russian-speaking of minority communities of Estonia. More information and video is on www.sport-travel.ee</descr_partner>
+
+<descr_work>ProgramIn the programme there are diverse activities: windsurfing, rowing, paintball in the forest, sport games - football, rugby, volleyball, athletics, eco-hiking, bicycle trips in the area, waterskiing, net fishing, table tennis, different competitions, visit to house farm and horse riding, visit to Padise monastery, picnic in the Perakula on the seaside, going with ATV on some forest trails, sport orientation, visit to Roosta Adventure Park (www.roosta.ee) etc. In addition you can see and try yourself how Estonian people made traditional capets, have excursion to Haapsalu to see historical Episcopal Castle and visit to the experimental laboratory introducing the medieval alchemy and medicine. It all be done togethers with local youth and under supervisoon of experienced instructors.                                                                                                                         WorkThere will be also some work such as making fodder boxes for wild animals, cleaning local beach and old seaport from garbage. The work will be organised in the cooperation with local forestry department and local authorities.</descr_work>
+
+<descr_accomodation_and_food>In the military and tourist tents near to local school (50m) on the seaside. Sleeping bag and mat are needed. All facilities, like showers, toilets are provided in the school. There is possibility to try Estonian sauna. Food will be prepared by professional cook in the school and camps kitchen</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Nova is one of 11 municipalities of Laanemaa with about 400 inhabitants, located on the seaside 80 km west from capital of Estonia Tallinn and 40 km north from Haapsalu, famous spa town with many histoirical and cultural sites. More information (on Estonian) on http://www.novavald.ee/index.php/1 TerminalAirport, bus station, harbor in Tallinn; specially arranged bus to Nova. Pick up upon arrival to Tallinn is possible at additional fee of 20 Euro.</descr_location_and_leisure>
+
+<descr_requirements>Participants have to be sporty and a good physical shape. Please inform us beforehand about allergies or dietary requirements you have. The main age of participants is 14-20, but exceptions are quite possible. Smoking, drinking alcohol, using drugs is absolutely prohibited in the camp. Camp languages are English and Russian.Participation feeUnlike the  normal  camp there will be not so much traditional work. Nevertheless participants will be provided with board, lodging, local transportation and all equipment necessary to realize camp program. Obviously, program involves extra costs for excursions, trips out, visits, sport activities and general administration. Since neither EstYES nor its local camp partner, does not receive sufficient financial support for this camp from municipality or private sources, to realize this camp we have to charge participation fee of 250 Euro, which has to be paid by participants upon arrival to the camp.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>10</numvol_m>
+
+<numvol_f>10</numvol_f>
+
+<max_vols_per_country>4</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>2</max_national_vols>
+
+<lat_project>58.9392874</lat_project>
+
+<lng_project>23.5415276</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+<project id="e9e9394460604ea575b1cf1bbc74d1f1"><code>EST 03</code>
+
+<project_type>STV</project_type>
+
+<work>MANU,</work>
+
+<start_date>2011-05-23</start_date>
+
+<end_date>2011-06-04</end_date>
+
+<name>ERVITA MANOR I</name>
+
+<location>KOERU</location>
+
+<country>EST</country>
+
+<region></region>
+
+<languages>eng,eng</languages>
+
+<extrafee>.00</extrafee>
+
+<extrafee_currency>EUR</extrafee_currency>
+
+<min_age>18</min_age>
+
+<max_age>99</max_age>
+
+<disabled_vols>0</disabled_vols>
+
+<numvol>8</numvol>
+
+<vegetarian></vegetarian>
+
+<family>0</family>
+
+<description> </description>
+
+<descr_partner>Project The aim of this camp is to help renovation of the historical Landlord House of Ervita Manor, which is the important object of historical and cultural heritage of Koeru Parish of Jarvamaa County. In the future the Landlord House will be renovated to the botanical garden with the accommodation, pool and saunas with the aim to promote sustainable tourism and eco-friendly living. Renovation has been going on for 8 years, but still there is a lot of work to be done and help of volunteers will be very much appreciated.</descr_partner>
+
+<descr_work>The work will involve mainly carrying rocks and building ruined walls. Work is quite physical, mainly outdoors. Also there may be some hey making in the fields (for sheep of farm). Volunteers will be working 7-8 hours per day and 5 days a week under the supervision of group leader. There will be also work specialists and technical help. In addition to work some workshops on renovation techniques will be offered.</descr_work>
+
+<descr_accomodation_and_food>The Manor House complex is managed by a Finnish family with two children, so you will share accommodation with them. The volunteers will stay in the separate room of the manor house on beds. But please bring your sleeping bag and pillow. Bed lines are provided, volunteers are asked to bring their own towels. Toilet, hot water, shower is available. Volunteers have to make breakfasts on their own while the rest of the meals will be cooked and served by the locals. Volunteers will be asked to help cleaning and washing up. Possibility of making own food is limited.</descr_accomodation_and_food>
+
+<descr_location_and_leisure>Ervita is a small village (with around 260 inhabitants) located in Jarvamaa County, Koeru Parish in northern-central Estonia. The closest towns are Paide (35 km) and Rakvere (55 km). The whole area has a beautiful nature, and there is real countryside and forests with wildlife around. Leisure timeSunbathing and swimming, fishing, beach volley on near by lake Vainjarv (300m). Very good camp for nature lovers Endla Nature Reserve with the possibility of bird watching and hiking is around. (http://www.endlakaitseala.ee/?id=824)</descr_location_and_leisure>
+
+<descr_requirements>As the work can be quite physical sometimes, the volunteers have to be in a good physical shape. This camp is not suitable for volunteers allergic to different plants or hay. Volunteers have to bring sleeping bag and some work clothes.</descr_requirements>
+
+<airport>TLL</airport>
+
+<station>Tallinn</station>
+
+<numvol_m>4</numvol_m>
+
+<numvol_f>4</numvol_f>
+
+<max_vols_per_country>2</max_vols_per_country>
+
+<max_teenagers>0</max_teenagers>
+
+<max_national_vols>1</max_national_vols>
+
+<lat_project>58.9625075</lat_project>
+
+<lng_project>26.0239902</lng_project>
+
+<notes></notes>
+
+<lat_station>59.4388619</lat_station>
+
+<lng_station>24.7544715</lng_station>
+
+<bi_tri_multi>0</bi_tri_multi>
+
+</project>
+
+</projects>
+
+</projectform>

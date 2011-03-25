@@ -1,8 +1,13 @@
 module Import
-  class AllianceImporter
+
+  class ImportException < Exception
+  end
+
+  class PefImporter
 
     include XmlHelper
     include InexRules
+
 
     def initialize(filename)
       @tag = File.basename(filename)
@@ -11,62 +16,39 @@ module Import
 
 
     def import
-      result = []
+      @doc.elements.each('/projectform') do |node|
+        org_code = to_text(node, 'organization_code')
+        organization = Organization.find_by_code(org_code)
 
-      @doc.elements.each('/exportfile/workcamps') do |node|
-        code = node.attributes['organization']
-        organization = Organization.find_by_code(code)
+        raise ImportException.new("Unknown organization #{org_code}") if organization == nil
 
-        if organization == nil
-          result << {  :unknown_organization => code }
-          puts "ERROR: Unknown #{code}"
-        else
-          puts "Organization #{organization.code}"
-          wcresult = []
+        wcs = []
 
-          node.elements.each('workcamp') do |wc|
-            wcresult << handle_workcamp_node(wc, organization)
-          end
-
-          ok_count = wcresult.select { |r| r.key?(:workcamp) }.size
-          parsed_count = wcresult.size
-
-          puts "Parsed count: #{parsed_count}"
-          puts "Affected count: #{ok_count}"
-
-
-          result << { :organization => {
-              :name => organization.name,
-              :workcamps => wcresult,
-              :ok_count => ok_count,
-              :parsed_count => parsed_count }}
+        node.elements.each('projects/project') do |node|
+          wcs << handle_workcamp_node(node, organization)
         end
-      end
 
-      result
+        return wcs
+      end
+    end
+
+    def import!(*args)
+      wcs = self.import(*args)
+      wcs.each { |wc| wc.save! }
+      wcs
     end
 
     protected
-
-    def existing?(node)
-      name = to_text(node, 'name')
-      code = to_text(node, 'code')
-      from = to_date(node, 'start_date')
-      to = to_date(node, 'end_date')
-
-      params = { :code => code, :name => name, :begin => from, :end => to }
-      Workcamp.find( :first, :conditions => params)
-    end
 
     def handle_workcamp_node( node, organization)
       begin
         warnings = []
         code = to_text(node, 'code')
 
-        if (wc = existing?(node))
-          puts "WARNING: Workcamp '#{code}' already exists"
-          return { :wc_already_exists => code }
+        if existing?(node)
+          raise ImportException.new("WARNING: Workcamp '#{code}' already exists")
         end
+
 
         workcamp = Outgoing::Workcamp.new do |wc|
           wc.country = Country.find_by_triple_code(node.elements['country'].text) || organization.country
@@ -79,12 +61,20 @@ module Import
           wc.begin = to_date(node, 'start_date')
           wc.end = to_date(node, 'end_date')
 
-          wc.description = to_text(node, 'description')
+          wc.workdesc = to_text(node, 'descr_work')
+          wc.area = to_text(node, 'descr_location_and_leisure')
+          # TODO - sanitize better
+          wc.workdesc = to_text(node, 'description')
+          add_to_description(wc, node, 'descr_partner')
+          add_to_description(wc, node, 'descr_location_and_leisure')
+          add_to_description(wc, node, 'descr_accomodation_and_food')
+          add_to_description(wc, node, 'descr_requirements')
+
           wc.notes = to_text(node, 'notes')
           wc.airport = to_text(node, 'airport')
-          wc.train = to_text(node, 'train_station')
-          wc.area = to_text(node, 'location')
+          wc.train = to_text(node, 'station')
           wc.region = to_text(node, 'region')
+
           wc.language = to_text(node, 'languages')
 
           wc.minimal_age = to_integer(node, 'min_age')
@@ -113,20 +103,29 @@ module Import
           wc.tag_list << @tag
         end
 
-        workcamp.save!
-        puts " - Imported #{workcamp.code} - #{workcamp.name}"
-        return { :workcamp => { :name => workcamp.name, :code => workcamp.code, :warnings => warnings } }
-      rescue ActiveRecord::RecordInvalid => invalid
-        cause = invalid.record.errors.full_messages.join(',')
-        puts " - ERROR: #{cause}"
-        return { :error => cause }
-      rescue
-        raise
-        puts " - ERROR: #{$!}"
-        return { :error => $! }
+        return workcamp
       end
     end
 
+    def existing?(node)
+      name = to_text(node, 'name')
+      code = to_text(node, 'code')
+      from = to_date(node, 'start_date')
+      to = to_date(node, 'end_date')
+
+      conditions = { :code => code, :name => name, :begin => from, :end => to }
+      Workcamp.find( :first, :conditions => conditions)
+    end
+
+    def add_to_description(wc, node, name)
+      if content = to_text(node, name)
+        if wc.description
+          wc.description << "\n\n" << content
+        else
+          wc.description = content
+        end
+      end
+    end
 
   end
 end
