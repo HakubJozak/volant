@@ -19,8 +19,8 @@ class ::WorkcampsController < ::FilteringController
   #   :content_css => "/stylesheets/content.css",
   #   :width => "600",
   #   :height => "300",
-  #   :external_link_list_url => '/links', 
-  # }  
+  #   :external_link_list_url => '/links',
+  # }
 
   active_scaffold :workcamp do |config|
     config.columns = [ :country, :organization,
@@ -42,6 +42,7 @@ class ::WorkcampsController < ::FilteringController
     group config, 'place_limits', :places, :places_for_males, :places_for_females
     group config, 'fees', :extra_fee, :extra_fee_currency
     group config, 'wcinfo_group', :airport, :train, :region,
+                                  :latitude, :longitude,
                                   :workdesc, :area, :accomodation, :description, :notes
 
     config.columns[:tags].clear_link
@@ -53,7 +54,7 @@ class ::WorkcampsController < ::FilteringController
     config.columns[:intentions].form_ui = :select
     config.columns[:taggings].collapsed = false
     config.columns[:infosheets].collapsed = true
-    config.columns[:description].form_ui = :text_editor    
+    config.columns[:description].form_ui = :text_editor
 
     config.list.sorting = { :code => 'ASC' }
     config.list.columns = [ :country, :organization, :code, :name,

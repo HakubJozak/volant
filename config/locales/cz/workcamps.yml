@@ -3,7 +3,7 @@ cz:
   wcinfo_group: Další informace
   place_limits: Volná místa
   capacity_group: Kapacity
-  
+
   activerecord:
     models:
       workcamp: &workcamp_model
@@ -65,6 +65,8 @@ cz:
         minimal_age: Minimální věk
         maximal_age: Maximální věk
         area: Místo
+        longitude: Zeměpisná délka (lng)
+        latitude: Zeměpisná šířka (lat)
         accomodation: Ubytování
         workdesc: Popis práce
         notes: Poznámky
