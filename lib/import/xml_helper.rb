@@ -49,10 +49,18 @@ module Import
       end
     end
 
+    # DRY
     def to_integer(wc_node, subnode )
       found = wc_node.elements[subnode]
       found and (not found.text.blank?) ? found.text.to_i : nil
     end
+
+    # DRY
+    def to_decimal(wc_node, subnode )
+      found = wc_node.elements[subnode]
+      found and (not found.text.blank?) ? found.text.to_f : nil
+    end
+
 
     def to_date(wc_node, subnode, format = '%Y-%m-%d')
       found = wc_node.elements[subnode]

@@ -79,6 +79,8 @@ module Import
 
           wc.minimal_age = to_integer(node, 'min_age')
           wc.maximal_age = to_integer(node, 'max_age')
+          wc.latitude = to_decimal(node, 'lat_project')
+          wc.longitude = to_decimal(node, 'lng_project')
 
           # places managment
           # ignoring 'max_vols_per_country'

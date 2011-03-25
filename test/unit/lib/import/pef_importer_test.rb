@@ -31,7 +31,9 @@ module Import
           :begin => Date.new(2011,7,25),
           :end => Date.new(2011,8,7),
           :minimal_age => 14,
-          :maximal_age => 17
+          :maximal_age => 17,
+          :longitude => 24.7544715,
+          :latitude => 59.4388619
         }
 
         expected.each do |attr,value|
