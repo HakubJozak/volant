@@ -44,4 +44,4 @@ ActionMailer::Base.smtp_settings[:domain] = "bolen.onesim.net"
 
 
 #ENV['all_mails_to'] = 'info@inexsda.cz'
-config.i18n.default_locale = :en if RAILS_ROOT =~ /.*volant\/demo.*/
+# config.i18n.default_locale = :en if RAILS_ROOT =~ /.*volant\/demo.*/
