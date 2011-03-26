@@ -13,7 +13,7 @@ module Import
       should "not choke on missing organization" do
         errors = 0
 
-        wcs = PefImporter.new('test/fixtures/xml/pef2011-errors.xml').import! do |msg|
+        wcs = PefImporter.new('test/fixtures/xml/pef2011-errors.xml').import! do |type, msg|
           assert_equal 'Unknown organization NOT_EXISTING', msg
           errors += 1
         end

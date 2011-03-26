@@ -15,19 +15,21 @@ module Import
     end
 
 
-    def import!(&error_handler)
-      self.import( :save => true, &error_handler)
+    def import!(&progress_handler)
+      self.import( :save => true, &progress_handler)
     end
 
     protected
 
-    def import(options = {}, &error_handler)
+    def import(options = {}, &progress_handler)
+      @progress_handler = progress_handler
+
       @doc.elements.each('/projectform') do |node|
         org_code = to_text(node, 'organization_code')
         organization = Organization.find_by_code(org_code)
 
         if organization == nil
-          error_handler.call("Unknown organization #{org_code}")
+          error("Unknown organization #{org_code}")
           return []
         end
 
@@ -38,13 +40,22 @@ module Import
             wc = handle_workcamp_node(node, organization)
             wc.save! if options[:save]
             wcs << wc
+            info "Workcamp #{wc.name}(#{wc.code}) imported."
           rescue Import::ImportException, ActiveRecord::Exception => e
-            error_handler.call(e.message) if error_handler
+            error e.message
           end
         end
 
         return wcs
       end
+    end
+
+    def error(msg)
+      @progress_handler.call(:error, msg) if @progress_handler
+    end
+
+    def info(msg)
+      @progress_handler.call(:info, msg) if @progress_handler
     end
 
     def handle_workcamp_node( node, organization)
