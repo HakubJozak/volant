@@ -69,7 +69,7 @@ ActionController::Routing::Routes.draw do |map|
     o.resources :apply_forms, :controller => :apply_forms, :active_scaffold => true
     o.resources :apply_forms_special, :active_scaffold => true
     o.resources :workcamps, :active_scaffold => true
-    o.resources :imported_workcamps, :active_scaffold => true, :collection => { :confirm => :post }
+    o.resources :imported_workcamps, :active_scaffold => true, :collection => { :confirm => :post, :cancel => :post }
     o.resources :imports, :only => [ :new, :create, :show ], :active_scaffold => false
   end
 

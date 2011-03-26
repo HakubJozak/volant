@@ -18,12 +18,26 @@ class Outgoing::ImportedWorkcampsController < ::WorkcampsController
       :confirm => I18n::translate('import.confirm'),
       :inline => false
 
+    config.action_links.add :cancel,
+      :label => help.icon('cancel', 'Stornovat vše'),
+      :type => :table,
+      :method => :post,
+      :position => :replace,
+      :confirm => I18n::translate('import.delete_all'),
+      :inline => false
+
   end
 
   def confirm
     Outgoing::Workcamp.import_all!
     redirect_to :back
   end
+
+  def cancel
+    Outgoing::Workcamp.cancel_import!
+    redirect_to :back
+  end
+
 
   protected
 

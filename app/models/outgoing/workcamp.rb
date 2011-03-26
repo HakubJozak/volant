@@ -35,6 +35,10 @@ module Outgoing
       end
     end
 
+    def self.cancel_import!
+      delete_all("state = 'imported'")
+    end
+
     def self.find_by_name_or_code(text)
       search = "%#{text.downcase}%"
       find(:all,

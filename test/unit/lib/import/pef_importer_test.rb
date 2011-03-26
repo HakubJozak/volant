@@ -12,9 +12,10 @@ module Import
 
       should "not choke on missing organization" do
         errors = 0
+        importer = PefImporter.new(File.new('test/fixtures/xml/pef2011-errors.xml'))
 
-        wcs = PefImporter.new('test/fixtures/xml/pef2011-errors.xml').import! do |type, msg|
-          assert_equal 'Unknown organization NOT_EXISTING', msg
+        wcs = importer.import! do |type, msg|
+          assert_equal 'Unknown organization', msg
           errors += 1
         end
 
@@ -23,7 +24,7 @@ module Import
       end
 
       should "import real-life file" do
-        wcs = PefImporter.new('test/fixtures/xml/pef2011.xml').import!
+        wcs = Import::PefImporter.new(File.new('test/fixtures/xml/pef2011.xml')).import!
         assert_equal 2, wcs.size
 
         wc = wcs.first

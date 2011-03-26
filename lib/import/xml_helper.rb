@@ -25,12 +25,11 @@ module Import
       end
     end
 
-    def parse_intentions(node, warnings, wc)
+    def parse_intentions(node, wc)
       wnode = node.elements['work']
 
       if wnode == nil or wnode.text == nil
-        warnings << "WARNING: 'work' tag not present"
-        puts warnings.last
+        warning("WARNING: 'work' tag not present")
         return
       else
         # '/' should be enough as pattern
@@ -42,8 +41,7 @@ module Import
           if intention
             wc.intentions << intention
           else
-            warnings << "WARNING: unknown work code '#{c}' in '#{wc.code}'"
-            puts warnings.last
+            warning "WARNING: unknown work code '#{c}' in '#{wc.code}'"
           end
         end
       end

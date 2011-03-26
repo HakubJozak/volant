@@ -1,79 +1,39 @@
 module Import
 
-  class ImportException < Exception
-  end
-
   class PefImporter
 
     include XmlHelper
-    include InexRules
-
+    include Import::Helper
 
     def initialize(file)
       @doc = REXML::Document.new(file)
+      org_code = to_text(@doc, '/projectform/organization_code')
+      @organization = Organization.find_by_code(org_code)
     end
 
-
-    def import!(&reporter)
-      self.import( :save => true, &reporter)
-    end
-
-    protected
-
-    def import(options = {}, &reporter)
-      @reporter = reporter
-
-      @doc.elements.each('/projectform') do |node|
-        org_code = to_text(node, 'organization_code')
-        organization = Organization.find_by_code(org_code)
-
-        if organization == nil
-          error("Unknown organization #{org_code}")
-          return []
-        end
-
-        wcs = []
-
-        node.elements.each('projects/project') do |node|
-          begin
-            wc = handle_workcamp_node(node, organization)
-            wc.save! if options[:save]
-            wcs << wc
-            info "Workcamp #{wc.name}(#{wc.code}) imported."
-          rescue Import::ImportException, ActiveRecord::ActiveRecordError => e
-            error e.message
-          end
-        end
-
-        return wcs
+    def each_workcamp(&block)
+      @doc.elements.each('/projectform/projects/project') do |node|
+        block.call(node)
       end
     end
 
-    def error(msg)
-      Rails.logger.warn(msg)
-      @reporter.call(:error, msg) if @reporter
-    end
-
-    def info(msg)
-      Rails.logger.info(msg)
-      @reporter.call(:info, msg) if @reporter
-    end
-
-    def handle_workcamp_node( node, organization)
+    def handle_workcamp_node(node)
       begin
-        warnings = []
         code = to_text(node, 'code')
+
+        unless @organization
+          raise ImportException.new("Unknown organization")
+        end
 
         if existing?(node)
           raise ImportException.new("WARNING: Workcamp with code '#{code}' already exists")
         end
 
         workcamp = Outgoing::Workcamp.new do |wc|
-          wc.publish_mode = 'SEASON'
-          wc.state = 'imported'
+          import_defaults(wc)
 
-          wc.country = Country.find_by_triple_code(node.elements['country'].text) || organization.country
-          wc.organization = organization
+          wc.country = Country.find_by_triple_code(node.elements['country'].text) || @organization.country
+          wc.organization = @organization
 
           # simple attributes
           wc.name = to_text(node, 'name')
@@ -114,7 +74,7 @@ module Import
 
           # more complicated parsing
           parse_fee(node, wc)
-          parse_intentions(node, warnings, wc)
+          parse_intentions(node, wc)
 
           # tags
           wc.tag_list << 'vegetarian' if to_bool(node,'vegetarian')
