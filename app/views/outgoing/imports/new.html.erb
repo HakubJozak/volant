@@ -1,0 +1,16 @@
+<h1>Import</h1>
+
+<p><%= t('import.instructions')  %></p>
+
+<% form_tag('/outgoing/imports/create', :multipart => true) do %>
+  <label for="pef_file">PEF: </label>
+  <%= file_field_tag "pef_file" %>
+
+  <p class="error">
+    <%= flash[:error] %>
+  </p>
+
+  <p>
+    <%= submit_tag t('import.button') %>
+  </p>
+<% end %>

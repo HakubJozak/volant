@@ -30,9 +30,11 @@ class ApplicationController < VisibilityController
 
   def adjust_title
     if c = active_scaffold_config
-      label  = c.model.human_name(:count => 2)
-      label += ' (' + @title_suffixes.join(',') + ')' if @title_suffixes and !@title_suffixes.empty?
-      c.list.label = label
+      unless c.list.label
+        label  = c.model.human_name(:count => 2)
+        label += ' (' + @title_suffixes.join(',') + ')' if @title_suffixes and !@title_suffixes.empty?
+        c.list.label = label
+      end
     end
   end
 

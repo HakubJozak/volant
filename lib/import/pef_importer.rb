@@ -9,20 +9,19 @@ module Import
     include InexRules
 
 
-    def initialize(filename)
-      @tag = File.basename(filename)
-      @doc = REXML::Document.new(File.new(filename))
+    def initialize(file)
+      @doc = REXML::Document.new(file)
     end
 
 
-    def import!(&progress_handler)
-      self.import( :save => true, &progress_handler)
+    def import!(&reporter)
+      self.import( :save => true, &reporter)
     end
 
     protected
 
-    def import(options = {}, &progress_handler)
-      @progress_handler = progress_handler
+    def import(options = {}, &reporter)
+      @reporter = reporter
 
       @doc.elements.each('/projectform') do |node|
         org_code = to_text(node, 'organization_code')
@@ -41,7 +40,7 @@ module Import
             wc.save! if options[:save]
             wcs << wc
             info "Workcamp #{wc.name}(#{wc.code}) imported."
-          rescue Import::ImportException, ActiveRecord::Exception => e
+          rescue Import::ImportException, ActiveRecord::ActiveRecordError => e
             error e.message
           end
         end
@@ -51,11 +50,13 @@ module Import
     end
 
     def error(msg)
-      @progress_handler.call(:error, msg) if @progress_handler
+      Rails.logger.warn(msg)
+      @reporter.call(:error, msg) if @reporter
     end
 
     def info(msg)
-      @progress_handler.call(:info, msg) if @progress_handler
+      Rails.logger.info(msg)
+      @reporter.call(:info, msg) if @reporter
     end
 
     def handle_workcamp_node( node, organization)
@@ -82,11 +83,12 @@ module Import
 
           wc.workdesc = to_text(node, 'descr_work')
           wc.area = to_text(node, 'descr_location_and_leisure')
-          # TODO - sanitize better
+          wc.accomodation =to_text( node, 'descr_accomodation_and_food')
+
           wc.workdesc = to_text(node, 'description')
           add_to_description(wc, node, 'descr_partner')
           add_to_description(wc, node, 'descr_location_and_leisure')
-          add_to_description(wc, node, 'descr_accomodation_and_food')
+
           add_to_description(wc, node, 'descr_requirements')
 
           wc.notes = to_text(node, 'notes')
@@ -120,8 +122,6 @@ module Import
           wc.tag_list << 'disabled' if to_bool(node,'disabled_vols')
           wc.tag_list << 'extra fee' if wc.extra_fee and wc.extra_fee > 0
           wc.tag_list << 'teenage' if wc.minimal_age and wc.minimal_age < 18
-
-          wc.tag_list << @tag
         end
 
         return workcamp

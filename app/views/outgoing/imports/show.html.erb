@@ -1,0 +1,7 @@
+<h1><%= t 'import.results' %> </h1>
+
+<% @report.each do |type, msg|  %>
+ -  <%= content_tag :span, msg, :class => type.to_s %><br/>
+<% end %>
+
+<p><%= t 'import.instructions_after'  %></p>

@@ -5,6 +5,10 @@ body {
         color:black;
 }
 
+.error {
+  color: red;
+}
+
 img.icon {
         border: none;
 }
