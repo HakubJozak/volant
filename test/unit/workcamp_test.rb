@@ -1,14 +1,17 @@
-require 'test_helper'
+require 'test/test_helper'
 
 
 # TODO - move import tests to different file
 class WorkcampTest < ActiveSupport::TestCase
+
   context "Workcamp" do
+    fixtures :all
+
     setup do
       @wc = Factory.create(:workcamp, :begin => 1.day.from_now, :end => 10.days.from_now)
     end
 
-    should "workcamp term" do
+    should "have term" do
       @wc.begin = @wc.end = nil
       assert_equal '? - ?', @wc.term
       @wc.begin = Date.new(2002, 3, 27)
@@ -16,7 +19,7 @@ class WorkcampTest < ActiveSupport::TestCase
       assert_equal '27.03.2002 - 28.03.2002', @wc.term
     end
 
-    should "validation based on schema rules" do
+    should "validate based on schema rules" do
       wc = workcamps(:kytlice)
       assert_validates_presence_of wc, :name, :code, :places, :country
     end
@@ -32,7 +35,7 @@ class WorkcampTest < ActiveSupport::TestCase
       end
     end
 
-    should "workcamp intention addition" do
+    should "add intentions" do
       Workcamp.find(:all).each do |wc|
 
         wc.intentions << WorkcampIntention.find(:first)
@@ -46,6 +49,17 @@ class WorkcampTest < ActiveSupport::TestCase
 
     should "csv export" do
       assert_not_nil Workcamp.first.to_csv
-    end    
+    end
+
+    # TODO - uncomment when AS is removed
+    # should 'ignore temporary workcamps' do
+    #   before =  Workcamp.count
+    #   2.times { Factory.create(:workcamp, :state => 'imported') }
+    #   assert_equal before, Workcamp.count
+    # end
+
   end
+
+
+
 end

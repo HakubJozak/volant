@@ -1,4 +1,5 @@
           <% submenu :outgoing do %>
+
           <% MenuHelper::recent_years.each do |year| %>
             <% submenu :yearly, :year => year, :html_id => "#{year}-menu" do %>
               <% submenu :apply_forms, :html_id => "#{year}-apply-forms-menu" do  %>
@@ -50,6 +51,11 @@
                 <% end %>
 
               <% end %>
+          <% end %>
+
+          <% submenu :import do  %>
+            <%= menu_item t('txt.menu.to_check'), outgoing_imported_workcamps_path %>
+            <%= menu_item t('txt.menu.import'), outgoing_import_path %>
           <% end %>
 
 

@@ -10,11 +10,24 @@ module Import
         Country.find_by_code('US').update_attribute(:triple_code, 'USA')
       end
 
-      should "import real-life example" do
+      should "not choke on missing organization" do
+        errors = 0
+
+        wcs = PefImporter.new('test/fixtures/xml/pef2011-errors.xml').import! do |msg|
+          assert_equal 'Unknown organization NOT_EXISTING', msg
+          errors += 1
+        end
+
+        assert_equal 1, errors
+        assert_equal 0, wcs.size
+      end
+
+      should "import real-life file" do
         wcs = PefImporter.new('test/fixtures/xml/pef2011.xml').import!
-        assert_equal 30, wcs.size
+        assert_equal 2, wcs.size
 
         wc = wcs.first
+        assert wc.imported?
         assert_equal 'EST', wc.organization.code
         assert_equal 'Estonsko', wc.country.name
         assert wc.tag_list.include?('teenage')
@@ -41,8 +54,6 @@ module Import
                        wc.send(attr),
                        "#{attr} is expected to be #{value}"
         end
-
-
       end
 
     end

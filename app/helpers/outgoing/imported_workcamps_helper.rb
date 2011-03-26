@@ -1,0 +1,2 @@
+module Outgoing::ImportedWorkcampsHelper
+end

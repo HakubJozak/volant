@@ -15,30 +15,37 @@ module Import
     end
 
 
-    def import
+    def import!(&error_handler)
+      self.import( :save => true, &error_handler)
+    end
+
+    protected
+
+    def import(options = {}, &error_handler)
       @doc.elements.each('/projectform') do |node|
         org_code = to_text(node, 'organization_code')
         organization = Organization.find_by_code(org_code)
 
-        raise ImportException.new("Unknown organization #{org_code}") if organization == nil
+        if organization == nil
+          error_handler.call("Unknown organization #{org_code}")
+          return []
+        end
 
         wcs = []
 
         node.elements.each('projects/project') do |node|
-          wcs << handle_workcamp_node(node, organization)
+          begin
+            wc = handle_workcamp_node(node, organization)
+            wc.save! if options[:save]
+            wcs << wc
+          rescue Import::ImportException, ActiveRecord::Exception => e
+            error_handler.call(e.message) if error_handler
+          end
         end
 
         return wcs
       end
     end
-
-    def import!(*args)
-      wcs = self.import(*args)
-      wcs.each { |wc| wc.save! }
-      wcs
-    end
-
-    protected
 
     def handle_workcamp_node( node, organization)
       begin
@@ -46,14 +53,15 @@ module Import
         code = to_text(node, 'code')
 
         if existing?(node)
-          raise ImportException.new("WARNING: Workcamp '#{code}' already exists")
+          raise ImportException.new("WARNING: Workcamp with code '#{code}' already exists")
         end
 
-
         workcamp = Outgoing::Workcamp.new do |wc|
+          wc.publish_mode = 'SEASON'
+          wc.state = 'imported'
+
           wc.country = Country.find_by_triple_code(node.elements['country'].text) || organization.country
           wc.organization = organization
-          wc.publish_mode = 'SEASON'
 
           # simple attributes
           wc.name = to_text(node, 'name')

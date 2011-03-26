@@ -17,6 +17,8 @@ cz:
     all: Všechny
     menu:
       all: Všechny
+      import: Import
+      to_check: Ke kontrole
       incoming: Incoming
       outgoing: Outgoing
       yearly: Rok {{year}}

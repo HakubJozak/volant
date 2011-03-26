@@ -3,25 +3,6 @@ class ::WorkcampsController < ::FilteringController
   before_filter :reset_filter, :year_term_filter, :tag_filter, :organization_filter, :adjust_title
   before_filter :tolerate_slashed_date, :only => [ :create, :update ]
 
-  # uses_tiny_mce :options => {
-  #   :theme => 'advanced',
-  #   :plugins => %w( table inlinepopups ),
-
-  #   # add 'code' for super-user
-  #   :theme_advanced_buttons1 => "link,|,bold,italic,underline,|,undo,redo,|,justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,removeformat",
-  #   :theme_advanced_buttons2 => "",
-  #   :theme_advanced_buttons3 => "",
-  #   :theme_advanced_buttons4 => "",
-  #   :theme_advanced_toolbar_location => "top",
-  #   :theme_advanced_toolbar_align => "center",
-  #   :theme_advanced_statusbar_location => "bottom",
-  #   :theme_advanced_resizing => true,
-  #   :content_css => "/stylesheets/content.css",
-  #   :width => "600",
-  #   :height => "300",
-  #   :external_link_list_url => '/links',
-  # }
-
   active_scaffold :workcamp do |config|
     config.columns = [ :country, :organization,
                        :code, :name,
@@ -131,7 +112,7 @@ class ::WorkcampsController < ::FilteringController
   end
 
   def conditions_for_collection
-    [ @filter_sql ].concat(@filter_params)
+    [ '(state IS NULL) AND ' + @filter_sql ].concat(@filter_params)
   end
 
 

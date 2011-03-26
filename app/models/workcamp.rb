@@ -1,6 +1,8 @@
-
 class Workcamp < ActiveRecord::Base
   include AllianceExporter
+
+  # TODO: uncomment when AS is removed
+  # default_scope :conditions => [ "state IS NULL" ]
 
   create_date_time_accessors
   enforce_schema_rules
