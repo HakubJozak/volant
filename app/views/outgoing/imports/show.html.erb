@@ -4,4 +4,6 @@
  -  <%= content_tag :span, msg, :class => type.to_s %><br/>
 <% end %>
 
-<p><%= t 'import.instructions_after'  %></p>
+<p>
+  <%= link_to t('import.instructions_after'), outgoing_imported_workcamps_path  %>
+</p>

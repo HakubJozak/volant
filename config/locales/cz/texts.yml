@@ -4,11 +4,12 @@ cz:
     english: English
 
   import:
+    confirm: Opravdu označit všechny workcampy jako zkontrolované?
     title: Importované workcampy
     results: Výsledky importu
     button: Importovat
     missing_file: Prosím zvolte soubor k importu.
-    instructions_after: "Nahrané workcampy zkontrolujte a smažte nebo potvrďte (viz 'Ke kontrole')."
+    instructions_after: "Nahrané workcampy zkontrolujte a smažte nebo potvrďte jejich import."
     instructions: "Vyberte soubor s workcampy ve formátu PEF a spusťte import. Všechny nalezené workcampy se připraví 'Ke kontrole' (viz menu). Po jejich potvrzení se přesunou do databáze."
     errors:
       missing_organization: Organizace s kódem {{code} neexistuje

@@ -27,6 +27,14 @@ module Outgoing
       self.state == 'imported'
     end
 
+    # Turns all 'imported' workcamps into normal workcamps.
+    #
+    def self.import_all!
+      find_each(:conditions => "state = 'imported'") do |wc|
+        wc.update_attribute :state, nil
+      end
+    end
+
     def self.find_by_name_or_code(text)
       search = "%#{text.downcase}%"
       find(:all,
