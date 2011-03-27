@@ -1,1 +1,86 @@
-<%= YamlUtils::eval_erb_file("#{RAILS_ROOT}/db/fixtures/demo/workcamps.yml") %>
+xaverov:
+  code: XWER
+  name: Xaverov
+  country: CZ
+  organization: seeds
+  language: English
+  intentions: agri
+#  begin: 12-15-2008.
+#  end: 03-01-2009
+  capacity: 10
+  places: 2
+  places_for_females: 2
+  places_for_males: 2
+  minimal_age: 18
+  maximal_age: 26
+  area: Xaverov u Sázavy
+  accomodation: na Paloučku
+  workdesc: pití alkoholu ve velkém
+  notes: pouze abstinenti
+  description: zabijačka a Silvestr
+
+
+kytlice:
+  code: KTLC
+  name: Kytlice
+  country: CZ
+  organization: seeds
+  language: Čeština
+  begin: 12-15-2008
+  end: 03-01-2009
+  capacity: 6
+  extra_fee_currency: CZK
+  places: 2
+  places_for_females: 2
+  places_for_males: 2
+  minimal_age: 18
+  maximal_age: 26
+  area: Lužické hory
+  accomodation: Roubenka
+  workdesc: pití alkoholu ve velkém
+  notes: pouze abstinenti
+  description: Silvestr
+
+
+hartenberg:
+  code: HTBR
+  name: Hartenberg
+  country: CZ
+  organization: seeds
+  language: Čeština
+  begin: 12-15-2008
+  end: 03-01-2009
+  capacity: 6
+  extra_fee_currency: CZK
+  places: 2
+  places_for_females: 2
+  places_for_males: 2
+  minimal_age: 18
+  maximal_age: 26
+  area: Lužické hory
+  accomodation: Roubenka
+  workdesc: pití alkoholu ve velkém
+  notes: pouze abstinenti
+  description: Silvestr
+
+
+krkonose:
+  code: KRK
+  name: Krkonose
+  country: CZ
+  organization: seeds
+  language: Čeština
+  begin: 12-15-2008
+  end: 03-01-2009
+  capacity: 6
+  extra_fee_currency: CZK
+  places: 2
+  places_for_females: 2
+  places_for_males: 2
+  minimal_age: 18
+  maximal_age: 26
+  area: Lužické hory
+  accomodation: Roubenka
+  workdesc: pití alkoholu ve velkém
+  notes: pouze abstinenti
+  description: Silvestr

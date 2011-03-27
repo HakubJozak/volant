@@ -1,1 +1,38 @@
-<%= YamlUtils::eval_erb_file("#{RAILS_ROOT}/db/fixtures/demo/organizations.yml") %>
+seeds:
+  name: Seeds
+  code: SEEDS
+  website: http://www.seedsiceland.org/
+  country: CZ
+  contact_person: Oskar
+  phone: 777 666 666
+
+seeds:
+  name: ESTYES
+  code: EST
+  website: http://something.com
+  country: EST
+
+at_vpi:
+  name: AT-SCI
+  code: AT-SCI
+  website: http://something.com.else
+  country: AUT
+
+at_sci:
+  name: AU-IVP
+  code: AU-IVP
+  website: http://something.com.else
+  country: AUT
+
+estyes:
+  name: ESTYES
+  code: EST
+  website: http://something.com
+  country: EST
+
+
+zelemin:
+  country: CZ
+  name: Zelemin
+  code: VDK
+  website: http://www.zelemin.ua
