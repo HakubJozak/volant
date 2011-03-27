@@ -16,13 +16,13 @@ at_vpi:
   name: AT-SCI
   code: AT-SCI
   website: http://something.com.else
-  country: AUT
+  country: AT
 
 at_sci:
   name: AU-IVP
   code: AU-IVP
   website: http://something.com.else
-  country: AUT
+  country: AU
 
 estyes:
   name: ESTYES

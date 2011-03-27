@@ -35,6 +35,7 @@ module Import
         assert wc.tag_list.include?('extra fee')
         assert_equal false, wc.tag_list.include?('disabled')
         assert_equal false, wc.tag_list.include?('family')
+        assert_equal wc.intentions.size, 1
 
         expected = {
           :code => 'EST T5',

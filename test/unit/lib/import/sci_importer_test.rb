@@ -8,6 +8,7 @@ module Import
       setup do
         # TODO - use factory
         Country.find_by_code('AT').update_attribute(:name_en, 'Austria')
+        Country.find_by_code('AU').update_attribute(:name_en, 'Australia')
       end
 
 
@@ -17,7 +18,6 @@ module Import
 
         wc = wcs.first
         assert wc.imported?
-
       end
     end
   end

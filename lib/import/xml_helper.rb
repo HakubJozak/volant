@@ -5,17 +5,6 @@ module Import
     # '' should't be here according to specification, but 2009 XML uses it
     FALSE_VALS = ["false","no", "off", "false", "0", '' ]
 
-    COMPATIBILITY_TABLE = {"CONC"=>"CONS",
-      "REFU"=>"REFUGEE",
-      "ENV"=>"ENVI",
-      "DIS"=>"DISA",
-      "DISABLED" => "DISA",
-      "ART"=>"ARTS",
-      "STUD"=>"STUDY", "REN"=>"RENO", "KID"=>"KIDS",
-      "EDUC"=>"EDU",
-      "MANUAL"=>"MANU",
-      "YOUTH"=>"TEEN"}
-
     def parse_fee( node, wc)
       fnode = node.elements['extrafee']
 
@@ -28,22 +17,11 @@ module Import
     def parse_intentions(node, wc)
       wnode = node.elements['work']
 
-      if wnode == nil or wnode.text == nil
+      if wnode.nil? or wnode.text.nil?
         warning("WARNING: 'work' tag not present")
         return
       else
-        # '/' should be enough as pattern
-        # but once again - 2009 XML contains 'work' tags delimited by '-' and ','
-        wnode.text.upcase.split(/\/|-|,/).each do |c|
-          c = COMPATIBILITY_TABLE[c] || c
-          intention = WorkcampIntention.find_by_code(c)
-
-          if intention
-            wc.intentions << intention
-          else
-            warning "WARNING: unknown work code '#{c}' in '#{wc.code}'"
-          end
-        end
+        import_intentions(wnode.text, wc)
       end
     end
 

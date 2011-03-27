@@ -27,6 +27,7 @@ module Import
         wc.sci_id = data["ID"]
         wc.name = data["Camp Name"]
         wc.code = "#{data['Code']} #{data['Number']}"
+        wc.organization = organization
 
         wc.country = Country.find_by_name_en(data['Country'])
         wc.capacity = data["N Vol"]

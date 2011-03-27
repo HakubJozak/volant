@@ -6,6 +6,7 @@ module Import
   module Helper
 
     include InexRules
+    include IntentionsHelper
 
     def import!(&reporter)
       import( :save => true, &reporter)
@@ -30,8 +31,6 @@ module Import
 
       return wcs
     end
-
-    protected
 
     def error(msg)
       Rails.logger.warn(msg)
