@@ -5,6 +5,7 @@ cz:
 
   import:
     confirm: Opravdu označit všechny workcampy jako zkontrolované?
+    delete_all: Opravdu chcete smazat všechny nepotvrzené workcampy?
     title: Importované workcampy
     results: Výsledky importu
     button: Importovat

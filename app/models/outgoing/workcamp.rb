@@ -36,7 +36,7 @@ module Outgoing
     end
 
     def self.cancel_import!
-      delete_all("state = 'imported'")
+      destroy_all("state = 'imported'")
     end
 
     def self.find_by_name_or_code(text)
