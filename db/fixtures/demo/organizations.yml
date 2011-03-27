@@ -12,6 +12,24 @@ seeds:
   website: http://something.com
   country: EST
 
+at_vpi:
+  name: AT-SCI
+  code: AT-SCI
+  website: http://something.com.else
+  country: AUT
+
+at_sci:
+  name: AU-IVP
+  code: AU-IVP
+  website: http://something.com.else
+  country: AUT
+
+estyes:
+  name: ESTYES
+  code: EST
+  website: http://something.com
+  country: EST
+
 
 zelemin:
   country: CZ

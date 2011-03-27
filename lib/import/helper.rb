@@ -17,10 +17,12 @@ module Import
 
       each_workcamp do |node|
         begin
-          wc = handle_workcamp_node(node)
-          wc.save! if options[:save]
-          wcs << wc
-          info "Workcamp #{wc.name}(#{wc.code}) imported."
+          if wc = make_workcamp(node)
+            setup_imported_workcamp(wc)
+            wc.save! if options[:save]
+            wcs << wc
+            info "Workcamp #{wc.name}(#{wc.code}) imported."
+          end
         rescue Import::ImportException, ActiveRecord::ActiveRecordError => e
           error e.message
         end
@@ -30,11 +32,6 @@ module Import
     end
 
     protected
-
-    def import_defaults(wc)
-      wc.publish_mode = 'SEASON'
-      wc.state = 'imported'
-    end
 
     def error(msg)
       Rails.logger.warn(msg)

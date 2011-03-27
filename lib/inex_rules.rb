@@ -9,6 +9,14 @@ module InexRules
     1.month.from_now.to_date
   end
 
+  def setup_imported_workcamp(wc)
+    wc.publish_mode = 'SEASON'
+    wc.state = 'imported'
+    wc.tag_list << 'extra fee' if wc.extra_fee and wc.extra_fee > 0
+    wc.tag_list << 'teenage' if wc.minimal_age and wc.minimal_age < 18
+    compute_places(wc)
+  end
+
   # Recalculates number of places available to INEX volunteers in supplied Workcamp.
   # Used while importing new workcamps from the Alliance database.
   def compute_places(wc)
