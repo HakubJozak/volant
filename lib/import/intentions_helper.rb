@@ -18,6 +18,8 @@ module Import
     protected
 
     def import_intentions( text, wc)
+      return unless text
+
       text.upcase.split(/\/|-|,/).each do |c|
         c = INTENTIONS_COMPATIBILITY_TABLE[c] || c
         intention = WorkcampIntention.find_by_code(c)

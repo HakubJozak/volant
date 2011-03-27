@@ -36,6 +36,7 @@ module Import
 
         wc.begin = data["Date Start"]
         wc.end = data["Date End"]
+        import_intentions(data['Work Intentions'], wc)
 
         wc.description = data['Description']
         row.to_hash
