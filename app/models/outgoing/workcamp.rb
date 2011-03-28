@@ -6,6 +6,7 @@ module Outgoing
 
     has_many :workcamp_assignments, :dependent => :destroy, :class_name => 'Outgoing::WorkcampAssignment'
     has_many :apply_forms, :through => :workcamp_assignments, :dependent => :destroy, :class_name => 'Outgoing::ApplyForm'
+    has_many :import_changes
 
     has_many :accepted_forms, :through => :workcamp_assignments, :readonly => true, :class_name => 'Outgoing::ApplyForm',
     :conditions => "#{ApplyForm.table_name}.cancelled IS NULL and #{WorkcampAssignment.table_name}.accepted IS NOT NULL",
@@ -30,8 +31,9 @@ module Outgoing
     # Turns all 'imported' workcamps into normal workcamps.
     #
     def self.import_all!
-      find_each(:conditions => "state = 'imported'") do |wc|
+      find_each(:conditions => "state = 'imported' or state = 'updated'") do |wc|
         wc.update_attribute :state, nil
+        wc.import_changes.destroy_all
       end
     end
 

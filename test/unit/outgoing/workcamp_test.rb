@@ -1,4 +1,4 @@
-require 'test_helper'
+require 'test/test_helper'
 
 
 # TODO - move import tests to different file
@@ -39,11 +39,11 @@ module Outgoing
         assert !@wc.reload.full?(female), "Workcamp shouldn't be full for women"
       end
 
-      context "just two of the exists" do
+      context "just exists" do
         setup do
           Outgoing::Workcamp::destroy_all
           @kytlice = Factory.create(:outgoing_workcamp, :name => 'Kytlice')
-          @xaverov = Factory.create(:outgoing_workcamp, :code => 'XWE')	
+          @xaverov = Factory.create(:outgoing_workcamp, :code => 'XWE')
         end
 
         should "approximate search by name" do
@@ -53,8 +53,24 @@ module Outgoing
         should "approximate search by code" do
           assert_equal @xaverov, Outgoing::Workcamp.find_by_name_or_code('xwe')[0]
         end
-	 
      end
+
+      context "with imported" do
+        setup do
+          Outgoing::Workcamp::destroy_all
+          @imported = Factory.create(:outgoing_workcamp, :state => 'imported')
+          @updated = Factory.create(:outgoing_workcamp, :state => 'updated')
+          @normal = Factory.create(:outgoing_workcamp)
+          @updated.import_changes.create(:field => 'name', :value => 'COOL!')
+        end
+
+        should 'import_all!' do
+          Outgoing::Workcamp.import_all!
+          assert_equal 3, Outgoing::Workcamp.count
+          assert Outgoing::Workcamp.all.all? { |wc| wc.state == nil }
+          assert_equal 0, @updated.import_changes(true).size
+        end
+      end
 
     end
   end

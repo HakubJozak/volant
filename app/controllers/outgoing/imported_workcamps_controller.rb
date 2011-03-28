@@ -3,8 +3,8 @@ class Outgoing::ImportedWorkcampsController < ::WorkcampsController
   active_scaffold 'Outgoing::Workcamp' do |config|
     config.list.label = I18n.t('import.title')
     config.list.sorting = { :created_at => :asc }
-    config.list.columns = [ :country, :organization, :code, :name,
-                            :tags, :begin, :end ]
+    config.list.columns = [ :state, :country, :organization, :code, :name,
+                            :import_changes ]
     config.update.label = "Potvrdit import"
     config.update.link.label = "Zkontrolovat"
 

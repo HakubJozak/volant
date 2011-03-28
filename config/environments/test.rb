@@ -1,4 +1,5 @@
 config.gem "shoulda"
+config.gem "factory_girl", :source => "http://gemcutter.org"
 
 
 config.cache_classes = true
