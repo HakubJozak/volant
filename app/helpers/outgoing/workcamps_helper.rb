@@ -2,7 +2,7 @@ module Outgoing
   module WorkcampsHelper
 
     def tags_column(wc)
-      fee = if wc.extra_fee
+      fee = if wc.extra_fee && wc.extra_fee > 0
               icon('extra_fee', wc.extra_fee.to_i.to_s + ' ' + wc.extra_fee_currency.to_s, false)
             else
               nil
@@ -10,7 +10,7 @@ module Outgoing
 
       [ fee, TaggableHelper.render_tags(wc.tags) ].compact * ','
     end
-    
+
     # FIXME - CHANGE NAME TO apply_forms_column
     # Shows all applications assigned to this workcamp
     def apply_forms_column(wc)
@@ -29,7 +29,7 @@ module Outgoing
         [ state, icon( state, state_label, true) + name_label ]
       end
 
-      labels = labels.sort_by do |state, label| 
+      labels = labels.sort_by do |state, label|
         WorkcampAssignment::STATE_ORDER.index(state)
       end
 

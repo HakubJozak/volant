@@ -37,11 +37,14 @@ module Import
         assert_equal false, wc.tag_list.include?('family')
         assert_equal wc.intentions.size, 1
 
+
         expected = {
           :code => 'EST T5',
           :name => 'WHV DOWN TOWN TALLINN',
           :language => 'eng,eng',
           :extra_fee => 200,
+          :workdesc => 'work_is_hard',
+          :notes => 'must_be_alive',
           :extra_fee_currency => 'EUR',
           :begin => Date.new(2011,7,25),
           :end => Date.new(2011,8,7),

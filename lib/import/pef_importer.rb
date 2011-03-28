@@ -42,13 +42,14 @@ module Import
         wc.area = to_text(node, 'descr_location_and_leisure')
         wc.accomodation =to_text( node, 'descr_accomodation_and_food')
 
-        wc.workdesc = to_text(node, 'description')
+        wc.description = to_text(node, 'description')
         add_to_description(wc, node, 'descr_partner')
-        add_to_description(wc, node, 'descr_location_and_leisure')
-
         add_to_description(wc, node, 'descr_requirements')
 
-        wc.notes = to_text(node, 'notes')
+        # TODO - eliminate it from notes
+        wc.requirements = to_text(node, 'descr_requirements')
+        wc.notes = to_text(node, 'descr_requirements')
+
         wc.airport = to_text(node, 'airport')
         wc.train = to_text(node, 'station')
         wc.region = to_text(node, 'region')

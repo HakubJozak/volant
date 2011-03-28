@@ -44,13 +44,13 @@ n
 
     <descr_partner>ProjectInternational language camp is organized for teenagers by non-profit educational association  Alternative Language Programs Satellite  within its annual activities on multicultural issues. The project s aim is to introduce the diversity of world cultures to the youth and provide them with good practices in intercultural communication by means of alternative English language practice which includes meetings, visits, direct contact to young people from abroad. The project gets 14 to 17 years old teens familiar with national traditions of the countries from all over the world, encourages them to develop their global thinking and individual initiative, tolerance and resistance to xenophobia and ethnic hatred. At the same time camp gives foreign participants a great chance to meet youngsters of Estonia and experience local life staying in the host families. NB This year the traditional project became the World Heritage Project with the aim to raise the awareness among the local community, especially young people, and visitors of Tallinn about the importance of the protection preservation and valuing the historical and cultural heritage.</descr_partner>
 
-    <descr_work>ProgramCamp program includes sightseeing in Estonian capital, visits to museums, meetings with organizations, games, discussions, presentations of the countries participants represent, team projects etc. Besides, there will be some practical work such as cleaning of some areas in the Old Town of Tallinn to keep it tidy on one hand as well as making guided tours for Old Town visitors with the emphasis on the importance of the WH preservation and ways to do it on the other hand. Volunteers will organize creative activities such as workshops, games, role plays, etc. around the topic of the WH protection, in particular the Old Town of Tallinn targeting local people and tourists. Activities will be documented, photos/ videos taken and exposed in the rooms of the School In Down Town. Teenagers will stay in the camp activities area from 10.00 to 17.00. There is one day-off in the camp which will be spent in the host family. Camp activities will take place in a learning centre situated in the very centre of the city. To activate teenagers and run the program there will be 8 international volunteers and members of a local school staff.</descr_work>
+    <descr_work>work_is_hard</descr_work>
 
     <descr_accomodation_and_food>In the apartments of the host families in Tallinn and suburbs. Travel cards or pick up will be provided. Participants will stay in a separate or shared room. You do NOT need a sleeping bag. Participants will have breakfasts and dinners in their host families, lunches i all together in the city.</descr_accomodation_and_food>
 
     <descr_location_and_leisure>Camp will take place in Tallinn, the capital of Estonia listed in UNESCO WH List. In 2011 Tallinn carries the title of European Culture Capital. More on www.tallinn.ee TerminalAirport, bus et train station, harbor in Tallinn. Pick up by families at the point of arrival is possible upon request.</descr_location_and_leisure>
 
-    <descr_requirements>We will welcome any ideas to improve the program and your active participation in it. English is a camp language. The age of participants is 14 i 17. As you will be requested to make your country presentation, we ask you to bring some materials: postcards, posters, maps, symbols of your country or region, music, popular national games.Participation feeUnlike the traditional voluntary camp there will be mostly informal educational activities and alternative language practice; some work may occur only during camp actions. Camp program implementation involves costs for board, lodging, domestic transport and materials as well as expenses for excursions, visits, cultural activities and general administration. Since neither EstYES nor its camp partner ALPS receives any financial support for this camp from state or municipality, to make the camp happened we have to charge participation fee of 200 Euro which is different from your sending organization fee paid at home, and has to be paid by participants upon arrival to the camp.</descr_requirements>
+    <descr_requirements>must_be_alive</descr_requirements>
 
     <airport>TLL</airport>
 
@@ -108,7 +108,7 @@ n
 
   <max_age>99</max_age>
 
-  <disabled_vols>0</disabled_vols>
+  <disabled_vols>ss</disabled_vols>
 
   <numvol>8</numvol>
 

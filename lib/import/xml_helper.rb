@@ -72,9 +72,9 @@ module Import
 
       if found and found.text
         token = found.text.strip.downcase
-        return true if YES_VALS.include?(token)
-        return false if FALSE_VALS.include?(token)
-        Rails.logger.warn("Invalid boolean value in XML: '#{token}'")
+        return YES_VALS.include?(token)
+        # return false if FALSE_VALS.include?(token)
+        # Rails.logger.warn("Invalid boolean value in XML: '#{token}'")
       end
 
       false
