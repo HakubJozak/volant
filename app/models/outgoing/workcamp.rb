@@ -39,11 +39,25 @@ module Outgoing
       self.state == 'updated'
     end
 
+    def import!
+      return unless imported? or updated?
+
+      Outgoing::Workcamp.transaction do
+        import_changes.each do |change|
+          change.apply(self)
+          change.destroy
+        end
+
+        self.state = nil
+        save!
+      end
+    end
+
     def cancel_import!
-      if imported?
-        self.destroy
-      else
-        Outgoing::Workcamp.transaction do
+      Outgoing::Workcamp.transaction do
+        if imported?
+          self.destroy
+        elsif updated?
           import_changes.destroy_all
           self.state = nil
           self.save!
@@ -55,16 +69,12 @@ module Outgoing
     #
     def self.import_all!
       imported_or_updated.find_each do |wc|
-        wc.update_attribute :state, nil
-        wc.import_changes.destroy_all
+        wc.import!
       end
     end
 
     def self.cancel_import!
-      Outgoing::Workcamp.transaction do
-        imported.destroy_all
-        updated.find_each { |wc| wc.cancel_import! }
-      end
+      imported_or_updated.find_each { |wc| wc.cancel_import! }
     end
 
     def self.find_by_name_or_code(text)
