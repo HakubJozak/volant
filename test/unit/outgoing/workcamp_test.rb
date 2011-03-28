@@ -70,6 +70,18 @@ module Outgoing
           assert Outgoing::Workcamp.all.all? { |wc| wc.state == nil }
           assert_equal 0, @updated.import_changes(true).size
         end
+
+        should 'cancel_import!' do
+          assert_equal 3, Outgoing::Workcamp.count
+          assert_equal 2, Outgoing::Workcamp.imported_or_updated.count
+          Outgoing::Workcamp.cancel_import!
+          assert_equal 0, Outgoing::Workcamp.imported_or_updated.count
+          assert_equal 2, Outgoing::Workcamp.count
+
+          @updated.reload?
+          assert_equal 0, @updated.import_changes(true).size
+          assert_equal false,  @updated.updated?
+        end
       end
 
     end
