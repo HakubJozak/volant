@@ -19,10 +19,17 @@ module Import
       each_workcamp do |node|
         begin
           if wc = make_workcamp(node)
-            setup_imported_workcamp(wc)
-            wc.save! if options[:save]
+            if old = Outgoing::Workcamp.find_duplicate(wc)
+              old.import_changes.create_by_diff(wc)
+              wc = old
+              info "Workcamp #{wc.name}(#{wc.code}) prepared for update."
+            else
+              setup_imported_workcamp(wc)
+              wc.save! if options[:save]
+              info "Workcamp #{wc.name}(#{wc.code}) prepared for creation."
+            end
+
             wcs << wc
-            info "Workcamp #{wc.name}(#{wc.code}) imported."
           end
         rescue Import::ImportException, ActiveRecord::ActiveRecordError => e
           error e.message

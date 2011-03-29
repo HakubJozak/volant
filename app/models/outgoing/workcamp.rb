@@ -11,7 +11,7 @@ module Outgoing
 
     has_many :workcamp_assignments, :dependent => :destroy, :class_name => 'Outgoing::WorkcampAssignment'
     has_many :apply_forms, :through => :workcamp_assignments, :dependent => :destroy, :class_name => 'Outgoing::ApplyForm'
-    has_many :import_changes, :dependent => :delete_all
+    has_many :import_changes, :dependent => :delete_all, :extend => ImportChange::Maker
 
     has_many :accepted_forms, :through => :workcamp_assignments, :readonly => true, :class_name => 'Outgoing::ApplyForm',
     :conditions => "#{ApplyForm.table_name}.cancelled IS NULL and #{WorkcampAssignment.table_name}.accepted IS NOT NULL",

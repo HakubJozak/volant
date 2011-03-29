@@ -5,18 +5,19 @@ module Import
   class SciImporterTest < ActiveSupport::TestCase
     context "SciImporter" do
 
+      FILE = 'test/fixtures/sci/2011.csv'
+
       setup do
         # TODO - remove it after fixtures removal
         Outgoing::Workcamp::destroy_all
         # TODO - use factory
         Country.find_by_code('AT').update_attribute(:name_en, 'Austria')
         Country.find_by_code('AU').update_attribute(:name_en, 'Australia')
-        @file = File.new('test/fixtures/sci/2011.csv')
       end
 
 
       should 'handle correct file' do
-        wcs = Import::SciImporter.new(@file).import!
+        wcs = Import::SciImporter.new(File.new(FILE)).import!
         assert_equal 2, wcs.size
 
         wc = wcs.first
@@ -31,8 +32,10 @@ module Import
 
       should 'create new and prepared update of existing' do
         assert_equal 0, Outgoing::Workcamp::count
-        wcs = Import::SciImporter.new(@file).import!
-
+        created = Import::SciImporter.new(File.new(FILE)).import!
+        created.first.update_attribute(:name, 'old name')
+        updated = Import::SciImporter.new(File.new(FILE)).import!
+        assert_equal 1, updated.first.import_changes.size
       end
     end
   end

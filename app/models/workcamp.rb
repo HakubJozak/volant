@@ -43,6 +43,11 @@ class Workcamp < ActiveRecord::Base
   acts_as_commentable
   acts_as_taggable
 
+  def self.find_duplicate(wc)
+    scope = wc.begin ? by_year(wc.begin.year) : self
+    scope.find_by_code(wc.code)
+  end
+
   def to_label(options = {})
     "#{code} - #{name}(#{term})"
   end
