@@ -7,8 +7,17 @@ class ImportChange < ActiveRecord::Base
   end
 
   module Maker
+
+    IGNORED_ATTR = [ :created_at, :updated_at, :state ].freeze
+
     def create_by_diff(wc)
-      puts proxy_owner.diff(wc).inspect
+      proxy_owner.diff(wc).each do |field, value|
+        unless IGNORED_ATTR.include?(field)
+          self.build :field => field.to_s, :value => value
+        end
+      end
+
+      self
     end
   end
 end
