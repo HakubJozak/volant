@@ -3,7 +3,7 @@ module Import
   class PefImporter
 
     include XmlHelper
-    include Import::Helper
+    include Import::Importer
 
     def initialize(file)
       @doc = REXML::Document.new(file)

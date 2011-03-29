@@ -7,7 +7,7 @@ body {
 
 del.differ {  color: red; }
 ins.differ {  color: green; }
-p.diff { background: white; border: 1px dashed grey; }
+p.diff { background: #f5f5f5; border: 1px dashed grey; }
 
 .error {  color: red; }
 img.icon { border: none; }

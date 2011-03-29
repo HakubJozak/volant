@@ -8,7 +8,7 @@ class ImportChangeTest < ActiveSupport::TestCase
 
     should 'generate DIFF on save' do
       change = ImportChange.create(:field => 'name', :value => 'New Name', :workcamp => @wc)
-      expected = '<del class="differ">New</del><ins class="differ">Old</ins> Name'
+      expected = '<del class=\"differ\">Old</del><ins class=\"differ\">New</ins> Name'
       assert_equal expected, change.diff
     end
   end

@@ -10,7 +10,7 @@ class ImportChange < ActiveRecord::Base
   def regenerate_diff
     # TODO: escape HTML
     Differ.format = :html
-    self.diff = Differ.diff_by_word(old.to_s, new.to_s).to_s
+    self.diff = Differ.diff_by_word( new.to_s, old.to_s).to_s
   end
 
   def old
