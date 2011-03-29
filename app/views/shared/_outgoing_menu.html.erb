@@ -54,8 +54,9 @@
           <% end %>
 
           <% submenu :import do  %>
-            <%= menu_item t('txt.menu.import'), new_outgoing_import_path %>
-            <%= menu_item t('txt.menu.to_check'), outgoing_imported_workcamps_path %>
+            <%= menu_item icon('upload',t('txt.menu.upload_file')), new_outgoing_import_path %>
+            <%= menu_item icon('confirm',t('txt.menu.imported_workcamps')), outgoing_imported_workcamps_path %>
+            <%= menu_item icon('apply',t('txt.menu.updated_workcamps')), outgoing_updated_workcamps_path %>
           <% end %>
 
 

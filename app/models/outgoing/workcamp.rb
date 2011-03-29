@@ -40,6 +40,7 @@ module Outgoing
       self.state == 'updated'
     end
 
+    # TODO: separate apply_changes! and import!
     def import!
       return unless imported? or updated?
 
