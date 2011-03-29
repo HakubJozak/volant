@@ -40,7 +40,6 @@ module Import
 
         wc.description = to_text(node, 'description')
         add_to_description(wc, node, 'descr_partner')
-        add_to_description(wc, node, 'descr_requirements')
 
         # TODO - eliminate it from notes
         wc.requirements = to_text(node, 'descr_requirements')
