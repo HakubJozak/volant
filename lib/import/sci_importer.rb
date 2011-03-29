@@ -1,6 +1,6 @@
 module Import
   class SciImporter
-    include Import::Helper
+    include Import::Importer
 
     def initialize(file)
       @csv = FasterCSV.new(file.read,

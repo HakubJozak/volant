@@ -18,15 +18,11 @@ module Import
     end
 
     def make_workcamp(node)
-        code = to_text(node, 'code')
+      code = to_text(node, 'code')
 
-        unless @organization
-          raise ImportException.new("Unknown organization")
-        end
-
-        if existing?(node)
-          raise ImportException.new("WARNING: Workcamp with code '#{code}' already exists")
-        end
+      unless @organization
+        raise ImportException.new("Unknown organization")
+      end
 
       Outgoing::Workcamp.new do |wc|
         wc.country = Country.find_by_triple_code(node.elements['country'].text) || @organization.country

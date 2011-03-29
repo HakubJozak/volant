@@ -3,7 +3,7 @@ module Import
   class ImportException < Exception
   end
 
-  module Helper
+  module Importer
 
     include InexRules
     include IntentionsHelper
