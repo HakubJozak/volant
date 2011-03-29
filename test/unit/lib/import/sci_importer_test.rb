@@ -34,8 +34,12 @@ module Import
         assert_equal 0, Outgoing::Workcamp::count
         created = Import::SciImporter.new(File.new(FILE)).import!
         created.first.update_attribute(:name, 'old name')
+
         updated = Import::SciImporter.new(File.new(FILE)).import!
-        assert_equal 1, updated.first.import_changes.size
+        updated.first.import_changes
+
+        assert_equal 1, changes.size
+        assert_equal 'name', changes.first.field
       end
     end
   end

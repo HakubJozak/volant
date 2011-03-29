@@ -5,6 +5,7 @@ module Outgoing
     create_date_time_accessors
 
     # TODO: DRY
+    named_scope :live, :conditions => "state IS NULL"
     named_scope :imported, :conditions => "state = 'imported'"
     named_scope :updated, :conditions => "state = 'updated'"
     named_scope :imported_or_updated, :conditions => "state = 'imported' or state = 'updated'"

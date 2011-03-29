@@ -12,6 +12,7 @@ module Import
       import( :save => true, &reporter)
     end
 
+    # TODO: make submethods
     def import(options = {}, &reporter)
       @reporter = reporter
       wcs = []
@@ -23,6 +24,12 @@ module Import
 
             if old = Outgoing::Workcamp.find_duplicate(wc)
               old.import_changes.create_by_diff(wc)
+
+              if old.import_changes.size == 0
+                info "Workcamp #{wc.name}(#{wc.code}) did not change."
+                return nil
+              end
+
               wc = old
               wc.state = 'updated'
               info "Workcamp #{wc.name}(#{wc.code}) prepared for update."

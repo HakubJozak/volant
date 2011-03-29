@@ -1,9 +1,9 @@
 class ImportChange < ActiveRecord::Base
   enforce_schema_rules
-  belongs_to :workcamp
+  belongs_to :workcamp, :class_name => 'Outgoing::Workcamp'
 
   def apply(wc = self.workcamp)
-    wc.send("#{self.field}=", self.value)
+    wc.send("#{self.field}=", self.value.to_s)
   end
 
   module Maker

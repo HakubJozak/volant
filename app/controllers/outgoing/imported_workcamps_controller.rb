@@ -47,7 +47,8 @@ class Outgoing::ImportedWorkcampsController < ::WorkcampsController
 
 
   def conditions_for_collection
-    [ "state = 'imported'" ]
+    # TODO: DRY with model
+    [ "state = 'imported' OR state = 'updated'" ]
   end
 
 end
