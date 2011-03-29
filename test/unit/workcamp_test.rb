@@ -35,6 +35,20 @@ class WorkcampTest < ActiveSupport::TestCase
       end
     end
 
+    should 'have scope by year' do
+      wc = Factory(:outgoing_workcamp,
+              :begin => Date.new(1848,1,1),
+              :end => Date.new(1848,2,2))
+      assert_equal wc, Workcamp.by_year(1848).first
+    end
+
+    should 'find first_duplicate' do
+      wc = Factory(:outgoing_workcamp,
+                   :begin => Date.new(1848,1,1),
+                   :end => Date.new(1848,2,2))
+      assert_equal wc, Workcamp.find_duplicate(wc)
+    end
+
     should "add intentions" do
       Workcamp.find(:all).each do |wc|
 

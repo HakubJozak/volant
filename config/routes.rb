@@ -24,7 +24,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :countries, :active_scaffold => true
   map.resources :languages, :active_scaffold => true
   map.resources :infosheets, :active_scaffold => true
-
+  map.resources :import_changes, :active_scaffold => true, :member => {  :apply => :post }
   #TODO - remove this REST API
    map.resources :countries,
                  :controller => 'RestfulCountries',
@@ -69,7 +69,13 @@ ActionController::Routing::Routes.draw do |map|
     o.resources :apply_forms, :controller => :apply_forms, :active_scaffold => true
     o.resources :apply_forms_special, :active_scaffold => true
     o.resources :workcamps, :active_scaffold => true
-    o.resources :imported_workcamps, :active_scaffold => true, :collection => { :confirm => :post, :cancel => :post }
+
+    o.resources :imported_workcamps, :active_scaffold => true,
+                :collection => { :confirm_all => :post, :cancel_all => :post, :confirm => :post }
+
+    o.resources :updated_workcamps, :active_scaffold => true,
+                :collection => { :confirm_all => :post, :cancel_all => :post, :confirm => :post }
+
     o.resources :imports, :only => [ :new, :create, :show ], :active_scaffold => false
   end
 

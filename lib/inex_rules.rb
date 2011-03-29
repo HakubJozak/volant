@@ -11,7 +11,6 @@ module InexRules
 
   def setup_imported_workcamp(wc)
     wc.publish_mode = 'SEASON'
-    wc.state = 'imported'
     wc.tag_list << 'extra fee' if wc.extra_fee and wc.extra_fee > 0
     wc.tag_list << 'teenage' if wc.minimal_age and wc.minimal_age < 18
     compute_places(wc)

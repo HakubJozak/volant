@@ -1,0 +1,14 @@
+cz:
+  activerecord:
+    models:
+      import_change:
+        other: Změny
+        one: Změna
+
+    attributes:
+      import_change:
+        field: Pole
+        old: Současná hodnota
+        new: Nová hodnota
+        diff: Změna
+        apply: Provést

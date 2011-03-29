@@ -1,6 +1,6 @@
 module Import
   class SciImporter
-    include Import::Helper
+    include Import::Importer
 
     def initialize(file)
       @csv = FasterCSV.new(file.read,
@@ -41,18 +41,6 @@ module Import
         wc.description = data['Description']
         row.to_hash
       end
-    end
-
-    private
-
-    # File actionpack/lib/action_controller/vendor/html-scanner/html/sanitizer.rb, line 32
-    def sanitize(text, options = {})
-      result = super
-      # strip any comments, and if they have a newline at the end (ie. line with
-      # only a comment) strip that too
-      result.gsub!(/<!--(.*?)-->[\n]?/m, "") if result
-      # Recurse - handle all dirty nested tags
-      result == text ? result : sanitize(result, options)
     end
 
   end

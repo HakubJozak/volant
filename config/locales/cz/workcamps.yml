@@ -94,3 +94,5 @@ cz:
 
       outgoing/workcamp:
         <<: *workcamp_attributes
+        import_changes: Změny
+        state: Stav

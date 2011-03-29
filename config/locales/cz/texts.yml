@@ -4,13 +4,18 @@ cz:
     english: English
 
   import:
+    updated_workcamps_title: Aktualizované workcampy
+    import_all_confirm: Opravdu označit všechny workcampy jako zkontrolované?
+    update_all_confirm: Aktualizovat všechny workcampy?
     confirm: Opravdu označit všechny workcampy jako zkontrolované?
     delete_all: Opravdu chcete smazat všechny nepotvrzené workcampy?
+    cancel_all: Opravdu chcete smazat všechny změny?
     title: Importované workcampy
     results: Výsledky importu
     button: Importovat
     missing_file: Prosím zvolte soubor k importu.
-    instructions_after: "Nahrané workcampy zkontrolujte a smažte nebo potvrďte jejich import."
+    import_instructions: "Nahrané workcampy zkontrolujte a smažte nebo potvrďte jejich import."
+    update_instructions: "Aktualizované workcampy zkontrolujte a aplikujte nebo stornujte jejich změny."
     instructions: "Vyberte soubor s workcampy v jednom z formátů a spusťte import. Všechny nalezené workcampy se připraví 'Ke kontrole' (viz menu). Po jejich potvrzení se přesunou do databáze."
     errors:
       missing_organization: Organizace s kódem {{code} neexistuje
@@ -31,7 +36,6 @@ cz:
     all: Všechny
     menu:
       all: Všechny
-      import: Import
       to_check: Ke kontrole
       incoming: Incoming
       outgoing: Outgoing
@@ -44,6 +48,10 @@ cz:
       by_tag: Nálepky
       by_organization: Organizace
       by_places: Místa
+      import: Import
+      upload_file: Nahrát soubor
+      imported_workcamps: Importované
+      updated_workcamps: Aktualizované
 
       by_state:
         title: Stavy

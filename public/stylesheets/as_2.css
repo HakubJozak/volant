@@ -1,0 +1,86 @@
+.active-scaffold a,
+.active-scaffold a:visited {
+color: @eleven;
+}
+
+.active-scaffold a:hover {
+background-color: @one;
+}
+
+
+.active-scaffold a,
+.active-scaffold a:visited {
+color: @two;
+}
+
+.active-scaffold a.disabled {
+color: @twelve;
+}
+
+.active-scaffold a:hover {
+background-color: @thirteen;
+}
+
+/* Table :: Record Rows
+   ============================= */
+
+.active-scaffold tr.record td {
+ background-color:@one;
+ border-bottom:1px solid @fourteen;
+ border-left:1px solid @fifteen;
+ color: @seventeen;
+ padding: 4px 4px;
+}
+
+.active-scaffold tr.even-record td {
+background-color: @three;
+border-left:1px solid @four;
+}
+
+.active-scaffold tr.record td.sorted {
+background-color: @five;
+border-bottom:1px solid @six;
+}
+
+.active-scaffold tr.record td.actions a {
+ padding: 0px;
+ margin: 0px;
+ cursor: pointer;
+}
+
+.active-scaffold tr.even-record td.sorted {
+background-color: @seven;
+border-bottom:1px solid @eight;
+}
+
+.active-scaffold tbody.records td.empty {
+color: #999;
+}
+
+.active-scaffold .view {
+ background-color: @nine;
+ border: solid 1px @ten;
+}
+
+.active-scaffold h4,
+.active-scaffold h5 {
+ color: black;
+}
+
+.active-scaffold input.text-input,
+.active-scaffold select,
+.active-scaffold textarea
+ {
+ border: 1px solid gray;
+}
+
+.active-scaffold textarea {
+ width: 550px;
+ height: 120px;
+}
+
+/* FIX - nested scaffold actions were to low */
+table .active-scaffold .actions {
+ top: 0px;
+}
+

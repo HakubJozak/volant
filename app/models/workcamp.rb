@@ -1,11 +1,20 @@
 class Workcamp < ActiveRecord::Base
+
   include AllianceExporter
+  include ActiveRecord::Diff
 
   # TODO: uncomment when AS is removed
   # default_scope :conditions => [ "state IS NULL" ]
 
   create_date_time_accessors
   enforce_schema_rules
+
+  named_scope :by_year, lambda { |year|
+    year = year.to_i
+    sql = '(workcamps.begin >= ? AND workcamps.end < ?)'
+    { :conditions => [ sql, Date.new(year,1,1), Date.new(year + 1,1,1) ] }
+  }
+
 
   # TODO - fix tests and allow validation
   #  validates_inclusion_of :publish_mode, :in => [:always, :season, :never ]
@@ -33,6 +42,11 @@ class Workcamp < ActiveRecord::Base
 
   acts_as_commentable
   acts_as_taggable
+
+  def self.find_duplicate(wc)
+    scope = wc.begin ? by_year(wc.begin.year) : self
+    scope.find_by_code(wc.code)
+  end
 
   def to_label(options = {})
     "#{code} - #{name}(#{term})"
