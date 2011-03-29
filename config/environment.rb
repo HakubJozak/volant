@@ -36,6 +36,7 @@ Rails::Initializer.run do |config|
   config.gem 'htmlentities'
   config.gem 'fastercsv'
   config.gem 'haml'
+  config.gem 'differ'
 
 
   # Only load the plugins named here, in the order given. By default, all plugins

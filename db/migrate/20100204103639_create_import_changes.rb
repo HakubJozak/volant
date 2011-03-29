@@ -3,6 +3,7 @@ class CreateImportChanges < ActiveRecord::Migration
     create_table :import_changes do |t|
       t.string :field, :null => false
       t.text :value, :null => false
+      t.text :diff
       t.integer :workcamp_id, :null => false
 
       t.timestamps

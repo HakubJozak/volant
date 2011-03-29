@@ -5,13 +5,12 @@ body {
         color:black;
 }
 
-.error {
-  color: red;
-}
+del.differ {  color: red; }
+ins.differ {  color: green; }
+p.diff { background: white; border: 1px dashed grey; }
 
-img.icon {
-        border: none;
-}
+.error {  color: red; }
+img.icon { border: none; }
 
 a {
     cursor: pointer;
