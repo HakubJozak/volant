@@ -1,4 +1,7 @@
-File.open("#{RAILS_ROOT}/db/languages.csv").each_line do |lang|
-  l = lang.split(',').map { |word| word.strip }
-  Language.create!(:code => l[0], :triple_code => l[1], :name_cz => l[2], :name_en => l[3])
-end
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+#
+# Examples:
+#
+#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
+#   Mayor.create(:name => 'Daley', :city => cities.first)

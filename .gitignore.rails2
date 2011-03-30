@@ -1,0 +1,17 @@
+log/*.log
+db/*.db
+db/*.sql
+db/2011
+db/*.sqlite3
+db/schema.rb
+tmp/**/*
+public/system/**/*
+doc/api
+doc/app
+*\#*\#
+.\#*
+*~
+*_flymake.*
+.bundle
+config/database.yml
+config/volant.rb

@@ -1,0 +1,24 @@
+development:
+  adapter: postgresql
+  database: volant_development
+  encoding: utf8
+  host: localhost
+  username: postgres
+  password: password
+
+test:
+  adapter: postgresql
+  database: volant_test
+  encoding: utf8
+  username: postgres
+  password: password
+  host: localhost
+
+production:
+  adapter: postgresql
+  database: volant_production
+  encoding: utf8
+  username: volant
+  password: saltpakadb44
+  host: localhost
+
