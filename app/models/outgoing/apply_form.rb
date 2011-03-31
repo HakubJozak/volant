@@ -24,7 +24,7 @@ module Outgoing
       result = ''
 
       self.reload.workcamps.each_with_index do |wc,i|
-        result += "#{i+1}) #{wc.code} - #{wc.name}" 
+        result += "#{i+1}) #{wc.code} - #{wc.name}"
         result += " od #{wc.begin_string} do #{wc.end_string}\n" rescue ''
       end
 

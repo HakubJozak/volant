@@ -19,12 +19,11 @@ class Workcamp < ActiveRecord::Base
   # TODO - fix tests and allow validation
   #  validates_inclusion_of :publish_mode, :in => [:always, :season, :never ]
 
-  CSV_FIELDS = %w(name code country organization)
-  acts_as_convertible_to_csv :fields => CSV_FIELDS, :format_options => {
-                                                  :country => :format_for_csv,
-                                                  :organization => :format_for_csv
-#                                                  :networks => :format_for_csv
-                                                 }
+  # CSV_FIELDS = %w(name code country organization)
+  # acts_as_convertible_to_csv :fields => CSV_FIELDS, :format_options => {
+  #                                                 :country => :format_for_csv,
+  #                                                 :organization => :format_for_csv
+  #                                                }
 
   has_many :infosheets, :dependent => :destroy
   belongs_to :country

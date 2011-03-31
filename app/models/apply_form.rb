@@ -3,7 +3,7 @@ require 'rexml/document'
 
 # TODO - set new AF fee smartly
 class ApplyForm < ActiveRecord::Base
-  include Alerts
+  include ::Alerts
 
   acts_as_taggable
   enforce_schema_rules

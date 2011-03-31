@@ -4,7 +4,8 @@ module ActiveScaffold::Config
     def initialize(*args)
       super
       self.persistent = self.class.persistent
-      self.action_after_create = self.class.action_after_create
+      self.edit_after_create = self.class.edit_after_create
+      self.refresh_list = self.class.refresh_list
     end
 
     # global level configuration
@@ -16,19 +17,19 @@ module ActiveScaffold::Config
     def self.link=(val)
       @@link = val
     end
-    @@link = ActiveScaffold::DataStructures::ActionLink.new('new', :label => :create_new, :type => :collection, :security_method => :create_authorized?)
+    @@link = ActiveScaffold::DataStructures::ActionLink.new('new', :label => :create_new, :type => :collection, :security_method => :create_authorized?, :ignore_method => :create_ignore?)
 
     # whether the form stays open after a create or not
     cattr_accessor :persistent
     @@persistent = false
 
     # whether update form is opened after a create or not
-    cattr_accessor :action_after_create
-    @@action_after_create = nil
-    def self.edit_after_create=(value)
-      ::ActiveSupport::Deprecation.warn("edit_after_create is deprecated, use action_after_create = :edit instead", caller)
-      @@action_after_create = value ? :edit : nil
-    end
+    cattr_accessor :edit_after_create
+    @@edit_after_create = false
+
+    # whether we should refresh list after create or not
+    cattr_accessor :refresh_list
+    @@refresh_list = false
 
     # instance-level configuration
     # ----------------------------
@@ -42,10 +43,9 @@ module ActiveScaffold::Config
     attr_accessor :persistent
 
     # whether the form stays open after a create or not
-    attr_accessor :action_after_create
-    def edit_after_create=(value)
-      ::ActiveSupport::Deprecation.warn("edit_after_create is deprecated, use action_after_create = :edit instead", caller)
-      @action_after_create = value ? :edit : nil
-    end
+    attr_accessor :edit_after_create
+
+    # whether we should refresh list after create or not
+    attr_accessor :refresh_list
   end
 end

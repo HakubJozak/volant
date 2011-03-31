@@ -20,11 +20,12 @@ module Jls
         # Enforce string column limits
         def enforce_column_limits(options = {})
           args = build_validation_args(options, :string, :too_long)
+          return if args.first.is_a?(Hash)
           options = args.pop
           validates_each(*args) do |record, attr, value|
             limit = record.class.columns_hash[attr.to_s].limit
             if limit
-              message = options[:message] % limit
+              message = options[:message] % {:count => limit}
               record.errors.add(attr, message) unless value.nil? || value.size <= limit
             end
           end
@@ -35,22 +36,24 @@ module Jls
           # first get the non-integers
           options[:allow_nil] = true
           args = build_validation_args(options, :numeric, :not_a_number)
-          validates_numericality_of(*args)
+          validates_numericality_of(*args) unless args.first.is_a? Hash
           # now do the integers
           options[:only_integer] = true
           args = build_validation_args(options, :integer, :not_a_number)
-          validates_numericality_of(*args)
+          validates_numericality_of(*args) unless args.first.is_a? Hash
         end
         
         # Enfore "not null" columns settings
         def enforce_not_null(options = {})
           args = build_validation_args(options, :not_null, :blank)
+          return if args.first.is_a?(Hash)
           validates_presence_of(*args)
        end
         
         # Enfore unique indexes
         def enforce_unique_indexes(options = {})
           attrs = build_validation_args(options, false, :taken)
+          return if attrs.first.is_a?(Hash)
           options = attrs.pop
           connection.indexes(table_name).select { |index| index.unique && index.columns.size == 1 && attrs.include?(index.columns.first.to_sym) }.each do |index|
             validates_uniqueness_of(index.columns.first, options)
@@ -58,13 +61,7 @@ module Jls
         end
         
         def build_validation_args(options, col_type, validation_option = :invalid)
-          # Merge given options with defaults
-          options = ActiveRecord::Validations::ClassMethods::DEFAULT_VALIDATION_OPTIONS.merge(options)
-          
-          # FIX for Rails 2.2.2?
-          # options[validation_option] = I18n.translate('activerecord.errors.messages')
-          options[validation_option] = ActiveRecord::Errors.default_error_messages[validation_option]
-          
+          options[validation_option] = I18n.translate('errors.messages')[validation_option]
           options[:message] ||= options[validation_option]
           exclusion_regexp = options[:exclusion_regexp] || /(_at|_on|_id)$|^(id|position|type)$/
           # Determine which columns to validate and symbolize their names

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # FIXME - move to Outgoing module
 class Volunteer < Person
   create_date_time_accessors
@@ -7,7 +8,7 @@ class Volunteer < Person
   named_scope :named, :conditions => [ 'rejected IS NULL']
 
   CSV_FIELDS = %w(firstname lastname age gender email phone birthdate birthnumber nationality occupation city contact_city)
-  acts_as_convertible_to_csv  :fields => CSV_FIELDS
+  # acts_as_convertible_to_csv  :fields => CSV_FIELDS
 
   def self.sql_for_name_search
     # concat the volunteer searchable fields to run fulltext search over them
