@@ -1,4 +1,7 @@
 cz:
+  datetime:
+    prompts: "TODO-REMOVE"
+
   locale:
     czech: Czech
     english: English

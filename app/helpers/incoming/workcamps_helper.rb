@@ -1,10 +1,10 @@
 module Incoming
   module WorkcampsHelper
 
-    def list_row_class(wc)
-      return 'running' if wc.running?
-      return 'over' if wc.over?
-    end
+    # def list_row_class(wc)
+    #   return 'running' if wc.running?
+    #   return 'over' if wc.over?
+    # end
 
     def free_places_column(wc)
       "#{wc.free_places}/#{wc.capacity}"

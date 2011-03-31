@@ -11,25 +11,25 @@ module Outgoing
       tags_column(form.current_workcamp) if form.current_workcamp
     end
 
-    def list_row_class(form)
-      clazz = ''
-      
-      if form and form.current_workcamp
-        # clazz << 'alert ' if form.has_alerts?
-        
-        if form.is?(:paid) or form.is?(:asked)
-          if form.current_workcamp.full?(form.volunteer)
-            clazz.concat('full')
-          elsif form.current_workcamp.almost_full?(form.volunteer)
-            clazz.concat('almost_full')
-          else
-            clazz << 'empty'
-          end
-        end
-      end
+    # def list_row_class(form)
+    #   clazz = ''
 
-      clazz
-    end
+    #   if form and form.current_workcamp
+    #     # clazz << 'alert ' if form.has_alerts?
+
+    #     if form.is?(:paid) or form.is?(:asked)
+    #       if form.current_workcamp.full?(form.volunteer)
+    #         clazz.concat('full')
+    #       elsif form.current_workcamp.almost_full?(form.volunteer)
+    #         clazz.concat('almost_full')
+    #       else
+    #         clazz << 'empty'
+    #       end
+    #     end
+    #   end
+
+    #   clazz
+    # end
 
     def actions_column(record)
       if record.current_workcamp
@@ -56,10 +56,10 @@ module Outgoing
 
       # TODO - use tooltip from the LivePipe UI
       script = javascript_tag %{
-//        var tooltip = new Control.ToolTip($('#{link_id}'),'#{i}',{  
-//                          className: 'tooltip'  
-//        });  
-      
+//        var tooltip = new Control.ToolTip($('#{link_id}'),'#{i}',{
+//                          className: 'tooltip'
+//        });
+
        $('body').observe('click', function(event) { hide_bubble('#{bubble_id}');  });
      }
 

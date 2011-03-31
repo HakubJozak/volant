@@ -1,6 +1,6 @@
 class Organization < ActiveRecord::Base
   acts_as_commentable
-  acts_as_convertible_to_csv
+  # acts_as_convertible_to_csv
 
   DEFAULT_ORG_CODE = 'volant.default_organization_code'
 

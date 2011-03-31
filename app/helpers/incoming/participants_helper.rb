@@ -11,9 +11,9 @@ module Incoming
       end
     end
 
-    def list_row_class(participant)
-      'cancelled' if participant.cancelled?
-    end
+    # def list_row_class(participant)
+    #   'cancelled' if participant.cancelled?
+    # end
 
     def lastname_column(participant)
       participant.lastname.upcase

@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
 class Payment < ActiveRecord::Base
   create_date_time_accessors #"returned_date"
   enforce_schema_rules
 
   CSV_FIELDS = %w(amount received returned_amount returned_date return_reason)
-  acts_as_convertible_to_csv :fields => CSV_FIELDS
+  # acts_as_convertible_to_csv :fields => CSV_FIELDS
 
   belongs_to :apply_form, :class_name => 'Outgoing::ApplyForm'
 
