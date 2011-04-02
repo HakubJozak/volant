@@ -5,29 +5,31 @@ module MenuHelper
     [ this_year +1, this_year, this_year - 1 ]
   end
 
+  # TODO: remove html_safe flood
   def submenu( title = nil, params = {}, &block)
-    html_id = submenu_default(:html_id, "#{title.to_s}-menu", params)
+    html_id = submenu_default(:html_id, "#{title.to_s}-menu", params).html_safe
     default_label = image_tag('/images/icons/folder.png') + t('txt.menu.' + title.to_s, params)
     label = submenu_default(:label, default_label, params)
+
+    inside = ''
+
+    if params[:cache]
+      cache(html_id) { inside << with_output_buffer(&block) }
+    else
+      inside << with_output_buffer(&block)
+    end
 
     @hcart.register(html_id)
     style = @hcart.hidden?(html_id) ? 'display:none' : ''
 
-    concat "<li>"
-    concat "<strong onclick=\"show_or_hide_menu('#{html_id}')\">"
-    concat label
-    concat "</strong>"
-    concat "<ul id=\"#{html_id}\" style=\"#{style}\">"
+    c =  "<li>"
+    c << "<strong onclick=\"show_or_hide_menu('#{html_id}')\">"
+    c << label
+    c << "</strong>"
+    c << "<ul id=\"#{html_id}\" style=\"#{style}\">"
 
-    if params[:cache]
-      cache html_id do
-        concat capture( &block)
-      end
-    else
-      concat capture( &block)
-    end
 
-    concat "</ul></li>"
+    (c + inside + '</ul></li>').html_safe
   end
 
 
@@ -71,13 +73,13 @@ module MenuHelper
   end
 
   def model_menu_item(clazz, prefix = '')
-    label = clazz.human_name(:count => 2)
+    label = clazz.model_name.human(:count => 2)
     name = clazz.to_s.tableize.gsub(/\//, '_')
-    menu_item icon(name,label), send("#{prefix}#{name}_path")
+    menu_item(icon(name,label), send("#{prefix}#{name}_path"))
   end
 
   def menu_item(icon, options)
-    "<li>#{link_to icon, options}</li>"
+    "<li>#{link_to icon, options}</li>".html_safe
   end
 
   private

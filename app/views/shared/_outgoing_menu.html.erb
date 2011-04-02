@@ -1,11 +1,11 @@
-          <% submenu :outgoing do %>
+          <%= submenu :outgoing do %>
 
           <% MenuHelper::recent_years.each do |year| %>
-            <% submenu :yearly, :year => year, :html_id => "#{year}-menu" do %>
-              <% submenu :apply_forms, :html_id => "#{year}-apply-forms-menu" do  %>
+            <%= submenu :yearly, :year => year, :html_id => "#{year}-menu" do %>
+              <%= submenu :apply_forms, :html_id => "#{year}-apply-forms-menu" do  %>
 
                   <!-- states tree -->
-                  <% submenu 'by_state.title',
+                  <%= submenu 'by_state.title',
                               :html_id => "#{year}-by-states-apply-forms-menu",
                               :cache => true  do %>
                     <% [ :accepted, :asked, :cancelled,
@@ -16,7 +16,7 @@
                   <% end %>
 
                   <!-- tags tree -->
-                  <% submenu 'by_tag',
+                  <%= submenu 'by_tag',
                              :html_id => "#{year}-by-tags-apply-forms-menu",
                              :cache => true do %>
                      <% ColoredTag.find_by_model(ApplyForm).each do |tag| %>
@@ -31,17 +31,17 @@
                 <% end %>
 
                 <!-- workcamps tree -->
-                <% submenu :workcamps, :html_id => "#{year}-workcamps-menu" do  %>
+                <%= submenu :workcamps, :html_id => "#{year}-workcamps-menu" do  %>
 
                   <!-- tags tree -->
-                   <% submenu 'by_tag', :html_id => "#{year}-by-tags-workcamps-menu", :cache => true do %>
+                   <%= submenu 'by_tag', :html_id => "#{year}-by-tags-workcamps-menu", :cache => true do %>
                       <% ColoredTag.find_by_model(Workcamp).each do |tag| %>
                         <%= workcamp_menu_item( year, tag) %>
                        <% end %>
                    <% end %>
 
                   <!-- organizations tree -->
-                   <% submenu 'by_organization', :html_id => "#{year}-by-organizations-workcamps-menu", :cache => true do %>
+                   <%= submenu 'by_organization', :html_id => "#{year}-by-organizations-workcamps-menu", :cache => true do %>
                          <% Organization.find_all_ordered_by_countries.each do |org| %>
                            <%= workcamp_menu_item( year, nil, org ) %>
                          <% end %>
@@ -53,7 +53,7 @@
               <% end %>
           <% end %>
 
-          <% submenu :import do  %>
+          <%= submenu :import do  %>
             <%= menu_item icon('upload',t('txt.menu.upload_file')), new_outgoing_import_path %>
             <%= menu_item icon('confirm',t('txt.menu.imported_workcamps')), outgoing_imported_workcamps_path %>
             <%= menu_item icon('apply',t('txt.menu.updated_workcamps')), outgoing_updated_workcamps_path %>

@@ -37,7 +37,7 @@ module Volant
     # The internationalization framework can be changed to have another default locale (standard is :en) or more load paths.
     # All files from config/locales/*.rb,yml are added automatically.
     Dir[File.join(RAILS_ROOT,'config','locales', '{cz,en}', '*.{rb,yml}')].each do |path|
-      puts "Loading locale: #{path}"
+      # puts "Loading locale: #{path}"
       config.i18n.load_path << path
     end
 

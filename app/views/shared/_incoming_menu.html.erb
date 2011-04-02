@@ -1,5 +1,5 @@
-<% submenu :incoming do %>
-  <% submenu :workcamps do %>
+<%= submenu :incoming do %>
+  <%= submenu :workcamps do %>
      <%= menu_item flag(Organization.default_organization.country) + t("txt.menu.preparation"), incoming_preparation_workcamps_path %>
      <%= menu_item flag(Organization.default_organization.country) + t("txt.menu.season"), incoming_season_workcamps_path %>
    <% end %>
@@ -9,12 +9,12 @@
    <%= model_menu_item Incoming::Partner %>
 <% end %>
 
-<% submenu :contacts do %>
+<%= submenu :contacts do %>
   <%= model_menu_item Organization %>
   <%= model_menu_item Network %>
 <% end %>
 
-<% submenu :settings do %>
+<%= submenu :settings do %>
   <%= model_menu_item EmailTemplate %>
   <%= model_menu_item WorkcampIntention %>
   <%= model_menu_item Tag %>
