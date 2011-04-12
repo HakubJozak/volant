@@ -90,7 +90,7 @@ module Incoming
         if options.key?(:name)
           label += "#{actor.send(options[:name]).upcase} (#{country})"
         else
-          label += country
+          label += country if country
         end
       end
 
