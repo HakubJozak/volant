@@ -39,11 +39,12 @@ module Import
         wc.accomodation =to_text( node, 'descr_accomodation_and_food')
 
         wc.description = to_text(node, 'description')
-        add_to_description(wc, node, 'descr_partner')
+        add_to_field(:description, wc, node, 'descr_partner')
 
         # TODO - eliminate it from notes
         wc.requirements = to_text(node, 'descr_requirements')
         wc.notes = to_text(node, 'descr_requirements')
+        add_to_field(:notes, wc, node, 'notes')
 
         wc.airport = to_text(node, 'airport')
         wc.train = to_text(node, 'station')
@@ -85,15 +86,15 @@ module Import
       Workcamp.find( :first, :conditions => conditions)
     end
 
-    def add_to_description(wc, node, name)
+    def add_to_field(attr, wc, node, name)
       if content = to_text(node, name)
-        if wc.description
-          wc.description << "\n\n" << content
+        if wc.send(attr)
+          wc.send(attr) << "\n\n" << content
         else
-          wc.description = content
+          wc.send(attr.to_s + '=', content)
         end
       end
-    end
 
+    end
   end
 end
