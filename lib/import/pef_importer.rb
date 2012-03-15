@@ -8,6 +8,7 @@ module Import
     def initialize(file)
       @doc = REXML::Document.new(file)
       org_code = to_text(@doc, '/projectform/organization_code')
+      org_code = to_text(@doc, '/projectform/Organization_code') if org_code.blank?  # handle common error in XML
       @organization = Organization.find_by_code(org_code)
     end
 
