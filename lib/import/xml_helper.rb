@@ -1,11 +1,11 @@
 module Import
   module XmlHelper
 
-    YES_VALS = ["yes", "on", "true", "1" ]
+    YES_VALS = ["yes", "on", "true", "1"]
     # '' should't be here according to specification, but 2009 XML uses it
-    FALSE_VALS = ["false","no", "off", "false", "0", '' ]
+    FALSE_VALS = ["false", "no", "off", "false", "0", '']
 
-    def parse_fee( node, wc)
+    def parse_fee(node, wc)
       fnode = node.elements['extrafee']
 
       if fnode
@@ -26,13 +26,13 @@ module Import
     end
 
     # DRY
-    def to_integer(wc_node, subnode )
+    def to_integer(wc_node, subnode)
       found = wc_node.elements[subnode]
       found and (not found.text.blank?) ? found.text.to_i : nil
     end
 
     # DRY
-    def to_decimal(wc_node, subnode )
+    def to_decimal(wc_node, subnode)
       found = wc_node.elements[subnode]
       found and (not found.text.blank?) ? found.text.to_f : nil
     end
@@ -42,7 +42,11 @@ module Import
       found = wc_node.elements[subnode]
 
       if found
-        parsed = DateTime.strptime(found.text.strip, format)
+        begin
+          parsed = DateTime.strptime(found.text.strip, format)
+        rescue ArgumentError => e
+          parsed = nil
+        end
         raise "Failed to parse date #{found.text}" unless parsed
         parsed.to_date
       else
@@ -86,16 +90,16 @@ module Import
       r1 = Regexp.new(WRONG_CHARS[0] + '|' + WRONG_CHARS[1])
       r2 = Regexp.new(WRONG_CHARS[2] + '|' + WRONG_CHARS[3])
       result = text.dup
-      result.gsub!(r1,"'")
-      result.gsub!(r2,'"')
+      result.gsub!(r1, "'")
+      result.gsub!(r2, '"')
       result
     end
 
     # 'wrong' UTF-8 characters that shall be replacesd by ' and " by fix_quotes
-    WRONG_CHARS = [ ActiveSupport::Multibyte::Chars.g_pack([0x0091]),
-                    ActiveSupport::Multibyte::Chars.g_pack([0x0092]),
-                    ActiveSupport::Multibyte::Chars.g_pack([0x0093]),
-                    ActiveSupport::Multibyte::Chars.g_pack([0x0094]) ]
+    WRONG_CHARS = [ActiveSupport::Multibyte::Chars.g_pack([0x0091]),
+                   ActiveSupport::Multibyte::Chars.g_pack([0x0092]),
+                   ActiveSupport::Multibyte::Chars.g_pack([0x0093]),
+                   ActiveSupport::Multibyte::Chars.g_pack([0x0094])]
 
   end
 end
