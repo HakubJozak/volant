@@ -38,7 +38,7 @@ class Workcamp < ActiveRecord::Base
 
   attr_readonly :free_places, :free_places_for_males, :free_places_for_females
   validates_presence_of :country
-  validates_presence_of :extra_fee_currency, :if => :extra_fee
+  validates_presence_of :extra_fee_currency, :if => Proc.new {|wc| wc.extra_fee && wc.extra_fee > 0}, :message => "je povinná. (Je vyplněn poplatek, ale nikoliv jeho měna. Doplňte měnu poplatku.)"
 
   acts_as_commentable
   acts_as_taggable
