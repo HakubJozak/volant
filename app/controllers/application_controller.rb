@@ -69,7 +69,7 @@ class ApplicationController < VisibilityController
     # ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS[:default] = '%d.%m.%Y'
     # ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS[:default] = '%d.%m.%Y %H:%M'
 
-    if I18n.locale == 'cz'
+    if I18n.locale == 'cs'
       CalendarDateSelect.format = :finnish
     else
       CalendarDateSelect.format = :iso_date

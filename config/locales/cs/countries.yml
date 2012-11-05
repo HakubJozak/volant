@@ -1,13 +1,13 @@
-cz:
+cs:
   activerecord:
     models:
-      language:
-        other: Jazyky
-        one: Jazyk
-
+      country:
+        other: Země
+        one: Země
     attributes:
-      language:
+      country:
+        flag: Vlajka
         code: Kód
-        name_cz: Český název
+        name_cs: Český název
         name_en: Anglický název
         triple_code: Třípísmenný kód

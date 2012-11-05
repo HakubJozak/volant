@@ -5,7 +5,7 @@ class Public::WorkcampsController < Public::BaseController
   def index
     # TODO - cache
     # @aims = WorkcampIntention.find(:all, :order => 'code')
-    # @countries = Country.find(:all, :order => 'name_cz')
+    # @countries = Country.find(:all, :order => 'name_cs')
     @search = Workcamp.search(params[:search])
     @workcamps = @search.paginate(:page => (params[:page] || 1))
   end
