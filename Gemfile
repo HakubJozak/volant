@@ -10,3 +10,8 @@ gem 'fastercsv'
 gem 'haml'
 gem 'differ'
 gem "rdoc"
+
+group :test do
+  gem "shoulda"
+  gem "factory_girl", "~> 1.0"
+end
