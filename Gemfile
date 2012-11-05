@@ -1,9 +1,9 @@
 source :rubygems
 
-gem "rails", "~> 2.3"
+gem "rails", "2.3.14"
 
 gem "pg"
-gem "rack", "1.0.1"
+gem "rack"
 gem "will_paginate", "~> 2.0"
 gem 'htmlentities'
 gem 'fastercsv'
