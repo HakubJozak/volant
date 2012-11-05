@@ -17,7 +17,7 @@ class WorkcampsControllerTest < ActionController::TestCase
 
   test "export routing" do
     [ 'incoming', 'outgoing' ].each do |prefix|
-      assert_routing "/#{prefix}/workcamps/export_alliance_xml", :controller => "#{prefix}/workcamps", :action => 'export_alliance_xml'          
+      assert_routing "/#{prefix}/workcamps/export_alliance.xml", :controller => "#{prefix}/workcamps", :action => 'export_alliance_xml'          
     end
   end
   
