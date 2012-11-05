@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                        :integer          not null, primary key
+#  login                     :string(255)      not null
+#  email                     :string(255)      not null
+#  crypted_password          :string(40)
+#  salt                      :string(40)
+#  created_at                :datetime
+#  updated_at                :datetime
+#  remember_token            :string(255)
+#  remember_token_expires_at :datetime
+#  firstname                 :string(255)
+#  lastname                  :string(255)
+#  locale                    :string(3)        default("en"), not null
+#
+
 require 'digest/sha1'
 
 class User < ActiveRecord::Base

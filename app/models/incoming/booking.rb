@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: bookings
+#
+#  id              :integer          not null, primary key
+#  workcamp_id     :integer
+#  organization_id :integer
+#  country_id      :integer
+#  gender          :string(255)      not null
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 class Incoming::Booking < ActiveRecord::Base
   belongs_to :workcamp, :class_name => 'Incoming::Workcamp'
   belongs_to :organization

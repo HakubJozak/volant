@@ -14,4 +14,5 @@ gem "rdoc"
 group :test do
   gem "shoulda"
   gem "factory_girl", "~> 1.0"
+  gem 'annotate', ">=2.5.0"
 end

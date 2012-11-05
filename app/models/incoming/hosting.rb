@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: hostings
+#
+#  id          :integer          not null, primary key
+#  workcamp_id :integer
+#  partner_id  :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Incoming::Hosting < ActiveRecord::Base
   validates_presence_of :partner, :workcamp
   

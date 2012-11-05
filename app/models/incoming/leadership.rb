@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: leaderships
+#
+#  id          :integer          not null, primary key
+#  person_id   :integer
+#  workcamp_id :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 module Incoming
   class Leadership < ActiveRecord::Base
     belongs_to :workcamp, :class_name => 'Incoming::Workcamp'
