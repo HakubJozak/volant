@@ -5,6 +5,8 @@
 # ./config/environment.rb:    :secret      => Volant::Config::session_secret
 # ./config/environment.rb:Volant::Config::default_organization_code = 'SDA'
 
+require 'active_support/core_ext/module/attribute_accessors'
+
 module Volant
   module Config
     mattr_accessor :default_organization_code, :session_secret, :currency
