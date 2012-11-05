@@ -31,6 +31,9 @@ GEM
     rake (0.9.2.2)
     rdoc (3.12)
       json (~> 1.4)
+    searchlogic (2.5.8)
+      activerecord (~> 2.3.12)
+      activerecord (~> 2.3.12)
     shoulda (3.0.1)
       shoulda-context (~> 1.0.0)
       shoulda-matchers (~> 1.0.0)
@@ -52,5 +55,6 @@ DEPENDENCIES
   rack
   rails (= 2.3.14)
   rdoc
+  searchlogic
   shoulda
   will_paginate (~> 2.0)
