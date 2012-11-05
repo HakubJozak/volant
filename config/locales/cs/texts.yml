@@ -18,7 +18,7 @@ cs:
     update_instructions: "Aktualizované workcampy zkontrolujte a aplikujte nebo stornujte jejich změny."
     instructions: "Vyberte soubor s workcampy v jednom z formátů a spusťte import. Všechny nalezené workcampy se připraví 'Ke kontrole' (viz menu). Po jejich potvrzení se přesunou do databáze."
     errors:
-      missing_organization: Organizace s kódem {{code} neexistuje
+      missing_organization: Organizace s kódem %{code} neexistuje
 
 
 
@@ -39,7 +39,7 @@ cs:
       to_check: Ke kontrole
       incoming: Incoming
       outgoing: Outgoing
-      yearly: Rok {{year}}
+      yearly: Rok %{year}
       complete: Všechny roky
       workcamps: Workcampy
       preparation: Příprava

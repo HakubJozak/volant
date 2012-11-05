@@ -18,13 +18,13 @@ cs:
 
     add_existing: Přidat existující
     create: Vytvořit
-    create_model: 'Vytvořit {{model}}'
+    create_model: 'Vytvořit %{model}'
     create_another: Vytvořit další
     replace_with_new: Nahradit novým
     hide: Skrýt
     close: Zavřít
-    nested_for_model: '{{nested_model}} pro {{parent_model}}'
-    update_model: Upravit '{{model}}'
+    nested_for_model: '%{nested_model} pro %{parent_model}'
+    update_model: Upravit '%{model}'
 
     show: Detaily
     edit: Editovat
@@ -36,13 +36,13 @@ cs:
     reset: Reset
     create_new: Vytvořit nový
     found: celkem
-    update_param1: Upravit '{{param1}}'
+    update_param1: Upravit '%{param1}'
     show_param1: Detail
     no_entries: Žádné záznamy
     request_failed_code_500_internal_error: Interní chyba Volantu, kontaktujte prosím administrátora.
     header_message: "Ve formuláři jsou chyby, opravte je prosím"
     error_in_fields: V těchto polích byly nalezeny chyby
-    are_you_sure_to_delete: 'Opravdu chcete smazat záznam {{label}}?'
+    are_you_sure_to_delete: 'Opravdu chcete smazat záznam %{label}?'
     search_terms: hledaná slova
     "-_select_-": Vyberte...
     previous: Předchozí

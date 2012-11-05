@@ -17,13 +17,13 @@ en:
     failure: Failed to send email. Please check the receiver and sender address or contact your Volant administrator.
 
     accept:
-      subject: You have been accepted to workcamp '{{wcname}}'!
+      subject: You have been accepted to workcamp '%{wcname}'!
 
     infosheet:
-      subject: We are sending you an infosheet for '{{wcname}}'
+      subject: We are sending you an infosheet for '%{wcname}'
 
     ask:
-      subject: "VEF: {{volname}} for {{wcname}}({{wccode}})"
+      subject: "VEF: %{volname} for %{wcname}(%{wccode})"
 
     reject:
       subject: You have not been accepted to any workcamp

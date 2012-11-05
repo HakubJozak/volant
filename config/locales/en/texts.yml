@@ -23,7 +23,7 @@ en:
       all: All
       incoming: Incoming
       outgoing: Outgoing
-      yearly: Year {{year}}
+      yearly: Year %{year}
       complete: All Years
       workcamps: Workcamps
       apply_forms: Applications

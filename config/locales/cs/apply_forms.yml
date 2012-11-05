@@ -37,29 +37,29 @@ cs:
     
         apply_form_states:
           changed: Stav přihlášky byl změněn, email neodeslán.
-          accepted: Akceptována {{time}}
-          rejected: Zamítnuta {{time}}
-          asked: Čeká na odpověď od {{time}}
-          paid: Zaplacena {{time}}
+          accepted: Akceptována %{time}
+          rejected: Zamítnuta %{time}
+          asked: Čeká na odpověď od %{time}
+          paid: Zaplacena %{time}
           not_paid: Nezaplacena
-          cancelled: Stornována {{time}}
-          infosheeted: Odeslán infosheet {{time}}
+          cancelled: Stornována %{time}
+          infosheeted: Odeslán infosheet %{time}
           info:
-            accepted: Akceptována {{time}}
-            rejected: Zamítnuta {{time}}
-            asked: Čeká na odpověď od {{time}}
-            paid: Zaplacena {{time}}
-            infosheeted: Odeslán infosheet {{time}}
+            accepted: Akceptována %{time}
+            rejected: Zamítnuta %{time}
+            asked: Čeká na odpověď od %{time}
+            paid: Zaplacena %{time}
+            infosheeted: Odeslán infosheet %{time}
             cancelled:
-              before: Stornováno dne {{time}}, ještě před přijetím na projekt.
-              after: Stornováno {{time}}, {{after_accept_count}} dní po přijetí na projekt a {{to_wc_count}} dní před začátkem workcampu.
+              before: Stornováno dne %{time}, ještě před přijetím na projekt.
+              after: Stornováno %{time}, %{after_accept_count} dní po přijetí na projekt a %{to_wc_count} dní před začátkem workcampu.
             not_paid: Nezaplacena (přihláška je považována za zaplacenou, pokud platba k ní přiřazená se rovná částce požadované jako poplatek za přihlášku).
     
         apply_form_actions:
           accept: Akceptovat
           reject: Zamítnout
-          rejected: Workcamp '{{wc}}' byl označen jako zamítnutý. Můžete pokračovat přímo žádostí o další workcamp v pořadí, nebo zvolte 'Storno'.
-          rejected_final: Workcamp '{{wc}}' je poslední na přihlášce.
+          rejected: Workcamp '%{wc}' byl označen jako zamítnutý. Můžete pokračovat přímo žádostí o další workcamp v pořadí, nebo zvolte 'Storno'.
+          rejected_final: Workcamp '%{wc}' je poslední na přihlášce.
           cancel: Stornovat
           cancel_confirm: Opravdu stornovat tuto přihlášku?
           cancel_success: Přihláška byla stornována.
