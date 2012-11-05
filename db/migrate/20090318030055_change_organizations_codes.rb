@@ -50,14 +50,16 @@ class ChangeOrganizationsCodes < ActiveRecord::Migration
   end
 
   def self.down
-#    raise ActiveRecord::IrreversibleMigration
+    raise ActiveRecord::IrreversibleMigration
   end
 
   private
 
   def self.change(to,from)
-    o = Organization.find_by_code!(from)
-    o.code = to
-    o.save!
+    o = Organization.find_by_code(from)
+    if o
+      o.code = to
+      o.save!
+    end
   end
 end
