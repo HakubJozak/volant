@@ -1,3 +1,7 @@
 language: ruby
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - cp config/volant.rb.example config/volant.rb
+  - bundle exec rake db:setup
 rvm:
   - 1.8.7

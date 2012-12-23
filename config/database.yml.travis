@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: volant_test
+  username: postgres
