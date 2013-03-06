@@ -2,7 +2,7 @@ set :application, "volant"
 server "bolen.onesim.net", :app, :web, :db, :primary => true
 
 set :scm, "git"
-set :repository,  "git://github.com/HakubJozak/volant.git"
+set :repository,  "git://github.com/simi/volant.git"
 set :keep_releases, 2
 set :user, "volant"
 set :use_sudo, false
@@ -32,6 +32,7 @@ namespace :deploy do
 
   desc "Restart Application"
    task :restart, :roles => :app do
+    run "rm #{current_path}/Gemfile.lock"
     run "touch #{current_path}/tmp/restart.txt"
    end
 
