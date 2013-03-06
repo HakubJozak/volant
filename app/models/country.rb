@@ -4,7 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  code        :string(2)        not null
-#  name_cs     :string(255)
+#  name_cz     :string(255)
 #  name_en     :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime

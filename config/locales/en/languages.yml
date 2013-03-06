@@ -8,6 +8,6 @@ en:
     attributes:
       language:
         code: Code
-        name_cs: Czech name
+        name_cz: Czech name
         name_en: English name
         triple_code: Triple code

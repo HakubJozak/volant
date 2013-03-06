@@ -9,6 +9,6 @@ en:
       country:
         flag: Flag
         code: Code
-        name_cs: Czech Name
+        name_cz: Czech Name
         name_en: English Name
         triple_code: Three letters Code

@@ -1,4 +1,4 @@
-cs:
+cz:
   activerecord:
     models:
       apply_form: &apply_form_model

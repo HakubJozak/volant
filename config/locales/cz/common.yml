@@ -1,4 +1,4 @@
-cs:
+cz:
   create: Vytvořit
   update: Upravit
   delete: Smazat
@@ -36,7 +36,7 @@ cs:
       created_at_string: Vytvořeno
       updated_at_string: Upraveno
       created_at: Vytvořeno
-      description_cs: Český popis
+      description_cz: Český popis
       description_en: Anglický popis
       type: Typ
 
