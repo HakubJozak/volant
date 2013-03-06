@@ -251,6 +251,6 @@ COUNTRIES = [[ 'AF','Afghánistán'],
 %>
 "<%= code %>":
   code: "<%= code %>"
-  name_cs: "<%= name %>"
+  name_cz: "<%= name %>"
 
 <% end %>

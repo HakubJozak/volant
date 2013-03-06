@@ -23,7 +23,7 @@ module Import
         wc = wcs.first
         assert wc.imported?
         assert_equal 'Camp Breakaway', wc.name
-        assert_equal 'Austrálie', wc.country.name_cs
+        assert_equal 'Austrálie', wc.country.name_cz
         assert_equal wc.intentions.first.code, 'CULT'
         assert_equal Date.new(2011,5,18), wc.begin
         assert_equal Date.new(2011,5,29), wc.end

@@ -6,7 +6,7 @@ class WorkcampsControllerTest < ActionController::TestCase
 
   def setup
     super
-    @cz = Factory.create(:user, :login => "cs_user", :locale => 'cs')
+    @cz = Factory.create(:user, :login => "cz_user", :locale => 'cz')
     @en = Factory.create(:user, :login => "en_user", :locale => 'en')
   end
 

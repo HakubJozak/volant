@@ -32,5 +32,5 @@
 %>
 <%= code.downcase %>:
   code: <%= code %>
-  description_cs: <%= desc %>
+  description_cz: <%= desc %>
 <% end %>

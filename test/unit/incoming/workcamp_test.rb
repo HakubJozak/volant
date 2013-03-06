@@ -19,7 +19,7 @@ class Incoming::WorkcampTest < ActiveSupport::TestCase
 	3.times { @wc.participants << Factory.create(:participant) }
         @wc.participants << Factory.create(:participant, 
                                            :birthdate => 30.years.ago,
-                                           :country => Factory.create(:country, :name_cs => 'XXX'),
+                                           :country => Factory.create(:country, :name_cz => 'XXX'),
                                            :organization => Factory.create(:organization, :name => 'YYY'),
                                            :firstname => 'Jakub',
                                            :lastname => 'Hozak',

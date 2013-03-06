@@ -1,6 +1,6 @@
 Factory.define :workcamp_intention do |i|
   i.sequence(:code) { |n| "INT#{n}" }
-  i.description_cs 'ABC'
+  i.description_cz 'ABC'
   i.description_en 'ABC'
 end
 

@@ -79,7 +79,7 @@ module Outgoing
     end
 
     # test "conversion to CSV" do
-    #   I18n.locale = 'cs'
+    #   I18n.locale = 'cz'
     #   volunteer = Factory.create(:female, :firstname => 'Hana', :lastname => 'Hozakova')
     #   data_line = Factory.create(:accepted_form, :volunteer => volunteer).to_csv
     #   header_line = ApplyForm::CSV_HEADER
