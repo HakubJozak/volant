@@ -11,6 +11,7 @@ gem 'fastercsv'
 gem 'haml'
 gem 'differ'
 gem "rdoc"
+gem 'newrelic_rpm'
 
 group :test do
   gem "shoulda"
