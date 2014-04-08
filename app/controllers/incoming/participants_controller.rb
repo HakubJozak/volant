@@ -16,6 +16,7 @@ class Incoming::ParticipantsController < ::ApplicationController
                       :lastname,
                       :workcamp,
                       :email,
+                      :phone,
                       :birthdate,
                       :general_remarks,
                       :motivation
@@ -23,6 +24,7 @@ class Incoming::ParticipantsController < ::ApplicationController
 
     config.list.per_page = 9999
     config.list.columns = [ :status, :gender_in_list, :country, :lastname, :firstname, :incoming_organization, :age, :tags, :workcamp ]
+
     group config, 'address', :street, :city, :zipcode
     group config, 'contact_address', :contact_street, :contact_city, :contact_zipcode, :collapsed => true
     group config, 'emergency', :emergency_name, :emergency_day, :emergency_night, :collapsed => true
