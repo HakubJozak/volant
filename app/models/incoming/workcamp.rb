@@ -128,7 +128,7 @@ class Incoming::Workcamp < ::Workcamp
   def participants_to_csv
     FasterCSV.generate(:col_sep => ';') do |csv|
       attrs = [ :cancelled, :nationality, :name, :gender, :age, :birthdate, :email, :phone, :general_remarks, 
-                :comments, :tags, :emergency_name, :emergency_day, :emergency_night ]
+                :note, :tags, :emergency_name, :emergency_day, :emergency_night ]
       attrs.map! { |a| Incoming::Participant.human_attribute_name(a) }
       csv << [ Organization.human_name, Country.human_name, attrs ].flatten
 
@@ -150,7 +150,7 @@ class Incoming::Workcamp < ::Workcamp
                  p.email,
                  p.phone,
                  p.general_remarks,
-                 p.comments,
+                 p.note,
                  p.tags.join(','),
                  p.emergency_name,
                  p.emergency_day,
