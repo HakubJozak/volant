@@ -9,7 +9,7 @@ class Workcamp < ActiveRecord::Base
   create_date_time_accessors
   enforce_schema_rules
 
-  named_scope :by_year, lambda { |year|
+  scope :by_year, lambda { |year|
     year = year.to_i
     sql = '(workcamps.begin >= ? AND workcamps.end < ?)'
     { :conditions => [ sql, Date.new(year,1,1), Date.new(year + 1,1,1) ] }

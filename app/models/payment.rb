@@ -15,8 +15,8 @@ class Payment < ActiveRecord::Base
   validates_presence_of :account, :if => proc { |p| p.bank? }
   validates_inclusion_of :mean, :in => %w( CASH BANK )
 
-  named_scope :returned, :conditions => [ 'returned_amount IS NOT NULL']
-  named_scope :not_assigned, :conditions => [ 'apply_form_id IS NULL']
+  scope :returned, :conditions => [ 'returned_amount IS NOT NULL']
+  scope :not_assigned, :conditions => [ 'apply_form_id IS NULL']
 
   def to_label
     # TODO

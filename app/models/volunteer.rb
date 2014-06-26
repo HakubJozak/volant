@@ -5,7 +5,7 @@ class Volunteer < Person
 
   validates_presence_of :email
   has_many :apply_forms, :class_name => 'Outgoing::ApplyForm'
-  named_scope :named, :conditions => [ 'rejected IS NULL']
+  scope :named, :conditions => [ 'rejected IS NULL']
 
   CSV_FIELDS = %w(firstname lastname age gender email phone birthdate birthnumber nationality occupation city contact_city)
   # acts_as_convertible_to_csv  :fields => CSV_FIELDS

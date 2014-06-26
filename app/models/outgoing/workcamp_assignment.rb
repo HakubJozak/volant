@@ -10,7 +10,7 @@ module Outgoing
     belongs_to :workcamp, :class_name => 'Outgoing::Workcamp'
     validates_presence_of :workcamp
 
-    named_scope :not_rejected, :conditions => [ 'rejected IS NULL']
+    scope :not_rejected, :conditions => [ 'rejected IS NULL']
 
     [ "accept", "reject", "ask", "infosheet" ].each do |action|
       eval %{
@@ -26,7 +26,7 @@ module Outgoing
     # returns one of symbols: :accepted, :rejected, :asked
     def state
       return :cancelled if self.apply_form.cancelled?
-      
+
       [ :rejected, :infosheeted, :accepted, :asked ].each do |attr|
         return attr if self.send(attr)
       end
@@ -39,7 +39,7 @@ module Outgoing
     end
 
     def current?
-      self.apply_form.current_assignment == self      
+      self.apply_form.current_assignment == self
     end
 
     def history?

@@ -5,10 +5,10 @@ module Outgoing
     create_date_time_accessors
 
     # TODO: DRY
-    named_scope :live, :conditions => "state IS NULL"
-    named_scope :imported, :conditions => "state = 'imported'"
-    named_scope :updated, :conditions => "state = 'updated'"
-    named_scope :imported_or_updated, :conditions => "state = 'imported' or state = 'updated'"
+    scope :live, :conditions => "state IS NULL"
+    scope :imported, :conditions => "state = 'imported'"
+    scope :updated, :conditions => "state = 'updated'"
+    scope :imported_or_updated, :conditions => "state = 'imported' or state = 'updated'"
 
     has_many :workcamp_assignments, :dependent => :destroy, :class_name => 'Outgoing::WorkcampAssignment'
     has_many :apply_forms, :through => :workcamp_assignments, :dependent => :destroy, :class_name => 'Outgoing::ApplyForm'

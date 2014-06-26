@@ -14,6 +14,7 @@ Volant::Application.configure do
   config.action_controller.consider_all_requests_local = true
   config.action_view.debug_rjs                         = true
   config.action_controller.perform_caching             = true
+  config.active_support.deprecation=:log
 
   config.i18n.fallbacks = true
 

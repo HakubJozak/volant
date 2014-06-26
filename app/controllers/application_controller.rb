@@ -1,6 +1,8 @@
 class ApplicationController < VisibilityController
   protect_from_forgery
   layout 'admin'
+
+  clear_helpers
   helper :menu
 
   include AuthenticatedSystem

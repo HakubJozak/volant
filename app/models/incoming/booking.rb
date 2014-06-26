@@ -4,8 +4,8 @@ class Incoming::Booking < ActiveRecord::Base
   belongs_to :country
   validates_presence_of :gender
 
-  named_scope :females, :conditions => {:gender => Person::FEMALE }
-  named_scope :males, :conditions => {:gender => Person::MALE }
+  scope :females, :conditions => {:gender => Person::FEMALE }
+  scope :males, :conditions => {:gender => Person::MALE }
 
 
   def male?
@@ -16,5 +16,5 @@ class Incoming::Booking < ActiveRecord::Base
   #   label = I18n.translate(:male) : I18n.translate(:female)
   #   label += (country.name) if country
   # end
-  
+
 end
