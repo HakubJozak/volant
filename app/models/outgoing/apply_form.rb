@@ -24,7 +24,7 @@ module Outgoing
       result = ''
 
       self.reload.workcamps.each_with_index do |wc,i|
-        result += "#{i+1}) #{wc.code} - #{wc.name}" 
+        result += "#{i+1}) #{wc.code} - #{wc.name}"
         result += " od #{wc.begin_string} do #{wc.end_string}\n" rescue ''
       end
 
@@ -38,7 +38,7 @@ module Outgoing
       filter_params = []
 
       case state
-      when "alerts":
+      when "alerts"
           filter_sql << '('
         filter_sql << " ((#{wa}.asked <= ?) AND #{wa}.accepted IS NULL AND #{wa}.rejected IS NULL and cancelled IS NULL)"
         filter_sql << ' OR '
@@ -47,18 +47,18 @@ module Outgoing
         filter_params << InexRules.organization_response_limit
         filter_params << InexRules.infosheet_waiting_limit
 
-      when "cancelled":
+      when "cancelled"
           filter_sql <<  ' cancelled IS NOT NULL'
 
-      when "asked":
+      when "asked"
           filter_sql << " #{wa}.asked IS NOT NULL AND #{wa}.accepted IS NULL AND #{wa}.rejected IS NULL and cancelled IS NULL"
 
-      when "accepted":
+      when "accepted"
           filter_sql << " cancelled IS NULL AND #{wa}.accepted IS NOT NULL"
 
-      when "rejected":
+      when "rejected"
           filter_sql << " cancelled IS NULL AND #{wa}.rejected IS NOT NULL"
-      when "pending":
+      when "pending"
           filter_sql << " payments.id IS NOT NULL AND #{wa}.asked IS NULL AND #{wa}.accepted IS NULL and #{wa}.rejected IS NULL AND cancelled IS NULL"
       when "without_payment"
         filter_sql << ' payments.id IS NULL'

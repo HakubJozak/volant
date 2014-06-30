@@ -24,9 +24,12 @@ class ApplyFormState
     @form = form
 
     @actions = case name
-                 when :asked: [ :accept, :reject ]
-                 when :paid:  [ :ask, :reject ]
-                 when :accepted: [ :infosheet ]
+               when :asked
+                 [ :accept, :reject ]
+               when :paid
+                 [ :ask, :reject ]
+               when :accepted
+                 [ :infosheet ]
                  else []
                end
 
@@ -49,7 +52,7 @@ class ApplyFormState
 
   def ==(other)
     case other
-      when Symbol:
+      when Symbol
         self.name == other
       when ApplyFormState
         self.name == other.name

@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '1.8.7'
+ruby '2.1.2'
 
 gem "rails", "2.3.18"
-
+gem 'iconv'
 gem "pg"
 gem "rack"
 gem "will_paginate", "~> 2.0"

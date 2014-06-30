@@ -18,11 +18,8 @@ class ActiveRecord::Base
 
     to_scan.each do |col|
       case col.type
-        when :datetime:
-          eval(parser_accessor_code(col.name.to_s, "%d.%m.%Y %H:%M"))
-
-        when :date:
-          eval(parser_accessor_code(col.name.to_s, "%d.%m.%Y"))
+        when :datetime then eval(parser_accessor_code(col.name.to_s, "%d.%m.%Y %H:%M"))
+        when :date then eval(parser_accessor_code(col.name.to_s, "%d.%m.%Y"))
       end
     end
   rescue => e

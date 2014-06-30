@@ -18,6 +18,7 @@ GEM
     fastercsv (1.5.5)
     haml (3.1.8)
     htmlentities (4.3.1)
+    iconv (1.0.4)
     json (1.7.7)
     newrelic_rpm (3.5.8.72)
     pg (0.14.1)
@@ -52,6 +53,7 @@ DEPENDENCIES
   fastercsv
   haml (~> 3.0)
   htmlentities
+  iconv
   newrelic_rpm
   pg
   rack
