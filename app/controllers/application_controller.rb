@@ -1,3 +1,5 @@
+require 'yaml'
+
 class ApplicationController < VisibilityController
   protect_from_forgery
   layout 'admin'
@@ -117,7 +119,7 @@ class ApplicationController < VisibilityController
   # TODO - get model from config variable
   def self.highlight_required(config, model)
     model.not_null_columns.each do |column|
-      name = (column.name[-3,:last] != '_id') ? column.name.dup : column.name[0..-4]
+      name = (column.name[-3,-1] != '_id') ? column.name.dup : column.name[0..-4]
       name << "_string" if [:date, :datetime].include? column.type
       definition = config.columns[name.to_sym]
       definition.required = true if definition

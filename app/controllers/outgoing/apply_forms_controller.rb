@@ -1,3 +1,4 @@
+require 'yaml'
 require "#{RAILS_ROOT}/vendor/plugins/active_scaffold/lib/paginator"
 require "#{RAILS_ROOT}/app/models/outgoing/workcamp_assignment"
 require "#{RAILS_ROOT}/app/models/outgoing/workcamp"
@@ -32,7 +33,7 @@ module Outgoing
 
       config.list.columns = [ :alerts,
                               :created_at,
-                              
+
                               :volunteer_tags,
                               :volunteer,
                               :volunteer_age,
@@ -44,13 +45,13 @@ module Outgoing
                               :current_workcamp_places_for_females,
 
                               :state,
-                              :payment,             
+                              :payment,
                               :actions
                             ]
 
       config.nested.add_link help.icon('workcamps', ApplyForm.human_attribute_name('workcamps')), [ :workcamp_assignments ]
 
-      config.action_links.add :vef, 
+      config.action_links.add :vef,
       :label => help.icon('vef', 'VEF'),
       :popup => true,
       :type => :record,
@@ -58,14 +59,14 @@ module Outgoing
       :position => :replace,
       :inline => false
 
-      config.action_links.add :export, 
+      config.action_links.add :export,
       :label => help.icon('export'),
       :popup => false,
       :type => :table,
       :method => :get,
       :inline => false
 
-      config.action_links.add :cancel, 
+      config.action_links.add :cancel,
       :label => help.icon('cancel'),
       :type => :record,
       :confirm => ApplyForm.human_attribute_name("apply_form_actions.cancel_confirm"),
@@ -88,19 +89,19 @@ module Outgoing
       config.columns[:tags].clear_link
 
       setup_places_fields(config, 'current_workcamp_')
-      ban_editing(config, 
+      ban_editing(config,
                   :actions,
-                  :current_workcamp, 
-                  :volunteer_age, 
+                  :current_workcamp,
+                  :volunteer_age,
                   :payment,
                   :workcamp_tags,
                   :volunteer_tags,
                   :current_workcamp_places,
-                  :current_workcamp_places_for_males, 
+                  :current_workcamp_places_for_males,
                   :current_workcamp_places_for_females)
 
       config.list.per_page = 10
-      config.list.sorting = 'created_at'
+      config.list.sorting = [ 'created_at' ]
       config.list.count_includes = false
 
       highlight_required(config, ApplyForm)
@@ -119,21 +120,21 @@ module Outgoing
 
       includes = [ :current_workcamp, :current_assignment, :volunteer, :payment, :taggings ]
 
-      conditions = ApplyForm.merge_conditions( constraints, 
+      conditions = ApplyForm.merge_conditions( constraints,
                                                active_scaffold_conditions,
                                                all_conditions, # search conditions
-                                               [ @filter_sql ].concat(@filter_params), 
+                                               [ @filter_sql ].concat(@filter_params),
                                                ApplyForm.state_filter(params[:state_filter])
                                                )
 
       count = ApplyForm.count(:include => includes, :conditions => conditions)
 
-      pager = ::Paginator.new(count, options[:per_page]) do |offset, per_page|        
-        ApplyForm.find(:all, 
-                       :offset => offset, 
-                       :limit => per_page, 
-                       :include => includes, 
-                       :conditions => conditions, 
+      pager = ::Paginator.new(count, options[:per_page]) do |offset, per_page|
+        ApplyForm.find(:all,
+                       :offset => offset,
+                       :limit => per_page,
+                       :include => includes,
+                       :conditions => conditions,
                        :order => options[:sorting].try(:clause)
                        )
       end
@@ -149,7 +150,7 @@ module Outgoing
     # TODO - let it be AJAX request
     def cancel
       @record = ApplyForm.find(params[:id])
-      
+
       unless @record.cancelled?
         @record.cancel.save
         flash[:info] = I18n.translate('model.apply_form_actions.cancel_success')
@@ -194,16 +195,16 @@ module Outgoing
       end
 
       def infosheet
-        state_transition :infosheet    
+        state_transition :infosheet
       end
-      
+
       protected
 
       def no_places_warning(wc, volunteer)
         if wc.full?(volunteer)
-          flash[:warning] = ApplyForm.human_attribute_name('apply_form_actions.full_warning') 
+          flash[:warning] = ApplyForm.human_attribute_name('apply_form_actions.full_warning')
         elsif wc.almost_full?(volunteer)
-          flash[:warning] = ApplyForm.human_attribute_name('apply_form_actions.almost_full_warning') 
+          flash[:warning] = ApplyForm.human_attribute_name('apply_form_actions.almost_full_warning')
         end
       end
 
@@ -242,7 +243,7 @@ module Outgoing
         end
       end
 
-      public 
+      public
 
       # CSV file with current used filter
       def export

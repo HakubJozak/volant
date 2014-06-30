@@ -9,11 +9,10 @@ en:
         other: Tags
 
     attributes:
-       tag: 
+       tag:
          name: Name
          color: Color
          text_color: Text Color
 
-       taggings
+       taggings:
          tag: Tag
-
