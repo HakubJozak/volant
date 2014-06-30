@@ -11,8 +11,8 @@ module Jls
       module ClassMethods
         # Call all enforcement methods
         def enforce_schema_rules(options = {})
-          enforce_column_limits(options.dup)
-          enforce_integer_columns(options.dup)
+#          enforce_column_limits(options.dup)
+#          enforce_integer_columns(options.dup)
           # TODO - enable again?
           # enforce_not_null(options.dup)
           # enforce_unique_indexes(options.dup)
