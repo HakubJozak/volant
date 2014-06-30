@@ -106,7 +106,7 @@ module Outgoing
       5.times { |i| Factory.create(:workcamp_assignment, :order => i, :apply_form => @f) }
       @f.reload
       assert_equal 5, @f.workcamps.size
-      puts @f.workcamps_list
+      assert_not_empty @f.workcamps_list
     end
 
     protected

@@ -19,9 +19,9 @@ module Import
 
         if organization == nil
           result << {  :unknown_organization => code }
-          puts "ERROR: Unknown #{code}"
+          Rails.logger.error "ERROR: Unknown #{code}"
         else
-          puts "Organization #{organization.code}"
+          Rails.logger.info "Organization #{organization.code}"
           wcresult = []
 
           node.elements.each('workcamp') do |wc|
@@ -31,8 +31,8 @@ module Import
           ok_count = wcresult.select { |r| r.key?(:workcamp) }.size
           parsed_count = wcresult.size
 
-          puts "Parsed count: #{parsed_count}"
-          puts "Affected count: #{ok_count}"
+          Rails.logger.info "Parsed count: #{parsed_count}"
+          Rails.logger.info "Affected count: #{ok_count}"
 
 
           result << { :organization => {
@@ -64,7 +64,7 @@ module Import
         code = to_text(node, 'code')
 
         if (wc = existing?(node))
-          puts "WARNING: Workcamp '#{code}' already exists"
+          Rails.logger.warn "WARNING: Workcamp '#{code}' already exists"
           return { :wc_already_exists => code }
         end
 
@@ -114,15 +114,15 @@ module Import
         end
 
         workcamp.save!
-        puts " - Imported #{workcamp.code} - #{workcamp.name}"
+        Rails.logger.info " - Imported #{workcamp.code} - #{workcamp.name}"
         return { :workcamp => { :name => workcamp.name, :code => workcamp.code, :warnings => warnings } }
       rescue ActiveRecord::RecordInvalid => invalid
         cause = invalid.record.errors.full_messages.join(',')
-        puts " - ERROR: #{cause}"
+        Rails.logger.error " - ERROR: #{cause}"
         return { :error => cause }
       rescue
         raise
-        puts " - ERROR: #{$!}"
+        Rails.logger.error " - ERROR: #{$!}"
         return { :error => $! }
       end
     end

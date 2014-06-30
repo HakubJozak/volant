@@ -11,7 +11,6 @@ class WorkcampSearchTest < ActiveSupport::TestCase
     end
 
     should "list all workcamps" do
-      puts Workcamp.count
       assert_equal 15, WorkcampSearch::find_by_query({}).size
       assert_equal 100, WorkcampSearch::total({})
     end

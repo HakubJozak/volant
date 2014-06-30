@@ -17,7 +17,7 @@ class Incoming::WorkcampTest < ActiveSupport::TestCase
       setup do
         @wc.participants << Factory.create(:participant, :birthdate => nil)
 	3.times { @wc.participants << Factory.create(:participant) }
-        @wc.participants << Factory.create(:participant, 
+        @wc.participants << Factory.create(:participant,
                                            :birthdate => 30.years.ago,
                                            :country => Factory.create(:country, :name_cz => 'XXX'),
                                            :organization => Factory.create(:organization, :name => 'YYY'),
@@ -33,7 +33,7 @@ class Incoming::WorkcampTest < ActiveSupport::TestCase
         should "export participants to CSV file" do
           csv = @wc.participants_to_csv
           assert_not_nil csv
-          
+
           lines = csv.split("\n")
           assert_equal @wc.participants.size + 1, lines.count
           # TODO - make some assertion
@@ -54,8 +54,6 @@ class Incoming::WorkcampTest < ActiveSupport::TestCase
 
           should "create Friday list" do
             csv = Incoming::Workcamp.friday_list
-            puts csv
-
             assert_not_nil csv
             assert_equal 3, csv.split("\n").count
             assert_not_nil csv.index('Korean')
