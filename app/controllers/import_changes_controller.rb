@@ -4,7 +4,7 @@ class ImportChangesController < ApplicationController
   before_filter :find_import_change, :only => [ :apply ]
 
   active_scaffold :import_changes do |config|
-    config.list.sorting = 'field'
+    config.list.sorting = [ 'field' ]
     config.list.per_page = 9999
 
     config.actions.exclude :show, :update, :create, :search
