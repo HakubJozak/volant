@@ -16,7 +16,13 @@ class WorkcampTest < ActiveSupport::TestCase
       assert_equal '? - ?', @wc.term
       @wc.begin = Date.new(2002, 3, 27)
       @wc.end = Date.new(2002, 3, 28)
-      assert_equal '27.03.2002 - 28.03.2002', @wc.term
+
+      # TODO: 03.2002 - 28.03.2002' - for the Czech locale
+      I18n.locale = :en
+      assert_equal "2002-03-27 - 2002-03-28", @wc.term
+
+      I18n.locale = :cz
+      assert_equal "27.03.2002 - 28.03.2002", @wc.term
     end
 
     should "validate based on schema rules" do
