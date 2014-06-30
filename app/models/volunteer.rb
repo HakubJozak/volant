@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # == Schema Information
 #
 # Table name: people
@@ -43,7 +44,7 @@
 class Volunteer < Person
   create_date_time_accessors
 
-  validates_presence_of :email
+  validates_presence_of :firstname, :lastname, :gender, :email
   has_many :apply_forms, :class_name => 'Outgoing::ApplyForm'
   named_scope :named, :conditions => [ 'rejected IS NULL']
 

@@ -55,6 +55,8 @@ module Outgoing
   class Workcamp < ::Workcamp
     create_date_time_accessors
 
+    validates_presence_of :name
+
     # TODO: DRY
     named_scope :live, :conditions => "state IS NULL"
     named_scope :imported, :conditions => "state = 'imported'"

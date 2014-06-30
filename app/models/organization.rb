@@ -26,7 +26,7 @@ class Organization < ActiveRecord::Base
 #  has_many :email_contacts
   has_many :workcamps
   belongs_to :country
-  validates_presence_of :country
+  validates_presence_of :name, :code, :country
 
   has_many :partnerships, :dependent => :destroy
   has_many :emails, :class_name => 'EmailContact', :dependent => :destroy
@@ -52,4 +52,3 @@ class Organization < ActiveRecord::Base
   end
 
 end
-

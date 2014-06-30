@@ -11,6 +11,10 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
+  def assert_valid(record)
+    assert record.valid?, "Record #{record.inspect} is invalid"
+  end
+
   def assert_invalid( *params )
     record = params.shift
 

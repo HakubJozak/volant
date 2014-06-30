@@ -1,7 +1,8 @@
+# -*- coding: utf-8 -*-
 require 'test_helper'
 
 class VolunteerTest < ActiveSupport::TestCase
-  
+
   def setup
     @jakub = Factory.create(:male, :firstname => 'Jakub', :lastname => 'Hozak')
     @hana = Factory.create(:female, :firstname => 'Hana', :lastname => 'Hozakova')
@@ -16,7 +17,7 @@ class VolunteerTest < ActiveSupport::TestCase
   end
 
   test "schema driven validation" do
-    assert_validates_presence_of @jakub, :firstname, :lastname, :gender
+    assert_validates_presence_of @jakub, :firstname, :lastname, :gender, :email
   end
 
   test "gender validation" do
