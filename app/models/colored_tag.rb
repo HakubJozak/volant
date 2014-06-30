@@ -1,13 +1,3 @@
-# == Schema Information
-#
-# Table name: tags
-#
-#  id         :integer          not null, primary key
-#  name       :string(255)      not null
-#  color      :string(7)        default("#FF0000"), not null
-#  text_color :string(7)        default("#FFFFFF"), not null
-#
-
 class ColoredTag < Tag
   enforce_schema_rules
   set_table_name "tags"
