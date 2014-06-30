@@ -7,7 +7,8 @@ class ColoredTagTest < ActiveSupport::TestCase
   end
 
   test "color code validation" do
-    assert_valid Tag.new( @commons.update( :color => '#990000', :text_color => '#788ade'))
+    tag = Tag.new( @commons.update( :color => '#990000', :text_color => '#788ade'))
+    assert tag.valid?, "Tag #{tag.inspect} is invalid"
 #    assert_invalid Tag.new( @commons.update( :color => '#990000', :text_color => '#788ade'))
   end
 end

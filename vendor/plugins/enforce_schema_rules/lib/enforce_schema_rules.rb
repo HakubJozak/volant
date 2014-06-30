@@ -11,13 +11,13 @@ module Jls
       module ClassMethods
         # Call all enforcement methods
         def enforce_schema_rules(options = {})
-          # TODO - don't enforce schema rules for now
-          # enforce_column_limits(options.dup)
-          # enforce_integer_columns(options.dup)
+          enforce_column_limits(options.dup)
+          enforce_integer_columns(options.dup)
+          # TODO - enable again?
           # enforce_not_null(options.dup)
           # enforce_unique_indexes(options.dup)
         end
-        
+
         # Enforce string column limits
         def enforce_column_limits(options = {})
           args = build_validation_args(options, :string, :too_long)
@@ -30,7 +30,7 @@ module Jls
             end
           end
         end
-        
+
         # Enforce numericality of integer columns
         def enforce_integer_columns(options = {})
           # first get the non-integers
@@ -42,13 +42,13 @@ module Jls
           args = build_validation_args(options, :integer, :not_a_number)
           validates_numericality_of(*args)
         end
-        
+
         # Enfore "not null" columns settings
         def enforce_not_null(options = {})
           args = build_validation_args(options, :not_null, :blank)
           validates_presence_of(*args)
        end
-        
+
         # Enfore unique indexes
         def enforce_unique_indexes(options = {})
           attrs = build_validation_args(options, false, :taken)
@@ -57,15 +57,15 @@ module Jls
             validates_uniqueness_of(index.columns.first, options)
           end
         end
-        
+
         def build_validation_args(options, col_type, validation_option = :invalid)
           # Merge given options with defaults
           options = ActiveRecord::Validations::ClassMethods::DEFAULT_VALIDATION_OPTIONS.merge(options)
-          
+
           # FIX for Rails 2.2.2?
           # options[validation_option] = I18n.translate('activerecord.errors.messages')
           options[validation_option] = ActiveRecord::Errors.default_error_messages[validation_option]
-          
+
           options[:message] ||= options[validation_option]
           exclusion_regexp = options[:exclusion_regexp] || /(_at|_on|_id)$|^(id|position|type)$/
           # Determine which columns to validate and symbolize their names
@@ -73,7 +73,7 @@ module Jls
                       when :numeric
                         lambda { |col| col.name !~ exclusion_regexp && col.number? && col.type != :integer }
                       when :not_null
-                        # I have to exclude boolean types because of a "feature" of the way validates_presence_of 
+                        # I have to exclude boolean types because of a "feature" of the way validates_presence_of
                         # handles boolean fields
                         # See http://dev.rubyonrails.org/ticket/5090 and http://dev.rubyonrails.org/ticket/3334
                         lambda { |col| (col.name !~ exclusion_regexp || col.name =~ /_id$/) && !col.null && col.type != :boolean }
