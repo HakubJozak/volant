@@ -61,6 +61,7 @@ module WorkcampSearch
 
 
     { :conditions => [ sql ].concat(params),
+      :select => 'DISTINCT workcamps.*',
       :joins => [
                  "LEFT JOIN workcamp_intentions_workcamps ON #{Workcamp.table_name}.id = workcamp_intentions_workcamps.workcamp_id",
                  "LEFT JOIN workcamp_intentions as intentions ON workcamp_intentions_workcamps.workcamp_intention_id = intentions.id",

@@ -2,7 +2,7 @@ require 'test/test_helper'
 
 class WorkcampSearchTest < ActiveSupport::TestCase
   context "With many workcamps" do
-    setup do 
+    setup do
       Workcamp.destroy_all
 
       100.times do |i|
@@ -10,7 +10,8 @@ class WorkcampSearchTest < ActiveSupport::TestCase
       end
     end
 
-    should "list all with many workcamps" do
+    should "list all workcamps" do
+      puts Workcamp.count
       assert_equal 15, WorkcampSearch::find_by_query({}).size
       assert_equal 100, WorkcampSearch::total({})
     end
@@ -50,7 +51,7 @@ class WorkcampSearchTest < ActiveSupport::TestCase
     should "find by intentions" do
       @new.intentions << @edu
       @new.save!
-      
+
       assert_list_by_query({ :intentions => [ @edu.id ] }) do |wc|
         assert wc.intentions.include?(@edu), "#{wc.intentions} are not right"
       end
@@ -66,7 +67,7 @@ class WorkcampSearchTest < ActiveSupport::TestCase
           assert wc.accepts_age?(age)
         end
       end
-    end    
+    end
   end
 
   private

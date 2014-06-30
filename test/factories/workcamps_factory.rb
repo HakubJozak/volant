@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Factory.define :workcamp do |w|
   w.sequence(:code) { |n| "ORG#{n}" }
   w.sequence(:name) { |n| "Dummy name #{n}" }
