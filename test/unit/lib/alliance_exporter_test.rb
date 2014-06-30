@@ -6,18 +6,16 @@ class AllianceExporterTest < ActiveSupport::TestCase
       edu = Factory.create(:edu)
       envi = Factory.create(:envi)
 
-      @wc = Factory.create(:workcamp, :begin => Date.today, 
+      @wc = Factory.create(:workcamp, :begin => Date.today,
                            :country => Factory.create(:czech_republic),
                            :begin => Date.new(2009, 12, 22),
                            :end => Date.new(2019, 1, 31),
-                          :area => 'Praha',
-                          :minimal_age => 18,
-                          :maximal_age => 99,
-                          :description => 'fasdkfh hjkshdf jkhsd fj',
-                          :organization => Factory.create(:organization, :name => 'ABC'))
-
-      @wc.intentions << edu
-      @wc.intentions << envi
+                           :area => 'Praha',
+                           :intentions => [ edu, envi],
+                           :minimal_age => 18,
+                           :maximal_age => 99,
+                           :description => 'fasdkfh hjkshdf jkhsd fj',
+                           :organization => Factory.create(:organization, :name => 'ABC'))
     end
 
     should "generate Alliance XML for workcamp" do
@@ -25,7 +23,7 @@ class AllianceExporterTest < ActiveSupport::TestCase
 
       root = REXML::Document.new(xml).root
       pairs = [ [ @wc.name, 'name'],
-                [ @wc.code, 'code'],                
+                [ @wc.code, 'code'],
                 [ @wc.capacity.to_s, 'numvol'],
                 [ '18', 'min_age' ],
                 [ '99', 'max_age' ],
@@ -45,7 +43,7 @@ class AllianceExporterTest < ActiveSupport::TestCase
       #assert_equal 'ABC', root.attributes['organization']
       assert_not_nil root.elements['description'].text
     end
-    
+
     context "with many workcamps" do
       setup do
         Workcamp.destroy_all
