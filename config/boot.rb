@@ -53,7 +53,6 @@ module Rails
     def load_initializer
       self.class.load_rubygems
       load_rails_gem
-      require 'initializer'
     end
 
     def load_rails_gem

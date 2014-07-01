@@ -2,12 +2,12 @@ source 'https://rubygems.org'
 
 ruby '1.8.7'
 
-gem "rails", "2.3.18"
+#gem "rails", "2.3.18"
+gem 'rails', '3.0.6'
 
 gem "pg"
 gem "rack"
 gem "will_paginate", "~> 2.0"
-gem "searchlogic"
 gem 'htmlentities'
 gem 'fastercsv'
 gem 'haml', '~> 3.0'
