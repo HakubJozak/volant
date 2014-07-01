@@ -1,6 +1,0 @@
-database:  
-  adapter: mysql
-  username: test
-  password: qwerty
-  host: localhost
-  database: acts_as_convertible_to_csv

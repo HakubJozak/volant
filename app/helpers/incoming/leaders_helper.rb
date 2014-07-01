@@ -1,2 +1,0 @@
-module Incoming::LeadersHelper
-end

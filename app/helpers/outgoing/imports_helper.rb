@@ -1,2 +1,0 @@
-module Outgoing::ImportsHelper
-end

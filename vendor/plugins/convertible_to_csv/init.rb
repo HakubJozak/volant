@@ -1,1 +1,0 @@
-require "#{directory}/lib/convertible_to_csv.rb"

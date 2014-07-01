@@ -1,2 +1,0 @@
-module Incoming::ParticipationsHelper
-end

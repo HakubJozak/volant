@@ -1,9 +1,0 @@
-#!/bin/sh
-
-/var/www/rails/volant/current/script/process/spawner \
-  mongrel \
-  --environment=production \
-  --instances=1 \
-  --address=192.168.0.1 \
-  --port=3003
-

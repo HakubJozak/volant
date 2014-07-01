@@ -1,1 +1,0 @@
-<%= YamlUtils::eval_erb_file("#{RAILS_ROOT}/db/fixtures/seed/networks.csv") %>

@@ -1,9 +1,0 @@
-<span id="all_intentions"><% bt('wc_all_intentions') -%></span>
-<%= link_to_function bt('wc_show_intentions'), "$('intentions_select_container').show()" %>
-
-<div id="intentions_select_container" style="display:none;" >
-  <p><%= bt('wc_intentions_info') %></p>
-  <%= select_tag = collection_select( :query, :intentions, @aims, :id, :to_label, {},
-                                     { :multiple => 'multiple', :id => 'intention-select', :size => 10 } )
-  -%>
-</div>

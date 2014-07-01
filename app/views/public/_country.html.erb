@@ -1,7 +1,0 @@
-<li>
-        <div class="country_flag"><%= flag(country) %> </div> 
-				<%= country.name %>
-        <%= link_to_remote bt('remove',:edit_allowed => false),
-                                       :url => remove_country_url,
-                                       :with => "'code=#{country.code}'"  %>
-</li>
