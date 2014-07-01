@@ -1,0 +1,47 @@
+cz:
+  create: Vytvořit
+  update: Upravit
+  delete: Smazat
+  export: Export
+  workcamps: Workcampy
+  cancel: Storno
+  male: muž
+  female: žena
+  yes: Ano
+  no: Ne
+  "yes": Ano
+  "no": Ne
+        
+  activerecord:
+    models:
+      comments:
+        one: Komentář
+        other: Komentáře
+        
+      partnership:
+        one: Partnerství
+        other: Partnerství
+
+      email_template:
+        one: Šablona emailu
+        other: Šablony emailů
+      
+    attributes:
+      apply_forms: Přihlášky
+      address: Adresa
+      contact_address: Kontaktní adresa
+      taggings: Nálepky
+      emergency: Pohotovnostní kontakt
+      languages: Jazyky
+      created_at_string: Vytvořeno
+      updated_at_string: Upraveno
+      created_at: Vytvořeno
+      description_cz: Český popis
+      description_en: Anglický popis
+      type: Typ
+
+      email_contacts:
+        action: Akce
+        subject: Předmět
+        body: Text
+        wrap_into_template: Zabalit do šablony

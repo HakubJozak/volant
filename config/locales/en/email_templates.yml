@@ -1,0 +1,6 @@
+en:
+  activerecord:
+    models:
+      email_template:
+        one: Email Template
+        other: Email Templates

@@ -1,0 +1,70 @@
+cz:
+  locale:
+    czech: Czech
+    english: English
+
+  import:
+    updated_workcamps_title: Aktualizované workcampy
+    import_all_confirm: Opravdu označit všechny workcampy jako zkontrolované?
+    update_all_confirm: Aktualizovat všechny workcampy?
+    confirm: Opravdu označit všechny workcampy jako zkontrolované?
+    delete_all: Opravdu chcete smazat všechny nepotvrzené workcampy?
+    cancel_all: Opravdu chcete smazat všechny změny?
+    title: Importované workcampy
+    results: Výsledky importu
+    button: Importovat
+    missing_file: Prosím zvolte soubor k importu.
+    import_instructions: "Nahrané workcampy zkontrolujte a smažte nebo potvrďte jejich import."
+    update_instructions: "Aktualizované workcampy zkontrolujte a aplikujte nebo stornujte jejich změny."
+    instructions: "Vyberte soubor s workcampy v jednom z formátů a spusťte import. Všechny nalezené workcampy se připraví 'Ke kontrole' (viz menu). Po jejich potvrzení se přesunou do databáze."
+    errors:
+      missing_organization: Organizace s kódem %{code} neexistuje
+
+
+
+  txt:
+    email_to_all: Napsat email všem
+    participants_to_csv: Seznam účastníků
+    friday_list_to_csv: Friday list
+    add_tag: Přidat nálepku
+    howto_templates: Jak na šablony emailů?
+    has_birthday: Má dnes narozeniny!
+    who_has_birthday: Kdo má dnes narozeniny?
+    close: Zavřít
+    open_popup: Otevřít v novém oknu
+    page_title: Volant
+    all: Všechny
+    menu:
+      all: Všechny
+      to_check: Ke kontrole
+      incoming: Incoming
+      outgoing: Outgoing
+      yearly: Rok %{year}
+      complete: Všechny roky
+      workcamps: Workcampy
+      preparation: Příprava
+      season: Sezóna
+      apply_forms: Přihlášky
+      by_tag: Nálepky
+      by_organization: Organizace
+      by_places: Místa
+      import: Import
+      upload_file: Nahrát soubor
+      imported_workcamps: Importované
+      updated_workcamps: Aktualizované
+
+      by_state:
+        title: Stavy
+        all: Všechny
+        alerts: Urgentní
+        accepted: Akceptované
+        cancelled: Stornované
+        asked: Zažádané
+        rejected: Zamítnuté
+        with_payment: S platbou
+        without_payment: Bez platby
+        pending: K vyřízení
+
+      contacts: Kontakty
+      settings: Nastavení
+      logout: Odhlásit

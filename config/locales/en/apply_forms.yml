@@ -1,0 +1,86 @@
+en:
+  activerecord:
+    models:
+      apply_form: &apply_form_model
+        one: Application
+        other: Applications
+
+      incoming/apply_form:
+        <<: *apply_form_model
+
+      outgoing/apply_form:
+        <<: *apply_form_model
+
+    attributes:
+      apply_form: &apply_form_attrs
+        taggings: Tags
+        alerts: ''
+        toggle_cancel: Toggle 'Cancelled'
+        accepted_forms: Accepted
+        current_workcamp: Workcamp
+        current_workcamp_places: Places
+        volunteer_age: Age
+        actions: Actions
+        accepted_string: Accepted
+        rejected_string: Rejected
+        asked_string: Asked
+        infosheeted_string: Infosheet sent
+        created_at: Submitted
+        volunteer: Volunteer
+        payment: Payment
+        tags: Tags
+        address: Address
+        comments: Comments
+        workcamps: Workcamps
+
+        apply_form_states:
+          changed: Apllication form changed, email not sent.
+          accepted: Accepted %{time}
+          rejected: Rejected %{time}
+          asked: Wating for response since %{time}
+          paid: Paid %{time}
+          not_paid: Not paid
+          cancelled: Cancelled %{time}
+          infosheeted: Infosheet sent %{time}
+          info:
+            accepted: Accepted %{time}
+            rejected: Rejected %{time}
+            asked: Wating for response since %{time}
+            paid: Paid %{time}
+            infosheeted: Infosheet sent %{time}
+            cancelled:
+              before: Cancelled %{time}, before being accepted.
+              after: Cancelled %{time}, %{after_accept_count} days after acceptation and %{to_wc_count} before beginning of the workcamp.
+            not_paid: Not paid (application is considered to be paid if it has a payment and its amount equals the application fee).
+    
+        apply_form_actions:
+          accept: Accepte
+          reject: Reject
+          rejected: Workcamp '%{wc}' was marked as rejected. You can either continue by asking for the next workcamp in a row or 'cancel'.
+          rejected_final: Workcamp '%{wc}' is last on the application.
+          cancel: Cancel
+          cancel_confirm: Do you really want to cancel this application?
+          cancel_success: Application cancelled.
+          already_cancelled: Application is already cancelled.
+          ask: Ask
+          infosheet: Send infosheet
+          full_warning: This workcamp is already full!
+          almost_full_warning: You already asked for all free places!
+    
+        apply_form_alerts:
+          waits_too_long: Waits too long for the reply.
+          no_infosheet: Still has no infosheet.
+    
+        fee: Fee
+        status: Status
+        state: State
+        cancelled: Cancelled
+        cancelled_string: Cancelled
+        general_remarks: General remarks
+        motivation: Motivation
+
+      incoming/apply_form:
+        <<: *apply_form_attrs
+
+      outgoing/apply_form:
+        <<: *apply_form_attrs

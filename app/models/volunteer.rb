@@ -18,21 +18,9 @@ class Volunteer < Person
   end
 
 
-  def self.with_birthdays_conditions
-    query = "extract(day from birthdate) = ? and extract(month from birthdate) = ?"
-    [ query, Date.today.day, Date.today.month ]
-  end
-
-  def self.find_with_birthday
-    Volunteer.find(:all, :conditions => self.with_birthdays_conditions)
-  end
-
   def self.find_by_name_like(text)
     search = "%#{text.downcase}%"
-    Volunteer.find(:all,
-                   :conditions => ['lower(lastname) LIKE ? or lower(firstname) LIKE ?', search, search ],
-                   :order => 'lastname ASC, firstname ASC',
-                   :limit => 15)
+    Volunteer.where("lower(lastname) LIKE ? or lower(firstname) LIKE ?", search, search).order('lastname ASC, firstname ASC').limit(15)
   end
 
 
@@ -80,8 +68,8 @@ class Volunteer < Person
     ascii_chars     = 'eertyuuioasdzcnEERTYUUIOASDZCN'
     dest = src.dup
 
-    (0...accented_chars.mb_chars.g_length).each do |i|
-        dest.gsub!(accented_chars.mb_chars[i..i], ascii_chars[i..i])
+    (0...accented_chars.mb_chars.length).each do |i|
+      dest.gsub!(accented_chars.mb_chars[i..i], ascii_chars[i..i])
     end
 
     dest

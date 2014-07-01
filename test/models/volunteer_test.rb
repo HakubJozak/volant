@@ -30,14 +30,6 @@ class VolunteerTest < ActiveSupport::TestCase
     assert_equal false, @hana.male?
   end
 
-  test "birthday resolution for volunteers" do
-    too_late = Factory.create(:volunteer, :birthdate => 1.day.ago )
-    right_now = Factory.create(:volunteer, :birthdate => Date.today )
-    assert right_now.has_birthday?, "no happy birthday?"
-    assert !too_late.has_birthday?, "has birthday?"
-    assert Volunteer.find_with_birthday.count >= 1
-  end
-
   test "approximate find" do
     assert_equal @jakub, Volunteer.find_by_name_like('JaK')[0]
     assert_equal @hana, Volunteer.find_by_name_like('hAna')[0]

@@ -1,0 +1,18 @@
+en:
+  activerecord:
+    models:
+      taggings:
+        one: Tag
+        other: Tags
+      tag:
+        one: Tag
+        other: Tags
+
+    attributes:
+       tag:
+         name: Name
+         color: Color
+         text_color: Text Color
+
+       taggings:
+         tag: Tag

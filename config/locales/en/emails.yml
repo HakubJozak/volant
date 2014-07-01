@@ -1,0 +1,32 @@
+en:
+  emails:
+    subject: Subject
+    to: To
+    from: From
+    body: Text
+
+    remove_attachment: Remove Attachment
+    add_attachment: Add Attachment
+    attachment: Attachment
+    attachments: Attachments
+
+    send: Send
+    confirm_not_send: Change state, don't send email
+    cancel: Cancel
+    success: Email sent succesfully.
+    failure: Failed to send email. Please check the receiver and sender address or contact your Volant administrator.
+
+    accept:
+      subject: You have been accepted to workcamp '%{wcname}'!
+
+    infosheet:
+      subject: We are sending you an infosheet for '%{wcname}'
+
+    ask:
+      subject: "VEF: %{volname} for %{wcname}(%{wccode})"
+
+    reject:
+      subject: You have not been accepted to any workcamp
+
+    submitted:
+      subject: Workcamp(s) application succesfully submitted

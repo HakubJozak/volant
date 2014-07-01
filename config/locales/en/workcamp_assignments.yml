@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    models:
+      outgoing/workcamp_assignment:
+        one: Workcamp
+        other: Workcamps
+
+
+    attributes:
+      outgoing/workcamp_assignment:
+        accepted_string: Accepted
+        rejected_string: Rejected
+        infosheeted_string: Infosheet sent
+        asked_string: Asked
+

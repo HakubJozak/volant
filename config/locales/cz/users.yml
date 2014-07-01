@@ -1,0 +1,16 @@
+cz:
+  activerecord:
+    models:
+      user:
+        other: Uživatel
+        one: Uživatelé
+
+    attributes:
+      user:
+        firstname: Jméno
+        lastname: Příjmení
+        locale: Jazyk
+        login: Login
+        password: Heslo
+        password_confirmation: Heslo (potvrzení)
+        

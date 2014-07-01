@@ -1,0 +1,88 @@
+cz:
+  activerecord:
+    models:
+      apply_form: &apply_form_model
+        one: Přihláška
+        other: Přihlášky
+
+      incoming/apply_form:
+        <<: *apply_form_model
+
+      outgoing/apply_form:
+        <<: *apply_form_model
+
+
+    attributes:
+      apply_form: &apply_form_attrs
+        taggings: Nálepky
+        alerts: ''
+        toggle_cancel: Stornovat / Zrušit storno
+        accepted_forms: Akceptované přihlášky
+        current_workcamp: Workcamp
+        current_workcamp_places: Místa
+        volunteer_age: Věk
+        actions: Akce
+        accepted_string: Akceptováno
+        rejected_string: Zamítnuto
+        asked_string: Zažádáno
+        infosheeted_string: Infosheet zaslán
+        created_at: Podána
+        volunteer: Dobrovolník
+        payment: Platba
+        tags: Nálepky
+        volunteer_tags: Nálepky na přihlášce a dobrovolníkovi
+        workcamp_tags: Nálepky aktuálního workcampu
+        address: Adresa
+        comments: Komentáře
+    
+        apply_form_states:
+          changed: Stav přihlášky byl změněn, email neodeslán.
+          accepted: Akceptována %{time}
+          rejected: Zamítnuta %{time}
+          asked: Čeká na odpověď od %{time}
+          paid: Zaplacena %{time}
+          not_paid: Nezaplacena
+          cancelled: Stornována %{time}
+          infosheeted: Odeslán infosheet %{time}
+          info:
+            accepted: Akceptována %{time}
+            rejected: Zamítnuta %{time}
+            asked: Čeká na odpověď od %{time}
+            paid: Zaplacena %{time}
+            infosheeted: Odeslán infosheet %{time}
+            cancelled:
+              before: Stornováno dne %{time}, ještě před přijetím na projekt.
+              after: Stornováno %{time}, %{after_accept_count} dní po přijetí na projekt a %{to_wc_count} dní před začátkem workcampu.
+            not_paid: Nezaplacena (přihláška je považována za zaplacenou, pokud platba k ní přiřazená se rovná částce požadované jako poplatek za přihlášku).
+    
+        apply_form_actions:
+          accept: Akceptovat
+          reject: Zamítnout
+          rejected: Workcamp '%{wc}' byl označen jako zamítnutý. Můžete pokračovat přímo žádostí o další workcamp v pořadí, nebo zvolte 'Storno'.
+          rejected_final: Workcamp '%{wc}' je poslední na přihlášce.
+          cancel: Stornovat
+          cancel_confirm: Opravdu stornovat tuto přihlášku?
+          cancel_success: Přihláška byla stornována.
+          already_cancelled: Přihláška už byla stornována dřive.
+          ask: Zažádat
+          infosheet: Odeslat infosheet
+          full_warning: Tento workcamp je již obsazen!
+          almost_full_warning: O všechna volná místa již bylo zažádáno!
+    
+        apply_form_alerts:
+          waits_too_long: Čeká příliš dlouho na odpověď!
+          no_infosheet: Projekt stále ještě nemá infosheet!
+    
+        fee: Poplatek
+        status: Stav
+        state: Stav
+        cancelled: Stornována
+        cancelled_string: Stornována
+        general_remarks: Obecné poznámky
+        motivation: Motivace
+
+      incoming/apply_form:
+        <<: *apply_form_attrs
+
+      outgoing/apply_form:
+        <<: *apply_form_attrs
