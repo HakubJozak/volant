@@ -1,9 +1,9 @@
 class ImportChange < ActiveRecord::Base
-  enforce_schema_rules
+
   belongs_to :workcamp, :class_name => 'Outgoing::Workcamp'
   before_save :regenerate_diff
 
-  Differ.format = :html
+
 
   def apply!
     ImportChange.transaction do
@@ -17,6 +17,7 @@ class ImportChange < ActiveRecord::Base
   end
 
   def regenerate_diff
+    Differ.format = :html
     self.diff = Differ.diff_by_word(ERB::Util.html_escape(new.to_s),
                                     ERB::Util.html_escape(old.to_s)).to_s
   end

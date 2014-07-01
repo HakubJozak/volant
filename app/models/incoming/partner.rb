@@ -1,6 +1,6 @@
 module Incoming
   class Partner < ActiveRecord::Base
-    enforce_schema_rules
+
     acts_as_taggable
 
     has_many :hostings, :class_name => 'Incoming::Hosting'

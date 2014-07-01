@@ -37,3 +37,15 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
+
+add_fixtures = Proc.new do |path,extension|
+  Dir["#{path}/*.#{extension}"].map do |name|
+    File.basename(name, '.' + extension)
+  end
+end
+
+files = add_fixtures.call("#{Rails.root}/db/fixtures/seed","csv")
+files.concat add_fixtures.call("#{Rails.root}/db/fixtures/seed","yml")
+files.concat add_fixtures.call("#{Rails.root}/test/fixtures","csv")
+files.concat add_fixtures.call("#{Rails.root}/test/fixtures","yml")
+ENV["FIXTURES"] = files.uniq.join(',')

@@ -1,5 +1,5 @@
-class Incoming::Workcamp < ::Workcamp 
-  default_scope :order => :begin
+class Incoming::Workcamp < ::Workcamp
+  default_scope -> { order 'begin' }
 
   has_many :leaderships, :class_name => 'Incoming::Leadership'
   has_many :leaders, :through => :leaderships, :class_name => 'Incoming::Leader'
@@ -13,11 +13,11 @@ class Incoming::Workcamp < ::Workcamp
   def free_places
     capacity - participants.not_cancelled.count - bookings.count
   end
-  
+
   def free_places_for_males
     [ free_places, capacity_males - bookings.males.count - participants.males.not_cancelled.count ].min
   end
-  
+
   def free_places_for_females
     [ free_places, capacity_females - bookings.females.count - participants.females.not_cancelled.count ].min
   end
@@ -27,11 +27,11 @@ class Incoming::Workcamp < ::Workcamp
     all.select { |wc| wc.free_places > 0 }
   end
 
-  # return comma separated string listing nationalities which 
+  # return comma separated string listing nationalities which
   # are not allowed for this workcamp any more
   def no_more_nationalities
     nations = participants.not_cancelled.map { |p| p.nationality.to_s.downcase.strip }
-    nations.uniq.select { |x| nations.count(x) > 1}.map { |n| n.capitalize }    
+    nations.uniq.select { |x| nations.count(x) > 1}.map { |n| n.capitalize }
   end
 
   protected
@@ -49,8 +49,8 @@ class Incoming::Workcamp < ::Workcamp
   def self.friday_list
     # TODO - set friday list locale and time span
     locale = 'en'
-    attrs = [ :code, :name, :intentions, :begin, :end, :capacity, 
-              :minimal_age, :maximal_age, 
+    attrs = [ :code, :name, :intentions, :begin, :end, :capacity,
+              :minimal_age, :maximal_age,
               :free_places, :free_places_for_males, :free_places_for_females,
               :no_more_nationalities,
               :comments ]
@@ -60,7 +60,7 @@ class Incoming::Workcamp < ::Workcamp
 
       free.each do |wc|
         csv << attrs.map do |attr|
-          case attr 
+          case attr
           #when :begin, :end then I18n.localize(wc.send(attr), :locale => locale, :format => :long)
           when :begin, :end then wc.send(attr).nil? ? '-' : wc.send(attr).strftime('%d/%m/%Y')
           when :intentions then wc.intentions.join('/')
@@ -76,7 +76,7 @@ class Incoming::Workcamp < ::Workcamp
 
   def participants_to_csv
     FasterCSV.generate(:col_sep => ';') do |csv|
-      attrs = [ :cancelled, :nationality, :name, :gender, :age, :birthdate, :email, :phone, :general_remarks, 
+      attrs = [ :cancelled, :nationality, :name, :gender, :age, :birthdate, :email, :phone, :general_remarks,
                 :note, :tags, :emergency_name, :emergency_day, :emergency_night ]
       attrs.map! { |a| Incoming::Participant.human_attribute_name(a) }
       csv << [ Organization.human_name, Country.human_name, attrs ].flatten
@@ -88,11 +88,11 @@ class Incoming::Workcamp < ::Workcamp
         age = (before == after) ? before : "#{before}/#{after}"
         birthday = p.birthdate ? I18n.localize(p.birthdate) : '-'
 
-        csv << [ p.organization.name, 
+        csv << [ p.organization.name,
                  p.country.name,
                  p.cancelled? ? I18n.t('yes') : I18n.t('no'),
                  p.nationality,
-                 p.lastname.upcase + ' ' + p.firstname, 
+                 p.lastname.upcase + ' ' + p.firstname,
                  Person::gender_attribute_name(p.gender),
                  age,
                  birthday,
@@ -121,7 +121,7 @@ class Incoming::Workcamp < ::Workcamp
   end
 
   def make_csv_row(attrs, row)
-    
+
   end
 
 end

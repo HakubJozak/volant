@@ -8,7 +8,7 @@ class Workcamp < ActiveRecord::Base
   # default_scope :conditions => [ "state IS NULL" ]
 
   create_date_time_accessors
-  enforce_schema_rules
+
 
   scope :by_year, lambda { |year|
     year = year.to_i
@@ -20,12 +20,12 @@ class Workcamp < ActiveRecord::Base
   # TODO - fix tests and allow validation
   #  validates_inclusion_of :publish_mode, :in => [:always, :season, :never ]
 
-  CSV_FIELDS = %w(name code country organization)
-  acts_as_convertible_to_csv :fields => CSV_FIELDS, :format_options => {
-                                                  :country => :format_for_csv,
-                                                  :organization => :format_for_csv
-#                                                  :networks => :format_for_csv
-                                                 }
+  # CSV_FIELDS = %w(name code country organization)
+  # acts_as_convertible_to_csv :fields => CSV_FIELDS, :format_options => {
+  #                                                 :country => :format_for_csv,
+  #                                                 :organization => :format_for_csv
+  #                                                  :networks => :format_for_csv
+  #                                                 }
 
   has_many :infosheets, :dependent => :destroy
   belongs_to :country
@@ -41,7 +41,7 @@ class Workcamp < ActiveRecord::Base
   validates_presence_of :country, :code, :name, :places
   validates_presence_of :extra_fee_currency, :if => Proc.new {|wc| wc.extra_fee && wc.extra_fee > 0}, :message => "je povinná. (Je vyplněn poplatek, ale nikoliv jeho měna. Doplňte měnu poplatku.)"
 
-  acts_as_commentable
+
   acts_as_taggable
 
   def self.find_duplicate(wc)

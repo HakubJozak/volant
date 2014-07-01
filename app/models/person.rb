@@ -3,7 +3,7 @@ class Person < ActiveRecord::Base
   FEMALE = 'f'
 
   acts_as_taggable
-  enforce_schema_rules rescue nil
+   rescue nil
   validates_inclusion_of :gender, :in => %w( m f )
 
   def name

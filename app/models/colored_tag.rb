@@ -1,10 +1,10 @@
 class ColoredTag < Tag
-  enforce_schema_rules
+
   set_table_name "tags"
 
   COLOR_REGEXP = /#([0..9][A-F]){6}/
 
-  enforce_schema_rules
+
 #  validates_format_of :color, :with => COLOR_REGEXP
 #  validates_format_of :text_color, :with => COLOR_REGEXP
 

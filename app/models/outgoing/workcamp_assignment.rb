@@ -3,7 +3,7 @@ module Outgoing
 
     STATE_ORDER = [ :paid, :asked, :accepted, :infosheeted, :rejected, :cancelled, :not_paid, :after].freeze
 
-    enforce_schema_rules
+
     create_date_time_accessors
 
     belongs_to :apply_form, :class_name => 'Outgoing::ApplyForm'

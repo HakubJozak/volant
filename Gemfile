@@ -40,5 +40,5 @@ gem 'pry', group: [:development, :test]
 
 group :test do
   gem "shoulda"
-  gem "factory_girl", "~> 1.0"
+  gem "factory_girl_rails" #, "~> 1.0"
 end

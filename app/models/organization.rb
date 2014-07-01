@@ -1,10 +1,9 @@
 class Organization < ActiveRecord::Base
-  acts_as_commentable
-  acts_as_convertible_to_csv
+
 
   DEFAULT_ORG_CODE = 'volant.default_organization_code'
 
-  enforce_schema_rules
+
 #  has_many :email_contacts
   has_many :workcamps
   belongs_to :country
