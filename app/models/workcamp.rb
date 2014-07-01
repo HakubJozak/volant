@@ -32,9 +32,9 @@ class Workcamp < ActiveRecord::Base
   belongs_to :organization
 
   has_and_belongs_to_many :intentions,
+                          -> { readonly },
                           :class_name => 'WorkcampIntention',
                           :join_table => 'workcamp_intentions_workcamps',
-                          :readonly => true,
                           :delete_sql => 'DELETE FROM workcamp_intentions_workcamps WHERE workcamp_id=#{id}'
 
   attr_readonly :free_places, :free_places_for_males, :free_places_for_females

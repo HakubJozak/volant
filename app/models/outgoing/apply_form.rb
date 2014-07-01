@@ -1,6 +1,8 @@
 module Outgoing
   class ApplyForm < ::ApplyForm
 
+    include FreePlacesUpdater
+
     validates_presence_of :volunteer
     delegate :asked, :accepted, :rejected, :rejected?, :infosheeted, :to => :current_assignment, :allow_nil => true
 

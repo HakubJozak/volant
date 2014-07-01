@@ -33,6 +33,7 @@ module Outgoing
         fwa = Factory.create(:workcamp_assignment, :workcamp => @wc, :apply_form => Factory.create(:form_female))
         mwa.accept
         fwa.ask
+
         assert @wc.reload.almost_full?(male), "Workcamp is not almost full"
         assert @wc.reload.full?(male), "Workcamp is not full"
         assert @wc.reload.almost_full?(female), "Workcamp is not almost full"

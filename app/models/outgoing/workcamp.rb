@@ -82,10 +82,7 @@ module Outgoing
 
     def self.find_by_name_or_code(text)
       search = "%#{text.downcase}%"
-      find(:all,
-           :conditions => ['lower(name) LIKE ? or lower(code) LIKE ?', search, search ],
-           :order => '"begin" DESC, code ASC, name ASC',
-           :limit => 15)
+      where('lower(name) LIKE ? or lower(code) LIKE ?', search, search).order('"begin" DESC, code ASC, name ASC').limit(15)
     end
 
   end

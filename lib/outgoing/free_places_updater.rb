@@ -1,22 +1,25 @@
-# TODO - move to Outgoing module
-class FreePlacesObserver < ActiveRecord::Observer
-  observe Outgoing::WorkcampAssignment, Outgoing::ApplyForm
+module Outgoing::FreePlacesUpdater
+  extend ActiveSupport::Concern
 
-  def after_save(object)
-    if object.respond_to?(:workcamps)
-      object.workcamps.reload.each { |wc| FreePlacesObserver.update_free_places(wc) }
+  included do
+    after_save :update_free_places
+    after_destroy :update_free_places
+  end
+
+  def update_free_places
+    if self.respond_to?(:workcamps)
+      self.workcamps.reload.each { |wc| update_free_places_for_workcamp(wc) }
+    elsif self.respond_to?(:workcamp)
+      update_free_places_for_workcamp(self.workcamp)
     else
-      FreePlacesObserver.update_free_places(object.workcamp)
+      raise "Cannot update free places. #{self.inspect} has no workcamp(s) association."
     end
   end
 
-  def after_destroy(object)
-    after_save(object)
-  end
-
+  private
 
   # In fact, updates accepted_* and asked_for_* attributes so that free_places_* are computed correctly.
-  def self.update_free_places(wc)
+  def update_free_places_for_workcamp(wc)
     kinds = [ [ "", :id ],
               [ "_males", :male? ],
               [ "_females", :female? ] ]

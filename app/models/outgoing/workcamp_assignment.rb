@@ -1,6 +1,8 @@
 module Outgoing
   class WorkcampAssignment < ActiveRecord::Base
 
+    include FreePlacesUpdater
+
     STATE_ORDER = [ :paid, :asked, :accepted, :infosheeted, :rejected, :cancelled, :not_paid, :after].freeze
 
     create_date_time_accessors
