@@ -17,16 +17,16 @@ class FreePlacesObserver < ActiveRecord::Observer
 
   # In fact, updates accepted_* and asked_for_* attributes so that free_places_* are computed correctly.
   def self.update_free_places(wc)
-    kinds = [ [ "", :id ], 
+    kinds = [ [ "", :id ],
               [ "_males", :male? ],
               [ "_females", :female? ] ]
-    
+
     kinds.each do |sufix, condition|
       asked = accepted = 0
-      
+
       wc.workcamp_assignments.each do |wa|
         a = wa.apply_form
-        
+
         if a.volunteer and a.volunteer.send(condition) and !a.cancelled
           accepted += 1 if wa.accepted
           asked += 1 if wa.state == :asked
@@ -38,5 +38,5 @@ class FreePlacesObserver < ActiveRecord::Observer
     end
   end
 
-  
+
 end

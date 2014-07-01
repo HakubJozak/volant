@@ -23,7 +23,7 @@ module Volant
     config.time_zone = 'UTC'
 
     Dir[File.join(Rails.root,'config','locales', '{cz,en}', '*.{rb,yml}')].each do |path|
-      puts "Loading locale: #{path}"
+      # puts "Loading locale: #{path}"
       config.i18n.load_path << path
     end
 

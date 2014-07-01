@@ -34,6 +34,6 @@ class VefAttachment
   end
 
   def generate_data
-    YamlUtils::eval_erb_file "#{RAILS_ROOT}/app/views/outgoing/apply_forms/vef.html.erb", binding
+    YamlUtils::eval_erb_file "#{Rails.root}/app/views/outgoing/apply_forms/vef.html.erb", binding
   end
 end

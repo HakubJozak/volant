@@ -44,7 +44,7 @@ module Outgoing
     test "assignment rejection" do
       @paid = Factory.create(:paid_form)
       @paid.workcamps.clear
-      Workcamp.find(:all, :limit => 3).each_with_index do |wc,i|
+      Workcamp.limit(3).each_with_index do |wc,i|
         @paid.workcamp_assignments << Outgoing::WorkcampAssignment.new( :order => i+1, :workcamp => wc )
       end
 

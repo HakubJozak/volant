@@ -4,7 +4,7 @@ module Outgoing
   class WorkcampAssignmentTest < ActiveSupport::TestCase
 
     def setup
-      Factory.create(:workcamp_assignment)    
+      Factory.create(:workcamp_assignment)
     end
 
     test "parse acceptance date" do
@@ -21,6 +21,7 @@ module Outgoing
     test "caching" do
       form = Factory.create(:apply_form)
       a = Factory.create(:workcamp_assignment, :apply_form_id => form.id, :accepted => Time.now)
+
       assert form.reload.is?(:accepted), "ApplyForm is supposed to be accepted now"
 
       a.accepted = nil

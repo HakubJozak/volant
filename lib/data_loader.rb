@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module DataLoader
 
   def self.load_emails
@@ -17,9 +18,8 @@ module DataLoader
     descs["submitted"] = "Posílá se automaticky po přijetí přihlášky"
     descs["mail"] = "Hlavní šablona, která obaluje většinu emailů"
 
-
     [ 'accept', 'ask', 'infosheet', 'reject', 'submitted', 'mail' ].each do |action|
-      f = File.new("#{RAILS_ROOT}/db/default_email_templates/#{action}.html.erb")
+      f = File.new("#{Rails.root}/db/default_email_templates/#{action}.html.erb")
 
       body = ''
       f.each_line { |line| body += line}

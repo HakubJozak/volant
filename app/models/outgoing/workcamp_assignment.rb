@@ -3,12 +3,14 @@ module Outgoing
 
     STATE_ORDER = [ :paid, :asked, :accepted, :infosheeted, :rejected, :cancelled, :not_paid, :after].freeze
 
-
     create_date_time_accessors
 
     belongs_to :apply_form, :class_name => 'Outgoing::ApplyForm'
     belongs_to :workcamp, :class_name => 'Outgoing::Workcamp'
     validates_presence_of :workcamp
+
+    after_save :update_apply_form_cache
+    after_destroy :update_apply_form_cache
 
     scope :not_rejected, :conditions => [ 'rejected IS NULL']
 
@@ -47,11 +49,7 @@ module Outgoing
     end
 
     # TODO - put into observer
-    def after_save
-      ApplyForm.update_cache_for(self.apply_form_id) if self.apply_form_id
-    end
-
-    def after_destroy
+    def update_apply_form_cache
       ApplyForm.update_cache_for(self.apply_form_id) if self.apply_form_id
     end
   end
