@@ -1,0 +1,18 @@
+common: &common
+  adapter: postgresql
+  host: localhost
+  port: 5432
+  username: postgres
+
+development:
+  <<: *common
+  password: toor
+  database: volant_development
+
+test:
+  <<: *common
+  database: volant_test
+
+production:
+  <<: *common
+  database: volant_production
