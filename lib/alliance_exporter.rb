@@ -1,11 +1,13 @@
+require 'builder'
+
+
 module AllianceExporter
 
-  class InvalidWorkcamp < StandardError
-  end
+  class InvalidWorkcamp < StandardError ;  end
 
   def self.export(workcamps)
     x = Builder::XmlMarkup.new
-    
+
     x.instruct!
     result = x.exportfile(:network => 'alliance', :version => "1.0") do
       # hash workcamps by organization code
@@ -15,12 +17,12 @@ module AllianceExporter
         orgs[code] << wc
         orgs
       end
-      
+
       by_orgs.each do |org_code, wc|
         x.workcamps(:organization => org_code) do |builder|
           workcamps.reduce('') do |str,wc|
             begin
-              xml = wc.to_alliance_xml(builder) 
+              xml = wc.to_alliance_xml(builder)
               str << xml
             rescue InvalidWorkcamp => e
               # TODO - tell it to the user
@@ -56,11 +58,11 @@ module AllianceExporter
       x.location(area)
       x.work intentions.map { |i| i.code }.join(',')
 
-      # optional elements 
+      # optional elements
       x.numvol(capacity) if capacity
       x.numvol_f(capacity_females) if capacity_females
       x.numvol_m(capacity_males) if capacity_males
-      
+
       # TODO - setup those values in organization policy?
       x.max_vols_per_country(2)
       x.max_teenagers if false
