@@ -9,13 +9,10 @@ class Workcamp < ActiveRecord::Base
 
   create_date_time_accessors
 
-
   scope :by_year, lambda { |year|
     year = year.to_i
-    sql = '(workcamps.begin >= ? AND workcamps.end < ?)'
-    { :conditions => [ sql, Date.new(year,1,1), Date.new(year + 1,1,1) ] }
+    where '(workcamps.begin >= ? AND workcamps.end < ?)', Date.new(year,1,1), Date.new(year + 1,1,1)
   }
-
 
   # TODO - fix tests and allow validation
   #  validates_inclusion_of :publish_mode, :in => [:always, :season, :never ]

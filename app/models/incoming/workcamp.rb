@@ -47,6 +47,8 @@ class Incoming::Workcamp < ::Workcamp
   public
 
   def self.friday_list
+    raise 'not implemented'
+
     # TODO - set friday list locale and time span
     locale = 'en'
     attrs = [ :code, :name, :intentions, :begin, :end, :capacity,
@@ -55,7 +57,7 @@ class Incoming::Workcamp < ::Workcamp
               :no_more_nationalities,
               :comments ]
 
-    FasterCSV.generate(:col_sep => ';') do |csv|
+    ::CSV.generate(:col_sep => ';') do |csv|
       csv << attrs.map { |attr| Incoming::Workcamp.human_attribute_name(attr, :locale => locale) }
 
       free.each do |wc|
@@ -75,7 +77,7 @@ class Incoming::Workcamp < ::Workcamp
   end
 
   def participants_to_csv
-    FasterCSV.generate(:col_sep => ';') do |csv|
+    ::CSV.generate(:col_sep => ';') do |csv|
       attrs = [ :cancelled, :nationality, :name, :gender, :age, :birthdate, :email, :phone, :general_remarks,
                 :note, :tags, :emergency_name, :emergency_day, :emergency_night ]
       attrs.map! { |a| Incoming::Participant.human_attribute_name(a) }

@@ -53,6 +53,7 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     colorize (0.7.3)
+    differ (0.1.2)
     erubis (2.7.0)
     execjs (2.2.1)
     factory_girl (2.6.4)
@@ -167,6 +168,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano-rails
   coffee-rails (~> 4.0.0)
+  differ
   factory_girl_rails
   jbuilder (~> 2.0)
   jquery-rails

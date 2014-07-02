@@ -36,6 +36,7 @@ gem 'spring',        group: :development
 
 gem 'paperclip'
 gem 'pry', group: [:development, :test]
+gem 'differ'
 
 
 group :development do

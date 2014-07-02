@@ -7,10 +7,10 @@ module Outgoing
     validates_presence_of :name
 
     # TODO: DRY
-    scope :live, :conditions => "state IS NULL"
-    scope :imported, :conditions => "state = 'imported'"
-    scope :updated, :conditions => "state = 'updated'"
-    scope :imported_or_updated, :conditions => "state = 'imported' or state = 'updated'"
+    scope :live, -> { where "state IS NULL" }
+    scope :imported, -> { where "state = 'imported'" }
+    scope :updated, -> { where "state = 'updated'" }
+    scope :imported_or_updated, -> { where "state = 'imported' or state = 'updated'" }
 
     has_many :workcamp_assignments, :dependent => :destroy, :class_name => 'Outgoing::WorkcampAssignment'
     has_many :apply_forms, :through => :workcamp_assignments, :dependent => :destroy, :class_name => 'Outgoing::ApplyForm'

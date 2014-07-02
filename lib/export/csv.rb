@@ -1,6 +1,6 @@
 module Export
   module Csv
-    
+
     def self.outgoing_apply_forms(options = {})
       year = options[:year] || Date.today.year
       apply_forms = Outgoing::ApplyForm.year(year)
@@ -9,14 +9,14 @@ module Export
       payment_attrs = [ :amount, :received, :description, :returned_date, :returned_amount ]
       org_attrs = [ :country, :name, :networks, :phone, :mobile ]
       wc_attrs = [ :code, :name, :begin, :end, :intentions, :extra_fee ]
-      volunteer_attrs = [ :firstname, :lastname, :gender, :age, :birthnumber, :birthdate, 
+      volunteer_attrs = [ :firstname, :lastname, :gender, :age, :birthnumber, :birthdate,
                           :nationality, :occupation, :email, :phone,
                           :street, :city, :zipcode, :contact_street, :contact_city, :contact_zipcode,
                           :emergency_name, :emergency_day, :emergency_night,
                           :special_needs, :past_experience, :tags ]
 
 
-      FasterCSV.generate(:col_sep => ';') do |csv|
+      ::CSV.generate(:col_sep => ';') do |csv|
         h = []
         h.concat header( form_attrs, Outgoing::ApplyForm)
         h.concat header( payment_attrs, Payment)
@@ -35,7 +35,7 @@ module Export
           d.concat data( org_attrs, wc ? wc.organization : nil)
           csv << d
         end
-      end      
+      end
     end
 
     protected
@@ -48,15 +48,15 @@ module Export
     def self.data(attrs, obj)
       # use empty array if the object is nil
       obj = attrs.map { nil } unless obj
-   
-      attrs.map do |a| 
+
+      attrs.map do |a|
         value = obj.send(a) rescue nil
 
         if Date === value or a == :created_at
           I18n.l(value.to_date) rescue nil
         elsif a == :intentions or a == :networks
           value.join(',') rescue nil
-        else 
+        else
           value
         end
       end
