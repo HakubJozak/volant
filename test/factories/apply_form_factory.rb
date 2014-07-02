@@ -1,10 +1,16 @@
 # do not use! it has no assignment
-Factory.define :apply_form, :class => Outgoing::ApplyForm do |f|
+Factory.define :abstract_form, :class => ApplyForm do |f|
+  f.general_remarks "nothing to say"
+  f.motivation "i WANT to go there"
+end
+
+Factory.define :apply_form, :parent => :abstract_form,:class => Outgoing::ApplyForm do |f|
+  f.fee 2200
   f.association :volunteer
   f.association :payment
-  f.fee 2200
-  f.general_remarks "nothing to say"
-  f.motivation "i don't want to go there"
+end
+
+Factory.define :incoming_apply_form, :parent => :abstract_form,:class => Incoming::ApplyForm do |f|
 end
 
 Factory.define :paid_form, :parent => :apply_form do |f|

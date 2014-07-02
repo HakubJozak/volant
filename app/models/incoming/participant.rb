@@ -11,10 +11,10 @@ class Incoming::Participant < Person
   validates_presence_of :organization
   validates_presence_of :apply_form
 
-  scope :females, :conditions => {:gender => Person::FEMALE }
-  scope :males, :conditions => {:gender => Person::MALE }
-  scope :not_cancelled, :joins => :apply_form, :conditions => [ 'cancelled IS NULL' ]
-  scope :cancelled, :joins => :apply_form, :conditions => [ 'cancelled IS NOT NULL' ]
+  scope :females, -> { where(gender: Person::FEMALE) }
+  scope :males, -> { where(gender: Person::MALE) }
+  scope :not_cancelled, -> { where('cancelled IS NULL').joins(:apply_form) }
+  scope :cancelled, -> { where('cancelled IS NOT NULL').joins(:apply_form) }
 
   [ :general_remarks, :motivation, :cancelled ].each do |attr|
     delegate attr, :"#{attr.to_s}=", :to => :apply_form
