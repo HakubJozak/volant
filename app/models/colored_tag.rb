@@ -1,9 +1,6 @@
-class ColoredTag < Tag
-
-  set_table_name "tags"
+class ColoredTag < ActsAsTaggableOn::Tag
 
   COLOR_REGEXP = /#([0..9][A-F]){6}/
-
 
 #  validates_format_of :color, :with => COLOR_REGEXP
 #  validates_format_of :text_color, :with => COLOR_REGEXP
