@@ -16,11 +16,10 @@ module XmlHelper
                          "YOUTH"=>"TEEN"}
 
   # 'wrong' UTF-8 characters that shall be replacesd by ' and " by fix_quotes
-  WRONG_CHARS = [ ActiveSupport::Multibyte::Chars.compose([0x0091]),
-                  ActiveSupport::Multibyte::Chars.compose([0x0092]),
-                  ActiveSupport::Multibyte::Chars.compose([0x0093]),
-                  ActiveSupport::Multibyte::Chars.compose([0x0094]) ]
-
+  WRONG_CHARS = [ ActiveSupport::Multibyte::Chars.new([0x0091].pack('U')),
+                  ActiveSupport::Multibyte::Chars.new([0x0092].pack('U')),
+                  ActiveSupport::Multibyte::Chars.new([0x0093].pack('U')),
+                  ActiveSupport::Multibyte::Chars.new([0x0094].pack('U')) ]
 
   def parse_fee( node, wc)
     fnode = node.elements['extrafee']
