@@ -48,7 +48,8 @@ module Import
         :language => 'eng,eng',
         :extra_fee => 200,
         :workdesc => 'work_is_hard',
-        :notes => 'must_be_alive',
+        # TODO remove the newlines
+        :notes => "must_be_alive\n\n",
         :extra_fee_currency => 'EUR',
         :begin => Date.new(2011,7,25),
         :end => Date.new(2011,8,7),
@@ -58,10 +59,8 @@ module Import
         :latitude => 59.4388619
       }
 
-      expected.each do |attr,value|
-        assert_equal value,
-        wc.send(attr),
-        "#{attr} is expected to be #{value}"
+      expected.each do |attr,expected|
+        assert_equal expected, wc.send(attr)
       end
     end
 
