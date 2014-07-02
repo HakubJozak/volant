@@ -38,6 +38,8 @@ gem 'paperclip'
 gem 'pry', group: [:development, :test]
 gem 'differ'
 gem 'htmlentities'
+gem 'acts-as-taggable-on'
+
 
 group :development do
   gem 'capistrano-rails'
