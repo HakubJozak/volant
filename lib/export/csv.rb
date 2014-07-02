@@ -2,6 +2,7 @@ module Export
   module Csv
 
     def self.outgoing_apply_forms(options = {})
+      raise 'CSV export is not ready yet'
       year = options[:year] || Date.today.year
       apply_forms = Outgoing::ApplyForm.year(year)
 

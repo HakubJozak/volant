@@ -14,6 +14,7 @@ module Export
 
       # TODO - test output
       should "produce valid CSV" do
+        skip 'CSV export is not ready'
         assert_not_nil Export::Csv::outgoing_apply_forms
         assert_not_nil Export::Csv::outgoing_apply_forms(:year => '2010')
       end
