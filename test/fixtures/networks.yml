@@ -1,0 +1,23 @@
+alliance:
+  id: '1'
+  name: Alliance
+
+ccivs:
+  id: '2'
+  name: CCIVS
+
+seeyn:
+  id: '3'
+  name: SEEYN
+
+sci:
+  id: '4'
+  name: SCI
+
+yap:
+  id: '5'
+  name: YAP
+
+partner:
+  id: '6'
+  name: Partner

@@ -1,0 +1,53 @@
+senior:
+  id: '1'
+  name: senior
+  color: "#FF0000"
+  text_color: "#FFFFFF"
+
+family:
+  id: '2'
+  name: family
+  color: "#66CC00"
+  text_color: "#FFFFFF"
+
+teenage:
+  id: '3'
+  name: teenage
+  color: "#CCCCCC"
+  text_color: "#FFFFFF"
+
+vegetarian:
+  id: '4'
+  name: vegetarian
+  color: "#CC9966"
+  text_color: "#FFFFFF"
+
+spanish:
+  id: '5'
+  name: spanish
+  color: "#FFCC00"
+  text_color: "#FFFFFF"
+
+german:
+  id: '6'
+  name: german
+  color: "#9999CC"
+  text_color: "#FFFFFF"
+
+italian:
+  id: '7'
+  name: italian
+  color: "#00CC33"
+  text_color: "#FFFFFF"
+
+married:
+  id: '8'
+  name: married
+  color: "#CC9966"
+  text_color: "#FFFFFF"
+
+duplicate:
+  id: '9'
+  name: possible_duplicate
+  color: "#CC9966"
+  text_color: "#FFFFFF"
