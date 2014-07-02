@@ -60,15 +60,11 @@ module Import
       if found.blank?
         nil
       else
-        # TODO - Optimize!
-        result = XmlHelper::fix_quotes(found.text.strip)
+        result = XmlHelper::fix_quotes(found.text.try(:strip) || '')
         coder = HTMLEntities.new('expanded')
-        # sometimes there is &amp;Atilde; or similar garbage so we have to run decode twice
+        # UN-NICE: sometimes there is &amp;Atilde; or similar garbage so we have to run decode twice
         coder.decode(coder.decode(result))
       end
-    rescue => e
-      Rails.logger.error("Failed to extract text from subnode #{subnode}, #{e}")
-      nil
     end
 
     def to_bool(node, subnode)

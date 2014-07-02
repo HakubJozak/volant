@@ -37,7 +37,7 @@ gem 'spring',        group: :development
 gem 'paperclip'
 gem 'pry', group: [:development, :test]
 gem 'differ'
-
+gem 'htmlentities'
 
 group :development do
   gem 'capistrano-rails'

@@ -4,7 +4,7 @@ require 'test_helper'
 class Public::CartTest < ActiveSupport::TestCase
 
   def setup
-    @workcamps = Workcamp.find(:all, :limit => 10)
+    @workcamps = Workcamp.limit(10)
     @cart = Public::Cart.new
   end
 
