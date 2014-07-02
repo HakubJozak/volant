@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
   # Convenience method: gets user by login.
   def self.find_by_login(login)
-    User.find(:first, :conditions => [ "login = ?", login ])
+    User.where("login = ?", login).first
   end
 
   # Encrypts some data with the salt.

@@ -4,9 +4,6 @@ class Workcamp < ActiveRecord::Base
   include AllianceExporter
   include ActiveRecord::Diff
 
-  # TODO: uncomment when AS is removed
-  # default_scope :conditions => [ "state IS NULL" ]
-
   create_date_time_accessors
 
   scope :by_year, lambda { |year|
