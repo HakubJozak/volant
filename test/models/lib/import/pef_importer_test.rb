@@ -12,7 +12,6 @@ module Import
     end
 
     test "not choke on missing organization" do
-      skip 'blah'
       errors = 0
       importer = PefImporter.new(File.new('test/fixtures/xml/pef2011-errors.xml'))
 

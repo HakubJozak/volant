@@ -42,7 +42,6 @@ module Import
             wcs << wc
           end
         rescue Import::ImportException, ActiveRecord::ActiveRecordError => e
-          raise
           error e.message
         end
       end

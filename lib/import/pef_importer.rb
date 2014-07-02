@@ -9,8 +9,6 @@ module Import
       # handle common XML error
       org_code = to_text(@doc, '/projectform/organization_code') || to_text(@doc, '/projectform/Organization_code')
 
-      puts org_code
-
       @organization = Organization.find_by_code(org_code)
     end
 
