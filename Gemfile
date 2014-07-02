@@ -35,9 +35,8 @@ gem 'spring',        group: :development
 # gem 'unicorn'
 
 gem 'paperclip'
-
-
 gem 'pry', group: [:development, :test]
+
 
 group :development do
   gem 'capistrano-rails'
@@ -46,4 +45,5 @@ end
 group :test do
   gem "shoulda"
   gem "factory_girl_rails" #, "~> 1.0"
+  gem 'minitest-reporters'
 end

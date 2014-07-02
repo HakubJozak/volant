@@ -2,7 +2,6 @@
 class Payment < ActiveRecord::Base
   create_date_time_accessors #"returned_date"
 
-
   CSV_FIELDS = %w(amount received returned_amount returned_date return_reason)
 
   belongs_to :apply_form, :class_name => 'Outgoing::ApplyForm'
@@ -15,8 +14,8 @@ class Payment < ActiveRecord::Base
   validates_presence_of :account, :if => proc { |p| p.bank? }
   validates_inclusion_of :mean, :in => %w( CASH BANK )
 
-  scope :returned, :conditions => [ 'returned_amount IS NOT NULL']
-  scope :not_assigned, :conditions => [ 'apply_form_id IS NULL']
+  scope :returned, -> { where 'returned_amount IS NOT NULL' }
+  scope :not_assigned, -> { where 'apply_form_id IS NULL' }
 
   def to_label
     # TODO

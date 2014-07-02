@@ -1,0 +1,3 @@
+ApplyFormMailer#rejected
+
+Find me in app/views/apply_form_mailer/rejected.erb
