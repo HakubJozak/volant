@@ -74,6 +74,10 @@ module XmlHelper
   def to_text(node, subnode)
     found = node.elements[subnode]
     found.blank? ? nil : XmlHelper::fix_quotes(found.text.strip)
+  rescue => e
+    Rails.logger.error("Failed to extract text from subnode #{subnode}, #{e}")
+    raise unless Rails.env.production?
+    nil
   end
 
   def to_bool(node, subnode)
