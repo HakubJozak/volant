@@ -53,7 +53,7 @@ class AllianceExporterTest < ActiveSupport::TestCase
       end
 
       should "generate XML with all organizations" do
-        xml = AllianceExporter.export(Workcamp.find(:all))
+        xml = AllianceExporter.export(Workcamp.all)
         root = REXML::Document.new(xml).root
         assert_not_nil root.elements["//workcamps[@organization='XXX']"]
       end
