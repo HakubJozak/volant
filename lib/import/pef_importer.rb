@@ -5,6 +5,10 @@ module Import
     include Import::Importer
 
     def initialize(file)
+      # HACK - this shold not be happening, but somehow the file comes
+      # read in the tests
+      file.rewind
+
       @doc = REXML::Document.new(file)
       # handle common XML error
       org_code = to_text(@doc, '/projectform/organization_code') || to_text(@doc, '/projectform/Organization_code')
