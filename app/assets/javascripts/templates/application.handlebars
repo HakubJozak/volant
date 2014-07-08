@@ -1,3 +1,26 @@
 <h1>Volant</h1>
 
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Country</th>
+      <th>Organization</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr>
+        <td>{{name}}</td>
+        <td>{{code}}</td>
+        <td>{{country}}</td>
+        <td>{{organization}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+
+
 {{outlet}}

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :workcamps
+
   root 'dashboard#index'
   get 'dashboard/index'
 
