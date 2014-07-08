@@ -1,6 +1,6 @@
 Volant.Workcamp = DS.Model.extend
-  # country: belongsTo('country')
-  # organization: belongsTo('organization')
+  country: DS.belongsTo('country')
+  organization: DS.belongsTo('organization')
   state: DS.attr 'string'
 
   name: DS.attr 'string'
@@ -11,15 +11,14 @@ Volant.Workcamp = DS.Model.extend
   capacity: DS.attr 'number'
   minimal_age: DS.attr 'number'
   maximal_age: DS.attr 'number'
-  area: DS.attr 'text'
-  accomodation: DS.attr 'text'
-  workdesc: DS.attr 'text'
-  notes: DS.attr 'text'
-  description: DS.attr 'text'
-  extra_fee: DS.attr 'decimal'
+  area: DS.attr 'string'
+  accomodation: DS.attr 'string'
+  workdesc: DS.attr 'string'
+  notes: DS.attr 'string'
+  description: DS.attr 'string'
+  extra_fee: DS.attr 'number'
   extra_fee_currency: DS.attr 'string'
   region: DS.attr 'string'
-
   capacity_natives: DS.attr 'number'
   capacity_teenagers: DS.attr 'number'
   capacity_males: DS.attr 'number'

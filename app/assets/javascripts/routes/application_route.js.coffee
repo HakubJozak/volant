@@ -1,4 +1,4 @@
 Volant.ApplicationRoute = Ember.Route.extend({
   model: ->
-    @store.query('workcamp', { page: 0 })
+    @store.find('workcamp', { page: 0 })
 })

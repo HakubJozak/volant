@@ -1,4 +1,7 @@
 class WorkcampSerializer < ActiveModel::Serializer
+  has_one :organization, embed: :ids, include: true
+  has_one :country, embed: :ids, include: true
+
   attributes :id,
              :name,
              :code,

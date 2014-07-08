@@ -3,7 +3,7 @@ class WorkcampsController < ApplicationController
   serialization_scope :current_user
 
   def index
-    render json: Workcamp.page(params[:page]), serializer: WorkcampSerializer
+    render json: Workcamp.page(params[:page]), each_serializer: WorkcampSerializer
   end
 
   def show
