@@ -1,5 +1,13 @@
 <h1>Volant</h1>
 
+<form {{ action 'search_workcamp' }} class="pure-form" >
+  <fieldset>
+    <legend>Search workcamps</legend>
+    {{ input value=query }}
+      <button type="submit" class="pure-button pure-button-primary">Search</button>
+  </fieldset>
+</form>
+
 <table class="pure-table">
   <thead>
     <tr>
@@ -20,7 +28,5 @@
     {{/each}}
   </tbody>
 </table>
-
-
 
 {{outlet}}

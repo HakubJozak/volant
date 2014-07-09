@@ -3,7 +3,9 @@ class WorkcampsController < ApplicationController
   serialization_scope :current_user
 
   def index
-    render json: Workcamp.page(params[:page]), each_serializer: WorkcampSerializer
+    search = Workcamp
+    search = search.where("name LIKE ?", params[:q]) if params[:q].present?
+    render json: search.page(params[:page]), each_serializer: WorkcampSerializer
   end
 
   def show
