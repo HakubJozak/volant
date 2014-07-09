@@ -8,6 +8,12 @@
   </fieldset>
 </form>
 
+Found {{pagination.total}} workcamps in {{pagination.total_pages}} pages.
+{{#each page in pagination.pages }}
+  <a href="#" {{action 'go_to_page' page }}>{{page}}</a>
+  |
+{{/each}}
+
 <table class="pure-table">
   <thead>
     <tr>
