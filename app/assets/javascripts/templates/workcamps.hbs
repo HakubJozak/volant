@@ -8,11 +8,14 @@
   </fieldset>
 </form>
 
-Found {{pagination.total}} workcamps in {{pagination.total_pages}} pages.
-{{#each page in pagination.pages }}
-  <a href="#" {{action 'go_to_page' page }}>{{page}}</a>
-  |
-{{/each}}
+Found {{pagination.total}} workcamps in {{pagination.total_pages}} pages. Displaying page {{pagination.current_page}}.
+
+{{!-- TODO: transform into helpers  --}}
+<form class="pure-form">
+  <a {{bind-attr class=":pure-button previous_page_exists::pure-button-disabled"}} href="#" {{action "adjust_page" -1}}>&lt;</a>
+  {{input value=current_page }}
+  <a {{bind-attr class=":pure-button next_page_exists::pure-button-disabled"}} href="#" {{action "adjust_page" 1}}>&gt;</a>
+</form>
 
 <table class="pure-table">
   <thead>

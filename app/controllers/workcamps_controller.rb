@@ -3,7 +3,8 @@ class WorkcampsController < ApplicationController
   serialization_scope :current_user
 
   def index
-    search = Workcamp.order(:name).page(params[:p])
+    current_page = params[:p] || 1
+    search = Workcamp.order(:name).page(current_page)
 
     if query = params[:q]
       like = Workcamp.arel_table[:name].matches("%#{query}%")
@@ -13,7 +14,7 @@ class WorkcampsController < ApplicationController
     pagination = {
       total: search.total_count,
       total_pages: search.total_pages,
-      pages: (1..search.total_pages).to_a
+      current_page: current_page
     }
 
     render json: search,
