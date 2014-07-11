@@ -1,8 +1,5 @@
-<h1>Volant</h1>
-
 <form {{ action 'search_workcamp' on=submit }} class="pure-form" >
   <fieldset>
-    <legend>Search workcamps</legend>
     {{ input value=query }}
       <button type="submit" class="pure-button pure-button-primary">Search</button>
   </fieldset>
@@ -22,8 +19,11 @@ Found {{pagination.total}} workcamps in {{pagination.total_pages}} pages. Displa
     <tr>
       <th>Name</th>
       <th>Code</th>
+      <th>From</th>
+      <th>To</th>
       <th>Country</th>
       <th>Organization</th>
+      <th>     </th>
     </tr>
   </thead>
   <tbody>
@@ -31,11 +31,16 @@ Found {{pagination.total}} workcamps in {{pagination.total_pages}} pages. Displa
       <tr>
         <td>{{name}}</td>
         <td>{{code}}</td>
+        <td>{{format-date begin}}</td>
+        <td>{{format-date end}}</td>
         <td>{{country.name}}</td>
         <td>{{organization.name}}</td>
+        <td class="actions">
+          {{#link-to 'workcamp' this class="pure-button"}}
+          Detail
+          {{/link-to}}
+        </td>
       </tr>
     {{/each}}
   </tbody>
 </table>
-
-{{outlet}}

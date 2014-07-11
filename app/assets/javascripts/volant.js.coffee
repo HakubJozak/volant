@@ -3,6 +3,10 @@
 #= require ember
 #= require ember-data
 
+#= require moment
+## require moment/czech.js
+## require moment/english.js
+
 #= require_self
 #= require ./store
 #= require_tree ./models
