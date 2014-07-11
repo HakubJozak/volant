@@ -1,0 +1,19 @@
+# -*- mode: Coffee;
+# Author: http://dennisreimann.de/blog/referencing-rails-assets-in-coffeescript/
+<%
+imgs = {}
+Dir.chdir("#{Rails.root}/app/assets/images/") do
+  imgs = Dir["**/*"].inject({}) do |h,f|
+    if File.file?(f)
+      h.merge! f => image_path(f)
+    else
+      h
+    end
+  end
+end
+%>
+
+window.image_path = (name) ->
+  <%= imgs.to_json %>[name]
+
+console.debug 'Image paths loaded', window.image_path

@@ -2,11 +2,13 @@
 #= require handlebars
 #= require ember
 #= require ember-data
+#= require images
 
 
 #= require moment
 ## require moment/czech.js
 ## require moment/english.js
+
 
 #= require modernizr
 #= jquery-ui/datepicker
