@@ -3,7 +3,7 @@
 Volant.FieldView = Ember.View.extend
   templateName: 'field'
   classNames: [ 'pure-control-group']
-  input_type: 'date'
+  input_type: 'text'
   value: ( ->
     @get("context.model.#{@get('attr')}")
    ).property('attr')
