@@ -42,7 +42,10 @@ gem 'ember-rails'
 gem 'ember-source', '1.5.0'
 gem "active_model_serializers"
 gem 'kaminari'
+
 gem 'momentjs-rails'
+gem 'modernizr-rails'
+gem 'jquery-ui-rails'
 
 
 group :development do

@@ -3,9 +3,14 @@
 #= require ember
 #= require ember-data
 
+
 #= require moment
 ## require moment/czech.js
 ## require moment/english.js
+
+#= require modernizr
+#= jquery-ui/datepicker
+#= date-polyfill.min
 
 #= require_self
 #= require ./store
