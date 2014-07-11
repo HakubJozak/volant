@@ -18,6 +18,11 @@ Volant.WorkcampsController = Ember.ArrayController.extend({
     @get('current_page') < @get('pagination.total_pages')
   ).property('pagination','current_page')
 
+  do_search: ->
+    @store.find('workcamp', { q: @get('query'), p: @get('current_page') }).then (wcs) =>
+      @set('content',wcs)
+
+
   actions:
     adjust_page: (delta) ->
       target = @get('current_page') + delta
@@ -25,10 +30,10 @@ Volant.WorkcampsController = Ember.ArrayController.extend({
 
       if (target > 0) and (target <= upper_bound)
         @incrementProperty('current_page',delta)
-        @send('search_workcamp')
+        @do_search()
 
     search_workcamp: ->
-      @store.find('workcamp', { q: @get('query'), p: @get('current_page') }).then (wcs) =>
-        @set('content',wcs)
+      @set('current_page',1)
+      @do_search()
       false
 })
