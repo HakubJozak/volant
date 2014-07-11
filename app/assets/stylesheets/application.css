@@ -16,3 +16,8 @@
 body {
   margin: 1em;
 }
+
+textarea {
+  min-width: 85%;
+  min-height: 10em;
+}

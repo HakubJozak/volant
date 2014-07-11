@@ -3,10 +3,17 @@
 Volant.FieldView = Ember.View.extend
   templateName: 'field'
   classNames: [ 'pure-control-group']
+
   input_type: 'text'
+  use_textarea: false
+
   value: ( ->
     @get("context.model.#{@get('attr')}")
    ).property('attr')
+
+
+Volant.TextareaView = Volant.FieldView.extend
+  use_textarea: true
 
 
 Volant.DateView = Volant.FieldView.extend
