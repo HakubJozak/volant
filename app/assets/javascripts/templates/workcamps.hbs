@@ -1,11 +1,14 @@
 <form {{ action 'search_workcamp' on=submit }} class="pure-form" >
   <fieldset>
-    {{ input value=query }}
-      <button type="submit" class="pure-button pure-button-primary">Search</button>
+    {{ input value=query class="pure-input-2-3" }}
+     <button type="submit" class="pure-button pure-button-primary">Search</button>
   </fieldset>
 </form>
 
-Found {{pagination.total}} workcamps in {{pagination.total_pages}} pages. Displaying page {{pagination.current_page}}.
+<em>Found {{pagination.total}} workcamps in {{pagination.total_pages}} pages. Displaying page {{pagination.current_page}}.</em>
+
+<hr>
+
 
 {{!-- TODO: transform into helpers  --}}
 <form class="pure-form" >
@@ -13,6 +16,8 @@ Found {{pagination.total}} workcamps in {{pagination.total_pages}} pages. Displa
   {{input value=current_page }}
   <a {{bind-attr class=":pure-button next_page_exists::pure-button-disabled"}} href="#" {{action "adjust_page" 1}}>&gt;</a>
 </form>
+
+
 
 <table class="pure-table">
   <thead>
