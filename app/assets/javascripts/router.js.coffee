@@ -1,6 +1,6 @@
 Volant.Router.map () ->
-  @resource 'workcamps'
-  @resource('workcamp', path: '/workcamps/:workcamp_id')
+  @resource 'workcamps', ->
+    @resource('workcamp', path: '/workcamps/:workcamp_id')
   @resource('forms')
 
 
