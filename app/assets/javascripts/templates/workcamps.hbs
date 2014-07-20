@@ -11,43 +11,52 @@
 
 
 {{!-- TODO: transform into helpers  --}}
-<form class="pure-form" >
-  <a {{bind-attr class=":pure-button previous_page_exists::pure-button-disabled"}} href="#" {{action "adjust_page" -1}}>&lt;</a>
-  {{input value=current_page }}
-  <a {{bind-attr class=":pure-button next_page_exists::pure-button-disabled"}} href="#" {{action "adjust_page" 1}}>&gt;</a>
-</form>
+<ul class="pager">
+  <li {{bind-attr class="::previous previous_page_exists::disabled"}}><a href="#" {{action "adjust_page" -1}}>&larr;</a></li>
+  <li>
+  <form class="form-inline" >
+    <div class="form-group">
+      {{input value=current_page }}
+    </div>
+  </form>
+  </li>
+  <li {{bind-attr class="::next next_page_exists::disabled"}}><a  href="#" {{action "adjust_page" 1}}>&rarr;</a></li>
+
+</ul>
 
 
 
-<table class="pure-table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th>Code</th>
-      <th>From</th>
-      <th>To</th>
-      <th>Country</th>
-      <th>Organization</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each}}
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
       <tr>
-        <td>{{flag country}}</td>
-        <td>{{country.name}}</td>
-        <td>{{name}}</td>
-        <td>{{code}}</td>
-        <td>{{format-date begin}}</td>
-        <td>{{format-date end}}</td>
-        <td>{{organization.name}}</td>
-        <td class="actions">
-          {{#link-to 'workcamp' this class="pure-button"}}
-          Detail
-          {{/link-to}}
-        </td>
+        <th></th>
+        <th>Name</th>
+        <th>Code</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Country</th>
+        <th>Organization</th>
+        <th></th>
       </tr>
-    {{/each}}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {{#each}}
+        <tr>
+          <td>{{flag country}}</td>
+          <td>{{country.name}}</td>
+          <td>{{name}}</td>
+          <td>{{code}}</td>
+          <td>{{format-date begin}}</td>
+          <td>{{format-date end}}</td>
+          <td>{{organization.name}}</td>
+          <td class="actions">
+            {{#link-to 'workcamp' this class="pure-button"}}
+            Detail
+            {{/link-to}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
