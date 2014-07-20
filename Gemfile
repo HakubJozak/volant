@@ -48,6 +48,12 @@ gem 'modernizr-rails'
 gem 'jquery-ui-rails'
 
 
+# All Things Bootstrap
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
+
+
 group :development do
   gem 'capistrano-rails'
 end
