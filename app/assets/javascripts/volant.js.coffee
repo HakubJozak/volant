@@ -1,4 +1,5 @@
 #= require jquery
+#= require twitter/bootstrap
 #= require handlebars
 #= require ember
 #= require ember-data

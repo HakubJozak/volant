@@ -7,6 +7,13 @@ Volant.Router.map () ->
 Volant.ApplicationRoute = Ember.Route.extend({
 })
 
+
+Volant.ApplicationController = Ember.ObjectController.extend({
+  current_user:
+    name: 'Jakub Hozak'
+})
+
+
 Volant.WorkcampsRoute = Ember.Route.extend({
   model: (params) ->
     @store.find('workcamp', { page: 1 })
