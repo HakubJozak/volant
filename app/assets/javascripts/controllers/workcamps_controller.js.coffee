@@ -25,6 +25,7 @@ Volant.WorkcampsController = Ember.ArrayController.extend({
 
   actions:
     adjust_page: (delta) ->
+      delta = parseInt(delta)
       target = @get('current_page') + delta
       upper_bound = @get('pagination').total_pages
 
