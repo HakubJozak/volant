@@ -1,0 +1,5 @@
+{{!-- TODO: transform into helpers  --}}
+<ul class="pager">
+  <li {{bind-attr class=":previous previous_page_exists::disabled"}}><a href="#" {{action "adjust_page" -1}}>&larr;</a></li>
+  <li {{bind-attr class=":next next_page_exists::disabled"}}><a  href="#" {{action "adjust_page" 1}}>&rarr;</a></li>
+</ul>

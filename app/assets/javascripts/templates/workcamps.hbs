@@ -4,17 +4,9 @@
   <div class="row">
 
 
-
 <em>Found {{pagination.total}} workcamps in {{pagination.total_pages}} pages. Displaying page {{pagination.current_page}}.</em>
 
-
-{{!-- TODO: transform into helpers  --}}
-<ul class="pager">
-  <li {{bind-attr class="::previous previous_page_exists::disabled"}}><a href="#" {{action "adjust_page" -1}}>&larr;</a></li>
-  <li {{bind-attr class="::next next_page_exists::disabled"}}><a  href="#" {{action "adjust_page" 1}}>&rarr;</a></li>
-</ul>
-
-
+{{ partial 'pager' }}
 
 <div class="table-responsive">
   <table class="table table-striped table-hover">
@@ -50,5 +42,8 @@
     </tbody>
   </table>
 </div>
+
+{{ partial 'pager' }}
+
   </div>
 </div>
