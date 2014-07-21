@@ -1,27 +1,17 @@
-<form {{ action 'search_workcamp' on=submit }} class="pure-form" >
-  <fieldset>
-    {{ input value=query class="pure-input-2-3" }}
-     <button type="submit" class="pure-button pure-button-primary">Search</button>
-  </fieldset>
-</form>
+{{ partial 'menu' }}
+
+<div class="container-fluid">
+  <div class="row">
+
+
 
 <em>Found {{pagination.total}} workcamps in {{pagination.total_pages}} pages. Displaying page {{pagination.current_page}}.</em>
-
-<hr>
 
 
 {{!-- TODO: transform into helpers  --}}
 <ul class="pager">
   <li {{bind-attr class="::previous previous_page_exists::disabled"}}><a href="#" {{action "adjust_page" -1}}>&larr;</a></li>
-  <li>
-  <form class="form-inline" >
-    <div class="form-group">
-      {{input value=current_page }}
-    </div>
-  </form>
-  </li>
   <li {{bind-attr class="::next next_page_exists::disabled"}}><a  href="#" {{action "adjust_page" 1}}>&rarr;</a></li>
-
 </ul>
 
 
@@ -59,4 +49,6 @@
       {{/each}}
     </tbody>
   </table>
+</div>
+  </div>
 </div>
