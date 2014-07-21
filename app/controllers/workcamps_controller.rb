@@ -7,8 +7,9 @@ class WorkcampsController < ApplicationController
     search = Workcamp.order(:name).page(current_page)
 
     if query = params[:q]
-      like = Workcamp.arel_table[:name].matches("%#{query}%")
-      search = search.where(like)
+      wcs = Workcamp.arel_table
+      arel = wcs[:name].matches("%#{query}%").or(wcs[:code].matches("%#{query}%"))
+      search = search.where(arel)
     end
 
     pagination = {
