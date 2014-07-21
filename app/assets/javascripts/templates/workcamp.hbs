@@ -1,15 +1,16 @@
 <h1>{{name}}</h1>
 
-<form class="pure-form pure-form-aligned">
-    <fieldset>
+{{#link-to 'workcamps'}}Back{{/link-to}}
+
+<form class="form">
+
       {{view "field" attr='name'}}
       {{view "field" attr='code'}}
       {{view "date" attr='begin' }}
       {{view "date" attr='end' }}
       {{view "textarea" attr='description' }}
 
-      <div class="pure-controls">
+
         <button type="submit" class="pure-button pure-button-primary">Save</button>
-      </div>
-    </fieldset>
+
 </form>

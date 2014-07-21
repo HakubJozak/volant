@@ -3,6 +3,7 @@ Volant.WorkcampsController = Ember.ArrayController.extend({
   current_page: 1
   sortProperties: ['name']
   sortAscending: true
+  current_item: null
 
   pagination: (->
     if @get('model.isLoaded')

@@ -1,52 +1,15 @@
+{{#if current_item}}
+  {{ partial 'workcamps/brief' }}
+{{else}}
+<div class="row">
+  {{ partial 'workcamps/full' }}
 
-<div class="container-fluid">
+  <em>Found {{pagination.total}} workcamps in
+  {{pagination.total_pages}} pages. Displaying page
+  {{pagination.current_page}}.</em>
 
-  <div class="row">
-    {{ partial 'menu' }}
+  {{ partial 'pager' }}
   </div>
+{{/if}}
 
-
-  <div class="row">
-
-
-<div class="table-responsive">
-  <table class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Code</th>
-        <th>From</th>
-        <th>To</th>
-        <th>Country</th>
-        <th>Organization</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each}}
-        <tr>
-          <td>{{flag country}}</td>
-          <td>{{country.name}}</td>
-          <td>{{name}}</td>
-          <td>{{code}}</td>
-          <td>{{format-date begin}}</td>
-          <td>{{format-date end}}</td>
-          <td>{{organization.name}}</td>
-          <td class="actions">
-            {{#link-to 'workcamp' this class="pure-button"}}
-            Detail
-            {{/link-to}}
-          </td>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
-</div>
-
-
-<em>Found {{pagination.total}} workcamps in {{pagination.total_pages}} pages. Displaying page {{pagination.current_page}}.</em>
-{{ partial 'pager' }}
-
-  </div>
-</div>
+{{outlet}}
