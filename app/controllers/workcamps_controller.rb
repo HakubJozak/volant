@@ -12,6 +12,10 @@ class WorkcampsController < ApplicationController
       search = search.where(arel)
     end
 
+    if year = params[:year]
+      search = search.by_year(year)
+    end
+
     pagination = {
       total: search.total_count,
       total_pages: search.total_pages,
