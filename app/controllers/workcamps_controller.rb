@@ -47,7 +47,7 @@ class WorkcampsController < ApplicationController
     if  Workcamp.find(params[:id]).update(workcamp_params)
       redirect_to @workcamp, notice: 'Workcamp was successfully updated.'
     else
-      render :edit
+      render json: { errors: @workcamp.errors }, status: 422
     end
   end
 

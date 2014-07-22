@@ -52,3 +52,9 @@ Volant.Workcamp = DS.Model.extend
 
   sci_id: DS.attr 'number'
   sci_code: DS.attr 'string'
+
+  becameError: ->
+    console.error 'there was an error saving a workcamp!'
+
+  becameInvalid: (errors) ->
+    console.error 'workcamp became invalid'

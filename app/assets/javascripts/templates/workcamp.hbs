@@ -3,8 +3,7 @@
   {{code}} - {{name}}
 </h1>
 
-
-<form class="form-horizontal" role="form">
+<form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
   {{view "text" label='Name' model=name }}
   {{view "text" label='code' model=code }}
   {{view "date" label='From' model=begin }}
