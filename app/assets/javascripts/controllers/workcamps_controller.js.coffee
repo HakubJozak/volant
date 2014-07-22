@@ -27,7 +27,7 @@ Volant.WorkcampsController = Ember.ArrayController.extend({
   do_search: ( ->
     @store.find('workcamp', { q: @get('query'), p: @get('current_page'), year: @get('current_year') }).then (wcs) =>
       @set('content',wcs)
-      ).observes('current_year','current_page')
+   ).observes('current_year','current_page')
 
 
   actions:
@@ -41,5 +41,6 @@ Volant.WorkcampsController = Ember.ArrayController.extend({
 
     search_workcamp: ->
       @set('current_page',1)
+      @do_search()
       false
 })
