@@ -4,19 +4,40 @@
       {{outlet}}
     </div>
 
-  <div class="col-lg-4">
-    {{#link-to 'workcamps'}}Back{{/link-to}}
-    {{ partial 'workcamps/brief' }}
-  </div>
+    <div class="col-lg-4">
+      {{#link-to 'workcamps'}}Back{{/link-to}}
+      {{ partial 'workcamps/brief' }}
+    </div>
   </div>
 {{else}}
-<div class="row">
-  {{ partial 'workcamps/full' }}
+  <div class="row">
+    <div class="col-lg-2">
+      <ul class='pager'>
+      <li {{bind-attr class=":previous
+        previous_page_exists::disabled"}}>
+        <a href="#" {{action "adjust_page" -1}}>&larr;</a>
+      </li>
+      </ul>
+    </div>
+    <div class="col-lg-8">
+      <p>
+        <em>Found {{pagination.total}} workcamps in
+        {{pagination.total_pages}} pages. Displaying page
+        {{pagination.current_page}}.</em>
+        </p>
+    </div>
+    <div class="col-lg-2">
+      <ul class='pager'>
+      <li {{bind-attr class=":next next_page_exists::disabled"}}>
+        <a href="#" {{action "adjust_page" 1}}>&rarr;</a>
+      </li>
+      </ul>
+    </div>
+  </div>
 
-  <em>Found {{pagination.total}} workcamps in
-  {{pagination.total_pages}} pages. Displaying page
-  {{pagination.current_page}}.</em>
-
-  {{ partial 'pager' }}
+  <div class="row">
+    <div class="col-lg-12">
+      {{ partial 'workcamps/full' }}
+    </div>
   </div>
 {{/if}}

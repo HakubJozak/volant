@@ -3,11 +3,10 @@
     <thead>
       <tr>
         <th></th>
-        <th>Name</th>
         <th>Code</th>
+        <th>Name</th>
         <th>From</th>
         <th>To</th>
-        <th>Country</th>
         <th>Organization</th>
         <th></th>
       </tr>
@@ -16,8 +15,8 @@
       {{#each}}
         <tr>
           <td>{{flag country}}</td>
-          <td>{{name}}</td>
           <td>{{code}}</td>
+          <td>{{name}}</td>
           <td>{{format-date begin}}</td>
           <td>{{format-date end}}</td>
           <td>{{organization.name}}</td>
