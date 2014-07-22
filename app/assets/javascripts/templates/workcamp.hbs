@@ -1,16 +1,20 @@
-<h1>{{name}}</h1>
-
-{{#link-to 'workcamps'}}Back{{/link-to}}
-
-<form class="form">
-
-      {{view "field" attr='name'}}
-      {{view "field" attr='code'}}
-      {{view "date" attr='begin' }}
-      {{view "date" attr='end' }}
-      {{view "textarea" attr='description' }}
+<h1>
+  <small>Workcamp</small>
+  {{code}} - {{name}}
+</h1>
 
 
-        <button type="submit" class="pure-button pure-button-primary">Save</button>
+<form class="form-horizontal" role="form">
+  {{view "text" label='Name' model=name }}
+  {{view "text" label='code' model=code }}
+  {{view "date" label='From' model=begin }}
+  {{view "date" label='To' model=end }}
+  {{view "textarea" label='description' model=description }}
+
+ <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </div>
 
 </form>

@@ -1,0 +1,10 @@
+<label {{bind-attr for="view.label" }}
+       {{bind-attr class="view.labelClass :control-label" }}>
+  {{ capitalize view.label }}
+</label>
+<div class="col-lg-2">
+  {{input value=view.formatted_model type="date" id=view.label  class="form-control"}}
+</div>
+
+<div class="col-lg-9">
+</div>

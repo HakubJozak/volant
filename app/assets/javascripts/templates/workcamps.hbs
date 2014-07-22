@@ -1,5 +1,14 @@
 {{#if current_item}}
-  {{ partial 'workcamps/brief' }}
+  <div class="row">
+    <div class="col-lg-9">
+      {{outlet}}
+    </div>
+
+  <div class="col-lg-3">
+    {{#link-to 'workcamps'}}Back{{/link-to}}
+    {{ partial 'workcamps/brief' }}
+  </div>
+  </div>
 {{else}}
 <div class="row">
   {{ partial 'workcamps/full' }}
@@ -11,5 +20,3 @@
   {{ partial 'pager' }}
   </div>
 {{/if}}
-
-{{outlet}}

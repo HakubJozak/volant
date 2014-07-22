@@ -1,0 +1,7 @@
+<label {{bind-attr for="view.label" }}
+       {{bind-attr class="view.labelClass :control-label" }}>
+  {{ capitalize view.label }}
+</label>
+<div  {{bind-attr class="view.inputClass" }}">
+  {{textarea value=view.model class="form-control" rows="5" }}
+</div>
