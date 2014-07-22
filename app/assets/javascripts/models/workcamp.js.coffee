@@ -41,6 +41,10 @@ Volant.Workcamp = DS.Model.extend
   asked_for_places_males: DS.attr 'number'
   asked_for_places_females: DS.attr 'number'
 
+  free_places: DS.attr 'number'
+  free_places_for_males: DS.attr 'number'
+  free_places_for_females: DS.attr 'number'
+
   requirements: DS.attr 'string'
 
   longitude: DS.attr 'number'

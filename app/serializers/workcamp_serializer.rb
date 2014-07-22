@@ -29,6 +29,7 @@ class WorkcampSerializer < ActiveModel::Serializer
              :places, :places_for_males, :places_for_females,
              :accepted_places, :accepted_places_males, :accepted_places_females,
              :asked_for_places, :asked_for_places_males, :asked_for_places_females,
+             :free_places, :free_places_for_males, :free_places_for_females,
              :longitude, :latitude,
              :state,
              :requirements

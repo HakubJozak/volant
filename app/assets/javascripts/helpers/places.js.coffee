@@ -1,6 +1,6 @@
-Ember.Handlebars.helper 'format-places', (wc) ->
+Ember.Handlebars.helper 'free-places', (wc) ->
   new Handlebars.SafeString """
-      #{wc.get('places')}/
-      <b>♀</b>#{wc.get('places_for_females')}/
-      <b>♂</b>#{wc.get('places_for_males')}
+      #{wc.get('free_places')}/
+      <b>♀</b>#{wc.get('free_places_for_females')}/
+      <b>♂</b>#{wc.get('free_places_for_males')}
   """
