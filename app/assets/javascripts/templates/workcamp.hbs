@@ -3,8 +3,23 @@
   {{code}} - {{name}}
 </h1>
 
+{{#each errors.messages }}
+  {{ this }}
+{{/each}}
+
 <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
-  {{view "text" label='Name' model=name }}
+
+  <div {{ bind-attr class=":form-group errors.name:has-error" }}>
+    <label {{bind-attr for="name" }}
+           {{bind-attr class="col-lg-1 :control-label" }}>
+           Name
+    </label>
+    <div  {{bind-attr class="col-lg-10" }}">
+      {{input value=name type=text id="name" class="form-control"}}
+    </div>
+  </div>
+
+  {{! view "text" label='Name' model=name }}
   {{view "text" label='code' model=code }}
   {{view "date" label='From' model=begin }}
   {{view "date" label='To' model=end }}

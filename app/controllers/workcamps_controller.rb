@@ -45,6 +45,7 @@ class WorkcampsController < ApplicationController
 
   # PATCH/PUT /workcamps/1
   def update
+
     if  @workcamp.update(workcamp_params)
       render json: @workcamp, serializer: WorkcampSerializer
     else
