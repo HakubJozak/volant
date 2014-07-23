@@ -1,4 +1,4 @@
-Volant.WorkcampController = Ember.Controller.extend({
+Volant.WorkcampController = Ember.ObjectController.extend({
   actions:
     save: ->
       @get('model').save()
