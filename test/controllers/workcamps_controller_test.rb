@@ -2,26 +2,12 @@ require 'test_helper'
 
 class WorkcampsControllerTest < ActionController::TestCase
   setup do
-    @workcamp = workcamps(:one)
+    @workcamp = Factory(:workcamp)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:workcamps)
-  end
-
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create workcamp" do
-    assert_difference('Workcamp.count') do
-      post :create, workcamp: {  }
-    end
-
-    assert_redirected_to workcamp_path(assigns(:workcamp))
   end
 
   test "should show workcamp" do
@@ -29,14 +15,12 @@ class WorkcampsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, id: @workcamp
-    assert_response :success
-  end
 
   test "should update workcamp" do
-    patch :update, id: @workcamp, workcamp: {  }
-    assert_redirected_to workcamp_path(assigns(:workcamp))
+    patch :update, id: @workcamp, workcamp: { name: 'edited', code: 'new-code' }
+    assert_response :success
+    assert_equal 'edited', json_response['workcamp']['name']
+    assert_equal 'new-code', json_response['workcamp']['code']
   end
 
   test "should destroy workcamp" do
@@ -46,4 +30,5 @@ class WorkcampsControllerTest < ActionController::TestCase
 
     assert_redirected_to workcamps_path
   end
+
 end

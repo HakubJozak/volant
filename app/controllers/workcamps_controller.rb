@@ -1,6 +1,7 @@
 class WorkcampsController < ApplicationController
 
   serialization_scope :current_user
+  before_action :find_workcamp, only: [ :show, :update, :destroy ]
 
   def index
     current_page = params[:p] || 1
@@ -28,7 +29,7 @@ class WorkcampsController < ApplicationController
   end
 
   def show
-    render json: Workcamp.find(params[:id]), serializer: WorkcampSerializer
+    render json: @workcamp, serializer: WorkcampSerializer
   end
 
   # POST /workcamps
@@ -44,22 +45,26 @@ class WorkcampsController < ApplicationController
 
   # PATCH/PUT /workcamps/1
   def update
-    if  Workcamp.find(params[:id]).update(workcamp_params)
-      redirect_to @workcamp, notice: 'Workcamp was successfully updated.'
+    if  @workcamp.update(workcamp_params)
+      render json: @workcamp, serializer: WorkcampSerializer
     else
       render json: { errors: @workcamp.errors }, status: 422
     end
   end
 
   def destroy
-    Workcamp.find(params[:id]).destroy
+    @workcamp.destroy
     redirect_to workcamps_url, notice: 'Workcamp was successfully destroyed.'
   end
 
   private
 
+  def find_workcamp
+    @workcamp = Workcamp.find(params[:id])
+  end
+
   # Only allow a trusted parameter "white list" through.
   def workcamp_params
-    params[:workcamp]
+    params[:workcamp].permit(:name, :code)
   end
 end

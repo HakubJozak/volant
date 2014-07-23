@@ -6,7 +6,6 @@ require "minitest/reporters"
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new # Minitest::Reporters::ProgressReporter.new
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
   def assert_valid(record)
@@ -31,6 +30,10 @@ class ActiveSupport::TestCase
 
   def assert_not_empty(object)
     assert_equal false, object.empty?, "#{object} shouldn't be empty"
+  end
+
+  def json_response
+    JSON.parse(response.body)
   end
 
   # First parameter should be the object that
@@ -75,7 +78,6 @@ class ActiveSupport::TestCase
   end
 
   def create_default_organization
-    # create default organization
 #    Factory.create(:organization, :code => Volant::Config::default_organization_code)
     Factory.create(:organization, :code => 'SDA')
   end
