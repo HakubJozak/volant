@@ -3,19 +3,20 @@
   {{code}} - {{name}}
 </h1>
 
-{{#each errors.messages }}
-  {{ this }}
-{{/each}}
-
 <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
 
   <div {{ bind-attr class=":form-group errors.name:has-error" }}>
     <label {{bind-attr for="name" }}
-           {{bind-attr class="col-lg-1 :control-label" }}>
+           {{bind-attr class=":col-lg-1 :control-label" }}>
            Name
     </label>
-    <div  {{bind-attr class="col-lg-10" }}">
+    <div  {{bind-attr class=":col-lg-10" }}">
       {{input value=name type=text id="name" class="form-control"}}
+    </div>
+    <div {{ bind-attr class=":help-block :text-danger :col-lg-10 :col-lg-offset-1 errors.name::hide" }}>
+      {{#each errors.name }}
+        {{ message }},
+      {{/each}}
     </div>
   </div>
 
