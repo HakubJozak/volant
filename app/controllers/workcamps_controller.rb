@@ -66,6 +66,6 @@ class WorkcampsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def workcamp_params
-    params.require(:workcamp).permit(*WorkcampSerializer::PUBLIC_ATTRS)
+    params.except(:state,:free_places,:free_places_for_males,:free_places_for_females).require(:workcamp).permit(*WorkcampSerializer::PUBLIC_ATTRS)
   end
 end

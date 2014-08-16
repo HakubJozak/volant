@@ -1,3 +1,13 @@
+{{#if flash}}
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+  </button>
+  {{ flash.message }}
+</div>
+{{/if}}
+
+
 <h1>
   <small>Workcamp</small>
   {{code}} - {{name}}
@@ -21,7 +31,7 @@
   </div>
 
   {{! view "text" label='Name' model=name }}
-  {{view "text" label='code' model=code }}
+  {{view "text" label='code' model=code errors=errors.code }}
   {{view "date" label='From' model=begin }}
   {{view "date" label='To' model=end }}
   {{view "textarea" label='description' model=description }}
