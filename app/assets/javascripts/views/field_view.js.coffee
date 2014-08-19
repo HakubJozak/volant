@@ -1,16 +1,16 @@
 Volant.FieldView = Ember.View.extend
-  classNameBindings: [ ':form-group', 'errors:has-error']
-  width: 11
-  offset: 1
+  classNameBindings: [ 'errors:has-error']
+  width: 10
+  lwidth: 1
 
   labelClass: ( ->
-   "col-lg-#{@get('offset')}"
+   "col-lg-#{@get('lwidth')}"
    ).property('offset')
 
   inputClass: ( ->
    "col-lg-#{@get('width')}"
    ).property('width')
 
-  inputOffsetClass: ( ->
-   "col-lg-#{12 - @get('width')}"
+  errorsOffsetClass: ( ->
+   "col-lg-offset-#{@get('lwidth')}"
    ).property('width')

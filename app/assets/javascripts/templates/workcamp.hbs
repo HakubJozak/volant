@@ -15,26 +15,116 @@
 
 <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
 
-  <div {{ bind-attr class=":form-group errors.name:has-error" }}>
-    <label {{bind-attr for="name" }}
-           {{bind-attr class=":col-lg-1 :control-label" }}>
-           Name
-    </label>
-    <div  {{bind-attr class=":col-lg-10" }}">
-      {{input value=name type=text id="name" class="form-control"}}
-    </div>
-    <div {{ bind-attr class=":help-block :text-danger :col-lg-10 :col-lg-offset-1 errors.name::hide" }}>
-      {{#each errors.name }}
-        {{ message }},
-      {{/each}}
+  <div class="form-group">
+    {{ view "text" label='Name' model=name errors=errors.name lwidth=1 width=11 }}
+  </div>
+
+  <div class="form-group">
+    {{ view "text" label='code' model=code errors=errors.code lwidth=1 width=3 }}
+    <label class="col-lg-1 control-label">From</label>
+    {{#view Volant.DateView classNameBindings=":col-lg-3" model=begin }}
+      {{input value=view.formatted_model type="date" id=view.label  class="form-control"}}
+    {{/view}}
+    <label class="col-lg-1 control-label">To</label>
+    {{#view Volant.DateView classNameBindings=":col-lg-3" model=end }}
+      {{input value=view.formatted_model type="date" id=view.label  class="form-control"}}
+    {{/view}}
+  </div>
+
+  <div class="form-group">
+    <label class="col-lg-1 control-label">Places</label>
+    <div class="col-lg-1">{{input value=places type="number" class="form-control col-lg-1"}}</div>
+
+    <label class="col-lg-1 control-label">Females</label>
+    <div class="col-lg-1">{{input value=places_for_females type="number" class="form-control col-lg-1"}}</div>
+
+    <label class="col-lg-1 control-label">Males</label>
+    <div class="col-lg-1">{{input value=places_for_males type="number" class="form-control col-lg-1"}}</div>
+
+    <label class="col-lg-1 control-label">Free</label>
+    <div class="col-lg-5">
+      <b>{{ free-places this }}</b>
     </div>
   </div>
 
-  {{! view "text" label='Name' model=name }}
-  {{view "text" label='code' model=code errors=errors.code }}
-  {{view "date" label='From' model=begin }}
-  {{view "date" label='To' model=end }}
-  {{view "textarea" label='description' model=description }}
+  <fieldset>
+    <legend>
+      Places & Capacity
+    </legend>
+    <div class="form-group">
+      <label class="col-lg-1 control-label" title="Age limit from - to">Age</label>
+      <div class="col-lg-2">{{input value=minimal_age type="number" class="form-control col-lg-1"}}</div>
+      <div class="col-lg-2">{{input value=maximal_age type="number" class="form-control col-lg-1"}}</div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">Capacity</label>
+      <div class="col-lg-3">{{input value=capacity type="number" class="form-control col-lg-1"}}</div>
+
+      <label class="col-lg-1 control-label">Females</label>
+      <div class="col-lg-1">{{input value=capacity_females type="number" class="form-control col-lg-1"}}</div>
+
+      <label class="col-lg-1 control-label">Males</label>
+      <div class="col-lg-1">{{input value=capacity_males type="number" class="form-control col-lg-1"}}</div>
+
+      <label class="col-lg-1 control-label">Teenagers</label>
+      <div class="col-lg-1">{{input value=capacity_teenagers type="number" class="form-control col-lg-1"}}</div>
+
+      <label class="col-lg-1 control-label">Natives</label>
+      <div class="col-lg-1">
+        {{input value=capacity_natives type="number" class="form-control col-lg-1"}}</div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>
+      Location
+    </legend>
+    <div class="form-group">
+      <label class="col-lg-1 control-label">Area</label>
+      <div class="col-lg-11">{{input value=area type="text" class="form-control"}}</div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">Region</label>
+      <div class="col-lg-11">{{input value=accomodation type="text" class="form-control"}}</div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">Train</label>
+      <div class="col-lg-3">{{input value=train type="text" class="form-control"}}</div>
+
+      <label class="col-lg-1 control-label">Airport</label>
+      <div class="col-lg-3">{{input value=airport type="text" class="form-control col-lg-2"}}</div>
+
+      <label class="col-lg-1 control-label">Latitude</label>
+      <div class="col-lg-1">{{input value=latitude type="decimal" class="form-control col-lg-1"}}</div>
+
+      <label class="col-lg-1 control-label">Longitude</label>
+      <div class="col-lg-1">{{input value=longitude type="decimal" class="form-control col-lg-1"}}</div>
+    </div>
+   </fieldset>
+
+   <fieldset>
+    <legend>
+      Details
+    </legend>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">Accomodation</label>
+      <div class="col-lg-11">{{input value=accomodation type="text" class="form-control"}}</div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">Description</label>
+      <div class="col-lg-11">{{textarea value=view.model class="form-control" rows="5" }}</div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">Notes</label>
+      <div class="col-lg-11">{{textarea value=view.model class="form-control" rows="3" }}</div>
+    </div>
+   </fieldset>
 
  <div class="form-group">
     <div class="col-lg-offset-1 col-lg-10">

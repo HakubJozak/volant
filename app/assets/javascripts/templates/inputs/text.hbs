@@ -6,9 +6,3 @@
 <div  {{bind-attr class="view.inputClass" }}">
   {{input value=view.model type=text id=view.label  class="form-control"}}
 </div>
-
-<div {{ bind-attr class=":help-block :text-danger view.inputClass :col-lg-offset-1 view.errors::hide" }}>
-  {{#each view.errors }}
-    {{ message }},
-  {{/each}}
-</div>
