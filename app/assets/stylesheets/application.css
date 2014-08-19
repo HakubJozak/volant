@@ -22,3 +22,7 @@ textarea {
   min-width: 85%;
   min-height: 10em;
 }
+
+legend {
+  color: rgb(47, 107, 164);
+}
