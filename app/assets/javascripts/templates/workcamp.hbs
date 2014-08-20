@@ -17,11 +17,11 @@
      <legend>Basics</legend>
 
    <div class="form-group">
-     {{ view "text" label='Name' model=name errors=errors.name lwidth=1 width=11 }}
+     {{ view "text" label='Name' model=name errors=errors.name lwidth=2 width=10 }}
     </div>
 
     <div class="form-group">
-      {{ view "text" label='code' model=code errors=errors.code lwidth=1 width=4 }}
+      {{ view "text" label='code' model=code errors=errors.code lwidth=2 width=3 }}
 
       <label class="col-lg-1 control-label">Dates</label>
       {{#view Volant.DateView classNameBindings=":col-lg-3" model=begin }}
@@ -33,90 +33,122 @@
     </div>
 
     <div class="form-group">
-      <label class="col-lg-1 control-label">Languages</label>
-      <div class="col-lg-4">{{input value=language class="form-control"}}</div>
+      <label class="col-lg-2 control-label">Organization</label>
+      <div class="col-lg-3">
+        <p class="form-control-static">{{ organization.name }}</p>
+      </div>
 
       <label class="col-lg-1 control-label" title="Age limit from - to">Age</label>
       <div class="col-lg-3">{{input value=minimal_age type="number" class="form-control"}}</div>
       <div class="col-lg-3">{{input value=maximal_age type="number" class="form-control"}}</div>
     </div>
-   </fieldset>
-
-  <fieldset>
-    <legend>Capacity</legend>
-
-  <div class="form-group">
-    <label class="col-lg-1 control-label">Places</label>
-    <div class="col-lg-1">{{input value=places type="number" class="form-control col-lg-1"}}</div>
-
-    <label class="col-lg-1 control-label">Females</label>
-    <div class="col-lg-1">{{input value=places_for_females type="number" class="form-control col-lg-1"}}</div>
-
-    <label class="col-lg-1 control-label">Males</label>
-    <div class="col-lg-1">{{input value=places_for_males type="number" class="form-control col-lg-1"}}</div>
-
-    <label class="col-lg-1 control-label">Free</label>
-    <div class="col-lg-5">
-
-      {{ free_places }} /
-      {{ free_places_for_females }} /
-      {{ free_places_for_males }}
-    </div>
-  </div>
 
     <div class="form-group">
-      <label class="col-lg-1 control-label">Capacity</label>
-      <div class="col-lg-3">{{input value=capacity type="number" class="form-control col-lg-1"}}</div>
+      <label class="col-lg-2 control-label">Languages</label>
+      <div class="col-lg-3">{{input value=language class="form-control"}}</div>
+
+      <label class="col-lg-1 control-label">Fee</label>
+      <div class="col-lg-3">{{input value=extra_fee type="decimal" class="form-control"}}</div>
+      <div class="col-lg-3">{{input value=extra_fee_currency  class="form-control"}}</div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Placement</legend>
+
+    <!--
+    <table class="table table-condensed col-lg-6">
+      <thead>
+        <th></th>
+        <th>All</th>
+        <th>Females</th>
+        <th>Males</th>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Free</th>
+        </tr>
+      </tbody>
+    </table>
+    -->
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Capacity</label>
+      <div class="col-lg-1">{{input value=capacity type="number" class="form-control"}}</div>
 
       <label class="col-lg-1 control-label">Females</label>
-      <div class="col-lg-1">{{input value=capacity_females type="number" class="form-control col-lg-1"}}</div>
+      <div class="col-lg-1">{{input value=capacity_females type="number" class="form-control"}}</div>
 
       <label class="col-lg-1 control-label">Males</label>
-      <div class="col-lg-1">{{input value=capacity_males type="number" class="form-control col-lg-1"}}</div>
+      <div class="col-lg-1">{{input value=capacity_males type="number" class="form-control"}}</div>
 
       <label class="col-lg-1 control-label">Teenagers</label>
-      <div class="col-lg-1">{{input value=capacity_teenagers type="number" class="form-control col-lg-1"}}</div>
+      <div class="col-lg-1">{{input value=capacity_teenagers type="number" class="form-control"}}</div>
 
       <label class="col-lg-1 control-label">Natives</label>
       <div class="col-lg-1">
         {{input value=capacity_natives type="number" class="form-control col-lg-1"}}</div>
     </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Places</label>
+      <div class="col-lg-1">{{input value=places type="number" class="form-control col-lg-1"}}</div>
+
+      <label class="col-lg-1 control-label">Females</label>
+      <div class="col-lg-1">{{input value=places_for_females type="number" class="form-control col-lg-1"}}</div>
+
+      <label class="col-lg-1 control-label">Males</label>
+      <div class="col-lg-1">{{input value=places_for_males type="number" class="form-control col-lg-1"}}</div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Free</label>
+      <div class="col-lg-1"><p class="form-control-static">{{ free_places }}</p></div>
+
+      <label class="col-lg-1 control-label">Females</label>
+      <div class="col-lg-1"><p class="form-control-static">{{ free_places_for_females }}</p></div>
+
+      <label class="col-lg-1 control-label">Males</label>
+      <div class="col-lg-1"><p class="form-control-static">{{ free_places_for_males }}</p></div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Asked</label>
+      <div class="col-lg-1"><p class="form-control-static">{{ asked_for_places }}</p></div>
+
+      <label class="col-lg-1 control-label">Females</label>
+      <div class="col-lg-1"><p class="form-control-static">{{ asked_for_places_females }}</p></div>
+
+      <label class="col-lg-1 control-label">Males</label>
+      <div class="col-lg-1"><p class="form-control-static">{{ asked_for_places_males }}</p></div>
+    </div>
   </fieldset>
 
   <fieldset>
     <legend>Location</legend>
-  </fieldset>
-
-  <fieldset>
-    <legend>Location</legend>
 
     <div class="form-group">
-      <label class="col-lg-1 control-label">Accomodation</label>
-      <div class="col-lg-11">{{input value=accomodation class="form-control" rows="5" }}</div>
+      <label class="col-lg-2 control-label">Region</label>
+      <div class="col-lg-10">{{input value=region class="form-control" rows="3" }}</div>
     </div>
 
     <div class="form-group">
-      <label class="col-lg-1 control-label">Region</label>
-      <div class="col-lg-11">{{input value=region class="form-control" rows="3" }}</div>
+      <label class="col-lg-2 control-label">Area</label>
+      <div class="col-lg-10">{{input value=area class="form-control" rows="3"}}</div>
     </div>
 
     <div class="form-group">
-      <label class="col-lg-1 control-label">Area</label>
-      <div class="col-lg-11">{{textarea value=area class="form-control" rows="3"}}</div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-lg-1 control-label">Train</label>
+      <label class="col-lg-2 control-label">Train</label>
       <div class="col-lg-2">{{input value=train type="text" class="form-control"}}</div>
 
       <label class="col-lg-1 control-label">Airport</label>
       <div class="col-lg-2">{{input value=airport type="text" class="form-control col-lg-2"}}</div>
 
       <label class="col-lg-1 control-label">Latitude</label>
-      <div class="col-lg-2">{{input value=latitude type="decimal" class="form-control col-lg-1"}}</div>
+      <div class="col-lg-1">{{input value=latitude type="decimal" class="form-control col-lg-1"}}</div>
 
       <label class="col-lg-1 control-label">Longitude</label>
-      <div class="col-lg-2">{{input value=longitude type="decimal" class="form-control col-lg-1"}}</div>
+      <div class="col-lg-1">{{input value=longitude type="decimal" class="form-control col-lg-1"}}</div>
     </div>
    </fieldset>
 
@@ -124,28 +156,36 @@
     <legend>Details</legend>
 
     <div class="form-group">
-      <label class="col-lg-1 control-label">Accomodation</label>
-      <div class="col-lg-11">{{input value=accomodation type="text" class="form-control"}}</div>
+      <label class="col-lg-2 control-label">Accomodation</label>
+      <div class="col-lg-10>{{input value=accomodation type="text" class="form-control"}}</div>
     </div>
 
     <div class="form-group">
-      <label class="col-lg-1 control-label">Work</label>
-      <div class="col-lg-11">{{textarea value=workdesc class="form-control" rows="3" }}</div>
+      <label class="col-lg-2 control-label">Work</label>
+      <div class="col-lg-10">{{textarea value=workdesc class="form-control" rows="3" }}</div>
     </div>
 
     <div class="form-group">
-      <label class="col-lg-1 control-label">Description</label>
-      <div class="col-lg-11">{{textarea value=description class="form-control" rows="3" }}</div>
+      <label class="col-lg-2 control-label">Description</label>
+      <div class="col-lg-10">{{textarea value=description class="form-control" rows="3" }}</div>
     </div>
 
     <div class="form-group">
-      <label class="col-lg-1 control-label">Notes</label>
-      <div class="col-lg-11">{{textarea value=notes class="form-control" rows="3" }}</div>
+      <label class="col-lg-2 control-label">Requirements</label>
+      <div class="col-lg-10">{{textarea value=requirements class="form-control" rows="3" }}</div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Notes</label>
+      <div class="col-lg-10">{{textarea value=notes class="form-control" rows="3" }}</div>
     </div>
    </fieldset>
 
  <div class="form-group">
-    <div class="col-lg-offset-1 col-lg-10">
+    <div class="col-lg-offset-2 col-lg-9">
+      {{#if isDirty }}
+        <button type="button" class="btn" {{action "cancel" }}>Cancel</button>
+      {{/if}}
       <button type="submit" class="btn btn-primary">Save</button>
     </div>
   </div>

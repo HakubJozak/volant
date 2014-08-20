@@ -10,4 +10,8 @@ Volant.WorkcampController = Ember.ObjectController.extend({
         @set('flash', { type: 'error', message: 'Failed to save the workcamp.' })
 
       @get('model').save().then(SUCCESS,ERROR)
+
+    cancel: ->
+      @get('model').rollback()
+
 })
