@@ -20,24 +20,30 @@
      {{ view "text" label='Name' model=name errors=errors.name lwidth=1 width=11 }}
     </div>
 
-  <div class="form-group">
-    {{ view "text" label='code' model=code errors=errors.code lwidth=1 width=3 }}
-    <label class="col-lg-1 control-label">From</label>
-    {{#view Volant.DateView classNameBindings=":col-lg-3" model=begin }}
-      {{input value=view.formatted_model type="date" id=view.label  class="form-control"}}
-    {{/view}}
-    <label class="col-lg-1 control-label">To</label>
-    {{#view Volant.DateView classNameBindings=":col-lg-3" model=end }}
-      {{input value=view.formatted_model type="date" id=view.label  class="form-control"}}
-    {{/view}}
-  </div>
-     </fieldset>
+    <div class="form-group">
+      {{ view "text" label='code' model=code errors=errors.code lwidth=1 width=4 }}
 
+      <label class="col-lg-1 control-label">Dates</label>
+      {{#view Volant.DateView classNameBindings=":col-lg-3" model=begin }}
+        {{input value=view.formatted_model type="date" id=view.label  class="form-control"}}
+      {{/view}}
+      {{#view Volant.DateView classNameBindings=":col-lg-3" model=end }}
+        {{input value=view.formatted_model type="date" id=view.label  class="form-control"}}
+      {{/view}}
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">Languages</label>
+      <div class="col-lg-4">{{input value=language class="form-control"}}</div>
+
+      <label class="col-lg-1 control-label" title="Age limit from - to">Age</label>
+      <div class="col-lg-3">{{input value=minimal_age type="number" class="form-control"}}</div>
+      <div class="col-lg-3">{{input value=maximal_age type="number" class="form-control"}}</div>
+    </div>
+   </fieldset>
 
   <fieldset>
-    <legend>
-      Limits & Capacity
-    </legend>
+    <legend>Capacity</legend>
 
   <div class="form-group">
     <label class="col-lg-1 control-label">Places</label>
@@ -59,12 +65,6 @@
   </div>
 
     <div class="form-group">
-      <label class="col-lg-1 control-label" title="Age limit from - to">Age</label>
-      <div class="col-lg-2">{{input value=minimal_age type="number" class="form-control col-lg-1"}}</div>
-      <div class="col-lg-2">{{input value=maximal_age type="number" class="form-control col-lg-1"}}</div>
-    </div>
-
-    <div class="form-group">
       <label class="col-lg-1 control-label">Capacity</label>
       <div class="col-lg-3">{{input value=capacity type="number" class="form-control col-lg-1"}}</div>
 
@@ -84,9 +84,11 @@
   </fieldset>
 
   <fieldset>
-    <legend>
-      Location
-    </legend>
+    <legend>Location</legend>
+  </fieldset>
+
+  <fieldset>
+    <legend>Location</legend>
 
     <div class="form-group">
       <label class="col-lg-1 control-label">Accomodation</label>
