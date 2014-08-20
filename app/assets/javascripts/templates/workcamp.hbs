@@ -33,10 +33,8 @@
     </div>
 
     <div class="form-group">
-      <label class="col-lg-2 control-label">Organization</label>
-      <div class="col-lg-3">
-        <p class="form-control-static">{{ organization.name }}</p>
-      </div>
+      <label class="col-lg-2 control-label">Languages</label>
+      <div class="col-lg-3">{{input value=language class="form-control"}}</div>
 
       <label class="col-lg-1 control-label" title="Age limit from - to">Age</label>
       <div class="col-lg-3">{{input value=minimal_age type="number" class="form-control"}}</div>
@@ -44,8 +42,10 @@
     </div>
 
     <div class="form-group">
-      <label class="col-lg-2 control-label">Languages</label>
-      <div class="col-lg-3">{{input value=language class="form-control"}}</div>
+      <label class="col-lg-2 control-label">Organization</label>
+      <div class="col-lg-3">
+        <p class="form-control-static">{{ organization.name }}</p>
+      </div>
 
       <label class="col-lg-1 control-label">Fee</label>
       <div class="col-lg-3">{{input value=extra_fee type="decimal" class="form-control"}}</div>
@@ -139,16 +139,18 @@
 
     <div class="form-group">
       <label class="col-lg-2 control-label">Train</label>
-      <div class="col-lg-2">{{input value=train type="text" class="form-control"}}</div>
+      <div class="col-lg-4">{{input value=train type="text" class="form-control"}}</div>
 
-      <label class="col-lg-1 control-label">Airport</label>
-      <div class="col-lg-2">{{input value=airport type="text" class="form-control col-lg-2"}}</div>
+      <label class="col-lg-2 control-label">Latitude</label>
+      <div class="col-lg-4">{{input value=latitude type="decimal" class="form-control"}}</div>
+    </div>
 
-      <label class="col-lg-1 control-label">Latitude</label>
-      <div class="col-lg-1">{{input value=latitude type="decimal" class="form-control col-lg-1"}}</div>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Airport</label>
+      <div class="col-lg-4">{{input value=airport type="text" class="form-control"}}</div>
 
-      <label class="col-lg-1 control-label">Longitude</label>
-      <div class="col-lg-1">{{input value=longitude type="decimal" class="form-control col-lg-1"}}</div>
+      <label class="col-lg-2 control-label">Longitude</label>
+      <div class="col-lg-4">{{input value=longitude type="decimal" class="form-control"}}</div>
     </div>
    </fieldset>
 
@@ -157,7 +159,7 @@
 
     <div class="form-group">
       <label class="col-lg-2 control-label">Accomodation</label>
-      <div class="col-lg-10>{{input value=accomodation type="text" class="form-control"}}</div>
+      <div class="col-lg-10">{{input value=accomodation class="form-control"}}</div>
     </div>
 
     <div class="form-group">
@@ -171,22 +173,22 @@
     </div>
 
     <div class="form-group">
-      <label class="col-lg-2 control-label">Requirements</label>
-      <div class="col-lg-10">{{textarea value=requirements class="form-control" rows="3" }}</div>
+      <label class="col-lg-2 control-label">Notes</label>
+      <div class="col-lg-10">{{textarea value=notes class="form-control" rows="3" }}</div>
     </div>
 
     <div class="form-group">
-      <label class="col-lg-2 control-label">Notes</label>
-      <div class="col-lg-10">{{textarea value=notes class="form-control" rows="3" }}</div>
+      <label class="col-lg-2 control-label">Requirements</label>
+      <div class="col-lg-10">{{input value=requirements class="form-control" }}</div>
     </div>
    </fieldset>
 
  <div class="form-group">
     <div class="col-lg-offset-2 col-lg-9">
+      <button type="submit" class="btn btn-primary">Save</button>
       {{#if isDirty }}
         <button type="button" class="btn" {{action "cancel" }}>Cancel</button>
       {{/if}}
-      <button type="submit" class="btn btn-primary">Save</button>
     </div>
   </div>
 
