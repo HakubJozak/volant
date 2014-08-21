@@ -7,7 +7,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Volant</a>
+      {{#link-to 'index' class="navbar-brand"}}
+        Volant
+      {{/link-to}}
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
@@ -27,8 +29,7 @@
         }}
        </form>
 
-      <form  {{ action 'search_workcamp' on=submit }} class="navbar-form
-        navbar-left col-lg-5" role="search">
+      <form  {{ action 'search_workcamp' on=submit }} class="navbar-form navbar-left col-lg-5" role="search">
         <div class="form-group">
           {{ input value=query class="form-control" placeholder="name, code,country..." }}
         </div>
@@ -58,7 +59,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            {{current_user.name}} <span class="caret"></span>
+            Jakub Hozak <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Users</a></li>
@@ -115,6 +116,23 @@
         <span class="label label-default" style="color:#FFFFFF; background-color:#FF9900;">wheelchair X</span>
       </div>
     </div>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">Countries</label>
+
+      <div class="col-lg-3">
+        {{view Ember.Select
+               content=countries
+               class="form-control"
+        }}
+      </div>
+      <div class="col-lg-6">
+        <img src="/assets/flags-iso/flat/24/GB.png" >
+        <img src="/assets/flags-iso/flat/24/FR.png" >
+        <img src="/assets/flags-iso/flat/24/DE.png" >
+      </div>
+    </div>
+
 
   </form>
 {{/if}}

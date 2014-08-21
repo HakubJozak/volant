@@ -16,6 +16,7 @@ Volant.WorkcampsController = Ember.ArrayController.extend({
 
   intentions: ["AGRI", "ANIMAL", "ARCH", "CONS", "CULT", "ECO", "EDU", "ELDE", "ETHNO", "FEST", "HERI", "HIST", "KIDS", "LANG", "LEAD", "MANU", "PLAY", "REFUGEE", "RENO", "SOCI", "TEACH", "TEEN", "ENVI", "FRENCH", "GERMAN", "RUSSIAN", "ZOO", "DISA", "SERBIAN", "ITALIAN", "SPANISH", "PŘÍPRAVNÉ ŠKOLENÍ", "YOGA", "PEACE", "ART", "SPOR", "STUD", "SENIOR", "FAMILY", "WHV"]
 
+  countries: ["Ghana", "JCI", "Kosovo", "Island of Man", "Saint-Barthélemy", "Srbsko", "Eastern Timor", "Guernsey", "Jersey", "Monte Negro", "Saint-Martin", "Ålandy", "Andorra", "United Arab Emirates", "Afghanistan", "Antigua And Barbuda", "Anguilla", "Albania", "Armenia", "Netherlands Antilles", "Angola", "Antarctica", "Argentina", "American Samoa", "Austria", "Australia", "Aruba", "Azerbaijan", "Bosnia And Herzegovina", "Barbados"]
 
   pagination: (->
     if @get('model.isLoaded')

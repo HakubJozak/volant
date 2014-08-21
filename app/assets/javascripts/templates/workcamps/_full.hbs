@@ -6,6 +6,7 @@
         <th>Code</th>
         <th>Name</th>
         <th>Tags</th>
+        <th>Age</th>
         <th>From</th>
         <th>To</th>
         <th>Organization</th>
@@ -23,6 +24,7 @@
               {{ tag this }}
             {{/each}}
           </td>
+          <td>{{age-range this }}</td>
           <td>{{format-date begin}}</td>
           <td>{{format-date end}}</td>
           <td>{{organization.name}}</td>

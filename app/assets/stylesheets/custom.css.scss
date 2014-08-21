@@ -1,0 +1,20 @@
+body {
+  margin: 1em;
+}
+
+textarea {
+  min-width: 85%;
+  min-height: 10em;
+}
+
+legend {
+  color: rgb(47, 107, 164);
+}
+
+.fa-star {
+  color: #FFD800;
+}
+
+.table.starred, .table.recent {
+  i { font-size: 150%; padding-right: 0.3em; }
+}

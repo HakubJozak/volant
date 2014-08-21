@@ -14,19 +14,3 @@
  *= require_tree .
  *= require_self
  */
-body {
-  margin: 1em;
-}
-
-textarea {
-  min-width: 85%;
-  min-height: 10em;
-}
-
-legend {
-  color: rgb(47, 107, 164);
-}
-
-.fa-star {
-  color: #FFD800;
-}
