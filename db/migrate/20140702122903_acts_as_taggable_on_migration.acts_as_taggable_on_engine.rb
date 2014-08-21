@@ -1,7 +1,7 @@
 # This migration comes from acts_as_taggable_on_engine (originally 1)
 class ActsAsTaggableOnMigration < ActiveRecord::Migration
   def self.up
-    add_column :taggings, :context, :string, limit: 128
+    add_column :taggings, :context, :string, limit: 128, default: 'tags'
     add_column :taggings, :tagger_id, :integer
     add_column :taggings, :tagger_type, :string
     # add_index :taggings, :tag_id
