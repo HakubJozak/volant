@@ -28,7 +28,7 @@
        </form>
 
       <form  {{ action 'search_workcamp' on=submit }} class="navbar-form
-        navbar-left col-lg-6" role="search">
+        navbar-left col-lg-5" role="search">
         <div class="form-group">
           {{ input value=query class="form-control" placeholder="name, code,country..." }}
         </div>
@@ -40,9 +40,36 @@
             <span class="sr-only">Filter</span>
           </button>
         </div>
-      </form>
 
-      {{ partial 'navbar/settings' }}
+         {{#if current_item }}
+           {{#if current_item.isDirty }}
+            <div class="form-group">
+             <button type="button" class="btn btn-success">
+               <i class="fa fa-check"></i>
+             </button>
+             <button type="button" class="btn btn-danger">
+               <i class="fa fa-times"></i>
+             </button>
+            </div>
+           {{/if}}
+         {{/if}}
+        </form>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            {{current_user.name}} <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Users</a></li>
+            <li><a href="#">Countries</a></li>
+            <li><a href="#">Organizations</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 
