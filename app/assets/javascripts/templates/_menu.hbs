@@ -120,17 +120,30 @@
     <div class="form-group">
       <label class="col-lg-1 control-label">Countries</label>
 
-      <div class="col-lg-3">
+      <div class="col-lg-2">
         {{view Ember.Select
                content=countries
                class="form-control"
         }}
       </div>
-      <div class="col-lg-6">
-        <img src="/assets/flags-iso/flat/24/GB.png" >
-        <img src="/assets/flags-iso/flat/24/FR.png" >
-        <img src="/assets/flags-iso/flat/24/DE.png" >
+      <div class="col-lg-2">
+        <span class="label label-default">Great Britain X</span>
+        <span class="label label-default">France X</span>
       </div>
+
+      <label class="col-lg-1 control-label">Organizations</label>
+      <div class="col-lg-2">
+        {{view Ember.Select
+               content=organizations
+               class="form-control"
+        }}
+      </div>
+      <div class="col-lg-3">
+        <span class="label label-default">INEX-SDA X</span>
+        <span class="label label-default">Tamjdem CON X</span>
+        <span class="label label-default">SCI Germany X</span>
+      </div>
+
     </div>
 
 
