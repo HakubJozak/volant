@@ -1,3 +1,4 @@
+
 body {
   margin: 1em;
 }
@@ -17,4 +18,9 @@ legend {
 
 .table.starred, .table.recent {
   i { font-size: 150%; padding-right: 0.3em; }
+}
+
+.nav-with-filter {
+ border-bottom: 1px solid gray;
+ box-shadow: rgba(0,0,0,0.6) 2px 2px 10px;
 }
