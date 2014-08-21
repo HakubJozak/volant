@@ -1,6 +1,7 @@
 class WorkcampSerializer < ActiveModel::Serializer
   has_one :organization, embed: :ids, include: true
   has_one :country, embed: :ids, include: true
+  has_many :tags, embed: :ids, include: true, serializer: TagSerializer
 
   PUBLIC_ATTRS = [ :id,
              :name,
@@ -30,9 +31,12 @@ class WorkcampSerializer < ActiveModel::Serializer
              :accepted_places, :accepted_places_males, :accepted_places_females,
              :asked_for_places, :asked_for_places_males, :asked_for_places_females,
              :longitude, :latitude,
-             :requirements ]
+             :requirements
+            ]
 
   attrs = [ PUBLIC_ATTRS, :free_places, :free_places_for_males, :free_places_for_females, :state ].flatten
 
   attributes *attrs
+
+
 end

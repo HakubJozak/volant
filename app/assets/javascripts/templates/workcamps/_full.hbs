@@ -5,6 +5,7 @@
         <th></th>
         <th>Code</th>
         <th>Name</th>
+        <th>Tags</th>
         <th>From</th>
         <th>To</th>
         <th>Organization</th>
@@ -17,6 +18,11 @@
           <td>{{flag country}}</td>
           <td>{{code}}</td>
           <td>{{name}}</td>
+          <td>
+            {{#each tags}}
+              {{ tag this }}
+            {{/each}}
+          </td>
           <td>{{format-date begin}}</td>
           <td>{{format-date end}}</td>
           <td>{{organization.name}}</td>

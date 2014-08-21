@@ -1,10 +1,11 @@
 Volant.Workcamp = DS.Model.extend
   country: DS.belongsTo('country')
   organization: DS.belongsTo('organization')
-  state: DS.attr 'string'
+  tags: DS.hasMany('tag')
 
   name: DS.attr 'string'
   code: DS.attr 'string'
+  state: DS.attr 'string'
   language: DS.attr 'string'
   begin: DS.attr 'date'
   end: DS.attr 'date'
@@ -27,6 +28,7 @@ Volant.Workcamp = DS.Model.extend
   airport: DS.attr 'string'
   train: DS.attr 'string'
   publish_mode: DS.attr 'string'
+  tag_list: DS.attr 'string'
 
   # TODO: extract Placement data type
   places: DS.attr 'number'

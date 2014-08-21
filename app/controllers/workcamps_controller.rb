@@ -5,10 +5,10 @@ class WorkcampsController < ApplicationController
 
   def index
     current_page = params[:p] || 1
-    search = Workcamp.order(:name).page(current_page)
+    search = Outgoing::Workcamp.order(:name).page(current_page)
 
     if query = params[:q]
-      wcs = Workcamp.arel_table
+      wcs = Outgoing::Workcamp.arel_table
       arel = wcs[:name].matches("%#{query}%").or(wcs[:code].matches("%#{query}%"))
       search = search.where(arel)
     end
