@@ -11,9 +11,84 @@
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
-      {{ partial 'navbar/filter' }}
-      {{ partial 'navbar/search' }}
+       <form  class="navbar-form  navbar-left col-lg-1" >
+          <select class="form-control">
+            <option>All types</option>
+            <option>Workcamps</option>
+            <option>Applications</option>
+          </select>
+       </form>
+
+       <form  class="navbar-form  navbar-left col-lg-1" >
+        {{view Ember.Select
+               content=years
+               value=current_year
+               class="form-control"
+        }}
+       </form>
+
+      <form  {{ action 'search_workcamp' on=submit }} class="navbar-form
+        navbar-left col-lg-6" role="search">
+        <div class="form-group">
+          {{ input value=query class="form-control" placeholder="name, code,country..." }}
+        </div>
+
+        <div class="btn-group">
+          <button type="submit" class="btn btn-primary">Search</button>
+          <button type="button" class="btn btn-primary" {{action 'toggle_filter'}}>
+            <span class="caret"></span>
+            <span class="sr-only">Filter</span>
+          </button>
+        </div>
+      </form>
+
       {{ partial 'navbar/settings' }}
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
+
+{{#if filter_is_visible}}
+  <form class="form-horizontal" role="form" {{action 'search_workcamp' on="submit"}}>
+    <div class="form-group">
+      <label class="col-lg-1 control-label">Between</label>
+      <div class="col-lg-2">{{input value=filter.from type="date" class="form-control"}}</div>
+      <div class="col-lg-2">{{input value=filter.to type="date" class="form-control"}}</div>
+
+      <label class="col-lg-1 control-label">Duration</label>
+      <div class="col-lg-1">{{input value=filter.duration_from type="number" class="form-control"}}</div>
+      <div class="col-lg-1">{{input value=filter.duration_to type="number" class="form-control"}}</div>
+
+      <label class="col-lg-1 control-label">Age</label>
+      <div class="col-lg-1">{{input value=filter.age_from type="number" class="form-control"}}</div>
+      <div class="col-lg-1">{{input value=filter.age_to type="number" class="form-control"}}</div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">Intentions</label>
+      <div class="col-lg-2">
+        {{view Ember.Select
+               content=intentions
+               class="form-control"
+        }}
+      </div>
+      <div class="col-lg-2">
+        <span class="label label-default">AGRI X</span>
+        <span class="label label-default">ENVI X</span>
+        <span class="label label-default">KIDS X</span>
+      </div>
+
+      <label class="col-lg-1 control-label">Labels</label>
+      <div class="col-lg-2">
+        {{view Ember.Select
+               content=tags
+               class="form-control"
+        }}
+      </div>
+      <div class="col-lg-3">
+        <span class="label label-default" style="color:#FFFFFF; background-color:#CC3333;">extra fee X</span>
+        <span class="label label-default" style="color:#FFFFFF; background-color:#FF9900;">wheelchair X</span>
+      </div>
+    </div>
+
+  </form>
+{{/if}}
 </nav>

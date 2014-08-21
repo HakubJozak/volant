@@ -1,4 +1,7 @@
 Volant.WorkcampsController = Ember.ArrayController.extend({
+  filter_is_visible: false
+  filter: null
+
   query: ''
   current_year: 2014
   current_page: 1
@@ -9,6 +12,10 @@ Volant.WorkcampsController = Ember.ArrayController.extend({
 
   # TODO - fetch this
   years: [ 'All years',2015,2014,2013,2012,2011,2010]
+  tags: ["senior", "family", "teenage", "spanish", "german", "italian", "married", "possible_duplicate", "special form", "extra fee", "french", "motiv.letter"]
+
+  intentions: ["AGRI", "ANIMAL", "ARCH", "CONS", "CULT", "ECO", "EDU", "ELDE", "ETHNO", "FEST", "HERI", "HIST", "KIDS", "LANG", "LEAD", "MANU", "PLAY", "REFUGEE", "RENO", "SOCI", "TEACH", "TEEN", "ENVI", "FRENCH", "GERMAN", "RUSSIAN", "ZOO", "DISA", "SERBIAN", "ITALIAN", "SPANISH", "PŘÍPRAVNÉ ŠKOLENÍ", "YOGA", "PEACE", "ART", "SPOR", "STUD", "SENIOR", "FAMILY", "WHV"]
+
 
   pagination: (->
     if @get('model.isLoaded')
@@ -31,6 +38,11 @@ Volant.WorkcampsController = Ember.ArrayController.extend({
 
 
   actions:
+    toggle_filter: ->
+      console.info 'filtering'
+      @toggleProperty('filter_is_visible')
+      false
+
     adjust_page: (delta) ->
       delta = parseInt(delta)
       target = @get('current_page') + delta

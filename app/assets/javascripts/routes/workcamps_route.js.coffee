@@ -6,5 +6,4 @@ Volant.WorkcampsRoute = Ember.Route.extend({
     @render('_menu',into: 'application', outlet: 'menu')
     @render('workcamps')
 
-
 })
