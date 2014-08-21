@@ -1,7 +1,11 @@
 Volant.WorkcampController = Ember.ObjectController.extend({
   flash: null
+  starred: false
 
   actions:
+    toggle_starred: ->
+      @toggleProperty('starred')
+
     save: ->
       SUCCESS = =>
         @set('flash', { type: 'success', message: 'Workcamp saved succesfully.' })

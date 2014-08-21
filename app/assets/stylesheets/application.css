@@ -26,3 +26,7 @@ textarea {
 legend {
   color: rgb(47, 107, 164);
 }
+
+.fa-star {
+  color: #FFD800;
+}

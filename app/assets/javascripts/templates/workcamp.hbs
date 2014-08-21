@@ -8,6 +8,9 @@
 {{/if}}
 
 <h1>
+
+    <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' }}></i>
+
   {{code}} - {{name}}
   {{#each tags}} {{tag this}} {{/each}}
 </h1>
