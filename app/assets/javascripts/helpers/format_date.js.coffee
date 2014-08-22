@@ -1,3 +1,6 @@
+Ember.Handlebars.helper 'from-now', (date) ->
+  moment(date).fromNow()
+
 Ember.Handlebars.helper 'format-date', (date) ->
   moment(date).format('L')
 

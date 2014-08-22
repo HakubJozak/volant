@@ -1,0 +1,29 @@
+<table class="table table-striped table-hover">
+  <thead>
+    <th>Submitted</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Email</th>
+    <th>Nationality</th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr {{action 'go_to_detail' this }}>
+        <td>{{long-date created_at}}</td>
+        <td>
+          {{gender volunteer}}
+          {{volunteer.firstname}}
+          {{volunteer.lastname}}
+        </td>
+        <td>{{volunteer.age}}</td>
+        <td>{{volunteer.email}}</td>
+        <td>{{volunteer.birthnumber}}</td>
+        <td>{{volunteer.nationality}}</td>
+        <td>{{volunteer.occupation}}</td>
+        <td>{{general_remarks}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

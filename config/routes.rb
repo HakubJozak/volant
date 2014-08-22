@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :workcamps
+  resources :apply_forms
 
   root 'dashboard#index'
   get 'dashboard/index'
