@@ -31,7 +31,7 @@
 
       <form  {{ action 'search_workcamp' on=submit }} class="navbar-form navbar-left col-lg-5" role="search">
         <div class="form-group">
-          {{ input value=query class="form-control" placeholder="name, code,country..." }}
+          {{ input value=query class="form-control" placeholder="name, code or keword..." }}
         </div>
 
         <div class="btn-group">
@@ -88,6 +88,13 @@
       <label class="col-lg-1 control-label">Age</label>
       <div class="col-lg-1">{{input value=filter.age_from type="number" class="form-control"}}</div>
       <div class="col-lg-1">{{input value=filter.age_to type="number" class="form-control"}}</div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">Free</label>
+      <div class="col-lg-1">{{input value=filter.free type="number" class="form-control" placeholder='Any'}}</div>
+      <div class="col-lg-1">{{input value=filter.free_females type="number" class="form-control" placeholder='Females'}}</div>
+      <div class="col-lg-1">{{input value=filter.free_males type="number" class="form-control" placeholder='Males'}}</div>
     </div>
 
     <div class="form-group">
