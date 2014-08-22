@@ -10,12 +10,11 @@
         <th>From</th>
         <th>To</th>
         <th>Organization</th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
       {{#each}}
-        <tr>
+        <tr {{action 'go_to_detail' this}}>
           <td>{{flag country}}</td>
           <td>{{code}}</td>
           <td>{{name}}</td>
@@ -28,11 +27,6 @@
           <td>{{format-date begin}}</td>
           <td>{{format-date end}}</td>
           <td>{{organization.name}}</td>
-          <td class="actions">
-            {{#link-to 'workcamp' this class="btn btn-default"}}
-            Detail
-            {{/link-to}}
-          </td>
         </tr>
       {{/each}}
     </tbody>

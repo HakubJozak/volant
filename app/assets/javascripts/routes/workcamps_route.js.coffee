@@ -6,4 +6,8 @@ Volant.WorkcampsRoute = Ember.Route.extend({
     @render('_menu',into: 'application', outlet: 'menu')
     @render('workcamps')
 
+  actions:
+    go_to_detail: (wc) ->
+      @transitionTo('workcamp',wc)
+
 })
