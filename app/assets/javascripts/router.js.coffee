@@ -1,8 +1,8 @@
 Volant.Router.map () ->
   @resource 'apply_forms', ->
     @resource('apply_form', path: '/:apply_form_id')
-  @resource 'workcamps', ->
-    @resource('workcamp', path: '/:workcamp_id')
+  @resource 'workcamps'
+  @resource('workcamp', path: '/workcamps/:workcamp_id')
 
 
 

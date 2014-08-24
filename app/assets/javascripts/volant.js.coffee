@@ -19,6 +19,7 @@
 #= require_self
 #= require ./store
 #= require_tree ./models
+#= require ./controllers/list_controller
 #= require_tree ./controllers
 #= require ./views/field_view
 #= require_tree ./views

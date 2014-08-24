@@ -1,10 +1,9 @@
 Volant.ListController = Ember.ArrayController.extend({
+
   current_year: 2014
   current_page: 1
   filter_is_visible: false
   filter: null
-
-  years: [ 'All years',2015,2014,2013,2012,2011,2010]
 
   pagination: (->
     if @get('model.isLoaded')

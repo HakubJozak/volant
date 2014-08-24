@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :workcamps
   resources :apply_forms
+  resources :countries, only: [ :index, :show ]
+  resources :organizations
+  resources :intentions
+  resources :tags
 
   root 'dashboard#index'
   get 'dashboard/index'
