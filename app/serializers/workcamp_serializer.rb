@@ -2,6 +2,7 @@ class WorkcampSerializer < ActiveModel::Serializer
   has_one :organization, embed: :ids, include: true
   has_one :country, embed: :ids, include: true
   has_many :tags, embed: :ids, include: true, serializer: TagSerializer
+  has_many :apply_forms, embed: :ids, include: true, serializer: ApplyFormSerializer
 
   PUBLIC_ATTRS = [ :id,
              :name,

@@ -21,6 +21,10 @@ legend {
 }
 
 .nav-with-filter {
- border-bottom: 1px solid gray;
- box-shadow: rgba(0,0,0,0.6) 2px 2px 10px;
+  border-bottom: 1px solid gray;
+  box-shadow: rgba(0,0,0,0.6) 2px 2px 10px;
+}
+
+.sidepanel {
+  border-left: 1px solid #dddddd; // border color
 }
