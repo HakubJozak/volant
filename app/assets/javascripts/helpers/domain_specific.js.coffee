@@ -19,6 +19,9 @@ Ember.Handlebars.helper 'age-range', (wc) ->
     ''
 
 Ember.Handlebars.helper 'gender', (volunteer) ->
+  # for unfullfilled promises
+  return unless volunteer?
+
   if volunteer.get('gender') == 'f'
     '♀'
   else

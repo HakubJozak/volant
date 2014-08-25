@@ -193,11 +193,11 @@
 
       <table class="table table-condensed table-hover col-lg-12 sidepanel">
        <tbody>
-         {{#each apply_forms }}
-          <tr {{action 'view_apply_form' this}}>
-            <td>{{ gender volunteer }}</td>
-            <td>{{volunteer.firstname}}</td>
-            <td>{{volunteer.lastname}}</td>
+         {{#each workcamp_assignments }}
+          <tr {{action 'view_apply_form' apply_form}}>
+            <td>{{ gender apply_form.volunteer }}</td>
+            <td>{{apply_form.volunteer.firstname}}</td>
+            <td>{{apply_form.volunteer.lastname}}</td>
           </tr>
           {{/each}}
         </tbody>

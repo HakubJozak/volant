@@ -31,7 +31,7 @@
     <table class="table table-condensed table-hover col-lg-12 sidepanel">
       <tbody>
         {{#each workcamp_assignments}}
-          <tr {{action 'view_workcamp' this}}>
+          <tr {{action 'view_workcamp' this.workcamp}}>
             <td>{{state}}</td>
             <td>{{workcamp.code}}</td>
             <td>{{workcamp.name}}</td>
