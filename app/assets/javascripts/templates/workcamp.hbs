@@ -9,7 +9,6 @@
 
 <div class="row">
   <div class="col-lg-8">
-
   <h1>
     <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' }}></i>
     {{code}} - {{name}}
@@ -195,7 +194,7 @@
       <table class="table table-condensed table-hover col-lg-12 sidepanel">
        <tbody>
          {{#each apply_forms }}
-          <tr class=''>
+          <tr {{action 'view_apply_form' this}}>
             <td>{{ gender volunteer }}</td>
             <td>{{volunteer.firstname}}</td>
             <td>{{volunteer.lastname}}</td>

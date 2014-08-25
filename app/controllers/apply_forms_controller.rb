@@ -1,7 +1,7 @@
 class ApplyFormsController < ApplicationController
 
   serialization_scope :current_user
-  before_action :find_workcamp, only: [ :show, :update, :destroy ]
+  before_action :find_apply_form, only: [ :show, :update, :destroy ]
 
   def index
     current_page = params[:p] || 1

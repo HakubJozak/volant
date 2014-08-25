@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-lg-8">
+    <h1>
+      <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' }}></i>
+      {{volunteer.firstname}}
+      {{volunteer.lastname}}
+      {{gender volunteer}}
+    </h1>
+
+    <div class="container-fluid">
+    <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
+      <fieldset>
+        <legend>Basics</legend>
+
+        <div class="form-group">
+          <label class="col-lg-1 control-label">First name</label>
+          <div class="col-lg-3">{{input value=volunteer.firstname class="form-control"}}</div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-1 control-label">Surname</label>
+          <div class="col-lg-3">{{input value=volunteer.lastname class="form-control"}}</div>
+        </div>
+
+      </fieldset>
+    </form>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <table class="table table-condensed table-hover col-lg-12 sidepanel">
+      <tbody>
+        {{#each workcamp_assignments}}
+          <tr {{action 'view_workcamp' this}}>
+            <td>{{state}}</td>
+            <td>{{workcamp.code}}</td>
+            <td>{{workcamp.name}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

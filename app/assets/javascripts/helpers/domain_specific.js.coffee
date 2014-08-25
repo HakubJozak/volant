@@ -19,7 +19,7 @@ Ember.Handlebars.helper 'age-range', (wc) ->
     ''
 
 Ember.Handlebars.helper 'gender', (volunteer) ->
-  if volunteer.get('gender') == 'm'
+  if volunteer.get('gender') == 'f'
     '♀'
   else
     '♂'
