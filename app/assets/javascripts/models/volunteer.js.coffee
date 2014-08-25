@@ -1,6 +1,7 @@
 Volant.Volunteer = DS.Model.extend
   apply_forms: DS.hasMany 'apply_form'
   age: DS.attr 'number'
+
   firstname: DS.attr 'string'
   lastname: DS.attr 'string'
   gender: DS.attr 'string'

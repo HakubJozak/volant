@@ -183,9 +183,8 @@
   </div>
 
   <div class="col-lg-4">
-
+    <h3>Applications</h3>
     <ul class="nav nav-tabs nav-justified">
-      <li class="disabled"><a href="#">Applications:</a></li>
       <li class="active"><a href="#">Assigned</a></li>
       <li><a href="#">Starred</a></li>
       <li><a href="#">Search</a></li>
@@ -195,13 +194,19 @@
        <tbody>
          {{#each workcamp_assignments }}
           <tr {{action 'view_apply_form' apply_form}}>
-            <td>{{ gender apply_form.volunteer }}</td>
-            <td>{{apply_form.volunteer.firstname}}</td>
-            <td>{{apply_form.volunteer.lastname}}</td>
+            <td>{{state-icon state}}</td>
+            <td>
+              {{apply_form.volunteer.firstname}}
+              {{apply_form.volunteer.lastname}}
+              {{ gender apply_form.volunteer }}
+            </td>
           </tr>
           {{/each}}
         </tbody>
       </table>
+
+  </div>
+</div>
 
   </div>
 </div>

@@ -18,6 +18,19 @@ Ember.Handlebars.helper 'age-range', (wc) ->
   else
     ''
 
+Ember.Handlebars.helper 'state-icon', (state) ->
+  name = switch state
+           when "accepted" then 'check-circle-o'
+           when "rejected" then 'times-circle-o'
+           when "asked" then 'envelope-o'
+           when "paid" then 'circle-o'
+           when "not_paid" then 'question-circle'
+           when "infosheeted" then 'suitcase'
+           else ''
+
+  new Handlebars.SafeString "<i title='#{state}' class='fa fa-#{name}'></i>"
+
+
 Ember.Handlebars.helper 'gender', (volunteer) ->
   # for unfullfilled promises
   return unless volunteer?
