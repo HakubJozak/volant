@@ -1,12 +1,11 @@
-Volant.Volunteer = DS.Model.extend
+Volant.Volunteer = DS.Model.extend({
   apply_forms: DS.hasMany 'apply_form'
   age: DS.attr 'number'
-
   firstname: DS.attr 'string'
   lastname: DS.attr 'string'
   gender: DS.attr 'string'
   email: DS.attr 'string'
-  phone: DS.attr 'string',
+  phone: DS.attr 'string'
   speak_well: DS.attr 'string'
   speak_some: DS.attr 'string'
   birthdate: DS.attr 'date'
@@ -26,6 +25,7 @@ Volant.Volunteer = DS.Model.extend
   zipcode: DS.attr 'string'
   contact_street: DS.attr 'string'
   contact_city: DS.attr 'string'
-  contact_zipcode: DS.attr 'string',
+  contact_zipcode: DS.attr 'string'
   note: DS.attr 'string'
   account: DS.attr 'string'
+})

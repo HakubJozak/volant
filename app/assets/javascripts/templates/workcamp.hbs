@@ -27,12 +27,8 @@
         {{ view "text" label='code' model=code errors=errors.code lwidth=2 width=3 }}
 
         <label class="col-lg-1 control-label">Dates</label>
-        {{#view Volant.DateView classNameBindings=":col-lg-3" model=begin }}
-          {{input value=view.formatted_model type="date" id=view.label  class="form-control"}}
-        {{/view}}
-        {{#view Volant.DateView classNameBindings=":col-lg-3" model=end }}
-          {{input value=view.formatted_model type="date" id=view.label  class="form-control"}}
-        {{/view}}
+        {{view Volant.DateView classNameBindings=":col-lg-3" model=begin }}
+        {{view Volant.DateView classNameBindings=":col-lg-3" model=end }}
       </div>
 
       <div class="form-group">
