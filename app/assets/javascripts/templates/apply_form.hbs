@@ -8,106 +8,109 @@
     </h1>
 
     <div class="container-fluid">
-    <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
+    <form class="form" role="form" {{action 'save' on="submit"}}>
       <fieldset>
         <legend>Basics</legend>
 
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Name</label>
-          <div class="col-lg-3">{{input value=volunteer.firstname class="form-control"}}</div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Surname</label>
-          <div class="col-lg-3">{{input value=volunteer.lastname class="form-control"}}</div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Gender</label>
-          <div class="col-lg-3">
+        <div class="form-group col-lg-2">
+          <label class=" control-label">Gender</label>
             {{view Ember.Select content=genders value=volunteer.gender class="form-control"
               optionValuePath='content.code' optionLabelPath='content.name' }}
-          </div>
         </div>
 
-
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Email</label>
-          <div class="col-lg-3">{{input value=volunteer.email class="form-control"}}</div>
+        <div class="form-group col-lg-3">
+          <label class=" control-label">Name</label>
+          {{input value=volunteer.firstname class="form-control"}}
         </div>
 
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Phone</label>
-          <div class="col-lg-3">{{input value=volunteer.phone class="form-control"}}</div>
+        <div class="form-group col-lg-3">
+          <label class=" control-label">Surname</label>
+          {{input value=volunteer.lastname class="form-control"}}
         </div>
 
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Speak well</label>
-          <div class="col-lg-3">{{input value=volunteer.speak_well class="form-control"}}</div>
+        <div class="form-group col-lg-offset-2 col-lg-2">
+          <label class=" control-label">Nationality</label>
+          {{input value=volunteer.nationality class="form-control"}}
         </div>
 
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Speak some</label>
-          <div class="col-lg-3">{{input value=volunteer.speak_some class="form-control"}}</div>
+        <div class="form-group col-lg-2">
+          <label class=" control-label">Birth-number</label>
+          {{input value=volunteer.birthnumber class="form-control"}}
         </div>
 
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Date of birth</label>
-          {{view Volant.DateView classNameBindings=":col-lg-3" model=volunteer.birthdate }}
+        <div class="form-group col-lg-3">
+          <label class=" control-label">Date of birth</label>
+          {{view Volant.DateView classNameBindings=":" model=volunteer.birthdate }}
           </div>
 
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Birth-number</label>
-          <div class="col-lg-3">{{input value=volunteer.birthnumber class="form-control"}}</div>
+
+        <div class="form-group col-lg-3">
+          <label class=" control-label">Place of Birth</label>
+          {{input value=volunteer.birthplace class="form-control"}}
         </div>
 
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Place of Birth</label>
-          <div class="col-lg-3">{{input value=volunteer.birthplace class="form-control"}}</div>
+        <div class="form-group col-lg-offset-2 col-lg-2">
+          <label class=" control-label">Occupation</label>
+          {{input value=volunteer.occupation class="form-control"}}
         </div>
-
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Nationality</label>
-          <div class="col-lg-3">{{input value=volunteer.nationality class="form-control"}}</div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Occupation</label>
-          <div class="col-lg-3">{{input value=volunteer.occupation class="form-control"}}</div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Emergency name</label>
-          <div class="col-lg-3">{{input value=volunteer.emergency_name class="form-control"}}</div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Emergency_day</label>
-          <div class="col-lg-3">{{input value=volunteer.emergency_day class="form-control"}}</div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Emergency night</label>
-          <div class="col-lg-3">{{input value=volunteer.emergency_night class="form-control"}}</div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Special needs</label>
-          <div class="col-lg-3">{{input value=volunteer.special_needs class="form-control"}}</div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Past experience</label>
-          <div class="col-lg-3">{{input value=volunteer.past_experience class="form-control"}}</div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Comments</label>
-          <div class="col-lg-3">{{input value=volunteer.comments class="form-control"}}</div>
-        </div>
-
-
       </fieldset>
+
+      <fieldset>
+        <legend>Contact</legend>
+
+        <div class="form-group">
+          <label class=" control-label">Email</label>
+          {{input value=volunteer.email class="form-control"}}
+        </div>
+
+        <div class="form-group">
+          <label class=" control-label">Phone</label>
+          {{input value=volunteer.phone class="form-control"}}
+        </div>
+
+        <div class="form-group">
+          <label class=" control-label">Speak well</label>
+          {{input value=volunteer.speak_well class="form-control"}}
+        </div>
+
+        <div class="form-group">
+          <label class=" control-label">Speak some</label>
+          {{input value=volunteer.speak_some class="form-control"}}
+        </div>
+
+
+        <div class="form-group">
+          <label class=" control-label">Emergency name</label>
+          {{input value=volunteer.emergency_name class="form-control"}}
+        </div>
+
+        <div class="form-group">
+          <label class=" control-label">Emergency_day</label>
+          {{input value=volunteer.emergency_day class="form-control"}}
+        </div>
+
+        <div class="form-group">
+          <label class=" control-label">Emergency night</label>
+          {{input value=volunteer.emergency_night class="form-control"}}
+        </div>
+
+        <div class="form-group">
+          <label class=" control-label">Special needs</label>
+          {{input value=volunteer.special_needs class="form-control"}}
+        </div>
+
+        <div class="form-group">
+          <label class=" control-label">Past experience</label>
+          {{input value=volunteer.past_experience class="form-control"}}
+        </div>
+
+        <div class="form-group">
+          <label class=" control-label">Comments</label>
+          {{input value=volunteer.comments class="form-control"}}
+        </div>
+      </fieldset>
+
+
     </form>
     </div>
   </div>
