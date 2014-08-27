@@ -4,6 +4,7 @@
       <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' }}></i>
       {{volunteer.firstname}}
       {{volunteer.lastname}}
+      ({{volunteer.age}})
       {{gender volunteer}}
     </h1>
 
@@ -58,40 +59,66 @@
       <fieldset>
         <legend>Contact</legend>
 
-        <div class="form-group">
+        <div class="form-group col-lg-4">
           <label class=" control-label">Email</label>
           {{input value=volunteer.email class="form-control"}}
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-lg-4">
           <label class=" control-label">Phone</label>
-          {{input value=volunteer.phone class="form-control"}}
+          {{input value=volunteer.phone type="phone" class="form-control"}}
         </div>
 
-        <div class="form-group">
-          <label class=" control-label">Speak well</label>
-          {{input value=volunteer.speak_well class="form-control"}}
+        <div class="form-group col-lg-4">
+          <label class=" control-label">Fax</label>
+          {{input value=volunteer.fax type="phone" class="form-control"}}
         </div>
 
-        <div class="form-group">
-          <label class=" control-label">Speak some</label>
-          {{input value=volunteer.speak_some class="form-control"}}
-        </div>
+      </fieldset>
 
+      <fieldset>
+        <legend>Emergency Contact</legend>
 
-        <div class="form-group">
+        <div class="form-group col-lg-4">
           <label class=" control-label">Emergency name</label>
           {{input value=volunteer.emergency_name class="form-control"}}
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-lg-4">
           <label class=" control-label">Emergency_day</label>
           {{input value=volunteer.emergency_day class="form-control"}}
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-lg-4">
           <label class=" control-label">Emergency night</label>
           {{input value=volunteer.emergency_night class="form-control"}}
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Application Details</legend>
+        <div class="form-group">
+          <label class=" control-label">Motivation</label>
+          {{textarea value=motivation class="form-control"}}
+        </div>
+
+        <div class="form-group">
+          <label class=" control-label">General Remarks</label>
+          {{textarea value=general_remarks class="form-control" rows='2'}}
+        </div>
+      </fieldset>
+
+
+      <fieldset>
+        <legend>Volunteer Details</legend>
+        <div class="form-group col-lg-6">
+          <label class=" control-label">Speak well</label>
+          {{input value=volunteer.speak_well class="form-control"}}
+        </div>
+
+        <div class="form-group col-lg-6">
+          <label class=" control-label">Speak some</label>
+          {{input value=volunteer.speak_some class="form-control"}}
         </div>
 
         <div class="form-group">
@@ -101,7 +128,8 @@
 
         <div class="form-group">
           <label class=" control-label">Past experience</label>
-          {{input value=volunteer.past_experience class="form-control"}}
+          {{textarea value=volunteer.past_experience
+          class="form-control" rows="3"}}
         </div>
 
         <div class="form-group">
@@ -109,7 +137,6 @@
           {{input value=volunteer.comments class="form-control"}}
         </div>
       </fieldset>
-
 
     </form>
     </div>
