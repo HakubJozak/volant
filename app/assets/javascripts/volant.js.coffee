@@ -18,6 +18,7 @@
 
 #= require_self
 #= require ./store
+#= require_tree ./mixins
 #= require_tree ./models
 #= require ./controllers/list_controller
 #= require_tree ./controllers

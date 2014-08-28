@@ -1,0 +1,12 @@
+{{#if isDirty }}
+<form class="navbar-form navbar-right">
+ <div class="form-group">
+  <button type="button" class="btn btn-success" {{ action 'save' }}>
+    <i class="fa fa-check"></i>
+  </button>
+  <button type="button" class="btn btn-danger" {{ action 'rollback' }}>
+    <i class="fa fa-times"></i>
+  </button>
+ </div>
+</form>
+{{/if}}

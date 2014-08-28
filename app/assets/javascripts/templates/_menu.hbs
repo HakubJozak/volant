@@ -39,32 +39,13 @@
         }}
        </form>
 
-      <form  {{ action 'search_workcamp' on=submit }} class="navbar-form navbar-left col-lg-5" role="search">
-        <div class="form-group">
-          {{ input value=query class="form-control" placeholder="name, code or keword..." }}
-        </div>
+       {{ outlet 'item_controls'}}
 
-        <div class="btn-group">
-          <button type="submit" class="btn btn-primary">Search</button>
-          <button type="button" class="btn btn-primary" {{action 'toggle_filter'}}>
-            <span class="caret"></span>
-            <span class="sr-only">Filter</span>
-          </button>
-        </div>
-
-         {{#if current_item }}
-           {{#if current_item.isDirty }}
-            <div class="form-group">
-             <button type="button" class="btn btn-success">
-               <i class="fa fa-check"></i>
-             </button>
-             <button type="button" class="btn btn-danger">
-               <i class="fa fa-times"></i>
-             </button>
-            </div>
-           {{/if}}
-         {{/if}}
-        </form>
+       {{#if flash}}
+         <p class="navbar-text">
+           <span class="text-success">{{ flash.message }}</span>
+         </p>
+       {{/if}}
 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">

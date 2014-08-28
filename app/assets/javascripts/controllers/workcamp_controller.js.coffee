@@ -1,5 +1,4 @@
-Volant.WorkcampController = Ember.ObjectController.extend({
-  flash: null
+Volant.WorkcampController = Ember.ObjectController.extend Volant.FlashControllerMixin, {
   starred: false
 
   actions:
@@ -8,14 +7,14 @@ Volant.WorkcampController = Ember.ObjectController.extend({
 
     save: ->
       SUCCESS = =>
-        @set('flash', { type: 'success', message: 'Workcamp saved succesfully.' })
+        @show_flash('success','Saved.')
 
       ERROR = =>
-        @set('flash', { type: 'error', message: 'Failed to save the workcamp.' })
+        @show_flash('error','Failed.')
 
       @get('model').save().then(SUCCESS,ERROR)
 
-    cancel: ->
+    rollback: ->
       @get('model').rollback()
 
-})
+}
