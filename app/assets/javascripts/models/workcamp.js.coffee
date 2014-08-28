@@ -61,3 +61,16 @@ Volant.Workcamp = DS.Model.extend
 
   # becameInvalid: (errors) ->
   #  console.error 'workcamp became invalid'
+
+  assignments_by_state: Ember.computed.sort 'workcamp_assignments', (wa,wb) ->
+    priorities = [ 'infosheeted', 'accepted', 'asked','paid','not_paid', 'rejected', 'cancelled' ]
+
+    a = priorities.indexOf wa.get('state')
+    b = priorities.indexOf wb.get('state')
+
+    if a > b
+      1
+    else if a < b
+      -1
+    else
+       0

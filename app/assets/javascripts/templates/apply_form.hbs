@@ -97,12 +97,12 @@
 
       <fieldset>
         <legend>Application Details</legend>
-        <div class="form-group">
+        <div class="form-group col-lg-12">
           <label class=" control-label">Motivation</label>
           {{textarea value=motivation class="form-control"}}
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-lg-12">
           <label class=" control-label">General Remarks</label>
           {{textarea value=general_remarks class="form-control" rows='2'}}
         </div>
@@ -121,20 +121,19 @@
           {{input value=volunteer.speak_some class="form-control"}}
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-lg-12">
           <label class=" control-label">Special needs</label>
           {{input value=volunteer.special_needs class="form-control"}}
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-lg-12">
           <label class=" control-label">Past experience</label>
-          {{textarea value=volunteer.past_experience
-          class="form-control" rows="3"}}
+          {{textarea value=volunteer.past_experience class="form-control" rows="3"}}
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-lg-12">
           <label class=" control-label">Comments</label>
-          {{input value=volunteer.comments class="form-control"}}
+          {{textarea value=volunteer.comments class="form-control" rows='2'}}
         </div>
       </fieldset>
 
@@ -148,7 +147,8 @@
       <tbody>
         {{#each workcamp_assignments}}
           <tr {{action 'view_workcamp' this.workcamp}}>
-            <td>{{state-icon state}}</td>
+            <td>{{order}}.</td>
+            <td>{{workcamp-state-icon state}}</td>
             <td>{{workcamp.code}}</td>
             <td>{{workcamp.name}}</td>
           </tr>

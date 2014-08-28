@@ -18,14 +18,26 @@ Ember.Handlebars.helper 'age-range', (wc) ->
   else
     ''
 
-Ember.Handlebars.helper 'state-icon', (state) ->
+Ember.Handlebars.helper 'workcamp-state-icon', (state) ->
   name = switch state
-           when "accepted" then 'check-circle-o'
-           when "rejected" then 'times-circle-o'
+           when "accepted" then 'thumbs-up'   #'check-circle-o'
+           when "rejected" then 'thumbs-down' # 'times-circle-o'
            when "asked" then 'envelope-o'
-           when "paid" then 'circle-o'
-           when "not_paid" then 'question-circle'
+           when "paid" then ''
            when "infosheeted" then 'suitcase'
+           when "cancelled" then 'times-circle-o'
+           else ''
+  new Handlebars.SafeString "<i title='#{state}' class='fa fa-#{name}'></i>"
+
+Ember.Handlebars.helper 'apply-form-state-icon', (state) ->
+  name = switch state
+           when "accepted" then 'thumbs-up'
+           when "rejected" then 'thumbs-down'
+           when "asked" then 'envelope-o'
+           when "paid" then 'money'
+           when "not_paid" then 'circle-o'
+           when "infosheeted" then 'suitcase'
+           when "cancelled" then 'times-circle-o'
            else ''
 
   new Handlebars.SafeString "<i title='#{state}' class='fa fa-#{name}'></i>"

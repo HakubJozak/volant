@@ -188,9 +188,9 @@
 
       <table class="table table-condensed table-hover col-lg-12 sidepanel">
        <tbody>
-         {{#each workcamp_assignments }}
+         {{#each assignments_by_state }}
           <tr {{action 'view_apply_form' apply_form}}>
-            <td>{{state-icon state}}</td>
+            <td>{{apply-form-state-icon state}}</td>
             <td>
               {{apply_form.volunteer.firstname}}
               {{apply_form.volunteer.lastname}}
