@@ -12,9 +12,13 @@ Volant.WorkcampController = Ember.ObjectController.extend Volant.FlashController
       ERROR = =>
         @show_flash('error','Failed.')
 
-      @get('model').save().then(SUCCESS,ERROR)
+      model = @get('model')
+      model.get('errors').clear();
+      model.save().then(SUCCESS,ERROR)
 
     rollback: ->
-      @get('model').rollback()
+      model = @get('model')
+      model.get('errors').clear();
+      model.rollback()
 
 }
