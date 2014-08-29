@@ -21,6 +21,7 @@
 #= require_tree ./mixins
 #= require_tree ./models
 #= require ./controllers/list_controller
+#= require ./controllers/object_controller
 #= require_tree ./controllers
 #= require ./views/field_view
 #= require_tree ./views

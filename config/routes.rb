@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :countries, only: [ :index, :show ]
   resources :organizations
   resources :intentions
+  resources :volunteers
   resources :tags
 
   root 'dashboard#index'

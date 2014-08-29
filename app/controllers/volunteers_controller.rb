@@ -18,6 +18,15 @@ class VolunteersController < ApplicationController
            each_serializer: VolunteerSerializer
   end
 
+  def update
+    if  @volunteer.update(volunteer_params)
+      render json: @volunteer, serializer: VolunteerSerializer
+    else
+      render json: { errors: @volunteer.errors }, status: 422
+    end
+  end
+
+
   def show
     render json: @volunteer, serializer: VolunteerSerializer
   end
@@ -28,5 +37,7 @@ class VolunteersController < ApplicationController
     @volunteer = Volunteer.find(params[:id])
   end
 
-
+  def volunteer_params
+    params.require(:volunteer).except(:age).permit(*VolunteerSerializer.public_attributes)
+  end
 end

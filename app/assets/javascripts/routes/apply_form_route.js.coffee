@@ -2,6 +2,10 @@ Volant.ApplyFormRoute = Ember.Route.extend({
   model: (params) ->
     @store.find('apply_form', params.apply_form_id)
 
+  renderTemplate: ->
+    @render('quick_save',into: 'application', outlet: 'item_controls')
+    @render('apply_form')
+
   actions:
     view_workcamp: (wc) ->
       @transitionTo('workcamp',wc)

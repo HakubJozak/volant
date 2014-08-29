@@ -4,40 +4,19 @@ class WorkcampSerializer < ActiveModel::Serializer
   has_many :tags, embed: :ids, include: true, serializer: TagSerializer
   has_many :workcamp_assignments, embed: :ids, include: true
 
-  PUBLIC_ATTRS = [ :id,
-             :name,
-             :code,
-             :language,
-             :begin,
-             :end,
-             :capacity,
-             :minimal_age,
-             :maximal_age,
-             :area,
-             :accomodation,
-             :workdesc,
-             :notes,
-             :description,
-             :extra_fee,
-             :extra_fee_currency,
-             :region,
-             :capacity_natives,
-             :capacity_teenagers,
-             :capacity_males,
-             :capacity_females,
-             :airport,
-             :train,
-             :publish_mode,
-             :places, :places_for_males, :places_for_females,
-             :accepted_places, :accepted_places_males, :accepted_places_females,
-             :asked_for_places, :asked_for_places_males, :asked_for_places_females,
-             :longitude, :latitude,
-             :requirements
-            ]
+  def self.public_attributes
+    [ :id, :name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
+      :area, :accomodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,
+      :region, :capacity_natives, :capacity_teenagers, :capacity_males, :capacity_females,
+      :airport, :train, :publish_mode,:places, :places_for_males, :places_for_females,
+      :accepted_places, :accepted_places_males, :accepted_places_females,
+      :asked_for_places, :asked_for_places_males, :asked_for_places_females,
+      :longitude, :latitude, :requirements ]
+  end
 
-  attrs = [ PUBLIC_ATTRS, :free_places, :free_places_for_males, :free_places_for_females, :state ].flatten
+  def self.private_attributes
+    [ :free_places, :free_places_for_males, :free_places_for_females, :state ]
+  end
 
-  attributes *attrs
-
-
+  attributes *[ WorkcampSerializer.public_attributes, WorkcampSerializer.private_attributes ].flatten
 end

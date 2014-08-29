@@ -18,6 +18,15 @@ class ApplyFormsController < ApplicationController
            each_serializer: ApplyFormSerializer
   end
 
+  def update
+    if  @apply_form.update(apply_form_params)
+      render json: @apply_form, serializer: ApplyFormSerializer
+    else
+      render json: { errors: @apply_form.errors }, status: 422
+    end
+  end
+
+
   def show
     render json: @apply_form, serializer: ApplyFormSerializer
   end
@@ -28,5 +37,8 @@ class ApplyFormsController < ApplicationController
     @apply_form = ApplyForm.find(params[:id])
   end
 
+  def apply_form_params
+    params.require(:apply_form).permit(:general_remarks, :motivation, :volunteer_id)
+end
 
 end

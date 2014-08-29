@@ -157,19 +157,11 @@
       </div>
      </fieldset>
 
-   <div class="form-group">
-      <div class="col-lg-offset-2 col-lg-9">
-        <button type="submit" class="btn btn-primary">
-          Save
-        </button>
-        {{#if isDirty }}
-          <button type="button" class="btn" {{action "rollback" }}>
-            Cancel
-          </button>
-        {{/if}}
-      </div>
-    </div>
-
+     <div class="form-group">
+       <div class="col-lg-offset-2 col-lg-9">
+         {{ partial 'save_buttons' }}
+       </div>
+     </div>
   </form>
   </div>
 
