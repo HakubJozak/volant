@@ -42,9 +42,7 @@
        {{ outlet 'item_controls'}}
 
        {{#if flash}}
-         <p class="navbar-text">
-           <span class="text-success">{{ flash.message }}</span>
-         </p>
+         {{ view Volant.SmallFlashView flashBinding="flash" }}
        {{/if}}
 
       <ul class="nav navbar-nav navbar-right">
