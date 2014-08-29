@@ -8,7 +8,7 @@ Volant.Volunteer = DS.Model.extend({
   phone: DS.attr 'string'
   speak_well: DS.attr 'string'
   speak_some: DS.attr 'string'
-  birthdate: DS.attr 'date'
+  birthdate: DS.attr 'isodate'
   birthnumber: DS.attr 'string'
   birthplace: DS.attr 'string'
   nationality: DS.attr 'string'

@@ -4,7 +4,7 @@ Volant.WorkcampAssignment = DS.Model.extend
   apply_form: DS.belongsTo('apply_form')
 
   order: DS.attr 'number'
-  accepted: DS.attr 'date'
-  rejected: DS.attr 'date'
-  asked: DS.attr 'date'
-  infosheeted: DS.attr 'date'
+  accepted: DS.attr 'isodate'
+  rejected: DS.attr 'isodate'
+  asked: DS.attr 'isodate'
+  infosheeted: DS.attr 'isodate'
