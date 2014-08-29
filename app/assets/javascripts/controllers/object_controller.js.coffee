@@ -10,7 +10,10 @@ Volant.ObjectController = Ember.ObjectController.extend(Volant.FlashControllerMi
         @show_flash('success','Saved.')
 
       ERROR = =>
-        @show_flash('error','Failed.')
+        if msg = @get('errors.firstObject')
+          @show_flash('error',"#{msg.attribute} #{msg.message}")
+        else
+          'Failed.'
 
       model = @get('model')
       model.get('errors').clear();
