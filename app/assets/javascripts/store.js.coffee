@@ -13,3 +13,12 @@ Volant.ApplicationAdapter = DS.ActiveModelAdapter.extend({
 
 
 Volant.ApplicationSerializer = DS.ActiveModelSerializer
+
+
+
+
+# Transforms Date to avoid miss-match with rails date
+# Volant.IsodateTransform  = DS.DateTransform.extend({
+#   serialize: (date) ->
+#     if date then moment(date).format("YYYY-MM-DD") else null
+# })

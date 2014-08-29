@@ -17,8 +17,11 @@ class WorkcampsControllerTest < ActionController::TestCase
 
 
   test "should update workcamp" do
-    patch :update, id: @workcamp, workcamp: { name: 'edited', code: 'new-code' }
+    patch :update, id: @workcamp, workcamp: { name: 'edited', code: 'new-code', :'end' =>  "2014-06-26"}
+
     assert_response :success
+
+    assert_equal Date.new(2014,6,26), @workcamp.reload.end
     assert_equal 'edited', json_response['workcamp']['name']
     assert_equal 'new-code', json_response['workcamp']['code']
   end

@@ -18,8 +18,12 @@
         {{ view "text" label='code' model=code errors=errors.code lwidth=2 width=3 }}
 
         <label class="col-lg-1 control-label">Dates</label>
-        {{view Volant.DateView classNameBindings=":col-lg-3" model=begin }}
-        {{view Volant.DateView classNameBindings=":col-lg-3" model=end }}
+        <div class="col-lg-3">
+          {{view Volant.DateView dateBinding=begin }}
+        </div>
+        <div class="col-lg-3">
+          {{view Volant.DateView class="form-control" dateBinding=end }}
+        </div>
       </div>
 
       <div class="form-group">
