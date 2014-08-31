@@ -1,0 +1,88 @@
+<form class="form-horizontal" role="form" {{action 'search_workcamp' on="submit"}}>
+
+  <div class="form-group">
+    <label class="col-lg-1 control-label">Query</label>
+    <div class="col-lg-11">
+      {{ input value=query class="form-control" placeholder="name, code or keword..." }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-lg-1 control-label">Between</label>
+    <div class="col-lg-2">{{input value=filter.from type="date" class="form-control"}}</div>
+    <div class="col-lg-2">{{input value=filter.to type="date" class="form-control"}}</div>
+
+    <label class="col-lg-1 control-label">Duration</label>
+    <div class="col-lg-1">{{input value=filter.duration_from type="number" class="form-control"}}</div>
+    <div class="col-lg-1">{{input value=filter.duration_to type="number" class="form-control"}}</div>
+
+    <label class="col-lg-1 control-label">Age</label>
+    <div class="col-lg-1">{{input value=filter.age_from type="number" class="form-control"}}</div>
+    <div class="col-lg-1">{{input value=filter.age_to type="number" class="form-control"}}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-lg-1 control-label">Free</label>
+    <div class="col-lg-1">{{input value=filter.free type="number" class="form-control" placeholder='Any'}}</div>
+    <div class="col-lg-1">{{input value=filter.free_females type="number" class="form-control" placeholder='Females'}}</div>
+    <div class="col-lg-1">{{input value=filter.free_males type="number" class="form-control" placeholder='Males'}}</div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-lg-1 control-label">Intentions</label>
+    <div class="col-lg-2">
+      {{view Ember.Select
+      content=intentions
+      class="form-control"
+      }}
+    </div>
+    <div class="col-lg-2">
+      <span class="label label-default">AGRI X</span>
+      <span class="label label-default">ENVI X</span>
+      <span class="label label-default">KIDS X</span>
+    </div>
+
+    <label class="col-lg-1 control-label">Labels</label>
+    <div class="col-lg-2">
+      {{view Ember.Select
+      content=tags
+      class="form-control"
+      }}
+    </div>
+    <div class="col-lg-3">
+      <span class="label label-default" style="color:#FFFFFF; background-color:#CC3333;">extra fee X</span>
+      <span class="label label-default" style="color:#FFFFFF; background-color:#FF9900;">wheelchair X</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-lg-1 control-label">Countries</label>
+
+    <div class="col-lg-2">
+      {{view Ember.Select
+      content=countries
+      class="form-control"
+      }}
+    </div>
+    <div class="col-lg-2">
+      <span class="label label-default">Great Britain X</span>
+      <span class="label label-default">France X</span>
+    </div>
+
+    <label class="col-lg-1 control-label">Organizations</label>
+    <div class="col-lg-2">
+      {{view Ember.Select
+      content=organizations
+      class="form-control"
+      }}
+    </div>
+    <div class="col-lg-3">
+      <span class="label label-default">INEX-SDA X</span>
+      <span class="label label-default">Tamjdem CON X</span>
+      <span class="label label-default">SCI Germany X</span>
+    </div>
+    <div class="col-lg-1">
+      <button type="submit" class="btn btn-primary btn-lg">Filter</div>
+    </div>
+  </div>
+</form>

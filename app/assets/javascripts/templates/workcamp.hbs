@@ -1,6 +1,8 @@
 <div class="row">
   <div class="col-lg-8">
   <h1>
+    {{#link-to 'workcamps'}}&lt;{{/link-to}}
+
     <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' }}></i>
     {{code}} - {{name}}
     {{#each tags}} {{tag this}} {{/each}}

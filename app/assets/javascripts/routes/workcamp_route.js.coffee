@@ -6,6 +6,9 @@ Volant.WorkcampRoute = Ember.Route.extend({
     @render('quick_save',into: 'application', outlet: 'item_controls')
     @render('workcamp')
 
+  deactivate: ->
+    console.info 'deactivated'
+
   actions:
     view_apply_form: (form) ->
       @transitionTo('apply_form',form)

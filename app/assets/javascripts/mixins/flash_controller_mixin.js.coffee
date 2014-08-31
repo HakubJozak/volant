@@ -9,6 +9,7 @@ Volant.FlashControllerMixin = Ember.Mixin.create({
     @hide_flash_later() unless type == 'error'
 
   hide_flash_later: ->
+    app_controller =
     Ember.run.later((=>
       console.debug 'flash hided'
       @set('controllers.application.flash',null)
