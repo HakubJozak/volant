@@ -1,7 +1,6 @@
 Volant.WorkcampsController = Volant.ListController.extend({
 
   query: ''
-
   sortProperties: ['name']
   sortAscending: true
   current_item: null
@@ -16,4 +15,23 @@ Volant.WorkcampsController = Volant.ListController.extend({
       @set('current_page',1)
       @do_search()
       false
+
+
+  tags: (->
+     @store.find('tag')).property()
+
+  countries: (->
+     @store.find('country')).property()
+
+  workcamp_intentions: (->
+     @store.find('workcamp_intention')).property()
+
+  organizations: (->
+     @store.find('organization')).property()
+
+
+
+
+
+
 })

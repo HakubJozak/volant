@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :apply_forms
   resources :countries, only: [ :index, :show ]
   resources :organizations
-  resources :intentions
+  resources :workcamp_intentions
   resources :volunteers
   resources :tags
 

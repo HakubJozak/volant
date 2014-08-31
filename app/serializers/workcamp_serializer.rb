@@ -2,6 +2,7 @@ class WorkcampSerializer < ActiveModel::Serializer
   has_one :organization, embed: :ids, include: true
   has_one :country, embed: :ids, include: true
   has_many :tags, embed: :ids, include: true, serializer: TagSerializer
+  has_many :intentions, embed: :ids
   has_many :workcamp_assignments, embed: :ids, include: true
 
   def self.public_attributes

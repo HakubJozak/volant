@@ -1,8 +1,7 @@
 class OrganizationsController < ApplicationController
 
   def index
-    orgs = Organization.all
-    render json: orgs, each_serializer: OrganizationSerializer
+    render json: Organization.all, each_serializer: OrganizationSerializer
   end
 
   def show
