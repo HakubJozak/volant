@@ -33,6 +33,16 @@
 #= require ./router
 
 
+# Ember.Application.initializer({
+#   name: "load-data",
+#   after: "store",
+#   initialize: (container) ->
+#     Volant.deferReadiness()
+#     Ember.$.getJSON "/workcamp_intentions.json", (json) ->
+#       store = container.lookup('store:main')
+#       store.load(Volant.WorkcampIntentions, json)
+#       Volant.advanceReadiness()
+# })
 
-# for more details see: http://emberjs.com/guides/application/
+
 window.Volant = Ember.Application.create()

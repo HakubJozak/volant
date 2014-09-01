@@ -2,7 +2,7 @@ class WorkcampSerializer < ActiveModel::Serializer
   has_one :organization, embed: :ids, include: true
   has_one :country, embed: :ids, include: true
   has_many :tags, embed: :ids, include: true, serializer: TagSerializer
-  has_many :intentions, embed: :ids
+  has_many :workcamp_intentions, embed: :ids, include: true, serializer: WorkcampIntentionSerializer
   has_many :workcamp_assignments, embed: :ids, include: true
 
   def self.public_attributes
@@ -17,6 +17,10 @@ class WorkcampSerializer < ActiveModel::Serializer
 
   def self.private_attributes
     [ :free_places, :free_places_for_males, :free_places_for_females, :state ]
+  end
+
+  def workcamp_intentions
+    object.intentions
   end
 
   attributes *[ WorkcampSerializer.public_attributes, WorkcampSerializer.private_attributes ].flatten

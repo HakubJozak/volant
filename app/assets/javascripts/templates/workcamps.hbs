@@ -36,6 +36,7 @@
                <th></th>
                <th>Code</th>
                <th>Name</th>
+               <th>Intentions</th>
                <th>Tags</th>
                <th>Age</th>
                <th>From</th>
@@ -49,6 +50,11 @@
                  <td>{{flag country}}</td>
                  <td>{{code}}</td>
                  <td>{{name}}</td>
+                 <td>
+                   {{#each workcamp_intentions}}
+                     {{ code }},
+                   {{/each}}
+                 </td>
                  <td>
                    {{#each tags}}
                      {{ tag this }}

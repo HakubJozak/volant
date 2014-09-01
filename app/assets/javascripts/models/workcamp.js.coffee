@@ -2,7 +2,7 @@ Volant.Workcamp = DS.Model.extend
   country: DS.belongsTo('country')
   organization: DS.belongsTo('organization')
   tags: DS.hasMany('tag')
-  intentions: DS.hasMany('workcamp_intention')
+  workcamp_intentions: DS.hasMany('workcamp_intention')
   workcamp_assignments: DS.hasMany('workcamp_assignment')
 
   name: DS.attr 'string'
