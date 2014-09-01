@@ -1,6 +1,8 @@
-Volant.ApplyFormRoute = Ember.Route.extend({
+Volant.ApplyFormRoute = Volant.BaseRoute.extend({
   model: (params) ->
     @store.find('apply_form', params.apply_form_id)
+
+  title: (model) -> "#{model.get('name')}"
 
   renderTemplate: ->
     @render('quick_save',into: 'application', outlet: 'item_controls')

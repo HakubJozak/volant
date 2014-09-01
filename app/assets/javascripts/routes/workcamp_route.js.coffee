@@ -1,6 +1,9 @@
-Volant.WorkcampRoute = Ember.Route.extend({
+Volant.WorkcampRoute = Volant.BaseRoute.extend({
   model: (params) ->
     @store.find('workcamp', params.workcamp_id)
+
+  title: (wc) ->
+    "#{wc.get('code')} - #{wc.get('name')}"
 
   renderTemplate: ->
     @render('quick_save',into: 'application', outlet: 'item_controls')

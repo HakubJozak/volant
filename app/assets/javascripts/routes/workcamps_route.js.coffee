@@ -1,6 +1,8 @@
-Volant.WorkcampsRoute = Ember.Route.extend({
+Volant.WorkcampsRoute = Volant.BaseRoute.extend({
   model: (params) ->
     @store.find('workcamp', { page: 1 })
+
+  title: -> "Workcamps"
 
   renderTemplate: ->
 #    @render('workcamps/filter',into: 'application', outlet: 'filter')
