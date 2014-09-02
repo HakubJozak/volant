@@ -39,7 +39,7 @@ gem 'htmlentities'
 gem 'acts-as-taggable-on'
 
 gem 'ember-rails'
-gem 'ember-source', '1.5.0'
+gem 'ember-source', '1.7.0'
 gem "active_model_serializers"
 gem 'kaminari'
 
