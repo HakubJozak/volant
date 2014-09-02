@@ -14,7 +14,11 @@ class WorkcampsController < ApplicationController
     end
 
     if year = params[:year]
-      search = search.by_year(year)
+      if year.to_i > 0
+        search = search.by_year(year)
+      else
+        render status: :not_found, body: 'Invalid year' and return
+      end
     end
 
     pagination = {

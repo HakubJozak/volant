@@ -10,6 +10,15 @@ class WorkcampsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "filter by year" do
+    get :index, year: 2014
+    assert_response :success
+
+    get :index, year: 'garbage'
+    assert_response :not_found
+  end
+
+
   test "should show workcamp" do
     get :show, id: @workcamp
     assert_response :success

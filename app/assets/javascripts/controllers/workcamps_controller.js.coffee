@@ -3,13 +3,13 @@ Volant.WorkcampsController = Volant.ListController.extend({
   queryParams: ['query','page','year']
   query: ''
   page: 1
-  year: 2014
+  year: 'All'
 
   sortProperties: ['name']
   sortAscending: true
   current_item: null
 
-  years: [ 'All years',2015,2014,2013,2012,2011,2010]
+  years: [ 'All',2015,2014,2013,2012,2011,2010]
 
   actions:
     search: ->
