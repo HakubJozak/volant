@@ -13,6 +13,11 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
   actions:
     refresh: ->
       @refresh()
+      false
+
+    search: ->
+      @refresh()
+      false
 
     go_to_detail: (wc) ->
       @transitionTo('workcamp',wc)

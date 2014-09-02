@@ -24,5 +24,6 @@ Volant.ListController = Ember.ArrayController.extend(Volant.FlashControllerMixin
 
       if (target > 0) and (target <= upper_bound)
         @incrementProperty('page',delta)
+        @send 'refresh'
 
 })
