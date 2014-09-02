@@ -17,8 +17,16 @@ class WorkcampsController < ApplicationController
       if year.to_i > 0
         search = search.by_year(year)
       else
-        render status: :not_found, body: 'Invalid year' and return
+        render status: :bad_request, body: 'Invalid parameters' and return
       end
+    end
+
+    if from = params[:from]
+      search = search.where("begin >= ?",Date.parse(from).to_s(:db))
+    end
+
+    if to = params[:to]
+      search = search.where("\"end\" <= ?",Date.parse(to).to_s(:db))
     end
 
     pagination = {

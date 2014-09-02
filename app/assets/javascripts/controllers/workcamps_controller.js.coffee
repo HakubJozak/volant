@@ -1,9 +1,11 @@
 Volant.WorkcampsController = Volant.ListController.extend({
 
-  queryParams: ['query','page','year']
+  queryParams: ['query','page','year','from','to']
   query: ''
   page: 1
   year: 'All'
+  from: null
+  to: null
 
   sortProperties: ['name']
   sortAscending: true

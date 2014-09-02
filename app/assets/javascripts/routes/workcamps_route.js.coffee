@@ -2,6 +2,8 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
   model: (params) ->
     filter = { q: params.query, p: params.page }
     filter.year = params.query unless params.year == 'All'
+    filter.from = params.from if params.from
+    filter.to = params.to if params.to
     @store.find('workcamp', filter)
 
   title: -> "Workcamps"

@@ -15,7 +15,31 @@ class WorkcampsControllerTest < ActionController::TestCase
     assert_response :success
 
     get :index, year: 'garbage'
-    assert_response :not_found
+    assert_response :bad_request
+  end
+
+  test 'filter by from' do
+    Workcamp.destroy_all
+    target = Factory(:workcamp, begin: '2012-03-22')
+    dummy = Factory(:workcamp, begin: '2012-01-22')
+
+    get :index, from: '2012-02-23'
+    assert_response :success
+
+    assert_equal 1, json_response['workcamps'].size
+    assert_equal target.id, json_response['workcamps'].first['id']
+  end
+
+  test 'filter by to' do
+    Workcamp.destroy_all
+    dummy = Factory(:workcamp, end: '2012-03-22')
+    target = Factory(:workcamp, end: '2012-01-22')
+
+    get :index, to: '2012-02-23'
+    assert_response :success
+
+    assert_equal 1, json_response['workcamps'].size
+    assert_equal target.id, json_response['workcamps'].first['id']
   end
 
 
