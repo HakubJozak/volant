@@ -41,6 +41,7 @@
                <th>Age</th>
                <th>From</th>
                <th>To</th>
+               <th>Duration</th>
                <th>Organization</th>
              </tr>
            </thead>
@@ -63,6 +64,7 @@
                  <td>{{age-range this }}</td>
                  <td>{{format-date begin}}</td>
                  <td>{{format-date end}}</td>
+                 <td>{{duration}}</td>
                  <td>{{organization.name}}</td>
                </tr>
              {{/each}}

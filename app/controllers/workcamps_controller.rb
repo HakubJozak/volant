@@ -22,12 +22,29 @@ class WorkcampsController < ApplicationController
     end
 
     if from = params[:from]
-      search = search.where("begin >= ?",Date.parse(from).to_s(:db))
+      search = search.where("begin >= ?",Date.parse(from))
     end
 
     if to = params[:to]
-      search = search.where("\"end\" <= ?",Date.parse(to).to_s(:db))
+      search = search.where("\"end\" <= ?",Date.parse(to))
     end
+
+    if md = params[:min_duration]
+      search = search.min_duration(md)
+    end
+
+    if md = params[:max_duration]
+      search = search.max_duration(md)
+    end
+
+    if ma = params[:min_age]
+      search = search.where("minimal_age >= ?",ma)
+    end
+
+    if ma = params[:max_age]
+      search = search.where("maximal_age <= ?",ma)
+    end
+
 
     pagination = {
       total: search.total_count,

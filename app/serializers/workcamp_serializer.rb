@@ -16,7 +16,7 @@ class WorkcampSerializer < ActiveModel::Serializer
   end
 
   def self.private_attributes
-    [ :free_places, :free_places_for_males, :free_places_for_females, :state ]
+    [ :free_places, :free_places_for_males, :free_places_for_females, :state, :duration ]
   end
 
   def workcamp_intentions

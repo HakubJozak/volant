@@ -54,6 +54,17 @@ class WorkcampTest < ActiveSupport::TestCase
     assert_equal wc, Workcamp.find_duplicate(wc)
   end
 
+  test 'duration' do
+    thirty = Factory(:workcamp, begin: '2012-04-22', end: '2012-05-22')
+    assert_equal 31, thirty.duration
+
+    a_day = Factory(:workcamp, begin: '2012-04-22', end: '2012-04-22')
+    assert_equal 1, a_day.duration
+
+    nothing = Factory(:workcamp, begin: nil, end: nil)
+    assert_equal null, nothing.duration
+  end
+
   test "add intentions" do
     Workcamp.find_each do |wc|
       wc.intentions << WorkcampIntention.first

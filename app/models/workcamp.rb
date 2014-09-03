@@ -6,6 +6,10 @@ class Workcamp < ActiveRecord::Base
 
   create_date_time_accessors
 
+  DURATION_SQL = '(EXTRACT(epoch FROM age("end","begin"))/(3600 * 24))'
+  scope :min_duration, lambda { |d| where("#{DURATION_SQL} >= ?", d) }
+  scope :max_duration, lambda { |d| where("#{DURATION_SQL} <= ?", d) }
+
   scope :by_year, lambda { |year|
     year = year.to_i
     where '(workcamps.begin >= ? AND workcamps.end < ?)', Date.new(year,1,1), Date.new(year + 1,1,1)
@@ -45,6 +49,14 @@ class Workcamp < ActiveRecord::Base
 
   def to_label(options = {})
     "#{code} - #{name}(#{term})"
+  end
+
+  def duration
+    if self.end and self.begin
+      (self.end.to_time - self.begin.to_time).to_i / 1.day + 1
+    else
+      nil
+    end
   end
 
   def term

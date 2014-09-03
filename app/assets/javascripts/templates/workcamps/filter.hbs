@@ -1,5 +1,8 @@
+{{ my_year }}
+
 <form class="form-horizontal" role="form" {{action 'search' on="submit"}}>
   <div class="form-group">
+
     <label class="col-lg-1 control-label">Query</label>
     <div class="col-lg-11">
       {{ input value=query class="form-control" placeholder="name, code or keword..." }}
@@ -12,12 +15,12 @@
     <div class="col-lg-2">{{input value=to type="date" class="form-control"}}</div>
 
     <label class="col-lg-1 control-label">Duration</label>
-    <div class="col-lg-1">{{input value=filter.duration_from type="number" class="form-control"}}</div>
-    <div class="col-lg-1">{{input value=filter.duration_to type="number" class="form-control"}}</div>
+    <div class="col-lg-1">{{input value=min_duration type="number" class="form-control" placeholder='Min'}}</div>
+    <div class="col-lg-1">{{input value=max_duration type="number" class="form-control" placeholder='Max'}}</div>
 
     <label class="col-lg-1 control-label">Age</label>
-    <div class="col-lg-1">{{input value=filter.age_from type="number" class="form-control"}}</div>
-    <div class="col-lg-1">{{input value=filter.age_to type="number" class="form-control"}}</div>
+    <div class="col-lg-1">{{input value=min_age type="number" class="form-control"}}</div>
+    <div class="col-lg-1">{{input value=max_age type="number" class="form-control"}}</div>
   </div>
 
   <div class="form-group">

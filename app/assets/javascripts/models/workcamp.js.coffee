@@ -11,6 +11,7 @@ Volant.Workcamp = DS.Model.extend
   language: DS.attr 'string'
   begin: DS.attr 'isodate'
   end: DS.attr 'isodate'
+  duration: DS.attr 'number'
   capacity: DS.attr 'number'
   minimal_age: DS.attr 'number'
   maximal_age: DS.attr 'number'

@@ -42,6 +42,40 @@ class WorkcampsControllerTest < ActionController::TestCase
     assert_equal target.id, json_response['workcamps'].first['id']
   end
 
+  test 'min_duration' do
+    Workcamp.destroy_all
+    target = Factory(:workcamp, begin: '2012-02-22', end: '2012-03-22')
+    dummy = Factory(:workcamp, begin: '2012-03-22', end: '2012-03-25')
+
+    get :index, min_duration: 15
+    assert_response :success
+
+    assert_equal 1, json_response['workcamps'].size
+    assert_equal target.id, json_response['workcamps'].first['id']
+    assert target.duration >= 15
+  end
+
+  test 'max_duration' do
+    Workcamp.destroy_all
+    dummy = Factory(:workcamp, begin: '2012-02-22', end: '2012-03-22')
+    target = Factory(:workcamp, begin: '2012-03-22', end: '2012-03-25')
+
+    get :index, max_duration: 4
+    assert_response :success
+
+    assert_equal 1, json_response['workcamps'].size
+    assert_equal target.id, json_response['workcamps'].first['id']
+    assert target.duration <= 4
+  end
+
+  # TODO
+  # test 'age' do
+  #   Workcamp.destroy_all
+  #   target = Factory(:workcamp, minimal_age: 15, maximal_age: 30)
+  #   get :index, min_age: 11
+  #   assert_response :success
+  # end
+
 
   test "should show workcamp" do
     get :show, id: @workcamp
