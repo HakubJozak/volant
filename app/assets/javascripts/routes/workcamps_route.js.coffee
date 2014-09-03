@@ -1,10 +1,7 @@
 Volant.WorkcampsRoute = Volant.BaseRoute.extend({
   model: (params) ->
     filter = { q: params.query, p: params.page }
-
-    console.info params.my_year
-
-    filter.year = params.my_year unless params.my_year == 'All'
+    filter.year = params.year unless params.year == 'All'
     filter.from = params.from if params.from
     filter.to = params.to if params.to
     filter.min_duration = params.min_duration if params.min_duration

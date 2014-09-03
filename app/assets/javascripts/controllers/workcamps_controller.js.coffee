@@ -1,6 +1,6 @@
 Volant.WorkcampsController = Volant.ListController.extend({
 
-  queryParams: ['query','page','year','from','to', 'min_duration','max_duration','min_age','max_age','my_year']
+  queryParams: ['query','page','year','from','to', 'min_duration','max_duration','min_age','max_age']
   query: ''
   page: 1
   from: null
@@ -16,9 +16,7 @@ Volant.WorkcampsController = Volant.ListController.extend({
 
 #  year: undefined
   years: [ 'All','2015','2014','2013','2012','2011','2010']
-  my_year: 'All'
-
-
+  year: 'All'
 
   actions:
     search: ->
@@ -28,7 +26,7 @@ Volant.WorkcampsController = Volant.ListController.extend({
   # automatic refresh on year selection
   yearChanged: ( ->
     Ember.run.once(this, 'send','search');
-  ).observes('my_year')
+  ).observes('year')
 
   tags: (->
      @store.find('tag')).property()
