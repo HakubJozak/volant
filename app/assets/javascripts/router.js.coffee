@@ -4,7 +4,8 @@ Volant.Router.map () ->
   @resource('apply_form', path: '/apply_forms/:apply_form_id')
   @resource 'workcamps'
   @resource('workcamp', path: '/workcamps/:workcamp_id')
-
+  @resource 'organizations'
+  @resource('organization', path: '/organizations/:organization_id')
 
 
 # Volant.WorkcampsPagesRoute = Ember.Route.extend({

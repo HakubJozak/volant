@@ -4,13 +4,14 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
     filter.year = params.year unless params.year == 'All'
 
     attrs = [ 'from','to','min_duration','max_duration', 'min_age','max_age',
-             'free', 'free_males', 'free_females' ]
+              'free', 'free_males', 'free_females' ]
 
     for attr in attrs
       if params[attr]
         filter[attr] = params[attr]
 
-    @store.find('workcamp', filter)
+    @store.filter 'workcamp', filter, (wc) ->
+      true
 
   title: -> "Workcamps"
 
