@@ -2,12 +2,14 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
   model: (params) ->
     filter = { q: params.query, p: params.page }
     filter.year = params.year unless params.year == 'All'
-    filter.from = params.from if params.from
-    filter.to = params.to if params.to
-    filter.min_duration = params.min_duration if params.min_duration
-    filter.max_duration = params.max_duration if params.max_duration
-    filter.min_age = params.min_age if params.min_age
-    filter.max_age = params.max_age if params.max_age
+
+    attrs = [ 'from','to','min_duration','max_duration', 'min_age','max_age',
+             'free', 'free_males', 'free_females' ]
+
+    for attr in attrs
+      if params[attr]
+        filter[attr] = params[attr]
+
     @store.find('workcamp', filter)
 
   title: -> "Workcamps"

@@ -1,6 +1,7 @@
 Volant.WorkcampsController = Volant.ListController.extend({
 
-  queryParams: ['query','page','year','from','to', 'min_duration','max_duration','min_age','max_age']
+  queryParams: ['query','page','year','from','to', 'min_duration','max_duration','min_age','max_age', 'free', 'free_males', 'free_females']
+
   query: ''
   page: 1
   from: null
@@ -9,6 +10,9 @@ Volant.WorkcampsController = Volant.ListController.extend({
   max_duration: null
   min_age: null
   max_age: null
+  free: null
+  free_males: null
+  free_females: null
 
   sortProperties: ['name']
   sortAscending: true
