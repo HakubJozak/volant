@@ -38,6 +38,7 @@
                <th>Name</th>
                <th>Intentions</th>
                <th>Tags</th>
+               <th>Free</th>
                <th>Age</th>
                <th>From</th>
                <th>To</th>
@@ -60,6 +61,9 @@
                    {{#each tags}}
                      {{ tag this }}
                    {{/each}}
+                 </td>
+                 <td>
+                   <b>{{ free-places this }}</b>
                  </td>
                  <td>{{age-range this }}</td>
                  <td>{{format-date begin}}</td>
