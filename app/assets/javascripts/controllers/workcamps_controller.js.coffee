@@ -18,11 +18,24 @@ Volant.WorkcampsController = Volant.ListController.extend({
   sortAscending: true
   current_item: null
 
-#  year: undefined
   years: [ 'All','2015','2014','2013','2012','2011','2010']
   year: 'All'
 
   actions:
+    reset: ->
+      # TODO: dry by getting the default values
+      @set('query','')
+      @set('page',1)
+      @set('from',null)
+      @set('to',null)
+      @set('min_duration',null)
+      @set('max_duration',null)
+      @set('min_age',null)
+      @set('max_age',null)
+      @set('free',null)
+      @set('free_males',null)
+      @set('free_females',null)
+
     search: ->
       @set 'page',1
       true
