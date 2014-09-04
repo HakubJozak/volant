@@ -45,6 +45,17 @@ class WorkcampsController < ApplicationController
       search = search.where("maximal_age <= ?",ma)
     end
 
+    if fp = params[:free_places]
+      search = search.where("free_places >= ?",fp)
+    end
+
+    if fp = params[:free_places_for_females]
+      search = search.where("free_places_for_females >= ?",fp)
+    end
+
+    if fp = params[:free_places_for_males]
+      search = search.where("free_places_for_males >= ?",fp)
+    end
 
     pagination = {
       total: search.total_count,

@@ -68,13 +68,17 @@ class WorkcampsControllerTest < ActionController::TestCase
     assert target.duration <= 4
   end
 
-  # TODO
-  # test 'age' do
-  #   Workcamp.destroy_all
-  #   target = Factory(:workcamp, minimal_age: 15, maximal_age: 30)
-  #   get :index, min_age: 11
-  #   assert_response :success
-  # end
+  test 'age' do
+    Workcamp.destroy_all
+    target = Factory(:workcamp, minimal_age: 15, maximal_age: 30)
+    dummy = Factory(:workcamp, minimal_age: 11, maximal_age: 40)
+
+    get :index, min_age: 14, maximal_age: 35
+
+    assert_response :success
+    assert_equal 1, json_response['workcamps'].size
+    assert_equal target.id, json_response['workcamps'].first['id']
+  end
 
 
   test "should show workcamp" do
