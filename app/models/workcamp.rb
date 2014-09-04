@@ -35,7 +35,6 @@ class Workcamp < ActiveRecord::Base
                           :join_table => 'workcamp_intentions_workcamps',
                           :delete_sql => 'DELETE FROM workcamp_intentions_workcamps WHERE workcamp_id=#{id}'
 
-  attr_readonly :free_places, :free_places_for_males, :free_places_for_females
   validates_presence_of :country, :code, :name, :places
   validates_presence_of :extra_fee_currency, :if => Proc.new {|wc| wc.extra_fee && wc.extra_fee > 0}, :message => "je povinná. (Je vyplněn poplatek, ale nikoliv jeho měna. Doplňte měnu poplatku.)"
 

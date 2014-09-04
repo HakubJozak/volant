@@ -35,7 +35,8 @@
                <div href="#" class="list-group-item" {{action 'go_to_detail' this}}>
                  <div class="row">
                    <div class="col-lg-1">
-                     {{flag country}}
+                     <div>{{flag country}}</div>
+                     {{country.name}}
                    </div>
                    <div class="col-lg-1">
                      <h4>{{ free-places this }}</h4>
@@ -44,17 +45,16 @@
                      <h4 class="list-group-item-heading">
                        {{name}}
                        <small>
-                         {{duration}} days,
-                         <b>{{format-date begin}} - {{format-date end}}</b>,
+                         {{duration}} days
                        </small>
                        <span class="pull-right">
                         {{#each tags}}
                           {{ tag this }}
                         {{/each}}
+                        {{dates this}}
                        </span>
                      </h4>
                      <p class="list-group-item-text">
-                       {{country.name}},
                        {{#link-to 'organization' organization}}{{code}}{{/link-to}},
                        {{age-range this }},
                        {{#each workcamp_intentions}} {{ code }}, {{/each}}

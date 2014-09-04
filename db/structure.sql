@@ -118,7 +118,10 @@ CREATE TABLE workcamps (
     latitude numeric(11,7),
     state character varying(255),
     sci_id integer,
-    requirements text
+    requirements text,
+    free_places integer DEFAULT 0 NOT NULL,
+    free_places_for_males integer DEFAULT 0 NOT NULL,
+    free_places_for_females integer DEFAULT 0 NOT NULL
 );
 
 
@@ -1940,4 +1943,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140702122903');
 INSERT INTO schema_migrations (version) VALUES ('20140702122904');
 
 INSERT INTO schema_migrations (version) VALUES ('20140702122905');
+
+INSERT INTO schema_migrations (version) VALUES ('20140904142136');
 

@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
+# This file is auto-generated from the current state of the database. Instead of editing this file,
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -333,6 +333,9 @@ ActiveRecord::Schema.define(:version => 20100204103640) do
     t.integer  "asked_for_places",                                        :default => 0,                    :null => false
     t.integer  "asked_for_places_males",                                  :default => 0,                    :null => false
     t.integer  "asked_for_places_females",                                :default => 0,                    :null => false
+    t.integer  "free_places",                                             :default => 0,                    :null => false
+    t.integer  "free_places_for_males",                                   :default => 0,                    :null => false
+    t.integer  "free_places_for_females" ,                                :default => 0,                    :null => false
     t.string   "type",                                                    :default => "Outgoing::Workcamp", :null => false
     t.string   "sci_code"
     t.decimal  "longitude",                :precision => 11, :scale => 7

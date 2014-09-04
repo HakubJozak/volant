@@ -5,6 +5,19 @@ Ember.Handlebars.helper 'free-places', (wc) ->
       <b>♂</b>#{wc.get('free_places_for_males')}
   """
 
+Ember.Handlebars.helper 'dates', (wc) ->
+  from = wc.get('begin')
+  to = wc.get('end')
+  year = from.getFullYear()
+
+  if year == to.getFullYear()
+    fmt = 'MMMM Do'
+    "#{moment(from).format(fmt)} - #{moment(to).format(fmt)}, #{year}"
+  else
+    fmt = 'MMMM Do YYYY'
+    "#{moment(from).format(fmt)} - #{moment(to).format(fmt)}"
+
+
 Ember.Handlebars.helper 'age-range', (wc) ->
   min = wc.get('minimal_age')
   max = wc.get('maximal_age')

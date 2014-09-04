@@ -39,6 +39,12 @@ module Outgoing::FreePlacesUpdater
       wc.update_attribute("accepted_places#{sufix}", accepted)
       wc.update_attribute("asked_for_places#{sufix}", asked)
     end
+
+    wc.update_attribute("free_places", wc.places - wc.accepted_places)
+    wc.update_attribute("free_places_for_males",
+                        [ wc.free_places, wc.places_for_males - wc.accepted_places_males ].min)
+    wc.update_attribute("free_places_for_females",
+                        [ wc.free_places, wc.places_for_females - wc.accepted_places_females ].min)
   end
 
 

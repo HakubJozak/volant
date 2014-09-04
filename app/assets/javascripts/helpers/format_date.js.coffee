@@ -9,3 +9,6 @@ Ember.Handlebars.helper 'long-date', (date) ->
     moment(date).format('LL')
   else
     '-'
+
+Ember.Handlebars.helper 'word-date', (date) ->
+  moment(date).format('MMMM Do YYYY')
