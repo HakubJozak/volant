@@ -80,6 +80,14 @@ class WorkcampsControllerTest < ActionController::TestCase
     assert_equal target.id, json_response['workcamps'].first['id']
   end
 
+  test 'free' do
+    target = Factory(:workcamp, places: 2, places_for_males: 1, places_for_females: 1)
+    get :index, free_places: 1
+    assert_response :success
+    assert_equal 1, json_response['workcamps'].size
+    assert_equal target.id, json_response['workcamps'].first['id']
+  end
+
 
   test "should show workcamp" do
     get :show, id: @workcamp
