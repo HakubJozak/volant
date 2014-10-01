@@ -4,6 +4,9 @@ module Outgoing
   class Workcamp < ::Workcamp
     create_date_time_accessors
 
+    include Outgoing::FreePlacesUpdater
+    before_save :update_free_places_for_workcamp
+
     validates_presence_of :name
 
     # TODO: DRY

@@ -2,6 +2,9 @@ module Outgoing
   class WorkcampAssignment < ActiveRecord::Base
 
     include FreePlacesUpdater
+    after_save :update_free_places
+    after_destroy :update_free_places
+
 
     STATE_ORDER = [ :paid, :asked, :accepted, :infosheeted, :rejected, :cancelled, :not_paid, :after].freeze
 

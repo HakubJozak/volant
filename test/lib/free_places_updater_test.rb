@@ -13,6 +13,8 @@ class FreePlacesUpdaterTest < ActiveSupport::TestCase
   test "free places in empty workcamp with" do
     assert_equal 0, @wc.workcamp_assignments.size
     assert_equal 2, @wc.free_places
+    assert_equal 2, @wc.free_places_for_females
+    assert_equal 2, @wc.free_places_for_males
   end
 
 
