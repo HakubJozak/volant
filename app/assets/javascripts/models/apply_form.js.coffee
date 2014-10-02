@@ -6,6 +6,7 @@ Volant.ApplyForm = DS.Model.extend
   fee: DS.attr 'number'
   general_remarks: DS.attr 'string'
   motivation: DS.attr 'string'
+  state: DS.attr 'string'
 
   name: (->
     first = @get('volunteer.firstname')

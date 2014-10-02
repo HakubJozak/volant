@@ -1,5 +1,6 @@
 <table class="table table-striped table-hover">
   <thead>
+    <th>State</th>
     <th>Submitted</th>
     <th>Name</th>
     <th>Age</th>
@@ -11,6 +12,7 @@
   <tbody>
     {{#each}}
       <tr {{action 'go_to_detail' this }}>
+        <td>{{apply-form-state-icon state}}</td>
         <td>{{long-date created_at}}</td>
         <td>
           {{gender volunteer}}

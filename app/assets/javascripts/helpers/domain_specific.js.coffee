@@ -40,7 +40,8 @@ Ember.Handlebars.helper 'workcamp-state-icon', (state) ->
            when "infosheeted" then 'suitcase'
            when "cancelled" then 'times-circle-o'
            else ''
-  new Handlebars.SafeString "<i title='#{state}' class='fa fa-#{name}'></i>"
+  new Handlebars.SafeString "<i title='#{state}' class='fa fa-#{name} #{state}'></i>"
+
 
 Ember.Handlebars.helper 'apply-form-state-icon', (state) ->
   name = switch state
@@ -53,7 +54,7 @@ Ember.Handlebars.helper 'apply-form-state-icon', (state) ->
            when "cancelled" then 'times-circle-o'
            else ''
 
-  new Handlebars.SafeString "<i title='#{state}' class='fa fa-#{name}'></i>"
+  new Handlebars.SafeString "<i title='#{state}' class='fa fa-#{name} #{state}'></i>"
 
 
 Ember.Handlebars.helper 'gender', (volunteer) ->

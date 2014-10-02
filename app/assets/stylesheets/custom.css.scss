@@ -34,3 +34,20 @@ position: relative;
 margin: 0 auto;
 max-width: 30em;
 }
+
+
+
+/* state icons */
+i.fa {
+  $brown: #AD7624;
+  $green: #87B64B;
+  $yellow: #F3D70C;
+  $red: #E76363;
+  $grey: grey;
+
+  &.accepted  { color: $green; }
+  &.cancelled, &.rejected { color: $red;   }
+  &.paid { color: $grey;   }
+  &.not_paid, &.asked, { color: $yellow;   }
+  &.infosheeted { color: $grey;   }
+}
