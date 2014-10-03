@@ -1,5 +1,8 @@
 Volant.EmailContactController = Ember.ObjectController.extend({
+  needs: 'email_contacts'
   edited: false
+  edited_or_new: Ember.computed.or('edited','isNew')
+
   kinds: [
     {label: "Outgoing",  id: 'OUTGOING'},
     {label: "Incoming",  id: 'INCOMING'},

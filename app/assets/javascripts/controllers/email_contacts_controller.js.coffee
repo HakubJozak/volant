@@ -1,9 +1,16 @@
 Volant.EmailContactsController = Ember.ArrayController.extend({
+  needs: 'organization'
   actions:
     add: ->
+      org = @get('controllers.organization.model')
+      email = @store.createRecord('email_contact', { organization: org } )
+      @get('model').pushObject(email)
+
     remove: (contact) ->
-      console.info 'removing' + contact.get('address')
-      contact.destroyRecord()
-      # contact.deleteRecord()
-      # contact.save()
+      if contact.get('isNew')
+        @get('model').removeObject(contact)
+      else
+        contact.destroyRecord()
+
+
 })

@@ -1,4 +1,4 @@
-{{#if edited}}
+{{#if edited_or_new}}
 <tr>
   <td>
 {{view Ember.Select
@@ -7,14 +7,21 @@
        optionValuePath="content.id"
        optionLabelPath="content.label"}}
   </td>
-  <td>{{input value=address type=email action="save" }}</td>
-  <td>{{input value=name action="save"}}</td>
+  <td>{{input value=address type=email action="save" placeholder="email address"}}</td>
+  <td>{{input value=name action="save" placeholder="Name"}}</td>
   <td>{{input value=notes action="save"}}</td>
   <td>
    <div class="form-group">
+   {{#if isNew}}
+    <button type="button" class="btn btn-danger" {{ action 'remove' this }}>
+      <i class="fa fa-trash-o"></i>
+    </button>
+    {{else}}
     <button type="button" class="btn btn-danger" {{ action 'rollback' }}>
       <i class="fa fa-times"></i>
     </button>
+    {{/if}}
+
     <button type="submit" class="btn btn-success"  {{ action 'save' }}>
       <i class="fa fa-check"></i>
     </button>
