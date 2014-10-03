@@ -1,9 +1,15 @@
 {{#if edited}}
 <tr>
-  <td>{{input value=kind }}</td>
-  <td>{{input value=address type=email }}</td>
-  <td>{{input value=name}}</td>
-  <td>{{input value=notes}}</td>
+  <td>
+{{view Ember.Select
+       value=kind
+       content=kinds
+       optionValuePath="content.id"
+       optionLabelPath="content.label"}}
+  </td>
+  <td>{{input value=address type=email action="save" }}</td>
+  <td>{{input value=name action="save"}}</td>
+  <td>{{input value=notes action="save"}}</td>
   <td>
    <div class="form-group">
     <button type="button" class="btn btn-danger" {{ action 'rollback' }}>
