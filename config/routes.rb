@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :email_contacts, only: [ :create, :update, :destroy ]
   resources :workcamps
   resources :apply_forms
   resources :countries, only: [ :index, :show ]

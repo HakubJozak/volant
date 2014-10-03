@@ -1,0 +1,37 @@
+{{#if edited}}
+<tr>
+  <td>{{input value=kind }}</td>
+  <td>{{input value=address type=email }}</td>
+  <td>{{input value=name}}</td>
+  <td>{{input value=notes}}</td>
+  <td>
+   <div class="form-group">
+    <button type="button" class="btn btn-danger" {{ action 'rollback' }}>
+      <i class="fa fa-times"></i>
+    </button>
+    <button type="submit" class="btn btn-success"  {{ action 'save' }}>
+      <i class="fa fa-check"></i>
+    </button>
+   </div>
+  </td>
+</tr>
+{{#unless isValid}}
+<tr>
+  <td colspan='5'>
+    <span class='text-danger'>{{ join-errors errors }}</span>
+  </td>
+</tr>
+{{/unless}}
+{{else}}
+<tr {{action 'edit' }}>
+  <td>{{kind}}</td>
+  <td>{{address}}</td>
+  <td>{{name}}</td>
+  <td>{{notes}}</td>
+  <td>
+    <button type="button" class="btn btn-danger" {{ action 'remove' this bubbles=false}}>
+      <i class="fa fa-trash-o"></i>
+    </button>
+  </td>
+</tr>
+{{/if}}
