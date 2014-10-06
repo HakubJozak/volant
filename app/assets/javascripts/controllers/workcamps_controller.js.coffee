@@ -1,9 +1,9 @@
 Volant.WorkcampsController = Volant.ListController.extend({
 
+  page: 1
   queryParams: ['query','page','year','from','to', 'min_duration','max_duration','min_age','max_age', 'free', 'free_males', 'free_females']
 
   query: ''
-  page: 1
   from: null
   to: null
   min_duration: null

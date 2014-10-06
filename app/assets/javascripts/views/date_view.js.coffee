@@ -12,7 +12,11 @@ Volant.DateView = Ember.TextField.extend
 
   updateDate: (->
     ms = moment(@get('value'), @get('dateFormat'))
-    @set('date', ms) if ms and ms.isValid()
+
+    if ms and ms.isValid()
+      @set('date', ms)
+    else
+      @set('date', null)
   ).observes('value')
 
   updateValue: (->

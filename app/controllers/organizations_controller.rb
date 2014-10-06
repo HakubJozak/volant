@@ -3,7 +3,8 @@ class OrganizationsController < ApplicationController
   before_action :find, only: [ :update, :destroy, :show ]
 
   def index
-    render json: Organization.all, each_serializer: OrganizationSerializer
+    orgs = Organization.order(:name).all
+    render json: orgs, each_serializer: OrganizationSerializer
   end
 
   def show

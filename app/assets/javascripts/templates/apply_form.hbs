@@ -1,8 +1,8 @@
 <div class="row">
-  {{#link-to 'apply_forms'}}&lt;{{/link-to}}
-
   <div class="col-lg-8">
     <h1>
+      {{#link-to 'apply_forms'}}&lt;{{/link-to}}
+
       <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' }}></i>
       {{volunteer.firstname}}
       {{volunteer.lastname}}
@@ -48,7 +48,7 @@
 
         <div class="form-group col-lg-3">
           <label class=" control-label">Date of birth</label>
-          {{view Volant.DateView dateBinding="volunteer.birthdate" }}
+          {{view Volant.DateView dateBinding='volunteer.birthdate' }}
         </div>
 
 
@@ -153,13 +153,40 @@
     <h3>Workcamps</h3>
     <table class="table table-condensed table-hover col-lg-12 sidepanel">
       <tbody>
-        {{#each workcamp_assignments}}
-          <tr {{action 'view_workcamp' this.workcamp}}>
-            <td>{{order}}.</td>
-            <td>{{workcamp-state-icon state}}</td>
-            <td>{{workcamp.code}}</td>
-            <td>{{workcamp.name}}</td>
-          </tr>
+        {{#each workcamp_assignments itemController="workcamp_assignment" }}
+          {{# if edited_or_new}}
+            <tr>
+              <td colspan='6'>
+                <h5>{{workcamp.name}}</h5>
+                <form class='form'>
+                  <div class="form-group">
+                    <label>Order</label>
+                    {{ input value=order type='number' class="form-control" }}
+                  </div>
+
+                  <div class="form-group">
+                    <label>Accepted</label>
+                    {{view Volant.DateView dateBinding='accepted' }}
+                  </div>
+
+                  <div class="form-group">
+                    <label>Rejected</label>
+                    {{view Volant.DateView dateBinding='rejected' }}
+                  </div>
+                  {{ partial 'quick_save' }}
+                </form>
+              </td>
+            </tr>
+          {{else}}
+            <tr {{action 'view_workcamp' this.workcamp  }}>
+              <td>{{order}}.</td>
+              <td>{{workcamp-state-icon state}}</td>
+              <td>{{workcamp.code}}</td>
+              <td>{{workcamp.name}}</td>
+              <td {{action 'edit' bubbles=false}}>{{fa-link 'edit'}}</td>
+              <td {{action 'remove' bubbles=false}}>{{fa-link 'trash-o'}}</td>
+            </tr>
+          {{/if}}
         {{/each}}
       </tbody>
     </table>

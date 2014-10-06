@@ -14,7 +14,6 @@ Volant.EmailContactController = Ember.ObjectController.extend({
       @set('edited', true)
 
     save: ->
-      console.info 'saving'
       @get('model').save().then(
         (record) => @set('edited', false),
         (error)  -> console.error 'failed to save the email contact'
