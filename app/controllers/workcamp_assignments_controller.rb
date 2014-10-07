@@ -15,8 +15,8 @@ class WorkcampAssignmentsController < ApplicationController
   # PATCH/PUT /workcamp_assignments/1
   def update
     @wa.update(workcamp_assignment_params)
-    @wa.reload
-    render json: @wa, serializer: WorkcampAssignmentSerializer
+    @wa.apply_form.reload
+    render json: @wa # { workcamp_assignments: [@wa] }
   end
 
   # DELETE /workcamp_assignments/1
