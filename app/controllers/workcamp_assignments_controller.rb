@@ -9,13 +9,14 @@ class WorkcampAssignmentsController < ApplicationController
     @wa = Outgoing::WorkcampAssignment.new(workcamp_assignment_params)
     @wa.save
     # respond_with(@wa)
-    render json: wa, serializer: WorkcampAssignmentsSerializer
+    render json: @wa, serializer: WorkcampAssignmentSerializer
   end
 
   # PATCH/PUT /workcamp_assignments/1
   def update
     @wa.update(workcamp_assignment_params)
-    respond_with(@wa.reload)
+    @wa.reload
+    render json: @wa, serializer: WorkcampAssignmentSerializer
   end
 
   # DELETE /workcamp_assignments/1
