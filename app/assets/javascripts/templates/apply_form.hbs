@@ -173,7 +173,12 @@
                     <label>Rejected</label>
                     {{view Volant.DateView dateBinding='rejected' }}
                   </div>
-                  {{ partial 'quick_save' }}
+
+                  <div class="form-group">
+                    {{! TODO - font awesome 'check'/'times' }}
+                    {{ button 'Cancel' 'rollback' 'btn-danger' }}
+                    {{ button 'Save' 'save' 'btn-success' }}
+                  </div>
                 </form>
               </td>
             </tr>
