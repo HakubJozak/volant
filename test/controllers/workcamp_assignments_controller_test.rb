@@ -5,15 +5,15 @@ class WorkcampAssignmentsControllerTest < ActionController::TestCase
     @wa = Factory(:workcamp_assignment)
   end
 
-  test "should get update" do
+  test "update" do
     put :update, id: @wa.id, workcamp_assignment: { order: 666, accepted: '2014-03-07' }
 
     assert_response :success
-    puts @response.body
     json = json_response['workcamp_assignment']
     assert_equal 666,json['order']
     assert_equal '2014-03-07T00:00:00.000Z',json['accepted']
     assert_equal 'accepted', json['state']
+    assert_equal 'accepted', json_response['apply_forms'].first['state']
   end
 
   # test "should get create" do
