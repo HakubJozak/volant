@@ -19,6 +19,7 @@ Volant.WorkcampAssignmentController = Ember.ObjectController.extend({
       false
 
     remove: ->
+      @get('model').destroyRecord()
       console.info 'removing'
       false
 

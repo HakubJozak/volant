@@ -38,7 +38,7 @@ class ApplyFormsController < ApplicationController
   end
 
   def apply_form_params
-    params.require(:apply_form).permit(:general_remarks, :motivation, :volunteer_id)
+    params.require(:apply_form).permit(:general_remarks, :motivation, :volunteer_id, :cancelled)
   end
 
 end

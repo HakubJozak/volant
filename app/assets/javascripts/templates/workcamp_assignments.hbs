@@ -1,0 +1,55 @@
+<h3>Workcamps</h3>
+<table class="table table-condensed table-hover col-lg-12 sidepanel">
+  <tbody>
+    {{#each itemController="workcamp_assignment" }}
+    {{# if edited_or_new}}
+      <tr>
+        <td colspan='6'>
+          <h5>{{workcamp.name}}</h5>
+          <form class='form'>
+            <div class="form-group">
+              <label>Order</label>
+              {{ input value=order type='number' class="form-control" }}
+            </div>
+
+            <div class="form-group">
+              <label>Asked</label>
+              {{view Volant.DateView dateBinding='asked' }}
+            </div>
+
+            <div class="form-group">
+              <label>Accepted</label>
+              {{view Volant.DateView dateBinding='accepted' }}
+            </div>
+
+            <div class="form-group">
+              <label>Rejected</label>
+              {{view Volant.DateView dateBinding='rejected' }}
+            </div>
+
+            <div class="form-group">
+              <label>Rejected</label>
+              {{view Volant.DateView dateBinding='infosheeted' }}
+            </div>
+
+            <div class="form-group">
+              {{! TODO - font awesome 'check'/'times' }}
+              {{ button 'Cancel' 'rollback' 'btn' }}
+              {{ button 'Save' 'save' 'btn-success' }}
+            </div>
+          </form>
+        </td>
+      </tr>
+    {{else}}
+      <tr {{action 'view_workcamp' this.workcamp  }}>
+        <td>{{order}}.</td>
+        <td>{{workcamp-state-icon state}}</td>
+        <td>{{workcamp.code}}</td>
+        <td>{{workcamp.name}}</td>
+        <td {{action 'edit' bubbles=false}}>{{fa-link 'edit'}}</td>
+        <td {{action 'remove' this bubbles=false}}>{{fa-link 'trash-o'}}</td>
+      </tr>
+      {{/if}}
+    {{/each}}
+  </tbody>
+</table>

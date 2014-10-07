@@ -16,13 +16,14 @@ class WorkcampAssignmentsController < ApplicationController
   def update
     @wa.update(workcamp_assignment_params)
     @wa.apply_form.reload
-    render json: @wa # { workcamp_assignments: [@wa] }
+    render json: @wa
   end
 
   # DELETE /workcamp_assignments/1
   def destroy
     @wa.destroy
-    respond_with(@wa)
+    @wa.apply_form.reload
+    render json: @wa
   end
 
   private
