@@ -121,7 +121,8 @@ CREATE TABLE workcamps (
     requirements text,
     free_places integer DEFAULT 0 NOT NULL,
     free_places_for_males integer DEFAULT 0 NOT NULL,
-    free_places_for_females integer DEFAULT 0 NOT NULL
+    free_places_for_females integer DEFAULT 0 NOT NULL,
+    starred boolean DEFAULT false NOT NULL
 );
 
 
@@ -149,7 +150,8 @@ CREATE TABLE apply_forms (
     current_workcamp_id_cached integer,
     current_assignment_id_cached integer,
     type character varying(255) DEFAULT 'Outgoing::ApplyForm'::character varying NOT NULL,
-    confirmed timestamp without time zone
+    confirmed timestamp without time zone,
+    starred boolean DEFAULT false NOT NULL
 );
 
 
@@ -1945,4 +1947,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140702122904');
 INSERT INTO schema_migrations (version) VALUES ('20140702122905');
 
 INSERT INTO schema_migrations (version) VALUES ('20140904142136');
+
+INSERT INTO schema_migrations (version) VALUES ('20141007183833');
 

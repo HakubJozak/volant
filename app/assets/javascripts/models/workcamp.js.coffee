@@ -1,4 +1,6 @@
 Volant.Workcamp = DS.Model.extend
+  starred: DS.attr 'boolean'
+
   country: DS.belongsTo('country')
   organization: DS.belongsTo('organization')
   tags: DS.hasMany('tag')

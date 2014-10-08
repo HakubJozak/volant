@@ -6,10 +6,11 @@
     <div class="col-lg-12">
 
       <div class="list-group">
-             {{#each}}
+             {{#each itemController='workcamp'}}
                <div href="#" class="list-group-item" {{action 'go_to_detail' this}}>
                  <div class="row">
                    <div class="col-lg-1">
+                     <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' bubbles=false }}></i>
                      <div>{{flag country}}</div>
                      {{country.name}}
                    </div>

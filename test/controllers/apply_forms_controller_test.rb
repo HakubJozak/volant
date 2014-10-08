@@ -5,7 +5,6 @@ class ApplyFormsControllerTest < ActionController::TestCase
     @apply_form = Factory(:apply_form)
   end
 
-
   test "update" do
     patch :update, id: @apply_form.id, apply_form: { motivation: 'endless', general_remarks: 'none' }
     assert_response :success

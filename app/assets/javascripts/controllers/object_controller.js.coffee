@@ -1,9 +1,9 @@
 Volant.ObjectController = Ember.ObjectController.extend(Volant.FlashControllerMixin, {
-  starred: false
-
   actions:
     toggle_starred: ->
       @toggleProperty('starred')
+      @send('save')
+      false
 
     save: ->
       SUCCESS = =>
@@ -18,10 +18,11 @@ Volant.ObjectController = Ember.ObjectController.extend(Volant.FlashControllerMi
       model = @get('model')
       model.get('errors').clear();
       model.save().then(SUCCESS,ERROR)
+      false
 
     rollback: ->
       model = @get('model')
       model.get('errors').clear();
       model.rollback()
-
+      false
 })

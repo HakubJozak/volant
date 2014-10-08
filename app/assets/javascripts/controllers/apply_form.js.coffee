@@ -6,6 +6,8 @@ Volant.ApplyFormController = Volant.ObjectController.extend({
   actions:
     toggle_starred: ->
       @toggleProperty('starred')
+      @get('model').save()
+      false
 
     save: ->
       SUCCESS = =>
