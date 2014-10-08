@@ -1,0 +1,11 @@
+<table class="table table-condensed table-hover col-lg-12 sidepanel">
+  <tbody>
+    {{#each itemController='workcamp'}}
+    <tr {{action 'view_workcamp' this  }}>
+      <td><i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' }}></i></td>
+      <td>{{code}}</td>
+      <td>{{name}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

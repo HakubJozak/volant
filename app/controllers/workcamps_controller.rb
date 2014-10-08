@@ -21,6 +21,10 @@ class WorkcampsController < ApplicationController
       end
     end
 
+    if params[:starred]
+      search = search.where(starred: true)
+    end
+
     if from = params[:from]
       search = search.where("begin >= ?",Date.parse(from))
     end

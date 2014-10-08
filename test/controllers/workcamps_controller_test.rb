@@ -88,6 +88,15 @@ class WorkcampsControllerTest < ActionController::TestCase
     assert_equal target.id, json_response['workcamps'].first['id']
   end
 
+  test 'filter by starred' do
+    Workcamp.destroy_all
+    target = Factory(:workcamp, starred: true)
+    dummy = Factory(:workcamp, starred: false)
+    get :index, starred: true
+    assert_response :success
+    assert_equal 1, json_response['workcamps'].size
+    assert_equal target.id, json_response['workcamps'].first['id']
+  end
 
   test "should show workcamp" do
     get :show, id: @workcamp
