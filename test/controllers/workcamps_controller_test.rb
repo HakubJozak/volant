@@ -6,8 +6,9 @@ class WorkcampsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index
+    get :index, p: 1
     assert_response :success
+    assert_equal Workcamp.count, json_response['meta']['pagination']['total']
   end
 
   test "filter by year" do

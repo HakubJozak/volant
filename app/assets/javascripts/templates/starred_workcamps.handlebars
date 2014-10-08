@@ -1,7 +1,8 @@
 <table class="table table-condensed table-hover col-lg-12 sidepanel">
   <tbody>
     {{#each itemController='workcamp'}}
-    <tr {{action 'view_workcamp' this  }}>
+    <tr {{action 'view_workcamp'  }}>
+      <td><a href="" {{action 'add_wc_to_form' this this bubbles=false}} title="Add workcamp to the application form">{{fa 'plus'}}</a></td>
       <td><i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' }}></i></td>
       <td>{{code}}</td>
       <td>{{name}}</td>

@@ -15,3 +15,6 @@ Volant.ApplyForm = DS.Model.extend
     last = @get('volunteer.lastname')
     "#{last} #{first}"
     ).property('volunteer.firstname', 'volunteer.lastname')
+
+  add_workcamp: (wc) ->
+    console.info wc.id

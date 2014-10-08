@@ -4,7 +4,6 @@ class WorkcampsController < ApplicationController
   before_action :find_workcamp, only: [ :show, :update, :destroy ]
 
   def index
-    current_page = params[:p] || 1
     search = Outgoing::Workcamp.order(:name).page(current_page)
 
     if query = params[:q]
@@ -61,14 +60,8 @@ class WorkcampsController < ApplicationController
       search = search.where("free_places_for_males >= ?",fp)
     end
 
-    pagination = {
-      total: search.total_count,
-      total_pages: search.total_pages,
-      current_page: current_page
-    }
-
     render json: search,
-           meta: { pagination: pagination },
+           meta: { pagination: pagination_info(search) },
            each_serializer: WorkcampSerializer
   end
 

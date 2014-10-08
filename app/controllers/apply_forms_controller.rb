@@ -7,14 +7,8 @@ class ApplyFormsController < ApplicationController
     current_page = params[:p] || 1
     search = Outgoing::ApplyForm.order(:created_at).page(current_page)
 
-    pagination = {
-      total: search.total_count,
-      total_pages: search.total_pages,
-      current_page: current_page
-    }
-
     render json: search,
-           meta: { pagination: pagination },
+           meta: { pagination: pagination_info(search) },
            each_serializer: ApplyFormSerializer
   end
 
