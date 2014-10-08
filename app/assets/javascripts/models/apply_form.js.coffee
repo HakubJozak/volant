@@ -16,5 +16,9 @@ Volant.ApplyForm = DS.Model.extend
     "#{last} #{first}"
     ).property('volunteer.firstname', 'volunteer.lastname')
 
+  has_workcamp: (wc) ->
+    @get('workcamp_assignments').any (wa) ->
+      wa.get('workcamp.id') == wc.get('id')
+
   add_workcamp: (wc) ->
     console.info wc.id

@@ -22,6 +22,7 @@
 #= require_tree ./models
 #= require ./controllers/list_controller
 #= require ./controllers/object_controller
+#= require ./controllers/workcamp_controller
 #= require_tree ./controllers
 #= require ./views/field_view
 #= require_tree ./views
