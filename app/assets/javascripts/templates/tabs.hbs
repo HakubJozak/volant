@@ -1,0 +1,7 @@
+<ul class="nav nav-tabs nav-justified">
+  {{#each}}
+    <li {{ bind-attr class=active }} {{ action 'activate_tab' this }}>
+      <a href="#">{{name}}</a>
+    </li>
+  {{/each}}
+</ul>

@@ -1,5 +1,10 @@
 Volant.ApplyFormController = Volant.ObjectController.extend({
   genders: [ { code: 'm', name: 'Male' }, { code: 'f', name: 'Female'}]
+  tabs: [
+    Ember.Object.create(active: true, name:  'Assigned'),
+    Ember.Object.create(active: false, name: 'Starred'),
+    Ember.Object.create(active: false, name: 'Search'),
+  ]
 
   isDirty: Ember.computed.any('model.isDirty','model.volunteer.isDirty')
 
