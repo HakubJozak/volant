@@ -1,4 +1,8 @@
 Volant.ApplyFormRoute = Volant.BaseRoute.extend({
+
+  afterModel: (model) ->
+    @transitionTo('workcamp_assignments',model)
+
   model: (params) ->
     @store.find('apply_form', params.apply_form_id)
 

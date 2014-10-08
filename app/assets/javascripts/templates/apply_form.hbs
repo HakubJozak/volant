@@ -158,19 +158,12 @@
   <div class="col-lg-4">
     <h3>Workcamps</h3>
 
-    {{ render 'tabs' tabs }}
+    <ul class="nav nav-tabs nav-justified">
+      {{#link-li}}
+        {{#link-to "workcamp_assignments" this }}Assigned{{/link-to}}
+      {{/link-li}}
+    </ul>
 
-    <div id='workcamp_assignments' class='show'>
-      {{ render 'workcamp_assignments' workcamp_assignments }}
-    </div>
-
-    <div id='starred_workcamp' class='hidden'>
-      <h3>starred</h3>
-    </div>
-
-    <div id='search_workcamp' class='hidden'>
-      <h3>search</h3>
-    </div>
-
+    {{outlet}}
   </div>
 </div>
