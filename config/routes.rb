@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :payments
+
   resources :workcamp_assignments, only: [ :create, :update, :destroy ]
   resources :email_contacts, only: [ :create, :update, :destroy ]
   resources :workcamps

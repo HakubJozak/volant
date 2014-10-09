@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-lg-8">
+    <div class='row'>
     <h1>
       {{#link-to 'apply_forms'}}&lt;{{/link-to}}
 
@@ -13,13 +14,16 @@
         {{capitalize state}}
         {{apply-form-state-icon state}}
         </span>
-    </h1>
+      </h1>
+    </div>
+
 
     <div class="container-fluid">
     <form class="form" role="form" {{action 'save' on="submit"}}>
       <fieldset>
         <legend>Basics</legend>
 
+        <div class='row'>
         <div class="form-group col-lg-2">
           <label class=" control-label">Gender</label>
             {{view Ember.Select content=genders value=volunteer.gender class="form-control"
@@ -40,7 +44,9 @@
           <label class=" control-label">Nationality</label>
           {{input value=volunteer.nationality class="form-control"}}
         </div>
+        </div>
 
+        <div class='row'>
         <div class="form-group col-lg-2">
           <label class=" control-label">Birth-number</label>
           {{input value=volunteer.birthnumber class="form-control"}}
@@ -60,57 +66,129 @@
           <label class=" control-label">Occupation</label>
           {{input value=volunteer.occupation class="form-control"}}
         </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Payment</legend>
+        {{# if payment }}
+        <div class='row'>
+          <div class="form-group col-lg-3">
+            <label class=" control-label">Amount</label>
+            {{input value=payment.amount class="form-control" type='number'}}
+          </div>
+
+          <div class="form-group col-lg-3">
+            <label class=" control-label">Received</label>
+            {{view Volant.DateView dateBinding='payment.received' }}
+          </div>
+
+          <div class="form-group col-lg-3 col-lg-offset-3">
+            <label class=" control-label">Fee</label>
+            {{input value=fee class="form-control" type='number'}}
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class="form-group col-lg-3">
+            <label class=" control-label">Returned amount</label>
+            {{input value=payment.returned_amount class="form-control" type='number'}}
+          </div>
+
+          <div class="form-group col-lg-3">
+            <label class=" control-label">Returned date</label>
+            {{view Volant.DateView dateBinding='payment.returned_date' }}
+          </div>
+
+          <div class="form-group col-lg-6">
+            <label class=" control-label">Return reason</label>
+            {{input value=payment.return_reason class="form-control" }}
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class="form-group col-lg-3">
+            <label class=" control-label">Account</label>
+            {{input value=payment.account class="form-control" }}
+          </div>
+
+          <div class="form-group col-lg-3">
+            <label class=" control-label">Bank code</label>
+            {{input value=payment.bank_code class="form-control" }}
+          </div>
+
+          <div class="form-group col-lg-2">
+            <label class=" control-label">Variable sym.</label>
+            {{input value=payment.var_symbol class="form-control" }}
+          </div>
+
+          <div class="form-group col-lg-2">
+            <label class=" control-label">Specific sym.</label>
+            {{input value=payment.spec_symbol class="form-control" }}
+          </div>
+
+          <div class="form-group col-lg-2">
+            <label class=" control-label">Constant sym.</label>
+            {{input value=payment.const_symbol class="form-control" }}
+          </div>
+        </div>
+        {{/if}}
       </fieldset>
 
       <fieldset>
         <legend>Contact</legend>
 
-        <div class="form-group col-lg-4">
-          <label class=" control-label">Email</label>
-          {{input value=volunteer.email class="form-control"}}
-        </div>
+        <div class='row'>
+          <div class="form-group col-lg-4">
+            <label class=" control-label">Email</label>
+            {{input value=volunteer.email class="form-control"}}
+          </div>
 
-        <div class="form-group col-lg-4">
-          <label class=" control-label">Phone</label>
-          {{input value=volunteer.phone type="phone" class="form-control"}}
-        </div>
+          <div class="form-group col-lg-4">
+            <label class=" control-label">Phone</label>
+            {{input value=volunteer.phone type="phone" class="form-control"}}
+          </div>
 
-        <div class="form-group col-lg-4">
-          <label class=" control-label">Fax</label>
-          {{input value=volunteer.fax type="phone" class="form-control"}}
+          <div class="form-group col-lg-4">
+            <label class=" control-label">Fax</label>
+            {{input value=volunteer.fax type="phone" class="form-control"}}
+          </div>
         </div>
-
       </fieldset>
 
       <fieldset>
         <legend>Emergency Contact</legend>
 
-        <div class="form-group col-lg-4">
-          <label class=" control-label">Name</label>
-          {{input value=volunteer.emergency_name class="form-control"}}
-        </div>
+        <div class='row'>
+          <div class="form-group col-lg-4">
+            <label class=" control-label">Name</label>
+            {{input value=volunteer.emergency_name class="form-control"}}
+          </div>
 
-        <div class="form-group col-lg-4">
-          <label class=" control-label">Day phone</label>
-          {{input value=volunteer.emergency_day class="form-control"}}
-        </div>
+          <div class="form-group col-lg-4">
+            <label class=" control-label">Day phone</label>
+            {{input value=volunteer.emergency_day class="form-control"}}
+          </div>
 
-        <div class="form-group col-lg-4">
-          <label class=" control-label">Night phone</label>
-          {{input value=volunteer.emergency_night class="form-control"}}
+          <div class="form-group col-lg-4">
+            <label class=" control-label">Night phone</label>
+            {{input value=volunteer.emergency_night class="form-control"}}
+          </div>
         </div>
       </fieldset>
 
       <fieldset>
         <legend>Application Details</legend>
-        <div class="form-group col-lg-12">
-          <label class=" control-label">Motivation</label>
-          {{textarea value=motivation class="form-control"}}
-        </div>
+        <div class='row'>
+          <div class="form-group col-lg-12">
+            <label class=" control-label">Motivation</label>
+            {{textarea value=motivation class="form-control"}}
+          </div>
 
-        <div class="form-group col-lg-12">
-          <label class=" control-label">General Remarks</label>
-          {{textarea value=general_remarks class="form-control" rows='2'}}
+          <div class="form-group col-lg-12">
+            <label class=" control-label">General Remarks</label>
+            {{textarea value=general_remarks class="form-control" rows='2'}}
+          </div>
         </div>
       </fieldset>
 
@@ -139,14 +217,6 @@
         <div class="form-group col-lg-12">
           <label class=" control-label">Comments</label>
           {{textarea value=volunteer.comments class="form-control" rows='2'}}
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>Cancellation</legend>
-        <div class="form-group col-lg-3">
-          <label class=" control-label">Cancelled</label>
-          {{view Volant.DateView dateBinding='cancelled' }}
         </div>
       </fieldset>
 
