@@ -8,11 +8,12 @@ Ember.Handlebars.helper 'free-places', (wc) ->
 Ember.Handlebars.helper 'dates', (wc) ->
   from = wc.get('begin')
   to = wc.get('end')
-  year = from.getFullYear()
+  year_from = if from? then from.getFullYear() else '?'
+  year_to = if to? then to.getFullYear() else '?'
 
-  if year == to.getFullYear()
+  if year_from == year_to
     fmt = 'MMMM Do'
-    "#{moment(from).format(fmt)} - #{moment(to).format(fmt)}, #{year}"
+    "#{moment(from).format(fmt)} - #{moment(to).format(fmt)}, #{year_from}"
   else
     fmt = 'MMMM Do YYYY'
     "#{moment(from).format(fmt)} - #{moment(to).format(fmt)}"
