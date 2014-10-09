@@ -9,7 +9,9 @@
     <th>Name</th>
     <th>Age</th>
     <th>Email</th>
+    <th>Birth number</th>
     <th>Nationality</th>
+    <th>Payment</th>
     <th></th>
     <th></th>
   </thead>
@@ -27,9 +29,10 @@
           {{volunteer.lastname}}
         </td>
         <td>{{volunteer.age}}</td>
-        <td>{{volunteer.email}}</td>
+        <td>{{ mail-to volunteer.email }}</td>
         <td>{{volunteer.birthnumber}}</td>
         <td>{{volunteer.nationality}}</td>
+        <td>{{payment.amount}}</td>
         <td>{{volunteer.occupation}}</td>
         <td>{{general_remarks}}</td>
       </tr>

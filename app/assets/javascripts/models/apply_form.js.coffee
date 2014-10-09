@@ -1,8 +1,10 @@
 Volant.ApplyForm = DS.Model.extend
-  starred: DS.attr 'boolean'
+#  current_workcamp:  DS.belongsTo 'workcamp'
   workcamp_assignments:  DS.hasMany 'workcamp_assignment'
   volunteer:  DS.belongsTo 'volunteer'
   payment:  DS.belongsTo 'payment'
+
+  starred: DS.attr 'boolean'
   confirmed: DS.attr 'isodate'
   created_at: DS.attr 'isodate'
   cancelled: DS.attr 'isodate'
