@@ -5,6 +5,7 @@ class WorkcampsController < ApplicationController
 
   def index
     search = Outgoing::Workcamp.order(:name).page(current_page)
+    search = search.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
 
     if query = params[:q]
       wcs = Outgoing::Workcamp.arel_table

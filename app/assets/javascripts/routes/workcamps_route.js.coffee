@@ -10,7 +10,11 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
       if params[attr]
         filter[attr] = params[attr]
 
-    @store.find 'workcamp', filter #, (wc) -> true
+    @store.find 'workcamp', filter #, (wc) ->
+      # debugger
+      # (!params.year? or wc.year == params.year) and
+      # (!params.from? or wc.from >= params.from) and
+      # (!params.to? or wc.to <= params.to)
 
   title: -> "Workcamps"
 

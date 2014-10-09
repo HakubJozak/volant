@@ -5,7 +5,7 @@ Volant.Workcamp = DS.Model.extend
   organization: DS.belongsTo('organization')
   tags: DS.hasMany('tag')
   workcamp_intentions: DS.hasMany('workcamp_intention')
-  workcamp_assignments: DS.hasMany('workcamp_assignment')
+  workcamp_assignments: DS.hasMany('workcamp_assignment',async: true)
 
   name: DS.attr 'string'
   code: DS.attr 'string'

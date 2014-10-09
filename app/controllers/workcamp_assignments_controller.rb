@@ -3,6 +3,11 @@ class WorkcampAssignmentsController < ApplicationController
 
   before_action :set_workcamp_assignment, only: [:show, :edit, :update, :destroy]
 
+  def index
+    was = Outgoing::WorkcampAssignment.includes(:apply_form,:workcamp).find(params[:ids])
+    render json: was, each_serializer: WorkcampAssignmentSerializer
+  end
+
 
   # POST /workcamp_assignments
   def create

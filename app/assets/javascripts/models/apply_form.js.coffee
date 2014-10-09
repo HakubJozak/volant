@@ -1,6 +1,6 @@
 Volant.ApplyForm = DS.Model.extend
 #  current_workcamp:  DS.belongsTo 'workcamp'
-  workcamp_assignments:  DS.hasMany 'workcamp_assignment'
+  workcamp_assignments:  DS.hasMany 'workcamp_assignment', async: true
   volunteer:  DS.belongsTo 'volunteer'
   payment:  DS.belongsTo 'payment'
 
