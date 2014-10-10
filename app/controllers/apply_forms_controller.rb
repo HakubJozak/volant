@@ -4,7 +4,6 @@ class ApplyFormsController < ApplicationController
   before_action :find_apply_form, only: [ :show, :update, :destroy ]
 
   def index
-    current_page = params[:p] || 1
     search = Outgoing::ApplyForm.order(:created_at).page(current_page)
     search = search.includes(:payment,:volunteer)
 
