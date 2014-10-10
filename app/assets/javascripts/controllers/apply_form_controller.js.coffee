@@ -30,7 +30,7 @@ Volant.ApplyFormController = Volant.ObjectController.extend({
       reset(m) for m in @models()
       false
 
-  models: -> [ @get('model'), @get('model.volunteer') ]
+  models: -> [ @get('model'), @get('model.volunteer'), @get('model.payment') ]
 
 
 })

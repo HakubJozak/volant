@@ -71,7 +71,7 @@
 <div class='row'>
   <div class="form-group col-lg-6">
     <p>
-    {{#if isDirty }}
+    {{#if view.save_buttons_visible }}
       <button type="submit" class="btn btn-success">Save the payment</button>
       {{ button 'Cancel' 'rollback' 'btn' }}
     {{/if}}

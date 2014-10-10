@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :payments
-
   resources :workcamp_assignments, only: [ :index, :create, :update, :destroy ]
   resources :email_contacts, only: [ :create, :update, :destroy ]
   resources :workcamps
@@ -11,6 +9,7 @@ Rails.application.routes.draw do
   resources :workcamp_intentions
   resources :volunteers
   resources :tags
+  resources :payments
 
   root 'dashboard#index'
   get 'dashboard/index'
