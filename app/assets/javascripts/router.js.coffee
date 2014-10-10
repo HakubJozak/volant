@@ -1,6 +1,7 @@
 Volant.Router.map () ->
 #  @resource 'year', path '/:year'
   @resource 'apply_forms'
+  @route 'payments'
   @route 'apply_form', path: '/apply_forms/:apply_form_id', ->
     @resource 'workcamp_assignments'
     @resource 'starred_workcamps'

@@ -1,0 +1,35 @@
+{{ partial 'pagination' }}
+
+<table class="table table-striped table-hover">
+  <thead>
+    <th>Received</th>
+    <th>Amount</th>
+    <th>Description</th>
+    <th>Account</th>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr {{action 'go_to_detail' this }}>
+        <td>{{amount}}</td>
+        <td>{{format-date received}}</td>
+        <td>{{mean}}</td>
+        <td>
+          {{#if by_bank }}
+            {{account}}/{{bank_code}}
+          {{else}}
+            -
+          {{/if}}
+        </td>
+
+        <td>{{returned_date}}</td>
+        <td>{{returned_amount}}</td>
+        <td>{{returned_reason}}</td>
+
+        <td>{{spec_symbol}}</td>
+        <td>{{var_symbol}}</td>
+        <td>{{const_symbol}}</td>
+        <td>{{description}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

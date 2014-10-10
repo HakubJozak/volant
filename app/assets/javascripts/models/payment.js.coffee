@@ -1,4 +1,4 @@
-Volant.Payment = DS.Model.extend
+Volant.Payment = DS.Model.extend({
   apply_form: DS.belongsTo('apply_form')
   amount: DS.attr 'number'
   received: DS.attr 'isodate'
@@ -12,3 +12,8 @@ Volant.Payment = DS.Model.extend
   spec_symbol: DS.attr 'string'
   var_symbol: DS.attr 'string'
   const_symbol: DS.attr 'string'
+
+  by_bank: (->
+    @get('mean') == 'BANK'
+  ).property('mean')
+})
