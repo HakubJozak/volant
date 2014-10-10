@@ -39,13 +39,4 @@ Volant.WorkcampsController = Volant.ListController.extend({
 
   tags: (->
      @store.find('tag')).property()
-
-  countries: (->
-     @store.find('country')).property()
-
-  workcamp_intentions: (->
-     @store.find('workcamp_intention')).property()
-
-  organizations: (->
-     @store.find('organization')).property()
 })

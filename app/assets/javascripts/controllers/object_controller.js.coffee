@@ -1,4 +1,4 @@
-Volant.ObjectController = Ember.ObjectController.extend(Volant.FlashControllerMixin, {
+Volant.ObjectController = Ember.ObjectController.extend(Volant.FlashControllerMixin, Volant.SelectDataMixin, {
   actions:
     toggle_starred: ->
       @toggleProperty('starred')
