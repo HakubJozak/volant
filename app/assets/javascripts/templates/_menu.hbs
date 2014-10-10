@@ -21,7 +21,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">More <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Volunteers</a></li>
-            <li><a href="#">Payments</a></li>
+            {{#link-li}}{{#link-to 'payments'}}Payments{{/link-to}}{{/link-li}}
             <li class="divider"></li>
             {{#link-li}}
               {{#link-to 'organizations' }}
@@ -33,8 +33,15 @@
         </li>
       </ul>
       </ul>
+        <form  class="navbar-form  navbar-left col-lg-1" >
+          {{view Ember.Select
+          content=years
+          value=year
+          class="form-control"
+          }}
+        </form>
 
-        {{ outlet 'item_controls'}}
+       {{ outlet 'item_controls'}}
 
        {{#if flash}}
          {{ view Volant.SmallFlashView flashBinding="flash" }}

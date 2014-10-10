@@ -1,6 +1,6 @@
 Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
   model: (params) ->
-    @store.find('apply_form', { p: params.page })
+    @store.find('apply_form', { p: params.page, year: params.year, q: params.query })
 
   title: -> "Applications"
 
@@ -11,6 +11,10 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
   actions:
     go_to_detail: (form) ->
       @transitionTo('apply_form',form)
+
+    search: ->
+      @refresh()
+      false
 
     refresh: ->
       @refresh()

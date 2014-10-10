@@ -7,5 +7,4 @@ Volant.ApplicationRoute = Ember.Route.extend({
        current_user:
          name: 'Jakub Hozak'
     });
-
 })

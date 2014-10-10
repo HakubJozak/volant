@@ -18,12 +18,6 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
 
   title: -> "Workcamps"
 
-  renderTemplate: ->
-  #   @render('workcamps/filter',into: 'application', outlet: 'filter')
-  #   @render('workcamps')
-    @render('year_select',into: 'application', outlet: 'item_controls')
-    @render('workcamps')
-
   actions:
     refresh: ->
       @refresh()

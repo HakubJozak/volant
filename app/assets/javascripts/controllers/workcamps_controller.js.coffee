@@ -18,9 +18,6 @@ Volant.WorkcampsController = Volant.ListController.extend({
   sortAscending: true
   current_item: null
 
-  years: [ 'All','2015','2014','2013','2012','2011','2010']
-  year: 'All'
-
   actions:
     reset: ->
       # TODO: dry by getting the default values
@@ -39,11 +36,6 @@ Volant.WorkcampsController = Volant.ListController.extend({
     search: ->
       @set 'page',1
       true
-
-  # automatic refresh on year selection
-  yearChanged: ( ->
-    Ember.run.once(this, 'send','search');
-  ).observes('year')
 
   tags: (->
      @store.find('tag')).property()

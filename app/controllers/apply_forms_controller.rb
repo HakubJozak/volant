@@ -7,6 +7,14 @@ class ApplyFormsController < ApplicationController
     search = Outgoing::ApplyForm.order(:created_at).page(current_page)
     search = search.includes(:payment,:volunteer)
 
+    if year = params[:year]
+      if year.to_i > 0
+        search = search.year(year)
+      else
+        render status: :bad_request, body: 'Invalid parameters' and return
+      end
+    end
+
     render json: search,
            meta: { pagination: pagination_info(search) },
            each_serializer: ApplyFormSerializer
