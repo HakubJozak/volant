@@ -10,8 +10,8 @@
   <tbody>
     {{#each}}
       <tr {{action 'go_to_detail' this }}>
-        <td>{{amount}}</td>
         <td>{{format-date received}}</td>
+        <td>{{amount}}</td>
         <td>{{mean}}</td>
         <td>
           {{#if by_bank }}

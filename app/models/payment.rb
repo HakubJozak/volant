@@ -14,6 +14,10 @@ class Payment < ActiveRecord::Base
   validates_presence_of :account, :if => proc { |p| p.bank? }
   validates_inclusion_of :mean, :in => %w( CASH BANK )
 
+  scope :year, lambda { |year|
+    year = year.to_i
+    where '(received >= ? AND received < ?)', Date.new(year,1,1), Date.new(year + 1,1,1)    }
+
   scope :returned, -> { where 'returned_amount IS NOT NULL' }
   scope :not_assigned, -> { where 'apply_form_id IS NULL' }
 
