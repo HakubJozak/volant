@@ -28,4 +28,15 @@ Volant.Volunteer = DS.Model.extend({
   contact_zipcode: DS.attr 'string'
   note: DS.attr 'string'
   account: DS.attr 'string'
+
+  name: (->
+    first = @get('firstname')
+    last = @get('lastname')
+    "#{last} #{first}"
+    ).property('firstname', 'lastname')
+
+
+
+
+
 })

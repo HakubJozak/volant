@@ -10,30 +10,34 @@
                <div href="#" class="list-group-item" {{action 'go_to_detail' this}}>
                  <div class="row">
                    <div class="col-lg-1">
-                     <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' bubbles=false }}></i>
-                     <div>{{flag country}}</div>
-                     {{country.name}}
+                     <div>
+                       <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' bubbles=false }}></i>
+                       {{small-flag country}}
+                     </div>
+                     <small>{{country.name}}</small>
                    </div>
-                   <div class="col-lg-1">
+                   <div class="col-lg-2">
                      <h4>{{ free-places this }}</h4>
                    </div>
-                   <div class="col-lg-10">
+                   <div class="col-lg-6">
                      <h4 class="list-group-item-heading">
                        {{name}}
                        <small>
                          {{duration}} days
                        </small>
-                       <span class="pull-right">
-                        {{#each tags}}
-                          {{ tag this }}
-                        {{/each}}
-                        {{dates this}}
-                       </span>
                      </h4>
                      <p class="list-group-item-text">
                        {{#link-to 'organization' organization}}{{code}}{{/link-to}},
                        {{age-range this }},
                        {{#each workcamp_intentions}} {{ code }}, {{/each}}
+                     </p>
+                   </div>
+                   <div class="col-lg-3 text-right">
+                     <h5 class="list-group-item-heading ">{{dates this}}</h5>
+                     <p class="list-group-item-text">
+                     {{#each tags}}
+                       {{ tag this }}
+                     {{/each}}
                      </p>
                    </div>
                  </div>

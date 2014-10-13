@@ -13,11 +13,7 @@ Volant.ApplyForm = DS.Model.extend
   motivation: DS.attr 'string'
   state: DS.attr 'string'
 
-  name: (->
-    first = @get('volunteer.firstname')
-    last = @get('volunteer.lastname')
-    "#{last} #{first}"
-    ).property('volunteer.firstname', 'volunteer.lastname')
+  name: Ember.computed.alias('volunteer.name')
 
   has_workcamp: (wc) ->
     @get('workcamp_assignments').any (wa) ->

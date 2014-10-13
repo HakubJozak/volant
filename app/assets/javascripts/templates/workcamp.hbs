@@ -65,8 +65,8 @@
         </div>
 
         <label class="col-lg-1 control-label">Fee</label>
-        <div class="col-lg-3">{{input value=extra_fee type="decimal" class="form-control"}}</div>
-        <div class="col-lg-3">{{input value=extra_fee_currency  class="form-control"}}</div>
+        <div class="col-lg-3">{{input value=extra_fee type="decimal" class="form-control" placeholder='Amount'}}</div>
+        <div class="col-lg-3">{{input value=extra_fee_currency  class="form-control" placeholder='Currency'}}</div>
       </div>
 
       <div class="form-group">
@@ -80,7 +80,7 @@
            }}
         </div>
         <div class="col-lg-7">
-          <small>{{#each tags}} {{tag this}} {{/each}}</small>
+          {{#each tags}} {{tag this}} {{/each}}
         </div>
       </div>
 
@@ -93,6 +93,12 @@
       optionLabelPath="content.code"
       class="form-control"
       }}
+        </div>
+        <div class="col-lg-7">
+          {{#each workcamp_intentions}}
+            <span class='label label-default'>{{code}}</span>
+          {{/each}}
+
         </div>
       </div>
     </fieldset>
