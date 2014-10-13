@@ -42,6 +42,7 @@ gem 'ember-rails'
 gem 'ember-source', '1.7.0'
 gem "active_model_serializers"
 gem 'kaminari'
+gem 'devise'
 
 gem 'momentjs-rails'
 gem 'modernizr-rails'

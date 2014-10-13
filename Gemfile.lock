@@ -48,6 +48,7 @@ GEM
       ember-source
       execjs
       handlebars-source
+    bcrypt (3.1.7)
     builder (3.2.2)
     capistrano (3.2.1)
       i18n
@@ -73,6 +74,12 @@ GEM
     coffee-script-source (1.7.0)
     colorize (0.7.3)
     commonjs (0.2.7)
+    devise (3.2.4)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     differ (0.1.2)
     ember-data-source (1.0.0.beta.8)
       ember-source
@@ -132,6 +139,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
+    orm_adapter (0.5.0)
     paperclip (4.1.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -210,6 +218,8 @@ GEM
     uglifier (2.5.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -219,6 +229,7 @@ DEPENDENCIES
   acts-as-taggable-on
   capistrano-rails
   coffee-rails (~> 4.0.0)
+  devise
   differ
   ember-rails
   ember-source (= 1.7.0)
