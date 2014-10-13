@@ -32,7 +32,7 @@
     <label class="col-lg-1 control-label">Intentions</label>
     <div class="col-lg-2">
       {{view Ember.Select
-      content=workcamp_intentions
+      contentBinding='controllers.workcamp_intentions.content'
       optionValuePath="content.id"
       optionLabelPath="content.code"
       class="form-control"
@@ -67,7 +67,7 @@
 
     <div class="col-lg-2">
       {{view Ember.Select
-            content=countries
+            contentBinding='controllers.countries.content'
             optionValuePath="content.id"
             optionLabelPath="content.name"
             class="form-control"

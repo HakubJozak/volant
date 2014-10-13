@@ -18,6 +18,11 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
 
   title: -> "Workcamps"
 
+  setupController: (controller,model) ->
+    @_super(controller, model);
+    @controllerFor('countries').set('content', @store.find('country'));
+    @controllerFor('workcamp_intentions').set('content', @store.find('workcamp_intention'));
+
   actions:
     refresh: ->
       @refresh()
