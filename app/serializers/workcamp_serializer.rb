@@ -12,7 +12,9 @@ class WorkcampSerializer < ActiveModel::Serializer
       :airport, :train, :publish_mode,:places, :places_for_males, :places_for_females,
       :accepted_places, :accepted_places_males, :accepted_places_females,
       :asked_for_places, :asked_for_places_males, :asked_for_places_females,
-      :longitude, :latitude, :requirements ]
+      :longitude, :latitude, :requirements,
+      :organization_id, :country_id
+    ]
   end
 
   def self.private_attributes
