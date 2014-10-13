@@ -1,5 +1,7 @@
 Volant.Router.map () ->
 #  @resource 'year', path '/:year'
+  @resource 'users', ->
+    @resource 'user', {path: ':user_id'}
   @resource 'apply_forms'
   @route 'payments'
   @route 'apply_form', path: '/apply_forms/:apply_form_id', ->

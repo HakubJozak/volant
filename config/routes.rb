@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :users
   resources :workcamp_assignments, only: [ :index, :create, :update, :destroy ]
   resources :email_contacts, only: [ :create, :update, :destroy ]
   resources :workcamps
@@ -15,7 +14,9 @@ Rails.application.routes.draw do
   root 'dashboard#index'
   get 'dashboard/index'
 
-  # server side views
+  devise_for :users, path: 'accounts'
+
+  # JSON API - not to clash with ^
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

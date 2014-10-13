@@ -54,11 +54,11 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Users</a></li>
+            {{#link-li}}{{#link-to 'users'}}Users{{/link-to}}{{/link-li}}
             <li><a href="#">Countries</a></li>
             <li><a href="#">Organizations</a></li>
             <li class="divider"></li>
-            <li><a href="/users/sign_out">Logout</a></li>
+            <li><a href="/accounts/sign_out">Logout</a></li>
           </ul>
         </li>
       </ul>
