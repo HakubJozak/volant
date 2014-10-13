@@ -14,3 +14,4 @@ doc/app
 config/database.yml
 config/volant.rb
 .idea
+.env
