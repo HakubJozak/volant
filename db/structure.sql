@@ -294,6 +294,46 @@ ALTER SEQUENCE countries_id_seq OWNED BY countries.id;
 
 
 --
+-- Name: devise_users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE devise_users (
+    id integer NOT NULL,
+    email character varying(255) DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying(255),
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip character varying(255),
+    last_sign_in_ip character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: devise_users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE devise_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: devise_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE devise_users_id_seq OWNED BY devise_users.id;
+
+
+--
 -- Name: email_contacts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1039,6 +1079,13 @@ ALTER TABLE ONLY countries ALTER COLUMN id SET DEFAULT nextval('countries_id_seq
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY devise_users ALTER COLUMN id SET DEFAULT nextval('devise_users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY email_contacts ALTER COLUMN id SET DEFAULT nextval('email_contacts_id_seq'::regclass);
 
 
@@ -1205,6 +1252,14 @@ ALTER TABLE ONLY comments
 
 ALTER TABLE ONLY countries
     ADD CONSTRAINT countries_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: devise_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY devise_users
+    ADD CONSTRAINT devise_users_pkey PRIMARY KEY (id);
 
 
 --
@@ -1382,6 +1437,20 @@ CREATE INDEX index_apply_forms_on_id ON apply_forms USING btree (id);
 
 
 --
+-- Name: index_devise_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_devise_users_on_email ON devise_users USING btree (email);
+
+
+--
+-- Name: index_devise_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_devise_users_on_reset_password_token ON devise_users USING btree (reset_password_token);
+
+
+--
 -- Name: index_infosheets_on_workcamp_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1498,6 +1567,13 @@ CREATE INDEX index_workcamps_on_country_id_and_begin ON workcamps USING btree (c
 --
 
 CREATE INDEX index_workcamps_on_id ON workcamps USING btree (id);
+
+
+--
+-- Name: index_workcamps_on_id_and_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_workcamps_on_id_and_type ON workcamps USING btree (id, type);
 
 
 --
@@ -1949,4 +2025,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140702122905');
 INSERT INTO schema_migrations (version) VALUES ('20140904142136');
 
 INSERT INTO schema_migrations (version) VALUES ('20141007183833');
+
+INSERT INTO schema_migrations (version) VALUES ('20141009132207');
+
+INSERT INTO schema_migrations (version) VALUES ('20141013143540');
 

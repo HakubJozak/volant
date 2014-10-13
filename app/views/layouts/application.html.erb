@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Volant</title>
-  <%# javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'volant' %>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= csrf_meta_tags %>
-</head>
+  <head>
+    <title>Volant</title>
+    <%# javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+  </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">Volant</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
   <%= yield %>
+</div>
 </body>
 </html>

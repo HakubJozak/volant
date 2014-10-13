@@ -27,7 +27,7 @@ module Volant
       config.i18n.load_path << path
     end
 
-    config.i18n.default_locale = :cz
+    config.i18n.default_locale = :en
     config.active_record.schema_format = :sql
 
 # Deprecated options?

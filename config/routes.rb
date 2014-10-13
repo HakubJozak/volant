@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :workcamp_assignments, only: [ :index, :create, :update, :destroy ]
   resources :email_contacts, only: [ :create, :update, :destroy ]
   resources :workcamps
