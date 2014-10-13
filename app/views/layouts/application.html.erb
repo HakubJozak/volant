@@ -9,8 +9,25 @@
 <body>
 
 <div class="container">
-  <h1>Volant</h1>
-  <%= yield %>
+  <div class='row'>
+    <div class='col-lg-6 col-lg-offset-3'>
+
+  <% if flash[:notice] %>
+    <div class="alert alert-info" role="alert">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <div class="alert alert-danger" role="alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
+    <h1>Volant</h1>
+    <%= yield %>
+    </div>
+  </div>
 </div>
 </body>
 </html>
