@@ -22,6 +22,8 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
     @_super(controller, model);
     @controllerFor('countries').set('content', @store.find('country'));
     @controllerFor('workcamp_intentions').set('content', @store.find('workcamp_intention'));
+    @controllerFor('organizations').set('content', @store.find('organization'));
+    @controllerFor('tags').set('content', @store.find('tag'));
 
   actions:
     refresh: ->

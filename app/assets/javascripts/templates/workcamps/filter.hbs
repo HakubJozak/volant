@@ -47,7 +47,7 @@
     <label class="col-lg-1 control-label">Tags</label>
     <div class="col-lg-2">
       {{view Ember.Select
-            content=tags
+            contentBinding='controllers.tags.content'
             optionValuePath="content.id"
             optionLabelPath="content.name"
             class="form-control"
@@ -81,7 +81,7 @@
     <label class="col-lg-1 control-label">Organizations</label>
     <div class="col-lg-2">
       {{view Ember.Select
-            content=organizations
+            contentBinding='controllers.organizations.content'
             optionValuePath="content.id"
             optionLabelPath="content.name"
             class="form-control"

@@ -1,4 +1,4 @@
-Volant.ListController = Ember.ArrayController.extend(Volant.FlashControllerMixin, Volant.SelectDataMixin, {
+Volant.ListController = Ember.ArrayController.extend(Volant.FlashControllerMixin, {
 
   # ---- year mixin ----
 
