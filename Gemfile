@@ -43,7 +43,7 @@ gem 'ember-source', '1.7.0'
 gem "active_model_serializers"
 gem 'kaminari'
 gem 'devise'
-gem 'devise-bootstrap-views'
+
 
 gem 'momentjs-rails'
 gem 'modernizr-rails'
@@ -54,7 +54,9 @@ gem 'jquery-ui-rails'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
-
+# Bonus
+gem 'devise-bootstrap-views'
+gem 'bootstrap-generators', '~> 3.2.0'
 
 group :development do
   gem 'capistrano-rails'
