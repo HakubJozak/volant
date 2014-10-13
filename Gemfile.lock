@@ -80,6 +80,7 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    devise-bootstrap-views (0.0.3)
     differ (0.1.2)
     ember-data-source (1.0.0.beta.8)
       ember-source
@@ -230,6 +231,7 @@ DEPENDENCIES
   capistrano-rails
   coffee-rails (~> 4.0.0)
   devise
+  devise-bootstrap-views
   differ
   ember-rails
   ember-source (= 1.7.0)
