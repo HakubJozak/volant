@@ -5,6 +5,10 @@ require 'rails/test_help'
 require "minitest/reporters"
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new # Minitest::Reporters::ProgressReporter.new
 
+class ActionController::TestCase
+  include Devise::TestHelpers
+end
+
 class ActiveSupport::TestCase
   fixtures :all
 

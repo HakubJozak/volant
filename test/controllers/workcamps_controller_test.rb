@@ -3,6 +3,7 @@ require 'test_helper'
 class WorkcampsControllerTest < ActionController::TestCase
   setup do
     @workcamp = Factory(:workcamp)
+    sign_in users(:john)
   end
 
   test "should get index" do

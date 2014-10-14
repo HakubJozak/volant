@@ -3,6 +3,7 @@ require 'test_helper'
 class WorkcampAssignmentsControllerTest < ActionController::TestCase
   setup do
     @wa = Factory(:workcamp_assignment)
+    sign_in users(:john)
   end
 
   test "update" do

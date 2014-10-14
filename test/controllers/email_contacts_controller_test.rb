@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class EmailContactsControllerTest < ActionController::TestCase
+
   setup do
     @email_contact = email_contacts(:one)
+    sign_in users(:john)
   end
 
   test "should get index" do

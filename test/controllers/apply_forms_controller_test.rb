@@ -3,6 +3,7 @@ require 'test_helper'
 class ApplyFormsControllerTest < ActionController::TestCase
   setup do
     @apply_form = Factory(:apply_form)
+    sign_in users(:john)
   end
 
   test "update" do

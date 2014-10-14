@@ -3,6 +3,7 @@ require 'test_helper'
 class VolunteersControllerTest < ActionController::TestCase
   setup do
     @volunteer = Factory(:volunteer)
+    sign_in users(:john)
   end
 
 
