@@ -2,8 +2,6 @@
   <div class="col-lg-8">
     <div class='row'>
     <h1>
-      {{#link-to 'apply_forms'}}&lt;{{/link-to}}
-
       <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' }}></i>
       {{volunteer.firstname}}
       {{volunteer.lastname}}
@@ -17,11 +15,11 @@
       </h1>
     </div>
 
+    <hr/>
+
     <div class="container-fluid">
     <form class="form" role="form" {{action 'save' on="submit"}}>
       <fieldset>
-        <legend>Basics</legend>
-
         <div class='row'>
         <div class="form-group col-lg-2">
           <label class=" control-label">Gender</label>

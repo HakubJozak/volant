@@ -6,8 +6,9 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend({
     "#{wc.get('code')} - #{wc.get('name')}"
 
   renderTemplate: ->
+    @_super()
     @render('quick_save',into: 'application', outlet: 'item_controls')
-    @render('workcamp')
+    @render('workcamp/page_up',into: 'application', outlet: 'page_up')
 
   deactivate: ->
     console.info 'deactivated'

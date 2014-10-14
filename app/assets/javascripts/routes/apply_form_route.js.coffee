@@ -6,8 +6,10 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend({
   title: (model) -> "#{model.get('name')}"
 
   renderTemplate: ->
+    @_super()
+    @render('apply_form/page_up',into: 'application', outlet: 'page_up')
     @render('quick_save',into: 'application', outlet: 'item_controls')
-    @render('apply_form')
+
 
   actions:
     view_workcamp: (wc) ->
