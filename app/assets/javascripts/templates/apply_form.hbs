@@ -1,7 +1,7 @@
-<div class="row">
-  <div class="col-lg-8">
-    <div class='row'>
-    <h1>
+<div class='row'>
+<div class="col-lg-8">
+  <div class='row'>
+    <h2>
       <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' }}></i>
       {{volunteer.firstname}}
       {{volunteer.lastname}}
@@ -11,58 +11,58 @@
       <span class='pull-right'>
         {{capitalize state}}
         {{apply-form-state-icon state}}
-        </span>
-      </h1>
-    </div>
+      </span>
+    </h2>
+  </div>
 
-    <hr/>
+  <hr/>
 
-    <div class="container-fluid">
+  <div class="container-fluid">
     <form class="form" role="form" {{action 'save' on="submit"}}>
       <fieldset>
         <div class='row'>
-        <div class="form-group col-lg-2">
-          <label class=" control-label">Gender</label>
+          <div class="form-group col-lg-2">
+            <label class=" control-label">Gender</label>
             {{view Ember.Select content=genders value=volunteer.gender class="form-control"
-              optionValuePath='content.code' optionLabelPath='content.name' }}
-        </div>
+            optionValuePath='content.code' optionLabelPath='content.name' }}
+          </div>
 
-        <div class="form-group col-lg-3">
-          <label class=" control-label">Name</label>
-          {{input value=volunteer.firstname class="form-control"}}
-        </div>
+          <div class="form-group col-lg-3">
+            <label class=" control-label">Name</label>
+            {{input value=volunteer.firstname class="form-control"}}
+          </div>
 
-        <div class="form-group col-lg-3">
-          <label class=" control-label">Surname</label>
-          {{input value=volunteer.lastname class="form-control"}}
-        </div>
+          <div class="form-group col-lg-3">
+            <label class=" control-label">Surname</label>
+            {{input value=volunteer.lastname class="form-control"}}
+          </div>
 
-        <div class="form-group col-lg-offset-2 col-lg-2">
-          <label class=" control-label">Nationality</label>
-          {{input value=volunteer.nationality class="form-control"}}
-        </div>
+          <div class="form-group col-lg-offset-2 col-lg-2">
+            <label class=" control-label">Nationality</label>
+            {{input value=volunteer.nationality class="form-control"}}
+          </div>
         </div>
 
         <div class='row'>
-        <div class="form-group col-lg-2">
-          <label class=" control-label">Birth-number</label>
-          {{input value=volunteer.birthnumber class="form-control"}}
-        </div>
+          <div class="form-group col-lg-2">
+            <label class=" control-label">Birth-number</label>
+            {{input value=volunteer.birthnumber class="form-control"}}
+          </div>
 
-        <div class="form-group col-lg-3">
-          <label class=" control-label">Date of birth</label>
-          {{view Volant.DateView dateBinding='volunteer.birthdate' }}
-        </div>
+          <div class="form-group col-lg-3">
+            <label class=" control-label">Date of birth</label>
+            {{view Volant.DateView dateBinding='volunteer.birthdate' }}
+          </div>
 
-        <div class="form-group col-lg-3">
-          <label class=" control-label">Place of Birth</label>
-          {{input value=volunteer.birthplace class="form-control"}}
-        </div>
+          <div class="form-group col-lg-3">
+            <label class=" control-label">Place of Birth</label>
+            {{input value=volunteer.birthplace class="form-control"}}
+          </div>
 
-        <div class="form-group col-lg-offset-2 col-lg-2">
-          <label class=" control-label">Occupation</label>
-          {{input value=volunteer.occupation class="form-control"}}
-        </div>
+          <div class="form-group col-lg-offset-2 col-lg-2">
+            <label class=" control-label">Occupation</label>
+            {{input value=volunteer.occupation class="form-control"}}
+          </div>
         </div>
       </fieldset>
 
@@ -76,7 +76,7 @@
         </div>
         {{# if payment }}
           {{render 'payment' payment save_buttons_visible=false }}
-        {{/if}}
+          {{/if}}
       </fieldset>
 
       <fieldset>
@@ -166,21 +166,21 @@
 
       {{ partial 'save_buttons' }}
     </form>
-    </div>
   </div>
+</div>
 
-  <div class="col-lg-4">
-    <h3>Workcamps</h3>
+<div class="col-lg-4">
+  <h3>Workcamps</h3>
 
-    <ul class="nav nav-tabs nav-justified">
-      {{#link-li}}
-        {{#link-to "workcamp_assignments" this }}Assigned{{/link-to}}
-      {{/link-li}}
-      {{#link-li}}
-        {{#link-to "starred_workcamps" this }}Starred{{/link-to}}
-      {{/link-li}}
-    </ul>
+  <ul class="nav nav-tabs nav-justified">
+    {{#link-li}}
+      {{#link-to "workcamp_assignments" this }}Assigned{{/link-to}}
+    {{/link-li}}
+    {{#link-li}}
+      {{#link-to "starred_workcamps" this }}Starred{{/link-to}}
+    {{/link-li}}
+  </ul>
 
-    {{outlet}}
-  </div>
+  {{outlet}}
+</div>
 </div>

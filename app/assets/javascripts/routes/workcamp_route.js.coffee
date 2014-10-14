@@ -3,7 +3,7 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend({
     @store.find('workcamp', params.workcamp_id)
 
   title: (wc) ->
-    "#{wc.get('code')} - #{wc.get('name')}"
+    "#{wc.get('name')} - #{wc.get('code')}"
 
   renderTemplate: ->
     @_super()
