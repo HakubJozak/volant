@@ -8,6 +8,8 @@ Volant.ObjectController = Ember.ObjectController.extend(Volant.FlashControllerMi
     save: ->
       SUCCESS = =>
         @show_flash('success','Saved.')
+        if route = @get('after_save_route')
+          @transitionToRoute(route)
 
       ERROR = =>
         if msg = @get('errors.firstObject')

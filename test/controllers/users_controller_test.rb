@@ -19,6 +19,8 @@ class UsersControllerTest < ActionController::TestCase
 
   test 'destroy' do
     delete :destroy, id: @john.id
+    assert_response :success
+    puts response.status
     refute User.find_by_id(@john.id)
   end
 
