@@ -4,17 +4,17 @@ class UsersController < ApplicationController
   before_action :find, only: [ :update, :destroy ]
 
   def create
-    user = User.new(params[:user])
+    user = User.create(user_params)
+    respond_with user
+  end
 
-    if user.save
-      render json: user, status: :created
-    else
-      respond_with user
-    end
+  def destroy
+    @user.destroy
+    respond_with @user
   end
 
   def update
-    @user.update(user_attributes)
+    @user.update(user_params)
     respond_with @user
   end
 
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def user_attributes
+  def user_params
     params.require(:user).permit(:email,:password,:password_confirmation)
   end
 end

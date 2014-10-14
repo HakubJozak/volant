@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :authenticate_user!
+  before_action :default_format_json
 
   def pagination_info(scope)
     {
@@ -17,4 +18,9 @@ class ApplicationController < ActionController::Base
     params[:p] || 1
   end
 
+  def default_format_json
+    if request.headers["HTTP_ACCEPT"].nil? && params[:format].nil?
+      request.format = "json"
+    end
+  end
 end
