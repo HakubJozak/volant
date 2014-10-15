@@ -4,7 +4,5 @@ Volant.ApplicationRoute = Ember.Route.extend({
 
   model: ->
    Ember.RSVP.hash({
-       current_user:
-         name: 'Jakub Hozak'
-    });
+   });
 })
