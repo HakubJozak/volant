@@ -29,6 +29,22 @@ class ApplicationController < ActionController::Base
 
   def relevant_pages(scope)
     paginator = Kaminari::Helpers::Paginator.new(nil, current_page: scope.current_page, total_pages: scope.total_pages, per_page: scope.limit_value)
-    paginator.each_relevant_page {}
+    pages = paginator.each_relevant_page {}
+    add_dots(pages).flatten
   end
+
+  def add_dots(a)
+    last = a[0] - 1
+
+    b = a.map do |p|
+      if p == last + 1
+        last = p
+        p
+      else
+        last = p
+        ['...',p]
+      end
+    end
+  end
+
 end
