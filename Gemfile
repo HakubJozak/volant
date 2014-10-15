@@ -33,7 +33,7 @@ gem 'spring',        group: :development
 # gem 'unicorn'
 
 gem 'paperclip'
-gem 'pry', group: [:development, :test]
+gem 'pry-rails', group: [:development, :test]
 gem 'differ'
 gem 'htmlentities'
 gem 'acts-as-taggable-on'

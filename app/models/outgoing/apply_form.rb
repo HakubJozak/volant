@@ -17,7 +17,19 @@ module Outgoing
     has_many :workcamps, -> { order 'workcamp_assignments."order" ASC' }, through: :workcamp_assignments, class_name: 'Outgoing::Workcamp'
     has_many :workcamp_assignments, -> { order '"order" ASC' }, dependent: :delete_all, class_name: 'Outgoing::WorkcampAssignment'
 
+    def assign_workcamp(wc)
+      # don't do anything if it is already assigned
+      return self if workcamp_assignments.any? { |wa| wa.workcamp == wc }
 
+      order = if workcamp_assignments.empty?
+                1
+              else
+                workcamp_assignment.last.order + 1
+              end
+
+      workcamp_assignments.create!(apply_form: self, workcamp: wc, order: order)
+      self.reload
+    end
 
     # TODO - retrieve from parameter and check for other apply forms
     def after_initialize
@@ -35,7 +47,6 @@ module Outgoing
 
       result
     end
-
 
     def self.state_filter(state)
       wa = Outgoing::WorkcampAssignment.table_name
