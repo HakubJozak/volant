@@ -1,8 +1,9 @@
 Volant.ApplyForm = DS.Model.extend
   current_workcamp:  DS.belongsTo 'workcamp'
   current_assignment:  DS.belongsTo 'workcamp_assignment'
+  state: DS.attr 'state'
 
-  workcamp_assignments:  DS.hasMany 'workcamp_assignment', async: true
+  workcamp_assignments:  DS.hasMany 'workcamp_assignment', async: true, inverse: 'apply_form'
   volunteer:  DS.belongsTo 'volunteer'
   payment:  DS.belongsTo 'payment'
 
@@ -13,7 +14,6 @@ Volant.ApplyForm = DS.Model.extend
   fee: DS.attr 'number'
   general_remarks: DS.attr 'string'
   motivation: DS.attr 'string'
-  state: DS.attr 'string'
 
   name: Ember.computed.alias('volunteer.name')
 

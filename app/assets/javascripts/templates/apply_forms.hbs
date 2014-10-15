@@ -6,13 +6,10 @@
     <th></th>
     <th>Submitted</th>
     <th>Name</th>
-    <th>Age</th>
+    <th colspan='3'>Workcamp</th>
     <th>Email</th>
     <th>Birth number</th>
-    <th>Nationality</th>
     <th>Payment</th>
-    <th></th>
-    <th></th>
   </thead>
   <tbody>
     {{#each itemController='apply_form'}}
@@ -23,17 +20,20 @@
         <td>{{long-date created_at}}</td>
         <td>
           {{gender volunteer}}
-          {{volunteer.firstname}}
-          {{volunteer.lastname}}
+          {{name}}
+          ({{volunteer.age}})
+        </td>
+        <td>{{ apply-form-state-icon state}}</td>
+        <td>
+          {{#each state.actions}}
+            {{ apply-form-action this }}
+          {{/each}}
         </td>
         <td>
-          {{apply-form-state-icon state}}
-          {{current_workcamp.name}}
+          {{#link-to 'workcamp' current_workcamp}}{{current_workcamp.name}}{{/link-to}}
         </td>
-        <td>{{volunteer.age}}</td>
         <td>{{ mail-to volunteer.email }}</td>
         <td>{{volunteer.birthnumber}}</td>
-        <td>{{volunteer.nationality}}</td>
         <td>{{payment.amount}}</td>
       </tr>
     {{/each}}

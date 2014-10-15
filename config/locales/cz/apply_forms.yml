@@ -34,7 +34,7 @@ cz:
         workcamp_tags: Nálepky aktuálního workcampu
         address: Adresa
         comments: Komentáře
-    
+
         apply_form_states:
           changed: Stav přihlášky byl změněn, email neodeslán.
           accepted: Akceptována %{time}
@@ -54,7 +54,7 @@ cz:
               before: Stornováno dne %{time}, ještě před přijetím na projekt.
               after: Stornováno %{time}, %{after_accept_count} dní po přijetí na projekt a %{to_wc_count} dní před začátkem workcampu.
             not_paid: Nezaplacena (přihláška je považována za zaplacenou, pokud platba k ní přiřazená se rovná částce požadované jako poplatek za přihlášku).
-    
+
         apply_form_actions:
           accept: Akceptovat
           reject: Zamítnout
@@ -68,11 +68,11 @@ cz:
           infosheet: Odeslat infosheet
           full_warning: Tento workcamp je již obsazen!
           almost_full_warning: O všechna volná místa již bylo zažádáno!
-    
+
         apply_form_alerts:
           waits_too_long: Čeká příliš dlouho na odpověď!
           no_infosheet: Projekt stále ještě nemá infosheet!
-    
+
         fee: Poplatek
         status: Stav
         state: Stav

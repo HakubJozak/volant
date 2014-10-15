@@ -44,18 +44,6 @@ Ember.Handlebars.helper 'workcamp-state-icon', (state) ->
   new Handlebars.SafeString "<i title='#{state}' class='fa fa-#{name} #{state}'></i>"
 
 
-Ember.Handlebars.helper 'apply-form-state-icon', (state) ->
-  name = switch state
-           when "accepted" then 'thumbs-up'
-           when "rejected" then 'thumbs-down'
-           when "asked" then 'envelope-o'
-           when "paid" then 'money'
-           when "not_paid" then 'circle-o'
-           when "infosheeted" then 'suitcase'
-           when "cancelled" then 'times-circle-o'
-           else ''
-
-  new Handlebars.SafeString "<i title='#{state}' class='fa fa-#{name} #{state}'></i>"
 
 
 Ember.Handlebars.helper 'gender', (volunteer) ->

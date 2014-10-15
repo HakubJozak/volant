@@ -65,7 +65,6 @@ class ApplyFormState
 
   def info_box(key)
     time_in_string = I18n.localize(@time.to_date) if @time
-    Outgoing::ApplyForm.human_attribute_name("#{key}.#{name}", :time => time_in_string)
+    I18n.t("activerecord.attributes.apply_form.#{key}.#{name}", :time => time_in_string)
   end
-
 end

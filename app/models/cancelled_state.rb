@@ -5,7 +5,7 @@ class CancelledState < ApplyFormState
   end
 
   def info
-    prefix = "apply_form_states.info.cancelled"
+    prefix = 'activerecord.attributes.apply_form.apply_form_states.info.cancelled'
     params = { :time => @time.to_date }
 
     if @form.accepted and @form.accepted <= @form.cancelled
@@ -15,10 +15,9 @@ class CancelledState < ApplyFormState
       params.update :to_wc_count => to_wc.to_i, :after_accept_count => after_ac.to_i
 
       # time_ago_in_words(3.minutes.from_now)
-      Outgoing::ApplyForm.human_attribute_name("#{prefix}.after", params)
+      I18n.t("#{prefix}.after", params)
     else
-      Outgoing::ApplyForm.human_attribute_name("#{prefix}.before", params)
+      I18n.t("#{prefix}.before", params)
     end
-
   end
 end

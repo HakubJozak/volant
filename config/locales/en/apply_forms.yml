@@ -32,7 +32,6 @@ en:
         address: Address
         comments: Comments
         workcamps: Workcamps
-
         apply_form_states:
           changed: Apllication form changed, email not sent.
           accepted: Accepted %{time}
@@ -49,12 +48,12 @@ en:
             paid: Paid %{time}
             infosheeted: Infosheet sent %{time}
             cancelled:
-              before: Cancelled %{time}, before being accepted.
-              after: Cancelled %{time}, %{after_accept_count} days after acceptation and %{to_wc_count} before beginning of the workcamp.
-            not_paid: Not paid (application is considered to be paid if it has a payment and its amount equals the application fee).
-    
+              before: "Cancelled %{time}, before being accepted."
+              after: "Cancelled %{time}, %{after_accept_count} days after acceptation and %{to_wc_count} before beginning of the workcamp."
+            not_paid: Not paid (application is considered to be paid if its payment is exactly equal to the application fee).
+
         apply_form_actions:
-          accept: Accepte
+          accept: Accept
           reject: Reject
           rejected: Workcamp '%{wc}' was marked as rejected. You can either continue by asking for the next workcamp in a row or 'cancel'.
           rejected_final: Workcamp '%{wc}' is last on the application.
@@ -66,11 +65,11 @@ en:
           infosheet: Send infosheet
           full_warning: This workcamp is already full!
           almost_full_warning: You already asked for all free places!
-    
+
         apply_form_alerts:
           waits_too_long: Waits too long for the reply.
           no_infosheet: Still has no infosheet.
-    
+
         fee: Fee
         status: Status
         state: State
