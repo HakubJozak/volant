@@ -29,6 +29,11 @@ Volant.ListController = Ember.ArrayController.extend(Volant.FlashControllerMixin
       @toggleProperty('filter_is_visible')
       false
 
+    set_page: (p) ->
+      @set('page',p)
+      @send 'refresh'
+      false
+
     adjust_page: (delta) ->
       delta = parseInt(delta)
       target = @get('page') + delta
@@ -37,5 +42,7 @@ Volant.ListController = Ember.ArrayController.extend(Volant.FlashControllerMixin
       if (target > 0) and (target <= upper_bound)
         @incrementProperty('page',delta)
         @send 'refresh'
+
+      false
 
 })

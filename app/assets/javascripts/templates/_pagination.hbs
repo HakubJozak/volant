@@ -1,3 +1,12 @@
+<ul class="pagination pagination-lg">
+  <li><a href="#" {{ action "adjust_page" -1}}>&laquo;</a></li>
+  {{#each pagination.relevant_pages}}
+    <li><a href="#" {{ action "set_page" this}}>{{this}}</a></li>
+  {{/each}}
+  <li><a href="#" {{ action "adjust_page" 1}}>&raquo;</a></li>
+</ul>
+
+
 <div class="row">
   <div class="col-lg-2">
     <ul class='pager'>

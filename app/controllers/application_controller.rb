@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
     {
       total: scope.total_count,
       total_pages: scope.total_pages,
+      relevant_pages: relevant_pages(scope),
       current_page: current_page
     }
   end
@@ -22,5 +23,12 @@ class ApplicationController < ActionController::Base
     if request.headers["HTTP_ACCEPT"].nil? && params[:format].nil?
       request.format = "json"
     end
+  end
+
+  private
+
+  def relevant_pages(scope)
+    paginator = Kaminari::Helpers::Paginator.new(nil, current_page: scope.current_page, total_pages: scope.total_pages, per_page: scope.limit_value)
+    paginator.each_relevant_page {}
   end
 end
