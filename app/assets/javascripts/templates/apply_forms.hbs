@@ -4,7 +4,6 @@
 <table class="table table-striped table-hover">
   <thead>
     <th></th>
-    <th></th>
     <th>Submitted</th>
     <th>Name</th>
     <th>Age</th>
@@ -21,20 +20,21 @@
         <td>
           <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' bubbles=false}}></i>
         </td>
-        <td>{{apply-form-state-icon state}}</td>
         <td>{{long-date created_at}}</td>
         <td>
           {{gender volunteer}}
           {{volunteer.firstname}}
           {{volunteer.lastname}}
         </td>
+        <td>
+          {{apply-form-state-icon state}}
+          {{current_workcamp.name}}
+        </td>
         <td>{{volunteer.age}}</td>
         <td>{{ mail-to volunteer.email }}</td>
         <td>{{volunteer.birthnumber}}</td>
         <td>{{volunteer.nationality}}</td>
         <td>{{payment.amount}}</td>
-        <td>{{volunteer.occupation}}</td>
-        <td>{{general_remarks}}</td>
       </tr>
     {{/each}}
   </tbody>

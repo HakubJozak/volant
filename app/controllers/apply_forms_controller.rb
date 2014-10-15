@@ -5,7 +5,7 @@ class ApplyFormsController < ApplicationController
 
   def index
     search = Outgoing::ApplyForm.order(:created_at).page(current_page)
-    search = search.includes(:payment,:volunteer)
+    search = search.includes(:payment,:volunteer,:current_workcamp, :current_assignment)
 
     if year = params[:year]
       if year.to_i > 0
