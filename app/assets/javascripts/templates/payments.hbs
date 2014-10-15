@@ -4,7 +4,6 @@
   <thead>
     <th>Received</th>
     <th>Amount</th>
-    <th>Description</th>
     <th>Account</th>
   </thead>
   <tbody>
@@ -12,15 +11,13 @@
       <tr {{action 'go_to_detail' this }}>
         <td>{{format-date received}}</td>
         <td>{{amount}}</td>
-        <td>{{mean}}</td>
         <td>
           {{#if by_bank }}
             {{account}}/{{bank_code}}
           {{else}}
-            -
+            Cash
           {{/if}}
         </td>
-
         <td>{{returned_date}}</td>
         <td>{{returned_amount}}</td>
         <td>{{returned_reason}}</td>
