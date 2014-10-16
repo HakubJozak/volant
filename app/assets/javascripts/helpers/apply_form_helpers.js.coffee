@@ -1,5 +1,10 @@
 Ember.Handlebars.helper 'apply-form-state-icon', (state) ->
-  key = if state? then state.get('name').toLowerCase() else ''
+  key = if state?
+          if typeof state isnt 'string'
+            state.get('name').toLowerCase()
+          else
+            state
+
   icon = switch key
            when "accepted" then 'thumbs-up'
            when "rejected" then 'thumbs-down'
