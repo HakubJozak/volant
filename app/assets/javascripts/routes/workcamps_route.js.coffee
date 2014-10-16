@@ -20,6 +20,7 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
 
   setupController: (controller,model) ->
     @_super(controller, model);
+    @setupPagination(controller,model)
     @controllerFor('countries').set('content', @store.find('country'));
     @controllerFor('workcamp_intentions').set('content', @store.find('workcamp_intention'));
     @controllerFor('organizations').set('content', @store.find('organization'));

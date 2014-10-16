@@ -5,9 +5,7 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
   title: -> "Applications"
 
   setupController: (controller,model) ->
-    modelType = model.get('type')
-    hash = @store.typeMapFor(modelType).metadata.pagination
-    controller.set( 'controllers.pagination.model', Ember.Object.create(hash) )
+    @setupPagination(controller,model)
     @_super(controller,model)
 
   renderTemplate: ->
@@ -25,6 +23,4 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
     refresh: ->
       @refresh()
       false
-
-
 })

@@ -5,4 +5,11 @@ Volant.BaseRoute = Ember.Route.extend({
     else
       'Volant'
 
+
+  # not an Ember hook, normal method called from setupController
+  setupPagination: (controller,model) ->
+    modelType = model.get('type')
+    hash = @store.typeMapFor(modelType).metadata.pagination
+    controller.set( 'controllers.pagination.model', Ember.Object.create(hash) )
+
 })
