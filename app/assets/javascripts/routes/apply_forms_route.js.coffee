@@ -4,10 +4,6 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
 
   title: -> "Applications"
 
-  setupController: (controller,model) ->
-    @setupPagination(controller,model)
-    @_super(controller,model)
-
   renderTemplate: ->
     @render('_menu',into: 'application', outlet: 'menu')
     @render('apply_forms')
