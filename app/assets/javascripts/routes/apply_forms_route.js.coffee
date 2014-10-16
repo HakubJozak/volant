@@ -4,6 +4,12 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
 
   title: -> "Applications"
 
+  setupController: (controller,model) ->
+    modelType = model.get('type')
+    hash = @store.typeMapFor(modelType).metadata.pagination
+    controller.set( 'controllers.pagination.model', Ember.Object.create(hash) )
+    @_super(controller,model)
+
   renderTemplate: ->
     @render('_menu',into: 'application', outlet: 'menu')
     @render('apply_forms')

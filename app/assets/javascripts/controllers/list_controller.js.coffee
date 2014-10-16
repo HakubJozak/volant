@@ -2,7 +2,7 @@ Volant.ListController = Ember.ArrayController.extend(Volant.FlashControllerMixin
 
   # ---- year mixin ----
 
-  needs: 'application'
+  needs: ['application','pagination']
   year: Ember.computed.alias('controllers.application.year')
 
   # automatic refresh on year selection
@@ -14,11 +14,12 @@ Volant.ListController = Ember.ArrayController.extend(Volant.FlashControllerMixin
 
   filter_is_visible: true
 
-  pagination: (->
-    if @get('model.isLoaded')
-      modelType = @get('model.type')
-      @get('store').typeMapFor(modelType).metadata.pagination
-  ).property('model.isLoaded')
+  # pagination: (->
+  #   if @get('model.isLoaded')
+  #     modelType = @get('model.type')
+  #     hash = @get('store').typeMapFor(modelType).metadata.pagination
+  #     Ember.Object.create(hash)
+  # ).property('model.isLoaded')
 
   previous_page_exists: (->  @get('page') > 1).property('page')
   next_page_exists: (->  @get('page') < @get('pagination.total_pages')).property('pagination','page')
@@ -37,7 +38,7 @@ Volant.ListController = Ember.ArrayController.extend(Volant.FlashControllerMixin
     adjust_page: (delta) ->
       delta = parseInt(delta)
       target = @get('page') + delta
-      upper_bound = @get('pagination').total_pages
+      upper_bound = @get('pagination.total_pages')
 
       if (target > 0) and (target <= upper_bound)
         @incrementProperty('page',delta)

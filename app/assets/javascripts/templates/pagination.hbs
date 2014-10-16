@@ -1,0 +1,22 @@
+<div class='row pagination-container'>
+  <div class="col-lg-8 col-lg-offset-2 text-center">
+    <ul class="pagination">
+      <li><a href="#" {{ action "adjust_page" -1}}>&laquo;</a></li>
+      {{#each pagination_bits itemController='pagination_bit'}}
+      {{#if active}}
+        <li class='active'><a href="#">{{content}}</a></li>
+      {{else}}
+        {{#if link}}
+          <li><a href="#" {{ action "set_page" this}}>{{content}}</a></li>
+        {{else}}
+          <li class='disabled'><span>{{content}}</span></li>
+        {{/if}}
+      {{/if}}
+      {{/each}}
+      <li><a href="#" {{ action "adjust_page" 1}}>&raquo;</a></li>
+    </ul>
+  </div>
+  <div class="col-lg-2 info">
+    <p><em>Found {{total}} records.</em></p>
+  </div>
+</div>
