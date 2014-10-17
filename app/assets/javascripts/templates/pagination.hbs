@@ -1,7 +1,10 @@
 <div class='row pagination-container'>
   <div class="col-lg-8 col-lg-offset-2 text-center">
     <ul class="pagination">
-      <li><a href="#" {{ action "adjust_page" -1}}>&laquo;</a></li>
+      <li {{ bind-attr class="previous_page::disabled" }}>
+        <a href="#" {{ action "set_page" previous_page}}>&laquo;</a>
+      </li>
+
       {{#each pagination_bits itemController='pagination_bit'}}
       {{#if active}}
         <li class='active'><a href="#">{{content}}</a></li>
@@ -13,7 +16,10 @@
         {{/if}}
       {{/if}}
       {{/each}}
-      <li><a href="#" {{ action "adjust_page" 1}}>&raquo;</a></li>
+
+      <li {{ bind-attr class="next_page::disabled" }}>
+        <a href="#" {{ action "set_page" next_page}}>&raquo;</a>
+      </li>
     </ul>
   </div>
   <div class="col-lg-2 info">
