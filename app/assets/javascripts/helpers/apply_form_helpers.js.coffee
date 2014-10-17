@@ -17,14 +17,17 @@ Ember.Handlebars.helper 'apply-form-state-icon', (state) ->
 
   new Handlebars.SafeString "<i title='#{state.info}' class='fa fa-#{icon} #{state}'></i>"
 
-Ember.Handlebars.helper 'apply-form-action', (name) ->
-  [clazz,icon] = switch name
-                   when 'accept' then [ 'btn-success', 'thumbs-up' ]
-                   when 'reject' then [ 'btn-danger', 'thumbs-down' ]
-                   when "ask" then [ '','envelope-o' ]
-                   when "infosheet" then ['','suitcase']
 
-  icon = "<i class='fa fa-#{icon} #{name}'></i>"
-  button = "<button type='button' class='btn btn-sm #{clazz}'>#{icon}</button>"
 
-  new Handlebars.SafeString(button)
+Ember.Handlebars.helper 'apply-form-action-icon', (name) ->
+
+  icons = {
+    accept: 'thumbs-up'
+    reject: 'thumbs-down'
+    ask: 'envelope-o'
+    infosheet: 'suitcase'
+    pay: 'money'
+    cancel: 'times'
+  }
+  icon = "<i class='fa fa-#{icons[name]}'></i>"
+  new Handlebars.SafeString(icon)

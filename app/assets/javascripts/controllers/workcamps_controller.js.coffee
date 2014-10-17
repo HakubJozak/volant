@@ -17,7 +17,6 @@ Volant.WorkcampsController = Volant.ListController.extend({
 
   sortProperties: ['name']
   sortAscending: true
-  current_item: null
 
   actions:
     reset: ->

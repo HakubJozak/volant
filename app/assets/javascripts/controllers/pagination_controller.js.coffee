@@ -1,4 +1,6 @@
 Volant.PaginationController = Ember.ObjectController.extend({
+  first_page: Ember.computed.equal('current_page',1)
+
   previous_page: (->
     if @get('model.current_page') > 1
       @get('model.current_page') - 1

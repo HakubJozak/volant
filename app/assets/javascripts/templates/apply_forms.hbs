@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     {{#each itemController='apply_form'}}
-      <tr {{action 'go_to_detail' this }}>
+      <tr>
         <td>
           <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' bubbles=false}}></i>
         </td>
@@ -23,9 +23,22 @@
         </td>
         <td>{{ apply-form-state-icon state}}</td>
         <td>
-          {{#each state.actions}}
-            {{ apply-form-action this }}
-          {{/each}}
+          {{#if state.actions.firstObject }}
+          <div class="btn-group">
+            <button type="button" class="btn btn-default btn-sm">
+              {{capitalize state.actions.firstObject}}
+            </button>
+            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              {{#each state.actions}}
+                <li><a href="#"> {{ apply-form-action-icon this }} {{capitalize this}}</a></li>
+              {{/each}}
+            </ul>
+          </div>
+          {{/if}}
         </td>
         <td>
           {{#link-to 'workcamp' current_workcamp}}{{current_workcamp.name}}{{/link-to}}
