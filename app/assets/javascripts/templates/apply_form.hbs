@@ -1,18 +1,28 @@
 <div class='row'>
 <div class="col-lg-8">
   <div class='row'>
+    <div class="col-lg-6">
     <h2>
       <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' }}></i>
       {{volunteer.firstname}}
       {{volunteer.lastname}}
       ({{volunteer.age}})
       {{gender volunteer}}
-
-      <span class='pull-right'>
+      <small>
         {{capitalize state.name}}
         {{apply-form-state-icon state}}
-      </span>
+      </small>
     </h2>
+    </div>
+    <div class="col-lg-6" id="apply-form-toolbar">
+      <span>
+      {{#each state.actions}}
+        <a {{action this bubbles=false}} href="#" class='btn btn-default btn-sm'>
+          {{ apply-form-action-icon this }} {{capitalize this}}
+        </a>
+      {{/each}}
+      </span>
+    </div>
   </div>
 
   <hr/>
