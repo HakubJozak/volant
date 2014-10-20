@@ -1,5 +1,6 @@
 language: ruby
 before_script:
+  - psql -c 'create database volant_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
   - cp config/volant.rb.example config/volant.rb
   - bundle exec rake db:test:prepare
