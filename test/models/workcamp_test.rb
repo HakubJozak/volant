@@ -62,7 +62,7 @@ class WorkcampTest < ActiveSupport::TestCase
     assert_equal 1, a_day.duration
 
     nothing = Factory(:workcamp, begin: nil, end: nil)
-    assert_equal null, nothing.duration
+    assert_nil  nothing.duration
   end
 
   test "add intentions" do
