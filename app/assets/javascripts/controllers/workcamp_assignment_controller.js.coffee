@@ -3,6 +3,10 @@ Volant.WorkcampAssignmentController = Ember.ObjectController.extend({
   edited: false
   edited_or_new: Ember.computed.or('edited','isNew')
 
+  is_current_workcamp: (->
+    @get('workcamp') == @get('apply_form.current_workcamp')
+  ).property('model')
+
   actions:
     save: ->
       @get('model').save().then(

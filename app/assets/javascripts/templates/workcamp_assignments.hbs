@@ -3,7 +3,7 @@
     {{#each itemController="workcamp_assignment" }}
     {{# if edited_or_new}}
       <tr>
-        <td colspan='6'>
+        <td colspan='7'>
           <h5>{{workcamp.name}}</h5>
           <form class='form'>
             <div class="form-group">
@@ -40,11 +40,20 @@
         </td>
       </tr>
     {{else}}
-      <tr {{action 'view_workcamp' this.workcamp  }}>
+      <tr class='workcamp_assignment'>
+        <td>
+          {{#if is_current_workcamp}}
+            {{fa 'circle'}}
+          {{/if}}
+        </td>
         <td>{{order}}.</td>
         <td>{{workcamp-state-icon state}}</td>
         <td>{{workcamp.code}}</td>
-        <td>{{workcamp.name}}</td>
+        <td>
+          {{#link-to 'workcamp' workcamp}}
+            {{workcamp.name}}
+          {{/link-to}}
+        </td>
         <td {{action 'edit' bubbles=false}}>{{fa-link 'edit'}}</td>
         <td {{action 'remove' this bubbles=false}}>{{fa-link 'trash-o'}}</td>
       </tr>

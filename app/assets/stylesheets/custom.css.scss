@@ -1,3 +1,9 @@
+$brown: #AD7624;
+$green: #87B64B;
+$yellow: #F3D70C;
+$red: #E76363;
+$grey: grey;
+
 
 body {
   margin: 1em;
@@ -37,14 +43,10 @@ max-width: 30em;
 
 
 
+
+
 /* state icons */
 h2 i.fa {
-  $brown: #AD7624;
-  $green: #87B64B;
-  $yellow: #F3D70C;
-  $red: #E76363;
-  $grey: grey;
-
   &.accepted  { color: $green; }
   &.cancelled, &.rejected { color: $red;   }
   &.paid { color: $grey;   }
@@ -68,4 +70,8 @@ h2 i.fa {
   position: relative;
   text-align: right;
   top: 25px;
+}
+
+tr.workcamp_assignment {
+  i.fa-circle { color: $green; }
 }
