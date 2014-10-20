@@ -4,17 +4,17 @@ require 'test_helper'
 class CountryTest < ActiveSupport::TestCase
 
   setup do
-    I18n.default_locale = :cz
+    I18n.default_locale = :en
   end
 
   test "naming" do
     cz = Country.find_by_code('CZ')
-    assert_equal "Česko", cz.name
+    assert_equal "Czechia", cz.name
   end
 
-  test "find Autria" do
+  test "find Austria" do
     at = Country.find_by_code('AT')
-    assert_equal "Rakousko", at.name
+    assert_equal "Austria", at.name
   end
 
   test "conversion to XML" do
