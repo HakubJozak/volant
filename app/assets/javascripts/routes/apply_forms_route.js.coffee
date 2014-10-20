@@ -5,7 +5,6 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
   title: -> "Applications"
 
   renderTemplate: ->
-    @render('_menu',into: 'application', outlet: 'menu')
     @render('apply_forms')
 
   actions:
