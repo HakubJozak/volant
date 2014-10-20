@@ -8,6 +8,11 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
     @render('apply_forms')
 
   actions:
+    accept: ->
+      @send('showModal')
+      false
+
+
     search: ->
       @refresh()
       false
