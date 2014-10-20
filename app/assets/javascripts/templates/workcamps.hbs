@@ -6,7 +6,7 @@
 
       <div class="list-group">
              {{#each itemController='workcamp'}}
-               <div href="#" class="list-group-item" {{action 'go_to_detail' this}}>
+               <div href="#" class="list-group-item">
                  <div class="row">
                    <div class="col-lg-1">
                      <div>
@@ -20,7 +20,8 @@
                    </div>
                    <div class="col-lg-6">
                      <h4 class="list-group-item-heading">
-                       {{name}}
+                     {{#link-to 'workcamp' this}}{{name}}{{/link-to}}
+
                        <small>
                          {{duration}} days
                        </small>

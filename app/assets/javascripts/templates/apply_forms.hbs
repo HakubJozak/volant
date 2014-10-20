@@ -17,9 +17,11 @@
         </td>
         <td>{{long-date created_at}}</td>
         <td>
+          {{#link-to 'apply_form' this}}
           {{gender volunteer}}
           {{name}}
           ({{volunteer.age}})
+          {{/link-to}}
         </td>
         <td>{{ apply-form-state-icon state}}</td>
         <td>

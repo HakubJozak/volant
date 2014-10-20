@@ -8,9 +8,6 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
     @render('apply_forms')
 
   actions:
-    go_to_detail: (form) ->
-      @transitionTo('apply_form',form)
-
     search: ->
       @refresh()
       false

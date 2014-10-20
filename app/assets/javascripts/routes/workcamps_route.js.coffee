@@ -34,7 +34,4 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
       @refresh()
       false
 
-    go_to_detail: (wc) ->
-      @transitionTo('workcamp',wc)
-
 })
