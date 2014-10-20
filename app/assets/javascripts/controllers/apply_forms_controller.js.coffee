@@ -13,6 +13,10 @@ Volant.ApplyFormsController = Volant.ListController.extend({
 #   class="form-control"}}
 
   actions:
+    accept: ->
+      console.info 'accepted'
+      false
+
     search: ->
       @set 'page',1
       true

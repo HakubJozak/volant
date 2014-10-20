@@ -6,8 +6,8 @@ Ember.Handlebars.helper 'apply-form-state-icon', (state) ->
             state
 
   icon = switch key
-           when "accepted" then 'thumbs-up'
-           when "rejected" then 'thumbs-down'
+           when "accepted" then 'thumbs-o-up'
+           when "rejected" then 'thumbs-o-down'
            when "asked" then 'envelope-o'
            when "paid" then 'money'
            when "not_paid" then 'circle-o'
@@ -22,8 +22,8 @@ Ember.Handlebars.helper 'apply-form-state-icon', (state) ->
 Ember.Handlebars.helper 'apply-form-action-icon', (name) ->
 
   icons = {
-    accept: 'thumbs-up'
-    reject: 'thumbs-down'
+    accept: 'thumbs-o-up'
+    reject: 'thumbs-o-down'
     ask: 'envelope-o'
     infosheet: 'suitcase'
     pay: 'money'
