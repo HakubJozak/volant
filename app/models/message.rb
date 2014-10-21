@@ -3,15 +3,20 @@ class Message < ActiveRecord::Base
   belongs_to :user
   validates_presence_of :user
 
-  def send!
-    ActiveRecord::Base.transaction do
-      MessageMailer.standard_email(self).deliver
-      sent_at = Time.now
-      save!
+  def deliver
+    unless sent?
+      ActiveRecord::Base.transaction do
+        mail = MessageMailer.standard_email(self)
+        mail.deliver
+        self.sent_at = Time.now
+        save!
+      end
     end
   end
 
   def sent?
-    !!sent_at
+    !self.sent_at.nil?
   end
+
+
 end

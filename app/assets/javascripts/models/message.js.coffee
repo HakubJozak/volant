@@ -1,12 +1,16 @@
 # for more details see: http://emberjs.com/guides/models/defining-models/
 
 Volant.Message = DS.Model.extend
+  user: DS.belongsTo 'user',async: true
+  email_template: DS.belongsTo 'email_template',async: true
+  workcamp_assignment: DS.belongsTo 'email_template',async: true
+
   to: DS.attr 'string'
   from: DS.attr 'string'
   subject: DS.attr 'string'
   body: DS.attr 'string'
-  userId: DS.attr 'number'
-  sentAt: DS.attr 'date'
+  sent_at: DS.attr 'date'
   action: DS.attr 'string'
-  emailTemplateId: DS.attr 'number'
-  workcampAssignmentId: DS.attr 'number'
+
+  # transient flag
+  send_on_save: DS.attr 'boolean', defaultValue: false

@@ -1,12 +1,8 @@
 Factory.define :user do |u|
-  u.login 'admin'
-  u.firstname 'Jakub'
-  u.lastname 'Hozak'
-  u.locale 'en'
+  u.first_name 'Jakub'
+  u.last_name 'Hozak'
   u.email 'admin@inexsda.cz'
-  u.password 'heslo'
-  u.password_confirmation 'heslo'
+  u.password 'hesloheslo'
+  u.password_confirmation 'hesloheslo'
   u.created_at 5.days.ago
 end
-
-
