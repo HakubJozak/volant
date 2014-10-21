@@ -1,10 +1,13 @@
-Volant.MessageController = Volant.ObjectController.extend({
+Volant.MessageController = Ember.ObjectController.extend({
   actions:
     send: ->
       @set('model.deliver_on_save',true)
-      @get('model').save (-> @send('removeModal')), (->)
+      @save_model()
 
     close_and_save: ->
       @set('model.deliver_on_save',false)
-      @get('model').save (-> @send('removeModal')), (->)
+      @save_model()
+
+  save_model: ->
+    @get('model').save().then (-> @send('removeModal')), (-> console.info 'ouch')
 })

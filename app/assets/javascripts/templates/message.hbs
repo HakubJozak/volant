@@ -1,8 +1,9 @@
 {{#modal-dialog title='Message' ok='save' close='removeModal'}}
     <div class="modal-body">
       {{#if errors.firstObject}}
-        <div class="alert alert-danger" role="alert">{{errors.firstObject}}</div>
+        <div class="alert alert-danger" role="alert">{{join-errors errors}}</div>
       {{/if}}
+
       <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
      <fieldset>
           <div class="form-group" >
@@ -43,6 +44,6 @@
       <button type="button" class="btn btn-default" {{action 'close_and_save'}}>
         Save & Close
       </button>
-      <button type="button" class="btn btn-primary">Send</button>
+      <button type="button" class="btn btn-primary" {{action 'send' }}>Send</button>
     </div>
 {{/modal-dialog}}

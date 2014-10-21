@@ -4,9 +4,11 @@ class MessageSerializer < ActiveModel::Serializer
   has_one :workcamp_assignment, embed: :ids, include: true
   has_one :user, embed: :ids, include: false
 
-  attributes MessageSerializer.public_attributes
-
   def self.public_attributes
-    :id, :to, :from, :subject, :body, :sent_at, :action
+    [:id, :to, :from, :subject, :body, :sent_at, :action]
   end
+
+  attributes *MessageSerializer.public_attributes
+
+
 end

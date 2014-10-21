@@ -29,7 +29,7 @@ Rails.application.configure do
   # number of complex assets.
 
   #  config.ember.variant = :production
-  config.assets.debug = false
+  config.assets.debug = true
   require 'middleware/turbo_dev'
   config.middleware.insert 0, Middleware::TurboDev
 
