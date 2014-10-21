@@ -64,6 +64,8 @@ gem 'bootstrap-generators', '~> 3.2.0'
 
 group :development do
   gem 'capistrano-rails'
+  gem 'puma'
+#  gem 'unicorn'
 end
 
 group :test do
