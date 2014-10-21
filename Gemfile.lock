@@ -42,6 +42,7 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (3.2.6)
       activerecord (>= 3, < 5)
+    addressable (2.3.6)
     ansi (1.4.3)
     arel (5.0.1.20140414130214)
     barber (0.4.2)
@@ -138,11 +139,15 @@ GEM
     kaminari (0.16.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    launchy (2.4.2)
+      addressable (~> 2.3)
     less (2.5.1)
       commonjs (~> 0.2.7)
     less-rails (2.5.0)
       actionpack (>= 3.1)
       less (~> 2.5.0)
+    letter_opener (1.2.0)
+      launchy (~> 2.2)
     libv8 (3.16.14.3)
     listen (2.7.11)
       celluloid (>= 0.15.2)
@@ -279,6 +284,7 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari
   less-rails
+  letter_opener
   minitest-reporters
   modernizr-rails
   momentjs-rails

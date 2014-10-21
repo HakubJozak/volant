@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :volunteers
   resources :tags
   resources :payments
+  resources :messages
 
   root 'dashboard#index'
   get 'dashboard/index'

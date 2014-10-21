@@ -151,7 +151,8 @@ CREATE TABLE apply_forms (
     current_assignment_id_cached integer,
     type character varying(255) DEFAULT 'Outgoing::ApplyForm'::character varying NOT NULL,
     confirmed timestamp without time zone,
-    starred boolean DEFAULT false NOT NULL
+    starred boolean DEFAULT false NOT NULL,
+    message_id integer
 );
 
 
@@ -310,7 +311,9 @@ CREATE TABLE devise_users (
     current_sign_in_ip character varying(255),
     last_sign_in_ip character varying(255),
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    first_name character varying(255),
+    last_name character varying(255)
 );
 
 
@@ -570,6 +573,45 @@ CREATE SEQUENCE leaderships_id_seq
 --
 
 ALTER SEQUENCE leaderships_id_seq OWNED BY leaderships.id;
+
+
+--
+-- Name: messages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE messages (
+    id integer NOT NULL,
+    "to" character varying(255),
+    "from" character varying(255),
+    subject character varying(255),
+    body text,
+    action character varying(255),
+    user_id integer NOT NULL,
+    email_template_id integer,
+    workcamp_assignment_id integer,
+    sent_at timestamp without time zone,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE messages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
 
 
 --
@@ -1135,6 +1177,13 @@ ALTER TABLE ONLY leaderships ALTER COLUMN id SET DEFAULT nextval('leaderships_id
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY networks ALTER COLUMN id SET DEFAULT nextval('networks_id_seq'::regclass);
 
 
@@ -1316,6 +1365,14 @@ ALTER TABLE ONLY languages
 
 ALTER TABLE ONLY leaderships
     ADD CONSTRAINT leaderships_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY messages
+    ADD CONSTRAINT messages_pkey PRIMARY KEY (id);
 
 
 --
@@ -2029,4 +2086,8 @@ INSERT INTO schema_migrations (version) VALUES ('20141007183833');
 INSERT INTO schema_migrations (version) VALUES ('20141009132207');
 
 INSERT INTO schema_migrations (version) VALUES ('20141013143540');
+
+INSERT INTO schema_migrations (version) VALUES ('20141021132011');
+
+INSERT INTO schema_migrations (version) VALUES ('20141021140043');
 

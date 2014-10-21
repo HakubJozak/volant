@@ -34,7 +34,7 @@ class EmailTemplateTest < ActiveSupport::TestCase
     et.bind_data( "wc", form.current_workcamp)
     et.bind_data( "volunteer", form.volunteer, [ "name", "age" ])
     et.bind_data( "form", form)
-    et.bind_data( "user", users(:admin), [ 'name' ])
+    et.bind_data( "user", users(:john), [ 'name' ])
 
     assert_not_nil et.get_subject
     assert_not_nil et.get_body.index('Sincerely'), 'Inner body text not found'
