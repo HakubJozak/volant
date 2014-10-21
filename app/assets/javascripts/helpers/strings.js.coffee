@@ -12,7 +12,15 @@ Ember.Handlebars.helper "mail-to", (email) ->
 
 
 Ember.Handlebars.helper "markdown", (text) ->
+  context = { name: 'Tonda' }
+
   if text?
+    try
+      text = Handlebars.compile(text)(context)
+    catch error
+      # TODO: inform about the parse error
+      console.error error
+
     new Handlebars.SafeString(markdown.toHTML(text))
   else
     ''
