@@ -10,10 +10,12 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend({
     @render('apply_form/page_up',into: 'application', outlet: 'page_up')
     @render('quick_save',into: 'application', outlet: 'item_controls')
 
-
   actions:
-    view_workcamp: (wc) ->
-      @transitionTo('workcamp',wc)
+    accept: ->
+      msg = @store.createRecord('message')
+      @controllerFor('message').set('model', msg)
+      @render 'message', into: 'application',outlet: 'modal'
+      false
 
 #  setupController: (controller, model) ->
 #    @controllerFor('workcamps').set('current_item', model);

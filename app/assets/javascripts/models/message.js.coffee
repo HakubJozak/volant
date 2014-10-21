@@ -1,5 +1,3 @@
-# for more details see: http://emberjs.com/guides/models/defining-models/
-
 Volant.Message = DS.Model.extend
   user: DS.belongsTo 'user',async: true
   email_template: DS.belongsTo 'email_template',async: true
@@ -13,4 +11,4 @@ Volant.Message = DS.Model.extend
   action: DS.attr 'string'
 
   # transient flag
-  send_on_save: DS.attr 'boolean', defaultValue: false
+  deliver_on_save: DS.attr 'boolean', defaultValue: false

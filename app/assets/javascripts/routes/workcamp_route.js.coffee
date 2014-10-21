@@ -10,9 +10,6 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend({
     @render('quick_save',into: 'application', outlet: 'item_controls')
     @render('workcamp/page_up',into: 'application', outlet: 'page_up')
 
-  deactivate: ->
-    console.info 'deactivated'
-
   actions:
     view_apply_form: (form) ->
       @transitionTo('apply_form',form)

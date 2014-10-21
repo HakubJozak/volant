@@ -17,3 +17,10 @@ Ember.Handlebars.helper "truncate", (str, len) ->
 
 Ember.Handlebars.helper "mail-to", (email) ->
   new Handlebars.SafeString "<a href='mailto:#{email}' title='Open your email app with #{email}' >#{email}</a>"
+
+
+Ember.Handlebars.helper "markdown", (text) ->
+  if text?
+    new Handlebars.SafeString(markdown.toHTML(text))
+  else
+    ''

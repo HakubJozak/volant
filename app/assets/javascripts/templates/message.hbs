@@ -1,3 +1,48 @@
 {{#modal-dialog title='Message' ok='save' close='removeModal'}}
+    <div class="modal-body">
+      {{#if errors.firstObject}}
+        <div class="alert alert-danger" role="alert">{{errors.firstObject}}</div>
+      {{/if}}
+      <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
+     <fieldset>
+          <div class="form-group" >
+            <label class="col-lg-1 control-label">To</label>
+            <div class="col-lg-11">
+              {{input value=to class='form-control' }}
+            </div>
+          </div>
 
+          <div class="form-group" >
+            <label class="col-lg-1 control-label">From</label>
+            <div class="col-lg-11">
+              {{input value=from class='form-control' }}
+            </div>
+          </div>
+
+          <div class="form-group" >
+          <label class="col-lg-1 control-label">Subject</label>
+          <div class="col-lg-11">
+            {{input value=subject class='form-control' }}
+          </div>
+          </div>
+
+          <div class="form-group" >
+          <div class="col-lg-6 col-lg-offset-1">
+            {{textarea value=body class='form-control' }}
+          </div>
+          <div class="col-lg-5">
+            {{markdown body}}
+          </div>
+          </div>
+      </fieldset>
+      </form>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" {{action 'close_and_save'}}>
+        Save & Close
+      </button>
+      <button type="button" class="btn btn-primary">Send</button>
+    </div>
 {{/modal-dialog}}

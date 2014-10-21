@@ -10,11 +10,10 @@
 #= require moment
 ## require moment/czech.js
 ## require moment/english.js
-
-
 #= require modernizr
-#= jquery-ui/datepicker
-#= date-polyfill.min
+## require jquery-ui/datepicker
+## require date-polyfill.min
+#= require markdown
 
 #= require_self
 #= require ./store
