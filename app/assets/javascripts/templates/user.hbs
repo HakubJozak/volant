@@ -2,6 +2,16 @@
 
 <form class="form" role="form" {{action 'save' on="submit"}}>
   <div class="form-group">
+    <label class=" control-label">First Name</label>
+    {{input value=first_name class="form-control"}}
+  </div>
+
+  <div class="form-group">
+    <label class=" control-label">Last Name</label>
+    {{input value=last_name class="form-control"}}
+  </div>
+
+  <div class="form-group">
     <label class=" control-label">Email</label>
     {{input value=email type='email' class="form-control"}}
   </div>
