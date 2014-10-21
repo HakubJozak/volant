@@ -23,11 +23,9 @@ gem 'jquery-rails'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-group :development do
-  gem 'spring'
-  gem 'guard-livereload', '2.3.1', require: false
-end
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+
+
+
 
 
 # Use ActiveModel has_secure_password
@@ -64,8 +62,10 @@ gem 'bootstrap-generators', '~> 3.2.0'
 
 group :development do
   gem 'capistrano-rails'
+  gem 'letter_opener'
   gem 'puma'
-#  gem 'unicorn'
+  gem 'spring'
+  gem 'guard-livereload', '2.3.1', require: false
 end
 
 group :test do
