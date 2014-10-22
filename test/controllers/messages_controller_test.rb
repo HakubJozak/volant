@@ -15,32 +15,20 @@ class MessagesControllerTest < ActionController::TestCase
   test "should create message" do
     assert_difference('Message.count') do
       post :create, message: { body: @message.body, from: @message.from, subject: @message.subject, to: @message.to }
+      assert_response :success, response.body.to_s
+      assert_equal 1, json_response['messages'].size
     end
-
-    assert_response :success
-    assert_equal 1, json_response['messages'].size
-  end
-
-  test "should show message" do
-    get :show, id: @message
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @message
-    assert_response :success
   end
 
   test "should update message" do
-    patch :update, id: @message, message: { body: @message.body, from: @message.from, subject: @message.subject, to: @message.to }
-    assert_redirected_to message_path(assigns(:message))
+    patch :update, id: @message, message: {}
+    assert_response :success, response.body.to_s
   end
 
   test "should destroy message" do
     assert_difference('Message.count', -1) do
       delete :destroy, id: @message
+      assert_response :success, response.body.to_s
     end
-
-    assert_redirected_to messages_path
   end
 end
