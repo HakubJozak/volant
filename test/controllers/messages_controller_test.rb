@@ -14,14 +14,15 @@ class MessagesControllerTest < ActionController::TestCase
 
   test "should create message" do
     assert_difference('Message.count') do
-      post :create, message: { body: @message.body, from: @message.from, subject: @message.subject, to: @message.to }
+      post :create, message: Factory.attributes_for(:message)
+
       assert_response :success, response.body.to_s
       assert_equal 1, json_response['messages'].size
     end
   end
 
   test "should update message" do
-    patch :update, id: @message, message: {}
+    patch :update, id: @message, message: Factory.attributes_for(:message)
     assert_response :success, response.body.to_s
   end
 

@@ -15,14 +15,15 @@ class <%= controller_class_name %>ControllerTest < ActionController::TestCase
 
   test "should create <%= singular_table_name %>" do
     assert_difference('<%= class_name %>.count') do
-      post :create, <%= "#{singular_table_name}: { #{attributes_hash} }" %>
+      post :create, <%= "#{singular_table_name}: Factory.attributes_for(:#{singular_table_name})" %>
+
       assert_response :success, response.body.to_s
       assert_equal 1, json_response['<%= plural_table_name %>'].size
     end
   end
 
   test "should update <%= singular_table_name %>" do
-    patch :update, id: <%= "@#{singular_table_name}" %>, <%= "#{singular_table_name}: {}" %>
+    patch :update, id: <%= "@#{singular_table_name}, #{singular_table_name}: Factory.attributes_for(:#{singular_table_name})" %>
     assert_response :success, response.body.to_s
   end
 
