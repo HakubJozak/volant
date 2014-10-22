@@ -6,7 +6,7 @@ class WorkcampSerializer < ActiveModel::Serializer
   has_many :workcamp_assignments, embed: :ids, include: false
 
   def self.public_attributes
-    [ :id, :starred, :name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
+    [ :starred, :name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
       :area, :accomodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,
       :region, :capacity_natives, :capacity_teenagers, :capacity_males, :capacity_females,
       :airport, :train, :publish_mode,:places, :places_for_males, :places_for_females,
@@ -18,7 +18,7 @@ class WorkcampSerializer < ActiveModel::Serializer
   end
 
   def self.private_attributes
-    [ :free_places, :free_places_for_males, :free_places_for_females, :state, :duration ]
+    [ :id, :free_places, :free_places_for_males, :free_places_for_females, :state, :duration ]
   end
 
   def workcamp_intentions

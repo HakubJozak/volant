@@ -5,10 +5,15 @@ class MessageSerializer < ActiveModel::Serializer
   has_one :user, embed: :ids, include: false
 
   def self.public_attributes
-    [:id, :to, :from, :subject, :body, :sent_at, :action]
+    [ :to, :from, :subject, :body]
   end
 
-  attributes *MessageSerializer.public_attributes
+  def self.private_attributes
+    [:id, :sent_at, :action]
+  end
+
+  attributes *[ MessageSerializer.public_attributes, MessageSerializer.private_attributes ].flatten
+
 
 
 end

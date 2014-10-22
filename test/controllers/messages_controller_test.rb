@@ -17,7 +17,7 @@ class MessagesControllerTest < ActionController::TestCase
       post :create, message: Factory.attributes_for(:message)
 
       assert_response :success, response.body.to_s
-      assert_equal 1, json_response['messages'].size
+      assert_not_nil json_response['message']['id']
     end
   end
 

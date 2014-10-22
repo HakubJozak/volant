@@ -18,7 +18,7 @@ class <%= controller_class_name %>ControllerTest < ActionController::TestCase
       post :create, <%= "#{singular_table_name}: Factory.attributes_for(:#{singular_table_name})" %>
 
       assert_response :success, response.body.to_s
-      assert_equal 1, json_response['<%= plural_table_name %>'].size
+      assert_not_nil json_response['<%= singular_table_name %>']['id'], json_response
     end
   end
 
