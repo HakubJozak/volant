@@ -1,0 +1,24 @@
+<h3>Email Templates</h3>
+<table class="table table-striped table-hover">
+  <thead>
+    <th>Name</th>
+    <th>Description</th>
+    <th class='text-right'>{{#link-to 'email_templates.new'}}{{fa 'plus'}}{{/link-to}}</th>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr>
+        <td>
+          {{#link-to 'email_template' this}}
+          {{action_name}}
+          {{/link-to}}
+        </td>
+        <td>{{description}}</td>
+        <td>{{subject}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+
+{{outlet}}

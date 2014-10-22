@@ -35,6 +35,6 @@ class EmailTemplatesController < ApplicationController
   end
 
   def email_template_params
-    params.require(:email_template).permit(Email_templateSerializer.public_attributes)
+    params.require(:email_template).permit(EmailTemplateSerializer.public_attributes)
   end
 end

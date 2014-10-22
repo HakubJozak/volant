@@ -4,4 +4,7 @@ Volant.EmailTemplate = DS.Model.extend({
   subject: DS.attr 'string'
   body: DS.attr 'string'
   wrap_into_template: DS.attr 'string'
+
+  # for the collision with {{action}} helper in Handlebars templates
+  action_name: Ember.computed.alias('action')
 })
