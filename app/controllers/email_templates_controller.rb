@@ -9,6 +9,10 @@ class EmailTemplatesController < ApplicationController
     respond_with(@email_templates)
   end
 
+  def show
+    respond_with(@email_template)
+  end
+
   # POST /email_templates
   def create
     @email_template = EmailTemplate.new(email_template_params)

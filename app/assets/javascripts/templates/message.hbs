@@ -6,6 +6,17 @@
 
       <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
      <fieldset>
+         <div class="form-group" >
+            <label class="col-lg-1 control-label">Template</label>
+            <div class="col-lg-11">
+              {{view Ember.Select
+                contentBinding='controllers.email_templates.content'
+                optionLabelPath="content.action"
+                selectionBinding="email_template"
+                class="form-control" }}
+            </div>
+          </div>
+
           <div class="form-group" >
             <label class="col-lg-1 control-label">To</label>
             <div class="col-lg-11">

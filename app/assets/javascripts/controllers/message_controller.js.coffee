@@ -1,4 +1,6 @@
 Volant.MessageController = Ember.ObjectController.extend({
+  needs: 'email_templates'
+
   actions:
     send: ->
       @set('model.deliver_on_save',true)

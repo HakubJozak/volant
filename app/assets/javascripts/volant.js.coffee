@@ -55,11 +55,13 @@ Ember.Application.initializer
     if attributes
       proxy_class = Volant.CurrentUserObjectProxy.extend()
       container.register 'user:current', proxy_class, singleton: true
-      proxy = container.lookup('user:current')
 
       user = store.push('user', store.serializerFor(Volant.User).normalize(Volant.User, JSON.parse(attributes)))
+      proxy = container.lookup('user:current')
       proxy.set('content', user)
+
       application.inject('controller', 'current_user', 'user:current');
+      application.inject('route', 'current_user', 'user:current');
 
       # controller = container.lookup('controller:currentUser').set('content', user)
       # cannot inject controller onto other controllers?

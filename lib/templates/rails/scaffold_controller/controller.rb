@@ -15,6 +15,11 @@ class <%= controller_class_name %>Controller < ApplicationController
     respond_with(@<%= plural_table_name %>)
   end
 
+  # GET <%= route_url %>/1
+  def show
+    respond_with(@<%= singular_table_name %>)
+  end
+
   # POST <%= route_url %>
   def create
     @<%= singular_table_name %> = <%= orm_class.build(class_name, "#{singular_table_name}_params") %>
