@@ -1,6 +1,8 @@
 class Message < ActiveRecord::Base
 
   belongs_to :user
+#  belongs_to :workcamp_assignment
+  belongs_to :email_template
   validates_presence_of :user
 
   def deliver
