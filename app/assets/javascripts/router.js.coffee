@@ -3,6 +3,9 @@ Volant.Router.map () ->
   @resource 'users', ->
     @route 'new'
     @resource 'user', {path: ':user_id'}
+  @resource 'email_templates', ->
+    @route 'new'
+    @resource 'email_template', {path: ':email_template_id'}
   @resource 'apply_forms'
   @route 'payments'
   @route 'apply_form', path: '/apply_forms/:apply_form_id', ->

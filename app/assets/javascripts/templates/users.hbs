@@ -3,14 +3,18 @@
     <h3>Users</h3>
     <table class="table table-striped table-hover">
       <thead>
+        <th>Name</th>
         <th>Email</th>
         <th class='text-right'>{{#link-to 'users.new'}}{{fa 'plus'}}{{/link-to}}</th>
       </thead>
       <tbody>
         {{#each}}
-          <tr {{action 'go_to_detail' this}}>
+          <tr>
             <td>
-              {{email}}
+              {{#link-to 'user' this}}{{name}}{{/link-to}}
+            </td>
+            <td>
+              {{#link-to 'user' this}}{{email}}{{/link-to}}
             </td>
             <td></td>
           </tr>

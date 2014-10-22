@@ -61,6 +61,8 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
+            {{#link-li}}{{#link-to 'users'}}Users{{/link-to}}{{/link-li}}
+            {{#link-li}}{{#link-to 'email_templates'}}Email Templates{{/link-to}}{{/link-li}}
             <li><a href="#">Countries</a></li>
             <li><a href="#">Workcamp Intentions</a></li>
             <li><a href="#">Tags</a></li>
@@ -72,7 +74,6 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            {{#link-li}}{{#link-to 'users'}}Manage Users{{/link-to}}{{/link-li}}
             <li class="divider"></li>
             <li><a href="/accounts/sign_out">Logout</a></li>
           </ul>
