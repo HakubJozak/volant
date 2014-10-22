@@ -41,7 +41,7 @@ class <%= controller_class_name %>Controller < ApplicationController
   end
 
   def <%= "#{singular_table_name}_params" %>
-    params.require(:<%= singular_table_name %>).permit(<%= name.capitalize %>Serializer.public_attributes)
+    params.require(:<%= singular_table_name %>).permit(<%= class_name %>Serializer.public_attributes)
   end
 end
 <% end -%>

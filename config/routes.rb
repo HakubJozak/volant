@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :tags
   resources :payments
   resources :messages
+  resources :email_templates, only: [ :index, :create, :update, :destroy ]
 
   root 'dashboard#index'
   get 'dashboard/index'

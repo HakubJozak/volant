@@ -3,4 +3,5 @@ Volant.EmailTemplate = DS.Model.extend({
   description: DS.attr 'string'
   subject: DS.attr 'string'
   body: DS.attr 'string'
+  wrap_into_template: DS.attr 'string'
 })
