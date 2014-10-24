@@ -15,10 +15,6 @@ textarea {
   min-height: 10em;
 }
 
-legend {
-  color: rgb(47, 107, 164);
-}
-
 .fa-star {
   color: #FFD800;
 }
@@ -28,8 +24,6 @@ legend {
 }
 
 .nav-with-filter {
-  border-bottom: 1px solid $grey;
-  box-shadow: rgba(0,0,0,0.6) 2px 2px 10px;
 }
 
 .sidepanel {
@@ -111,4 +105,8 @@ table.dashboard {
 
 .navbar-default .navbar-nav > li > a {
   @include single-text-shadow;
+}
+
+.form-control {
+ @include box-shadow(none);
 }
