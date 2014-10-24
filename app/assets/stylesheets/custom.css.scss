@@ -1,9 +1,10 @@
+@import "compass/css3";
+
 $brown: #AD7624;
 $green: #87B64B;
 $yellow: #F3D70C;
 $red: #E76363;
 $grey: grey;
-
 
 body {
   margin: 1em;
@@ -106,4 +107,8 @@ table.dashboard {
       vertical-align: middle;
      }
 
+}
+
+.navbar-default .navbar-nav > li > a {
+  @include single-text-shadow;
 }
