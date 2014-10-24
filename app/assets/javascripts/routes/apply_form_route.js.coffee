@@ -14,11 +14,12 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend({
     accept: ->
       @store.find('email_template').then (templates) =>
         @controllerFor('email_templates').set('content', templates)
-
         apply_form = @modelFor('apply_form')
-        user = @get('current_user.content')
-        message = @store.createRecord('message', apply_form: apply_form, user: user)
-        @controllerFor('message').set('content',message)
+
+        @store.find('user',@get('current_user.content.id')).then (user) =>
+          console.info user
+          message = @store.createRecord('message', apply_form: apply_form, user: user)
+          @controllerFor('message').set('content',message)
 
       @render 'message', into: 'application',outlet: 'modal'
       false

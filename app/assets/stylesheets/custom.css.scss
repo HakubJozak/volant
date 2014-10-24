@@ -27,7 +27,7 @@ legend {
 }
 
 .nav-with-filter {
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid $grey;
   box-shadow: rgba(0,0,0,0.6) 2px 2px 10px;
 }
 
@@ -78,4 +78,32 @@ tr.workcamp_assignment {
 
 .modal-dialog {
   width: 85%;
+}
+
+table.dashboard {
+  /* overriding bootstrap */
+  & > tbody > tr > td {
+    border: none;
+    padding-top: 0em;
+    padding-bottom: 0em;
+  }
+
+
+  tr {
+    font-size: 35px;
+    margin: 1px;
+  }
+
+  td {  }
+
+    td:nth-child(1) {
+      text-align: right;
+    }
+
+    td:nth-child(2) {
+      font-size: 65%;
+      color: $grey;
+      vertical-align: middle;
+     }
+
 }
