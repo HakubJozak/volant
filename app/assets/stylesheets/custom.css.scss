@@ -103,9 +103,17 @@ table.dashboard {
 
 }
 
-.navbar-default .navbar-nav > li > a {
-  @include single-text-shadow;
+.navbar-default .navbar-nav {
+   // & > li > a {  @include single-text-shadow; }
 }
+
+.navbar-default {
+  .navbar-header > a {
+//    @include single-text-shadow(0px,0px,20px,false,white);
+    font-weight: lighter;
+  }
+}
+
 
 .form-control {
  @include box-shadow(none);
