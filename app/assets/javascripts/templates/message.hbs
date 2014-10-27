@@ -9,7 +9,28 @@
          <div class="form-group" >
             <label class="col-lg-1 control-label">From</label>
             <div class="col-lg-5">
-              {{input value=from class='form-control' }}
+              {{#if from_field_editable}}
+                {{input value=from class='form-control' }}
+              {{else}}
+                <p class="form-control-static">
+                  {{from}}
+                  <button class='btn btn-default' {{action 'edit_from_field'}}>Change</button>
+                </p>
+              {{/if}}
+            </div>
+
+            <label class="col-lg-1 control-label">Action</label>
+            <div class="col-lg-5">
+              <p class="form-control-static">
+                {{action_name}}
+              </p>
+            </div>
+          </div>
+
+          <div class="form-group" >
+            <label class="col-lg-1 control-label">To</label>
+            <div class="col-lg-5">
+              {{input value=to class='form-control' }}
             </div>
 
             <label class="col-lg-1 control-label">Template</label>
@@ -23,9 +44,9 @@
           </div>
 
           <div class="form-group" >
-            <label class="col-lg-1 control-label">To</label>
+            <label class="col-lg-1 control-label">Cc</label>
             <div class="col-lg-5">
-              {{input value=to class='form-control' }}
+              {{input value=cc class='form-control' }}
             </div>
 
             <label class="col-lg-1 control-label">Application</label>
@@ -34,20 +55,6 @@
               {{#link-to 'apply_form' apply_form}}
                 {{apply_form.name}}
               {{/link-to}}
-              </p>
-            </div>
-          </div>
-
-          <div class="form-group" >
-            <label class="col-lg-1 control-label">Cc</label>
-            <div class="col-lg-5">
-              {{input value=cc class='form-control' }}
-            </div>
-
-            <label class="col-lg-1 control-label">Action</label>
-            <div class="col-lg-5">
-              <p class="form-control-static">
-                {{action_name}}
               </p>
             </div>
           </div>
@@ -107,6 +114,9 @@
       <button type="button" class="btn btn-default" {{action 'close_and_save'}}>
         Save & Close
       </button>
-      <button type="button" class="btn btn-primary" {{action 'send' }}>Send</button>
+      <button type="button" class="btn btn-primary" {{action 'send' }}>
+        {{fa 'send-o'}}
+        Send
+      </button>
     </div>
 {{/modal-dialog}}

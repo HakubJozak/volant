@@ -23,10 +23,18 @@
             ({{volunteer.age}})
           {{/link-to}}
         </td>
-        <td>{{ apply-form-state-icon state}}</td>
         <td>
           {{#if message}}
-            <button {{action 'open_existing_message' this }} class='btn btn-warning'>Draft</button>
+            {{fa 'send-o'}}
+          {{else}}
+            {{ apply-form-state-icon state}}
+          {{/if}}
+        </td>
+        <td>
+          {{#if message}}
+            <button {{action 'open_existing_message' this }} class='btn btn-warning'>
+              Message
+            </button>
           {{else}}
             {{ partial 'action_buttons' }}
           {{/if}}

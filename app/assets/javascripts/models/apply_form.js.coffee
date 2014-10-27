@@ -17,6 +17,7 @@ Volant.ApplyForm = DS.Model.extend
   motivation: DS.attr 'string'
 
   name: Ember.computed.alias('volunteer.name')
+  email: Ember.computed.alias('volunteer.email')
 
   has_workcamp: (wc) ->
     @get('workcamp_assignments').any (wa) ->

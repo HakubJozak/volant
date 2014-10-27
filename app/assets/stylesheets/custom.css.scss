@@ -132,3 +132,8 @@ table.dashboard {
 .email-preview {
   padding: 0.5em;
 }
+
+/* white text color is not suitable for warning background */
+.btn.btn-warning {
+  color: #625858;
+}

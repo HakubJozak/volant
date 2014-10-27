@@ -4,6 +4,8 @@ Volant.Message = DS.Model.extend
   apply_form: DS.belongsTo 'apply_form',async: false
 
   to: DS.attr 'string'
+  cc: DS.attr 'string'
+  bcc: DS.attr 'string'
   from: DS.attr 'string'
   subject: DS.attr 'string'
   body: DS.attr 'string'

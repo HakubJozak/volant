@@ -14,9 +14,11 @@ Volant.MessagingRouteMixin = Ember.Mixin.create({
       tmpl = templates.findBy('action',action_name)
 
       @store.find('user',@get('current_user.content.id')).then (user) =>
-        console.info user
-
         message = @store.createRecord 'message', {
+          from: user.get('email')
+          to: apply_form.get('email')
+          bcc: user.get('email')
+#          to: apply_form.get('current_workcamp.organization.outgoing_email')
           action: action_name
           apply_form: apply_form
           user: user
