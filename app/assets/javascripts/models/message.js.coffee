@@ -24,4 +24,4 @@ Volant.Message = DS.Model.extend
     tmpl = @get('email_template')
     @set 'subject',tmpl.eval_subject(context)
     @set 'body',tmpl.eval_body(context)
-  ).observes('email_template') #.on('init')
+  ).observes('email_template')

@@ -128,3 +128,7 @@ table.dashboard {
 .form-control {
  @include box-shadow(none);
 }
+
+.email-preview {
+  padding: 0.5em;
+}
