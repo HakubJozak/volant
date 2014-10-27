@@ -7,8 +7,13 @@
       <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
      <fieldset>
          <div class="form-group" >
+            <label class="col-lg-1 control-label">From</label>
+            <div class="col-lg-5">
+              {{input value=from class='form-control' }}
+            </div>
+
             <label class="col-lg-1 control-label">Template</label>
-            <div class="col-lg-11">
+            <div class="col-lg-5">
               {{view Ember.Select
                 contentBinding='controllers.email_templates.content'
                 optionLabelPath="content.action"
@@ -19,24 +24,55 @@
 
           <div class="form-group" >
             <label class="col-lg-1 control-label">To</label>
-            <div class="col-lg-11">
+            <div class="col-lg-5">
               {{input value=to class='form-control' }}
+            </div>
+
+            <label class="col-lg-1 control-label">Application</label>
+            <div class="col-lg-5">
+              <p class="form-control-static">
+              {{#link-to 'apply_form' apply_form}}
+                {{apply_form.name}}
+              {{/link-to}}
+              </p>
             </div>
           </div>
 
           <div class="form-group" >
-            <label class="col-lg-1 control-label">From</label>
-            <div class="col-lg-11">
-              {{input value=from class='form-control' }}
+            <label class="col-lg-1 control-label">Cc</label>
+            <div class="col-lg-5">
+              {{input value=cc class='form-control' }}
+            </div>
+
+            <label class="col-lg-1 control-label">Action</label>
+            <div class="col-lg-5">
+              <p class="form-control-static">
+                {{action_name}}
+              </p>
+            </div>
+          </div>
+
+          <div class="form-group" >
+            <label class="col-lg-1 control-label">Bcc</label>
+            <div class="col-lg-5">
+              {{input value=bcc class='form-control' }}
+            </div>
+            <label class="col-lg-1 control-label">Project</label>
+            <div class="col-lg-5">
+              <p class="form-control-static">
+              {{#link-to 'workcamp' apply_form.current_workcamp}}
+                {{apply_form.current_workcamp.name}}
+              {{/link-to}}
+              </p>
             </div>
           </div>
 
           <div class="form-group" >
           <label class="col-lg-1 control-label">Subject</label>
-          <div class="col-lg-8">
+          <div class="col-lg-5">
             {{input value=subject class='form-control' }}
           </div>
-          <div class="col-lg-3">
+          <div class="col-lg-6">
           <ul class="nav nav-pills pull-right" role="tablist">
             <li class="active"><a href="#edit" role="tab" data-toggle="tab">Edit</a></li>
             <li><a href="#preview" role="tab" data-toggle="tab">Preview</a></li>
@@ -67,6 +103,7 @@
     </div>
 
     <div class="modal-footer">
+      <button type="button" class="btn btn-danger" {{action 'removeModal'}}>Cancel</button>
       <button type="button" class="btn btn-default" {{action 'close_and_save'}}>
         Save & Close
       </button>

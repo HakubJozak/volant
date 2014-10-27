@@ -1,4 +1,4 @@
-Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
+Volant.ApplyFormsRoute = Volant.BaseRoute.extend(Volant.MessagingRouteMixin,{
   model: (params) ->
     @store.find('apply_form', { p: params.page, year: params.year, q: params.query })
 
@@ -8,6 +8,9 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
     @render('apply_forms')
 
   actions:
+    apply_form_action: (action_name,form) ->
+      @open_message_for action_name,form
+
     search: ->
       @refresh()
       false
@@ -15,4 +18,6 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
     refresh: ->
       @refresh()
       false
+
+
 })

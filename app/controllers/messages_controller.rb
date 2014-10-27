@@ -36,6 +36,10 @@ class MessagesController < ApplicationController
   end
 
   def message_params
+    if params[:message]
+      params[:message].delete(:sent_at)
+    end
+
     params.require(:message).permit(MessageSerializer.public_attributes)
   end
 end

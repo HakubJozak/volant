@@ -1,6 +1,6 @@
 {{#if state.actions.firstObject }}
   <div class="btn-group">
-    <button {{action state.actions.firstObject bubbles=false}} type="button" class="btn btn-default btn-sm">
+    <button {{action 'apply_form_action' state.actions.firstObject this bubbles=false}} type="button" class="btn btn-default btn-sm">
       {{capitalize state.actions.firstObject}}
     </button>
     <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
@@ -8,8 +8,10 @@
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <ul class="dropdown-menu" role="menu">
-      {{#each state.actions}}
-        <li><a {{action this bubbles=false}} href="#"> {{ apply-form-action-icon this }} {{capitalize this}}</a></li>
+      {{#each action_name in state.actions}}
+        <li><a {{action 'apply_form_action' this bubbles=false}} href="#">
+          {{ apply-form-action-icon this }} {{capitalize action_name}}
+        </a></li>
       {{/each}}
     </ul>
   </div>

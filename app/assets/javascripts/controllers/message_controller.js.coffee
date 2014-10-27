@@ -11,5 +11,11 @@ Volant.MessageController = Ember.ObjectController.extend({
       @save_model()
 
   save_model: ->
-    @get('model').save().then (-> @send('removeModal')), (-> console.info 'ouch')
+    @store.scheduleSave(this.get('model'))
+    @store.scheduleSave(this.get('model.apply_form'))
+    @store.commit().then (=>
+      @send('removeModal')
+    ), ( (err) =>
+      console.error err
+    )
 })

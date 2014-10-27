@@ -25,7 +25,11 @@
         </td>
         <td>{{ apply-form-state-icon state}}</td>
         <td>
-          {{ partial 'action_buttons' }}
+          {{#if message}}
+            <button {{action 'open_existing_message' this }} class='btn btn-warning'>Draft</button>
+          {{else}}
+            {{ partial 'action_buttons' }}
+          {{/if}}
         </td>
         <td>
           {{#link-to 'workcamp' current_workcamp}}{{current_workcamp.name}}{{/link-to}}

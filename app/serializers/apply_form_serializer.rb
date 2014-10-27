@@ -8,6 +8,7 @@ class ApplyFormSerializer < ActiveModel::Serializer
   has_one :current_workcamp, embed: :ids, include: true, root: 'workcamps'
   has_one :current_assignment, embed: :ids, include: true, root: 'workcamp_assignments'
   has_many :workcamp_assignments, embed: :ids, include: false
+  has_one :message, embed: :ids, include: false
 
   def state
     s = object.state

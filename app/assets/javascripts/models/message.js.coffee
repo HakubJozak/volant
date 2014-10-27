@@ -1,7 +1,6 @@
 Volant.Message = DS.Model.extend
   user: DS.belongsTo 'user'
   email_template: DS.belongsTo 'email_template',async: false
-  workcamp_assignment: DS.belongsTo 'workcamp_assignment',async: true
   apply_form: DS.belongsTo 'apply_form',async: false
 
   to: DS.attr 'string'
@@ -11,8 +10,8 @@ Volant.Message = DS.Model.extend
   sent_at: DS.attr 'date'
   action: DS.attr 'string'
 
-  # transient flag
-  deliver_on_save: DS.attr 'boolean', defaultValue: false
+  # for the collision with {{action}} helper in Handlebars templates
+  action_name: Ember.computed.alias('action')
 
   template_changed: (->
     context = {

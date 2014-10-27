@@ -1,4 +1,4 @@
-Volant.ApplyFormRoute = Volant.BaseRoute.extend({
+Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.MessagingRouteMixin,{
 
   model: (params) ->
     @store.find('apply_form', params.apply_form_id)
@@ -12,18 +12,7 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend({
 
   actions:
     accept: ->
-      @store.find('email_template').then (templates) =>
-        @controllerFor('email_templates').set('content', templates)
-        apply_form = @modelFor('apply_form')
-        tmpl = templates.get('firstObject')
-
-        @store.find('user',@get('current_user.content.id')).then (user) =>
-          console.info user
-          message = @store.createRecord('message', apply_form: apply_form, user: user, email_template: tmpl)
-          @controllerFor('message').set('content',message)
-
-      @render 'message', into: 'application',outlet: 'modal'
-      false
+      @open_message_for 'accept',  @modelFor('apply_form')
 
 #  setupController: (controller, model) ->
 #    @controllerFor('workcamps').set('current_item', model);

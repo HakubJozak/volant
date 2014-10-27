@@ -11,8 +11,8 @@ module Outgoing
     belongs_to :volunteer, :class_name => 'Volunteer'
     belongs_to :current_workcamp, :foreign_key => 'current_workcamp_id_cached', :class_name => 'Outgoing::Workcamp'
     belongs_to :current_assignment, :foreign_key => 'current_assignment_id_cached', :class_name => 'Outgoing::WorkcampAssignment'
+    belongs_to :message
 
-    has_one :message
     has_one :payment, :dependent => :nullify # , :select => 'id, apply_form_id, amount, returned_amount, received, returned_date, return_reason'
     has_many :workcamps, -> { order 'workcamp_assignments."order" ASC' }, through: :workcamp_assignments, class_name: 'Outgoing::Workcamp'
     has_many :workcamp_assignments, -> { order '"order" ASC' }, dependent: :delete_all, class_name: 'Outgoing::WorkcampAssignment'
