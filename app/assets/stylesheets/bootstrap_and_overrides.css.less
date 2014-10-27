@@ -51,17 +51,18 @@
 // @body-bg:           #FDF092;
 
 // ---- Blueish
-// @brand-primary: #2D748F;
-// @brand-navbar: white;
-// @body-bg:               white;
+@brand-primary: #2D748F;
+@brand-navbar: white;
+@body-bg:               white;
 
 // --- Greenish
-@brand-primary: #588F2D;
-@brand-navbar:  white;
-@link-color:    green;
-@body-bg:       white;
-@brand-success: #8DE023;
+// @brand-primary: #588F2D;
+// @brand-navbar:  white;
+// @link-color:    green;
+// @body-bg:       white;
+// @brand-success: #8DE023;
 
+@brand-navbar-bg: fadeout(@brand-primary,20%);
 
 
 //== Scaffolding
@@ -394,7 +395,7 @@
 @navbar-collapse-max-height:       340px;
 
 @navbar-default-color:             #777;
-@navbar-default-bg:                fadeout(@brand-primary,22%);
+@navbar-default-bg:                @brand-navbar-bg;
 @navbar-default-border:            darken(@navbar-default-bg, 6.5%);
 
 // Navbar links
