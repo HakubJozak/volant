@@ -121,6 +121,10 @@ table.dashboard {
 }
 
 
+.modal-header {
+  background-color: rgba(0,0,0,0.04);
+}
+
 .form-control {
  @include box-shadow(none);
 }
