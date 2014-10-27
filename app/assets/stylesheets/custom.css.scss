@@ -112,6 +112,12 @@ table.dashboard {
 //    @include single-text-shadow(0px,0px,20px,false,white);
     font-weight: lighter;
   }
+
+  .form-control {
+     background-color: #D1B778;
+     border: 1px solid lighten(#D1B778,5%);
+//     color: white;
+  }
 }
 
 
