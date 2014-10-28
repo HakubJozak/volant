@@ -1,122 +1,118 @@
-{{#modal-dialog title='Message' ok='save' close='removeModal'}}
-    <div class="modal-body">
-      {{#if errors.firstObject}}
-        <div class="alert alert-danger" role="alert">{{join-errors errors}}</div>
-      {{/if}}
+<h1>Message <small>'{{subject}}'</small></h1>
 
-      <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
-     <fieldset>
-         <div class="form-group" >
-            <label class="col-lg-1 control-label">From</label>
-            <div class="col-lg-5">
-              {{#if from_field_editable}}
-                {{input value=from class='form-control' }}
-              {{else}}
-                <p class="form-control-static">
-                  {{from}}
-                  <button class='btn btn-default' {{action 'edit_from_field'}}>Change</button>
-                </p>
-              {{/if}}
-            </div>
+{{#if errors.firstObject}}
+  <div class="alert alert-danger" role="alert">{{join-errors errors}}</div>
+{{/if}}
 
-            <label class="col-lg-1 control-label">Action</label>
-            <div class="col-lg-5">
-              <p class="form-control-static">
-                {{action_name}}
-              </p>
-            </div>
-          </div>
+<form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
+  <fieldset>
+    <div class="form-group" >
+      <label class="col-lg-1 control-label">From</label>
+      <div class="col-lg-5">
+        {{#if from_field_editable}}
+          {{input value=from class='form-control' }}
+        {{else}}
+          <p class="form-control-static">
+            {{from}}
+            <button class='btn btn-default' {{action 'edit_from_field'}}>Change</button>
+          </p>
+        {{/if}}
+      </div>
 
-          <div class="form-group" >
-            <label class="col-lg-1 control-label">To</label>
-            <div class="col-lg-5">
-              {{input value=to class='form-control' }}
-            </div>
+      <label class="col-lg-1 control-label">Action</label>
+      <div class="col-lg-5">
+        <p class="form-control-static">
+          {{action_name}}
+        </p>
+      </div>
+    </div>
 
-            <label class="col-lg-1 control-label">Template</label>
-            <div class="col-lg-5">
-              {{view Ember.Select
-                contentBinding='controllers.email_templates.content'
-                optionLabelPath="content.action"
-                selectionBinding="email_template"
-                class="form-control" }}
-            </div>
-          </div>
+    <div class="form-group" >
+      <label class="col-lg-1 control-label">To</label>
+      <div class="col-lg-5">
+        {{input value=to class='form-control' }}
+      </div>
 
-          <div class="form-group" >
-            <label class="col-lg-1 control-label">Cc</label>
-            <div class="col-lg-5">
-              {{input value=cc class='form-control' }}
-            </div>
+      <label class="col-lg-1 control-label">Template</label>
+      <div class="col-lg-5">
+        {{view Ember.Select
+        contentBinding='controllers.email_templates.content'
+        optionLabelPath="content.action"
+        selectionBinding="email_template"
+        class="form-control" }}
+      </div>
+    </div>
 
-            <label class="col-lg-1 control-label">Application</label>
-            <div class="col-lg-5">
-              <p class="form-control-static">
-              {{#link-to 'apply_form' apply_form}}
-                {{apply_form.name}}
-              {{/link-to}}
-              </p>
-            </div>
-          </div>
+    <div class="form-group" >
+      <label class="col-lg-1 control-label">Cc</label>
+      <div class="col-lg-5">
+        {{input value=cc class='form-control' }}
+      </div>
 
-          <div class="form-group" >
-            <label class="col-lg-1 control-label">Bcc</label>
-            <div class="col-lg-5">
-              {{input value=bcc class='form-control' }}
-            </div>
-            <label class="col-lg-1 control-label">Project</label>
-            <div class="col-lg-5">
-              <p class="form-control-static">
-              {{#link-to 'workcamp' apply_form.current_workcamp}}
-                {{apply_form.current_workcamp.name}}
-              {{/link-to}}
-              </p>
-            </div>
-          </div>
+      <label class="col-lg-1 control-label">Application</label>
+      <div class="col-lg-5">
+        <p class="form-control-static">
+          {{#link-to 'apply_form' apply_form}}
+          {{apply_form.name}}
+          {{/link-to}}
+        </p>
+      </div>
+    </div>
 
-          <div class="form-group" >
-          <label class="col-lg-1 control-label">Subject</label>
-          <div class="col-lg-5">
-            {{input value=subject class='form-control' }}
-          </div>
-          <div class="col-lg-6">
-          <ul class="nav nav-pills pull-right" role="tablist">
-            <li class="active"><a href="#edit" role="tab" data-toggle="tab">Edit</a></li>
-            <li><a href="#preview" role="tab" data-toggle="tab">Preview</a></li>
-          </ul>
-          </div>
-        </div>
+    <div class="form-group" >
+      <label class="col-lg-1 control-label">Bcc</label>
+      <div class="col-lg-5">
+        {{input value=bcc class='form-control' }}
+      </div>
+      <label class="col-lg-1 control-label">Project</label>
+      <div class="col-lg-5">
+        <p class="form-control-static">
+          {{#link-to 'workcamp' apply_form.current_workcamp}}
+          {{apply_form.current_workcamp.name}}
+          {{/link-to}}
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group" >
+      <label class="col-lg-1 control-label">Subject</label>
+      <div class="col-lg-5">
+        {{input value=subject class='form-control' }}
+      </div>
+      <div class="col-lg-6">
+        <ul class="nav nav-pills pull-right" role="tablist">
+          <li class="active"><a href="#edit" role="tab" data-toggle="tab">Edit</a></li>
+          <li><a href="#preview" role="tab" data-toggle="tab">Preview</a></li>
+        </ul>
+      </div>
+    </div>
 
     <div class="form-group email-body-area" >
       <div class="col-lg-11 col-lg-offset-1">
-          <!-- Tab panes -->
+        <!-- Tab panes -->
 
-            <div class="tab-content">
-              <div class="tab-pane active" id="edit">
-                {{textarea rows=12 value=body class='form-control' }}
-              </div>
-              <div class="tab-pane" id="preview">
-                <div class='email-preview'>
-                  {{markdown body}}
-                </div>
-              </div>
+        <div class="tab-content">
+          <div class="tab-pane active" id="edit">
+            {{textarea rows=12 value=body class='form-control' }}
+          </div>
+          <div class="tab-pane" id="preview">
+            <div class='email-preview'>
+              {{markdown body}}
             </div>
           </div>
-
-          </div>
-      </fieldset>
-      </form>
+        </div>
+      </div>
 
     </div>
+  </fieldset>
+</form>
+</div>
 
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" {{action 'cancel'}}>Cancel</button>
-      <button type="button" class="btn btn-default" {{action 'save'}}>
-        Save & Close
-      </button>
-      <button type="button" class="btn btn-primary" {{action 'send' }}>
-        {{fa 'send-o'}}
-        Send
-      </button>
-    </div>
-{{/modal-dialog}}
+
+<button type="button" class="btn btn-default" {{action 'save'}}>
+  Save & Close
+</button>
+<button type="button" class="btn btn-primary" {{action 'send' }}>
+  {{fa 'send-o'}}
+  Send
+</button>

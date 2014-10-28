@@ -3,10 +3,14 @@ class MessagesController < ApplicationController
 
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
-  # GET /messages
+  # GET /messages4
   def index
     @messages = Message.all
     respond_with(@messages)
+  end
+
+  def show
+    respond_with(@message)
   end
 
   # POST /messages

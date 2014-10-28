@@ -1,3 +1,5 @@
+{{outlet}}
+
 <div class='row'>
 <table class="table table-striped table-hover">
   <thead>
@@ -32,7 +34,7 @@
         </td>
         <td>
           {{#if message}}
-            <button {{action 'open_existing_message' this }} class='btn btn-warning'>
+            <button {{action 'open_existing_message' message }} class='btn btn-warning'>
               Message
             </button>
           {{else}}

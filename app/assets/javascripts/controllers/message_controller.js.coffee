@@ -5,11 +5,4 @@ Volant.MessageController = Ember.ObjectController.extend({
   actions:
     edit_from_field: ->
       @toggleProperty('from_field_editable')
-
-    save: ->
-      @get('content').save().then (=>
-        @send('removeModal')
-      ), ( (err) =>
-        console.error err
-      )
 })
