@@ -7,6 +7,12 @@ Volant.MessageRoute = Ember.Route.extend({
       @controllerFor('email_templates').set('content', templates)
     @_super(controller,model)
 
+  actions:
+    send_message: ->
+      @modelFor(@routeName).save().then (msg) =>
+        msg.deliver().then =>
+          @transitionTo 'apply_forms'
+
   # activate: ->
   #   $(".modal").modal()
 

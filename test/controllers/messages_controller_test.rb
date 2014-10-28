@@ -6,13 +6,13 @@ class MessagesControllerTest < ActionController::TestCase
     sign_in users(:john)
   end
 
-  test "should get index" do
+  test "index" do
     get :index
     assert_response :success
     assert_equal 1,json_response['messages'].size
   end
 
-  test "should create message" do
+  test "create" do
     assert_difference('Message.count') do
       post :create, message: Factory.attributes_for(:message)
 
@@ -21,12 +21,29 @@ class MessagesControllerTest < ActionController::TestCase
     end
   end
 
-  test "should update message" do
+  test "create with apply_form" do
+    assert_difference('Message.count') do
+      attrs = Factory.attributes_for(:message)
+      form = Factory(:apply_form)
+      attrs[:apply_form_id] = form.id
+      post :create, message: attrs
+
+      assert_response :success, response.body.to_s
+      assert_not_nil json_response['message']['id']
+    end
+  end
+
+  test "update" do
     patch :update, id: @message, message: Factory.attributes_for(:message)
     assert_response :success, response.body.to_s
   end
 
-  test "should destroy message" do
+  test "deliver" do
+    post :deliver, id: @message.id
+    assert_response :success, response.body.to_s
+  end
+
+  test "destroy" do
     assert_difference('Message.count', -1) do
       delete :destroy, id: @message
       assert_response :success, response.body.to_s

@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   resources :volunteers
   resources :tags
   resources :payments
-  resources :messages
+  resources :messages do
+    member do
+      post :deliver
+    end
+  end
+
   resources :email_templates, except: [ :edit, :new ]
 
   root 'dashboard#index'

@@ -15,6 +15,20 @@ Volant.Message = DS.Model.extend
   # for the collision with {{action}} helper in Handlebars templates
   action_name: Ember.computed.alias('action')
 
+  deliver: ->
+    url = "/messages/#{@get('id')}/deliver"
+    new Promise (resolve, reject) ->
+      csrf_token = $('meta[name="csrf-token"]').attr('content')
+      csrf_param = $('meta[name="csrf-param"]').attr('content')
+      data = { authenticity_token: csrf_token }
+
+      try
+        $.post url, data, ->
+          resolve()
+      catch e
+        reject(e)
+
+
   template_changed: (->
     context = {
      user: if @get('user')? then @get('user').for_email() else null

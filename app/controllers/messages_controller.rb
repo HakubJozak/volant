@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   respond_to :json
 
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_action :set_message, only: [:show, :edit, :update, :destroy, :deliver]
 
   # GET /messages4
   def index
@@ -15,18 +15,29 @@ class MessagesController < ApplicationController
 
   # POST /messages
   def create
-#    puts params
-    apply_form = ApplyForm.find(params[:message][:apply_form_id])
-    @message = apply_form.build_message(message_params)
-    @message.user = current_user
-    #    @message.save
-    apply_form.save
+    if id = params[:message][:apply_form_id]
+      apply_form = ApplyForm.find(id)
+      @message = apply_form.build_message(message_params)
+      @message.user = current_user
+      apply_form.save
+    else
+      @message = Message.new(message_params)
+      @message.user = current_user
+      @message.save
+    end
+
     respond_with(@message)
   end
 
   # PATCH/PUT /messages/1
   def update
     @message.update(message_params)
+    respond_with(@message)
+  end
+
+  # PATCH/PUT /messages/1/send
+  def deliver
+    @message.deliver!
     respond_with(@message)
   end
 

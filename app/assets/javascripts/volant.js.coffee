@@ -67,4 +67,5 @@ Ember.Application.initializer
       # cannot inject controller onto other controllers?
       # container.injection('controller', 'current_user', 'controller:currentUser')
 
+
 window.Volant = Ember.Application.create()

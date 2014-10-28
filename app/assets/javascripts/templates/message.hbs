@@ -105,14 +105,13 @@
 
     </div>
   </fieldset>
+
+  <button type="submit" class="btn btn-default">
+    Save & Close
+  </button>
+  <button type="button" class="btn btn-primary" {{action 'send_message' }}>
+    {{fa 'send-o'}}
+    Send
+  </button>
 </form>
 </div>
-
-
-<button type="button" class="btn btn-default" {{action 'save'}}>
-  Save & Close
-</button>
-<button type="button" class="btn btn-primary" {{action 'send' }}>
-  {{fa 'send-o'}}
-  Send
-</button>
