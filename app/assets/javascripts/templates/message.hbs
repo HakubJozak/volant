@@ -9,14 +9,7 @@
     <div class="form-group" >
       <label class="col-lg-1 control-label">From</label>
       <div class="col-lg-5">
-        {{#if from_field_editable}}
-          {{input value=from class='form-control' }}
-        {{else}}
-          <p class="form-control-static">
-            {{from}}
-            <button class='btn btn-default' {{action 'edit_from_field'}}>Change</button>
-          </p>
-        {{/if}}
+        {{input-or-static attr=from readonly=delivered}}
       </div>
 
       <label class="col-lg-1 control-label">Action</label>
@@ -30,30 +23,34 @@
     <div class="form-group" >
       <label class="col-lg-1 control-label">To</label>
       <div class="col-lg-5">
-        {{input value=to class='form-control' }}
+        {{input-or-static attr=to readonly=delivered}}
       </div>
 
       <label class="col-lg-1 control-label">Template</label>
       <div class="col-lg-5">
-        {{view Ember.Select
-        contentBinding='controllers.email_templates.content'
-        optionLabelPath="content.action"
-        selectionBinding="email_template"
-        class="form-control" }}
+        {{#if delivered}}
+          <p class="form-control-static">{{email_template.action_name}}</p>
+        {{else}}
+          {{view Ember.Select
+          contentBinding='controllers.email_templates.content'
+          optionLabelPath="content.action_name"
+          selectionBinding="email_template"
+          class="form-control" }}
+        {{/if}}
       </div>
     </div>
 
     <div class="form-group" >
       <label class="col-lg-1 control-label">Cc</label>
       <div class="col-lg-5">
-        {{input value=cc class='form-control' }}
+        {{input-or-static attr=cc readonly=delivered}}
       </div>
 
       <label class="col-lg-1 control-label">Application</label>
       <div class="col-lg-5">
         <p class="form-control-static">
           {{#link-to 'apply_form' apply_form}}
-          {{apply_form.name}}
+            {{apply_form.name}}
           {{/link-to}}
         </p>
       </div>
@@ -62,8 +59,9 @@
     <div class="form-group" >
       <label class="col-lg-1 control-label">Bcc</label>
       <div class="col-lg-5">
-        {{input value=bcc class='form-control' }}
+        {{input-or-static attr=bcc readonly=delivered}}
       </div>
+
       <label class="col-lg-1 control-label">Project</label>
       <div class="col-lg-5">
         <p class="form-control-static">
@@ -77,35 +75,41 @@
     <div class="form-group" >
       <label class="col-lg-1 control-label">Subject</label>
       <div class="col-lg-5">
-        {{input value=subject class='form-control' }}
+        {{input-or-static attr=subject readonly=delivered}}
       </div>
       <div class="col-lg-6">
+        {{#unless delivered}}
         <ul class="nav nav-pills pull-right" role="tablist">
           <li class="active"><a href="#edit" role="tab" data-toggle="tab">Edit</a></li>
           <li><a href="#preview" role="tab" data-toggle="tab">Preview</a></li>
         </ul>
+        {{/unless}}
       </div>
     </div>
 
     <div class="form-group email-body-area" >
       <div class="col-lg-11 col-lg-offset-1">
-        <!-- Tab panes -->
-
-        <div class="tab-content">
-          <div class="tab-pane active" id="edit">
-            {{textarea rows=12 value=body class='form-control' }}
-          </div>
-          <div class="tab-pane" id="preview">
-            <div class='email-preview'>
-              {{markdown body}}
+        {{#if delivered}}
+          {{markdown body}}
+        {{else}}
+          <div class="tab-content">
+            <div class="tab-pane active" id="edit">
+              {{textarea rows=12 value=body class='form-control' }}
+            </div>
+            <div class="tab-pane" id="preview">
+              <div class='email-preview'>
+                {{markdown body}}
+              </div>
             </div>
           </div>
-        </div>
+        {{/if}}
+
       </div>
 
     </div>
   </fieldset>
 
+  {{#unless delivered}}
   <button type="submit" class="btn btn-default">
     Save & Close
   </button>
@@ -113,5 +117,6 @@
     {{fa 'send-o'}}
     Send
   </button>
+  {{/unless}}
 </form>
 </div>

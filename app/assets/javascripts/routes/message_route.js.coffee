@@ -11,11 +11,7 @@ Volant.MessageRoute = Ember.Route.extend({
     send_message: ->
       @modelFor(@routeName).save().then (msg) =>
         msg.deliver().then =>
+          # @controllerFor('flash').set('content', 'Message sent.')
           @transitionTo 'apply_forms'
 
-  # activate: ->
-  #   $(".modal").modal()
-
-  # deactivate: ->
-  #   $(".modal").modal("hide")
 })
