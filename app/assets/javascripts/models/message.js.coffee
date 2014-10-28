@@ -18,8 +18,8 @@ Volant.Message = DS.Model.extend
   template_changed: (->
     context = {
      user: if @get('user')? then @get('user').for_email() else null
-     volunteer: @get('apply_form.volunteer').for_email()
-     wc: @get('apply_form.current_workcamp').for_email()
+     volunteer: if @get('apply_form.volunteer')? then  @get('apply_form.volunteer').for_email() else null
+     wc: if @get('apply_form.current_workcamp')? then @get('apply_form.current_workcamp').for_email() else null
     }
 
     tmpl = @get('email_template')

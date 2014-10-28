@@ -4,7 +4,7 @@ Volant.ApplicationRoute = Ember.Route.extend({
 
   actions:
     removeModal: ->
-      @disconnectOutlet(outlet: 'modal',parentView: 'application')
+      $(".modal").modal("hide")
       false
 
   model: ->

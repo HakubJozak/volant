@@ -11,9 +11,12 @@ class MessagesController < ApplicationController
 
   # POST /messages
   def create
-    @message = Message.new(message_params)
+#    puts params
+    apply_form = ApplyForm.find(params[:message][:apply_form_id])
+    @message = apply_form.build_message(message_params)
     @message.user = current_user
-    @message.save
+    #    @message.save
+    apply_form.save
     respond_with(@message)
   end
 

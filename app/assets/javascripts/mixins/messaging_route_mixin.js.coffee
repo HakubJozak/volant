@@ -2,11 +2,16 @@ Volant.MessagingRouteMixin = Ember.Mixin.create({
 
   actions:
     open_existing_message: (apply_form) ->
+      console.info 'shiiit'
       message = apply_form.get('message')
       @controllerFor('message').set('content',message)
-      @render 'message', into: 'application',outlet: 'modal'
+      @show_message_modal()
       false
 
+
+  show_message_modal: ->
+    @render 'message', into: 'application',outlet: 'modal'
+    $(".modal").modal()
 
   open_message_for: (action_name,apply_form) ->
     @store.find('email_template').then (templates) =>
@@ -27,6 +32,6 @@ Volant.MessagingRouteMixin = Ember.Mixin.create({
 
         @controllerFor('message').set('content',message)
 
-    @render 'message', into: 'application',outlet: 'modal'
+    @show_message_modal()
     false
 })
