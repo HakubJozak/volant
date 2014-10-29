@@ -2,6 +2,9 @@ Volant.ApplyFormController = Volant.ObjectController.extend({
   genders: [ { code: 'm', name: 'Male' }, { code: 'f', name: 'Female'}]
   isDirty: Ember.computed.any('model.isDirty','model.volunteer.isDirty')
 
+  queryParams: ['anchor']
+  anchor: null
+
   actions:
     toggle_starred: ->
       @toggleProperty('starred')

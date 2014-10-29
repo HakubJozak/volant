@@ -8,8 +8,12 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend(Volant.MessagingRouteMixin,{
     @render('apply_forms')
 
   actions:
-    apply_form_action: (action_name,form) ->
-      @open_message_for action_name,form
+    apply_form_action: (action,form) ->
+      if action == 'pay'
+        @transitionTo('apply_form',form,{ queryParams: { anchor: 'payment-fields'}})
+      else
+        @open_message_for action,form
+
 
     search: ->
       @refresh()
