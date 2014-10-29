@@ -11,7 +11,8 @@ Volant.MessageRoute = Ember.Route.extend({
     send_message: ->
       @modelFor(@routeName).save().then (msg) =>
         msg.deliver().then (payload) =>
-          @controllerFor('flash').set('content', 'Message sent.')
+          # @controllerFor('flash').set('content', 'Message sent.')
           @store.pushPayload(payload)
-
+          console.info 'Message sent.'
+      false
 })

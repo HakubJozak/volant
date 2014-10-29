@@ -1,4 +1,4 @@
-Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.MessagingRouteMixin,{
+Volant.ApplyFormRoute = Volant.BaseRoute.extend({
 
   model: (params) ->
     @store.find('apply_form', params.apply_form_id)
@@ -18,6 +18,7 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.MessagingRouteMixin,{
   actions:
     accept: ->
       @open_message_for 'accept',  @modelFor('apply_form')
+
 
     pay: ->
       form = @modelFor('apply_form')

@@ -591,7 +591,8 @@ CREATE TABLE messages (
     workcamp_assignment_id integer,
     sent_at timestamp without time zone,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    apply_form_id integer
 );
 
 
@@ -2090,4 +2091,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141013143540');
 INSERT INTO schema_migrations (version) VALUES ('20141021132011');
 
 INSERT INTO schema_migrations (version) VALUES ('20141021140043');
+
+INSERT INTO schema_migrations (version) VALUES ('20141029204415');
 
