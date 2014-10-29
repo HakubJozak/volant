@@ -1,4 +1,5 @@
 Volant.ApplyFormController = Volant.ObjectController.extend({
+  needs: ['payment_means']
   genders: [ { code: 'm', name: 'Male' }, { code: 'f', name: 'Female'}]
   isDirty: Ember.computed.any('model.isDirty','model.volunteer.isDirty')
 

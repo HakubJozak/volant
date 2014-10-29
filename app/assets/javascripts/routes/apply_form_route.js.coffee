@@ -5,6 +5,11 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.MessagingRouteMixin,{
 
   title: (model) -> "#{model.get('name')}"
 
+  setupController: (controller,model,queryParmas) ->
+    @_super(controller,model,queryParmas)
+    @controllerFor('payment').set('content',model.get('payment'))
+
+
   renderTemplate: ->
     @_super()
     @render('apply_form/page_up',into: 'application', outlet: 'page_up')
@@ -13,6 +18,13 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.MessagingRouteMixin,{
   actions:
     accept: ->
       @open_message_for 'accept',  @modelFor('apply_form')
+
+    pay: ->
+      form = @modelFor('apply_form')
+      payment = @store.createRecord('payment',apply_form: form,amount: form.get('fee'),mean: 'CASH', received: new Date())
+      @controllerFor('payment').set('content',payment)
+      false
+
 
 #  setupController: (controller, model) ->
 #    @controllerFor('workcamps').set('current_item', model);

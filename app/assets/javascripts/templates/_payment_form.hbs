@@ -22,7 +22,7 @@
     <label class=" control-label">Mean</label>
      {{view Ember.Select
             value=mean
-            content=means
+            content=controllers.payment_means.content
             optionValuePath="content.id"
             optionLabelPath="content.label"
             class="form-control" }}

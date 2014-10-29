@@ -69,14 +69,27 @@
       <fieldset id='payment-fields'>
         <legend>Payment</legend>
         <div class='row'>
-          <div class="form-group col-lg-3">
+          {{#if payment }}
+          {{else}}
+          <div class="form-group col-lg-4">
             <label class=" control-label">Fee</label>
-            {{input value=fee class="form-control" type='number'}}
+            <div class="input-group">
+              {{input value=fee class="form-control" type='number'}}
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" {{action 'pay'}}>Pay</button>
+              </span>
+            </div>
           </div>
+          {{/if}}
         </div>
         {{# if payment }}
-          {{render 'payment' payment save_buttons_visible=false }}
+          {{#with payment}}
+            {{partial 'payment_form' }}
+          {{/with}}
+          {{# if payment.isNew }}
+            {{ partial 'save_buttons' }}
           {{/if}}
+        {{/if}}
       </fieldset>
 
       <fieldset>
