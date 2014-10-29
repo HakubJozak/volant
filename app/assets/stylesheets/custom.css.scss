@@ -17,6 +17,8 @@ textarea {
 
 .fa-star {
   color: #FFD800;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color:  black;
 }
 
 .table.starred, .table.recent {
