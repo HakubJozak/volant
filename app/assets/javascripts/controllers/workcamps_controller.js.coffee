@@ -33,10 +33,6 @@ Volant.WorkcampsController = Volant.ListController.extend({
       @set('free_males',null)
       @set('free_females',null)
 
-    search: ->
-      @set 'page',1
-      true
-
   tags: (->
      @store.find('tag')).property()
 })

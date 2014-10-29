@@ -10,17 +10,10 @@ Volant.ListController = Ember.ArrayController.extend(Volant.FlashControllerMixin
     Ember.run.once(this,'send','search');
   ).observes('year')
 
-  filter_is_visible: true
-
   actions:
-    toggle_filter: ->
-      console.info 'filtering'
-      @toggleProperty('filter_is_visible')
-      false
-
     set_page: (p) ->
       @set('page',p)
-      @send 'refresh'
+      @send 'search'
       false
 
 })

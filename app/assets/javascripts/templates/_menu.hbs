@@ -24,20 +24,17 @@
         {{#link-li}}{{#link-to 'workcamps'}}Workcamps{{/link-to}}{{/link-li}}
         {{#link-li}}{{#link-to 'apply_forms'}}Applications{{/link-to}}{{/link-li}}
 
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">More <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Volunteers</a></li>
-            {{#link-li}}{{#link-to 'payments'}}Payments{{/link-to}}{{/link-li}}
-            <li class="divider"></li>
-            {{#link-li}}
-              {{#link-to 'organizations' }}
-              Organizations
-              {{/link-to}}
-            {{/link-li}}
-            <li><a href="#">Partners</a></li>
-          </ul>
-        </li>
+       {{#menu-dropdown title="More"}}
+          <li><a href="#">Volunteers</a></li>
+          {{#link-li}}{{#link-to 'payments'}}Payments{{/link-to}}{{/link-li}}
+          <li class="divider"></li>
+          {{#link-li}}
+            {{#link-to 'organizations' }}
+            Organizations
+            {{/link-to}}
+          {{/link-li}}
+          <li><a href="#">Partners</a></li>
+       {{/menu-dropdown}}
       </ul>
       </ul>
         <form  class="navbar-form  navbar-left col-lg-1" >
@@ -54,26 +51,18 @@
          {{ view Volant.SmallFlashView flashBinding="flash" }}
        {{/if}}
 
-       {{#menu-dropdown icon="cog" title="Settings"}}
+       {{#menu-dropdown title=current_user.first_name }}
+          <li class="divider"></li>
+          <li><a href="/accounts/sign_out">Logout</a></li>
+       {{/menu-dropdown}}
+
+       {{#menu-dropdown icon="cog" }}
          {{#link-li}}{{#link-to 'users'}}Users{{/link-to}}{{/link-li}}
          {{#link-li}}{{#link-to 'email_templates'}}Email Templates{{/link-to}}{{/link-li}}
          <li><a href="#">Countries</a></li>
          <li><a href="#">Workcamp Intentions</a></li>
          <li><a href="#">Tags</a></li>
        {{/menu-dropdown}}
-
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            {{ current_user.first_name }}
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" role="menu">
-            <li class="divider"></li>
-            <li><a href="/accounts/sign_out">Logout</a></li>
-          </ul>
-        </li>
-      </ul>
 
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
