@@ -6,8 +6,16 @@ $yellow: #F3D70C;
 $red: #E76363;
 $grey: grey;
 
+
+.navbar-form input {
+  min-width: 50em;
+}
+
+
 body {
-  margin: 1em;
+  // because of fixed-nav-bar
+  padding-top: 50px;
+  margin: 0 1em 1em 1em;
 }
 
 textarea {
