@@ -38,9 +38,14 @@ class MessagesControllerTest < ActionController::TestCase
     assert_response :success, response.body.to_s
   end
 
-  test "deliver" do
+
+  test "show & deliver" do
+    get :show, id: @message.id
+    assert_nil json_response['message']['sent_at']
+
     post :deliver, id: @message.id
     assert_response :success, response.body.to_s
+    assert_not_nil json_response['message']['sent_at']
   end
 
   test "destroy" do

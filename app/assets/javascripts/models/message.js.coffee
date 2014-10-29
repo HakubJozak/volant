@@ -14,7 +14,7 @@ Volant.Message = DS.Model.extend
 
   # for the collision with {{action}} helper in Handlebars templates
   action_name: Ember.computed.alias('action')
-  delivered: Ember.computed.bool('sent_at')
+  delivered: Ember.computed.alias('sent_at')
 
   deliver: ->
     url = "/messages/#{@get('id')}/deliver"
