@@ -24,11 +24,10 @@ Volant.Message = DS.Model.extend
       data = { authenticity_token: csrf_token }
 
       try
-        $.post url, data, ->
-          resolve()
+        $.post url, data, (response) ->
+          resolve(response)
       catch e
         reject(e)
-
 
   template_changed: (->
     context = {
@@ -37,7 +36,7 @@ Volant.Message = DS.Model.extend
      wc: if @get('apply_form.current_workcamp')? then @get('apply_form.current_workcamp').for_email() else null
     }
 
-    tmpl = @get('email_template')
-    @set 'subject',tmpl.eval_subject(context)
-    @set 'body',tmpl.eval_body(context)
+    if tmpl = @get('email_template')
+      @set 'subject',tmpl.eval_subject(context)
+      @set 'body',tmpl.eval_body(context)
   ).observes('email_template')
