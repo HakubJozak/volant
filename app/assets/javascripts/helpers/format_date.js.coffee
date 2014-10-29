@@ -1,11 +1,17 @@
 Ember.Handlebars.helper 'from-now', (date) ->
-  moment(date).fromNow()
+  if date?
+    moment(date).fromNow()
+  else
+    '-'
 
 Ember.Handlebars.helper 'format-date', (date) ->
-  moment(date).format('L')
+  if date?
+    moment(date).format('L')
+  else
+    '-'
 
 Ember.Handlebars.helper 'long-date', (date) ->
-  if date
+  if date?
     moment(date).format('LL')
   else
     '-'

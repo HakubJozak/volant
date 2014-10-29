@@ -1,5 +1,6 @@
 Volant.Payment = DS.Model.extend({
   apply_form: DS.belongsTo('apply_form')
+
   amount: DS.attr 'number'
   received: DS.attr 'isodate'
   description: DS.attr 'string'
