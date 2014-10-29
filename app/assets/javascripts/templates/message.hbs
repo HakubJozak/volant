@@ -90,6 +90,7 @@
     <div class="form-group email-body-area" >
       <div class="col-lg-11 col-lg-offset-1">
         {{#if delivered}}
+          <hr/>
           {{markdown body}}
         {{else}}
           <div class="tab-content">
@@ -103,9 +104,7 @@
             </div>
           </div>
         {{/if}}
-
       </div>
-
     </div>
   </fieldset>
 
