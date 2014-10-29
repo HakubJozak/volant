@@ -15,10 +15,14 @@ textarea {
   min-height: 10em;
 }
 
+.fa-star-o {
+  color: gray;
+}
+
 .fa-star {
   color: #FFD800;
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color:  black;
+  -webkit-text-stroke-color: gray;
 }
 
 .table.starred, .table.recent {

@@ -3,6 +3,13 @@ Volant.ApplyFormController = Volant.ObjectController.extend({
   genders: [ { code: 'm', name: 'Male' }, { code: 'f', name: 'Female'}]
   isDirty: Ember.computed.any('model.isDirty','model.volunteer.isDirty')
 
+
+  means: [
+    Ember.Object.create(label: "Cash", id: 'CASH'),
+    Ember.Object.create(label: "Bank", id: 'BANK')
+   ]
+
+
   queryParams: ['anchor']
   anchor: null
 

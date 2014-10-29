@@ -80,11 +80,6 @@
 <div class='row'>
   <div class="form-group col-lg-6">
     <p>
-    {{#if view.save_buttons_visible }}
-      <button type="submit" class="btn btn-success">Save the payment</button>
-      {{ button 'Cancel' 'rollback' 'btn' }}
-    {{/if}}
-
     {{#unless return_visible }}
     <a title='Show return fields' class='btn'
       {{ action 'force_show_return' }} >

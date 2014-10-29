@@ -23,8 +23,12 @@
         <div class='row'>
           <div class="form-group col-lg-2">
             <label class=" control-label">Gender</label>
-            {{view Ember.Select content=genders value=volunteer.gender class="form-control"
-            optionValuePath='content.code' optionLabelPath='content.name' }}
+            {{view Ember.Select
+                   content=genders
+                   value=volunteer.gender
+                   class="form-control"
+                   optionValuePath='content.code'
+                   optionLabelPath='content.name' }}
           </div>
 
           <div class="form-group col-lg-3">
@@ -83,12 +87,7 @@
           {{/if}}
         </div>
         {{# if payment }}
-          {{#with payment}}
-            {{partial 'payment_form' }}
-          {{/with}}
-          {{# if payment.isNew }}
-            {{ partial 'save_buttons' }}
-          {{/if}}
+          {{render 'payment' payment }}
         {{/if}}
       </fieldset>
 
