@@ -1,6 +1,17 @@
 Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
+  queryParams: {
+     sortProperties: { refreshModel: true },
+     sortAscending: { refreshModel: true }
+  }
+
   model: (params) ->
-    @store.find('apply_form', { p: params.page, year: params.year, q: params.query })
+    console.info 'new model'
+    @store.find('apply_form', {
+      p: params.page,
+      year: params.year,
+      q: params.query,
+      sort: params.sortProperties
+    })
 
   title: -> "Applications"
 
@@ -19,6 +30,7 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
       false
 
     search: ->
+      console.info 'refresh'
       @refresh()
       false
 
