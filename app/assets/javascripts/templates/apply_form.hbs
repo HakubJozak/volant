@@ -1,7 +1,6 @@
 <div class='row'>
 <div class="col-lg-8">
-  <div class='row'>
-    <h2 class='page-header'>
+    <h2 class=''>
       <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' }}></i>
       {{volunteer.firstname}}
       {{volunteer.lastname}}
@@ -15,11 +14,10 @@
         {{ partial 'action_buttons' }}
       </span>
     </h2>
-  </div>
 
-  <div class="container-fluid">
     <form class="form" role="form" {{action 'save' on="submit"}}>
       <fieldset>
+        <legend></legend>
         <div class='row'>
           <div class="form-group col-lg-2">
             <label class=" control-label">Gender</label>
@@ -150,6 +148,7 @@
 
       <fieldset>
         <legend>Volunteer Details</legend>
+        <div class='row'>
         <div class="form-group col-lg-6">
           <label class=" control-label">Speak well</label>
           {{input value=volunteer.speak_well class="form-control"}}
@@ -174,11 +173,11 @@
           <label class=" control-label">Comments</label>
           {{textarea value=volunteer.comments class="form-control" rows='2'}}
         </div>
+        </div>
       </fieldset>
 
       {{ partial 'save_buttons' }}
     </form>
-  </div>
 </div>
 
 <div class="col-lg-4">
