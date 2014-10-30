@@ -4,8 +4,19 @@ class ApplyFormsController < ApplicationController
   before_action :find_apply_form, only: [ :show, :update, :destroy ]
 
   def index
-    search = Outgoing::ApplyForm.order('created_at DESC').page(current_page)
+    dir = params[:asc] ? :asc : :desc
+
+    search = Outgoing::ApplyForm.page(current_page).order(created_at: dir)
     search = search.includes(:payment,:volunteer,:current_workcamp, :current_assignment)
+
+    if params[:sort]
+      case params[:sort].to_sym
+      when :created_at
+        search.order(created_at: dir)
+      when :name
+        search.order("volunteers.lastname #{dir}, volunteers.firstname #{dir}").order(created_at: dir)
+      end
+    end
 
     if year = params[:year]
       if year.to_i > 0

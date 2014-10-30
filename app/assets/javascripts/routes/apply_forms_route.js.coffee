@@ -5,12 +5,12 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
   }
 
   model: (params) ->
-    console.info 'new model'
     @store.find('apply_form', {
-      p: params.page,
-      year: params.year,
-      q: params.query,
+      p: params.page
+      year: params.year
+      q: params.query
       sort: params.sortProperties
+      asc: params.sortAscending
     })
 
   title: -> "Applications"
