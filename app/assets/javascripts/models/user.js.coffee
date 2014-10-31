@@ -1,4 +1,6 @@
-Volant.User = DS.Model.extend
+Volant.User = DS.Model.extend({
+  messages: DS.hasMany 'messages', async: true
+
   email: DS.attr 'string'
   password: DS.attr 'string'
   first_name: DS.attr 'string'
@@ -13,3 +15,4 @@ Volant.User = DS.Model.extend
 
   for_email: ->
     @_super('name','firstname','lastname')
+})

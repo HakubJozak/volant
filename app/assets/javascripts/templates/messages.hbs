@@ -1,0 +1,33 @@
+<h2>Messages</h2>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <th>Subject</th>
+    <th>To</th>
+    <th>Sent</th>
+    <th>Application</th>
+    <th>Workcamp</th>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr>
+        <td>
+          {{#link-to 'message' this}}
+            {{subject}}
+          {{/link-to}}
+        </td>
+        <td>{{to}}</td>
+        <td>{{format-date sent_at}}</td>
+        <td>
+          {{#if apply_form}}
+            {{#link-to 'apply_form' apply_form}}
+            {{apply_form.name}}
+            {{/link-to}}
+          {{/if}}
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

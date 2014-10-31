@@ -7,9 +7,7 @@ $red: #E76363;
 $grey: grey;
 
 
-.navbar-form input {
-  min-width: 50em;
-}
+
 
 
 body {
@@ -37,8 +35,6 @@ textarea {
   i { font-size: 150%; padding-right: 0.3em; }
 }
 
-.nav-with-filter {
-}
 
 .sidepanel {
   border-left: 1px solid #dddddd; // border color
@@ -117,6 +113,29 @@ table.dashboard {
 
 }
 
+.navbar-form input {
+  min-width: 50em;
+}
+
+.navbar-right {
+  .badge {
+    background-color: #E76363;
+    position: relative;
+    left: -0.5em;
+    top: 0.3em;
+  }
+
+  .fa-cog, .fa-envelope {
+    font-size: 135%;
+  }
+
+  & > li > a {
+    $padding: 0.5em;
+    padding-left: $padding;
+    padding-right: $padding;
+  }
+}
+
 .navbar-default .navbar-nav {
    // & > li > a {  @include single-text-shadow; }
 }
@@ -152,9 +171,6 @@ table.dashboard {
   color: #625858;
 }
 
-.navbar .fa-cog {
-  font-size: 135%;
-}
 
 .apply-form-search {
   margin-top: 0.5em;

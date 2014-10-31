@@ -17,6 +17,7 @@ Volant.Router.map () ->
   @resource 'organizations'
   @resource('organization', path: '/organizations/:organization_id')
   @resource 'message', {path: '/messages/:message_id'}
+  @resource 'messages'
 
 # Volant.WorkcampsPagesRoute = Ember.Route.extend({
 #   model: (params) ->

@@ -51,18 +51,27 @@
          {{ view Volant.SmallFlashView flashBinding="flash" }}
        {{/if}}
 
-       {{#menu-dropdown title=current_user.first_name }}
-          <li class="divider"></li>
-          <li><a href="/accounts/sign_out">Logout</a></li>
-       {{/menu-dropdown}}
+       <ul class='nav navbar-nav navbar-right right-icons'>
+         {{#link-li}}
+           {{#link-to 'messages'}}
+           {{fa 'envelope'}}
+           <span class="badge">3</span></a>
+           {{/link-to}}
+         {{/link-li}}
 
-       {{#menu-dropdown icon="cog" }}
-         {{#link-li}}{{#link-to 'users'}}Users{{/link-to}}{{/link-li}}
-         {{#link-li}}{{#link-to 'email_templates'}}Email Templates{{/link-to}}{{/link-li}}
-         <li><a href="#">Countries</a></li>
-         <li><a href="#">Workcamp Intentions</a></li>
-         <li><a href="#">Tags</a></li>
-       {{/menu-dropdown}}
+         {{#menu-dropdown icon="cog" }}
+           {{#link-li}}{{#link-to 'users'}}Users{{/link-to}}{{/link-li}}
+           {{#link-li}}{{#link-to 'email_templates'}}Email Templates{{/link-to}}{{/link-li}}
+           <li><a href="#">Countries</a></li>
+           <li><a href="#">Workcamp Intentions</a></li>
+           <li><a href="#">Tags</a></li>
+         {{/menu-dropdown}}
+
+         {{#menu-dropdown title=current_user.first_name }}
+            <li class="divider"></li>
+            <li><a href="/accounts/sign_out">Logout</a></li>
+         {{/menu-dropdown}}
+       </ul>
 
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
