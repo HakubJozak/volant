@@ -3,8 +3,11 @@ Volant.ApplyFormsController = Volant.ListController.extend({
   query: null
   sortProperties: ['created_at']
   sortAscending: false
-
   queryParams: ['page','year','query']
+
+  page_reset: (->
+    @set('page',1)
+  ).observes('query')
 
 # {{view Ember.Select
 #   contentBinding='sortOptions'
@@ -12,11 +15,6 @@ Volant.ApplyFormsController = Volant.ListController.extend({
 #   optionValuePath="content"
 #   optionLabelPath="content"
 #   class="form-control"}}
-
-  actions:
-    search: ->
-      @set 'page',1
-      true
 
 
 })
