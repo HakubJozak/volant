@@ -19,6 +19,16 @@ class ApplicationController < ActionController::Base
     params[:p] || 1
   end
 
+  def add_year_scope(search)
+    if year = params[:year]
+      if year.to_i > 0
+        search = search.year(year)
+      end
+    end
+
+    search
+  end
+
   def default_format_json
     if request.headers["HTTP_ACCEPT"].nil? && params[:format].nil?
       request.format = "json"

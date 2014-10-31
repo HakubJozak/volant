@@ -6,16 +6,12 @@ class WorkcampsController < ApplicationController
   def index
     search = Outgoing::Workcamp.order(:name).page(current_page)
     search = search.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
+    search = add_year_scope(search)
 
     if query = params[:q]
       search = search.query(params[:q])
     end
 
-    if year = params[:year]
-      if year.to_i > 0
-        search = search.by_year(year)
-      end
-    end
 
     if params[:starred]
       search = search.where(starred: true)

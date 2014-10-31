@@ -6,6 +6,7 @@ class ApplyFormsController < ApplicationController
   def index
     search = Outgoing::ApplyForm.page(current_page).order("#{ApplyForm.table_name}.created_at desc")
     search = search.includes(:payment,:volunteer,:current_workcamp, :current_assignment)
+    search = add_year_scope(search)
 
     if query = params[:q]
       search = search.query(params[:q])
@@ -20,13 +21,6 @@ class ApplyFormsController < ApplicationController
     #     search.order("volunteers.lastname #{dir}, volunteers.firstname #{dir}").order(created_at: dir)
     #   end
     # end
-
-    if year = params[:year]
-      if year.to_i > 0
-        search = search.year(year)
-      end
-    end
-
     render json: search,
            meta: { pagination: pagination_info(search) },
            each_serializer: ApplyFormSerializer
