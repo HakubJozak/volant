@@ -10,9 +10,18 @@ class Workcamp < ActiveRecord::Base
   scope :min_duration, lambda { |d| where("#{DURATION_SQL} >= ?", d) }
   scope :max_duration, lambda { |d| where("#{DURATION_SQL} <= ?", d) }
 
-  scope :by_year, lambda { |year|
+  scope :year, lambda { |year|
     year = year.to_i
     where '(workcamps.begin >= ? AND workcamps.end < ?)', Date.new(year,1,1), Date.new(year + 1,1,1)
+  }
+
+  # deprecated
+  scope :by_year, lambda { |y| year(y) }
+
+  scope :query, lambda { |query|
+    wcs = self.arel_table
+    arel = wcs[:name].matches("%#{query}%").or(wcs[:code].matches("%#{query}%"))
+    where(arel)
   }
 
   # TODO - fix tests and allow validation

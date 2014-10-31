@@ -1,4 +1,10 @@
+
 <div class='row pagination-container'>
+  {{#if just_one_page}}
+    <div class="col-lg-offset-10 col-lg-2 info">
+      <p><em>Found {{total}} records.</em></p>
+    </div>
+  {{else}}
   <div class="col-lg-8 col-lg-offset-2 text-center">
     <ul class="pagination">
       <li {{ bind-attr class="previous_page::disabled" }}>
@@ -25,4 +31,5 @@
   <div class="col-lg-2 info">
     <p><em>Found {{total}} records.</em></p>
   </div>
+{{/if}}
 </div>

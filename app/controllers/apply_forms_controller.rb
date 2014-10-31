@@ -4,10 +4,12 @@ class ApplyFormsController < ApplicationController
   before_action :find_apply_form, only: [ :show, :update, :destroy ]
 
   def index
-
-
-    search = Outgoing::ApplyForm.page(current_page).order(created_at: :desc)
+    search = Outgoing::ApplyForm.page(current_page).order("#{ApplyForm.table_name}.created_at desc")
     search = search.includes(:payment,:volunteer,:current_workcamp, :current_assignment)
+
+    if query = params[:q]
+      search = search.query(params[:q])
+    end
 
     # dir = params[:asc] ? :asc : :desc
     # if params[:sort]
@@ -22,8 +24,6 @@ class ApplyFormsController < ApplicationController
     if year = params[:year]
       if year.to_i > 0
         search = search.year(year)
-      else
-        render status: :bad_request, body: 'Invalid parameters' and return
       end
     end
 

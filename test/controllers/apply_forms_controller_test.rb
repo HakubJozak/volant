@@ -47,7 +47,7 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal 4,json_response['apply_forms'].size
 
-    get :index, query: 'john'
+    get :index, q: 'john'
     assert_response :success
     assert_equal 1,json_response['apply_forms'].size
   end

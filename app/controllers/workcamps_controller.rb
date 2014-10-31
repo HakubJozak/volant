@@ -8,16 +8,12 @@ class WorkcampsController < ApplicationController
     search = search.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
 
     if query = params[:q]
-      wcs = Outgoing::Workcamp.arel_table
-      arel = wcs[:name].matches("%#{query}%").or(wcs[:code].matches("%#{query}%"))
-      search = search.where(arel)
+      search = search.query(params[:q])
     end
 
     if year = params[:year]
       if year.to_i > 0
         search = search.by_year(year)
-      else
-        render status: :bad_request, body: 'Invalid parameters' and return
       end
     end
 

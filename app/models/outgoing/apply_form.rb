@@ -17,6 +17,20 @@ module Outgoing
     has_many :workcamps, -> { order 'workcamp_assignments."order" ASC' }, through: :workcamp_assignments, class_name: 'Outgoing::Workcamp'
     has_many :workcamp_assignments, -> { order '"order" ASC' }, dependent: :delete_all, class_name: 'Outgoing::WorkcampAssignment'
 
+
+    scope :query, lambda { |query|
+      # TODO - do it with Arel
+      like = "%#{query}%"
+      str = """
+            firstname ILIKE ? or
+            lastname ILIKE  ? or
+            birthnumber ILIKE ? or
+            general_remarks ILIKE ?
+           """
+      joins(:volunteer).where(str,like, like, like,like)
+    }
+
+
     def assign_workcamp(wc)
       # don't do anything if it is already assigned
       return self if workcamp_assignments.any? { |wa| wa.workcamp == wc }

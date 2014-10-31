@@ -11,7 +11,7 @@ class ApplyForm < ActiveRecord::Base
 
   scope :year, lambda { |year|
     year = year.to_i
-    where '(created_at >= ? AND created_at < ?)', Date.new(year,1,1), Date.new(year + 1,1,1)    }
+    where "(#{ApplyForm.table_name}.created_at >= ? AND #{ApplyForm.table_name}.created_at < ?)", Date.new(year,1,1), Date.new(year + 1,1,1)    }
 
   def name
     who = (volunteer)? volunteer.name : '(?)'

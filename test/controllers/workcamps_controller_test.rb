@@ -42,11 +42,16 @@ class WorkcampsControllerTest < ActionController::TestCase
   end
 
   test "filter by year" do
-    get :index, year: 2014
+    Workcamp.destroy_all
+    4.times { |i| Factory(:workcamp, :'begin' => Date.new(2010+i,2), :'end' => Date.new(2010+i,3)) }
+
+    get :index, year: 2013
     assert_response :success
+    assert_equal 1, json_response['workcamps'].size
 
     get :index, year: 'garbage'
-    assert_response :bad_request
+    assert_response :success
+    assert_equal 4, json_response['workcamps'].size
   end
 
   test 'filter by from' do
