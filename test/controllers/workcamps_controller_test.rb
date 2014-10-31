@@ -2,6 +2,7 @@ require 'test_helper'
 
 class WorkcampsControllerTest < ActionController::TestCase
   setup do
+    Workcamp.destroy_all
     @workcamp = Factory(:workcamp)
     sign_in users(:john)
   end
@@ -10,6 +11,34 @@ class WorkcampsControllerTest < ActionController::TestCase
     get :index, p: 1
     assert_response :success
     assert_equal Workcamp.count, json_response['meta']['pagination']['total']
+  end
+
+  test "search by code" do
+    3.times { Factory(:workcamp) }
+
+    @workcamp.update_attribute(:code,'WRC-1')
+    get :index, q: 'WRC'
+    assert_response :success
+    assert_equal 1, json_response['workcamps'].size
+    assert_equal @workcamp.id, json_response['workcamps'][0]['id']
+
+    get :index, q: 'STRING NOT THERE'
+    assert_equal 0, json_response['workcamps'].size
+  end
+
+  test "search by name" do
+    3.times { Factory(:workcamp) }
+    @workcamp.update_attribute(:name,'Great project in Alaska')
+
+    get :index
+    assert_equal 4, json_response['workcamps'].size
+
+    get :index, q: 'great'
+    assert_equal 1, json_response['workcamps'].size
+    assert_equal @workcamp.id, json_response['workcamps'][0]['id']
+
+    get :index, q: 'STRING NOT THERE'
+    assert_equal 0, json_response['workcamps'].size
   end
 
   test "filter by year" do

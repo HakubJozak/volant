@@ -61,6 +61,8 @@ class WorkcampsController < ApplicationController
       search = search.where("free_places_for_males >= ?",fp)
     end
 
+
+
     render json: search,
            meta: { pagination: pagination_info(search) },
            each_serializer: WorkcampSerializer
