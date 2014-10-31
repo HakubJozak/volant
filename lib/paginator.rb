@@ -19,6 +19,8 @@ class Paginator < Kaminari::Helpers::Paginator
   #     [1,2,3,10] => [1,2,3,'...',10]
   #
   def add_ellipsis(array)
+    return array if array.empty?
+
     last = array[0] - 1
 
     array.map do |p|

@@ -83,6 +83,7 @@ class WorkcampsControllerTest < ActionController::TestCase
   end
 
   test 'free' do
+    Workcamp.destroy_all
     target = Factory(:workcamp, places: 2, places_for_males: 1, places_for_females: 1)
     get :index, free_places: 1
     assert_response :success

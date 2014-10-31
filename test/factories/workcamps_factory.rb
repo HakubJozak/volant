@@ -12,6 +12,12 @@ Factory.define :workcamp do |w|
   w.places 2
   w.places_for_females 2
   w.places_for_males 2
+
+  # smart?
+  w.free_places 2
+  w.free_places_for_females 2
+  w.free_places_for_males 2
+
   w.minimal_age 18
   w.maximal_age 26
   w.area "Xaverov u Sázavy"
