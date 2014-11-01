@@ -8,6 +8,10 @@ Volant.MessageRoute = Ember.Route.extend({
     @_super(controller,model)
 
   actions:
+    remove: ->
+      @modelFor(@routeName).destroyRecord()
+      @transitionTo('messages')
+
     send_message: ->
       @modelFor(@routeName).save().then (msg) =>
         msg.deliver().then (payload) =>

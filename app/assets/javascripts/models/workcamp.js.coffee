@@ -78,3 +78,9 @@ Volant.Workcamp = DS.Model.extend
       -1
     else
        0
+
+  for_email: ->
+    hash = @_super()
+    hash.begin_string = moment(@get('begin')).lang('cs').format('l')
+    hash.end_string = moment(@get('end')).lang('cs').format('l')
+    hash

@@ -8,8 +8,7 @@
 
 
 #= require moment
-## require moment/czech.js
-## require moment/english.js
+#= require moment/cs
 #= require modernizr
 ## require jquery-ui/datepicker
 ## require date-polyfill.min

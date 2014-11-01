@@ -8,6 +8,8 @@ class Message < ActiveRecord::Base
   validates_presence_of :user
   validates_inclusion_of :action, in: %w(ask accept reject send infosheet)
 
+#  validates_presence_of :from,:to,:subject,:body, if: :sending
+
   ALLOWED_ACTIONS = [ :accept, :reject, :ask, :infosheet ]
 
   def deliver!

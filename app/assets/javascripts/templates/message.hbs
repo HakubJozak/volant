@@ -108,7 +108,14 @@
     </div>
   </fieldset>
 
-  {{#unless delivered}}
+  {{#if delivered}}
+    <button type="button" class="btn btn-danger pull-right" {{action 'remove'}}>
+      Delete
+    </button>
+  {{else}}
+    <button type="button" class="btn btn-danger pull-right" {{action 'remove'}}>
+      Discard
+    </button>
   <button type="submit" class="btn btn-default">
     Save & Close
   </button>
@@ -116,6 +123,6 @@
     {{fa 'send-o'}}
     Send
   </button>
-  {{/unless}}
+  {{/if}}
 </form>
 </div>
