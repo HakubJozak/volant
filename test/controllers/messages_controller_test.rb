@@ -12,6 +12,19 @@ class MessagesControllerTest < ActionController::TestCase
     assert_equal 1,json_response['messages'].size
   end
 
+  test 'index with user_id' do
+    u1,u2 = 2.times.map { Factory(:user) }
+    @message.update_attribute(:user,u1)
+
+    get :index, user_id: u1.id
+    assert_response :success
+    assert_equal 1,json_response['messages'].size
+
+    get :index, user_id: u2.id
+    assert_response :success
+    assert_equal 0,json_response['messages'].size
+  end
+
   test "create" do
     assert_difference('Message.count') do
       post :create, message: Factory.attributes_for(:message)

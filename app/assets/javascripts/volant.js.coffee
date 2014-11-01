@@ -51,14 +51,17 @@ Ember.Application.initializer
   initialize: (container,application) ->
     store = container.lookup('store:main')
     attributes = $('meta[name="current-user"]').attr('content')
+    json = JSON.parse(attributes)
 
     if attributes
       proxy_class = Volant.CurrentUserObjectProxy.extend()
       container.register 'user:current', proxy_class, singleton: true
 
-      user = store.push('user', store.serializerFor(Volant.User).normalize(Volant.User, JSON.parse(attributes)))
-      proxy = container.lookup('user:current')
-      proxy.set('content', user)
+#      user = store.push('user', store.serializerFor(Volant.User).normalize(Volant.User, JSON.parse(attributes)))
+      store.pushPayload('user',json)
+      store.find('user',json.user.id).then (user) =>
+        proxy = container.lookup('user:current')
+        proxy.set('content', user)
 
       application.inject('controller', 'current_user', 'user:current');
       application.inject('route', 'current_user', 'user:current');

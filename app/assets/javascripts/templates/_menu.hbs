@@ -55,7 +55,7 @@
          {{#link-li}}
            {{#link-to 'messages'}}
            {{fa 'envelope'}}
-           <span class="badge">3</span></a>
+           <span class="badge">{{current_user.unsent_messages_count}}</span></a>
            {{/link-to}}
          {{/link-li}}
 

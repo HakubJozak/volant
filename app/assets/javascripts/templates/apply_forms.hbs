@@ -6,7 +6,10 @@
       <div class="input-group">
         {{ input value=query class="form-control" placeholder="Search by name, birth number, payment account or keyword..." }}
         <span class="input-group-btn">
-          <button class="btn btn-primary" type="button">Search</button>
+          <button class="btn btn-default reset" type="button" {{action 'clear_query'}}>
+            {{fa 'times'}}
+          </button>
+          <button class="btn btn-primary" type="submit">Search</button>
         </span>
       </div>
     </div>

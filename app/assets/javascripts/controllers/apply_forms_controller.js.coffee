@@ -5,6 +5,11 @@ Volant.ApplyFormsController = Volant.ListController.extend({
   sortAscending: false
   queryParams: ['page','year','query']
 
+  actions:
+    clear_query: ->
+      @set('query',null)
+      false
+
   page_reset: (->
     @set('page',1)
   ).observes('query')

@@ -5,8 +5,13 @@ class MessagesController < ApplicationController
 
   # GET /messages4
   def index
-    @messages = Message.all
-    respond_with(@messages)
+    search = Message.page(current_page).order(created_at: :desc)
+
+    if id = params[:user_id]
+      search = search.where(user_id: id)
+    end
+
+    respond_with(search)
   end
 
   def show

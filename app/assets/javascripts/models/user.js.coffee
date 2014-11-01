@@ -5,6 +5,7 @@ Volant.User = DS.Model.extend({
   password: DS.attr 'string'
   first_name: DS.attr 'string'
   last_name: DS.attr 'string'
+  unsent_messages_count: DS.attr 'number'
 
   firstname: Ember.computed.alias('first_name')
   lastname: Ember.computed.alias('last_name')

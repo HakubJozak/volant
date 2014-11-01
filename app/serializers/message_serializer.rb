@@ -1,7 +1,7 @@
 class MessageSerializer < ActiveModel::Serializer
   has_one :email_template, embed: :ids, include: false
   has_one :apply_form, embed: :ids, include: false
-  has_one :user, embed: :ids, include: false
+  has_one :user, embed: :ids, include: true
 
   def self.public_attributes
     [ :to, :from, :subject, :body, :user_id, :email_template_id,  :action]
