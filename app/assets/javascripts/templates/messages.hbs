@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     {{#each}}
-      <tr>
+      <tr {{bind-attr class="delivered::warning"}}>
         <td>
           {{#link-to 'message' this}}
             {{subject}}
@@ -31,3 +31,5 @@
     {{/each}}
   </tbody>
 </table>
+
+{{ render 'pagination' }}

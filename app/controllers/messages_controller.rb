@@ -11,7 +11,8 @@ class MessagesController < ApplicationController
       search = search.where(user_id: id)
     end
 
-    respond_with(search)
+    render json: search,
+           meta: { pagination: pagination_info(search) }
   end
 
   def show
