@@ -26,6 +26,10 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
     @controllerFor('tags').set('content', @store.find('tag'));
 
   actions:
+    create: ->
+      wc = @store.createRecord('workcamp')
+      @transitionTo 'workcamp',wc
+
     refresh: ->
       @refresh()
       false

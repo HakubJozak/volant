@@ -1,6 +1,15 @@
-<div class="row">
- {{ partial 'workcamps/filter' }}
-</div>
+{{ partial 'workcamps/filter' }}
+
+<hr/>
+
+  <div class="row">
+    <div class="col-lg-offset-11 col-lg-1">
+      {{#link-to 'workcamps.new' class='btn btn-success'}}
+        {{fa 'plus'}} Create
+      {{/link-to}}
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-lg-12">
 

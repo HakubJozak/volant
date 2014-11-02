@@ -1,4 +1,5 @@
 class WorkcampsController < ApplicationController
+  respond_to :json
 
   serialization_scope :current_user
   before_action :find_workcamp, only: [ :show, :update, :destroy ]
@@ -53,8 +54,6 @@ class WorkcampsController < ApplicationController
       search = search.where("free_places_for_males >= ?",fp)
     end
 
-
-
     render json: search,
            meta: { pagination: pagination_info(search) },
            each_serializer: WorkcampSerializer
@@ -66,12 +65,12 @@ class WorkcampsController < ApplicationController
 
   # POST /workcamps
   def create
-    @workcamp = Workcamp.new(workcamp_params)
+    @workcamp = Outgoing::Workcamp.new(workcamp_params)
 
     if @workcamp.save
-      redirect_to @workcamp, notice: 'Workcamp was successfully created.'
+      render json: @workcamp, serializer: WorkcampSerializer
     else
-      render :new
+      render json: { errors: @workcamp.errors }, status: 422
     end
   end
 
@@ -96,8 +95,10 @@ class WorkcampsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def workcamp_params
-    params.except(:state,:free_places,:free_places_for_males,:free_places_for_females)
+    readonly = [ :state,:free_places,:free_places_for_males,:free_places_for_females, :duration, :tag_list, :sci_id, :sci_code ]
+    params.except(*readonly)
       .require(:workcamp)
+      .except(*readonly)
       .permit(*WorkcampSerializer.public_attributes)
   end
 end

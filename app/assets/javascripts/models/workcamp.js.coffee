@@ -29,7 +29,6 @@ Volant.Workcamp = DS.Model.extend
   capacity_teenagers: DS.attr 'number'
   capacity_males: DS.attr 'number'
   capacity_females: DS.attr 'number'
-
   airport: DS.attr 'string'
   train: DS.attr 'string'
   publish_mode: DS.attr 'string'

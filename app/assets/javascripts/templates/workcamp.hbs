@@ -22,6 +22,7 @@
             optionValuePath="content"
             optionLabelPath="content.name"
             class="form-control"
+            prompt='Choose a country'
             }}
         </div>
       </div>
@@ -50,15 +51,14 @@
       <div class="form-group">
         <label class="col-lg-2 control-label">Organization</label>
         <div class="col-lg-3">
-          <p class="form-control-static">
             {{view Ember.Select
               contentBinding='controllers.organizations.content'
               selectionBinding='organization'
               optionValuePath="content.id"
               optionLabelPath="content.name"
               class="form-control"
+              prompt='Choose an organization'
             }}
-          </p>
         </div>
 
         <label class="col-lg-1 control-label">Fee</label>
@@ -90,6 +90,25 @@
       optionLabelPath="content.code"
       class="form-control"
       }}
+        </div>
+        <div class="col-lg-7">
+          {{#each workcamp_intentions}}
+            <span class='label label-default'>{{code}}</span>
+          {{/each}}
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-2 control-label">Publish</label>
+        <div class="col-lg-3">
+          {{view Ember.Select
+          selectionBinding='publish_mode'
+          contentBinding='publish_modes'
+          optionValuePath="content.id"
+          optionLabelPath="content.label"
+          class="form-control"
+          }}
         </div>
         <div class="col-lg-7">
           {{#each workcamp_intentions}}
