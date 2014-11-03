@@ -9,8 +9,8 @@
     </button>
     <ul class="dropdown-menu" role="menu">
       {{#each action_name in state.actions}}
-        <li><a {{action 'apply_form_action' this bubbles=false}} href="#">
-          {{ apply-form-action-icon this }} {{capitalize action_name}}
+        <li><a {{action 'apply_form_action' action_name this bubbles=false}} href="#">
+          {{ apply-form-action-icon action_name }} {{capitalize action_name}}
         </a></li>
       {{/each}}
     </ul>

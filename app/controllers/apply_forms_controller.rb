@@ -1,7 +1,7 @@
 class ApplyFormsController < ApplicationController
 
   serialization_scope :current_user
-  before_action :find_apply_form, only: [ :show, :update, :destroy ]
+  before_action :find_apply_form, only: [ :show, :update, :destroy, :cancel ]
 
   def index
     search = Outgoing::ApplyForm.page(current_page).order("#{ApplyForm.table_name}.created_at desc")
@@ -24,6 +24,11 @@ class ApplyFormsController < ApplicationController
     render json: search,
            meta: { pagination: pagination_info(search) },
            each_serializer: ApplyFormSerializer
+  end
+
+  def cancel
+    @apply_form.cancel
+    render json: @apply_form, serializer: ApplyFormSerializer
   end
 
   def update

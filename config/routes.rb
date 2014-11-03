@@ -2,14 +2,21 @@ Rails.application.routes.draw do
 
   resources :workcamp_assignments, only: [ :index, :create, :update, :destroy ]
   resources :email_contacts, only: [ :create, :update, :destroy ]
-  resources :workcamps
-  resources :apply_forms
+
   resources :countries, only: [ :index, :show ]
   resources :organizations
   resources :workcamp_intentions
   resources :volunteers
   resources :tags
   resources :payments
+  resources :workcamps
+
+  resources :apply_forms do
+    member do
+      post :cancel
+    end
+  end
+
   resources :messages do
     member do
       post :deliver

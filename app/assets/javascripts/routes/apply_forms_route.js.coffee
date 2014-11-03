@@ -24,6 +24,10 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
         when 'pay'
           @transitionTo('apply_form',form,{ queryParams: { anchor: 'payment-fields'}})
         when 'cancel'
+          url = "/apply_forms/#{form.get('id')}/cancel"
+          @ajax_to_store(url).then (payload) =>
+            @flash_info 'Application cancelled.'
+
         else
           @open_message_for action,form
 
