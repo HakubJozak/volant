@@ -20,17 +20,19 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
 
   actions:
     apply_form_action: (action,form) ->
-      if action == 'pay'
-        @transitionTo('apply_form',form,{ queryParams: { anchor: 'payment-fields'}})
-      else
-        @open_message_for action,form
+      switch action
+        when 'pay'
+          @transitionTo('apply_form',form,{ queryParams: { anchor: 'payment-fields'}})
+        when 'cancel'
+        else
+          @open_message_for action,form
+
 
     open_existing_message: (message) ->
       @transitionTo('message',message)
       false
 
     search: ->
-      console.info 'refresh'
       @refresh()
       false
 

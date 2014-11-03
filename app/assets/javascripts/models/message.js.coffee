@@ -16,19 +16,6 @@ Volant.Message = DS.Model.extend
   action_name: Ember.computed.alias('action')
   delivered: Ember.computed.alias('sent_at')
 
-  deliver: ->
-    url = "/messages/#{@get('id')}/deliver"
-    new Promise (resolve, reject) ->
-      csrf_token = $('meta[name="csrf-token"]').attr('content')
-      csrf_param = $('meta[name="csrf-param"]').attr('content')
-      data = { authenticity_token: csrf_token }
-
-      try
-        $.post url, data, (response) ->
-          resolve(response)
-      catch e
-        reject(e)
-
   template_changed: (->
     context = {
      user: if @get('user')? then @get('user').for_email() else null

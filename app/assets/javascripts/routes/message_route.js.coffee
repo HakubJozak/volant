@@ -1,4 +1,6 @@
-Volant.MessageRoute = Ember.Route.extend({
+Volant.MessageRoute = Volant.BaseRoute.extend({
+  title: (model) -> "#{model.get('subject')}"
+
   model: (params) ->
     @store.find('message', params.message_id)
 
@@ -14,7 +16,8 @@ Volant.MessageRoute = Ember.Route.extend({
 
     send_message: ->
       @modelFor(@routeName).save().then (msg) =>
-        msg.deliver().then (payload) =>
+        url = "/messages/#{msg.get('id')}/deliver"
+        @ajax_with_payload(url).then (payload) =>
           # @controllerFor('flash').set('content', 'Message sent.')
           @store.pushPayload(payload)
           console.info 'Message sent.'

@@ -8,6 +8,7 @@ Volant.ApplyFormsController = Volant.ListController.extend({
   actions:
     reset: ->
       @set('query',null)
+      @send('search')
       false
 
   page_reset: (->

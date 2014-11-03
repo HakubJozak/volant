@@ -15,4 +15,16 @@ Volant.BaseRoute = Ember.Route.extend({
     if hash = @store.typeMapFor(modelType).metadata.pagination
       controller.set('controllers.pagination.model', Ember.Object.create(hash))
 
+  ajax_with_payload: (url) ->
+    new Promise (resolve, reject) ->
+      csrf_token = $('meta[name="csrf-token"]').attr('content')
+      csrf_param = $('meta[name="csrf-param"]').attr('content')
+      data = { authenticity_token: csrf_token }
+
+      try
+        $.post url, data, (response) ->
+          resolve(response)
+      catch e
+        reject(e)
+
 })

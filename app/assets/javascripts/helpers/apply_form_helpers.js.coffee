@@ -15,7 +15,7 @@ Ember.Handlebars.helper 'apply-form-state-icon', (state) ->
            when "cancelled" then 'times-circle-o'
            else ''
 
-  new Handlebars.SafeString "<i title='#{state.info}' class='fa fa-#{icon} #{state}'></i>"
+  new Handlebars.SafeString "<i title='#{state.info}' class='fa fa-#{icon} #{key}'></i>"
 
 
 

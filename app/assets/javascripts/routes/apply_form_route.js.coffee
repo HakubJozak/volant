@@ -19,7 +19,6 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend({
     accept: ->
       @open_message_for 'accept',  @modelFor('apply_form')
 
-
     pay: ->
       form = @modelFor('apply_form')
       payment = @store.createRecord('payment',apply_form: form,amount: form.get('fee'),mean: 'CASH', received: new Date())
