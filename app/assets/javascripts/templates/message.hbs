@@ -91,7 +91,7 @@
       <div class="col-lg-11 col-lg-offset-1">
         {{#if delivered}}
           <hr/>
-          {{markdown body}}
+          {{{html_body}}}
         {{else}}
           <div class="tab-content">
             <div class="tab-pane active" id="edit">
@@ -99,7 +99,7 @@
             </div>
             <div class="tab-pane" id="preview">
               <div class='email-preview'>
-                {{markdown body}}
+                {{{html_body}}}
               </div>
             </div>
           </div>

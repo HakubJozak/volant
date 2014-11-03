@@ -1,10 +1,9 @@
 Volant.MessageController = Volant.ObjectController.extend({
   needs: 'email_templates'
-  from_field_editable: false
+  after_save_route: 'messages'
 
-  after_save_route: 'apply_forms'
+  process_markdown: (->
+    @set('html_body',window.markdown.toHTML(@get('body')))
+  ).observes('body')
 
-  actions:
-    edit_from_field: ->
-      @toggleProperty('from_field_editable')
 })

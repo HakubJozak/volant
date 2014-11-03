@@ -4,7 +4,7 @@ class MessageSerializer < ActiveModel::Serializer
   has_one :user, embed: :ids, include: true
 
   def self.public_attributes
-    [ :to, :from, :subject, :body, :user_id, :email_template_id,  :action]
+    [ :to, :from, :subject, :body, :html_body, :user_id, :email_template_id,  :action]
   end
 
   def self.private_attributes

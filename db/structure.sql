@@ -592,7 +592,8 @@ CREATE TABLE messages (
     sent_at timestamp without time zone,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    apply_form_id integer
+    apply_form_id integer,
+    html_body text
 );
 
 
@@ -2093,4 +2094,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141021132011');
 INSERT INTO schema_migrations (version) VALUES ('20141021140043');
 
 INSERT INTO schema_migrations (version) VALUES ('20141029204415');
+
+INSERT INTO schema_migrations (version) VALUES ('20141103130915');
 
