@@ -17,8 +17,13 @@ Volant.WorkcampsController = Volant.ListController.extend({
 
   sortProperties: ['name']
   sortAscending: true
+  filter_visible: false
 
   actions:
+    toggle_filter: ->
+      @toggleProperty('filter_visible')
+      false
+
     reset: ->
       # TODO: dry by getting the default values
       @set('query','')

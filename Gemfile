@@ -48,7 +48,7 @@ gem 'kaminari'
 gem 'devise'
 
 
-gem 'momentjs-rails'
+gem 'momentjs-rails', '~> 2.8.3'
 gem 'modernizr-rails'
 gem 'jquery-ui-rails'
 

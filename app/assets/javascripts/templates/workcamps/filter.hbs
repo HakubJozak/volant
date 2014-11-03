@@ -1,95 +1,86 @@
-<form class="form-horizontal" role="form" {{action 'search' on="submit"}}>
-  <div class="form-group">
-    <label class="col-lg-1 control-label">Between</label>
-    <div class="col-lg-2">{{input value=from type="date" class="form-control"}}</div>
-    <div class="col-lg-2">{{input value=to type="date" class="form-control"}}</div>
+<div class="form-group">
+  <label class="col-lg-1 control-label">Between</label>
+  <div class="col-lg-2">{{input value=from type="date" class="form-control"}}</div>
+  <div class="col-lg-2">{{input value=to type="date" class="form-control"}}</div>
 
-    <label class="col-lg-1 control-label">Duration</label>
-    <div class="col-lg-1">{{input value=min_duration type="number" class="form-control" placeholder='Min'}}</div>
-    <div class="col-lg-1">{{input value=max_duration type="number" class="form-control" placeholder='Max'}}</div>
+  <label class="col-lg-1 control-label">Duration</label>
+  <div class="col-lg-1">{{input value=min_duration type="number" class="form-control" placeholder='Min'}}</div>
+  <div class="col-lg-1">{{input value=max_duration type="number" class="form-control" placeholder='Max'}}</div>
 
-    <label class="col-lg-1 control-label">Age</label>
-    <div class="col-lg-1">{{input value=min_age type="number" class="form-control"}}</div>
-    <div class="col-lg-1">{{input value=max_age type="number" class="form-control"}}</div>
+  <label class="col-lg-1 control-label">Age</label>
+  <div class="col-lg-1">{{input value=min_age type="number" class="form-control"}}</div>
+  <div class="col-lg-1">{{input value=max_age type="number" class="form-control"}}</div>
+</div>
+
+<div class="form-group">
+  <label class="col-lg-1 control-label">Free</label>
+  <div class="col-lg-1">{{input value=free type="number" class="form-control" placeholder='Any'}}</div>
+  <div class="col-lg-1">{{input value=free_females type="number" class="form-control" placeholder='Females'}}</div>
+  <div class="col-lg-1">{{input value=free_males type="number" class="form-control" placeholder='Males'}}</div>
+</div>
+
+<div class="form-group">
+  <label class="col-lg-1 control-label">Intentions</label>
+  <div class="col-lg-2">
+    {{view Ember.Select
+    contentBinding='controllers.workcamp_intentions.content'
+    optionValuePath="content.id"
+    optionLabelPath="content.code"
+    class="form-control"
+    }}
+  </div>
+  <div class="col-lg-2">
+    {{#each filter.intentions}}
+      <span class="label label-default">{{name}} X</span>
+    {{/each}}
   </div>
 
-  <div class="form-group">
-    <label class="col-lg-1 control-label">Free</label>
-    <div class="col-lg-1">{{input value=free type="number" class="form-control" placeholder='Any'}}</div>
-    <div class="col-lg-1">{{input value=free_females type="number" class="form-control" placeholder='Females'}}</div>
-    <div class="col-lg-1">{{input value=free_males type="number" class="form-control" placeholder='Males'}}</div>
+  <label class="col-lg-1 control-label">Tags</label>
+  <div class="col-lg-2">
+    {{view Ember.Select
+    contentBinding='controllers.tags.content'
+    optionValuePath="content.id"
+    optionLabelPath="content.name"
+    class="form-control"
+    }}
+  </div>
+  <div class="col-lg-3">
+    {{#each filter.tags}}
+      <span class="label label-default">{{name}} X</span>
+    {{/each}}
+    <span class="label label-default" style="color:#FFFFFF; background-color:#CC3333;">extra fee X</span>
+    <span class="label label-default" style="color:#FFFFFF; background-color:#FF9900;">wheelchair X</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-lg-1 control-label">Countries</label>
+
+  <div class="col-lg-2">
+    {{view Ember.Select
+    contentBinding='controllers.countries.content'
+    optionValuePath="content.id"
+    optionLabelPath="content.name"
+    class="form-control"
+    }}
+  </div>
+  <div class="col-lg-2">
+    <span class="label label-default">Great Britain X</span>
+    <span class="label label-default">France X</span>
   </div>
 
-  <div class="form-group">
-    <label class="col-lg-1 control-label">Intentions</label>
-    <div class="col-lg-2">
-      {{view Ember.Select
-      contentBinding='controllers.workcamp_intentions.content'
-      optionValuePath="content.id"
-      optionLabelPath="content.code"
-      class="form-control"
-      }}
-    </div>
-    <div class="col-lg-2">
-      {{#each filter.intentions}}
-        <span class="label label-default">{{name}} X</span>
-      {{/each}}
-    </div>
-
-    <label class="col-lg-1 control-label">Tags</label>
-    <div class="col-lg-2">
-      {{view Ember.Select
-            contentBinding='controllers.tags.content'
-            optionValuePath="content.id"
-            optionLabelPath="content.name"
-            class="form-control"
-      }}
-    </div>
-    <div class="col-lg-3">
-      {{#each filter.tags}}
-        <span class="label label-default">{{name}} X</span>
-      {{/each}}
-      <span class="label label-default" style="color:#FFFFFF; background-color:#CC3333;">extra fee X</span>
-      <span class="label label-default" style="color:#FFFFFF; background-color:#FF9900;">wheelchair X</span>
-    </div>
+  <label class="col-lg-1 control-label">Organizations</label>
+  <div class="col-lg-2">
+    {{view Ember.Select
+    contentBinding='controllers.organizations.content'
+    optionValuePath="content.id"
+    optionLabelPath="content.name"
+    class="form-control"
+    }}
   </div>
-
-  <div class="form-group">
-    <label class="col-lg-1 control-label">Countries</label>
-
-    <div class="col-lg-2">
-      {{view Ember.Select
-            contentBinding='controllers.countries.content'
-            optionValuePath="content.id"
-            optionLabelPath="content.name"
-            class="form-control"
-      }}
-    </div>
-    <div class="col-lg-2">
-      <span class="label label-default">Great Britain X</span>
-      <span class="label label-default">France X</span>
-    </div>
-
-    <label class="col-lg-1 control-label">Organizations</label>
-    <div class="col-lg-2">
-      {{view Ember.Select
-            contentBinding='controllers.organizations.content'
-            optionValuePath="content.id"
-            optionLabelPath="content.name"
-            class="form-control"
-      }}
-    </div>
-    <div class="col-lg-3">
-      <span class="label label-default">INEX-SDA X</span>
-      <span class="label label-default">Tamjdem CON X</span>
-      <span class="label label-default">SCI Germany X</span>
-    </div>
+  <div class="col-lg-3">
+    <span class="label label-default">INEX-SDA X</span>
+    <span class="label label-default">Tamjdem CON X</span>
+    <span class="label label-default">SCI Germany X</span>
   </div>
-
-  <div class="row">
-    <div class="col-lg-offset-1 col-lg-2">
-      <button type="button" {{ action 'reset' }} class="btn btn-default">Reset</button>
-      <button type="submit" class="btn btn-primary">Search</button>
-    </div>
-  </div>
-</form>
+</div>

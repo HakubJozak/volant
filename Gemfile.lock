@@ -136,7 +136,7 @@ GEM
     hitimes (1.2.2)
     htmlentities (4.3.1)
     http_parser.rb (0.6.0)
-    i18n (0.6.9)
+    i18n (0.6.11)
     jquery-rails (3.1.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -168,7 +168,7 @@ GEM
     metaclass (0.0.4)
     method_source (0.8.2)
     mime-types (1.25.1)
-    minitest (5.3.5)
+    minitest (5.4.2)
     minitest-reporters (1.0.4)
       ansi
       builder
@@ -177,7 +177,7 @@ GEM
     mocha (1.1.0)
       metaclass (~> 0.0.1)
     modernizr-rails (2.7.1)
-    momentjs-rails (2.7.0)
+    momentjs-rails (2.8.3)
       railties (>= 3.1)
     multi_json (1.10.1)
     net-scp (1.2.1)
@@ -266,7 +266,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (1.2.1)
+    tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.5.1)
       execjs (>= 0.3.0)
@@ -300,7 +300,7 @@ DEPENDENCIES
   minitest-reporters
   mocha
   modernizr-rails
-  momentjs-rails
+  momentjs-rails (~> 2.8.3)
   paperclip
   pg
   pry-rails

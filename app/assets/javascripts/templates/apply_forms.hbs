@@ -1,17 +1,25 @@
 {{outlet}}
 
-<form class="form form-horizontal apply-form-search" role="form" {{action 'search' on="submit"}}>
+<form class="form form-horizontal search-form" role="form" {{action 'search' on="submit"}}>
   <div class='row'>
-    <div class='col-lg-12'>
+    <div class='col-lg-1'>
+      Keyword
+    </div>
+    <div class='col-lg-9'>
       <div class="input-group">
         {{ input value=query class="form-control" placeholder="Search by name, birth number, payment account or keyword..." }}
         <span class="input-group-btn">
-          <button class="btn btn-default reset" type="button" {{action 'clear_query'}}>
+          <button class="btn btn-default reset" type="button" {{action 'reset'}}>
             {{fa 'times'}}
           </button>
           <button class="btn btn-primary" type="submit">Search</button>
         </span>
       </div>
+    </div>
+    <div class='col-lg-2'>
+      {{#link-to 'workcamps.new' class='btn btn-success'}}
+        {{fa 'plus'}} Create
+      {{/link-to}}
     </div>
   </div>
 </form>

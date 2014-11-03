@@ -6,7 +6,7 @@ Volant.ApplyFormsController = Volant.ListController.extend({
   queryParams: ['page','year','query']
 
   actions:
-    clear_query: ->
+    reset: ->
       @set('query',null)
       false
 

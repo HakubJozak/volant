@@ -8,7 +8,7 @@
 
 
 #= require moment
-#= require moment/cs
+#---- require moment/cs
 #= require modernizr
 ## require jquery-ui/datepicker
 ## require date-polyfill.min
@@ -68,6 +68,5 @@ Ember.Application.initializer
       # controller = container.lookup('controller:currentUser').set('content', user)
       # cannot inject controller onto other controllers?
       # container.injection('controller', 'current_user', 'controller:currentUser')
-
 
 window.Volant = Ember.Application.create()
