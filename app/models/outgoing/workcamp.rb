@@ -7,7 +7,7 @@ module Outgoing
     include Outgoing::FreePlacesUpdater
     before_save :update_free_places_for_workcamp
 
-    validates_presence_of :name, :country, :organization
+    validates_presence_of :name, :country, :organization, :publish_mode
 
     # TODO: DRY
     scope :live, -> { where "state IS NULL" }

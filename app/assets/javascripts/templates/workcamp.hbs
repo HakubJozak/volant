@@ -34,6 +34,7 @@
         <div class="col-lg-3">
           {{view Volant.DateView dateBinding='begin' }}
         </div>
+
         <div class="col-lg-3">
           {{view Volant.DateView class="form-control" dateBinding='end' }}
         </div>
@@ -252,12 +253,13 @@
       <table class="table table-condensed table-hover col-lg-12 sidepanel">
        <tbody>
          {{#each assignments_by_state }}
-          <tr {{action 'view_apply_form' apply_form}}>
+          <tr>
             <td>{{apply-form-state-icon state}}</td>
             <td>
-              {{apply_form.volunteer.firstname}}
-              {{apply_form.volunteer.lastname}}
-              {{ gender apply_form.volunteer }}
+              {{#link-to 'apply_form' apply_form}}
+                {{apply_form.name}}
+                {{ gender apply_form.volunteer }}
+              {{/link-to}}
             </td>
           </tr>
           {{/each}}

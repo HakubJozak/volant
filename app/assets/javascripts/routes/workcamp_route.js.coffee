@@ -11,8 +11,20 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend({
     @render('workcamp/page_up',into: 'application', outlet: 'page_up')
 
   actions:
-    view_apply_form: (form) ->
-      @transitionTo('apply_form',form)
+    save: ->
+      model = @modelFor(@routeName)
+      @modelFor(@routeName).save().then ( (wc) =>
+         @transitionTo 'workcamp',model
+         @controllerFor('application').set('flash', {type: 'success', message: 'Saved.'})
+       ), ( (e) ->
+         console.error e
+       )
+
+    rollback: ->
+      model = @modelFor(@routeName)
+      model.get('errors').clear();
+      model.rollback()
+      false
 
   setupController: (controller,model,queryParams) ->
     @_super(controller,model,queryParams)

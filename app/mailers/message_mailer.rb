@@ -5,10 +5,9 @@ class MessageMailer < ActionMailer::Base
 
     mail(to: msg.to,
          from: msg.from,
-         body: msg.body,
          subject: msg.subject,
          content_type: "text/html") do |format|
-      format.html { render html: msg.body }
+      format.html { render text: msg.html_body.to_s }
     end
   end
 end
