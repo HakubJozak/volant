@@ -8,7 +8,7 @@
 
 
 #= require moment
-#---- require moment/cs
+#= require moment/cs
 #= require modernizr
 ## require jquery-ui/datepicker
 ## require date-polyfill.min
@@ -42,6 +42,8 @@
 #       store.load(Volant.WorkcampIntentions, json)
 #       Volant.advanceReadiness()
 # })
+
+moment.locale('en')
 
 Ember.Application.initializer
   name: 'setCurrentUser'
