@@ -10,12 +10,14 @@
      <fieldset>
        <legend></legend>
        <div class="form-group" >
+        {{#model-field errors=errors.name}}
         <label class="col-lg-2 control-label">Name</label>
-        <div class="col-lg-7">
+        <div class="col-lg-7" data-tooltip>
           {{input value=name class='form-control' }}
         </div>
+        {{/model-field}}
 
-        <div class="col-lg-3" title='country'>
+        {{#model-field errors=errors.country class="col-lg-3"}}
           {{view Ember.Select
             contentBinding='controllers.countries.content'
             selectionBinding='country'
@@ -24,11 +26,16 @@
             class="form-control"
             prompt='Choose a country'
             }}
-        </div>
+        {{/model-field}}
       </div>
 
       <div class="form-group">
-        {{ view "text" label='code' model=code errors=errors.code lwidth=2 width=3 }}
+        {{#model-field errors=errors.code}}
+          <label class="col-lg-2 control-label">Code</label>
+          <div class="col-lg-3">
+          {{ input value=code class='form-control'}}
+          </div>
+        {{/model-field}}
 
         <label class="col-lg-1 control-label">Dates</label>
         <div class="col-lg-3">
@@ -50,6 +57,7 @@
       </div>
 
       <div class="form-group">
+        {{#model-field errors=errors.organization}}
         <label class="col-lg-2 control-label">Organization</label>
         <div class="col-lg-3">
             {{view Ember.Select
@@ -61,6 +69,7 @@
               prompt='Choose an organization'
             }}
         </div>
+        {{/model-field}}
 
         <label class="col-lg-1 control-label">Fee</label>
         <div class="col-lg-3">{{input value=extra_fee type="decimal" class="form-control" placeholder='Amount'}}</div>
@@ -142,14 +151,22 @@
       </div>
 
       <div class="form-group">
-        <label class="col-lg-2 control-label">Places</label>
-        <div class="col-lg-2">{{input value=places type="number" class="form-control col-lg-1"}}</div>
+        {{#model-field errors=errors.places}}
+          <label class="col-lg-2 control-label">Places</label>
+          <div class="col-lg-2">{{input value=places type="number" class="form-control col-lg-1"}}</div>
+        {{/model-field}}
 
-        <label class="col-lg-1 control-label">Females</label>
-        <div class="col-lg-1">{{input value=places_for_females type="number" class="form-control col-lg-1"}}</div>
+        {{#model-field errors=errors.places_for_females}}
+          <label class="col-lg-1 control-label">Females</label>
+          <div class="col-lg-1">{{input value=places_for_females type="number" class="form-control col-lg-1"}}</div>
+        {{/model-field}}
 
-        <label class="col-lg-1 control-label">Males</label>
-        <div class="col-lg-1">{{input value=places_for_males type="number" class="form-control col-lg-1"}}</div>
+        {{#model-field errors=errors.places_for_males}}
+          <label class="col-lg-1 control-label">Males</label>
+          <div class="col-lg-1">
+            {{input value=places_for_males type="number" class="form-control col-lg-1"}}
+          </div>
+        {{/model-field}}
       </div>
 
       <div class="form-group">

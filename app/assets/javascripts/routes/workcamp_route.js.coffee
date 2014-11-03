@@ -13,7 +13,8 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend({
   actions:
     save: ->
       model = @modelFor(@routeName)
-      @modelFor(@routeName).save().then ( (wc) =>
+      model.get('errors').clear()
+      model.save().then ( (wc) =>
          @transitionTo 'workcamp',model
          @controllerFor('application').set('flash', {type: 'success', message: 'Saved.'})
        ), ( (e) ->
@@ -22,7 +23,7 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend({
 
     rollback: ->
       model = @modelFor(@routeName)
-      model.get('errors').clear();
+      model.get('errors').clear()
       model.rollback()
       false
 
