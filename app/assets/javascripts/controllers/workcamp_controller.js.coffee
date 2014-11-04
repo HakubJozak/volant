@@ -3,6 +3,8 @@ Volant.WorkcampController = Ember.ObjectController.extend {
   # isDirty: Ember.computed.any('model.isDirty','changed')
   # changed: false
 
+  publish_modes: [ { code: 'NEVER', label: 'Never' }, { code: 'ALWAYS', label: 'Always' }, { code: 'SEASON', label: 'During season' } ]
+
   set_country: (->
     unless @get('country')
       if @get('organization')

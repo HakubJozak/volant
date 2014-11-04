@@ -113,9 +113,9 @@
         <label class="col-lg-2 control-label">Publish</label>
         <div class="col-lg-3">
           {{view Ember.Select
-          selectionBinding='publish_mode'
-          contentBinding='publish_modes'
-          optionValuePath="content.id"
+          value=publish_mode
+          content=publish_modes
+          optionValuePath="content.code"
           optionLabelPath="content.label"
           class="form-control"
           }}

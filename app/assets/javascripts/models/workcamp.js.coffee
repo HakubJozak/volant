@@ -1,6 +1,4 @@
 Volant.Workcamp = DS.Model.extend
-  publish_modes: [ { id: 'NEVER', label: 'Never' }, { id: 'ALWAYS', label: 'Always' }, { id: 'SEASON', label: 'During season' } ]
-
   starred: DS.attr 'boolean'
 
   country: DS.belongsTo('country')
