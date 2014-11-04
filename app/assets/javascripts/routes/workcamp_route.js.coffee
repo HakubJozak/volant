@@ -16,7 +16,7 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend({
       model.get('errors').clear()
       model.save().then ( (wc) =>
          @transitionTo 'workcamp',model
-         @flash.info 'Saved'
+         @flash_info 'Saved'
        ), ( (e) ->
          console.error e
        )
