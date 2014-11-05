@@ -8,6 +8,9 @@ class WorkcampAssignmentsController < ApplicationController
     render json: was, each_serializer: WorkcampAssignmentSerializer
   end
 
+  def show
+    respond_with(@wa)
+  end
 
   # POST /workcamp_assignments
   def create

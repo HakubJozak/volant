@@ -97,7 +97,7 @@ GEM
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
-    ember-data-source (1.0.0.beta.8)
+    ember-data-source (1.0.0.beta.11)
       ember-source
     ember-rails (0.15.0)
       active_model_serializers
@@ -287,6 +287,7 @@ DEPENDENCIES
   devise
   devise-bootstrap-views
   differ
+  ember-data-source (= 1.0.0.beta.11)
   ember-rails
   ember-source (= 1.7.0)
   factory_girl_rails

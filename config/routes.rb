@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :workcamp_assignments, only: [ :index, :create, :update, :destroy ]
+  resources :workcamp_assignments, only: [ :index, :create, :update, :destroy, :show ]
   resources :email_contacts, only: [ :create, :update, :destroy ]
 
   resources :countries, only: [ :index, :show ]

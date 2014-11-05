@@ -17,6 +17,20 @@ Volant.ApplyFormSerializer = DS.ActiveModelSerializer.extend({
   serialize: (apply_form,opts) ->
     json = @_super(apply_form,opts)
 
+  ajaxError: (jqXHR) ->
+    error = @_super(jqXHR)
+    if jqXHR and jqXHR.status is 422
+      response = Ember.$.parseJSON(jqXHR.responseText)
+      errors = {}
+      if response.errors isnt undefined
+        jsonErrors = response.errors
+        forEach Ember.keys(jsonErrors), (key) ->
+          errors[Ember.String.camelize(key)] = jsonErrors[key]
+          return
+
+      new InvalidError(errors)
+    else
+      error
 
   serializeBelongsTo: (record, json, relationship) ->
     if relationship.key == 'payment'
