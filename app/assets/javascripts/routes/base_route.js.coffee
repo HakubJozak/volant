@@ -18,6 +18,9 @@ Volant.BaseRoute = Ember.Route.extend({
   flash_info: (msg) ->
     @controllerFor('application').set('flash', {type: 'success', message: msg })
 
+  flash_error: (msg) ->
+    @controllerFor('application').set('flash', {type: 'error', message: msg })
+
 
   ajax_to_store: (url) ->
     new Promise (resolve, reject) =>
