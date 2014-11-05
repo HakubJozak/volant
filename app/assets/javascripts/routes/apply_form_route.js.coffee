@@ -9,7 +9,6 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend({
     @_super(controller,model,queryParmas)
     @controllerFor('payment').set('content',model.get('payment'))
 
-
   renderTemplate: ->
     @_super()
     @render('apply_form/page_up',into: 'application', outlet: 'page_up')
@@ -25,11 +24,4 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend({
       @controllerFor('payment').set('content',payment)
       false
 
-
-#  setupController: (controller, model) ->
-#    @controllerFor('workcamps').set('current_item', model);
-#    @_super(controller, model);
-
-#  deactivate: ->
-#    @controllerFor('workcamps').set('current_item', null);
 })

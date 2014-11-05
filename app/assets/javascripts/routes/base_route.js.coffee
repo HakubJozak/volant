@@ -9,7 +9,26 @@ Volant.BaseRoute = Ember.Route.extend({
     @setupPagination(controller,model)
     @_super(controller,model)
 
-  # not an Ember hook, normal method called from setupController hook
+  actions:
+    save: ->
+      model = @modelFor(@routeName)
+      model.get('errors').clear()
+      model.save().then ( (wc) =>
+         next_route = model.constructor.typeKey.decamelize()
+         @transitionTo next_route,model if @routeName != next_route
+         @flash_info 'Saved.'
+       ), ( (e) =>
+         @flash_error 'Failed.'
+       )
+
+    rollback: ->
+      model = @modelFor(@routeName)
+      model.get('errors').clear()
+      model.rollback()
+      false
+
+  # ----- Normal Methods ------
+
   setupPagination: (controller,model) ->
     modelType = model.get('type')
     if hash = @store.typeMapFor(modelType).metadata.pagination

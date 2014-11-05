@@ -19,20 +19,6 @@ Volant.ApplyFormController = Volant.ObjectController.extend({
       @get('model').save()
       false
 
-    save: ->
-      SUCCESS = =>
-        @show_flash('success','Saved.')
-
-      ERROR = =>
-        @show_flash('error','Failed.')
-
-      store = (m) ->
-        m.get('errors').clear();
-        m.save().then(SUCCESS,ERROR)
-
-      store(m) for m in @models()
-      false
-
     rollback: ->
       reset = (m) ->
         m.get('errors').clear();

@@ -13,6 +13,21 @@ Volant.ApplicationAdapter = DS.ActiveModelAdapter.extend({
 
 Volant.ApplicationSerializer = DS.ActiveModelSerializer
 
+Volant.ApplyFormSerializer = DS.ActiveModelSerializer.extend({
+  serialize: (apply_form,opts) ->
+    json = @_super(apply_form,opts)
+
+
+  serializeBelongsTo: (record, json, relationship) ->
+    if relationship.key == 'payment'
+      if payment = record.get('payment')
+        json['payment_attributes'] = @serialize(payment,includeId: true)
+      console.log json
+      json
+    else
+      @_super(record,json,relationship)
+})
+
 
 
 # Transforms Date to avoid miss-match with rails date

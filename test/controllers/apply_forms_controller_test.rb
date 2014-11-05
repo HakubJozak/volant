@@ -54,10 +54,14 @@ class ApplyFormsControllerTest < ActionController::TestCase
 
 
   test "update" do
-    patch :update, id: @apply_form.id, apply_form: { motivation: 'endless', general_remarks: 'none' }
+    payment = Factory.attributes_for(:payment, amount: 1111)
+
+    patch :update, id: @apply_form.id, apply_form: { motivation: 'endless', general_remarks: 'none', payment_attributes: payment }
+
     assert_response :success
     assert_equal 'none', json_response['apply_form']['general_remarks']
     assert_equal 'endless', json_response['apply_form']['motivation']
+    assert_equal 1111, @apply_form.reload.payment.amount
   end
 
 end

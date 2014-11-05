@@ -10,23 +10,6 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend({
     @render('quick_save',into: 'application', outlet: 'item_controls')
     @render('workcamp/page_up',into: 'application', outlet: 'page_up')
 
-  actions:
-    save: ->
-      model = @modelFor(@routeName)
-      model.get('errors').clear()
-      model.save().then ( (wc) =>
-         @transitionTo 'workcamp',model
-         @flash_info 'Saved.'
-       ), ( (e) =>
-         @flash_error 'Failed.'
-       )
-
-    rollback: ->
-      model = @modelFor(@routeName)
-      model.get('errors').clear()
-      model.rollback()
-      false
-
   setupController: (controller,model,queryParams) ->
     @_super(controller,model,queryParams)
     @controllerFor('countries').set('content', @store.find('country'));
