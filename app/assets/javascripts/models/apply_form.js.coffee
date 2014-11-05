@@ -1,6 +1,6 @@
 Volant.ApplyForm = DS.Model.extend
-  current_workcamp:  DS.belongsTo 'workcamp'
-  current_assignment:  DS.belongsTo 'workcamp_assignment'
+  current_workcamp:  DS.belongsTo 'workcamp', async: true
+  current_assignment:  DS.belongsTo 'workcamp_assignment', async: true
   message: DS.belongsTo 'message',async: true
   state: DS.attr 'state'
 
