@@ -2,7 +2,7 @@ class VolunteerSerializer < ActiveModel::Serializer
 
   def self.public_attributes
     [ :id, :firstname, :lastname, :gender,
-      :email, :phone, :age,
+      :email, :phone,
       :speak_well, :speak_some,
       :birthdate, :birthnumber, :birthplace,
       :nationality, :occupation, :account, :emergency_name,

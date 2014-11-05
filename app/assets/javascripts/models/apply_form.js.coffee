@@ -20,6 +20,15 @@ Volant.ApplyForm = DS.Model.extend({
   email: Ember.computed.alias('volunteer.email')
 
   becameInvalid: ->
+   if volunteer = @get('volunteer')
+     if @get('errors').has('volunteer')
+       nested_errors = @get('errors').errorsFor('volunteer')
+       inner = nested_errors[0].message
+
+       for key of inner
+         @get("volunteer.errors").add(key, inner[key])
+
+
    if payment = @get('payment')
      if @get('errors').has('payment')
        nested_errors = @get('errors').errorsFor('payment')

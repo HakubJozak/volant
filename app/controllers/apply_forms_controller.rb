@@ -52,7 +52,7 @@ class ApplyFormsController < ApplicationController
 
   def apply_form_params
     params.require(:apply_form).permit(:starred, :general_remarks, :motivation, :volunteer_id, :cancelled, :confirmed, :fee,
-                                       payment_attributes: PaymentSerializer.public_attributes)
+                                       payment_attributes: PaymentSerializer.public_attributes, volunteer_attributes: VolunteerSerializer.public_attributes)
   end
 
 end

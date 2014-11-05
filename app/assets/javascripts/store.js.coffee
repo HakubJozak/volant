@@ -22,6 +22,10 @@ Volant.ApplyFormAdapter = DS.ActiveModelAdapter.extend({
       errors = json.errors
 
       for attr of errors
+        # set errors on the nested records
+        #
+        #  { 'payment.amount': "must not be blank" }
+        #
         if match = attr.match(/([a-z_]+)\.([a-z_]+)/)
           association = match[1]
           innerAttribute = match[2]
@@ -45,7 +49,10 @@ Volant.ApplyFormSerializer = DS.ActiveModelSerializer.extend({
     if relationship.key == 'payment'
       if payment = record.get('payment')
         json['payment_attributes'] = @serialize(payment,includeId: true)
-      console.log json
+
+      if volunteer = record.get('volunteer')
+        json['volunteer_attributes'] = @serialize(volunteer,includeId: true)
+
       json
     else
       @_super(record,json,relationship)

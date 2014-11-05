@@ -17,7 +17,8 @@ module Outgoing
     has_many :workcamps, -> { order 'workcamp_assignments."order" ASC' }, through: :workcamp_assignments, class_name: 'Outgoing::Workcamp'
     has_many :workcamp_assignments, -> { order '"order" ASC' }, dependent: :delete_all, class_name: 'Outgoing::WorkcampAssignment'
 
-    accepts_nested_attributes_for :payment, :volunteer
+    accepts_nested_attributes_for :payment
+    accepts_nested_attributes_for :volunteer
 
 
     scope :query, lambda { |query|
