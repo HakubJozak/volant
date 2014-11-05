@@ -7,7 +7,7 @@ Volant.ModelFieldComponent = Ember.Component.extend({
   didInsertElement: ->
 
   update_info: (->
-    controls = @$('input,select')
+    controls = @$('input,select,textarea')
 
     if e = @get('errors')
       msg = "#{e[0].attribute} #{e[0].message}"

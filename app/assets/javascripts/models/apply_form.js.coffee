@@ -1,4 +1,4 @@
-Volant.ApplyForm = DS.Model.extend
+Volant.ApplyForm = DS.Model.extend({
   current_workcamp:  DS.belongsTo 'workcamp', async: true
   current_assignment:  DS.belongsTo 'workcamp_assignment', async: true
   message: DS.belongsTo 'message',async: true
@@ -19,9 +19,21 @@ Volant.ApplyForm = DS.Model.extend
   name: Ember.computed.alias('volunteer.name')
   email: Ember.computed.alias('volunteer.email')
 
+  becameInvalid: ->
+   if payment = @get('payment')
+     if @get('errors').has('payment')
+        errors = @get('errors').errorsFor('payment')
+        inner = errors[0].message
+
+        for key of inner
+          @get("payment.errors").add key, key + " " + inner[key]
+
+
+
   has_workcamp: (wc) ->
     @get('workcamp_assignments').any (wa) ->
       wa.get('workcamp.id') == wc.get('id')
 
   add_workcamp: (wc) ->
     console.info wc.id
+})

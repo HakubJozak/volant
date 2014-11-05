@@ -13,24 +13,34 @@ Volant.ApplicationAdapter = DS.ActiveModelAdapter.extend({
 
 Volant.ApplicationSerializer = DS.ActiveModelSerializer
 
+Volant.ApplyFormAdapter = DS.ActiveModelAdapter.extend({
+  ajaxError: (jqXHR) ->
+    error = this._super(jqXHR)
+
+    if jqXHR && jqXHR.status == 422
+      json = Ember.$.parseJSON(jqXHR.responseText)
+      errors = json.errors
+
+      for attr of errors
+        if match = attr.match(/([a-z]+)\.([a-z]+)/)
+          association = match[1]
+          innerAttribute = match[2]
+          innerError = {}
+          innerError[innerAttribute] = errors[attr]
+          errors[association] = "#{innerAttribute} #{errors[attr]}"
+          errors[association] = innerError
+
+      return new DS.InvalidError(errors)
+    else
+      return error
+
+
+})
+
 Volant.ApplyFormSerializer = DS.ActiveModelSerializer.extend({
   serialize: (apply_form,opts) ->
     json = @_super(apply_form,opts)
 
-  ajaxError: (jqXHR) ->
-    error = @_super(jqXHR)
-    if jqXHR and jqXHR.status is 422
-      response = Ember.$.parseJSON(jqXHR.responseText)
-      errors = {}
-      if response.errors isnt undefined
-        jsonErrors = response.errors
-        forEach Ember.keys(jsonErrors), (key) ->
-          errors[Ember.String.camelize(key)] = jsonErrors[key]
-          return
-
-      new InvalidError(errors)
-    else
-      error
 
   serializeBelongsTo: (record, json, relationship) ->
     if relationship.key == 'payment'
