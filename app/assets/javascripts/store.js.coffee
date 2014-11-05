@@ -22,14 +22,13 @@ Volant.ApplyFormAdapter = DS.ActiveModelAdapter.extend({
       errors = json.errors
 
       for attr of errors
-        if match = attr.match(/([a-z]+)\.([a-z]+)/)
+        if match = attr.match(/([a-z_]+)\.([a-z_]+)/)
           association = match[1]
           innerAttribute = match[2]
-          innerError = {}
-          innerError[innerAttribute] = errors[attr]
-          errors[association] = "#{innerAttribute} #{errors[attr]}"
-          errors[association] = innerError
+          errors[association] ||= {}
+          errors[association][innerAttribute] = errors[attr]
 
+      console.info errors
       return new DS.InvalidError(errors)
     else
       return error

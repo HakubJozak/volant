@@ -22,11 +22,11 @@ Volant.ApplyForm = DS.Model.extend({
   becameInvalid: ->
    if payment = @get('payment')
      if @get('errors').has('payment')
-        errors = @get('errors').errorsFor('payment')
-        inner = errors[0].message
+       nested_errors = @get('errors').errorsFor('payment')
+       inner = nested_errors[0].message
 
-        for key of inner
-          @get("payment.errors").add key, key + " " + inner[key]
+       for key of inner
+         @get("payment.errors").add(key, inner[key])
 
 
 
