@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   resources :workcamp_assignments, only: [ :index, :create, :update, :destroy, :show ]
   resources :email_contacts, only: [ :create, :update, :destroy ]
-
   resources :countries, only: [ :index, :show ]
   resources :organizations
   resources :workcamp_intentions
@@ -10,6 +9,9 @@ Rails.application.routes.draw do
   resources :tags
   resources :payments
   resources :workcamps
+
+  resources :stars, only: [ :create ]
+
 
   resources :apply_forms do
     member do
