@@ -4,6 +4,7 @@ class StarsController < ApplicationController
   def create
     record = model.find(star_params[:id])
     record.update_column(:starred, star_params[:value])
+    # TODO: render just 'starred' attribute change
     render json: record
   end
 

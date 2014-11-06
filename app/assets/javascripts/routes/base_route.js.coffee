@@ -10,6 +10,12 @@ Volant.BaseRoute = Ember.Route.extend({
     @_super(controller,model)
 
   actions:
+    toggle_starred: ->
+      model = @modelFor(@routeName)
+      data = { star: { id: model.get('id'), model: model.constructor.typeKey.decamelize(), value: !model.get('starred') }}
+      @ajax_to_store('/stars',data).then (payload) =>
+        console.log 'Starred'
+
     save: ->
       model = @modelFor(@routeName)
       model.get('errors').clear()
@@ -41,11 +47,11 @@ Volant.BaseRoute = Ember.Route.extend({
     @controllerFor('application').set('flash', {type: 'error', message: msg })
 
 
-  ajax_to_store: (url) ->
+  ajax_to_store: (url,data = {}) ->
     new Promise (resolve, reject) =>
       csrf_token = $('meta[name="csrf-token"]').attr('content')
       csrf_param = $('meta[name="csrf-param"]').attr('content')
-      data = { authenticity_token: csrf_token }
+      data.authenticity_token = csrf_token
 
       try
         $.post url, data, (response) =>
