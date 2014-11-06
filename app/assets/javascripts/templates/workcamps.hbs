@@ -16,6 +16,12 @@
     </div>
 
     <div class='col-lg-3 text-right'>
+      {{#if isDirty}}
+      <button class="btn btn-danger" type="button" {{action 'save'}}>
+        Save
+      </button>
+      {{/if}}
+
       <button class="btn btn-default" type="button" {{action 'toggle' 'editing_visible'}}>
         {{ fa 'pencil-square-o' }}
       </button>
@@ -77,7 +83,6 @@
                  </div>
 
                  {{partial 'free_places_editor'}}
-
                </div>
              {{/each}}
       </div>

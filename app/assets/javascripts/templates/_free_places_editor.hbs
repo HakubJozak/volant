@@ -1,29 +1,31 @@
-<div class='row'>
-  <div class='col-lg-11 col-lg-offset-1'>
-    <form class='form-horizontal'>
-      <div class="form-group">
-        <div class='row'>
-          {{#model-field errors=errors.places}}
-            <label class="col-lg-1 control-label">Places</label>
-            <div class="col-lg-1">{{input value=places type="number" class="form-control"}}</div>
-          {{/model-field}}
-        </div>
+{{#if editing_visible}}
+  <div class='row'>
+    <div class='col-lg-11 col-lg-offset-1'>
+      <form class='form-horizontal'>
+        <div class="form-group">
+          <div class='row'>
+            {{#model-field errors=errors.places}}
+              <label class="col-lg-1 control-label">Places</label>
+              <div class="col-lg-1">{{input value=places type="number" class="form-control"}}</div>
+            {{/model-field}}
+          </div>
 
-        <div class='row'>
-          {{#model-field errors=errors.places_for_females}}
-            <label class="col-lg-1 control-label">Females</label>
-            <div class="col-lg-1">{{input value=places_for_females type="number" class="form-control"}}</div>
-          {{/model-field}}
+          <div class='row'>
+            {{#model-field errors=errors.places_for_females}}
+              <label class="col-lg-1 control-label">Females</label>
+              <div class="col-lg-1">{{input value=places_for_females type="number" class="form-control"}}</div>
+            {{/model-field}}
+          </div>
+          <div class='row'>
+            {{#model-field errors=errors.places_for_males}}
+              <label class="col-lg-1 control-label">Males</label>
+              <div class="col-lg-1">
+                {{input value=places_for_males type="number" class="form-control"}}
+              </div>
+            {{/model-field}}
+          </div>
         </div>
-        <div class='row'>
-          {{#model-field errors=errors.places_for_males}}
-            <label class="col-lg-1 control-label">Males</label>
-            <div class="col-lg-1">
-              {{input value=places_for_males type="number" class="form-control"}}
-            </div>
-          {{/model-field}}
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
-</div>
+{{/if}}

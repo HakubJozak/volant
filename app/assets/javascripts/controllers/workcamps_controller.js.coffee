@@ -18,6 +18,11 @@ Volant.WorkcampsController = Volant.ListController.extend({
   sortProperties: ['name']
   sortAscending: true
 
+  isDirty: (->
+    @get('model').any (wc) ->
+      wc.get('isDirty')
+  ).property('@each.isDirty')
+
   filter_visible: false
   editing_visible: true
 

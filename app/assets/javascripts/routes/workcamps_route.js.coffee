@@ -30,6 +30,14 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
       wc = @store.createRecord('workcamp')
       @transitionTo 'workcamp',wc
 
+    save: ->
+      @flash_info('Saving...')
+      @modelFor('workcamps').save().then (=>
+         @flash_info('Saved.')), =>
+         @flash_error('Failed.')
+      false
+
+
     refresh: ->
       @refresh()
       false
