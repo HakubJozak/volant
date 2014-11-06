@@ -19,12 +19,11 @@ Volant.WorkcampsController = Volant.ListController.extend({
   sortAscending: true
 
   filter_visible: false
-  editing_visible: false
+  editing_visible: true
 
   actions:
     toggle: (property) ->
       @toggleProperty(property)
-      console.info @get 'editing_visible'
       false
 
     reset: ->

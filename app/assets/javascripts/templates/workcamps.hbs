@@ -38,7 +38,7 @@
     <div class="col-lg-12">
 
       <div class="list-group">
-             {{#each}}
+             {{#each itemController='littleWorkcamp'}}
                <div href="#" class="list-group-item">
                  <div class="row">
                    <div class="col-lg-1">
@@ -49,19 +49,9 @@
                      <small>{{country.name}}</small>
                    </div>
                    <div class="col-lg-2">
-                     {{@root.editing_visible}}
-                     {{#if editing_visible }}
-                       <form class='form-inline' role='form'>
-                         <div class="form-group form-group-sm">
-                           <div class="input-group">
-                             <div class="input-group-addon">@</div>
-                             <input class="form-control" type="email" placeholder="Enter email">
-                           </div>
-                         </div>
-                       </form>
-                     {{/if}}
                      <h4>{{ free-places this }}</h4>
                    </div>
+
                    <div class="col-lg-6">
                      <h4 class="list-group-item-heading">
                      {{#link-to 'workcamp' this}}{{name}}{{/link-to}}
@@ -85,6 +75,35 @@
                      </p>
                    </div>
                  </div>
+
+                 <div class='row'>
+                 <form class='form-horizontal'>
+                   <div class="form-group">
+                     <div class='row'>
+                       {{#model-field errors=errors.places}}
+                         <label class="col-lg-1 control-label">Places</label>
+                         <div class="col-lg-1">{{input value=places type="number" class="form-control"}}</div>
+                       {{/model-field}}
+                     </div>
+
+                     <div class='row'>
+                       {{#model-field errors=errors.places_for_females}}
+                         <label class="col-lg-1 control-label">Females</label>
+                         <div class="col-lg-1">{{input value=places_for_females type="number" class="form-control"}}</div>
+                       {{/model-field}}
+                     </div>
+                     <div class='row'>
+                       {{#model-field errors=errors.places_for_males}}
+                         <label class="col-lg-1 control-label">Males</label>
+                         <div class="col-lg-1">
+                           {{input value=places_for_males type="number" class="form-control"}}
+                         </div>
+                       {{/model-field}}
+                     </div>
+                   </div>
+                 </form>
+                 </div>
+
                </div>
              {{/each}}
       </div>
