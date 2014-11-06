@@ -1,4 +1,4 @@
-Volant.ApplyFormRoute = Volant.BaseRoute.extend({
+Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
 
   model: (params) ->
     @store.find('apply_form', params.apply_form_id)
@@ -15,10 +15,7 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend({
     @render('quick_save',into: 'application', outlet: 'item_controls')
 
   actions:
-    accept: ->
-      @open_message_for 'accept',  @modelFor('apply_form')
-
-    pay: ->
+    create_payment: ->
       form = @modelFor('apply_form')
       payment = @store.createRecord('payment',apply_form: form,amount: form.get('fee'),mean: 'CASH', received: new Date())
       @controllerFor('payment').set('content',payment)

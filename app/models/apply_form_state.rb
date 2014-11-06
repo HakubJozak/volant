@@ -34,6 +34,8 @@ class ApplyFormState
                  [ :cancel ]
                when :not_paid
                  [ :pay, :cancel ]
+               when :infosheeted
+                 [ :cancel ]
                else []
                end
 

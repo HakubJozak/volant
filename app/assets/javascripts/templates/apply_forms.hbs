@@ -58,13 +58,7 @@
           {{/if}}
         </td>
         <td>
-          {{#if message}}
-            <button {{action 'open_existing_message' message }} class='btn btn-warning'>
-              Message
-            </button>
-          {{else}}
-            {{ partial 'action_buttons' }}
-          {{/if}}
+          {{ partial 'action_buttons' }}
         </td>
         <td>
           {{#link-to 'workcamp' current_workcamp}}{{current_workcamp.name}}{{/link-to}}

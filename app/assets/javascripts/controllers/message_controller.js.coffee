@@ -3,7 +3,8 @@ Volant.MessageController = Volant.ObjectController.extend({
   after_save_route: 'messages'
 
   process_markdown: (->
-    @set('html_body',window.markdown.toHTML(@get('body')))
+    if body = @get('body')
+      @set('html_body',window.markdown.toHTML(body))
   ).observes('body')
 
 })

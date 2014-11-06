@@ -3,6 +3,8 @@ Volant.ApplyFormView = Ember.View.extend
 
   anchor: Ember.computed.alias('controller.anchor')
 
-  didInsertElement: ->
-    if a = @get('controller.anchor')
-      $('body').scrollTop($("##{a}").offset().top - 50)
+  didInsertElement: ( ->
+    if a = @get('anchor')
+      if offset = $("##{a}").offset()
+        $('body').scrollTop(offset.top - 50)
+  ).observes('anchor')
