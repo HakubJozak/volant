@@ -22,9 +22,16 @@ Volant.ApplyFormAdapter = DS.ActiveModelAdapter.extend({
       errors = json.errors
 
       for attr of errors
-        # set errors on the nested records
+        # Set errors on the nested records, for example:
+        #  { errors:
+        #  { 'payment.amount': [ "must not be blank" ] }
+        #  { 'payment.returned_date': [ "must not be blank" ] }
         #
-        #  { 'payment.amount': "must not be blank" }
+        # becomes
+        #
+        # { 'payment': { amount: [ "must not be blank" ],
+        #                returned_date: [ 'must not be blank' ] }
+        # }
         #
         if match = attr.match(/([a-z_]+)\.([a-z_]+)/)
           association = match[1]
