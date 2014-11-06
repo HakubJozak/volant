@@ -1,10 +1,3 @@
-Ember.Handlebars.helper 'free-places', (wc) ->
-  new Handlebars.SafeString """
-      #{wc.get('free_places')}/
-      <b>♀</b>#{wc.get('free_places_for_females')}/
-      <b>♂</b>#{wc.get('free_places_for_males')}
-  """
-
 Ember.Handlebars.helper 'dates', (wc) ->
   from = wc.get('begin')
   to = wc.get('end')
