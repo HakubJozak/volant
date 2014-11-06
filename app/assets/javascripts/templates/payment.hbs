@@ -93,9 +93,19 @@
     {{#unless return_visible }}
     <a title='Show return fields' class='btn'
       {{ action 'force_show_return' }} >
-      {{ fa 'undo' }} Show return fields
+      {{ fa 'undo' }} Set return fields
     </a>
+    {{else}}
+      <button type='button' class='btn btn-default' {{action 'clear_return_fields'}}>
+        {{ fa 'times' }} Clear return fields
+      </button>
     {{/unless}}
+
+    {{#if isNew}}
+      <button type='submit' class='btn btn-primary'>
+        Save
+      </button>
+    {{/if}}
   </p>
   </div>
 </div>

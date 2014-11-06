@@ -23,6 +23,9 @@ Volant.ApplyForm = DS.Model.extend({
    @invalidate_association('volunteer')
    @invalidate_association('payment')
 
+  becameValid: ->
+    @get('payment.errors').clear()
+    @get('volunteer.errors').clear()
 
   invalidate_association: (association) ->
     if @get(association)
