@@ -3,7 +3,7 @@
     <div class='col-lg-1'>
       <label class="col-lg-1 control-label">Keyword</label>
     </div>
-    <div class='col-lg-9'>
+    <div class='col-lg-8'>
       <div class="input-group">
         {{ input value=query class="form-control" placeholder="part of workcamp's name or code" }}
         <span class="input-group-btn">
@@ -15,8 +15,12 @@
       </div>
     </div>
 
-    <div class='col-lg-2 text-right'>
-      <button class="btn btn-default" type="button" {{action 'toggle_filter'}}>
+    <div class='col-lg-3 text-right'>
+      <button class="btn btn-default" type="button" {{action 'toggle' 'editing_visible'}}>
+        {{ fa 'pencil-square-o' }}
+      </button>
+
+      <button class="btn btn-default" type="button" {{action 'toggle' 'filter_visible'}}>
         {{ fa 'filter' }} Filter
       </button>
       {{#link-to 'workcamps.new' class='btn btn-success'}}
@@ -34,7 +38,7 @@
     <div class="col-lg-12">
 
       <div class="list-group">
-             {{#each itemController='workcamp'}}
+             {{#each}}
                <div href="#" class="list-group-item">
                  <div class="row">
                    <div class="col-lg-1">
@@ -45,6 +49,17 @@
                      <small>{{country.name}}</small>
                    </div>
                    <div class="col-lg-2">
+                     {{@root.editing_visible}}
+                     {{#if editing_visible }}
+                       <form class='form-inline' role='form'>
+                         <div class="form-group form-group-sm">
+                           <div class="input-group">
+                             <div class="input-group-addon">@</div>
+                             <input class="form-control" type="email" placeholder="Enter email">
+                           </div>
+                         </div>
+                       </form>
+                     {{/if}}
                      <h4>{{ free-places this }}</h4>
                    </div>
                    <div class="col-lg-6">
