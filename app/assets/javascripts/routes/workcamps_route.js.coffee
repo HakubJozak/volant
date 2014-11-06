@@ -32,9 +32,10 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
 
     save: ->
       @flash_info('Saving...')
-      @modelFor('workcamps').save().then (=>
-         @flash_info('Saved.')), =>
-         @flash_error('Failed.')
+      for wc in @modelFor('workcamps').filterBy('isDirty',true)
+        wc.save().then (=>
+          @flash_info("Saved #{wc.get('code')}.")), =>
+          @flash_error('Failed.')
       false
 
 
