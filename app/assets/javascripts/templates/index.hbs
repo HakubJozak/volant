@@ -32,10 +32,10 @@
       <tbody>
         {{#each starred_apply_forms}}
         <tr>
-          <td>{{partial 'star'}} {{gender volunteer}}</td>
+          <td>{{partial 'star'}}</td>
           <td>
             {{#link-to 'apply_form' this}}
-              {{name}}
+              {{partial 'apply_form/title'}}
             {{/link-to}}
           </td>
         </tr>

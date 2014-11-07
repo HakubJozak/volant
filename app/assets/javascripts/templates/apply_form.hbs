@@ -1,15 +1,8 @@
 <div class='row'>
 <div class="col-lg-8">
     <h2 class=''>
-      <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' }}></i>
-      {{volunteer.firstname}}
-      {{volunteer.lastname}}
-      ({{volunteer.age}})
-      {{gender volunteer}}
-      <small>
-        {{capitalize state.name}}
-        {{apply-form-state-icon state}}
-      </small>
+      {{partial 'star' }}
+      {{partial 'apply_form/title'}}
       <span class='pull-right'>
         {{ partial 'action_buttons' }}
       </span>
