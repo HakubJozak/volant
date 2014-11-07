@@ -7,14 +7,8 @@ class VolunteersController < ApplicationController
     current_page = params[:p] || 1
     search = Volunteer.order(:created_at).page(current_page)
 
-    pagination = {
-      total: search.total_count,
-      total_pages: search.total_pages,
-      current_page: current_page
-    }
-
     render json: search,
-           meta: { pagination: pagination },
+           meta: { pagination: pagination_info(search) },
            each_serializer: VolunteerSerializer
   end
 

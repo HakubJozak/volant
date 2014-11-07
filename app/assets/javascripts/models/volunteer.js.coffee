@@ -35,7 +35,6 @@ Volant.Volunteer = DS.Model.extend({
     "#{last} #{first}"
     ).property('firstname', 'lastname')
 
-
   for_email: ->
     @_super('name')
 

@@ -1,7 +1,5 @@
 Volant.ListController = Ember.ArrayController.extend({
 
-  # ---- year mixin ----
-
   needs: ['application','pagination']
   year: Ember.computed.alias('controllers.application.year')
 

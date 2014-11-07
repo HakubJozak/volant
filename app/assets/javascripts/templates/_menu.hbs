@@ -25,14 +25,10 @@
         {{#link-li}}{{#link-to 'apply_forms'}}Applications{{/link-to}}{{/link-li}}
 
        {{#menu-dropdown title="More"}}
-          <li><a href="#">Volunteers</a></li>
+          {{#link-li}}{{#link-to 'volunteers'}}Volunteers{{/link-to}}{{/link-li}}
           {{#link-li}}{{#link-to 'payments'}}Payments{{/link-to}}{{/link-li}}
           <li class="divider"></li>
-          {{#link-li}}
-            {{#link-to 'organizations' }}
-            Organizations
-            {{/link-to}}
-          {{/link-li}}
+          {{#link-li}}{{#link-to 'organizations' }}Organizations{{/link-to}}{{/link-li}}
           <li><a href="#">Partners</a></li>
        {{/menu-dropdown}}
       </ul>
