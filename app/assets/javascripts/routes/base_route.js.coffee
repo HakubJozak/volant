@@ -20,20 +20,25 @@ Volant.BaseRoute = Ember.Route.extend({
       model = @modelFor(@routeName)
       model.get('errors').clear()
       model.save().then ( (wc) =>
-         next_route = model.constructor.typeKey.decamelize().pluralize()
-         @transitionTo next_route if @routeName != next_route
-         @flash_info 'Saved.'
+        @go_to_plural_route(model)
+        @flash_info 'Saved.'
        ), ( (e) =>
          @flash_error 'Failed.'
        )
+      false
 
     rollback: ->
       model = @modelFor(@routeName)
       model.get('errors').clear()
       model.rollback()
+      @go_to_plural_route(model)
       false
 
   # ----- Normal Methods ------
+
+  go_to_plural_route: (model) ->
+    next_route = model.constructor.typeKey.decamelize().pluralize()
+    @transitionTo next_route if @routeName != next_route
 
   setupPagination: (controller,model) ->
     modelType = model.get('type') if model.get?
