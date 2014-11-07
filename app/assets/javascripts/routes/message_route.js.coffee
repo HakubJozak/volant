@@ -10,10 +10,6 @@ Volant.MessageRoute = Volant.BaseRoute.extend({
     @_super(controller,model)
 
   actions:
-    remove: ->
-      @modelFor(@routeName).destroyRecord()
-      @transitionTo('messages')
-
     send_message: ->
       @modelFor(@routeName).save().then (msg) =>
         url = "/messages/#{msg.get('id')}/deliver"

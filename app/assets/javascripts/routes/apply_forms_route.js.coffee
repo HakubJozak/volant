@@ -1,4 +1,4 @@
-Volant.ApplyFormsRoute = Volant.BaseRoute.extend({
+Volant.ApplyFormsRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions,{
   # queryParams: {
   #    sortProperties: { refreshModel: true },
   #    sortAscending: { refreshModel: true }

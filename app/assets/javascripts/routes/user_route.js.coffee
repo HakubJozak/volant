@@ -1,4 +1,4 @@
-Volant.UserRoute = Ember.Route.extend({
+Volant.UserRoute = Volant.BaseRoute.extend({
   model: (params) ->
     @store.find('user',params.user_id)
 

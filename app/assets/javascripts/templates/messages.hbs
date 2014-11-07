@@ -3,6 +3,7 @@
 <table class="table table-striped table-hover">
   <thead>
     <th>Subject</th>
+    <th>Action</th>
     <th>To</th>
     <th>Sent</th>
     <th>Application</th>
@@ -13,9 +14,15 @@
       <tr {{bind-attr class="delivered::warning"}}>
         <td>
           {{#link-to 'message' this}}
-            {{subject}}
+            {{#if subject}}
+              {{subject}}
+            {{else}}
+              [no subject]
+            {{/if}}
+
           {{/link-to}}
         </td>
+        <td>{{action_name}}</td>
         <td>{{to}}</td>
         <td>{{format-date sent_at}}</td>
         <td>

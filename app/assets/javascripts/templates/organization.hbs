@@ -1,9 +1,6 @@
 <div class="row">
   <div class="col-lg-8">
-    <h1>
-      {{#link-to 'organizations'}}&lt;{{/link-to}}
-      {{name}} - {{code}}
-    </h1>
+    <h2>{{name}} - {{code}}</h2>
       <form class="form" role="form" {{action 'save' on="submit"}}>
         <fieldset>
           <legend>Basics</legend>
@@ -42,9 +39,9 @@
             </div>
           </div>
         </fieldset>
-        {{ partial 'save_buttons' }}
       </form>
 
       {{render 'email_contacts' email_contacts  }}
+      {{ partial 'save_buttons' }}
   </div>
 </div>

@@ -62,11 +62,11 @@
         {{input-or-static attr=bcc readonly=delivered}}
       </div>
 
-      <label class="col-lg-1 control-label">Project</label>
+      <label class="col-lg-1 control-label">Workcamp</label>
       <div class="col-lg-5">
         <p class="form-control-static">
           {{#link-to 'workcamp' apply_form.current_workcamp}}
-          {{apply_form.current_workcamp.name}}
+            {{apply_form.current_workcamp.name}}
           {{/link-to}}
         </p>
       </div>
@@ -77,6 +77,16 @@
       <div class="col-lg-5">
         {{input-or-static attr=subject readonly=delivered}}
       </div>
+
+      <label class="col-lg-1 control-label">Organization</label>
+      <div class="col-lg-5">
+        <p class="form-control-static">
+          {{#link-to 'organization' apply_form.current_workcamp.organization}}
+            {{apply_form.current_workcamp.organization.name}}
+          {{/link-to}}
+        </p>
+      </div>
+
       <div class="col-lg-6">
         {{#unless delivered}}
         <ul class="nav nav-pills pull-right" role="tablist">
