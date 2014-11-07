@@ -1,0 +1,13 @@
+<div class='row'>
+  <div class="col-lg-8">
+    <h2>{{name}}</h2>
+
+    <form class="form" role="form" {{action 'save' on="submit"}}>
+      {{partial 'volunteer_fields'}}
+      {{button 'Save' 'save' 'btn-primary' }}
+      {{button 'Cancel' 'rollback' 'btn-default' }}
+    </form>
+  </div>
+  <div class="col-lg-4">
+  </div>
+</div>

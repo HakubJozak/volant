@@ -9,61 +9,9 @@
     </h2>
 
     <form class="form" role="form" {{action 'save' on="submit"}}>
-      <fieldset>
-        <legend></legend>
-        <div class='row'>
-          <div class="form-group col-lg-2">
-            <label class=" control-label">Gender</label>
-            {{view Ember.Select
-                   content=genders
-                   value=volunteer.gender
-                   class="form-control"
-                   optionValuePath='content.code'
-                   optionLabelPath='content.name' }}
-          </div>
-
-          <div class="form-group col-lg-3">
-            {{#model-field errors=volunteer.errors.firstname}}
-            <label class=" control-label">First Name</label>
-            {{input value=volunteer.firstname class="form-control"}}
-            {{/model-field}}
-          </div>
-
-          <div class="form-group col-lg-3">
-            {{#model-field errors=volunteer.errors.lastname}}
-            <label class=" control-label">Last Name</label>
-            {{input value=volunteer.lastname class="form-control"}}
-            {{/model-field}}
-          </div>
-
-          <div class="form-group col-lg-offset-2 col-lg-2">
-            <label class=" control-label">Nationality</label>
-            {{input value=volunteer.nationality class="form-control"}}
-          </div>
-        </div>
-
-        <div class='row'>
-          <div class="form-group col-lg-2">
-            <label class=" control-label">Birth-number</label>
-            {{input value=volunteer.birthnumber class="form-control"}}
-          </div>
-
-          <div class="form-group col-lg-3">
-            <label class=" control-label">Date of birth</label>
-            {{view Volant.DateView dateBinding='volunteer.birthdate' }}
-          </div>
-
-          <div class="form-group col-lg-3">
-            <label class=" control-label">Place of Birth</label>
-            {{input value=volunteer.birthplace class="form-control"}}
-          </div>
-
-          <div class="form-group col-lg-offset-2 col-lg-2">
-            <label class=" control-label">Occupation</label>
-            {{input value=volunteer.occupation class="form-control"}}
-          </div>
-        </div>
-      </fieldset>
+      {{#with volunteer }}
+        {{partial 'volunteer_fields'}}
+      {{/with}}
 
       <fieldset id='payment-fields'>
         <legend>Payment</legend>
@@ -87,50 +35,6 @@
       </fieldset>
 
       <fieldset>
-        <legend>Contact</legend>
-
-        <div class='row'>
-          <div class="form-group col-lg-4">
-            {{#model-field errors=volunteer.errors.email}}
-            <label class=" control-label">Email</label>
-            {{input value=volunteer.email class="form-control"}}
-            {{/model-field}}
-          </div>
-
-          <div class="form-group col-lg-4">
-            <label class=" control-label">Phone</label>
-            {{input value=volunteer.phone type="phone" class="form-control"}}
-          </div>
-
-          <div class="form-group col-lg-4">
-            <label class=" control-label">Fax</label>
-            {{input value=volunteer.fax type="phone" class="form-control"}}
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>Emergency Contact</legend>
-
-        <div class='row'>
-          <div class="form-group col-lg-4">
-            <label class=" control-label">Name</label>
-            {{input value=volunteer.emergency_name class="form-control"}}
-          </div>
-
-          <div class="form-group col-lg-4">
-            <label class=" control-label">Day phone</label>
-            {{input value=volunteer.emergency_day class="form-control"}}
-          </div>
-
-          <div class="form-group col-lg-4">
-            <label class=" control-label">Night phone</label>
-            {{input value=volunteer.emergency_night class="form-control"}}
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset>
         <legend>Application Details</legend>
         <div class='row'>
           <div class="form-group col-lg-12">
@@ -147,37 +51,8 @@
         </div>
       </fieldset>
 
-      <fieldset>
-        <legend>Volunteer Details</legend>
-        <div class='row'>
-        <div class="form-group col-lg-6">
-          <label class=" control-label">Speak well</label>
-          {{input value=volunteer.speak_well class="form-control"}}
-        </div>
-
-        <div class="form-group col-lg-6">
-          <label class=" control-label">Speak some</label>
-          {{input value=volunteer.speak_some class="form-control"}}
-        </div>
-
-        <div class="form-group col-lg-12">
-          <label class=" control-label">Special needs</label>
-          {{input value=volunteer.special_needs class="form-control"}}
-        </div>
-
-        <div class="form-group col-lg-12">
-          <label class=" control-label">Past experience</label>
-          {{textarea value=volunteer.past_experience class="form-control" rows="3"}}
-        </div>
-
-        <div class="form-group col-lg-12">
-          <label class=" control-label">Comments</label>
-          {{textarea value=volunteer.comments class="form-control" rows='2'}}
-        </div>
-        </div>
-      </fieldset>
-
-      {{ partial 'save_buttons' }}
+      {{ button 'Save' 'save' 'btn-primary' }}
+      {{ button 'Cancel' 'rollback' 'btn-default' }}
     </form>
 </div>
 
