@@ -15,12 +15,13 @@ Volant.BaseRoute = Ember.Route.extend({
       @ajax_to_store('/stars',data).then (payload) =>
         console.log 'Starred'
 
+
     save: ->
       model = @modelFor(@routeName)
       model.get('errors').clear()
       model.save().then ( (wc) =>
-         next_route = model.constructor.typeKey.decamelize()
-         @transitionTo next_route,model if @routeName != next_route
+         next_route = model.constructor.typeKey.decamelize().pluralize()
+         @transitionTo next_route if @routeName != next_route
          @flash_info 'Saved.'
        ), ( (e) =>
          @flash_error 'Failed.'
