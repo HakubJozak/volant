@@ -1,6 +1,6 @@
 Volant.Message = DS.Model.extend
   user: DS.belongsTo 'user'
-  email_template: DS.belongsTo 'email_template',async: true
+  email_template: DS.belongsTo 'email_template',async: false
   apply_form: DS.belongsTo 'apply_form',async: true
 
   to: DS.attr 'string'

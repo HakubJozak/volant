@@ -1,6 +1,7 @@
 Volant.PaginationController = Ember.ObjectController.extend({
   just_one_page: Ember.computed.equal('total_pages',1)
   first_page: Ember.computed.equal('current_page',1)
+  empty: Ember.computed.equal('total',0)
 
   previous_page: (->
     if @get('model.current_page') > 1
