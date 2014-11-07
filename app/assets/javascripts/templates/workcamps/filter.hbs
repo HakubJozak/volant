@@ -20,7 +20,7 @@
 </div>
 
 <div class="form-group">
-  <label class="col-lg-1 control-label">Intentions</label>
+  <label class="col-lg-1 control-label">Having</label>
   <div class="col-lg-2">
     {{view Ember.Select
     contentBinding='controllers.workcamp_intentions.content'
@@ -29,32 +29,16 @@
     class="form-control"
     }}
   </div>
-  <div class="col-lg-2">
-    {{#each filter.intentions}}
-      <span class="label label-default">{{name}} X</span>
-    {{/each}}
-  </div>
 
-  <label class="col-lg-1 control-label">Tags</label>
   <div class="col-lg-2">
     {{view Ember.Select
     contentBinding='controllers.tags.content'
     optionValuePath="content.id"
     optionLabelPath="content.name"
     class="form-control"
+    prompt='Tags'
     }}
   </div>
-  <div class="col-lg-3">
-    {{#each filter.tags}}
-      <span class="label label-default">{{name}} X</span>
-    {{/each}}
-    <span class="label label-default" style="color:#FFFFFF; background-color:#CC3333;">extra fee X</span>
-    <span class="label label-default" style="color:#FFFFFF; background-color:#FF9900;">wheelchair X</span>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-lg-1 control-label">Countries</label>
 
   <div class="col-lg-2">
     {{view Ember.Select
@@ -62,25 +46,27 @@
     optionValuePath="content.id"
     optionLabelPath="content.name"
     class="form-control"
+    prompt='Countries'
     }}
   </div>
-  <div class="col-lg-2">
-    <span class="label label-default">Great Britain X</span>
-    <span class="label label-default">France X</span>
-  </div>
 
-  <label class="col-lg-1 control-label">Organizations</label>
   <div class="col-lg-2">
     {{view Ember.Select
     contentBinding='controllers.organizations.content'
     optionValuePath="content.id"
     optionLabelPath="content.name"
     class="form-control"
+    prompt='Organization'
     }}
   </div>
-  <div class="col-lg-3">
-    <span class="label label-default">INEX-SDA X</span>
-    <span class="label label-default">Tamjdem CON X</span>
-    <span class="label label-default">SCI Germany X</span>
+
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-lg-offset-1 col-lg-11">
+    {{#each filter.tags}}
+      <span class="label label-default">{{name}} X</span>
+    {{/each}}
   </div>
 </div>

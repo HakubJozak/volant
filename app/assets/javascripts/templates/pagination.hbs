@@ -1,8 +1,8 @@
-
+{{#if pagination_bits }}
 <div class='row pagination-container'>
   {{#if just_one_page}}
     <div class="col-lg-offset-10 col-lg-2 info">
-      <p><em>Found {{total}} records.</em></p>
+      <p><em>No records found.</em></p>
     </div>
   {{else}}
   <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -33,3 +33,9 @@
   </div>
 {{/if}}
 </div>
+
+{{else}}
+  <div class="col-lg-12 info text-center">
+    <p><em>Found {{total}} records.</em></p>
+  </div>
+{{/if}}

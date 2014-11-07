@@ -42,15 +42,15 @@ class WorkcampsController < ApplicationController
       search = search.where("maximal_age <= ?",ma)
     end
 
-    if fp = params[:free_places]
+    if fp = params[:free]
       search = search.where("free_places >= ?",fp)
     end
 
-    if fp = params[:free_places_for_females]
+    if fp = params[:free_females]
       search = search.where("free_places_for_females >= ?",fp)
     end
 
-    if fp = params[:free_places_for_males]
+    if fp = params[:free_males]
       search = search.where("free_places_for_males >= ?",fp)
     end
 
