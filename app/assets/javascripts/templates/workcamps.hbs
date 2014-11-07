@@ -4,15 +4,7 @@
       <label class="col-lg-1 control-label">Keyword</label>
     </div>
     <div class='col-lg-8'>
-      <div class="input-group">
-        {{ input value=query class="form-control" placeholder="part of workcamp's name or code" }}
-        <span class="input-group-btn">
-          <button class="btn btn-default reset" type="button" {{action 'reset'}}>
-            {{fa 'times'}}
-          </button>
-          <button class="btn btn-primary" type="submit">Search</button>
-        </span>
-      </div>
+      {{partial 'query'}}
     </div>
 
     <div class='col-lg-3 text-right'>
