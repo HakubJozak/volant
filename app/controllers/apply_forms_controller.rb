@@ -8,6 +8,10 @@ class ApplyFormsController < ApplicationController
     search = search.includes(:payment,:volunteer,:current_workcamp, :current_assignment)
     search = add_year_scope(search)
 
+    if params[:starred]
+      search = search.where(starred: true)
+    end
+
     if query = params[:q]
       search = search.query(params[:q])
     end

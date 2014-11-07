@@ -10,8 +10,7 @@ Volant.BaseRoute = Ember.Route.extend({
     @_super(controller,model)
 
   actions:
-    toggle_starred: ->
-      model = @modelFor(@routeName)
+    toggle_starred: (model) ->
       data = { star: { id: model.get('id'), model: model.constructor.typeKey.decamelize(), value: !model.get('starred') }}
       @ajax_to_store('/stars',data).then (payload) =>
         console.log 'Starred'
@@ -36,7 +35,7 @@ Volant.BaseRoute = Ember.Route.extend({
   # ----- Normal Methods ------
 
   setupPagination: (controller,model) ->
-    modelType = model.get('type')
+    modelType = model.get('type') if model.get?
     if hash = @store.typeMapFor(modelType).metadata.pagination
       controller.set('controllers.pagination.model', Ember.Object.create(hash))
 

@@ -49,7 +49,7 @@
                  <div class="row">
                    <div class="col-lg-1">
                      <div>
-                       <i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' bubbles=false }}></i>
+                       {{partial 'star'}}
                        {{small-flag country}}
                      </div>
                      <small>{{country.name}}</small>

@@ -1,4 +1,4 @@
-  <div class="col-lg-6">
+  <div class="col-lg-4">
     <h3>{{ fa 'calendar'}} Volunteers &amp; Applications</h3>
 
     <table class='table dashboard'>
@@ -26,87 +26,40 @@
     </table>
   </div>
 
-  <div class="col-lg-6">
-    <h3><i class='fa fa-star'></i> Starred</h3>
+  <div class="col-lg-3">
+    <h3>Applications</h3>
+    <table class="table table-hover starred">
+      <tbody>
+        {{#each starred_apply_forms}}
+        <tr>
+          <td>{{partial 'star'}} {{gender volunteer}}</td>
+          <td>
+            {{#link-to 'apply_form' this}}
+              {{name}}
+            {{/link-to}}
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-lg-5">
+    <h3>Workcamps</h3>
 
     <table class="table table-hover starred">
       <tbody>
-        <tr><td>
-          <img src="/assets/flags-iso/flat/24/SI.png">
-          <a href="#">11th Workcamp of Young Paraplegics and Tetraplegics</a>
-        </td>
-        <td>X</td>
-        </tr>
-        <tr><td>
-          <img src="/assets/flags-iso/flat/24/KR.png" >
-          <a href="#">IWO-81 - A GLOBAL MIND IN NATURE</a>
-        </td>
-        <td>X</td>
-        </tr>
-
-        <tr><td>
-          <img src="/assets/flags-iso/flat/24/FR.png">
-          <a href="#">SJ72 - ABBAYE DE CLAUSONNE</a>
-        </td>
-        <td>X</td>
-        </tr>
-
-        <tr><td>
-          <i class='fa fa-male'></i>
-          <a href="#">Antonin Sova</a>
-        </td>
-        <td>X</td>
-        </tr>
-
-        <tr><td>
-          <i class='fa fa-female'></i>
-          <a href="#">Bozena Nemcova</a>
-        </td>
-        <td>X</td>
-        </tr>
-
-        <tr><td>
-          <i class='fa fa-female'></i>
-          <a href="#">Milena Jesenska</a>
-        </td>
-        <td>X</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <hr/>
-
-    <h3><i class='fa fa-clock-o'></i> Recent</h3>
-    <table class="table table-hover recent">
-      <tbody>
+        {{#each starred_workcamps itemController='littleWorkcamp'}}
         <tr>
+          <td>{{partial 'star'}} {{small-flag country}}</td>
           <td>
-          <i class='fa fa-female'></i>
-          <a href="#">Kaja Marik</a>
-        </td>
+            {{#link-to 'workcamp' this}}
+              {{name}}
+            {{/link-to}}
+          </td>
         </tr>
-
-        <tr><td>
-          <img src="/assets/flags-iso/flat/24/GB.png" >
-          <a href="#">UNAS03 - Action in Ely and Caerau (ACE)</a>
-        </td></tr>
-        <tr><td>
-
-        <tr><td>
-          <i class='fa fa-female'></i>
-          <a href="#">Bozena Nemcova</a>
-        </td></tr>
-
-        <tr><td>
-          <img src="/assets/flags-iso/flat/24/DE.png" >
-          <a href="#">DE-SCI 7.19 - Ahrensburg</a>
-        </td></tr>
-        <tr><td>
-
-        <tr><td>
-          <i class='fa fa-female'></i>
-          <a href="#">Milena Jesenska</a>
-        </td></tr>
+        {{/each}}
       </tbody>
     </table>
+
   </div>

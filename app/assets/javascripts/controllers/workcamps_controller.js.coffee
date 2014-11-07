@@ -24,7 +24,7 @@ Volant.WorkcampsController = Volant.ListController.extend({
   ).property('@each.isDirty')
 
   filter_visible: false
-  editing_visible: true
+  editing_visible: false
 
   actions:
     toggle: (property) ->
