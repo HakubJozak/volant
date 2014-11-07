@@ -28,7 +28,7 @@ module Outgoing
       assert_equal a, b
     end
 
-    test "current assignment" do
+    test "current_assignment" do
       form = Factory.create(:accepted_form)
       assert_not_nil form.current_assignment
       assert_not_nil form.current_workcamp
@@ -67,15 +67,17 @@ module Outgoing
       assert_equal :rejected, state.name
     end
 
-    test "destroy apply form with payment" do
+    test "destroy" do
       form = Factory.create(:paid_form)
+      payment_id = form.payment.id
+      volunteer_id = form.volunteer.id
+      id = form.id
 
-      assert_not_nil form.payment
-      assert_nothing_raised do
-        id = form.id
-        form.destroy
-        assert_nil ApplyForm.find_by_id(id)
-      end
+      form.destroy
+
+      assert_nil ApplyForm.find_by_id(id)
+      assert_not_nil Payment.find(payment_id)
+      assert_not_nil Volunteer.find(volunteer_id)
     end
 
     # test "conversion to CSV" do
