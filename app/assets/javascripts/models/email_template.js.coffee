@@ -11,9 +11,11 @@ Volant.EmailTemplate = DS.Model.extend({
   # for the collision with {{action}} helper in Handlebars templates
   action_name: Ember.computed.alias('action')
 
-  eval_subject: (context) ->
-    Handlebars.compile(@get('subject'))(context)
-
-  eval_body: (context) ->
-    Handlebars.compile(@get('body'))(context)
+  eval_field: (field,context) ->
+    if source = @get(field)
+      f =  Handlebars.compile(source)(context)
+      console.info field,f
+      f
+    else
+      ''
 })
