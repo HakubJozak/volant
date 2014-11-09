@@ -649,6 +649,44 @@ ALTER SEQUENCE networks_id_seq OWNED BY networks.id;
 
 
 --
+-- Name: new_email_templates; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE new_email_templates (
+    id integer NOT NULL,
+    action character varying(255),
+    title character varying(255),
+    "to" character varying(255),
+    cc character varying(255),
+    bcc character varying(255) DEFAULT '{{user.email}}'::character varying,
+    "from" character varying(255) DEFAULT '{{user.email}}'::character varying,
+    subject character varying(255),
+    body text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: new_email_templates_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE new_email_templates_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: new_email_templates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE new_email_templates_id_seq OWNED BY new_email_templates.id;
+
+
+--
 -- Name: organizations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1193,6 +1231,13 @@ ALTER TABLE ONLY networks ALTER COLUMN id SET DEFAULT nextval('networks_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY new_email_templates ALTER COLUMN id SET DEFAULT nextval('new_email_templates_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY organizations ALTER COLUMN id SET DEFAULT nextval('organizations_id_seq'::regclass);
 
 
@@ -1383,6 +1428,14 @@ ALTER TABLE ONLY messages
 
 ALTER TABLE ONLY networks
     ADD CONSTRAINT networks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: new_email_templates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY new_email_templates
+    ADD CONSTRAINT new_email_templates_pkey PRIMARY KEY (id);
 
 
 --
@@ -2096,4 +2149,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141021140043');
 INSERT INTO schema_migrations (version) VALUES ('20141029204415');
 
 INSERT INTO schema_migrations (version) VALUES ('20141103130915');
+
+INSERT INTO schema_migrations (version) VALUES ('20141109114439');
 

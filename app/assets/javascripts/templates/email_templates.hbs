@@ -2,7 +2,7 @@
 <table class="table table-striped table-hover">
   <thead>
     <th>Name</th>
-    <th>Description</th>
+    <th>Title</th>
     <th class='text-right'>{{#link-to 'email_templates.new'}}{{fa 'plus'}}{{/link-to}}</th>
   </thead>
   <tbody>
@@ -10,10 +10,12 @@
       <tr>
         <td>
           {{#link-to 'email_template' this}}
-          {{action_name}}
+            {{title}}
           {{/link-to}}
         </td>
-        <td>{{description}}</td>
+        <td>
+          {{action_name}}
+        </td>
         <td>{{subject}}</td>
       </tr>
     {{/each}}

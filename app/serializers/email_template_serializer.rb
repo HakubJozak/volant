@@ -1,7 +1,7 @@
 class EmailTemplateSerializer < ActiveModel::Serializer
 
   def self.public_attributes
-   [ :action, :description, :subject, :body, :wrap_into_template ]
+   [ :action, :title, :subject, :body, :to, :from, :cc, :bcc ]
   end
 
   def self.private_attributes
