@@ -13,3 +13,6 @@ Volant.Organization = DS.Model.extend
   outgoing_email: (->
     'change-me@google.com'
   ).property('email_contacts.@each')
+
+  for_email: ->
+    @_super('outgoing_email')
