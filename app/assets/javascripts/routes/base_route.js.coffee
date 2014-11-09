@@ -17,10 +17,9 @@ Volant.BaseRoute = Ember.Route.extend({
 
 
     save: ->
-      model = @modelFor(@routeName)
-      model.get('errors').clear()
-      model.save().then ( (wc) =>
-        @go_to_plural_route(model)
+      @currentModel.get('errors').clear()
+      @currentModel.save().then ( (wc) =>
+        @go_to_plural_route(@currentModel)
         @flash_info 'Saved.'
        ), ( (e) =>
          @flash_error 'Failed.'
@@ -28,23 +27,21 @@ Volant.BaseRoute = Ember.Route.extend({
       false
 
     remove: ->
-      model =  @modelFor(@routeName)
-      model.destroyRecord().then =>
+      @currentModel.destroyRecord().then =>
         @flash_info 'Saved.'
-        @go_to_plural_route(model)
+        @go_to_plural_route()
 
 
     rollback: ->
-      model = @modelFor(@routeName)
-      model.get('errors').clear()
-      model.rollback()
-      @go_to_plural_route(model)
+      @currentModel.get('errors').clear()
+      @currentModel.rollback()
+      @go_to_plural_route()
       false
 
   # ----- Normal Methods ------
 
-  go_to_plural_route: (model) ->
-    next_route = model.constructor.typeKey.decamelize().pluralize()
+  go_to_plural_route: ->
+    next_route = @currentModel.constructor.typeKey.decamelize().pluralize()
     @transitionTo next_route if @routeName != next_route
 
   setupPagination: (controller,model) ->

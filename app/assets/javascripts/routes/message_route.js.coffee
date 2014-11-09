@@ -11,7 +11,7 @@ Volant.MessageRoute = Volant.BaseRoute.extend({
 
   actions:
     send_message: ->
-      @modelFor(@routeName).save().then (msg) =>
+      @currentModel.save().then (msg) =>
         url = "/messages/#{msg.get('id')}/deliver"
         @ajax_to_store(url).then ((payload) =>
           @flash_info 'Message sent.'),
