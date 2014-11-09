@@ -13,9 +13,7 @@ Volant.EmailTemplate = DS.Model.extend({
 
   eval_field: (field,context) ->
     if source = @get(field)
-      f =  Handlebars.compile(source)(context)
-      console.info field,f
-      f
+      Handlebars.compile(source)(context)
     else
       ''
 })

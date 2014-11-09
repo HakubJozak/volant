@@ -29,6 +29,10 @@ Volant.Volunteer = DS.Model.extend({
   note: DS.attr 'string'
   account: DS.attr 'string'
 
+  male: Ember.computed.equal('gender','m')
+  female: Ember.computed.equal('gender','f')
+  teenage: Ember.computed.lt('age',18)
+
   name: (->
     first = @get('firstname')
     last = @get('lastname')
@@ -36,6 +40,6 @@ Volant.Volunteer = DS.Model.extend({
     ).property('firstname', 'lastname')
 
   for_email: ->
-    @_super('name')
+    @_super('name','male','female','teenage')
 
 })

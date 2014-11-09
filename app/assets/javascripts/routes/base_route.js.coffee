@@ -28,7 +28,7 @@ Volant.BaseRoute = Ember.Route.extend({
 
     remove: ->
       @currentModel.destroyRecord().then =>
-        @flash_info 'Saved.'
+        @flash_info 'Deleted.'
         @go_to_plural_route()
 
 

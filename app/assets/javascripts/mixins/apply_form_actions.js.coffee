@@ -21,6 +21,7 @@ Volant.ApplyFormActions = Ember.Mixin.create({
       @store.find('user',@get('current_user.content.id')).then (user) =>
         apply_form.get('current_workcamp').then (workcamp) =>
           context = @message_context(user,apply_form,workcamp)
+          console.log context
 
           message = @store.createRecord 'message', {
             subject: tmpl.eval_field('subject',context)
