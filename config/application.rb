@@ -30,9 +30,9 @@ module Volant
     config.i18n.default_locale = :en
     config.active_record.schema_format = :sql
 
-# Deprecated options?
-#    config.action_mailer.default_charset = 'utf-8'
-#    config.active_record.observers = :free_places_observer
+    # Deprecated options?
+    # config.action_mailer.default_charset = 'utf-8'
+    # config.active_record.observers = :free_places_observer
 
     config.generators do |g|
       g.orm             :active_record
