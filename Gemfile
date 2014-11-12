@@ -62,6 +62,8 @@ gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branc
 gem 'devise-bootstrap-views'
 gem 'bootstrap-generators', '~> 3.2.0'
 
+gem 'barbecue', path: '/home/jakub/prog/sinfin/nigh/vendor/barbecue'
+
 group :development do
   gem 'capistrano-rails'
   gem 'letter_opener'
