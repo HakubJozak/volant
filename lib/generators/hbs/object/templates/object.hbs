@@ -1,0 +1,13 @@
+<h1><%= class_name %></h1>
+
+{{errors.messages}}
+
+<% attributes.each do |attr| %>
+  {{#model-field errors=errors.<%= attr %>}}
+    <label class=" control-label"><%= attr %></label>
+    {{input value=<%= attr %> class="form-control" }}
+  {{/model-field}}
+<% end %>
+
+
+{{outlet}}

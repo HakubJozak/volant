@@ -1,0 +1,22 @@
+<h3><%= plural.capitalize %></h3>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <% attributes.each do |attr| %>
+      <th><%= attr %></th>
+    <% end %>
+    <th>
+      <button type="button" class="btn btn-success" {{ action 'add'}}>
+        <i class="fa fa-plus"></i>
+      </button>
+    </th>
+  </thead>
+  <tbody>
+    {{#each itemController="<%= singular %>" }}
+      <% attributes.each do |attr| %>
+      <td>{{<%= attr %>}}</td>
+      <% end %>
+      <td></td>
+    {{/each}}
+  </tbody>
+</table>
