@@ -64,12 +64,15 @@ gem 'bootstrap-generators', '~> 3.2.0'
 
 gem 'barbecue', path: '/home/jakub/prog/sinfin/nigh/vendor/barbecue'
 
+gem 'puma'
+
 group :development do
   gem 'capistrano-rails'
   gem 'letter_opener'
-  gem 'puma'
   gem 'spring'
   gem 'guard-livereload', '2.3.1', require: false
+  gem 'mina'
+  gem 'mina-puma'
 end
 
 group :test do

@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :default_format_json
 
+  private
+
   def pagination_info(scope)
     {
       total: scope.total_count,

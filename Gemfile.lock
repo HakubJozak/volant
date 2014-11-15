@@ -176,6 +176,12 @@ GEM
     metaclass (0.0.4)
     method_source (0.8.2)
     mime-types (1.25.1)
+    mina (0.3.1)
+      open4 (~> 1.3.4)
+      rake
+    mina-puma (0.1.2)
+      mina
+      puma
     minitest (5.4.3)
     minitest-reporters (1.0.4)
       ansi
@@ -191,6 +197,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
+    open4 (1.3.4)
     orm_adapter (0.5.0)
     paperclip (4.1.1)
       activemodel (>= 3.0.0)
@@ -307,6 +314,8 @@ DEPENDENCIES
   kaminari
   less-rails
   letter_opener
+  mina
+  mina-puma
   minitest-reporters
   mocha
   modernizr-rails
