@@ -47,14 +47,14 @@ namespace :db do
 
     bar = ProgressBar.create(:title => "Payments", :total => Payment.count)
     Payment.find_each do |p|
-      if p.bank?
+      account = if p.bank?
         p.account = Faker::Number.number(10)
       else
-        p.account = ''
+        p.account = nil
       end
 
-      p.save(false)
-      putc('p')
+      p.update_column(:account, account)
+      bar.increment
     end
 
     bar = ProgressBar.create(:title => "Emails", :total => EmailContact.count)
