@@ -1,5 +1,3 @@
-require 'ruby-progressbar'
-
 namespace :db do
 
   desc "Clean schema rebuild and refresh of test database"
@@ -21,6 +19,7 @@ namespace :db do
       puts('Available only in development')
       exit
     else
+      require 'ruby-progressbar'
       require 'faker'
     end
 
