@@ -64,7 +64,7 @@ gem 'bootstrap-generators', '~> 3.2.0'
 
 
 group :development do
-  gem 'capistrano-rails'
+  gem 'faker'
   gem 'letter_opener'
   gem 'spring'
   gem 'guard-livereload', '2.3.1', require: false

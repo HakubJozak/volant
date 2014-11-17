@@ -22,10 +22,10 @@ namespace :db do
       require 'faker'
     end
 
-    Person.all.each do |v| 
+    Person.all.each do |v|
       v.firstname = Faker::Name.first_name
       v.lastname = Faker::Name.last_name
-      v.birthnumber =  Faker.numerify('##########')
+      v.birthnumber = Faker::Number.number(10)
       v.email = Faker::Internet.email
       v.phone = Faker::PhoneNumber.phone_number
       v.birthdate = (15 + rand(15)).years.ago
@@ -37,14 +37,14 @@ namespace :db do
         v.send("#{prefix}street=", Faker::Address.street_name)
         v.send("#{prefix}city=", Faker::Address.city)
       end
-      
+
       v.save!
       putc('v') and $stdout.flush
     end
 
     Payment.all.each do |p|
       if p.bank?
-        p.account = Faker.numerify('f##########')
+        p.account = Faker::Number.number(10)
       else
         p.account = ''
       end
