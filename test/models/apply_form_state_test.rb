@@ -3,17 +3,20 @@ require 'test_helper'
 class ApplyFormStateTest < ActiveSupport::TestCase
 
   def setup
-    @t = Time.now
     @form = Factory.create(:paid_form)
     @form.volunteer = Factory.create(:female)
 
-    @asked = ApplyFormState.new(:asked,@t, @form)
-    @accepted = ApplyFormState.new(:accepted,@t, @form)
+    @asked = ApplyFormState.new(:asked,Time.now, @form)
+    @accepted = ApplyFormState.new(:accepted,Time.now, @form)
+    @paid = ApplyFormState.new(:paid,Time.now, @form)
+    @infosheeted = ApplyFormState.new(:infosheeted,Time.now, @form)
   end
 
   test "actions" do
-    assert_equal @accepted.actions, [ :infosheet ]
-    assert_equal @asked.actions, [ :accept, :reject ]
+    assert_equal [ :infosheet, :cancel ], @accepted.actions
+    assert_equal [ :accept, :reject, :cancel ], @asked.actions
+    assert_equal [ :ask, :reject, :cancel ], @paid.actions
+    assert_equal [ :cancel ], @infosheeted.actions
   end
 
   test "create cancelled state" do
