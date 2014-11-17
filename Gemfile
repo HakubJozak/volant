@@ -71,8 +71,8 @@ group :development do
   gem 'letter_opener'
   gem 'spring'
   gem 'guard-livereload', '2.3.1', require: false
-  gem 'mina'
-  gem 'mina-puma'
+  gem 'mina', require: false
+  gem 'mina-puma', require: false
 end
 
 group :test do

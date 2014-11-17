@@ -2,12 +2,8 @@
 
 <table class="table table-striped table-hover">
   <thead>
-    
-      <th>#<Rails::Generators::GeneratedAttribute:0x00000006912b60></th>
-    
-      <th>#<Rails::Generators::GeneratedAttribute:0x00000006912a20></th>
-    
-      <th>#<Rails::Generators::GeneratedAttribute:0x000000069128e0></th>
+        <th>name</th>
+        <th>code</th>
     
     <th>
       <button type="button" class="btn btn-success" {{ action 'add'}}>
@@ -17,14 +13,9 @@
   </thead>
   <tbody>
     {{#each itemController="country" }}
-      
-      <td>{{#<Rails::Generators::GeneratedAttribute:0x00000006912b60>}}</td>
-      
-      <td>{{#<Rails::Generators::GeneratedAttribute:0x00000006912a20>}}</td>
-      
-      <td>{{#<Rails::Generators::GeneratedAttribute:0x000000069128e0>}}</td>
-      
-      <td></td>
+            <td>{{name}}</td>
+            <td>{{code}}</td>
+            <td></td>
     {{/each}}
   </tbody>
 </table>
