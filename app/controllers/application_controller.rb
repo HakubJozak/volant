@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :default_format_json
 
-  protected
 
   def pagination_info(scope)
     {
