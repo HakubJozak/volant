@@ -1,5 +1,6 @@
 log/*.log
 db/*.db
+db/*.sql
 db/2011
 db/*.sqlite3
 tmp/**/*

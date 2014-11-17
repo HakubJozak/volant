@@ -1,3 +1,5 @@
+require 'ruby-progressbar'
+
 namespace :db do
 
   desc "Clean schema rebuild and refresh of test database"
@@ -22,7 +24,8 @@ namespace :db do
       require 'faker'
     end
 
-    Person.all.each do |v|
+    bar = ProgressBar.create(:title => "People", :total => Person.count)
+    Person.find_each do |v|
       v.firstname = Faker::Name.first_name
       v.lastname = Faker::Name.last_name
       v.birthnumber = Faker::Number.number(10)
@@ -39,10 +42,11 @@ namespace :db do
       end
 
       v.save!
-      putc('v') and $stdout.flush
+      bar.increment
     end
 
-    Payment.all.each do |p|
+    bar = ProgressBar.create(:title => "Payments", :total => Payment.count)
+    Payment.find_each do |p|
       if p.bank?
         p.account = Faker::Number.number(10)
       else
@@ -50,13 +54,14 @@ namespace :db do
       end
 
       p.save(false)
-      putc('p') and $stdout.flush
+      putc('p')
     end
 
-    EmailContact.all.each do |c|
+    bar = ProgressBar.create(:title => "Emails", :total => EmailContact.count)
+    EmailContact.find_each do |c|
       c.address = Faker::Internet.email
       c.save
-      putc('o') and $stdout.flush
+      bar.increment
     end
 
   end
