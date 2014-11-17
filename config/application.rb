@@ -1,5 +1,5 @@
 require File.expand_path('../boot', __FILE__)
-require File.join(File.dirname(__FILE__), 'volant')
+#require File.join(File.dirname(__FILE__), 'volant')
 
 require 'rails/all'
 
