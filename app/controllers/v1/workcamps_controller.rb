@@ -1,4 +1,4 @@
-class WorkcampsController < ApplicationController
+class V1::WorkcampsController < ApplicationController
   respond_to :json
 
   serialization_scope :current_user
@@ -51,49 +51,17 @@ class WorkcampsController < ApplicationController
 
     render json: search,
            meta: { pagination: pagination_info(search) },
-           each_serializer: WorkcampSerializer
+           each_serializer: V1::WorkcampSerializer
   end
 
   def show
-    render json: @workcamp, serializer: WorkcampSerializer
-  end
-
-  # POST /workcamps
-  def create
-    @workcamp = Outgoing::Workcamp.new(workcamp_params)
-
-    if @workcamp.save
-      render json: @workcamp, serializer: WorkcampSerializer
-    else
-      render json: { errors: @workcamp.errors }, status: 422
-    end
-  end
-
-  def update
-    if  @workcamp.update(workcamp_params)
-      render json: @workcamp, serializer: WorkcampSerializer
-    else
-      render json: { errors: @workcamp.errors }, status: 422
-    end
-  end
-
-  def destroy
-    @workcamp.destroy
-    redirect_to workcamps_url, notice: 'Workcamp was successfully destroyed.'
+    render json: @workcamp, serializer: V1::WorkcampSerializer
   end
 
   private
 
   def find_workcamp
-    @workcamp = Workcamp.find(params[:id])
+    @workcamp = Outgoing::Workcamp.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
-  def workcamp_params
-    readonly = [ :state,:free_places,:free_places_for_males,:free_places_for_females, :duration, :tag_list, :sci_id, :sci_code ]
-    params.except(*readonly)
-      .require(:workcamp)
-      .except(*readonly)
-      .permit(*WorkcampSerializer.public_attributes)
-  end
 end

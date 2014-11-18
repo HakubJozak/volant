@@ -1,17 +1,23 @@
 Rails.application.routes.draw do
 
+  namespace :v1 do
+    resources :countries, only: [ :index ]
+    resources :workcamp_intentions, only: [ :index ]
+    resources :workcamps, only: [ :index, :show ]
+    resources :apply_forms, only: [ :create ]
+  end
+
   resources :workcamp_assignments, only: [ :index, :create, :update, :destroy, :show ]
   resources :email_contacts, only: [ :create, :update, :destroy ]
-  resources :countries
-  resources :organizations
-  resources :workcamp_intentions
-  resources :volunteers
-  resources :tags
-  resources :payments
-  resources :workcamps
+  resources :countries, except: [ :edit, :new ]
+  resources :organizations, except: [ :edit, :new ]
+  resources :workcamp_intentions, except: [ :edit, :new ]
+  resources :volunteers, except: [ :edit, :new ]
+  resources :tags, except: [ :edit, :new ]
+  resources :payments, except: [ :edit, :new ]
+  resources :workcamps, except: [ :edit, :new ]
 
   resources :stars, only: [ :create ]
-
 
   resources :apply_forms do
     member do
@@ -32,7 +38,7 @@ Rails.application.routes.draw do
 
   devise_for :users, path: 'accounts'
 
-  # JSON API - not to clash with ^
+  # JSON API - not to clash with the above route ^
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
