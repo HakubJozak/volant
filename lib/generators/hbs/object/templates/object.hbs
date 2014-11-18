@@ -2,12 +2,12 @@
 
 {{errors.messages}}
 
-<% attributes.each do |attr| %>
-  {{#model-field errors=errors.<%= attr.name %>}}
-    <label class=" control-label"><%= attr.name %></label>
-    {{input value=<%= attr.name %> class="form-control" }}
-  {{/model-field}}
-<% end %>
+<% attributes.each do |attr| -%>
+{{#model-field errors=errors.<%= attr.name %>}}
+  <label class=" control-label"><%= attr.name.capitalize %></label>
+  {{input value=<%= attr.name %> class="form-control" }}
+{{/model-field}}
+<% end -%>
 
 
 {{outlet}}

@@ -2,20 +2,34 @@
 
 <table class="table table-striped table-hover">
   <thead>
-        <th>name</th>
-        <th>code</th>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Triple code</th>
     
-    <th>
+    <th class='text-right'>
       <button type="button" class="btn btn-success" {{ action 'add'}}>
         <i class="fa fa-plus"></i>
       </button>
     </th>
   </thead>
   <tbody>
-    {{#each itemController="country" }}
-            <td>{{name}}</td>
-            <td>{{code}}</td>
-            <td></td>
+    {{#each}}
+      <tr>
+                
+        <td>
+          {{#link-to 'country' this}}
+            {{name}}
+          {{/link-to}}
+        </td>
+        
+                
+        <td>{{code}}</td>
+        
+                
+        <td>{{triple_code}}</td>
+        
+                <td></td>
+      </tr>
     {{/each}}
   </tbody>
 </table>

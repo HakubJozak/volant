@@ -7,11 +7,10 @@ module Hbs
     argument :attributes, :type => :array, :default => [], :banner => "field field ..."
 
     def create_template_files
-      file_path = File.join(ember_path, 'templates', class_path, "#{file_name}.hbs")
-      template 'object.hbs', file_path
-
-      file_path = File.join(ember_path, 'templates', class_path, "#{file_name.pluralize}.hbs")
-      template 'array.hbs', file_path
+      template 'object.hbs', template_path("#{file_name}.hbs")
+      template 'array.hbs', template_path("#{file_name.pluralize}.hbs")
+      template 'array_route.js.coffee', File.join(ember_path, 'routes', class_path, "#{file_name.pluralize}_route.js.coffee")
+      template 'object_route.js.coffee', File.join(ember_path, 'routes', class_path, "#{file_name}_route.js.coffee")
     end
 
     def plural
@@ -20,6 +19,12 @@ module Hbs
 
     def singular
       name
+    end
+
+    private
+
+    def template_path(filename)
+      File.join(ember_path, 'templates', class_path, filename)
     end
   end
 end

@@ -1,23 +1,33 @@
-<h3><%= plural.capitalize %></h3>
+<h3><%= plural.humanize %></h3>
 
 <table class="table table-striped table-hover">
   <thead>
     <% attributes.each do |attr| -%>
-    <th><%= attr.name %></th>
+    <th><%= attr.name.humanize %></th>
     <% end -%>
 
-    <th>
+    <th class='text-right'>
       <button type="button" class="btn btn-success" {{ action 'add'}}>
         <i class="fa fa-plus"></i>
       </button>
     </th>
   </thead>
   <tbody>
-    {{#each itemController="<%= singular %>" }}
-      <% attributes.each do |attr| -%>
-      <td>{{<%= attr.name %>}}</td>
-      <% end -%>
-      <td></td>
+    {{#each}}
+      <tr>
+        <% attributes.each_with_index do |attr,i| -%>
+        <% if i == 0 %>
+        <td>
+          {{#link-to '<%= singular%>' this}}
+            {{<%= attr.name %>}}
+          {{/link-to}}
+        </td>
+        <% else %>
+        <td>{{<%= attr.name %>}}</td>
+        <% end %>
+        <% end -%>
+        <td></td>
+      </tr>
     {{/each}}
   </tbody>
 </table>

@@ -2,17 +2,18 @@
 
 {{errors.messages}}
 
-
-  {{#model-field errors=errors.name}}
-    <label class=" control-label">name</label>
-    {{input value=name class="form-control" }}
-  {{/model-field}}
-
-  {{#model-field errors=errors.code}}
-    <label class=" control-label">code</label>
-    {{input value=code class="form-control" }}
-  {{/model-field}}
-
+{{#model-field errors=errors.name}}
+  <label class=" control-label">Name</label>
+  {{input value=name class="form-control" }}
+{{/model-field}}
+{{#model-field errors=errors.code}}
+  <label class=" control-label">Code</label>
+  {{input value=code class="form-control" }}
+{{/model-field}}
+{{#model-field errors=errors.triple_code}}
+  <label class=" control-label">Triple_code</label>
+  {{input value=triple_code class="form-control" }}
+{{/model-field}}
 
 
 {{outlet}}
