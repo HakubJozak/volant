@@ -1,6 +1,7 @@
 class V1::WorkcampSerializer < ActiveModel::Serializer
   has_one :organization, serializer: V1::OrganizationSerializer
   has_one :country, serializer: V1::CountrySerializer
+  has_many :workcamp_intentions, serializer: V1::WorkcampIntentionSerializer
 
   attributes :id, :name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
       :area, :accomodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,
@@ -10,9 +11,9 @@ class V1::WorkcampSerializer < ActiveModel::Serializer
       :free_places, :free_places_for_males, :free_places_for_females,
       :duration,
       :longitude, :latitude, :requirements,
-      :workcamp_intentions
+      :created_at
 
   def workcamp_intentions
-    object.intentions.map(&:code)
+    object.intentions
   end
 end
