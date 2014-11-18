@@ -1,4 +1,4 @@
-class V1::CountriesController < ApplicationController
+class V1::CountriesController < V1::BaseController
   respond_to :json
 
 

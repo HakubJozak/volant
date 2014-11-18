@@ -1,4 +1,4 @@
-class V1::WorkcampsController < ApplicationController
+class V1::WorkcampsController < V1::BaseController
   respond_to :json
 
   serialization_scope :current_user

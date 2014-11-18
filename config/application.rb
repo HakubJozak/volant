@@ -43,5 +43,6 @@ module Volant
       g.javascripts     false
     end
 
+    config.api_access_tokens = ['6e492ef2d4c5565715126c343b2c0a2fe46bb585d00e1b5a9']
   end
 end
