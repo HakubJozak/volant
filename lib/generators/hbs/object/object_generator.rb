@@ -11,6 +11,8 @@ module Hbs
       template 'array.hbs', template_path("#{file_name.pluralize}.hbs")
       template 'array_route.js.coffee', File.join(ember_path, 'routes', class_path, "#{file_name.pluralize}_route.js.coffee")
       template 'object_route.js.coffee', File.join(ember_path, 'routes', class_path, "#{file_name}_route.js.coffee")
+      template 'new_route.js.coffee', File.join(ember_path, 'routes', class_path, file_name.pluralize, "#{file_name.pluralize}_new_route.js.coffee")
+#      template 'new_controller.js.coffee', File.join(ember_path, 'controllers', class_path, file_name.pluralize, "#{file_name.pluralize}_new_controller.js.coffee")
 #      template 'object_controller.js.coffee', File.join(ember_path, 'controllers', class_path, "#{file_name}_controller.js.coffee")
 #      template 'array_controller.js.coffee', File.join(ember_path, 'controllers', class_path, "#{file_name.pluralize}_controller.js.coffee")
     end
