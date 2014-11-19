@@ -1,7 +1,4 @@
 class WorkcampIntentionSerializer < ActiveModel::Serializer
-  attributes :id, :code, :description
+  attributes :id, :code, :description_en, :description_cz
 
-  def description
-    object.description_en
-  end
 end

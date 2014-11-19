@@ -8,6 +8,14 @@ Volant.Router.map () ->
     @route 'new'
     @resource 'country', {path: ':country_id'}
 
+  @resource 'tags', ->
+    @route 'new'
+    @resource 'tag', {path: ':tag_id'}
+
+  @resource 'workcamp_intentions', ->
+    @route 'new'
+    @resource 'workcamp_intention', {path: ':workcamp_intention_id'}
+
   @resource 'email_templates', ->
     @route 'new'
     @resource 'email_template', {path: ':email_template_id'}

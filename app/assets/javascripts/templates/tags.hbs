@@ -1,0 +1,31 @@
+<div class='col-md-6'>
+<h3>Tags</h3>
+
+<table class="table table-striped table-hover">
+  <thead>
+        <th>Name</th>
+        <th>Color</th>
+        <th>Text color</th>
+        <th class='text-right'>
+      {{#link-to 'tags.new' class='btn btn-success'}}{{fa 'plus'}} New{{/link-to}}
+    </th>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr>
+                        <td>
+          {{#link-to 'tag' this}}
+            {{name}}
+          {{/link-to}}
+        </td>
+                                <td>{{color}}</td>
+                                <td>{{text_color}}</td>
+                        <td></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+<div class='col-md-6 right-side-edit'>
+  {{outlet}}
+</div>

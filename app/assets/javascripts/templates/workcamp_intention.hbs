@@ -1,0 +1,32 @@
+<h3>WorkcampIntention</h3>
+
+{{errors.messages}}
+
+<form {{ action 'save' on='submit'}}>
+    <div class="form-group">
+    {{#model-field errors=errors.code}}
+      <label class=" control-label">Code</label>
+      {{input value=code class="form-control" }}
+    {{/model-field}}
+  </div>
+    <div class="form-group">
+    {{#model-field errors=errors.description_en}}
+      <label class=" control-label">Description en</label>
+      {{input value=description_en class="form-control" }}
+    {{/model-field}}
+  </div>
+    <div class="form-group">
+    {{#model-field errors=errors.description_cz}}
+      <label class=" control-label">Description cz</label>
+      {{input value=description_cz class="form-control" }}
+    {{/model-field}}
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Save</button>
+
+  {{ button 'Cancel' 'rollback' 'btn' }}
+
+  {{#unless isNew}}
+    {{ button 'Delete' 'remove' 'btn btn-danger' }}
+  {{/unless}}
+</form>

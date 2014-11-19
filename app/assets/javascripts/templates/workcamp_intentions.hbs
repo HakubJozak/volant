@@ -1,0 +1,31 @@
+<div class='col-md-6'>
+<h3>Workcamp intentions</h3>
+
+<table class="table table-striped table-hover">
+  <thead>
+        <th>Code</th>
+        <th>Description en</th>
+        <th>Description cz</th>
+        <th class='text-right'>
+      {{#link-to 'workcamp_intentions.new' class='btn btn-success'}}{{fa 'plus'}} New{{/link-to}}
+    </th>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr>
+                        <td>
+          {{#link-to 'workcamp_intention' this}}
+            {{code}}
+          {{/link-to}}
+        </td>
+                                <td>{{description_en}}</td>
+                                <td>{{description_cz}}</td>
+                        <td></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+<div class='col-md-6 right-side-edit'>
+  {{outlet}}
+</div>
