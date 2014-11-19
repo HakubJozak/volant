@@ -1,13 +1,20 @@
-<h1><%= class_name %></h1>
+<h3><%= class_name %></h3>
 
 {{errors.messages}}
 
 <% attributes.each do |attr| -%>
-{{#model-field errors=errors.<%= attr.name %>}}
-  <label class=" control-label"><%= attr.name.capitalize %></label>
-  {{input value=<%= attr.name %> class="form-control" }}
-{{/model-field}}
+  <div class="form-group">
+    {{#model-field errors=errors.<%= attr.name %>}}
+      <label class=" control-label"><%= attr.name.humanize %></label>
+      {{input value=<%= attr.name %> class="form-control" }}
+    {{/model-field}}
+  </div>
 <% end -%>
 
+<button type="submit" class="btn btn-primary">Save</button>
 
-{{outlet}}
+{{ button 'Cancel' 'rollback' 'btn' }}
+
+{{#unless isNew}}
+  {{ button 'Delete' 'remove' 'btn btn-danger' }}
+{{/unless}}

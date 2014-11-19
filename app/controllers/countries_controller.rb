@@ -5,7 +5,7 @@ class CountriesController < ApplicationController
 
   # GET /countries
   def index
-    @countries = Country.all
+    @countries = Country.order(:name_en)
     respond_with(@countries)
   end
 
