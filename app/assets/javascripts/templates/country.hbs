@@ -2,29 +2,37 @@
 
 {{errors.messages}}
 
-  <div class="form-group">
-    {{#model-field errors=errors.name}}
-      <label class=" control-label">Name</label>
-      {{input value=name class="form-control" }}
+<form {{ action 'save' on='submit'}}>
+    <div class="form-group">
+    {{#model-field errors=errors.name_en}}
+      <label class=" control-label">Name en</label>
+      {{input value=name_en class="form-control" }}
     {{/model-field}}
   </div>
-  <div class="form-group">
+    <div class="form-group">
+    {{#model-field errors=errors.name_cs}}
+      <label class=" control-label">Name cs</label>
+      {{input value=name_cs class="form-control" }}
+    {{/model-field}}
+  </div>
+    <div class="form-group">
     {{#model-field errors=errors.code}}
       <label class=" control-label">Code</label>
       {{input value=code class="form-control" }}
     {{/model-field}}
   </div>
-  <div class="form-group">
+    <div class="form-group">
     {{#model-field errors=errors.triple_code}}
       <label class=" control-label">Triple code</label>
       {{input value=triple_code class="form-control" }}
     {{/model-field}}
   </div>
+  
+  <button type="submit" class="btn btn-primary">Save</button>
 
-<button type="submit" class="btn btn-primary">Save</button>
+  {{ button 'Cancel' 'rollback' 'btn' }}
 
-{{ button 'Cancel' 'rollback' 'btn' }}
-
-{{#unless isNew}}
-  {{ button 'Delete' 'remove' 'btn btn-danger' }}
-{{/unless}}
+  {{#unless isNew}}
+    {{ button 'Delete' 'remove' 'btn btn-danger' }}
+  {{/unless}}
+</form>

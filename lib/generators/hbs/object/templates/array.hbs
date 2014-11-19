@@ -6,11 +6,8 @@
     <% attributes.each do |attr| -%>
     <th><%= attr.name.humanize %></th>
     <% end -%>
-
     <th class='text-right'>
-      <button type="button" class="btn btn-success" {{ action 'add'}}>
-        <i class="fa fa-plus"></i>
-      </button>
+      {{#link-to '<%= plural %>.new' class='btn btn-success'}}{{fa 'plus'}} New{{/link-to}}
     </th>
   </thead>
   <tbody>
