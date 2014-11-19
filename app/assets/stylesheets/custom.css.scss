@@ -8,8 +8,6 @@ $grey: grey;
 
 
 
-
-
 body {
   // because of fixed-nav-bar
   padding-top: 70px;
@@ -177,4 +175,9 @@ table.dashboard {
   .input-group .input-group-btn {
       button.reset { color: gray; }
   }
+}
+
+.right-side-edit {
+  position: fixed;
+  right: 1em;
 }
