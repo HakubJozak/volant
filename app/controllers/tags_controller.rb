@@ -5,7 +5,7 @@ class TagsController < ApplicationController
 
   # GET /tags
   def index
-    @tags = Tag.order(:name)
+    @tags = ColoredTag.order(:name)
     respond_with(@tags)
   end
 
@@ -16,7 +16,7 @@ class TagsController < ApplicationController
 
   # POST /tags
   def create
-    @tag = Tag.new(tag_params)
+    @tag = ColoredTag.new(tag_params)
     @tag.save
     respond_with(@tag)
   end
@@ -36,7 +36,7 @@ class TagsController < ApplicationController
   private
 
   def set_tag
-    @tag = Tag.find(params[:id])
+    @tag = ColoredTag.find(params[:id])
   end
 
   def tag_params

@@ -39,6 +39,10 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
       false
 
 
+    yearChanged: ->
+      @refresh()
+      false
+
     refresh: ->
       @refresh()
       false

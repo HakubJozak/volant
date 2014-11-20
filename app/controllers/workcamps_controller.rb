@@ -9,10 +9,13 @@ class WorkcampsController < ApplicationController
     search = search.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
     search = add_year_scope(search)
 
+    if org = params[:organization_id]
+      search = search.where(organization_id: org.to_i)
+    end
+
     if query = params[:q]
       search = search.query(params[:q])
     end
-
 
     if params[:starred]
       search = search.where(starred: true)

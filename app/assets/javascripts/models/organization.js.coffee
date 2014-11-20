@@ -9,6 +9,7 @@ Volant.Organization = DS.Model.extend
   mobile: DS.attr 'string'
   fax: DS.attr 'string'
   website: DS.attr 'string'
+#  workcamps: DS.hasMany('workcamp',async: true)
 
   outgoing_email: (->
     'change-me@google.com'

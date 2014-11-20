@@ -35,6 +35,10 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions,{
       @refresh()
       false
 
+    yearChanged: ->
+      @refresh()
+      false
+
     refresh: ->
       @refresh()
       false

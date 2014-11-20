@@ -1,0 +1,16 @@
+<h3>Workcamps in {{year}}</h3>
+
+<table class="table table-condensed table-hover col-lg-12 sidepanel">
+  <tbody>
+    {{#each}}
+      <tr>
+        <td>{{dates this }}</td>
+        <td>
+          {{#link-to 'workcamp' this}}
+          {{name}}
+          {{/link-to}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
