@@ -5,11 +5,12 @@ Ember.Handlebars.helper 'dates', (wc) ->
   year_to = if to? then to.getFullYear() else '?'
 
   if year_from == year_to
-    fmt = 'MMMM Do'
-    "#{moment(from).format(fmt)} - #{moment(to).format(fmt)}, #{year_from}"
+    fmt = 'M/D'
+    text = "#{moment(from).format(fmt)} - #{moment(to).format(fmt)}, #{year_from}"
   else
-    fmt = 'MMMM Do YYYY'
+    fmt = 'L'
     "#{moment(from).format(fmt)} - #{moment(to).format(fmt)}"
+
 
 
 Ember.Handlebars.helper 'age-range', (wc) ->
