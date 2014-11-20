@@ -9,7 +9,7 @@ class CountriesControllerTest < ActionController::TestCase
   test "index" do
     get :index
     assert_response :success
-    assert_equal 3,json_response['countries'].size
+    assert_equal 1,json_response['countries'].size
   end
 
   test "create" do

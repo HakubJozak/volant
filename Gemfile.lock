@@ -13,6 +13,9 @@ PATH
   remote: /home/jakub/prog/sinfin/nigh/vendor/barbecue
   specs:
     barbecue (0.0.1)
+      active_model_serializers
+      barber
+      rails (~> 4.1)
 
 GEM
   remote: https://rubygems.org/

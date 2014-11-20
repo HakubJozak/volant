@@ -1,10 +1,8 @@
 class Country < ActiveRecord::Base
 
-  def name
-    send("name_#{I18n.locale}") || "Unknown name (#{code})"
-  end
+  validates :name_en, presence: true
+  validates :code, format: { with: /[A-Z]{2}/, message: 'the format is XX' }
+  validates :triple_code, format: { with: /[A-Z]{3}/, message: 'the format is XXX' }
 
-  alias :to_label :name
-  alias :to_s :name
 
 end
