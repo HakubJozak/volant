@@ -5,7 +5,7 @@ class CountriesController < ApplicationController
 
   # GET /countries
   def index
-    @countries = Country.order(:name_en)
+    @countries = Country.all
     respond_with(@countries)
   end
 
@@ -30,7 +30,7 @@ class CountriesController < ApplicationController
   # DELETE /countries/1
   def destroy
     @country.destroy
-    respond_with(@country)
+    head :no_content
   end
 
   private
@@ -40,6 +40,6 @@ class CountriesController < ApplicationController
   end
 
   def country_params
-    params.require(:country).permit(CountrySerializer.public_attributes)
+    params.require(:country).permit(CountrySerializer.writable)
   end
 end

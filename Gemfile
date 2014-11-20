@@ -44,7 +44,7 @@ gem 'acts-as-taggable-on'
 gem 'ember-rails'
 gem 'ember-source', '1.7.0'
 gem 'ember-data-source', '1.0.0.beta.11'
-gem "active_model_serializers"
+gem "active_model_serializers", '~> 0.8.2'
 gem 'kaminari'
 gem 'devise'
 
@@ -62,6 +62,7 @@ gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branc
 gem 'devise-bootstrap-views'
 gem 'bootstrap-generators', '~> 3.2.0'
 gem 'puma'
+gem 'barbecue', path: '/home/jakub/prog/sinfin/nigh/vendor/barbecue'
 
 
 group :development do

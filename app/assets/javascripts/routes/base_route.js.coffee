@@ -22,14 +22,19 @@ Volant.BaseRoute = Ember.Route.extend({
         @go_to_plural_route(@currentModel)
         @flash_info 'Saved.'
        ), ( (e) =>
+         console.warn e
          @flash_error 'Failed.'
        )
       false
 
     remove: ->
-      @currentModel.destroyRecord().then =>
+      @currentModel.destroyRecord().then (=>
         @flash_info 'Deleted.'
         @go_to_plural_route()
+        ), ( (e) =>
+         console.error e
+         @flash_error "Failed."
+        )
 
 
     rollback: ->
