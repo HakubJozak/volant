@@ -1,4 +1,4 @@
-class VolunteerSerializer < ActiveModel::Serializer
+class VolunteerSerializer < Barbecue::BaseSerializer
 
   def self.public_attributes
     [ :id, :firstname, :lastname, :gender,

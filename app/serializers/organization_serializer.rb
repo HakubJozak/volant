@@ -1,4 +1,4 @@
-class OrganizationSerializer < ActiveModel::Serializer
+class OrganizationSerializer < Barbecue::BaseSerializer
   has_one :country, embed: :ids, include: true
   has_many :email_contacts, embed: :ids, include: true
   attributes :id, :name, :code,

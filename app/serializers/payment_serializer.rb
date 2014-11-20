@@ -1,4 +1,4 @@
-class PaymentSerializer < ActiveModel::Serializer
+class PaymentSerializer < Barbecue::BaseSerializer
   has_one :apply_form, embed: :ids, include: true
 
   def self.public_attributes

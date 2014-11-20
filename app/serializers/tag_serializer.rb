@@ -1,3 +1,4 @@
-class TagSerializer < ActiveModel::Serializer
-  attributes :id, :name, :color, :text_color
+class TagSerializer < Barbecue::BaseSerializer
+  readonly_attributes :id
+  writable_attributes :name, :color, :text_color
 end

@@ -1,4 +1,4 @@
-class EmailTemplateSerializer < ActiveModel::Serializer
+class EmailTemplateSerializer < Barbecue::BaseSerializer
 
   def self.public_attributes
    [ :action, :title, :subject, :body, :to, :from, :cc, :bcc ]
