@@ -7,8 +7,10 @@ module Import
     fixtures :organizations
 
     setup do
-      Country.find_by_code('EE').update_attribute(:triple_code, 'EST')
-      Country.find_by_code('US').update_attribute(:triple_code, 'USA')
+      Factory(:country, code: 'EE', triple_code: 'EST',name_en: 'Estonia')
+      Factory(:country, code: 'US', triple_code: 'USA')
+      # Country.find_by_code('EE').update_attribute(:triple_code, 'EST')
+      # Country.find_by_code('US').update_attribute(:triple_code, 'USA')
     end
 
     test "not choke on missing organization" do
@@ -33,7 +35,7 @@ module Import
       wc = wcs.first
       assert wc.imported?
       assert_equal 'EST', wc.organization.code
-      assert_equal 'Estonsko', wc.country.name
+      assert_equal 'Estonia', wc.country.name
       assert wc.tag_list.include?('teenage')
       assert wc.tag_list.include?('extra fee')
       assert_equal false, wc.tag_list.include?('disabled')
