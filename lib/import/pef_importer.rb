@@ -1,3 +1,5 @@
+require "rexml/document"
+
 module Import
   class PefImporter
 
@@ -88,7 +90,7 @@ module Import
       to = to_date(node, 'end_date')
 
       conditions = { :code => code, :name => name, :begin => from, :end => to }
-      Workcamp.find( :first, :conditions => conditions)
+      Workcamp.find(:first, :conditions => conditions)
     end
 
     def add_to_field(attr, wc, node, name)

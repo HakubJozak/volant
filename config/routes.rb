@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   resources :volunteers, except: [ :edit, :new ]
   resources :tags, except: [ :edit, :new ]
   resources :payments, except: [ :edit, :new ]
-  resources :workcamps, except: [ :edit, :new ]
+
+  post '/workcamps/import', to: 'import#create'
+
+  resources :workcamps, except: [ :edit, :new ] do
+  end
 
   resources :stars, only: [ :create ]
 
