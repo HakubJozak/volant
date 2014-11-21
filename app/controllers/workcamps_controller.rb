@@ -10,7 +10,9 @@ class WorkcampsController < ApplicationController
     search = add_year_scope(search)
 
     if params[:state]
-      search = search.where("state='imported' or state='updated'")
+      search = search.where("state is NOT NULL")
+    else
+      search = search.where("state is NULL")
     end
 
     if org = params[:organization_id]

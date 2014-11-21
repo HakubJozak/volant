@@ -5,7 +5,6 @@
 #= require ember
 #= require ember-data
 #= require images
-#= require ember-uploader.min.js
 
 
 #= require moment
