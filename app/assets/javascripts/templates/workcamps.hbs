@@ -31,7 +31,7 @@
           <span class="sr-only">Toggle Dropdown</span>
         </button>
         <ul class="dropdown-menu" role="menu">
-          <li>{{#link-to 'workcamps.import' }}Import{{/link-to}}</li>
+          <li>{{#link-to 'imported_workcamps' }}Import{{/link-to}}</li>
         </ul>
       </div>
     </div>
@@ -42,57 +42,4 @@
   {{/if}}
 </form>
 
-<div class="row">
-  {{outlet}}
-</div>
-
-  <div class="row">
-    <div class="col-lg-12">
-
-      <div class="list-group">
-             {{#each itemController='littleWorkcamp'}}
-               <div href="#" class="list-group-item">
-                 <div class="row">
-                   <div class="col-lg-1">
-                     <div>
-                       {{partial 'star'}}
-                       {{small-flag country}}
-                     </div>
-                     <small>{{country.name}}</small>
-                   </div>
-                   <div class="col-lg-2">
-                     <h4>{{ partial 'free_places' }}</h4>
-                   </div>
-
-                   <div class="col-lg-6">
-                     <h4 class="list-group-item-heading">
-                     {{#link-to 'workcamp' this}}{{name}}{{/link-to}}
-
-                       <small>
-                         {{duration}} days
-                       </small>
-                     </h4>
-                     <p class="list-group-item-text">
-                       {{#link-to 'organization' organization}}{{code}}{{/link-to}},
-                       {{age-range this }},
-                       {{#each workcamp_intentions}} {{ code }}, {{/each}}
-                     </p>
-                   </div>
-                   <div class="col-lg-3 text-right">
-                     <h5 class="list-group-item-heading ">{{dates this}}</h5>
-                     <p class="list-group-item-text">
-                     {{#each tags}}
-                       {{ tag this }}
-                     {{/each}}
-                     </p>
-                   </div>
-                 </div>
-
-                 {{partial 'free_places_editor'}}
-               </div>
-             {{/each}}
-      </div>
-    </div>
-  </div>
-
-{{ render 'pagination' }}
+{{partial 'workcamps/list'}}

@@ -30,8 +30,8 @@ Rails.application.configure do
 
   #  config.ember.variant = :production
   config.assets.debug = true
-  require 'middleware/turbo_dev'
-  config.middleware.insert 0, Middleware::TurboDev
+#  require 'middleware/turbo_dev'
+#  config.middleware.insert 0, Middleware::TurboDev
 
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.

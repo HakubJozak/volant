@@ -9,10 +9,11 @@ Volant.Router.map () ->
     @resource 'starred_workcamps'
   @resource 'workcamps', ->
     @route 'new'
-    @route 'import'
+
   @resource('workcamp', path: '/workcamps/:workcamp_id')
 
   @resource 'imported_workcamps'
+
 
   @resource 'organizations'
   @resource('organization', path: '/organizations/:organization_id')

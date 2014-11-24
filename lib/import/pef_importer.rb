@@ -9,7 +9,7 @@ module Import
     def initialize(file)
       # HACK - this shold not be happening, but somehow the file comes
       # read in the tests
-      file.rewind
+      file.rewind if file.respond_to?(:rewind)
 
       @doc = REXML::Document.new(file)
       # handle common XML error
