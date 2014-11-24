@@ -3,6 +3,11 @@
 
   <h2>
     {{partial 'star'}}
+    {{#if name}}
+      {{name}}
+    {{else}}
+      <span class="text-muted">New Workcamp</span>
+    {{/if}}
     {{name}}
   </h2>
 
