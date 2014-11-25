@@ -3,12 +3,9 @@
   <div class='row'>
     <div class="form-group col-lg-2">
       <label class=" control-label">Gender</label>
-      {{view Ember.Select
-      content=genders
-      selectionBinding='gender'
-      class="form-control"
-      optionValuePath='content.code'
-      optionLabelPath='content.name' }}
+      {{view Volant.GenderSelectView
+      value=gender
+      class="form-control" }}
     </div>
 
     <div class="form-group col-lg-3">

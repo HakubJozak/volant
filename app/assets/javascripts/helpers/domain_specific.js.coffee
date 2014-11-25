@@ -44,8 +44,8 @@ Ember.Handlebars.helper 'gender-sign', (volunteer) ->
   # for unfullfilled promises
   return unless volunteer?
 
-  if g = volunteer.get('gender') == 'f'
+  if volunteer.get('gender') == 'f'
     '♀'
   else
-    console.error "Invalid gender #{g}" unless g == 'm'
+    console.error "Invalid gender #{volunteer.get('gender')}" unless volunteer.get('gender') == 'm'
     '♂'
