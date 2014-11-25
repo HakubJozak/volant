@@ -10,6 +10,13 @@ class WorkcampTest < ActiveSupport::TestCase
     @wc = Factory.create(:workcamp, :begin => 1.day.from_now, :end => 10.days.from_now)
   end
 
+  test 'tag_ids=' do
+    ids = [ ColoredTag.find_by_name('family').id, ColoredTag.find_by_name('teenage').id ]
+    @wc.tag_ids = ids
+    @wc.save!
+    assert_equal ['family','teenage'], @wc.tag_list
+  end
+
   test "have term" do
     @wc.begin = @wc.end = nil
     assert_equal '? - ?', @wc.term

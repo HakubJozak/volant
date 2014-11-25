@@ -9,7 +9,6 @@ module Outgoing
         @wc = Factory.create(:outgoing_workcamp, :begin => 1.day.from_now, :end => 10.days.from_now)
       end
 
-
       should "correctly pick the accepted forms on workcamp" do
         inside = Factory.create(:workcamp_assignment, :accepted => Time.now, :workcamp => @wc)
         outside = Factory.create(:workcamp_assignment, :accepted => nil, :workcamp => @wc)
