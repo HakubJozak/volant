@@ -5,7 +5,7 @@
       <label class=" control-label">Gender</label>
       {{view Ember.Select
       content=genders
-      value=gender
+      selectionBinding='gender'
       class="form-control"
       optionValuePath='content.code'
       optionLabelPath='content.name' }}

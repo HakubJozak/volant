@@ -15,6 +15,7 @@ PATH
     barbecue (0.0.1)
       active_model_serializers
       barber
+      ember-rails
       rails (~> 4.1)
 
 GEM

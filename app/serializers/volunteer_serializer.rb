@@ -1,8 +1,7 @@
 class VolunteerSerializer < Barbecue::BaseSerializer
 
-  def self.public_attributes
-    [ :id, :firstname, :lastname, :gender,
-      :email, :phone,
+   writable_attributes :firstname, :lastname, :gender,
+  :email, :phone,
       :speak_well, :speak_some,
       :birthdate, :birthnumber, :birthplace,
       :nationality, :occupation, :account, :emergency_name,
@@ -10,15 +9,9 @@ class VolunteerSerializer < Barbecue::BaseSerializer
       :special_needs, :past_experience, :comments,
       :fax, :street, :city, :zipcode,
       :contact_street, :contact_city, :contact_zipcode,
-      :note ]
-  end
+      :note
 
-  def self.private_attributes
-    [ :age ]
-  end
-
-  attributes *[ VolunteerSerializer.public_attributes, VolunteerSerializer.private_attributes ].flatten
-
+  readonly_attributes :id, :age
 end
 
 # class ParticipantSerializer < VolunteerSerializer

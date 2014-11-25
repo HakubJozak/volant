@@ -32,6 +32,6 @@ class VolunteersController < ApplicationController
   end
 
   def volunteer_params
-    params.require(:volunteer).except(:age).permit(*VolunteerSerializer.public_attributes)
+    params.require(:volunteer).except(:age).permit(*VolunteerSerializer.writable)
   end
 end

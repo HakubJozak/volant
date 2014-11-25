@@ -15,7 +15,7 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: 'volant.local' }
   config.action_mailer.delivery_method = :letter_opener
 
   # Print deprecation notices to the Rails logger.
@@ -30,8 +30,8 @@ Rails.application.configure do
 
   #  config.ember.variant = :production
   config.assets.debug = true
-#  require 'middleware/turbo_dev'
-#  config.middleware.insert 0, Middleware::TurboDev
+  require 'middleware/turbo_dev'
+  config.middleware.insert 0, Middleware::TurboDev
 
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.

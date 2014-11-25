@@ -40,7 +40,7 @@ Ember.Handlebars.helper 'workcamp-state-icon', (state) ->
 
 
 
-Ember.Handlebars.helper 'gender', (volunteer) ->
+Ember.Handlebars.helper 'gender-sign', (volunteer) ->
   # for unfullfilled promises
   return unless volunteer?
 
