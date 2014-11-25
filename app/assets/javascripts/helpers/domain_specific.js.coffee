@@ -40,12 +40,9 @@ Ember.Handlebars.helper 'workcamp-state-icon', (state) ->
 
 
 
-Ember.Handlebars.helper 'gender-sign', (volunteer) ->
-  # for unfullfilled promises
-  return unless volunteer?
-
-  if volunteer.get('gender') == 'f'
+Ember.Handlebars.helper 'gender-sign', (gender) ->
+  if gender == 'f'
     '♀'
   else
-    console.error "Invalid gender #{volunteer.get('gender')}" unless volunteer.get('gender') == 'm'
+    console.error "Invalid gender #{gender}" unless gender == 'm'
     '♂'
