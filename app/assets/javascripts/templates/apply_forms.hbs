@@ -42,13 +42,7 @@
             ({{volunteer.age}})
           {{/link-to}}
         </td>
-        <td>
-          {{#if message}}
-            {{fa 'send-o'}}
-          {{else}}
-            {{ apply-form-state-icon state}}
-          {{/if}}
-        </td>
+        <td>{{ apply-form-state-icon state}}</td>
         <td>
           {{ partial 'action_buttons' }}
         </td>
