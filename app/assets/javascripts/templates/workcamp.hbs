@@ -83,15 +83,16 @@
       <div class="form-group">
         <label class="col-lg-2 control-label">Tags</label>
         <div class="col-lg-3">
-          {{view Ember.Select
+          {{view Volant.TagSelectView
+            targetBinding='tags'
             contentBinding='controllers.tags.content'
-            optionValuePath="content.id"
-            optionLabelPath="content.name"
-            class="form-control"
-           }}
+            prompt='Add tag'
+            class="form-control" }}
         </div>
         <div class="col-lg-7">
-          {{#each tags}} {{tag this}} {{/each}}
+          {{#each tags}}
+            {{tag this}}
+          {{/each}}
         </div>
       </div>
 

@@ -11,7 +11,18 @@ Volant.ApplicationAdapter = DS.ActiveModelAdapter.extend({
 })
 
 
-Volant.ApplicationSerializer = DS.ActiveModelSerializer
+Volant.ApplicationSerializer = DS.ActiveModelSerializer.extend({
+  serializeHasMany: (record, json, relationship) ->
+    json_key = "#{relationship.key.singularize()}_ids"
+    records = Ember.get(record, relationship.key)
+
+    if records && relationship.options.embedded == 'always'
+      json[json_key] = [];
+      records.forEach (item,index) ->
+        json[json_key].push(item.get('id'))
+    else
+      @_super(record,json.relationship)
+})
 
 Volant.ApplyFormAdapter = DS.ActiveModelAdapter.extend({
   ajaxError: (jqXHR) ->
@@ -50,7 +61,6 @@ Volant.ApplyFormAdapter = DS.ActiveModelAdapter.extend({
 Volant.ApplyFormSerializer = DS.ActiveModelSerializer.extend({
   serialize: (apply_form,opts) ->
     json = @_super(apply_form,opts)
-
 
   serializeBelongsTo: (record, json, relationship) ->
     if relationship.key == 'payment'

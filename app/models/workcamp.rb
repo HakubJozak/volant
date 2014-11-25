@@ -47,7 +47,6 @@ class Workcamp < ActiveRecord::Base
   validates_presence_of :country, :code, :name, :places
   validates_presence_of :extra_fee_currency, :if => Proc.new {|wc| wc.extra_fee && wc.extra_fee > 0}, :message => "je povinná. (Je vyplněn poplatek, ale nikoliv jeho měna. Doplňte měnu poplatku.)"
 
-
   acts_as_taggable
 
   def self.find_duplicate(wc)
@@ -55,8 +54,11 @@ class Workcamp < ActiveRecord::Base
     scope.find_by_code(wc.code)
   end
 
-  def to_label(options = {})
-    "#{code} - #{name}(#{term})"
+  def tag_ids=(ids)
+    loaded = ColoredTag.find(ids)
+    strings = loaded.map(&:name).join(',')
+    self.tag_list = strings
+    self.tags
   end
 
   def duration

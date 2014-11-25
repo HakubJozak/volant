@@ -105,9 +105,17 @@ class WorkcampsController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def workcamp_params
     readonly = [ :state,:free_places,:free_places_for_males,:free_places_for_females, :duration, :tag_list, :sci_id, :sci_code ]
+
     params.except(*readonly)
       .require(:workcamp)
       .except(*readonly)
-      .permit(*WorkcampSerializer.public_attributes)
+      .permit(:starred, :name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
+      :area, :accomodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,
+      :region, :capacity_natives, :capacity_teenagers, :capacity_males, :capacity_females,
+      :airport, :train, :publish_mode,:places, :places_for_males, :places_for_females,
+      :accepted_places, :accepted_places_males, :accepted_places_females,
+      :asked_for_places, :asked_for_places_males, :asked_for_places_females,
+      :longitude, :latitude, :requirements,
+      :organization_id, :country_id, :tag_ids => [])
   end
 end
