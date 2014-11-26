@@ -62,7 +62,7 @@ gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branc
 gem 'devise-bootstrap-views'
 gem 'bootstrap-generators', '~> 3.2.0'
 gem 'puma'
-gem 'barbecue', path: '/home/jakub/prog/sinfin/nigh/vendor/barbecue'
+gem 'barbecue', github: 'HakubJozak/barbecue', branch: 'master'
 
 
 group :development do
