@@ -33,11 +33,11 @@ class Workcamp < ActiveRecord::Base
   }
 
   scope :with_countries, lambda { |*ids|
-    where("country_id in (?)",ids)
+    where("workcamps.country_id in (?)",ids)
   }
 
   scope :with_organizations, lambda { |*ids|
-    where("organization_id in (?)",ids)
+    where("workcamps.organization_id in (?)",ids)
   }
 
 
