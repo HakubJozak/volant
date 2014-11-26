@@ -9,44 +9,62 @@ class V1::WorkcampsController < V1::BaseController
     search = search.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
     search = add_year_scope(search)
 
-    if query = params[:q]
-      search = search.query(params[:q])
+
+
+    if query = filter[:q]
+      search = search.query(filter[:q])
     end
 
-    if from = params[:from]
+    if from = filter[:from]
       search = search.where("begin >= ?",Date.parse(from))
     end
 
-    if to = params[:to]
+    if to = filter[:to]
       search = search.where("\"end\" <= ?",Date.parse(to))
     end
 
-    if md = params[:min_duration]
+    if md = filter[:min_duration]
       search = search.min_duration(md)
     end
 
-    if md = params[:max_duration]
+    if md = filter[:max_duration]
       search = search.max_duration(md)
     end
 
-    if ma = params[:min_age]
+    if ma = filter[:min_age]
       search = search.where("minimal_age >= ?",ma)
     end
 
-    if ma = params[:max_age]
+    if ma = filter[:max_age]
       search = search.where("maximal_age <= ?",ma)
     end
 
-    if fp = params[:free]
+    if fp = filter[:free]
       search = search.where("free_places >= ?",fp)
     end
 
-    if fp = params[:free_females]
+    if fp = filter[:free_females]
       search = search.where("free_places_for_females >= ?",fp)
     end
 
-    if fp = params[:free_males]
+    if fp = filter[:free_males]
       search = search.where("free_places_for_males >= ?",fp)
+    end
+
+    if ids = filter[:tag_ids]
+      search = search.with_tags(*ids)
+    end
+
+    if ids = filter[:workcamp_intention_ids]
+      search = search.with_workcamp_intentions(*ids)
+    end
+
+    if ids = filter[:country_ids]
+      search = search.with_countries(*ids)
+    end
+
+    if ids = filter[:organization_ids]
+      search = search.with_organizations(*ids)
     end
 
     render json: search,
@@ -59,6 +77,12 @@ class V1::WorkcampsController < V1::BaseController
   end
 
   private
+
+  def filter
+    params.permit(:q,:from,:to,:min_duration,:max_duration,:min_age,
+                  :max_age,:free,:free_males,:free_females,
+                  :tag_ids => [], :country_ids => [], :workcamp_intention_ids => [], :organization_ids => [])
+  end
 
   def find_workcamp
     @workcamp = Outgoing::Workcamp.find(params[:id])
