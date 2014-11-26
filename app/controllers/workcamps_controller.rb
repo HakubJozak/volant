@@ -116,6 +116,6 @@ class WorkcampsController < ApplicationController
       :accepted_places, :accepted_places_males, :accepted_places_females,
       :asked_for_places, :asked_for_places_males, :asked_for_places_females,
       :longitude, :latitude, :requirements,
-      :organization_id, :country_id, :tag_ids => [])
+      :organization_id, :country_id, :tag_ids => [],:workcamp_intention_ids => [])
   end
 end

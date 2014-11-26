@@ -38,11 +38,13 @@ class Workcamp < ActiveRecord::Base
   belongs_to :country
   belongs_to :organization
 
+  # TODO: make it workcamp_intentions
   has_and_belongs_to_many :intentions,
                           -> { readonly },
                           :class_name => 'WorkcampIntention',
                           :join_table => 'workcamp_intentions_workcamps',
                           :delete_sql => 'DELETE FROM workcamp_intentions_workcamps WHERE workcamp_id=#{id}'
+  alias :workcamp_intention_ids= :intention_ids=
 
   validates_presence_of :country, :code, :name, :places
   validates_presence_of :extra_fee_currency, :if => Proc.new {|wc| wc.extra_fee && wc.extra_fee > 0}, :message => "je povinná. (Je vyplněn poplatek, ale nikoliv jeho měna. Doplňte měnu poplatku.)"
