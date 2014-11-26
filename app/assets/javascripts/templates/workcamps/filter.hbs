@@ -21,8 +21,10 @@
 
 <div class="form-group">
   <label class="col-lg-1 control-label">Having</label>
+
   <div class="col-lg-2">
-    {{view Ember.Select
+    {{view 'collection-picker'
+    targetBinding='workcamp_intentions'
     contentBinding='controllers.workcamp_intentions.content'
     optionValuePath="content.id"
     optionLabelPath="content.code"
@@ -32,7 +34,8 @@
   </div>
 
   <div class="col-lg-2">
-    {{view Ember.Select
+    {{view 'collection-picker'
+    targetBinding='tags'
     contentBinding='controllers.tags.content'
     optionValuePath="content.id"
     optionLabelPath="content.name"
@@ -42,7 +45,8 @@
   </div>
 
   <div class="col-lg-2">
-    {{view Ember.Select
+    {{view 'collection-picker'
+    targetBinding='countries'
     contentBinding='controllers.countries.content'
     optionValuePath="content.id"
     optionLabelPath="content.name"
@@ -52,7 +56,8 @@
   </div>
 
   <div class="col-lg-2">
-    {{view Ember.Select
+    {{view 'collection-picker'
+    targetBinding='organizations'
     contentBinding='controllers.organizations.content'
     optionValuePath="content.id"
     optionLabelPath="content.name"
@@ -66,8 +71,9 @@
 
 <div class="form-group">
   <div class="col-lg-offset-1 col-lg-11">
-    {{#each filter.tags}}
-      <span class="label label-default">{{name}} X</span>
-    {{/each}}
+    {{view 'labels-list' contentBinding='workcamp_intentions' }}
+    {{view 'labels-list' contentBinding='tags' }}
+    {{view 'labels-list' contentBinding='countries' }}
+    {{view 'labels-list' contentBinding='organizations' }}
   </div>
 </div>

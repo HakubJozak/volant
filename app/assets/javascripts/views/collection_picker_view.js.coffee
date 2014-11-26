@@ -1,4 +1,4 @@
-Volant.TagSelectView = Ember.Select.extend({
+Volant.CollectionPickerView = Ember.Select.extend({
   optionValuePath: "content.id"
   optionLabelPath: "content.name"
 

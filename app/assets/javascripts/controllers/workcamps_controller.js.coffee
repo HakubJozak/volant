@@ -16,6 +16,10 @@ Volant.WorkcampsController = Volant.ListController.extend({
   free: null
   free_males: null
   free_females: null
+  workcamp_intentions: []
+  countries: []
+  tags: []
+  organizations: []
 
   sortProperties: ['name']
   sortAscending: true
@@ -25,7 +29,7 @@ Volant.WorkcampsController = Volant.ListController.extend({
       wc.get('isDirty')
   ).property('@each.isDirty')
 
-  filter_visible: false
+  filter_visible: true
   editing_visible: false
 
   actions:
@@ -47,6 +51,4 @@ Volant.WorkcampsController = Volant.ListController.extend({
       @set('free_males',null)
       @set('free_females',null)
 
-  tags: (->
-     @store.find('tag')).property()
 })
