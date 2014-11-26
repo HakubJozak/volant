@@ -83,17 +83,13 @@
       <div class="form-group">
         <label class="col-lg-2 control-label">Tags</label>
         <div class="col-lg-3">
-          {{view Volant.TagSelectView
+          {{view 'tag-select'
             targetBinding='tags'
             contentBinding='controllers.tags.content'
             prompt='Add tag'
             class="form-control" }}
         </div>
-        <div class="col-lg-7">
-          {{#each tags}}
-            {{tag this}}
-          {{/each}}
-        </div>
+        {{view 'labels-list' contentBinding='tags' class="col-lg-7"}}
       </div>
 
       <div class="form-group">

@@ -181,3 +181,14 @@ table.dashboard {
   position: fixed;
   right: 1em;
 }
+
+ul.labels-list {
+  list-style: none;
+  li {
+    display: inline-block;
+    margin-right: 0.2em;
+    a { color: white; }
+    a:hover { color: $red; }
+  }
+
+}
