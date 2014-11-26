@@ -43,6 +43,7 @@ Ember.Handlebars.helper 'workcamp-state-icon', (state) ->
 Ember.Handlebars.helper 'gender-sign', (gender) ->
   if gender == 'f'
     '♀'
-  else
-    console.error "Invalid gender #{gender}" unless gender == 'm'
+  else if gender == 'm'
     '♂'
+  else
+    ''
