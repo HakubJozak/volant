@@ -8,13 +8,45 @@ class WorkcampTest < ActiveSupport::TestCase
 
   setup do
     @wc = Factory.create(:workcamp, :begin => 1.day.from_now, :end => 10.days.from_now)
+    @family = ColoredTag.find_by_name('family')
+    @teenage = ColoredTag.find_by_name('teenage')
   end
 
   test 'tag_ids=' do
-    ids = [ ColoredTag.find_by_name('family').id, ColoredTag.find_by_name('teenage').id ]
+    ids = [ @family.id, @teenage.id ]
     @wc.tag_ids = ids
     @wc.save!
     assert_equal ['family','teenage'], @wc.tag_list
+  end
+
+  test 'scope with_tags' do
+    @wc.tag_list << 'family'
+    @wc.save!
+
+    result = Workcamp.with_tags(@family.id)
+
+    assert result.map(&:id).include?(@wc.id)
+    assert_empty Workcamp.with_tags(777777)
+  end
+
+  test 'scope with_workcamp_intentions' do
+    int = @wc.intentions.first
+
+    result = Workcamp.with_workcamp_intentions(int.id,77777)
+
+    assert result.map(&:id).include?(@wc.id)
+  end
+
+  test 'scope with_countries' do
+    country = @wc.country
+    result = Workcamp.with_countries(country.id,777777)
+    assert result.map(&:id).include?(@wc.id)
+  end
+
+  test 'scope with_organizations' do
+    org = @wc.organization
+    result = Workcamp.with_organizations(org.id,777777)
+    assert result.map(&:id).include?(@wc.id)
   end
 
   test "have term" do

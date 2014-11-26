@@ -24,6 +24,24 @@ class Workcamp < ActiveRecord::Base
     where(arel)
   }
 
+  scope :with_tags, lambda { |*ids|
+    joins(:taggings).where('taggings.tag_id in (?)',ids)
+  }
+
+  scope :with_workcamp_intentions, lambda { |*ids|
+    joins(:intentions).where('workcamp_intentions_workcamps.workcamp_intention_id in (?)',ids)
+  }
+
+  scope :with_countries, lambda { |*ids|
+    where("country_id in (?)",ids)
+  }
+
+  scope :with_organizations, lambda { |*ids|
+    where("organization_id in (?)",ids)
+  }
+
+
+
   # TODO - fix tests and allow validation
   #  validates_inclusion_of :publish_mode, :in => [:always, :season, :never ]
 
