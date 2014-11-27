@@ -2,7 +2,8 @@ Volant.WorkcampsController = Volant.ListController.extend({
   needs: ['countries','workcamp_intentions','organizations','tags']
 
   page: 1
-  queryParams: ['query','page','year','from','to', 'min_duration','max_duration','min_age','max_age', 'free', 'free_males', 'free_females']
+  queryParams: ['query','page','year','from','to', 'min_duration','max_duration',
+                'min_age','max_age', 'free', 'free_males', 'free_females']
 
   query_placeholder: "part of workcamp's name or code"
 
@@ -34,6 +35,7 @@ Volant.WorkcampsController = Volant.ListController.extend({
 
   actions:
     toggle: (property) ->
+      @set 'tag_ids', 'pepe'
       @toggleProperty(property)
       false
 

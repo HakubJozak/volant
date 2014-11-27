@@ -9,64 +9,78 @@ class WorkcampsController < ApplicationController
     search = search.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
     search = add_year_scope(search)
 
-    if params[:state]
+    if filter[:state]
       search = search.where("state is NOT NULL")
     else
       search = search.where("state is NULL")
     end
 
-    if org = params[:organization_id]
-      search = search.where(organization_id: org.to_i)
+    if query = filter[:q]
+      search = search.query(filter[:q])
     end
 
-    if query = params[:q]
-      search = search.query(params[:q])
-    end
-
-    if params[:starred]
+    if filter[:starred]
       search = search.where(starred: true)
     end
 
-    if from = params[:from]
+    if from = filter[:from]
       search = search.where("begin >= ?",Date.parse(from))
     end
 
-    if to = params[:to]
+    if to = filter[:to]
       search = search.where("\"end\" <= ?",Date.parse(to))
     end
 
-    if md = params[:min_duration]
+    if md = filter[:min_duration]
       search = search.min_duration(md)
     end
 
-    if md = params[:max_duration]
+    if md = filter[:max_duration]
       search = search.max_duration(md)
     end
 
-    if ma = params[:min_age]
+    if ma = filter[:min_age]
       search = search.where("minimal_age >= ?",ma)
     end
 
-    if ma = params[:max_age]
+    if ma = filter[:max_age]
       search = search.where("maximal_age <= ?",ma)
     end
 
-    if fp = params[:free]
+    if fp = filter[:free]
       search = search.where("free_places >= ?",fp)
     end
 
-    if fp = params[:free_females]
+    if fp = filter[:free_females]
       search = search.where("free_places_for_females >= ?",fp)
     end
 
-    if fp = params[:free_males]
+    if fp = filter[:free_males]
       search = search.where("free_places_for_males >= ?",fp)
     end
+
+    if ids = filter[:tag_ids].presence
+      search = search.with_tags(*ids)
+    end
+
+    if ids = filter[:workcamp_intention_ids].presence
+      search = search.with_workcamp_intentions(*ids)
+    end
+
+    if ids = filter[:country_ids].presence
+      search = search.with_countries(*ids)
+    end
+
+    if ids = filter[:organization_ids].presence
+      search = search.with_organizations(*ids)
+    end
+
 
     render json: search,
            meta: { pagination: pagination_info(search) },
            each_serializer: WorkcampSerializer
   end
+
 
   def show
     render json: @workcamp, serializer: WorkcampSerializer
@@ -102,6 +116,12 @@ class WorkcampsController < ApplicationController
     @workcamp = Workcamp.find(params[:id])
   end
 
+  def filter
+    params.permit(:starred,:state,:q,:from,:to,:min_duration,:max_duration,:min_age,
+                  :max_age,:free,:free_males,:free_females,
+                  :tag_ids => [], :country_ids => [], :workcamp_intention_ids => [], :organization_ids => [])
+  end
+
   # Only allow a trusted parameter "white list" through.
   def workcamp_params
     readonly = [ :state,:free_places,:free_places_for_males,:free_places_for_females, :duration, :tag_list, :sci_id, :sci_code ]
@@ -109,13 +129,6 @@ class WorkcampsController < ApplicationController
     params.except(*readonly)
       .require(:workcamp)
       .except(*readonly)
-      .permit(:starred, :name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
-      :area, :accomodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,
-      :region, :capacity_natives, :capacity_teenagers, :capacity_males, :capacity_females,
-      :airport, :train, :publish_mode,:places, :places_for_males, :places_for_females,
-      :accepted_places, :accepted_places_males, :accepted_places_females,
-      :asked_for_places, :asked_for_places_males, :asked_for_places_females,
-      :longitude, :latitude, :requirements,
-      :organization_id, :country_id, :tag_ids => [],:workcamp_intention_ids => [])
+      .permit(WorkcampSerializer.writable)
   end
 end

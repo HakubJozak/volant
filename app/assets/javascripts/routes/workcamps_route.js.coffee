@@ -14,6 +14,12 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
       if params[attr]
         filter[attr] = params[attr]
 
+    controller = @controllerFor(@routeName)
+    filter['tag_ids'] = controller.get('tags').mapBy('id')
+    filter['workcamp_intention_ids'] =controller.get('workcamp_intentions').mapBy('id')
+    filter['country_ids'] = controller.get('countries').mapBy('id')
+    filter['organization_ids'] = controller.get('organizations').mapBy('id')
+
     @store.find 'workcamp', filter #, (wc) ->
       # debugger
       # (!params.year? or wc.year == params.year) and
@@ -41,7 +47,6 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
           @flash_info("Saved #{wc.get('code')}.")), =>
           @flash_error('Failed.')
       false
-
 
     yearChanged: ->
       @refresh()
