@@ -6,8 +6,6 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
 
     dummy = Factory(:outgoing_workcamp)
     @workcamp = Factory(:outgoing_workcamp)
-
-    @token = Rails.application.config.api_access_tokens.first
     @family = ColoredTag.find_by_name('family')
     @teenage = ColoredTag.find_by_name('teenage')
   end
@@ -16,7 +14,7 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     @workcamp.tag_list << 'family'
     @workcamp.save!
 
-    get :index, tag_ids: [ @family.id ], access_token: @token
+    get :index, tag_ids: [ @family.id ]
 
     assert_response :success
     assert_equal 1, json_response['meta']['pagination']['total']
@@ -28,7 +26,7 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     @workcamp.intentions << agri
     @workcamp.save!
 
-    get :index, workcamp_intention_ids: [ agri.id ], access_token: @token
+    get :index, workcamp_intention_ids: [ agri.id ]
 
     assert_response :success
     assert_equal 1, json_response['meta']['pagination']['total']
@@ -39,7 +37,7 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     @workcamp.country = c = Factory(:country)
     @workcamp.save!
 
-    get :index, country_ids: [ c.id ], access_token: @token
+    get :index, country_ids: [ c.id ]
 
     assert_response :success
     assert_equal 1, json_response['meta']['pagination']['total']
