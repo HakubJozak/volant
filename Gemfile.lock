@@ -206,6 +206,8 @@ GEM
     puma (2.9.2)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)
+    rack-jsonp-middleware (0.0.10)
+      rack
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.1.2)
@@ -311,6 +313,7 @@ DEPENDENCIES
   pg
   pry-rails
   puma
+  rack-jsonp-middleware
   rails (= 4.1.2)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

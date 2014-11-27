@@ -63,6 +63,7 @@ gem 'devise-bootstrap-views'
 gem 'bootstrap-generators', '~> 3.2.0'
 gem 'puma'
 gem 'barbecue', github: 'HakubJozak/barbecue', branch: 'master'
+gem 'rack-jsonp-middleware'
 
 
 group :development do

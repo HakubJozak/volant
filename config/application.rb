@@ -33,6 +33,8 @@ module Volant
     # Deprecated options?
     # config.action_mailer.default_charset = 'utf-8'
     # config.active_record.observers = :free_places_observer
+    require 'rack/jsonp'
+    config.middleware.use Rack::JSONP
 
     config.generators do |g|
       g.orm             :active_record
