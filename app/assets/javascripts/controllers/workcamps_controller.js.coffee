@@ -52,5 +52,10 @@ Volant.WorkcampsController = Volant.ListController.extend({
       @set('free',null)
       @set('free_males',null)
       @set('free_females',null)
+      @set('tags',[])
+      @set('workcamp_intentions',[])
+      @set('countries',[])
+      @set('organizations',[])
+      @send('search')
 
 })
