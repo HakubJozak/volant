@@ -12,9 +12,10 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
 
   test "search by tags" do
     @workcamp.tag_list << 'family'
+    @workcamp.tag_list << 'teenage'
     @workcamp.save!
 
-    get :index, tag_ids: [ @family.id ]
+    get :index, tag_ids: [ @family.id, @teenage.id ]
 
     assert_response :success
     assert_equal 1, json_response['meta']['pagination']['total']
@@ -23,10 +24,13 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
 
   test "search by intentions" do
     agri = workcamp_intentions(:agri)
+    animal = workcamp_intentions(:animal)
+
     @workcamp.intentions << agri
+    @workcamp.intentions << animal
     @workcamp.save!
 
-    get :index, workcamp_intention_ids: [ agri.id ]
+    get :index, workcamp_intention_ids: [ agri.id, animal.id ]
 
     assert_response :success
     assert_equal 1, json_response['meta']['pagination']['total']

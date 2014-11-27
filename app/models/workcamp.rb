@@ -25,11 +25,27 @@ class Workcamp < ActiveRecord::Base
   }
 
   scope :with_tags, lambda { |*ids|
-    joins(:taggings).where('taggings.tag_id in (?)',ids)
+    query = where('true')
+
+    ids.each_with_index do |id,i|
+      name = "taggings_#{i}"
+      sql = %(INNER JOIN "taggings" as #{name} ON "#{name}"."taggable_id" = "workcamps"."id" AND "#{name}"."taggable_type" = 'Workcamp')
+      query = query.joins(sql).where("#{name}.tag_id = ?",id)
+    end
+
+    query
   }
 
   scope :with_workcamp_intentions, lambda { |*ids|
-    joins(:intentions).where('workcamp_intentions_workcamps.workcamp_intention_id in (?)',ids)
+    query = where('true')
+
+    ids.each_with_index do |id,i|
+      name = "intentions_#{i}"
+      sql = %(INNER JOIN "workcamp_intentions_workcamps" as #{name} ON "#{name}"."workcamp_id" = "workcamps"."id")
+      query = query.joins(sql).where("#{name}.workcamp_intention_id = ?",id)
+    end
+
+    query
   }
 
   scope :with_countries, lambda { |*ids|
