@@ -4,8 +4,8 @@ class Incoming::Booking < ActiveRecord::Base
   belongs_to :country
   validates_presence_of :gender
 
-  scope :females, :conditions => {:gender => Person::FEMALE }
-  scope :males, :conditions => {:gender => Person::MALE }
+  scope :females, -> { where(gender: Person::FEMALE) }
+  scope :males, -> { where(gender: Person::MALE) }
 
 
   def male?

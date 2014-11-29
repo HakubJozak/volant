@@ -14,7 +14,7 @@ class WorkcampAssignmentsControllerTest < ActionController::TestCase
     assert_equal 666,json['order']
     assert_equal '2014-03-07T00:00:00.000Z',json['accepted']
     assert_equal 'accepted', json['state']
-    assert_equal 'accepted', json_response['apply_forms'].first['state']
+    assert_equal 'accepted', json_response['apply_forms'].first['state']['name']
   end
 
   # test "should get create" do

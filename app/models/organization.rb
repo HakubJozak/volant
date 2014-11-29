@@ -1,9 +1,5 @@
 class Organization < ActiveRecord::Base
 
-
-  DEFAULT_ORG_CODE = 'volant.default_organization_code'
-
-
 #  has_many :email_contacts
   has_many :workcamps
   belongs_to :country
@@ -29,7 +25,7 @@ class Organization < ActiveRecord::Base
 
   ## TODO - cache
   def self.default_organization
-    Organization.find_by_code(Volant::Config::default_organization_code)
+    Organization.find_by_code(Rails.application.config.default_organization_code)
   end
 
 end

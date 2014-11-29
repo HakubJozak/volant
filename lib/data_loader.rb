@@ -27,9 +27,8 @@ module DataLoader
 
       t = EmailTemplate.new(:subject => subjects[action],
                             :body => body,
-                            :description => descs[action],
+                            :title => descs[action],
                             :action => action)
-      t.wrap_into_template = nil if action == 'ask'
       t.save!
     end
   end

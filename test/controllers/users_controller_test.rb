@@ -8,7 +8,7 @@ class UsersControllerTest < ActionController::TestCase
   test 'index' do
     get :index
     assert_response :success
-    assert_equal 1,json_response['users'].size
+    assert_equal User.count,json_response['users'].size
   end
 
   test 'update' do
@@ -20,7 +20,6 @@ class UsersControllerTest < ActionController::TestCase
   test 'destroy' do
     delete :destroy, id: @john.id
     assert_response :success
-    puts response.status
     refute User.find_by_id(@john.id)
   end
 
@@ -33,7 +32,7 @@ class UsersControllerTest < ActionController::TestCase
   test 'create without password' do
     post :create, user: { email: 'new-email@here.com' }
     assert_response :unprocessable_entity
-    assert_equal "can't be blank", json_response['errors']['password'].first
+    assert_not_empty json_response['errors']['password'].first
   end
 
 

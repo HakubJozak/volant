@@ -44,5 +44,7 @@ module Volant
       g.stylesheets     false
       g.javascripts     false
     end
+
+    config.default_organization_code = 'SDA'
   end
 end
