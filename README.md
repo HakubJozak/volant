@@ -1,8 +1,10 @@
+
 # Volant
 
-[![Build Status](https://travis-ci.org/HakubJozak/volant.svg)](https://travis-ci.org/HakubJozak/volant)
+[![Build Status](https://travis-ci.org/HakubJozak/volant.svg)](https://travis-ci.org/HakubJozak/volant.svg?branch=ember)
 
-Simple ad-hoc tool for volunteering organizations that are "sending" and "receiving" volunteers and organize workcamps.
-Originally developed for INEX-SDA.
+An ad-hoc system for a volunteering organization (INEX-SDA)[http://www.inex-sda.cz] that is organizing workcamps in Czech Republic and
+sending volunteers to similar organization across the globe. As all those NGOs have similar workflow, this 'placement tool' should be useful
+for any other such institution without bigger changes.
 
-Built on Rails 2.3.5, ActiveScaffold and backed up by PostgreSQL.
+Built on Rails 4 and Ember.
