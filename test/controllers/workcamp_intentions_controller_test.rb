@@ -9,7 +9,7 @@ class WorkcampIntentionsControllerTest < ActionController::TestCase
   test "index" do
     get :index
     assert_response :success
-    assert_equal 1,json_response['workcamp_intentions'].size
+    assert_equal WorkcampIntention.count,json_response['workcamp_intentions'].size
   end
 
   test "create" do
