@@ -30,9 +30,10 @@ class WorkcampTest < ActiveSupport::TestCase
   end
 
   test 'scope with_workcamp_intentions' do
-    int = @wc.intentions.first
+    a = @wc.intentions[0]
+    b = @wc.intentions[1]
 
-    result = Workcamp.with_workcamp_intentions(int.id,77777)
+    result = Workcamp.with_workcamp_intentions(a.id,b.id)
 
     assert result.map(&:id).include?(@wc.id)
   end
@@ -84,13 +85,6 @@ class WorkcampTest < ActiveSupport::TestCase
                  :begin => Date.new(1848,1,1),
                  :end => Date.new(1848,2,2))
     assert_equal wc, Workcamp.by_year(1848).first
-  end
-
-  test 'find first_duplicate' do
-    wc = Factory(:outgoing_workcamp,
-                 :begin => Date.new(1848,1,1),
-                 :end => Date.new(1848,2,2))
-    assert_equal wc, Workcamp.find_duplicate(wc)
   end
 
   test 'duration' do
