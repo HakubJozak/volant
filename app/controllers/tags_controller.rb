@@ -5,26 +5,32 @@ class TagsController < ApplicationController
 
   # GET /tags
   def index
-    @tags = ColoredTag.order(:name)
-    respond_with(@tags)
+    @tags = ColoredTag.all
+    render json: @tags, each_serializer: TagSerializer
   end
 
   # GET /tags/1
   def show
-    respond_with(@tag)
+    render json: @tag, serializer: TagSerializer
   end
 
   # POST /tags
   def create
     @tag = ColoredTag.new(tag_params)
-    @tag.save
-    respond_with(@tag)
+    if @tag.save
+      render json: @tag, serializer: TagSerializer
+    else
+      render json: { errors:  @tag.errors }, status: 422
+    end
   end
 
   # PATCH/PUT /tags/1
   def update
-    @tag.update(tag_params)
-    respond_with(@tag)
+    if @tag.update(tag_params)
+      render json: @tag, serializer: TagSerializer
+    else
+      render json: { errors:  @tag.errors }, status: 422
+    end
   end
 
   # DELETE /tags/1
@@ -40,6 +46,6 @@ class TagsController < ApplicationController
   end
 
   def tag_params
-    params.require(:tag).permit(TagSerializer.writable)
+    params.require(:tag).permit(*TagSerializer.writable)
   end
 end

@@ -2,6 +2,7 @@ require 'test_helper'
 
 class TagsControllerTest < ActionController::TestCase
   setup do
+    ColoredTag.destroy_all
     @tag = Factory(:tag)
     sign_in users(:john)
   end
@@ -13,7 +14,7 @@ class TagsControllerTest < ActionController::TestCase
   end
 
   test "create" do
-    assert_difference('Tag.count') do
+    assert_difference('ColoredTag.count') do
       post :create, tag: Factory.attributes_for(:tag)
 
       assert_response :success, response.body.to_s
@@ -27,7 +28,7 @@ class TagsControllerTest < ActionController::TestCase
   end
 
   test "destroy" do
-    assert_difference('Tag.count', -1) do
+    assert_difference('ColoredTag.count', -1) do
       delete :destroy, id: @tag
       assert_response :success, response.body.to_s
     end

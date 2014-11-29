@@ -5,26 +5,32 @@ class CountriesController < ApplicationController
 
   # GET /countries
   def index
-    @countries = Country.order(:code)
-    respond_with(@countries)
+    @countries = Country.all
+    render json: @countries, each_serializer: CountrySerializer
   end
 
   # GET /countries/1
   def show
-    respond_with(@country)
+    render json: @country, serializer: CountrySerializer
   end
 
   # POST /countries
   def create
     @country = Country.new(country_params)
-    @country.save
-    respond_with(@country)
+    if @country.save
+      render json: @country, serializer: CountrySerializer
+    else
+      render json: { errors:  @country.errors }, status: 422
+    end
   end
 
   # PATCH/PUT /countries/1
   def update
-    @country.update(country_params)
-    respond_with(@country)
+    if @country.update(country_params)
+      render json: @country, serializer: CountrySerializer
+    else
+      render json: { errors:  @country.errors }, status: 422
+    end
   end
 
   # DELETE /countries/1
@@ -40,6 +46,6 @@ class CountriesController < ApplicationController
   end
 
   def country_params
-    params.require(:country).permit(CountrySerializer.writable)
+    params.require(:country).permit(*CountrySerializer.writable)
   end
 end
