@@ -20,8 +20,6 @@ Volant.Router.map () ->
   @resource 'message', {path: '/messages/:message_id'}
   @resource 'messages'
 
-
-
   @resource 'users', ->
     @route 'new'
     @resource 'user', {path: ':user_id'}

@@ -117,7 +117,7 @@ class WorkcampsController < ApplicationController
   end
 
   def filter
-    params.permit(:starred,:state,:q,:from,:to,:min_duration,:max_duration,:min_age,
+    params.permit(:starred,:state,:p,:year,:q,:from,:to,:min_duration,:max_duration,:min_age,
                   :max_age,:free,:free_males,:free_females,
                   :tag_ids => [], :country_ids => [], :workcamp_intention_ids => [], :organization_ids => [])
   end
@@ -129,6 +129,13 @@ class WorkcampsController < ApplicationController
     params.except(*readonly)
       .require(:workcamp)
       .except(*readonly)
-      .permit(WorkcampSerializer.writable)
+      .permit(:starred, :name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
+              :area, :accomodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,
+              :region, :capacity_natives, :capacity_teenagers, :capacity_males, :capacity_females,
+              :airport, :train, :publish_mode,:places, :places_for_males, :places_for_females,
+              :accepted_places, :accepted_places_males, :accepted_places_females,
+              :asked_for_places, :asked_for_places_males, :asked_for_places_females,
+              :longitude, :latitude, :requirements,
+              :organization_id, :country_id, :tag_ids => [], :workcamp_intention_ids => [])
   end
 end
