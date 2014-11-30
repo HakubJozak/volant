@@ -82,6 +82,7 @@ module Import
       file = File.new(Rails.root.join('test/fixtures/xml/pef_changed_name.xml'))
       wcs = Import::PefImporter.new(file).import!
       assert_equal 'updated',wcs.first.state
+      assert wcs.first.import_changes.map(&:field).include?('name')
     end
 
   end
