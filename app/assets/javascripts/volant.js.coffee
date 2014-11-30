@@ -6,12 +6,11 @@
 #= require ember-data
 #= require images
 
-
 #= require moment
 #= require moment/cs
+#= require jquery.ui.datepicker
 #= require modernizr
-## require jquery-ui/datepicker
-## require date-polyfill.min
+#= require date-polyfill/date-polyfill.min
 #= require markdown
 
 #= require_self
