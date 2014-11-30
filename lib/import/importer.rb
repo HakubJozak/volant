@@ -23,7 +23,10 @@ module Import
             setup_imported_workcamp(wc)
 
             if old = find_workcamp_like(wc)
-              old.import_changes.create_by_diff(wc)
+              old.diff(wc).each do |field,value|
+                next if [:created_at, :updated_at, :state].include?(field)
+                old.import_changes.build field: field.to_s, value: value.last
+              end
 
               if old.import_changes.size == 0
                 info "Workcamp #{wc.name}(#{wc.code}) did not change."
@@ -50,9 +53,7 @@ module Import
     end
 
     def find_workcamp_like(wc)
-      query = Outgoing::Workcamp.where(code: wc.code)
-      query = query.by_year(wc.begin.year) if wc.begin
-      query.first
+      Outgoing::Workcamp.find_by_project_id(wc.project_id) || guess_by_code_and_year(wc)
     end
 
     def error(msg)
@@ -66,6 +67,14 @@ module Import
     def info(msg)
       Rails.logger.info(msg)
       @reporter.call(:info, msg) if @reporter
+    end
+
+    private
+
+    def guess_by_code_and_year(wc)
+      query = Outgoing::Workcamp.where(code: wc.code)
+      query = query.by_year(wc.begin.year) if wc.begin
+      query.first
     end
 
   end

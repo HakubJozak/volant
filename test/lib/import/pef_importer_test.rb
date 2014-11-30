@@ -74,16 +74,15 @@ module Import
     end
 
 
-    # test "don't create duplicates" do
+    test "detect duplicates" do
+      file = File.new(Rails.root.join('test/fixtures/xml/PEF_lunar31_20141112.xml'))
+      wcs = Import::PefImporter.new(file).import!
+      assert_equal 'imported',wcs.first.state
 
-    #   file = File.new(Rails.root.join('test/fixtures/xml/PEF_lunar31_20141112.xml'))
-    #   wcs = Import::PefImporter.new(file).import!
-    #   puts wcs.first.inspect
-
-
-    #   wcs = Import::PefImporter.new(file).import!
-    #   puts wcs.first.inspect
-    # end
+      file = File.new(Rails.root.join('test/fixtures/xml/pef_changed_name.xml'))
+      wcs = Import::PefImporter.new(file).import!
+      assert_equal 'updated',wcs.first.state
+    end
 
   end
 end

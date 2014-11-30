@@ -22,18 +22,6 @@ module Outgoing
     has_many :accepted_forms, -> { readonly.where("#{ApplyForm.table_name}.cancelled IS NULL and #{WorkcampAssignment.table_name}.accepted IS NOT NULL") }, :through => :workcamp_assignments,             :class_name => 'Outgoing::ApplyForm',
              :source => :apply_form
 
-    # def free_places
-    #   self.places - self.accepted_places
-    # end
-
-    # def free_places_for_males
-    #   [ free_places, places_for_males - accepted_places_males ].min
-    # end
-
-    # def free_places_for_females
-    #   [ free_places, places_for_females - accepted_places_females ].min
-    # end
-
     # TODO: DRY
     def imported?
       self.state == 'imported'
