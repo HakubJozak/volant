@@ -24,6 +24,10 @@ estyes:
   website: http://something.com
   country: EST
 
+lunaria:
+  name: Lunaria
+  code: LUNAR
+  country: IT
 
 zelemin:
   country: CZ

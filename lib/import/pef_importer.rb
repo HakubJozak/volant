@@ -41,6 +41,12 @@ module Import
         wc.begin = to_date(node, 'start_date')
         wc.end = to_date(node, 'end_date')
 
+        if project_id = node.attributes['id'].try(:strip).presence
+          wc.project_id = project_id
+        else
+          raise ImportException.new("Workcamp '#{code} - #{name}' is missing project_id attribute.")
+        end
+
         wc.workdesc = to_text(node, 'descr_work')
         wc.area = to_text(node, 'descr_location_and_leisure')
         wc.accomodation =to_text( node, 'descr_accomodation_and_food')
@@ -81,16 +87,6 @@ module Import
         wc.tag_list << 'family' if to_bool(node,'family')
         wc.tag_list << 'disabled' if to_bool(node,'disabled_vols')
       end
-    end
-
-    def existing?(node)
-      name = to_text(node, 'name')
-      code = to_text(node, 'code')
-      from = to_date(node, 'start_date')
-      to = to_date(node, 'end_date')
-
-      conditions = { :code => code, :name => name, :begin => from, :end => to }
-      Workcamp.find(:first, :conditions => conditions)
     end
 
     def add_to_field(attr, wc, node, name)

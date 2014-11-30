@@ -9,11 +9,9 @@ module Import
     setup do
       Factory(:country, code: 'EE', triple_code: 'EST',name_en: 'Estonia')
       Factory(:country, code: 'US', triple_code: 'USA')
-      # Country.find_by_code('EE').update_attribute(:triple_code, 'EST')
-      # Country.find_by_code('US').update_attribute(:triple_code, 'USA')
     end
 
-    test "not choke on missing organization" do
+    test "handle missing organization" do
       errors = 0
       importer = PefImporter.new(File.new('test/fixtures/xml/pef2011-errors.xml'))
 
@@ -65,6 +63,23 @@ module Import
       end
     end
 
+    test 'import project_id' do
+      file = File.new(Rails.root.join('test/fixtures/xml/PEF_lunar31_20141112.xml'))
+      wc = Import::PefImporter.new(file).import!.first
+      assert_equal wc.project_id, 'f9c91026d627166ce372501d4c55f690'
+    end
+
+
+    # test "don't create duplicates" do
+
+    #   file = File.new(Rails.root.join('test/fixtures/xml/PEF_lunar31_20141112.xml'))
+    #   wcs = Import::PefImporter.new(file).import!
+    #   puts wcs.first.inspect
+
+
+    #   wcs = Import::PefImporter.new(file).import!
+    #   puts wcs.first.inspect
+    # end
 
   end
 end

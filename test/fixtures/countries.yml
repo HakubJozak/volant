@@ -3,6 +3,11 @@ CZ:
  name_cz: Česko
  name_en: Czechia
 
+IT:
+ code: IT
+ name_cz: Italie
+ name_en: Italia
+
 AT:
   code: AT
   name_cz: Rakousko

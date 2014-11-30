@@ -2,7 +2,7 @@ module Import
   module XmlHelper
 
     YES_VALS = ["yes", "on", "true", "1"]
-    # '' should't be here according to specification, but 2009 XML uses it
+    # '' should't be here according to the specification but 2009 XML uses it
     FALSE_VALS = ["false", "no", "off", "false", "0", '']
 
     def parse_fee(node, wc)
