@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :apply_forms, only: [ :create ]
   end
 
+  resources :import_changes, except: [ :create ]
   resources :workcamp_assignments, only: [ :index, :create, :update, :destroy, :show ]
   resources :email_contacts, only: [ :create, :update, :destroy ]
   resources :countries, except: [ :edit, :new ]

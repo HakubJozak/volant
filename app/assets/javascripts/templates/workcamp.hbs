@@ -245,15 +245,37 @@
      </fieldset>
 
      <div class="form-group">
-       <div class="col-lg-offset-2 col-lg-9">
+       <div class="col-lg-offset-2 col-lg-10">
          <button type="submit" class="btn btn-primary">Save</button>
          {{ button 'Cancel' 'rollback' 'btn-default' }}
+         {{ button 'Delete' 'remove' 'btn btn-danger pull-right' }}
        </div>
      </div>
   </form>
   </div>
 
   <div class="col-lg-4">
+    {{#if import_changes}}
+      <h3>Import Changes</h3>
+
+      <table class="table table-condensed table-hover sidepanel">
+        <thead>
+          <th>Field</th>
+          <th>Old</th>
+          <th>New</th>
+        </thead>
+       <tbody>
+      {{#each import_changes}}
+        <tr>
+          <td>{{field}}</td>
+          <td>{{old_value}}</td>
+          <td>{{value}}</td>
+        </tr>
+      {{/each}}
+       </tbody>
+       </table>
+    {{/if}}
+
     <h3>Applications</h3>
 
     <ul class="nav nav-tabs nav-justified">

@@ -35,6 +35,7 @@ Volant.BaseRoute = Ember.Route.extend({
          console.error e
          @flash_error "Failed."
         )
+      false
 
 
     rollback: ->
