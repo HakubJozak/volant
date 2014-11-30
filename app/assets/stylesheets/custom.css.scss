@@ -195,3 +195,9 @@ ul.labels-list {
   }
 
 }
+
+table.import-changes {
+  td.diff-old { background-color: lighten($red,30%); }
+  td.diff-new { background-color: lighten($green,40%); }
+  td.actions { min-width: 6em; }
+}

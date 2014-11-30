@@ -107,7 +107,7 @@ class WorkcampsController < ApplicationController
 
   def destroy
     @workcamp.destroy
-    redirect_to workcamps_url, notice: 'Workcamp was successfully destroyed.'
+    head :no_content
   end
 
   private

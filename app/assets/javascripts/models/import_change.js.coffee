@@ -10,3 +10,9 @@ Volant.ImportChange = DS.Model.extend
     else
       null
   ).property('field','workcamp')
+
+  apply: ->
+    wc = @get('workcamp')
+    field = @get('field')
+    value = @get('value')
+    wc.set(field,value) if field and value

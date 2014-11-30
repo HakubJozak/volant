@@ -23,9 +23,9 @@ module Import
             setup_imported_workcamp(wc)
 
             if old = find_workcamp_like(wc)
-              old.import_changes.delete_all!
+              old.import_changes.delete_all
               old.diff(wc).each do |field,value|
-                next if [:created_at, :updated_at, :state].include?(field)
+                next if [:created_at, :updated_at, :state,:free_places_for_males,:free_places_for_females, :free_places].include?(field)
                 old.import_changes.build field: field.to_s, value: value.last
               end
 

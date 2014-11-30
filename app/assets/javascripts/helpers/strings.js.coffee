@@ -1,6 +1,11 @@
 Ember.Handlebars.helper 'capitalize', (str,options) ->
   str.capitalize() if str
 
+Ember.Handlebars.helper 'humanize', (str,options) ->
+  if str
+    str.capitalize().replace('_',' ')
+
+
 Ember.Handlebars.helper "truncate", (str, len) ->
   if str? && str.length > len
     str.substring(0, len - 3) + "..."

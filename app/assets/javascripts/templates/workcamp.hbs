@@ -1,3 +1,58 @@
+{{#if imported_or_updated}}
+  <div class="row">
+    {{#if import_changes}}
+    <h3>Import Changes</h3>
+
+    <table class="import-changes table table-condensed table-bordered">
+      <thead>
+        <th>Field</th>
+        <th>Old</th>
+        <th>New</th>
+        <th></th>
+      </thead>
+      <tbody>
+        {{#each import_changes itemController='import-change'}}
+          <tr>
+            <th>{{humanize field}}</th>
+            <td class='diff-old'>{{old_value}}</td>
+            <td class='diff-new'>{{value}}</td>
+            <td class='actions'>
+              <button type="button" class="btn btn-danger btn-small" {{ action 'remove' }}>
+                {{ fa 'times' }}
+              </button>
+              <button type="button" class="btn btn-success btn-small" {{ action 'apply' }}>
+                {{ fa 'check' }}
+              </button>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+      <tfoot>
+        <tr>
+        <td colspan='4'>
+        <button type="button" class="btn btn-danger btn-small" {{ action 'cancel_all_changes' }}>
+          {{ fa 'times' }} Cancel all changes
+        </button>
+        <button type="button" class="btn btn-success btn-small" {{ action 'apply_all_all_changes' }}>
+          {{ fa 'check' }} Confirm all changes
+        </button>
+        </td>
+        </tr>
+      </tfoot>
+    </table>
+    {{else}}
+      There are no more pending changes. Move back to the database?
+
+      <button type="button" class="btn btn-success btn-small" {{ action 'apply_all_all_changes' }}>
+        {{ fa 'check' }} Yes, please
+      </button>
+
+    {{/if}}
+  </div>
+{{/if}}
+
+
+
 <div class="row">
   <div class="col-lg-8">
 
@@ -255,27 +310,6 @@
   </div>
 
   <div class="col-lg-4">
-    {{#if import_changes}}
-      <h3>Import Changes</h3>
-
-      <table class="table table-condensed table-hover sidepanel">
-        <thead>
-          <th>Field</th>
-          <th>Old</th>
-          <th>New</th>
-        </thead>
-       <tbody>
-      {{#each import_changes}}
-        <tr>
-          <td>{{field}}</td>
-          <td>{{old_value}}</td>
-          <td>{{value}}</td>
-        </tr>
-      {{/each}}
-       </tbody>
-       </table>
-    {{/if}}
-
     <h3>Applications</h3>
 
     <ul class="nav nav-tabs nav-justified">
