@@ -28,7 +28,7 @@ module Import
       code = to_text(node, 'code')
 
       unless @organization
-        raise ImportException.new("Unknown organization")
+        raise Import::Error.new("Unknown organization")
       end
 
       Outgoing::Workcamp.new do |wc|
@@ -44,7 +44,7 @@ module Import
         if project_id = node.attributes['id'].try(:strip).presence
           wc.project_id = project_id
         else
-          raise ImportException.new("Workcamp '#{code} - #{name}' is missing project_id attribute.")
+          raise Import::Error.new("Workcamp '#{wc.code} - #{wc.name}' is missing project_id attribute.")
         end
 
         wc.workdesc = to_text(node, 'descr_work')

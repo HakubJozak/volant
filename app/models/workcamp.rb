@@ -85,11 +85,6 @@ class Workcamp < ActiveRecord::Base
 
   acts_as_taggable
 
-  def self.find_duplicate(wc)
-    scope = wc.begin ? by_year(wc.begin.year) : self
-    scope.find_by_code(wc.code)
-  end
-
   def tag_ids=(ids)
     loaded = ColoredTag.find(ids)
     strings = loaded.map(&:name).join(',')

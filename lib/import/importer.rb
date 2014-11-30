@@ -1,6 +1,6 @@
 module Import
 
-  class ImportException < Exception
+  class Error < Exception
   end
 
   module Importer
@@ -22,7 +22,7 @@ module Import
           if wc = make_workcamp(node)
             setup_imported_workcamp(wc)
 
-            if old = Outgoing::Workcamp.find_duplicate(wc)
+            if old = find_workcamp_like(wc)
               old.import_changes.create_by_diff(wc)
 
               if old.import_changes.size == 0
@@ -41,12 +41,18 @@ module Import
             wc.save! if options[:save]
             wcs << wc
           end
-        rescue Import::ImportException, ActiveRecord::ActiveRecordError => e
+        rescue ActiveRecord::ActiveRecordError => e
           error e.message
         end
       end
 
       return wcs
+    end
+
+    def find_workcamp_like(wc)
+      query = Outgoing::Workcamp.where(code: wc.code)
+      query = query.by_year(wc.begin.year) if wc.begin
+      query.first
     end
 
     def error(msg)

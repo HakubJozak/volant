@@ -17,7 +17,7 @@ module Import
 
     protected
 
-    def import_intentions( text, wc)
+    def import_intentions(text, wc)
       return unless text
 
       text.upcase.split(/\/|-|,/).each do |c|

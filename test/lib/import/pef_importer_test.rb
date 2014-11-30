@@ -11,17 +11,11 @@ module Import
       Factory(:country, code: 'US', triple_code: 'USA')
     end
 
-    test "handle missing organization" do
-      errors = 0
+    test "raise for missing organization" do
       importer = PefImporter.new(File.new('test/fixtures/xml/pef2011-errors.xml'))
-
-      wcs = importer.import! do |type, msg|
-        assert_equal 'Unknown organization', msg
-        errors += 1
-      end
-
-      assert_equal 1, errors
-      assert_equal 0, wcs.size
+      assert_raises(Import::Error) {
+        importer.import!
+      }
     end
 
     test "import real-life file" do
@@ -67,6 +61,16 @@ module Import
       file = File.new(Rails.root.join('test/fixtures/xml/PEF_lunar31_20141112.xml'))
       wc = Import::PefImporter.new(file).import!.first
       assert_equal wc.project_id, 'f9c91026d627166ce372501d4c55f690'
+    end
+
+    test 'raise on missing project_id' do
+      begin
+        file = File.new(Rails.root.join('test/fixtures/xml/pef_missing_project_id.xml'))
+        wc = Import::PefImporter.new(file).import!.first
+        flunk 'importer did not raise any error'
+      rescue Import::Error => e
+        assert_equal "Workcamp 'LUNAR 31 - AGAPE 06' is missing project_id attribute.",e.message
+      end
     end
 
 
