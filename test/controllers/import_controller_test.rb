@@ -12,6 +12,9 @@ class ImportControllerTest < ActionController::TestCase
     post :create, { pef: file }
     assert_response :success
 
+    puts @response.body
+    binding.pry
+
     wc = json_response['workcamps'].first
     assert_equal 'imported',wc['state']
     assert_equal 'AGAPE 06',wc['name']

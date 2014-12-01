@@ -6,6 +6,7 @@ class ApplyFormsControllerTest < ActionController::TestCase
     sign_in users(:john)
   end
 
+
   # test 'sorting' do
   #   ApplyForm.destroy_all
 
@@ -63,5 +64,11 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_equal 'endless', json_response['apply_form']['motivation']
     assert_equal 1111, @apply_form.reload.payment.amount
   end
+
+  test 'cancel' do
+    post :cancel, id: @apply_form.id
+    assert_equal :cancelled,@apply_form.reload.state.name
+  end
+
 
 end

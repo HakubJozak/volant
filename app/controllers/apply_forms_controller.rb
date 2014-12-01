@@ -32,7 +32,7 @@ class ApplyFormsController < ApplicationController
 
   def cancel
     @apply_form.cancel
-    render son: @apply_form, serializer: ApplyFormSerializer
+    render json: @apply_form, serializer: ApplyFormSerializer
   end
 
   def update

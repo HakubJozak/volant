@@ -172,10 +172,20 @@ class WorkcampsControllerTest < ActionController::TestCase
     @workcamp.reload
     assert_equal 0,@workcamp.import_changes.count
     assert_equal 'Old name',@workcamp.name
+    assert_equal nil, @workcamp.state
   end
 
   test 'confirm_import' do
+    @workcamp.state = 'updated'
+    @workcamp.import_changes.create!(field: 'name', value:'Brand new name')
+    @workcamp.save!
 
+    post :confirm_import, id: @workcamp.id
+
+    @workcamp.reload
+    assert_equal 0,@workcamp.import_changes.count
+    assert_equal 'Brand new name',@workcamp.name
+    assert_equal nil, @workcamp.state
   end
 
 end

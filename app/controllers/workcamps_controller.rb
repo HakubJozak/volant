@@ -114,7 +114,8 @@ class WorkcampsController < ApplicationController
   end
 
   def confirm_import
-
+    @workcamp.confirm_import!
+    render json: @workcamp
   end
 
 

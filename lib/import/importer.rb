@@ -25,32 +25,33 @@ module Import
             if old = find_workcamp_like(wc)
               old.import_changes.delete_all
               old.diff(wc).each do |field,value|
-                next if [:created_at, :updated_at, :state,:free_places_for_males,:free_places_for_females, :free_places,:starred].include?(field)
+                next if [:created_at, :updated_at, :state,:free_places_for_males,
+                         :free_places_for_females, :free_places,:starred].include?(field)
                 old.import_changes.build field: field.to_s, value: value.last
               end
 
               if old.import_changes.size == 0
                 info "Workcamp #{wc.name}(#{wc.code}) did not change."
-                return nil
+              else
+                wc = old
+                wc.state = 'updated'
+                warning "Workcamp #{wc.name}(#{wc.code}) prepared for update."
+                wc.save!
+                wcs << wc
               end
-
-              wc = old
-              wc.state = 'updated'
-              info "Workcamp #{wc.name}(#{wc.code}) prepared for update."
             else
               wc.state = 'imported'
-              info "Workcamp #{wc.name}(#{wc.code}) prepared for creation."
+              success "Workcamp #{wc.name}(#{wc.code}) prepared for creation."
+              wc.save!
+              wcs << wc
             end
-
-            wc.save! if options[:save]
-            wcs << wc
           end
         rescue ActiveRecord::ActiveRecordError => e
           error e.message
         end
       end
 
-      return wcs
+      wcs
     end
 
     def find_workcamp_like(wc)
@@ -62,13 +63,21 @@ module Import
       @reporter.call(:error, msg) if @reporter
     end
 
-    # TODO: real warning
-    alias :warning :error
+    def warning(msg)
+      Rails.logger.warn(msg)
+      @reporter.call(:warning, msg) if @reporter
+    end
 
     def info(msg)
       Rails.logger.info(msg)
       @reporter.call(:info, msg) if @reporter
     end
+
+    def success(msg)
+      Rails.logger.info(msg)
+      @reporter.call(:success, msg) if @reporter
+    end
+
 
     private
 

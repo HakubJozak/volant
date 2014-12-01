@@ -16,6 +16,10 @@ Ember.Handlebars.helper "mail-to", (email) ->
   new Handlebars.SafeString "<a href='mailto:#{email}' title='Open your email app with #{email}' >#{email}</a>"
 
 
+Ember.Handlebars.helper "log-message", (level,msg) ->
+  new Handlebars.SafeString "<p class='text-#{level}'>#{msg}</p>"
+
+
 Ember.Handlebars.helper "badge-count", (number) ->
   if number and number != 0
     new Handlebars.SafeString("<span class=\"badge\">#{number}</span>")

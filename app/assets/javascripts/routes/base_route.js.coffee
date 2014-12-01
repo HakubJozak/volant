@@ -15,7 +15,6 @@ Volant.BaseRoute = Ember.Route.extend({
       @ajax_to_store('/stars',data).then (payload) =>
         console.log 'Starred'
 
-
     save: ->
       @currentModel.get('errors').clear()
       @currentModel.save().then ( (wc) =>
@@ -61,7 +60,6 @@ Volant.BaseRoute = Ember.Route.extend({
   flash_error: (msg) ->
     @controllerFor('application').set('flash', {type: 'error', message: msg })
 
-
   ajax_to_store: (url,data = {}) ->
     new Promise (resolve, reject) =>
       csrf_token = $('meta[name="csrf-token"]').attr('content')
@@ -74,5 +72,6 @@ Volant.BaseRoute = Ember.Route.extend({
           resolve(response)
       catch e
         reject(e)
+
 
 })

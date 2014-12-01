@@ -39,7 +39,11 @@ Volant.ImportedWorkcampsRoute = Volant.WorkcampsRoute.extend({
           #Ajax events
           # beforeSend: beforeSendHandler
           success: (response) =>
-            @store.pushPayload(response)
+            if response.import_messages
+              messages = response.import_messages.map (attrs) ->
+                Ember.Object.create(attrs)
+              @controllerFor('imported_workcamps').set('messages',messages)
+            @refresh()
             resolve(response)
 
           error: (error) =>
