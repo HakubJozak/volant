@@ -4,7 +4,7 @@ class WorkcampSerializer < Barbecue::BaseSerializer
   has_many :tags, embed: :ids, include: true, serializer: TagSerializer
   has_many :workcamp_intentions, embed: :ids, include: true, serializer: WorkcampIntentionSerializer
   has_many :workcamp_assignments, embed: :ids, include: false
-  has_many :import_changes, embed: :ids, include: false
+  has_many :import_changes, embed: :ids, include: true
 
   writable_attributes :starred, :name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
       :area, :accomodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,

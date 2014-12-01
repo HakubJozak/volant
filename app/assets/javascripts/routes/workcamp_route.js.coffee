@@ -17,6 +17,12 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend({
     @controllerFor('organizations').set('content', @store.find('organization'));
     @controllerFor('tags').set('content', @store.find('tag'));
 
+  actions:
+    cancel_import: ->
+      false
+
+    confirm_import: ->
+      false
 
 #  setupController: (controller, model) ->
 #    @controllerFor('workcamps').set('current_item', model);

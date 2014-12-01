@@ -3,8 +3,6 @@ class ImportChange < ActiveRecord::Base
   belongs_to :workcamp, :class_name => 'Outgoing::Workcamp'
   before_save :regenerate_diff
 
-
-
   def apply!
     ImportChange.transaction do
       self.apply
@@ -30,17 +28,4 @@ class ImportChange < ActiveRecord::Base
     value
   end
 
-  module Maker
-    IGNORED_ATTR = [ :created_at, :updated_at, :state ].freeze
-
-    def create_by_diff(wc)
-      proxy_association.owner.diff(wc).each do |field, value|
-        unless IGNORED_ATTR.include?(field)
-          self.build :field => field.to_s, :value => value.last
-        end
-      end
-
-      self
-    end
-  end
 end

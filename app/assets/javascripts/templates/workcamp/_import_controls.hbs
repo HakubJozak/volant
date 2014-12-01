@@ -1,0 +1,53 @@
+{{#if imported_or_updated}}
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        {{#if imported}}
+        Import
+        {{else}}
+        Update
+        {{/if}}
+      </div>
+
+        {{#if import_changes}}
+          <table class="import-changes table  table-hover">
+            <thead>
+              <th>Field</th>
+              <th>Old value</th>
+              <th>New value</th>
+              <th></th>
+            </thead>
+            <tbody>
+              {{#each import_changes itemController='import-change'}}
+              <tr>
+                <th>{{humanize field}}</th>
+                <td class='diff-old'>{{old_value}}</td>
+                <td class='diff-new'>{{value}}</td>
+                <td class='actions'>
+                  <button type="button" class="btn btn-default btn-small" {{ action 'remove' }}>
+                    {{ fa 'times' }}
+                  </button>
+                  <button type="button" class="btn btn-warning btn-small" {{ action 'apply' }}>
+                    {{ fa 'check' }}
+                  </button>
+                </td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        {{/if}}
+
+
+      <div class="panel-body">
+          <button type="button" class="btn btn-danger" {{ action 'cancel_all_changes' }}>
+            {{ fa 'times' }} Cancel all changes
+          </button>
+          <button type="button" class="btn btn-success" {{ action 'apply_all_all_changes' }}>
+            {{ fa 'check' }} Confirm all changes
+          </button>
+      </div>
+
+
+    </div>
+  </div>
+{{/if}}

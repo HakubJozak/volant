@@ -3,6 +3,7 @@ class Workcamp < ActiveRecord::Base
 
   include AllianceExporter
   include ActiveRecord::Diff
+  include Import::WorkcampExtension
 
   create_date_time_accessors
 

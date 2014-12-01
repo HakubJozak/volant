@@ -57,5 +57,4 @@ Volant.WorkcampsController = Volant.ListController.extend({
       @set('countries',[])
       @set('organizations',[])
       @send('search')
-
 })

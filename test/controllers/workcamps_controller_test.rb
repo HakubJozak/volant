@@ -158,7 +158,24 @@ class WorkcampsControllerTest < ActionController::TestCase
       delete :destroy, id: @workcamp
     end
 
-    assert_redirected_to workcamps_path
+    assert_response :no_content
+  end
+
+  test 'cancel_import' do
+    @workcamp.name = 'Old name'
+    @workcamp.state = 'updated'
+    @workcamp.import_changes.create!(field: 'name', value:'Brand new name')
+    @workcamp.save!
+
+    post :cancel_import, id: @workcamp.id
+
+    @workcamp.reload
+    assert_equal 0,@workcamp.import_changes.count
+    assert_equal 'Old name',@workcamp.name
+  end
+
+  test 'confirm_import' do
+
   end
 
 end

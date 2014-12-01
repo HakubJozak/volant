@@ -2,7 +2,7 @@ class WorkcampsController < ApplicationController
   respond_to :json
 
   serialization_scope :current_user
-  before_action :find_workcamp, only: [ :show, :update, :destroy ]
+  before_action :find_workcamp, only: [ :show, :update, :destroy, :cancel_import, :confirm_import ]
 
   def index
     search = Outgoing::Workcamp.order(:name).page(current_page)
@@ -10,9 +10,7 @@ class WorkcampsController < ApplicationController
     search = add_year_scope(search)
 
     if filter[:state]
-      search = search.where("state is NOT NULL")
-    else
-      search = search.where("state is NULL")
+      search = search.imported_or_updated
     end
 
     if query = filter[:q]
@@ -109,6 +107,16 @@ class WorkcampsController < ApplicationController
     @workcamp.destroy
     head :no_content
   end
+
+  def cancel_import
+    @workcamp.cancel_import!
+    render json: @workcamp
+  end
+
+  def confirm_import
+
+  end
+
 
   private
 

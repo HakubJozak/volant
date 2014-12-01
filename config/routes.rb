@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     resources :apply_forms, only: [ :create ]
   end
 
-  resources :import_changes, except: [ :create ]
   resources :workcamp_assignments, only: [ :index, :create, :update, :destroy, :show ]
   resources :email_contacts, only: [ :create, :update, :destroy ]
   resources :countries, except: [ :edit, :new ]
@@ -18,8 +17,13 @@ Rails.application.routes.draw do
   resources :payments, except: [ :edit, :new ]
 
   post '/workcamps/import', to: 'import#create'
+  resources :import_changes, except: [ :create ]
 
   resources :workcamps, except: [ :edit, :new ] do
+    member do
+      post :cancel_import
+      post :confirm_import
+    end
   end
 
   resources :stars, only: [ :create ]
