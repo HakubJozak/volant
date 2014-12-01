@@ -22,6 +22,7 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend({
       id = @currentModel.get('id')
       url = "/workcamps/#{id}/cancel_import"
       @ajax_to_store(url).then ((payload) =>
+        @transitionTo('imported_workcamps')
         @flash_info 'Import cancelled.'),
          =>
         @flash_error 'Action failed'
