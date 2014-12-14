@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/HakubJozak/barbecue.git
-  revision: b9343e4bc129ae104b282b64dde102b48da2be3d
+  revision: dde5f0a250363245436612d886a33f1267ab533e
   branch: master
   specs:
     barbecue (0.0.1)
@@ -60,6 +60,9 @@ GEM
       ember-source
       execjs
       handlebars-source
+    barber-emblem (0.1.1)
+      barber (>= 0.4.1)
+      emblem-source
     bcrypt (3.1.7)
     bootstrap-generators (3.2.0)
       railties (>= 3.1.0)
@@ -110,6 +113,10 @@ GEM
       railties (>= 3.1)
     ember-source (1.7.0)
       handlebars-source (~> 1.0)
+    emblem-rails (0.2.1)
+      barber-emblem (~> 0.1.1)
+      ember-rails (>= 0.14.0)
+    emblem-source (0.3.17)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.2.1)
@@ -294,6 +301,7 @@ DEPENDENCIES
   ember-data-source (= 1.0.0.beta.11)
   ember-rails
   ember-source (= 1.7.0)
+  emblem-rails
   factory_girl_rails
   faker
   guard-livereload (= 2.3.1)

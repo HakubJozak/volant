@@ -42,6 +42,7 @@ gem 'htmlentities'
 gem 'acts-as-taggable-on'
 
 gem 'ember-rails'
+gem 'emblem-rails'
 gem 'ember-source', '1.7.0'
 gem 'ember-data-source', '1.0.0.beta.11'
 gem "active_model_serializers", '~> 0.8.2'
