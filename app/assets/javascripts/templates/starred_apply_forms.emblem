@@ -1,0 +1,11 @@
+table.table.table-condensed.sidepanel
+  tbody
+    each
+      tr
+        td
+          partial 'star'
+        td
+          link-to 'apply_form' this
+            = name
+            '
+            = gender-sign apply_form.volunteer.gender
