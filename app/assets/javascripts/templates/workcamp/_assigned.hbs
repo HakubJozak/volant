@@ -1,0 +1,15 @@
+<table class="table table-condensed table-hover col-lg-12 sidepanel">
+ <tbody>
+   {{#each assignments_by_state }}
+    <tr>
+      <td>{{apply-form-state-icon state}}</td>
+      <td>
+        {{#link-to 'apply_form' apply_form}}
+          {{apply_form.name}}
+          {{ gender-sign apply_form.volunteer.gender }}
+        {{/link-to}}
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

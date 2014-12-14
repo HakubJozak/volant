@@ -258,29 +258,7 @@
 
   <div class="col-lg-4">
     <h3>Applications</h3>
-
-    <ul class="nav nav-tabs nav-justified">
-      <li class="active"><a href="#">Assigned</a></li>
-      <li><a href="#">Starred</a></li>
-      <li><a href="#">Search</a></li>
-    </ul>
-
-      <table class="table table-condensed table-hover col-lg-12 sidepanel">
-       <tbody>
-         {{#each assignments_by_state }}
-          <tr>
-            <td>{{apply-form-state-icon state}}</td>
-            <td>
-              {{#link-to 'apply_form' apply_form}}
-                {{apply_form.name}}
-                {{ gender-sign apply_form.volunteer.gender }}
-              {{/link-to}}
-            </td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-
+    {{view Barbecue.BsTabsView currentTab='assigned' tabs='Assigned,Starred,Search' viewPrefix='workcamp/'}}
   </div>
 </div>
 
