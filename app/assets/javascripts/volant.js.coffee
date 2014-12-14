@@ -13,6 +13,8 @@
 #= require date-polyfill/date-polyfill.min
 #= require markdown
 
+#= require barbecue
+
 #= require_self
 #= require ./store
 #= require_tree ./mixins
