@@ -10,8 +10,18 @@ require 'mina/puma'
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :domain, 'jizera'
-set :deploy_to, '/home/jakub/volant'
+
+
+task :staging do
+  set :domain, 'volant.jizera'
+  set :deploy_to, '/home/jakub/volant'
+end
+
+task :production do
+  set :deploy_to, '/home/volant2'
+  raise 'Not ready for production yet.'
+end
+
 set :repository, 'git@github.com:HakubJozak/volant.git'
 set :branch, 'ember'
 
@@ -56,7 +66,7 @@ task :setup => :environment do
 end
 
 desc "Deploys the current version to the server."
-task :deploy => :environment do
+task :deploy => [ :environment, :staging ]do
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
@@ -68,8 +78,9 @@ task :deploy => :environment do
     invoke :'deploy:cleanup'
 
     to :launch do
-      queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
-      queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
+      # queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
+      # queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
+      invoke :'puma:restart'
     end
   end
 end
