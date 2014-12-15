@@ -45,6 +45,16 @@ class VolunteerTest < ActiveSupport::TestCase
     assert_equal 'else', volunteer.lastname
   end
 
+  test 'birthumber validation' do
+    v = Factory.build(:volunteer, birthnumber: '820327/0438')
+    refute v.valid?
+    assert_not_empty v.errors[:birthnumber]
+
+    v.birthnumber = '8203270438'
+    assert v.valid?
+    assert_empty v.errors[:birthnumber]
+  end
+
   test "update existing volunteer found by birthnumber" do
     existing = { "firstname" => 'Jakub', "lastname" => 'Hozak', "birthnumber" => '8203270438', :phone => '111' }
      volunteer, code = Volunteer.create_or_update(existing)

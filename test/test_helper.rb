@@ -40,6 +40,10 @@ class ActiveSupport::TestCase
     JSON.parse(response.body)
   end
 
+  alias  :json :json_response
+
+
+
   # First parameter should be the object that
   # is supposed to validate presence of selected attributes.
   # Rest of the params are symbols representing those attributes.

@@ -20,7 +20,6 @@ module Outgoing
     accepts_nested_attributes_for :payment
     accepts_nested_attributes_for :volunteer
 
-
     scope :query, lambda { |query|
       # TODO - do it with Arel
       like = "%#{query}%"

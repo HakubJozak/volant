@@ -5,6 +5,8 @@ class Person < ActiveRecord::Base
   acts_as_taggable
 
   validates_inclusion_of :gender, :in => %w( m f )
+  validates :birthnumber, format: { with: /\A[0-9]+\z/, allow_blank: true}
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 
   def name
     "#{lastname} #{firstname}"
@@ -39,10 +41,5 @@ class Person < ActiveRecord::Base
     age -= 1 if birthdate > today.years_ago(age)
     age
   end
-
-  def has_birthday?
-    (not birthdate.nil?) and (Date.today.day == birthdate.day) and  (Date.today.month == birthdate.month)
-  end
-
 
 end

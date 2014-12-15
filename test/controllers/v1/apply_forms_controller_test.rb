@@ -4,16 +4,13 @@ require 'test_helper'
 class V1::ApplyFormsControllerTest < ActionController::TestCase
   setup do
     @camps = 12.times.map { Factory(:outgoing_workcamp) }
-  end
-
-  test 'create' do
-    attrs = {
+    @attrs = {
       volunteer_attributes: {
         # 'm' or 'f'
         gender: 'm',
         firstname: 'Anton',
         lastname: 'Špelec',
-        birthnumber: '010326/0424',
+        birthnumber: '0103260424',
         nationality: 'Austrian-Hungarian',
         birthdate: '27-05-1901',
         birthplace: 'Wien',
@@ -31,17 +28,30 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
         workcamp_ids: @camps.map(&:id)
       }
     }
+  end
 
+  test 'create' do
     assert_difference('Outgoing::ApplyForm.count') do
-      post :create, apply_form: attrs
+      post :create, apply_form: @attrs
       assert_response :success, response.body.to_s
     end
 
-    form = Outgoing::ApplyForm.joins(:volunteer).where(people: { birthnumber: '010326/0424'}).first
+    form = Outgoing::ApplyForm.joins(:volunteer).where(people: { birthnumber: '0103260424'}).first
     assert_not_nil form
     assert_equal 'Anton',form.volunteer.firstname
     assert_equal 'Špelec',form.volunteer.lastname
     assert_equal :not_paid, form.state.name
+    assert_equal '0103260424', form.volunteer.birthnumber
+  end
+
+  test 'create: birthnumber validation' do
+    @attrs[:volunteer_attributes][:birthnumber] = '010326/0424'
+    post :create, apply_form: @attrs
+    assert_not_nil json['errors']['volunteer.birthnumber']
+  end
+
+  test 'create: assign old volunteer' do
+    old = Factory(:volunteer, birthnumber: '0103260424')
   end
 
 end

@@ -2,7 +2,7 @@ class V1::ApplyFormsController < V1::BaseController
   respond_to :json
 
   def create
-    form = Outgoing::ApplyForm.create(apply_form_params)
+    form = Outgoing::ApplyForm.new(apply_form_params)
 
     if form.save
       render nothing: true
