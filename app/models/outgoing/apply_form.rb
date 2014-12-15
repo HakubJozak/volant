@@ -64,6 +64,25 @@ module Outgoing
       result
     end
 
+    def self.create_by_birthnumber(attrs)
+      form = nil
+      birthnumber = attrs[:volunteer_attributes][:birthnumber]
+      volunteer = Volunteer.find_by_birthnumber(birthnumber)
+
+      if volunteer
+        Volunteer.transaction do
+          form = volunteer.apply_forms.new(attrs)
+          volunteer.assign_attributes(attrs[:volunteer_attributes])
+          volunteer.save && form.save
+        end
+      else
+        form = Outgoing::ApplyForm.new(attrs)
+        form.save
+      end
+
+      form
+    end
+
     def self.state_filter(state)
       wa = Outgoing::WorkcampAssignment.table_name
       filter_sql = ''

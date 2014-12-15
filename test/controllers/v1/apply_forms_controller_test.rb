@@ -36,8 +36,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       assert_response :success, response.body.to_s
     end
 
-    form = Outgoing::ApplyForm.joins(:volunteer).where(people: { birthnumber: '0103260424'}).first
-    assert_not_nil form
+    assert_not_nil form = form_by_birthnumber('0103260424')
     assert_equal 'Anton',form.volunteer.firstname
     assert_equal 'Špelec',form.volunteer.lastname
     assert_equal :not_paid, form.state.name
@@ -50,8 +49,19 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
     assert_not_nil json['errors']['volunteer.birthnumber']
   end
 
-  test 'create: assign old volunteer' do
-    old = Factory(:volunteer, birthnumber: '0103260424')
+  test 'create: update old volunteer data' do
+    old = Factory(:volunteer, birthnumber: '0103260424', firstname: 'OldName')
+    post :create, apply_form: @attrs
+
+    assert_not_nil form = form_by_birthnumber('0103260424')
+    assert_equal 'Anton',form.volunteer.firstname
+    assert_equal old.id,form.volunteer.id
+  end
+
+  private
+
+  def form_by_birthnumber(bn)
+    Outgoing::ApplyForm.joins(:volunteer).where(people: { birthnumber: bn}).first
   end
 
 end

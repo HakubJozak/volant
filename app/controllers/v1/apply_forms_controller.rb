@@ -2,9 +2,9 @@ class V1::ApplyFormsController < V1::BaseController
   respond_to :json
 
   def create
-    form = Outgoing::ApplyForm.new(apply_form_params)
+    form = Outgoing::ApplyForm.create_by_birthnumber(apply_form_params)
 
-    if form.save
+    if form.valid? && form.volunteer.valid?
       render nothing: true
     else
       render json: { errors:  form.errors }, status: :unprocessable_entity

@@ -5,6 +5,7 @@ class Volunteer < Person
 
   validates_presence_of :firstname, :lastname, :gender, :email
   has_many :apply_forms, :class_name => 'Outgoing::ApplyForm'
+
   scope :named, -> { where('rejected IS NULL') }
 
   CSV_FIELDS = %w(firstname lastname age gender email phone birthdate birthnumber nationality occupation city contact_city)
@@ -18,11 +19,12 @@ class Volunteer < Person
   end
 
 
+
+
   def self.find_by_name_like(text)
     search = "%#{text.downcase}%"
     Volunteer.where("lower(lastname) LIKE ? or lower(firstname) LIKE ?", search, search).order('lastname ASC, firstname ASC').limit(15)
   end
-
 
   # Depending on hash parameters supplied tries either to:
   #
