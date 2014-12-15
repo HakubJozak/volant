@@ -34,6 +34,7 @@
 #= require ./router
 
 
+#
 # Ember.Application.initializer({
 #   name: "load-data",
 #   after: "store",
