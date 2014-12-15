@@ -1,1 +1,1 @@
-h2 Search
+render 'search_apply_forms'

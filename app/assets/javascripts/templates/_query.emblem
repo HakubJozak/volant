@@ -1,0 +1,7 @@
+.input-group
+  = input value=query class="form-control" placeholder=query_placeholder
+  span.input-group-btn
+    button.btn.btn-default.reset click='reset' type='button'
+      fa 'times'
+    button.btn.btn-primary type="submit"
+      | Search
