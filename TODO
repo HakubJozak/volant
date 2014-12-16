@@ -1,1 +1,47 @@
+# Outgoing
+
+	outgoing dashboard
+	oblibene workcampy/prihlasky
+	oddeleni
+	pokrocily filtr workcampu
+	jednoduchy filtr prihlasek (jmeno,rodne cislo,platba)
+	sprava emailovych sablon
+	stare workflow prihlasky
+	Sprava organizaci s kontakty
+
+Prihlasky
+  - vytvoreni prihlasky
+    - [ ] pro noveho dobrovolnika
+    - [ ] pro existujiciho dobrovolnika
+
+
+Sprava zemi
+  - [ ] deleni na region 1 a region 2
+  - [ ] deleni  na svetadily / teritoria
+
+Platby
+ - [ ] vyhledavani plateb
+ - [ ] parovani existujicich plateb s existujici prihlaskou
+
+Import
+  - PEF
+  - VEF(xml)
+
+Export
+  - PEF XML
+  - VEF XML
+  - VEF PDF,HTML
+  - friday list
+
+# MTV/LTV
+ - Dashboard
+
+# Incoming
+ - [ ] Dashboard
+ - [ ] potvrzovani prihlasek linkem
+
+
+
+------------------------------------------------------------
+
 - registering the volunteers via a web interface and edit apply_forms in several sessions
