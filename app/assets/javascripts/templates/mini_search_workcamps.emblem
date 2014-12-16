@@ -1,0 +1,21 @@
+form.form submit='search'
+  partial 'query'
+
+table.table.table-condensed.sidepanel
+  tbody
+    each
+      tr
+        td
+          partial 'star'
+        td
+          link-to 'workcamp' this
+            = name
+            '
+            | (#{code})
+
+  tfoot
+    unless content
+      tr
+        td colspan="2"
+          .col-lg-12.info.text-center
+            p.text-muted No workcamps found.

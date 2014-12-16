@@ -1,18 +1,23 @@
 # Outgoing
+ - [ ] dashboard
 
-	outgoing dashboard
-	oblibene workcampy/prihlasky
-	oddeleni
-	pokrocily filtr workcampu
-	jednoduchy filtr prihlasek (jmeno,rodne cislo,platba)
-	sprava emailovych sablon
-	stare workflow prihlasky
-	Sprava organizaci s kontakty
+Workcampy
+  - [ ] razeni (zeme,kod,od,do,nazev projektu)
 
 Prihlasky
+  - filtrovani prehledu podle
+    - [ ] stavu prihlasky
+    - [ ] tagu
+  - [ ] razeni (hvezdicka,termin podani,prijmeni)
   - vytvoreni prihlasky
     - [ ] pro noveho dobrovolnika
     - [ ] pro existujiciho dobrovolnika
+  - alerty
+    - [ ] po 3 dnech po zažádání o přijetí
+    - [ ] 5 týdnů před začátkem workcampu když není odeslán infosheet
+    - [ ] 4 týdny před začátkem workcampu pokud nemáme pojištění - pokud tam tedy to pojištění nějak zakomponujeme
+  - workflow
+    - [ ] pridat dalsi kroky - odeslani a prijeti evaluacniho dotazniku (evaluation_sent/received?)
 
 
 Sprava zemi
@@ -39,6 +44,7 @@ Export
 # Incoming
  - [ ] Dashboard
  - [ ] potvrzovani prihlasek linkem
+ - [ ] rezervace
 
 
 
