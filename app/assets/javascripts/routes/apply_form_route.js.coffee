@@ -7,7 +7,13 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
 
   setupController: (controller,model,queryParmas) ->
     @_super(controller,model,queryParmas)
-    @controllerFor('payment').set('content',model.get('payment'))
+
+    starred = @store.filter 'workcamp',{ starred: true }, (wc) ->
+      wc.get('starred')
+
+    @controllerFor('starred_workcamps').set('model',starred)
+    @controllerFor('workcamp_assignments').set('model',model.get('workcamp_assignments'))
+    @controllerFor('payment').set('model',model.get('payment'))
 
   renderTemplate: ->
     @_super()

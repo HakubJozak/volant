@@ -1,5 +1,5 @@
 Volant.ApplyFormController = Volant.ObjectController.extend({
-  needs: ['payment_means']
+  needs: ['payment_means','starred_workcamps','workcamp_assignments']
   isDirty: Ember.computed.any('model.isDirty','model.volunteer.isDirty')
 
   means: [

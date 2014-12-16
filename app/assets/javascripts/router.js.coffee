@@ -4,9 +4,8 @@ Volant.Router.map () ->
   @resource 'volunteers'
   @resource('volunteer', path: '/volunteers/:volunteer_id')
 
-  @route 'apply_form', path: '/apply_forms/:apply_form_id', ->
-    @resource 'workcamp_assignments'
-    @resource 'starred_workcamps'
+  @route 'apply_form', path: '/apply_forms/:apply_form_id'
+
   @resource 'workcamps', ->
     @route 'new'
 

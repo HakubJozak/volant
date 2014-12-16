@@ -58,16 +58,6 @@
 
 <div class="col-lg-4">
   <h3>Workcamps</h3>
-
-  <ul class="nav nav-tabs nav-justified">
-    {{#link-li}}
-      {{#link-to "workcamp_assignments" this }}Assigned{{/link-to}}
-    {{/link-li}}
-    {{#link-li}}
-      {{#link-to "starred_workcamps" this }}Starred{{/link-to}}
-    {{/link-li}}
-  </ul>
-
-  {{outlet}}
+  {{view Barbecue.BsTabsView currentTab='assigned' tabs='Assigned,Starred' viewPrefix='apply_form/tabs/'}}
 </div>
 </div>
