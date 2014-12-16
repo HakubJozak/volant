@@ -22,8 +22,8 @@ Volant.WorkcampsController = Volant.ListController.extend({
   tags: []
   organizations: []
 
-  sortProperties: ['name']
-  sortAscending: true
+  # sortProperties: ['name']
+  # sortAscending: true
 
   isDirty: (->
     @get('model').any (wc) ->

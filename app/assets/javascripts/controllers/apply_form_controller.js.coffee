@@ -12,11 +12,6 @@ Volant.ApplyFormController = Volant.ObjectController.extend({
   anchor: null
 
   actions:
-    toggle_starred: ->
-      @toggleProperty('starred')
-      @get('model').save()
-      false
-
     rollback: ->
       reset = (m) ->
         m.get('errors').clear();
