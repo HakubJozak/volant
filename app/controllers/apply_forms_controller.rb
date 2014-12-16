@@ -35,6 +35,16 @@ class ApplyFormsController < ApplicationController
     render json: @apply_form, serializer: ApplyFormSerializer
   end
 
+  def create
+    @apply_form = Outgoing::ApplyForm.new(apply_form_params)
+
+    if @apply_form.save
+      render json: @apply_form, serializer: ApplyFormSerializer
+    else
+      render json: { errors: @apply_form.errors }, status: 422
+    end
+  end
+
   def update
     if  @apply_form.update(apply_form_params)
       render json: @apply_form, serializer: ApplyFormSerializer

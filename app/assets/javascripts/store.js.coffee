@@ -86,7 +86,8 @@ Volant.IsodateTransform  = DS.DateTransform.extend({
 
 Volant.StateTransform = DS.Transform.extend({
   serialize: (deserialized) ->
-    deserialized.get('name')
+    # we do not send state tot the server
+    null
 
   deserialize: (hash) ->
     Ember.Object.create(name: hash.name, info: hash.info, actions: hash.actions)

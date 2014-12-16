@@ -1,0 +1,9 @@
+
+volunteer.firstname
+volunteer.lastname
+' ({{volunteer.age}}
+gender-sign volunteer.gender
+
+small
+  capitalize state.name
+  apply-form-state-icon state
