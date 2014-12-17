@@ -29,24 +29,12 @@ class V1::WorkcampsController < V1::BaseController
       search = search.max_duration(md)
     end
 
-    if ma = filter[:min_age]
-      search = search.where("minimal_age >= ?",ma)
-    end
-
-    if ma = filter[:max_age]
-      search = search.where("maximal_age <= ?",ma)
-    end
-
-    if fp = filter[:free]
-      search = search.where("free_places >= ?",fp)
-    end
-
-    if fp = filter[:free_females]
-      search = search.where("free_places_for_females >= ?",fp)
-    end
-
-    if fp = filter[:free_males]
-      search = search.where("free_places_for_males >= ?",fp)
+    if people = filter[:people]
+      search = search.where("free_places >= ?",people.count)
+      search = search.where("free_places_for_females >= ?",sum_females(people))
+      search = search.where("free_places_for_males >= ?",sum_males(people))
+      search = search.where("minimal_age <= ?",ages(people).min)
+      search = search.where("maximal_age >= ?",ages(people).max)
     end
 
     if ids = filter[:tag_ids]
@@ -77,13 +65,31 @@ class V1::WorkcampsController < V1::BaseController
   private
 
   def filter
-    params.permit(:q,:from,:to,:min_duration,:max_duration,:min_age,
-                  :max_age,:free,:free_males,:free_females,
-                  :tag_ids => [], :country_ids => [], :workcamp_intention_ids => [], :organization_ids => [])
+    params.permit(:q,:from,:to,:min_duration,:max_duration,
+                  :people => [ [:a,:g] ],
+                  :tag_ids => [], :country_ids => [],
+                  :workcamp_intention_ids => [], :organization_ids => [])
   end
 
   def find_workcamp
     @workcamp = Outgoing::Workcamp.find(params[:id])
   end
+
+  def ages(people)
+    people.map { |p| p[:a].to_i }
+  end
+
+  def sum_males(people)
+    sum(people,'m')
+  end
+
+  def sum_females(people)
+    sum(people,'f')
+  end
+
+  def sum(people,gender)
+    people.inject(0) { |sum,person| sum + (person[:g] == gender ? 1 : 0) }
+  end
+
 
 end

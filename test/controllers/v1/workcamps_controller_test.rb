@@ -4,13 +4,13 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
   setup do
     Outgoing::Workcamp.destroy_all
 
-    dummy = Factory(:outgoing_workcamp)
     @workcamp = Factory(:outgoing_workcamp)
     @family = ColoredTag.find_by_name('family')
     @teenage = ColoredTag.find_by_name('teenage')
   end
 
   test "search by tags" do
+    dummy = Factory(:outgoing_workcamp)
     @workcamp.tag_list << 'family'
     @workcamp.tag_list << 'teenage'
     @workcamp.save!
@@ -23,6 +23,7 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
   end
 
   test "search by intentions" do
+    dummy = Factory(:outgoing_workcamp)
     agri = workcamp_intentions(:agri)
     animal = workcamp_intentions(:animal)
 
@@ -38,6 +39,7 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
   end
 
   test "search by countries" do
+    dummy = Factory(:outgoing_workcamp)
     @workcamp.country = c = Factory(:country)
     @workcamp.save!
 
@@ -48,5 +50,21 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     assert_equal @workcamp.id, json_response['workcamps'].first['id'].to_i
   end
 
+  test 'search by people' do
+    @workcamp.update_columns(free_places_for_females: 1,
+                             free_places_for_males: 1,
+                             free_places: 2,
+                             minimal_age: 90,
+                             maximal_age: 100)
+
+    get :index, people: [ { a: 22, g: 'm'},{ a: 33, g: 'f'} ]
+    assert_response :success
+    assert_equal 0, json_response['meta']['pagination']['total']
+
+    get :index, people: [ { a: 95, g: 'm'},{ a: 100, g: 'f'} ]
+    assert_response :success
+    assert_equal 1, json_response['meta']['pagination']['total']
+    assert_equal @workcamp.id, json_response['workcamps'].first['id'].to_i
+  end
 
 end
