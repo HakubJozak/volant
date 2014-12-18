@@ -12,6 +12,7 @@ Workflow
 
 Workcampy
   - [ ] razeni (zeme,kod,od,do,nazev projektu)
+  - [ ] vytvorit kopii workcampu (v nove sezone)
 
 Prihlasky
   - filtrovani prehledu podle
@@ -25,7 +26,6 @@ Prihlasky
     - [ ] po 3 dnech po zažádání o přijetí
     - [ ] 5 týdnů před začátkem workcampu když není odeslán infosheet
     - [ ] 4 týdny před začátkem workcampu pokud nemáme pojištění - pokud tam tedy to pojištění nějak zakomponujeme
-
 
 Sprava zemi
   - [ ] deleni na region 1 a region 2

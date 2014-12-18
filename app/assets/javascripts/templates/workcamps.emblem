@@ -1,7 +1,7 @@
-form.form-horizontal.form-search submit='search' role='form'
+form.form.form-horizontal.form-search submit='search' role='form'
   .form-group
     .col-lg-1
-      label.col-lg-1.control-label
+      label.control-label
         | Keyword
     .col-lg-8
       partial 'query'
@@ -26,7 +26,8 @@ form.form-horizontal.form-search submit='search' role='form'
         ul.dropdown-menu role="menu"
           li
             link-to 'Import' 'imported_workcamps'
-if filter_visible
-  partial 'workcamps/filter'
+
+  if filter_visible
+    partial 'workcamps/filter'
 
 partial 'workcamps/list'

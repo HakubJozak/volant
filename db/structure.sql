@@ -65,7 +65,9 @@ CREATE TABLE countries (
     name_en character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    triple_code character varying(3)
+    triple_code character varying(3),
+    region character varying(255) DEFAULT '1'::character varying NOT NULL,
+    zone character varying(255)
 );
 
 
@@ -2158,4 +2160,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141109114439');
 INSERT INTO schema_migrations (version) VALUES ('20141109190633');
 
 INSERT INTO schema_migrations (version) VALUES ('20141129212750');
+
+INSERT INTO schema_migrations (version) VALUES ('20141218143853');
 

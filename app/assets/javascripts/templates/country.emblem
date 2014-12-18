@@ -1,0 +1,44 @@
+h3 Country
+
+= errors.messages
+
+form submit='save'
+  .form-group
+    model-field errors=errors.name_en
+      label.control-label
+        | English Name
+      = input value=name_en class='form-control'
+
+    model-field errors=errors.name_cz
+      label.control-label
+        | Czech Name
+      = input value=name_cz class='form-control'
+
+    model-field errors=errors.code
+      label.control-label
+        | Code
+      = input value=code class='form-control'
+
+    model-field errors=errors.tripleCode
+      label.control-label
+        | Triple Code
+      = input value=tripleCode class='form-control'
+
+    model-field errors=errors.region
+      label.control-label
+        | Region
+      view Ember.Select contentBinding='regions' selectionBinding='region' class='form-control'
+
+    model-field errors=errors.region
+      label.control-label
+        | Zone
+      view Ember.Select contentBinding='zones' selectionBinding='zone' class='form-control'
+
+
+  button.btn.btn-primary type="submit"
+    | Save
+  '
+  = button 'Cancel' 'rollback' 'btn'
+  '
+  unless isNew
+    = button 'Delete' 'rollback' 'btn btn-danger'

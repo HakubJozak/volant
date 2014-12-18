@@ -26,7 +26,11 @@ json = JSON.generate(apply_form: {
                        workcamp_ids: [ 45588, 46406 ]
                      })
 
-response = Net::HTTP.new('localhost',9090).post('/v1/apply_forms', json, { 'Content-Type' =>  'application/json' })
+host = '128.199.36.58'
+# host = 'localhost'
+
+response = Net::HTTP.new(host,9090).post('/v1/apply_forms', json, { 'Content-Type' =>  'application/json' })
+
 
 puts response.body
 puts response.code
