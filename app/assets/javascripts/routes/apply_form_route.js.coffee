@@ -17,7 +17,6 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
 
   renderTemplate: ->
     @_super()
-    @render('apply_form/page_up',into: 'application', outlet: 'page_up')
     @render('quick_save',into: 'application', outlet: 'item_controls')
 
   actions:

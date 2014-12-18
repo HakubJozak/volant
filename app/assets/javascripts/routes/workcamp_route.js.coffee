@@ -8,7 +8,6 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend({
   renderTemplate: ->
     @_super()
     @render('quick_save',into: 'application', outlet: 'item_controls')
-    @render('workcamp/page_up',into: 'application', outlet: 'page_up')
 
   setupController: (controller,model,queryParams) ->
     @_super(controller,model,queryParams)
