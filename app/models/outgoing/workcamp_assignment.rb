@@ -5,7 +5,6 @@ module Outgoing
     after_save :update_free_places
     after_destroy :update_free_places
 
-
     STATE_ORDER = [ :paid, :asked, :accepted, :infosheeted, :rejected, :cancelled, :not_paid, :after].freeze
 
     create_date_time_accessors
@@ -57,5 +56,6 @@ module Outgoing
     def update_apply_form_cache
       ApplyForm.update_cache_for(self.apply_form_id) if self.apply_form_id
     end
+
   end
 end

@@ -88,7 +88,7 @@ class V1::WorkcampsController < V1::BaseController
   end
 
   def sum(people,gender)
-    people.inject(0) { |sum,person| sum + (person[:g] == gender ? 1 : 0) }
+    people.inject(0) { |sum,person| sum + (person[:g].to_s.downcase == gender ? 1 : 0) }
   end
 
 

@@ -1,8 +1,11 @@
 class V1::ApplyFormsController < V1::BaseController
   respond_to :json
 
+  skip_before_action :verify_authenticity_token
+
   def create
-    form = Outgoing::ApplyForm.create_by_birthnumber(apply_form_params)
+    attrs = embed_volunteer_attributes(apply_form_params)
+    form = Outgoing::ApplyForm.create_by_birthnumber(attrs)
 
     if form.valid? && form.volunteer.valid?
       render nothing: true
@@ -14,14 +17,36 @@ class V1::ApplyFormsController < V1::BaseController
   private
 
   def apply_form_params
-    volunteer = [ :gender, :firstname, :lastname, :birthnumber, :nationality, :birthdate,
-                  :birthplace, :occupation, :email, :phone, :fax,
-                  :street, :city, :zipcode,
-                  :contact_street, :contact_city, :contact_zipcode,
-                  :emergency_day, :emergency_night, :emergency_name,
-                  :speak_well, :speak_some, :past_experience ]
+    params.require(:apply_form).permit(:gender, :firstname, :lastname, :birthnumber, :nationality, :birthdate,
+                                       :birthplace, :occupation, :email, :phone, :fax,
+                                       :street, :city, :zipcode,
+                                       :contact_street, :contact_city, :contact_zipcode,
+                                       :emergency_day, :emergency_night, :emergency_name,
+                                       :speak_well, :speak_some, :past_experience,
+                                       :motivation, :general_remarks, workcamp_ids: [])
 
-    params.require(:apply_form).permit({ volunteer_attributes: volunteer }, :motivation, :general_remarks, workcamp_ids: [])
+
+
+  end
+
+  # HACK: this will be gone when all fields are on ApplyForm
+  def embed_volunteer_attributes(original)
+    volunteer = {}
+    [ :gender, :firstname, :lastname, :birthnumber, :nationality, :birthdate,
+      :birthplace, :occupation, :email, :phone, :fax,
+      :street, :city, :zipcode,
+      :contact_street, :contact_city, :contact_zipcode,
+      :emergency_day, :emergency_night, :emergency_name,
+      :speak_well, :speak_some, :past_experience ].each do |attr|
+      volunteer[attr] = original.delete(attr)
+    end
+
+    {
+      volunteer_attributes: volunteer,
+      motivation: original[:motivation],
+      general_remarks: original[:general_remarks],
+      workcamp_ids: original[:workcamp_ids]
+    }
   end
 
 end

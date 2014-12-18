@@ -68,16 +68,25 @@ module Outgoing
       form = nil
       birthnumber = attrs[:volunteer_attributes][:birthnumber]
       volunteer = Volunteer.find_by_birthnumber(birthnumber)
+      workcamps = attrs.delete(:workcamp_ids).to_a.map do |id|
+	Outgoing::Workcamp.live.find(id)
+      end
 
-      if volunteer
-        Volunteer.transaction do
+      Volunteer.transaction do
+        if volunteer
           form = volunteer.apply_forms.new(attrs)
           volunteer.assign_attributes(attrs[:volunteer_attributes])
           volunteer.save && form.save
+        else
+          form = Outgoing::ApplyForm.new(attrs)
+          form.save
         end
-      else
-        form = Outgoing::ApplyForm.new(attrs)
-        form.save
+
+        if form.valid? && form.volunteer.valid?
+          workcamps.each_with_index do |wc,i|
+            form.workcamp_assignments.create!(workcamp: wc, order: i+1)
+          end
+        end
       end
 
       form
