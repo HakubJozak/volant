@@ -30,6 +30,11 @@ class ApplyFormsController < ApplicationController
            each_serializer: ApplyFormSerializer
   end
 
+  def destroy
+    @apply_form.destroy
+    head :no_content
+  end
+
   def cancel
     @apply_form.cancel
     render json: @apply_form, serializer: ApplyFormSerializer

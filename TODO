@@ -1,5 +1,13 @@
+- [ ] 'oblibene' campy a prihlasky pro kazdeho uzivatel zvlast (ted je to pro vsechny stejne)
+
 # Outgoing
  - [ ] dashboard
+
+Workflow
+  - [ ] pripojovani VEF ke zpravam
+  - [ ] pridavani priloh ke zpravam
+  - [ ] (bug) nechat prihlasku pripojenou ke zprave i po odeslani
+  - [ ] pridat dalsi kroky - odeslani a prijeti evaluacniho dotazniku (evaluation_sent/received?)
 
 Workcampy
   - [ ] razeni (zeme,kod,od,do,nazev projektu)
@@ -16,8 +24,6 @@ Prihlasky
     - [ ] po 3 dnech po zažádání o přijetí
     - [ ] 5 týdnů před začátkem workcampu když není odeslán infosheet
     - [ ] 4 týdny před začátkem workcampu pokud nemáme pojištění - pokud tam tedy to pojištění nějak zakomponujeme
-  - workflow
-    - [ ] pridat dalsi kroky - odeslani a prijeti evaluacniho dotazniku (evaluation_sent/received?)
 
 
 Sprava zemi
