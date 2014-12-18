@@ -1,0 +1,32 @@
+form.form-horizontal.form-search submit='search' role='form'
+  .form-group
+    .col-lg-1
+      label.col-lg-1.control-label
+        | Keyword
+    .col-lg-8
+      partial 'query'
+    .col-lg-3.pull-right
+      if isDirty
+        button.btn.btn-danger type='button' click='save'
+          | Save
+
+      button.btn.btn-default{ action 'toggle' 'editing_visible'} type='button'
+        fa 'pencil-square-o'
+      '
+      button.btn.btn-default{ action 'toggle' 'filter_visible'} type='button'
+        | Filter
+      '
+      .btn-group
+        link-to 'workcamps.new' class='btn btn-success'
+          | Create
+        button.btn.btn-success.dropdown-toggle type="button" data-toggle="dropdown" aria-expanded="false"
+          span.caret
+          span.sr-only
+            | Toggle Dropdown
+        ul.dropdown-menu role="menu"
+          li
+            link-to 'Import' 'imported_workcamps'
+if filter_visible
+  partial 'workcamps/filter'
+
+partial 'workcamps/list'

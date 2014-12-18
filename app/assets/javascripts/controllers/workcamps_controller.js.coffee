@@ -35,7 +35,6 @@ Volant.WorkcampsController = Volant.ListController.extend({
 
   actions:
     toggle: (property) ->
-      @set 'tag_ids', 'pepe'
       @toggleProperty(property)
       false
 
