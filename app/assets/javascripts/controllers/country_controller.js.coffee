@@ -1,3 +1,3 @@
 Volant.CountryController = Ember.ObjectController.extend
+  needs: 'country_zones'
   regions: [ '1','2' ]
-  zones: [ 'Europe','Asia','South America','North America','Carribean','Asia','Africa','Other' ]

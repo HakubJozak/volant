@@ -4,26 +4,28 @@
     {{#link-to 'countries.new' class='btn btn-success pull-right'}}{{fa 'plus'}} New{{/link-to}}
   </h3>
 
-<table class="table table-striped table-hover">
-  <thead>
-        <th>Name</th>
-        <th>Code</th>
-        <th>Triple code</th>
-      </thead>
-  <tbody>
-    {{#each}}
-      <tr>
-                        <td>
-          {{#link-to 'country' this}}
-            {{name}}
-          {{/link-to}}
-        </td>
-                                <td>{{code}}</td>
-                                <td>{{triple_code}}</td>
-                      </tr>
-    {{/each}}
-  </tbody>
-</table>
+  <table class="table table-striped table-hover">
+    <thead>
+      <th>English</th>
+      <th>Czech</th>
+      <th>XY</th>
+      <th>XYZ</th>
+    </thead>
+    <tbody>
+      {{#each}}
+        <tr>
+          <td>
+            {{#link-to 'country' this}}
+            {{name_en}}
+            {{/link-to}}
+          </td>
+          <td>{{name_cz}}</td>
+          <td>{{code}}</td>
+          <td>{{triple_code}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
 </div>
 <div class='col-md-6 right-side-edit'>
   {{outlet}}

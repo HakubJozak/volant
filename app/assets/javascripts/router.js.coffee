@@ -14,6 +14,8 @@ Volant.Router.map () ->
 
   @resource 'imported_workcamps'
 
+  @resource 'incoming'
+
 
   @resource 'organizations'
   @resource('organization', path: '/organizations/:organization_id')

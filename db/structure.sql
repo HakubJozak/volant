@@ -67,7 +67,7 @@ CREATE TABLE countries (
     updated_at timestamp without time zone,
     triple_code character varying(3),
     region character varying(255) DEFAULT '1'::character varying NOT NULL,
-    zone character varying(255)
+    country_zone_id integer
 );
 
 
@@ -295,6 +295,38 @@ CREATE SEQUENCE countries_id_seq
 --
 
 ALTER SEQUENCE countries_id_seq OWNED BY countries.id;
+
+
+--
+-- Name: country_zones; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE country_zones (
+    id integer NOT NULL,
+    name_en character varying(255),
+    name_cz character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: country_zones_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE country_zones_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: country_zones_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE country_zones_id_seq OWNED BY country_zones.id;
 
 
 --
@@ -1166,6 +1198,13 @@ ALTER TABLE ONLY countries ALTER COLUMN id SET DEFAULT nextval('countries_id_seq
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY country_zones ALTER COLUMN id SET DEFAULT nextval('country_zones_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY devise_users ALTER COLUMN id SET DEFAULT nextval('devise_users_id_seq'::regclass);
 
 
@@ -1353,6 +1392,14 @@ ALTER TABLE ONLY comments
 
 ALTER TABLE ONLY countries
     ADD CONSTRAINT countries_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: country_zones_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY country_zones
+    ADD CONSTRAINT country_zones_pkey PRIMARY KEY (id);
 
 
 --
@@ -2161,5 +2208,5 @@ INSERT INTO schema_migrations (version) VALUES ('20141109190633');
 
 INSERT INTO schema_migrations (version) VALUES ('20141129212750');
 
-INSERT INTO schema_migrations (version) VALUES ('20141218143853');
+INSERT INTO schema_migrations (version) VALUES ('20141219104230');
 

@@ -11,6 +11,18 @@
       {{#link-to 'index' class="navbar-brand"}}
         Volant
       {{/link-to}}
+        <form  class="navbar-form  navbar-left col-lg-1" >
+          {{view Ember.Select
+          content=modes
+          value=mode
+          class="form-control"
+          }}
+          {{view Ember.Select
+          content=years
+          value=year
+          class="form-control"
+          }}
+        </form>
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
@@ -28,14 +40,6 @@
           <li><a href="#">Partners</a></li>
        {{/menu-dropdown}}
       </ul>
-      </ul>
-        <form  class="navbar-form  navbar-left col-lg-1" >
-          {{view Ember.Select
-          content=years
-          value=year
-          class="form-control"
-          }}
-        </form>
 
        {{ outlet 'item_controls'}}
 

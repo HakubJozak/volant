@@ -66,7 +66,7 @@
         {{#model-field errors=errors.organization}}
         <label class="col-lg-2 control-label">Organization</label>
         <div class="col-lg-3">
-            {{view Ember.Select
+          {{view Ember.Select
               contentBinding='controllers.organizations.content'
               selectionBinding='organization'
               optionValuePath="content.id"

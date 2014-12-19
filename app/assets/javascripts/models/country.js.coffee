@@ -5,4 +5,4 @@ Volant.Country = DS.Model.extend
   code: DS.attr 'string'
   tripleCode: DS.attr 'string'
   region: DS.attr 'string'
-  zone: DS.attr 'string'
+  country_zone: DS.belongsTo 'country_zone'

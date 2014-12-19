@@ -46,6 +46,6 @@ class CountriesController < ApplicationController
   end
 
   def country_params
-    params.require(:country).permit(*CountrySerializer.writable)
+    params.require(:country).permit(:name_en, :name_cz, :code, :triple_code, :region,:country_zone_id)
   end
 end

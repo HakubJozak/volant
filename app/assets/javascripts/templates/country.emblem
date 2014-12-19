@@ -32,7 +32,8 @@ form submit='save'
     model-field errors=errors.region
       label.control-label
         | Zone
-      view Ember.Select contentBinding='zones' selectionBinding='zone' class='form-control'
+      view Ember.Select contentBinding='controllers.country_zones.content' selectionBinding='country_zone' class='form-control' optionValuePath="content.id" optionLabelPath="content.name_en" prompt='Other'
+
 
 
   button.btn.btn-primary type="submit"
