@@ -30,6 +30,7 @@ class V1::WorkcampsController < V1::BaseController
     end
 
     if people = filter[:people]
+      # TODO: move to model
       search = search.where("free_places >= ?",people.count)
       search = search.where("free_places_for_females >= ?",sum_females(people))
       search = search.where("free_places_for_males >= ?",sum_males(people))
@@ -49,6 +50,11 @@ class V1::WorkcampsController < V1::BaseController
       search = search.with_countries(*ids)
     end
 
+    if zone = filter[:country_zone_id]
+      # TODO: move to model
+      search = search.joins(:country).where('countries.country_zone_id = ?',zone.to_i)
+    end
+
     if ids = filter[:organization_ids]
       search = search.with_organizations(*ids)
     end
@@ -65,7 +71,7 @@ class V1::WorkcampsController < V1::BaseController
   private
 
   def filter
-    params.permit(:q,:from,:to,:min_duration,:max_duration,
+    params.permit(:q,:from,:to,:min_duration,:max_duration,:country_zone_id,
                   :people => [ [:a,:g] ],
                   :tag_ids => [], :country_ids => [],
                   :workcamp_intention_ids => [], :organization_ids => [])

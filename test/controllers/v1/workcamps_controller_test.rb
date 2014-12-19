@@ -38,6 +38,18 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     assert_equal @workcamp.id, json_response['workcamps'].first['id'].to_i
   end
 
+  test "search by country zones" do
+    dummy = Factory(:outgoing_workcamp)
+    @workcamp.country = c = Factory(:country)
+    @workcamp.save!
+
+    get :index, country_zone_id: @workcamp.country.country_zone.id
+
+    assert_response :success
+    assert_equal 1, json_response['meta']['pagination']['total']
+    assert_equal @workcamp.id, json_response['workcamps'].first['id'].to_i
+  end
+
   test "search by countries" do
     dummy = Factory(:outgoing_workcamp)
     @workcamp.country = c = Factory(:country)
