@@ -15,6 +15,4 @@ Volant.MessageController = Volant.ObjectController.extend({
         context = @message_context()
         @set 'body',tmpl.eval_field(field,context)
   ) # .observes('email_template')
-
-
 })

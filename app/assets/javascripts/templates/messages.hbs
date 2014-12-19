@@ -32,7 +32,13 @@
             {{/link-to}}
           {{/if}}
         </td>
-        <td></td>
+        <td>
+          {{#if apply_form.current_workcamp}}
+            {{#link-to 'workcamp' apply_form.current_workcamp}}
+              {{apply_form.current_workcamp.name}}
+            {{/link-to}}
+          {{/if}}
+        </td>
         <td></td>
       </tr>
     {{/each}}
