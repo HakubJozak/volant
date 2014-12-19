@@ -10,6 +10,10 @@ class ApplyFormSerializer < Barbecue::BaseSerializer
   has_many :workcamp_assignments, embed: :ids, include: false
   has_one :message, embed: :ids, include: false
 
+  def message
+    object.current_message
+  end
+
   def state
     s = object.state
     { name: s.name,

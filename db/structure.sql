@@ -154,8 +154,7 @@ CREATE TABLE apply_forms (
     current_assignment_id_cached integer,
     type character varying(255) DEFAULT 'Outgoing::ApplyForm'::character varying NOT NULL,
     confirmed timestamp without time zone,
-    starred boolean DEFAULT false NOT NULL,
-    message_id integer
+    starred boolean DEFAULT false NOT NULL
 );
 
 
@@ -2209,4 +2208,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141109190633');
 INSERT INTO schema_migrations (version) VALUES ('20141129212750');
 
 INSERT INTO schema_migrations (version) VALUES ('20141219104230');
+
+INSERT INTO schema_migrations (version) VALUES ('20141219133401');
 

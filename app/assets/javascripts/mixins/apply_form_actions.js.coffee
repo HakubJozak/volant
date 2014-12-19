@@ -14,30 +14,26 @@ Volant.ApplyFormActions = Ember.Mixin.create({
           @open_message_for(action,form)
 
   open_message_for: (action_name,apply_form) ->
-    @store.find('email_template').then (templates) =>
-      @controllerFor('email_templates').set('content', templates)
-      tmpl = templates.findBy('action',action_name)
+    @store.find('user',@get('current_user.content.id')).then (user) =>
+      apply_form.get('current_workcamp').then (workcamp) =>
+        context = @message_context(user,apply_form,workcamp)
+        console.log context
 
-      @store.find('user',@get('current_user.content.id')).then (user) =>
-        apply_form.get('current_workcamp').then (workcamp) =>
-          context = @message_context(user,apply_form,workcamp)
-          console.log context
+        message = @store.createRecord 'message', {
+          subject: tmpl.eval_field('subject',context)
+          body: tmpl.eval_field('body',context)
+          from: tmpl.eval_field('from',context)
+          to: tmpl.eval_field('to',context)
+          cc: tmpl.eval_field('cc',context)
+          bcc: tmpl.eval_field('bcc',context)
+          action: action_name
+          apply_form: apply_form
+          user: user
+          email_template: tmpl
+        }
 
-          message = @store.createRecord 'message', {
-            subject: tmpl.eval_field('subject',context)
-            body: tmpl.eval_field('body',context)
-            from: tmpl.eval_field('from',context)
-            to: tmpl.eval_field('to',context)
-            cc: tmpl.eval_field('cc',context)
-            bcc: tmpl.eval_field('bcc',context)
-            action: action_name
-            apply_form: apply_form
-            user: user
-            email_template: tmpl
-          }
-
-          message.save().then (msg) =>
-            @transitionTo('message',msg)
+        message.save().then (msg) =>
+          @transitionTo('message',msg)
 
     false
 

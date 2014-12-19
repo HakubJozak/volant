@@ -28,8 +28,10 @@ Prihlasky
     - [ ] 4 týdny před začátkem workcampu pokud nemáme pojištění - pokud tam tedy to pojištění nějak zakomponujeme
 
 Sprava zemi
-  - [ ] deleni na region 1 a region 2
-  - [ ] deleni  na svetadily / teritoria
+  - [X] deleni na region 1 a region 2
+  - [X] deleni  na zony
+  - [ ] pridat seznam zon
+  - [ ] vyhledavani z webu pouze podle zony
 
 Platby
  - [ ] vyhledavani plateb

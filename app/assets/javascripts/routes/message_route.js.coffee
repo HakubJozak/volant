@@ -6,7 +6,9 @@ Volant.MessageRoute = Volant.BaseRoute.extend({
 
   setupController: (controller,model) ->
     @store.find('email_template').then (templates) =>
-      @controllerFor('email_templates').set('content', templates)
+      tmpl = templates.findBy('action',model.get('action'))
+      @controllerFor('email_templates').set('content',templates)
+      controller.set('emailTemplate',tmpl)
     @_super(controller,model)
 
   actions:

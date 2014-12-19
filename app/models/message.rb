@@ -1,13 +1,12 @@
 class Message < ActiveRecord::Base
 
   belongs_to :user
-#  belongs_to :workcamp_assignment
-  belongs_to :email_template
-  has_one :apply_form
+  belongs_to :apply_form
 
   validates_presence_of :user
   validates_inclusion_of :action, in: %w(ask accept reject send infosheet)
 
+  scope :not_sent, lambda { where(sent_at: nil) }
 #  validates_presence_of :from,:to,:subject,:body, if: :sending
 
   ALLOWED_ACTIONS = [ :accept, :reject, :ask, :infosheet ]
@@ -24,7 +23,6 @@ class Message < ActiveRecord::Base
           apply_form.save!
         end
 
-        self.apply_form = nil
         save!
       end
     end

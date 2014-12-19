@@ -3,7 +3,6 @@ class MessagesController < ApplicationController
 
   before_action :set_message, only: [:show, :edit, :update, :destroy, :deliver]
 
-  # GET /messages4
   def index
     search = Message.page(current_page).order(created_at: :desc)
 
@@ -19,11 +18,10 @@ class MessagesController < ApplicationController
     respond_with(@message)
   end
 
-  # POST /messages
   def create
     if id = params[:message][:apply_form_id]
       apply_form = ApplyForm.find(id)
-      @message = apply_form.build_message(message_params)
+      @message = apply_form.messages.build(message_params)
       @message.user = current_user
       apply_form.save
     else
