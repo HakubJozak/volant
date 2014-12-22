@@ -1,18 +1,19 @@
-.btn-group
-  .btn.btn-default click='bold'
-    fa 'bold'
-  .btn.btn-default click='italic'
-    fa 'italic'
-  .btn.btn-default click='link'
-    fa 'link'
-  .btn.btn-default click='unorderedList'
-    fa 'list-ul'
-  .btn.btn-default click='orderedList'
-    fa 'list-ol'
-  .btn.btn-default click='clearFormatting'
-    fa 'eraser'
-  .btn.btn-default click='horizontalRule'
-    fa 'minus'
+if editable
+  .btn-group
+    .btn.btn-default click='bold'
+      fa 'bold'
+    .btn.btn-default click='italic'
+      fa 'italic'
+    .btn.btn-default click='link'
+      fa 'link'
+    .btn.btn-default click='unorderedList'
+      fa 'list-ul'
+    .btn.btn-default click='orderedList'
+      fa 'list-ol'
+    .btn.btn-default click='clearFormatting'
+      fa 'eraser'
+    .btn.btn-default click='horizontalRule'
+      fa 'minus'
 
 
 view Ember.ContentEditableView value=value editable=editable
