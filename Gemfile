@@ -25,10 +25,6 @@ gem 'jquery-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 
-
-
-
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -65,6 +61,9 @@ gem 'bootstrap-generators', '~> 3.2.0'
 gem 'puma'
 gem 'barbecue', github: 'HakubJozak/barbecue', branch: 'master'
 gem 'rack-jsonp-middleware'
+
+# only email templates data migration
+gem 'redcarpet', require: false
 
 
 group :development do

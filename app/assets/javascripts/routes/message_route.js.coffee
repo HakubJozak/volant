@@ -17,7 +17,7 @@ Volant.MessageRoute = Volant.BaseRoute.extend({
         context = @message_context(model).then (context) ->
           console.log 'Message context', context
           model.set 'subject', tmpl.eval_field('subject',context)
-          model.set 'body', tmpl.eval_field('body',context)
+          model.set 'html_body', tmpl.eval_field('body',context)
           model.set 'from', tmpl.eval_field('from',context)
           model.set 'to', tmpl.eval_field('to',context)
           model.set 'cc', tmpl.eval_field('cc',context)

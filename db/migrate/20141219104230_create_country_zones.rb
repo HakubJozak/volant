@@ -8,5 +8,7 @@ class CreateCountryZones < ActiveRecord::Migration
 
     add_column :countries, :region, :string, null: false, default: '1'
     add_column :countries, :country_zone_id, :integer
+
+    Adhoc::create_country_zones
   end
 end
