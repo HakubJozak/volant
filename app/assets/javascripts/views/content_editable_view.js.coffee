@@ -2,6 +2,7 @@ Ember.ContentEditableView = Em.View.extend
   tagName: "div"
   attributeBindings: ["contenteditable"]
   classNames: ['native-editor']
+  layoutName: 'buttons_bar'
 
   # Variables:
   editable: true

@@ -1,0 +1,11 @@
+.btn-group
+  .btn.btn-default click='bold'
+    fa 'bold'
+  .btn.btn-default click='italic'
+    fa 'italic'
+  .btn.btn-default click='link'
+    fa 'link'
+  .btn.btn-default click='unorderedList'
+    fa 'list-ul'
+
+view Ember.ContentEditableView value=value editable=editable

@@ -207,7 +207,8 @@ table.import-changes {
 }
 
 .native-editor {
- min-height: 5em;
- border: 1px solid $border-color;
- padding: 0.2em;
+  margin-top: 0.5em;
+  min-height: 5em;
+  border: 1px solid $border-color;
+  padding: 0.2em;
 }

@@ -105,11 +105,9 @@
       </div>
     {{/if}}
 
-
-
     <div class="form-group email-body-area" >
       <div class="col-lg-11 col-lg-offset-1">
-        {{view Ember.ContentEditableView value=html_body editable=editable}}
+        {{native-editor editable=editable value=html_body}}
       </div>
     </div>
   </fieldset>
