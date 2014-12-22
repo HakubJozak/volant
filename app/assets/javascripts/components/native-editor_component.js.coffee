@@ -10,6 +10,22 @@ Volant.NativeEditorComponent = Ember.Component.extend({
       document.execCommand('italic')
       false
 
+    unorderedList: ->
+      document.execCommand('insertUnorderedList')
+      false
+
+    orderedList: ->
+      document.execCommand('insertOrderedList')
+      false
+
+    clearFormatting: ->
+      document.execCommand('removeFormat')
+      false
+
+    horizontalRule: ->
+      document.execCommand('insertHorizontalRule')
+      false
+
     link: ->
       uri = 'http://'
 
@@ -27,8 +43,5 @@ Volant.NativeEditorComponent = Ember.Component.extend({
       chosen = window.prompt('URI',uri)
       if chosen?
         document.execCommand('createLink',true,chosen)
-      false
-    unorderedList: ->
-      document.execCommand('insertUnorderedList')
       false
 })
