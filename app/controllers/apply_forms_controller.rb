@@ -5,15 +5,24 @@ class ApplyFormsController < ApplicationController
 
   def index
     search = Outgoing::ApplyForm.page(current_page).order("#{ApplyForm.table_name}.created_at desc")
-    search = search.includes(:payment,:volunteer,:current_workcamp, :current_assignment)
+    search = search.includes(:volunteer,:current_workcamp, :current_assignment)
     search = add_year_scope(search)
 
-    if params[:starred]
+    if filter[:starred]
       search = search.where(starred: true)
     end
 
-    if query = params[:q]
-      search = search.query(params[:q])
+    if query = filter[:q]
+      search = search.query(filter[:q])
+    end
+
+    if state = filter[:state]
+      # TODO: put those inside filter
+      if state == 'without_payment'
+        search = search.joins('left outer join payments on payments.apply_form_id = apply_forms.id').state_filter(state)
+      else
+        search = search.joins(:current_assignment).state_filter(state)
+      end
     end
 
     # dir = params[:asc] ? :asc : :desc
@@ -72,6 +81,10 @@ class ApplyFormsController < ApplicationController
   def apply_form_params
     params.require(:apply_form).permit(:starred, :general_remarks, :motivation, :volunteer_id, :cancelled, :confirmed, :fee,
                                        payment_attributes: PaymentSerializer.writable, volunteer_attributes: VolunteerSerializer.writable)
+  end
+
+  def filter
+    params.permit(:starred,:q,:state)
   end
 
 end

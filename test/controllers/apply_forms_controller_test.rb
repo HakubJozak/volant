@@ -38,6 +38,31 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_equal wc.id, json_response['apply_forms'].first['current_workcamp_id']
   end
 
+  test 'filter by state' do
+    ApplyForm.destroy_all
+    dummy = Factory(:paid_form)
+    accepted = Factory(:accepted_form)
+
+    get :index, state: 'accepted'
+
+    assert_response :success
+    assert_equal 1,json_response['apply_forms'].size
+    assert_equal accepted.id, json_response['apply_forms'][0]['id'].to_i
+  end
+
+  test 'filter unpaid' do
+    ApplyForm.destroy_all
+    dummy = Factory(:paid_form)
+    unpaid = Factory(:apply_form)
+    unpaid.payment.destroy
+
+    get :index, state: 'without_payment'
+
+    assert_response :success
+    assert_equal 1,json_response['apply_forms'].size
+    assert_equal unpaid.id, json_response['apply_forms'][0]['id'].to_i
+  end
+
   test 'index with query' do
     ApplyForm.destroy_all
     volunteer = Factory(:volunteer, firstname: 'John', lastname: 'Deer')

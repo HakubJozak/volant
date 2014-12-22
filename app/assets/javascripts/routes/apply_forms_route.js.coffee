@@ -9,6 +9,7 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions,{
       p: params.page
       year: params.year
       q: params.query
+      state: params.state
 #      sort: params.sortProperties
 #      asc: params.sortAscending
     })

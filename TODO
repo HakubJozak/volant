@@ -7,7 +7,7 @@
 Zpravy
   - [ ] pripojovani VEF ke zpravam
   - [ ] pridavani priloh ke zpravam
-  - [ ] formatovani textu (bold,linky...)
+  - [x] formatovani textu (bold,linky...)
 
 Workflow
   - [ ] zmenit stav bez odeslani zpravy
@@ -32,10 +32,10 @@ Prihlasky
     - [ ] 4 týdny před začátkem workcampu pokud nemáme pojištění - pokud tam tedy to pojištění nějak zakomponujeme
 
 Sprava zemi
-  - [X] deleni na region 1 a region 2
-  - [X] deleni  na zony
-  - [ ] pridat seznam zon
-  - [ ] vyhledavani z webu pouze podle zony
+  - [x] deleni na region 1 a region 2
+  - [x] deleni  na zony
+  - [x] pridat seznam zon
+  - [x] vyhledavani z webu pouze podle zony (API)
 
 Platby
  - [ ] vyhledavani plateb

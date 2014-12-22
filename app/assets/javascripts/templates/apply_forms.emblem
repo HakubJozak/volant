@@ -3,8 +3,7 @@ outlet
 form.form.form-horizontal.search-form submit="search" role="form"
   .row
     .col-lg-1
-      label.col-lg-1.control-label
-        | Keyword
+      label.control-label Keyword
     .col-lg-9
       partial 'query'
     .col-lg-2.text-right
@@ -12,7 +11,12 @@ form.form.form-horizontal.search-form submit="search" role="form"
         fa 'plus'
         '
         ' Create
-hr
+  .row
+    .col-lg-1
+      label.control-label State
+    .col-lg-2
+      view Volant.ApplyFormStateSelect value=state
+
 
 table.table.table-striped.table-hover
   thead

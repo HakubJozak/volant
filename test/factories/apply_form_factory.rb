@@ -1,46 +1,46 @@
 # do not use! it has no assignment
-Factory.define :abstract_form, :class => ApplyForm do |f|
+Factory.define :abstract_form, class: ApplyForm do |f|
   f.general_remarks "nothing to say"
   f.motivation "i WANT to go there"
 end
 
-Factory.define :apply_form, :parent => :abstract_form,:class => Outgoing::ApplyForm do |f|
+Factory.define :apply_form, parent: :abstract_form,class: Outgoing::ApplyForm do |f|
   f.fee 2200
   f.association :volunteer
   f.association :payment
 end
 
-Factory.define :incoming_apply_form, :parent => :abstract_form,:class => Incoming::ApplyForm do |f|
+Factory.define :incoming_apply_form, parent: :abstract_form,class: Incoming::ApplyForm do |f|
 end
 
-Factory.define :paid_form, :parent => :apply_form do |f|
+Factory.define :paid_form, parent: :apply_form do |f|
   f.after_create do |form|
-     Factory.create(:workcamp_assignment, :apply_form => form)
+     Factory.create(:workcamp_assignment, apply_form: form)
      form.reload
   end
 end
 
 
-Factory.define :form_male, :parent => :apply_form do |f|
-  f.association :volunteer, :factory => :male
+Factory.define :form_male, parent: :apply_form do |f|
+  f.association :volunteer, factory: :male
 end
 
 
-Factory.define :form_female, :parent => :paid_form do |f|
-  f.association :volunteer, :factory => :female
+Factory.define :form_female, parent: :paid_form do |f|
+  f.association :volunteer, factory: :female
 end
 
 
-Factory.define :accepted_form, :parent => :apply_form do |f|
+Factory.define :accepted_form, parent: :apply_form do |f|
   f.after_create do |form|
-    Factory.create(:workcamp_assignment, :apply_form => form, :accepted => Time.now )
+    Factory.create(:workcamp_assignment, apply_form: form, accepted: Time.now )
     form.reload
   end
 end
 
-Factory.define :rejected_form, :parent => :apply_form do |f|
+Factory.define :rejected_form, parent: :apply_form do |f|
   f.after_create do |form|
-    Factory.create(:workcamp_assignment, :apply_form => form, :rejected => Time.now )
+    Factory.create(:workcamp_assignment, apply_form: form, rejected: Time.now )
     form.reload
   end
 end

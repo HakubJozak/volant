@@ -94,6 +94,7 @@ module Outgoing
       form
     end
 
+    # TODO: replace by state column on the ApplyForm
     def self.state_filter(state)
       wa = Outgoing::WorkcampAssignment.table_name
       filter_sql = ''
@@ -126,7 +127,7 @@ module Outgoing
         filter_sql << ' payments.id IS NULL'
       end
 
-      [ filter_sql ].concat(filter_params)
+      where(*[ filter_sql ].concat(filter_params))
     end
 
     def self.find_records_like(text)
