@@ -9,6 +9,7 @@ Volant.ApplyFormStateSelect = Ember.Select.extend
             { code: 'accepted', label: 'Accepted'},
             { code: 'rejected', label: 'Rejected'},
             { code: 'cancelled', label: 'Cancelled'},
-            { code: 'infosheeted', label: 'Infosheet sent'},
+            { code: 'infosheeted', label: 'Infosheet Sent'},
+            { code: 'on_project', label: 'On Project' },
             { code: 'asked', label: 'Asked'},
           ]

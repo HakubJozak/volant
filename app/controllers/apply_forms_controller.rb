@@ -5,7 +5,8 @@ class ApplyFormsController < ApplicationController
 
   def index
     search = Outgoing::ApplyForm.page(current_page).order("#{ApplyForm.table_name}.created_at desc")
-    search = search.includes(:volunteer,:current_workcamp, :current_assignment)
+    search = search.joins(:current_workcamp,:current_assignment)
+    search = search.includes(:volunteer)
     search = add_year_scope(search)
 
     if filter[:starred]
@@ -17,11 +18,16 @@ class ApplyFormsController < ApplicationController
     end
 
     if state = filter[:state]
-      # TODO: put those inside filter
-      if state == 'without_payment'
+      # TODO: put those inside model
+      case state
+      when 'on_project'
+        today = Date.today
+        search = search.where("workcamps.begin <= ? AND workcamps.end >= ?",today,today)
+        search = search.where('workcamp_assignments.accepted IS NOT NULL and cancelled IS NULL ')
+      when 'without_payment'
         search = search.joins('left outer join payments on payments.apply_form_id = apply_forms.id').state_filter(state)
       else
-        search = search.joins(:current_assignment).state_filter(state)
+        search = search.state_filter(state)
       end
     end
 
@@ -84,7 +90,7 @@ class ApplyFormsController < ApplicationController
   end
 
   def filter
-    params.permit(:starred,:q,:state)
+    params.permit(:starred,:q,:state,:p,:year)
   end
 
 end

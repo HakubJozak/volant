@@ -13,7 +13,7 @@ class Workcamp < ActiveRecord::Base
 
   scope :year, lambda { |year|
     year = year.to_i
-    where '(workcamps.begin >= ? AND workcamps.end < ?)', Date.new(year,1,1), Date.new(year + 1,1,1)
+    where '(extract(YEAR from workcamps.begin) = ? OR extract(YEAR FROM workcamps.end) = ?)', year,year
   }
 
   # deprecated
