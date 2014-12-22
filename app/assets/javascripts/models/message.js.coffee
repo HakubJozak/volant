@@ -7,7 +7,6 @@ Volant.Message = DS.Model.extend
   bcc: DS.attr 'string'
   from: DS.attr 'string'
   subject: DS.attr 'string'
-  body: DS.attr 'string'
   html_body: DS.attr 'string'
   sent_at: DS.attr 'date'
   action: DS.attr 'string'

@@ -6,6 +6,8 @@ $yellow: #F3D70C;
 $red: #E76363;
 $grey: grey;
 
+$border-color: #dddddd;
+
 
 
 body {
@@ -32,7 +34,7 @@ textarea {
 
 
 .sidepanel {
-  border-left: 1px solid #dddddd; // border color
+  border-left: 1px solid $border-color;
 }
 
 .alert {
@@ -202,4 +204,10 @@ table.import-changes {
   }
 
   td.actions { min-width: 6em; }
+}
+
+.native-editor {
+ min-height: 5em;
+ border: 1px solid $border-color;
+ padding: 0.2em;
 }
