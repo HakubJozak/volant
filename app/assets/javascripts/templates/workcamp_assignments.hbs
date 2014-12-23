@@ -46,6 +46,9 @@
             {{fa 'circle'}}
           {{/if}}
         </td>
+        <td {{action 'removeAssignment' this bubbles=false}}>
+          {{fa-link 'times'}}
+        </td>
         <td>{{order}}.</td>
         <td>{{workcamp-state-icon state}}</td>
         <td>{{workcamp.code}}</td>
@@ -55,7 +58,7 @@
           {{/link-to}}
         </td>
         <td {{action 'edit' bubbles=false}}>{{fa-link 'edit'}}</td>
-        <td {{action 'remove' this bubbles=false}}>{{fa-link 'trash-o'}}</td>
+
       </tr>
       {{/if}}
     {{/each}}

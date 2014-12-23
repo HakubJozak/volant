@@ -20,6 +20,22 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
     @render('quick_save',into: 'application', outlet: 'item_controls')
 
   actions:
+    addWorkcamp: (wc) ->
+      form = @currentModel
+      order = form.get('workcamp_assignments.lastObject.order') + 1 || 1
+      wa = @store.createRecord('workcamp_assignment', workcamp: wc, apply_form: form, order: order)
+      form.get('workcamp_assignments').pushObject(wa)
+      wa.save().then =>
+        @flash_info "#{wc.get('code')} added."
+      false
+
+    removeAssignment: (wa) ->
+      if wa.get('isNew')
+        @get('model').removeObject(wa)
+      else
+        wa.destroyRecord()
+      @flash_info "Workcamp removed from the application."
+
     create_payment: ->
       form = @modelFor('apply_form')
       payment = @store.createRecord('payment',apply_form: form,amount: form.get('fee'),mean: 'CASH', received: new Date())

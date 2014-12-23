@@ -3,8 +3,14 @@ form.form submit='search'
 
 table.table.table-condensed.sidepanel
   tbody
-    each
+    each itemController='workcamp_inside_apply_form'
       tr
+        td
+          if isAssigned
+            fa 'check'
+          else
+            .btn.btn-default{ action 'addWorkcamp' this bubbles='false'}
+              fa 'plus'
         td
           partial 'star'
         td

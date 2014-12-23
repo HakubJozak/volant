@@ -1,12 +1,12 @@
 <table class="table table-condensed table-hover col-lg-12 sidepanel">
   <tbody>
-    {{#each itemController='starred_workcamp'}}
+    {{#each itemController='workcamp_inside_apply_form'}}
     <tr>
       <td>
-        {{#if is_assigned}}
+        {{#if isAssigned}}
           <span title="This workcamp is already in the form.">{{fa 'check'}}</span>
         {{else}}
-          <a href="" {{action 'add_wc_to_form' this this bubbles=false}} title="Add workcamp to the form." class='btn btn-default btn-sm'>
+          <a href="" {{action 'addWorkcamp' this this bubbles=false}} title="Add workcamp to the form." class='btn btn-default btn-sm'>
             {{fa 'plus'}}
           </a>
         {{/if}}
