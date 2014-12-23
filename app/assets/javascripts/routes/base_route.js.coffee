@@ -15,6 +15,17 @@ Volant.BaseRoute = Ember.Route.extend
       @ajax_to_store('/stars',data).then (payload) =>
         console.log 'Starred'
 
+    createAssignment: (wc,form) ->
+      order = form.get('workcamp_assignments.lastObject.order') + 1 || 1
+      wa = @store.createRecord('workcamp_assignment', workcamp: wc, apply_form: form, order: order)
+      form.get('workcamp_assignments').pushObject(wa)
+      wc.get('workcamp_assignments').pushObject(wa)
+      wa.save().then =>
+        code = wc.get('code')
+        person = form.get('name')
+        @flash_info "#{person} assigned to #{code}."
+      false
+
     removeAssignment: (wa) ->
       if wa.get('isNew')
         @get('model').removeObject(wa)

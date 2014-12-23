@@ -1,7 +1,13 @@
 table.table.table-condensed.sidepanel
   tbody
-    each
+    each itemController='apply_form_inside_workcamp'
       tr
+        td
+          if isAssigned
+            fa 'check'
+          else
+            .btn.btn-default{action 'addApplyForm' this }
+              fa 'plus'
         td
           partial 'star'
         td

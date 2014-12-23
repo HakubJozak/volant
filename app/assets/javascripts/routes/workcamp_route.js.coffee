@@ -18,8 +18,9 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend
     @controllerFor('tags').set('content', @store.find('tag'));
 
   actions:
-    addToApplyForm: (form) ->
-      console.info 'adding'
+    addApplyForm: (form) ->
+      @send('createAssignment',@currentModel,form)
+      false
 
     cancel_import: ->
       id = @currentModel.get('id')

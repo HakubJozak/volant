@@ -21,12 +21,7 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
 
   actions:
     addWorkcamp: (wc) ->
-      form = @currentModel
-      order = form.get('workcamp_assignments.lastObject.order') + 1 || 1
-      wa = @store.createRecord('workcamp_assignment', workcamp: wc, apply_form: form, order: order)
-      form.get('workcamp_assignments').pushObject(wa)
-      wa.save().then =>
-        @flash_info "#{wc.get('code')} added."
+      @send('createAssignment',wc,@currentModel)
       false
 
     create_payment: ->
