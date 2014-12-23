@@ -18,7 +18,7 @@ Volant.ApplyForm = DS.Model.extend({
 
   name: Ember.computed.alias('volunteer.name')
   email: Ember.computed.alias('volunteer.email')
-  createdToday: Ember.computed.equal('createdAt',moment())
+  createdToday: (-> moment().isSame(@get('createdAt'),'day')  ).property('createdAt')
 
   becameInvalid: ->
    @invalidate_association('volunteer')

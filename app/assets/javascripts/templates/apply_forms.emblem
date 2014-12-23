@@ -38,6 +38,9 @@ table.table.table-striped.table-hover
       tr
         td
           partial 'star'
+          if createdToday
+            .label.label-success title='Submitted today'
+              | New
         td
           long-date createdAt
         td
