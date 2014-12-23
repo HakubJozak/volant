@@ -10,7 +10,7 @@ Volant.ApplyForm = DS.Model.extend({
 
   starred: DS.attr 'boolean'
   confirmed: DS.attr 'isodate'
-  created_at: DS.attr 'isodate'
+  createdAt: DS.attr 'isodate'
   cancelled: DS.attr 'isodate'
   fee: DS.attr 'number'
   general_remarks: DS.attr 'string'
@@ -18,6 +18,7 @@ Volant.ApplyForm = DS.Model.extend({
 
   name: Ember.computed.alias('volunteer.name')
   email: Ember.computed.alias('volunteer.email')
+  createdToday: Ember.computed.equal('createdAt',moment())
 
   becameInvalid: ->
    @invalidate_association('volunteer')

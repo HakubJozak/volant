@@ -5,7 +5,9 @@ class ApplyFormsController < ApplicationController
 
   def index
     search = Outgoing::ApplyForm.page(current_page).order("#{ApplyForm.table_name}.created_at desc")
-    search = search.joins(:current_workcamp,:current_assignment)
+    # TODO: move to scopes
+    search = search.joins('LEFT OUTER JOIN workcamps ON workcamps.id = current_workcamp_id_cached')
+    search = search.joins('LEFT OUTER JOIN workcamp_assignments ON workcamp_assignments.id = current_assignment_id_cached')
     search = search.includes(:volunteer)
     search = add_year_scope(search)
 

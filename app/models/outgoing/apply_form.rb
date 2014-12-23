@@ -5,7 +5,7 @@ module Outgoing
     after_save :update_free_places
     after_destroy :update_free_places
 
-    validates_presence_of :volunteer
+    validates_presence_of :volunteer, :fee
     delegate :asked, :accepted, :rejected, :rejected?, :infosheeted, to: :current_assignment, allow_nil: true
 
     belongs_to :volunteer, class_name: 'Volunteer'

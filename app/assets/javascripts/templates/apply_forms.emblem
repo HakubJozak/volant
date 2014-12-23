@@ -39,7 +39,7 @@ table.table.table-striped.table-hover
         td
           partial 'star'
         td
-          long-date created_at
+          long-date createdAt
         td
           link-to 'apply_form' this
             = gender-sign volunteer.gender

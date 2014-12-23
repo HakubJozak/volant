@@ -2,7 +2,7 @@ Volant.ApplyFormsController = Volant.ListController.extend({
   page: 1
   query: null
   state: null
-  sortProperties: ['created_at']
+  sortProperties: ['createdAt']
   sortAscending: false
   queryParams: ['page','year','query','state']
   query_placeholder: "Search by name, birth number, payment account or keyword..."
