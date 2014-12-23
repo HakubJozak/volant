@@ -4,7 +4,6 @@ Volant.ApplicationRoute = Ember.Route.extend({
 
   actions:
     yearChanged: ->
-
       false
     removeModal: ->
 #      $(".modal").modal("hide")

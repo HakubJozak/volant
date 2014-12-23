@@ -15,6 +15,14 @@ Volant.BaseRoute = Ember.Route.extend
       @ajax_to_store('/stars',data).then (payload) =>
         console.log 'Starred'
 
+    removeAssignment: (wa) ->
+      if wa.get('isNew')
+        @get('model').removeObject(wa)
+      else
+        wa.destroyRecord()
+      @flash_info "Workcamp removed from the application."
+      false
+
     save: ->
       @currentModel.get('errors').clear()
       @currentModel.save().then ( (wc) =>

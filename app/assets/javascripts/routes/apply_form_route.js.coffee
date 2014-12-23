@@ -29,13 +29,6 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
         @flash_info "#{wc.get('code')} added."
       false
 
-    removeAssignment: (wa) ->
-      if wa.get('isNew')
-        @get('model').removeObject(wa)
-      else
-        wa.destroyRecord()
-      @flash_info "Workcamp removed from the application."
-
     create_payment: ->
       form = @modelFor('apply_form')
       payment = @store.createRecord('payment',apply_form: form,amount: form.get('fee'),mean: 'CASH', received: new Date())

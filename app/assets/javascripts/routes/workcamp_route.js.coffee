@@ -1,4 +1,4 @@
-Volant.WorkcampRoute = Volant.BaseRoute.extend({
+Volant.WorkcampRoute = Volant.BaseRoute.extend
   model: (params) ->
     @store.find('workcamp', params.workcamp_id)
 
@@ -18,6 +18,9 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend({
     @controllerFor('tags').set('content', @store.find('tag'));
 
   actions:
+    addToApplyForm: (form) ->
+      console.info 'adding'
+
     cancel_import: ->
       id = @currentModel.get('id')
       url = "/workcamps/#{id}/cancel_import"
@@ -41,11 +44,3 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend({
         =>
           @flash_error 'Import failed.'
       false
-
-#  setupController: (controller, model) ->
-#    @controllerFor('workcamps').set('current_item', model);
-#    @_super(controller, model);
-
-#  deactivate: ->
-#    @controllerFor('workcamps').set('current_item', null);
-})
