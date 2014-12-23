@@ -1,7 +1,7 @@
-Volant.ApplyForm = DS.Model.extend({
+Volant.ApplyForm = DS.Model.extend
   current_workcamp:  DS.belongsTo 'workcamp', async: true
   current_assignment:  DS.belongsTo 'workcamp_assignment', async: true
-  message: DS.belongsTo 'message',async: true
+  current_message: DS.belongsTo 'message',async: true, inverse: null
   state: DS.attr 'state'
 
   workcamp_assignments:  DS.hasMany 'workcamp_assignment', async: true, inverse: 'apply_form'
@@ -43,4 +43,3 @@ Volant.ApplyForm = DS.Model.extend({
 
   add_workcamp: (wc) ->
     console.info wc.id
-})

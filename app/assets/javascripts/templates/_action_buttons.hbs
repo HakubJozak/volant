@@ -1,5 +1,5 @@
-{{#if message}}
-  {{#link-to 'message' message class='btn btn-warning'}}
+{{#if current_message}}
+  {{#link-to 'message' current_message class='btn btn-warning'}}
     {{fa 'send'}} Message
   {{/link-to}}
 {{else}}

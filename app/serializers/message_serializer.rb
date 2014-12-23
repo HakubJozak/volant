@@ -11,7 +11,4 @@ class MessageSerializer < Barbecue::BaseSerializer
   end
 
   attributes *[ MessageSerializer.public_attributes, MessageSerializer.private_attributes ].flatten
-
-
-
 end

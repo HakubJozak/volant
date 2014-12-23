@@ -87,6 +87,7 @@ Volant.BaseRoute = Ember.Route.extend
 
       try
         $.post url, data, (response) =>
+          console.info 'Payload', response
           @store.pushPayload(response)
           resolve(response)
       catch e

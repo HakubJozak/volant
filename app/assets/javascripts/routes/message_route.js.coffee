@@ -55,8 +55,10 @@ Volant.MessageRoute = Volant.BaseRoute.extend({
   actions:
     send_message: ->
       @currentModel.save().then (msg) =>
+        form = msg.get('apply_form')
         url = "/messages/#{msg.get('id')}/deliver"
         @ajax_to_store(url).then ((payload) =>
+          @transitionTo('apply_form', form) if form
           @flash_info 'Message sent.'),
         =>
           @flash_error 'Send failed'
