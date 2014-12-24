@@ -1,8 +1,13 @@
-Volant.ApplyFormActionPickerController = Ember.ObjectController.extend
+Volant.ApplyFormActionPickerController = Ember.ObjectController.extend Volant.AjaxToStoreMixin,
   actions:
-    changeAssignment: ->
-      @get('apply_form.current_assignment').then (wa) ->
-        console.info 'changing', wa
+    changeState: ->
+      action = @get('action_name')
+      form = @get('apply_form')
+      url = "/apply_forms/#{form.get('id')}/#{action}"
+      @ajax_to_store(url).then ((payload) =>
+        @flash_info 'State changed'), (err) =>
+        console.error err
+        @flash_error 'Failed.'
       @send 'closeModal'
 
     openMessage: ->

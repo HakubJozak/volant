@@ -93,7 +93,7 @@ class ApplyFormsController < ApplicationController
   end
 
   def infosheet
-    @form.infosheet
+    @apply_form.infosheet
     render_apply_form
   end
 

@@ -1,4 +1,4 @@
-Volant.BaseRoute = Ember.Route.extend
+Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin,
   afterModel: (model,transition) ->
     if title = @get('title')
       $(document).attr('title', "#{title.call(this,model)} - Volant")
@@ -78,17 +78,3 @@ Volant.BaseRoute = Ember.Route.extend
 
   flash_error: (msg) ->
     @controllerFor('application').set('flash', {type: 'error', message: msg })
-
-  ajax_to_store: (url,data = {}) ->
-    new Promise (resolve, reject) =>
-      csrf_token = $('meta[name="csrf-token"]').attr('content')
-      csrf_param = $('meta[name="csrf-param"]').attr('content')
-      data.authenticity_token = csrf_token
-
-      try
-        $.post url, data, (response) =>
-          console.info 'Payload', response
-          @store.pushPayload(response)
-          resolve(response)
-      catch e
-        reject(e)

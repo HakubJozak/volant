@@ -15,4 +15,4 @@ Volant.ApplyFormActions = Ember.Mixin.create
             @flash_info 'Application cancelled.'
         else
           model = Ember.Object.create { action_name: action, apply_form: form }
-          @render 'apply_form/action_dialog',outlet: 'modal', controller: 'apply_form_action_picker', model: model
+          @render 'apply_form/action_picker',outlet: 'modal', controller: 'apply_form_action_picker', model: model
