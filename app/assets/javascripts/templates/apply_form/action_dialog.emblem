@@ -1,0 +1,24 @@
+#modal
+  .panel.panel-default
+    .panel-heading
+      h1.panel-title Do you want to send an email?
+
+      button.close click='closeModal'
+        fa 'times'
+
+    .panel-body
+      .row
+        .col-lg-4
+          .btn.huge.green
+            fa 'envelope'
+            p.text-center Yes, let's send an email
+
+        .col-lg-4
+          .btn.huge.green
+            fa 'bolt'
+            p.text-center No, just mark it as done
+
+        .col-lg-4
+          .btn.huge.red
+            fa 'times'
+            p.text-center Cancel

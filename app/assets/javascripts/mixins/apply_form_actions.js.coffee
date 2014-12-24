@@ -1,6 +1,9 @@
-Volant.ApplyFormActions = Ember.Mixin.create({
+Volant.ApplyFormActions = Ember.Mixin.create
 
   actions:
+    closeModal: ->
+      @disconnectOutlet 'modal'
+
     apply_form_action: (action,form) ->
       switch action
         when 'pay'
@@ -11,9 +14,11 @@ Volant.ApplyFormActions = Ember.Mixin.create({
           @ajax_to_store(url).then (payload) =>
             @flash_info 'Application cancelled.'
         else
-          @open_message_for(action,form)
+          @render 'apply_form/action_dialog',outlet: 'modal'
+#          @openMessageFor(action,form)
 
-  open_message_for: (action_name,apply_form) ->
+
+  openMessageFor: (action_name,apply_form) ->
     @store.find('user',@get('current_user.content.id')).then (user) =>
       apply_form.get('current_workcamp').then (workcamp) =>
         message = @store.createRecord 'message', {
@@ -25,7 +30,3 @@ Volant.ApplyFormActions = Ember.Mixin.create({
         @transitionTo('message',message)
 
     false
-
-
-
-})

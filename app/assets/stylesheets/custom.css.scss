@@ -215,3 +215,62 @@ table.import-changes {
     border: 1px solid $border-color;
   }
 }
+
+
+#modal {
+  $padding: 1em;
+
+  background-color: rgba(0,0,0,0.3);
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 1000000;
+
+  .close {
+    position: relative;
+    top: -0.8em;
+  }
+  .panel {
+    width: 60%;
+    margin: 10%  auto 0;
+  }
+}
+
+
+@mixin huge-button($color,$bgcolor) {
+  &:hover {
+    background-color: $bgcolor;
+    @include single-text-shadow($color: lighten($color,40%),$hoff: 1px,$voff: 1px);
+
+    i.fa {
+      color: $color;
+      @include single-text-shadow(none);
+    }
+
+    border: 1px solid $color;
+  }
+
+  i.fa {
+    color: #eee;
+    font-size: 550%;
+    display: block;
+  }
+
+  p { margin-top: 1em; }
+
+  font-size: 120%;
+  min-height: 6em;
+  width: 100%;
+  border: 1px solid transparent;
+}
+
+.btn.huge.red {
+  @include huge-button($red,lighten($red,30%));
+}
+
+.btn.huge.green {
+  @include huge-button($green,lighten($green,45%));
+}
