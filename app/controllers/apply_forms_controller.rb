@@ -1,7 +1,7 @@
 class ApplyFormsController < ApplicationController
 
   serialization_scope :current_user
-  before_action :find_apply_form, only: [ :show, :update, :destroy, :cancel ]
+  before_action :find_apply_form, only: [ :show, :update, :destroy, :cancel, :ask, :accept, :infosheet, :reject ]
 
   def index
     search = Outgoing::ApplyForm.page(current_page).order("#{ApplyForm.table_name}.created_at desc")
@@ -52,16 +52,11 @@ class ApplyFormsController < ApplicationController
     head :no_content
   end
 
-  def cancel
-    @apply_form.cancel
-    render json: @apply_form, serializer: ApplyFormSerializer
-  end
-
   def create
     @apply_form = Outgoing::ApplyForm.new(apply_form_params)
 
     if @apply_form.save
-      render json: @apply_form, serializer: ApplyFormSerializer
+      render_apply_form
     else
       render json: { errors: @apply_form.errors }, status: 422
     end
@@ -69,7 +64,7 @@ class ApplyFormsController < ApplicationController
 
   def update
     if  @apply_form.update(apply_form_params)
-      render json: @apply_form, serializer: ApplyFormSerializer
+      render_apply_form
     else
       render json: { errors: @apply_form.errors }, status: 422
     end
@@ -77,7 +72,29 @@ class ApplyFormsController < ApplicationController
 
 
   def show
-    render json: @apply_form, serializer: ApplyFormSerializer
+    render_apply_form
+  end
+
+  # ---- non-REST actions
+
+  def cancel
+    @apply_form.cancel
+    render_apply_form
+  end
+
+  def ask
+    @apply_form.ask
+    render_apply_form
+  end
+
+  def accept
+    @apply_form.accept
+    render_apply_form
+  end
+
+  def infosheet
+    @form.infosheet
+    render_apply_form
   end
 
   private
@@ -93,6 +110,10 @@ class ApplyFormsController < ApplicationController
 
   def filter
     params.permit(:starred,:q,:state,:p,:year)
+  end
+
+  def render_apply_form
+    render json: @apply_form, serializer: ApplyFormSerializer
   end
 
 end

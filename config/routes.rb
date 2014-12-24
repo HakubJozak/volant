@@ -32,6 +32,10 @@ Rails.application.routes.draw do
   resources :apply_forms do
     member do
       post :cancel
+      post :ask
+      post :accept
+      post :reject
+      post :infosheet
     end
   end
 

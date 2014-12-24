@@ -42,7 +42,7 @@ module Outgoing
       order = if workcamp_assignments.empty?
                 1
               else
-                workcamp_assignment.last.order + 1
+                workcamp_assignments.last.order + 1
               end
 
       workcamp_assignments.create!(apply_form: self, workcamp: wc, order: order)
@@ -166,97 +166,14 @@ module Outgoing
 
     # TODO - use Proc, Method or at least define_method
     [ "accept", "reject", "ask", "infosheet" ].each do |action|
-      eval %{
-        def #{action}(time = nil)
-          raise "This apply form has no current assignment, cannot run action #{action}" unless self.current_assignment
-          current_assignment.#{action}(time)
-            self.reload
-        end
-      }
-    end
-
-    ##############################################################
-    # TODO - move to library?
-    ##############################################################
-
-    class NoWorkcampError < StandardError
-    end
-
-    class InvalidModelError < StandardError
-      attr_reader :model
-      def initialize(model)
-        super
-        @model = model
+      define_method(action) do |time = Time.now|
+        raise "This apply form has no current assignment, cannot run action #{action}" unless self.current_assignment
+        current_assignment.send(action,time)
+        self.reload
       end
-    end
-
-    MAIL_FAILED_TAG = 'mail problems'
-    POSSIBLE_DUPLICATE = 'duplicate volunteer?'
-
-    FORM_ATTRS = [ :general_remarks, :motivation ]
-    VOLUNTEER_ATTRS = [
-                       :firstname, :lastname, :gender,
-                       :email, :phone,
-                       :birthdate, :birthnumber,
-                       :nationality, :occupation,
-                       :street, :city, :zipcode,
-                       :contact_street, :contact_city, :contact_zipcode,
-                       :emergency_name, :emergency_day, :emergency_night,
-                       :speak_well, :speak_some,
-                       :special_needs,
-                       :past_experience,
-                       :comments
-                      ]
-
-    # Assumes that supplied hash contains ApplyForm and Volunteer
-    # attributes, distributes them accordingly and creates/updates
-    # underlying models.
-    #
-    # Typically used from REST interface.
-    def self.create_from_hash!(params, user = nil)
-      # FIXME - proc je tu potreba dvojity :apply_form?
-      hash = params[:apply_form][:apply_form]
-
-      volunteer, volunteer_creation_code = Volunteer.create_or_update(filter(hash, VOLUNTEER_ATTRS))
-      apply_form = ApplyForm.new(filter(hash, FORM_ATTRS))
-      apply_form.volunteer = volunteer
-      workcamps = Outgoing::Workcamp.find(hash["workcamps_ids"]).sort! do |w1,w2|
-        hash["workcamps_ids"].index(w1.id) <=> hash["workcamps_ids"].index(w2.id)
-      end
-
-
-      raise InvalidModelError.new(apply_form) unless apply_form.valid?
-      raise InvalidModelError.new(volunteer) unless volunteer.valid?
-      raise NoWorkcampError and return if workcamps.empty?
-
-      volunteer.save!
-      apply_form.save!
-
-      workcamps.each_with_index do |wc,i|
-        Outgoing::WorkcampAssignment.new(:order => (i+1), :workcamp => wc, :apply_form => apply_form).save!
-      end
-
-      if volunteer_creation_code == :created_but_uncertain
-        apply_form.tag_list.add(POSSIBLE_DUPLICATE)
-        apply_form.save!
-      end
-
-      begin
-        # TODO - uzivatele vzit z konfigurace
-        mail = ApplyFormMail.new(:action => :submitted,
-                                 :form => apply_form,
-                                 :user => User.find_by_login('admin'))
-        mail.deliver
-      rescue
-        apply_form.tag_list.add(MAIL_FAILED_TAG)
-        apply_form.save!
-      end
-
-      apply_form
     end
 
     private
-
 
     def self.filter(hash, attrs)
       filtered = {}

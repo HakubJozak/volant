@@ -95,5 +95,15 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_equal :cancelled,@apply_form.reload.state.name
   end
 
+  test 'ask' do
+    wc = Factory(:outgoing_workcamp)
+    form = Factory(:paid_form)
+    form.assign_workcamp(wc)
+
+    post :ask, id: form.id
+
+    assert_response :success
+    assert_equal :asked,form.reload.state.name
+  end
 
 end
