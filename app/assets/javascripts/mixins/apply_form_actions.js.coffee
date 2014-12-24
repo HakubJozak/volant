@@ -14,19 +14,5 @@ Volant.ApplyFormActions = Ember.Mixin.create
           @ajax_to_store(url).then (payload) =>
             @flash_info 'Application cancelled.'
         else
-          @render 'apply_form/action_dialog',outlet: 'modal'
-#          @openMessageFor(action,form)
-
-
-  openMessageFor: (action_name,apply_form) ->
-    @store.find('user',@get('current_user.content.id')).then (user) =>
-      apply_form.get('current_workcamp').then (workcamp) =>
-        message = @store.createRecord 'message', {
-          action: action_name
-          apply_form: apply_form
-          user: user
-        }
-
-        @transitionTo('message',message)
-
-    false
+          model = Ember.Object.create { action_name: action, apply_form: form }
+          @render 'apply_form/action_dialog',outlet: 'modal', controller: 'apply_form_action_picker', model: model

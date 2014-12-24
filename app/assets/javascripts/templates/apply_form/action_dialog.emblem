@@ -1,7 +1,8 @@
 #modal
   .panel.panel-default
     .panel-heading
-      h1.panel-title Do you want to send an email?
+      h1.panel-title
+        capitalize action_name
 
       button.close click='closeModal'
         fa 'times'
@@ -9,16 +10,16 @@
     .panel-body
       .row
         .col-lg-4
-          .btn.huge.green
+          .btn.huge.green click='openMessage'
             fa 'envelope'
             p.text-center Yes, let's send an email
 
         .col-lg-4
-          .btn.huge.green
+          .btn.huge.green click='changeAssignment'
             fa 'bolt'
             p.text-center No, just mark it as done
 
         .col-lg-4
-          .btn.huge.red
+          .btn.huge.red click='closeModal'
             fa 'times'
             p.text-center Cancel
