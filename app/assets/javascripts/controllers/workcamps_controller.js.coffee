@@ -1,4 +1,4 @@
-Volant.WorkcampsController = Volant.ListController.extend({
+Volant.WorkcampsController = Volant.ListController.extend
   needs: ['countries','workcamp_intentions','organizations','tags','starred_workcamps']
 
   page: 1
@@ -56,4 +56,3 @@ Volant.WorkcampsController = Volant.ListController.extend({
       @set('countries',[])
       @set('organizations',[])
       @send('search')
-})

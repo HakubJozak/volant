@@ -122,16 +122,20 @@
     </div>
   </fieldset>
 
-  {{#unless delivered}}
-  <button type="submit" class="btn btn-default">
-    Save & Close
-  </button>
-  <button type="button" class="btn btn-primary" {{action 'sendMessage' }}>
-    {{fa 'send-o'}}
-    Send
-  </button>
-  {{/unless}}
+  <div class='row'>
+    <div class="col-lg-11 col-lg-offset-1">
+    {{#unless delivered}}
+    <button type="submit" class="btn btn-default">
+      Save & Close
+    </button>
+    <button type="button" class="btn btn-primary" {{action 'sendMessage' }}>
+      {{fa 'send-o'}}
+      Send
+    </button>
+    {{/unless}}
 
-  {{button 'Delete' 'remove' 'btn-danger pull-right' }}
+    {{button 'Delete' 'remove' 'btn-danger pull-right' }}
+    </div>
+  </div>
 </form>
 </div>

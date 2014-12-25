@@ -165,7 +165,7 @@ module Outgoing
     end
 
     # TODO - use Proc, Method or at least define_method
-    [ "accept", "reject", "ask", "infosheet" ].each do |action|
+    [ "accept","ask","reject","infosheet" ].each do |action|
       define_method(action) do |time = Time.now|
         raise "This apply form has no current assignment, cannot run action #{action}" unless self.current_assignment
         current_assignment.send(action,time)

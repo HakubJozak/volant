@@ -1,4 +1,9 @@
 Volant.MessagesRoute = Volant.BaseRoute.extend({
   model: (params) ->
-    @store.find('message',user_id: @get('current_user.content.id'))
+    user_id = @get('current_user.content.id')
+    @store.find('message',user_id: user_id,p: params.page)
+
+  actions:
+    search: ->
+      @refresh()
 })

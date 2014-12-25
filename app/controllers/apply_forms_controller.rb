@@ -87,6 +87,11 @@ class ApplyFormsController < ApplicationController
     render_apply_form
   end
 
+  def reject
+    @apply_form.reject
+    render_apply_form
+  end
+
   def accept
     @apply_form.accept
     render_apply_form

@@ -7,7 +7,7 @@ class MessageSerializer < Barbecue::BaseSerializer
   end
 
   def self.private_attributes
-    [:id, :sent_at]
+    [:id, :sent_at, :created_at]
   end
 
   attributes *[ MessageSerializer.public_attributes, MessageSerializer.private_attributes ].flatten

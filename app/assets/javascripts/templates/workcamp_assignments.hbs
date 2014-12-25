@@ -40,9 +40,9 @@
         </td>
       </tr>
     {{else}}
-      <tr class='workcamp_assignment'>
+      <tr {{bind-attr class=":workcamp_assignment status"}}>
         <td>
-          {{#if is_current_workcamp}}
+          {{#if isCurrentWorkcamp}}
             {{fa 'circle'}}
           {{/if}}
         </td>
@@ -53,7 +53,7 @@
         <td>{{workcamp-state-icon state}}</td>
         <td>{{workcamp.code}}</td>
         <td>
-          {{#link-to 'workcamp' workcamp}}
+          {{#link-to 'workcamp' workcamp class=status}}
             {{workcamp.name}}
           {{/link-to}}
         </td>

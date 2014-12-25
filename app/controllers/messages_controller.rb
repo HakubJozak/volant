@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy, :deliver]
 
   def index
-    search = Message.page(current_page).order(created_at: :desc)
+    search = Message.page(current_page).order('sent_at DESC NULLS FIRST,created_at DESC')
 
     if id = params[:user_id]
       search = search.where(user_id: id)

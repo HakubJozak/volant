@@ -8,9 +8,10 @@ Volant.Message = DS.Model.extend
   from: DS.attr 'string'
   subject: DS.attr 'string'
   html_body: DS.attr 'string'
-  sent_at: DS.attr 'date'
   action: DS.attr 'string'
+  sentAt: DS.attr 'isodate'
+  createdAt: DS.attr 'isodate'
 
   # for the collision with {{action}} helper in Handlebars templates
   action_name: Ember.computed.alias('action')
-  delivered: Ember.computed.alias('sent_at')
+  delivered: Ember.computed.alias('sentAt')

@@ -3,8 +3,28 @@ Volant.WorkcampAssignmentController = Ember.ObjectController.extend({
   edited: false
   edited_or_new: Ember.computed.or('edited','isNew')
 
-  is_current_workcamp: (->
-    @get('workcamp') == @get('apply_form.current_workcamp')
+  status: (->
+    if @get('isCurrentWorkcamp')
+      'active'
+    else if @get('order') < @get('apply_form.current_assignment.order')
+      'text-muted'
+
+    # if @get('apply_form.cancelled')
+    #   return 'text-danger'
+
+    # if @get('isCurrentWorkcamp')
+    #   if @get('accepted')
+    #     'text-success'
+    #   else if @get('rejected')
+    #     'text-danger'
+    #   else if @get('asked')
+    #     'text-warning'
+    #   else
+    #     'text-active'
+  ).property('isCurrentWorkcamp','order','apply_form.current_assignment.order')
+
+  isCurrentWorkcamp: (->
+    @get('workcamp.id') == @get('apply_form.current_workcamp.id')
   ).property('model')
 
   actions:

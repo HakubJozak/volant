@@ -1,5 +1,3 @@
-Volant.MessagesController = Volant.ListController.extend({
+Volant.MessagesController = Volant.ListController.extend
   page: 1
   queryParams: ['page']
-
-})
