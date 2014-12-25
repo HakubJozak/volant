@@ -1,4 +1,4 @@
-Volant.ApplyFormsRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions,{
+Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
   # queryParams: {
   #    sortProperties: { refreshModel: true },
   #    sortAscending: { refreshModel: true }
@@ -20,17 +20,8 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions,{
     @render('apply_forms')
 
   actions:
-    apply_form_action: (action,form) ->
-      switch action
-        when 'pay'
-          @transitionTo('apply_form',form,{ queryParams: { anchor: 'payment-fields'}})
-        when 'cancel'
-          url = "/apply_forms/#{form.get('id')}/cancel"
-          @ajax_to_store(url).then (payload) =>
-            @flash_info 'Application cancelled.'
-
-        else
-          @open_message_for action,form
+    pay: ->
+      @transitionTo('apply_form',form,{ queryParams: { anchor: 'payment-fields'}})
 
     search: ->
       @refresh()
@@ -43,5 +34,3 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions,{
     refresh: ->
       @refresh()
       false
-
-})

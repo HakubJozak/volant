@@ -4,10 +4,13 @@ Volant.ApplyFormActions = Ember.Mixin.create
     closeModal: ->
       @disconnectOutlet 'modal'
 
+    pay: ->
+      @controllerFor('apply_form').set('anchor','payment-fields')
+
     apply_form_action: (action,form) ->
       switch action
         when 'pay'
-          @controllerFor('apply_form').set('anchor','payment-fields')
+          @send 'pay'
 
         when 'cancel'
           url = "/apply_forms/#{form.get('id')}/cancel"
