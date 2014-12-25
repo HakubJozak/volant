@@ -1,0 +1,22 @@
+h3 Email Templates
+
+table.table.table-striped.table-hover
+  thead
+    th Title
+    th Action
+    th.text-right
+      link-to 'email_templates.new' class='btn btn-success'
+        | {{fa 'plus'}} New Email Template
+  tbody
+    each
+      tr
+        td
+          link-to 'email_template' this
+            = title
+        td
+          = action_name
+        td
+          = subject
+
+
+outlet

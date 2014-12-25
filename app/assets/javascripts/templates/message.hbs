@@ -1,4 +1,13 @@
-<h1>Message <small>'{{subject}}'</small></h1>
+<h1>
+  Message
+  <small>
+  {{#if subject}}
+    '{{subject}}'
+  {{else}}
+    [no subject]
+  {{/if}}
+  </small>
+</h1>
 
 {{#if errors.firstObject}}
   <div class="alert alert-danger" role="alert">{{join-errors errors}}</div>
@@ -31,7 +40,7 @@
       <div class="col-lg-4">
           {{view Ember.Select
           contentBinding='controllers.email_templates.content'
-          optionLabelPath="content.action_name"
+          optionLabelPath="content.title"
           selectionBinding="selectedTemplate"
           class="form-control" }}
       </div>
@@ -43,8 +52,6 @@
       </div>
       {{/unless}}
     </div>
-
-
 
     <div class="form-group" >
       <label class="col-lg-1 control-label">Cc</label>
