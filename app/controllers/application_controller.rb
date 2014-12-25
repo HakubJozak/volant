@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_page
-    params[:p] || 1
+    params[:p] || params[:page] || 1
   end
 
   def add_year_scope(search)

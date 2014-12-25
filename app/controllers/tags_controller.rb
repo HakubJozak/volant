@@ -5,7 +5,7 @@ class TagsController < ApplicationController
 
   # GET /tags
   def index
-    @tags = ColoredTag.all
+    @tags = ColoredTag.order(:name).all
     render json: @tags, each_serializer: TagSerializer
   end
 

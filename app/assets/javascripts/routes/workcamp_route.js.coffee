@@ -15,7 +15,7 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend
     @controllerFor('countries').set('content', @store.find('country'));
     @controllerFor('workcamp_intentions').set('content', @store.find('workcamp_intention'));
     @controllerFor('organizations').set('content', @store.find('organization'));
-    @controllerFor('tags').set('content', @store.find('tag'));
+    @controllerFor('tags').set('content', @store.filter('tag',{},-> true));
 
   actions:
     addApplyForm: (form) ->

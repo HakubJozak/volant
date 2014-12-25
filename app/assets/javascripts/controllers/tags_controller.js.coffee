@@ -1,2 +1,2 @@
-Volant.TagsController = Ember.ArrayController.extend({
-})
+Volant.TagsController = Ember.ArrayController.extend
+  sortProperties: ['name']

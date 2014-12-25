@@ -2,12 +2,15 @@
 # http://emberjs.com/guides/models/pushing-records-into-the-store/
 
 Volant.ApplicationStore = DS.Store.extend({
-
 })
 
 # Override the default adapter with the `DS.ActiveModelAdapter` which
 # is built to work nicely with the ActiveModel::Serializers gem.
 Volant.ApplicationAdapter = DS.ActiveModelAdapter.extend({
+  coalesceFindRequests: true
+  # findMany: (store,type,ids) ->
+  #   console.info 'caught',type,ids
+  #   @_super(store,type,ids)
 })
 
 
@@ -24,7 +27,7 @@ Volant.ApplicationSerializer = DS.ActiveModelSerializer.extend({
       @_super(record,json.relationship)
 })
 
-Volant.ApplyFormAdapter = DS.ActiveModelAdapter.extend({
+Volant.ApplyFormAdapter = Volant.ApplicationAdapter.extend({
   ajaxError: (jqXHR) ->
     error = this._super(jqXHR)
 
