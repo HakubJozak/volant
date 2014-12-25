@@ -35,6 +35,7 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin,
       false
 
     save: ->
+      console.log 'Saving',@currentModel
       @currentModel.get('errors').clear()
       @currentModel.save().then ( (wc) =>
         @go_to_plural_route(@currentModel)
@@ -46,13 +47,16 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin,
       false
 
     remove: ->
-      @currentModel.destroyRecord().then (=>
-        @flash_info 'Deleted.'
-        @go_to_plural_route()
-        ), ( (e) =>
-         console.error e
-         @flash_error "Failed."
-        )
+      if @currentModel.get('isNew')
+        @currentModel.deleteRecord()
+      else
+        @currentModel.destroyRecord().then (=>
+          @flash_info 'Deleted.'
+          @go_to_plural_route()
+          ), ( (e) =>
+           console.error e
+           @flash_error "Failed."
+          )
       false
 
 
