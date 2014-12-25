@@ -1,4 +1,4 @@
-Volant.ImportedWorkcampsRoute = Volant.WorkcampsRoute.extend({
+Volant.ImportedWorkcampsRoute = Volant.WorkcampsRoute.extend
   controllerName: 'workcamps'
   title: -> "Imported Workcamps"
   default_filter: -> { state: 'imported' }
@@ -59,7 +59,3 @@ Volant.ImportedWorkcampsRoute = Volant.WorkcampsRoute.extend({
         cache: false
         contentType: false
         processData: false
-
-
-
-})

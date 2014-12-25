@@ -5,7 +5,7 @@ class StarsController < ApplicationController
     record = model.find(star_params[:id])
     record.update_column(:starred, star_params[:value])
     # TODO: render just 'starred' attribute change
-    render json: record
+    render json: record, root: model.to_s.downcase
   end
 
   private
@@ -16,8 +16,8 @@ class StarsController < ApplicationController
 
   def model
     case star_params[:model]
-    when 'workcamp' then Outgoing::Workcamp
-    when 'apply_form' then Outgoing::ApplyForm
+    when 'workcamp' then Workcamp
+    when 'apply_form' then ApplyForm
 #    when 'volunteer' then Volunteer
     else raise "Cannot star model #{params.inspect}"
     end

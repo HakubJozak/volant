@@ -1,5 +1,7 @@
 - [ ] 'oblibene' campy a prihlasky pro kazdeho uzivatel zvlast (ted je to pro vsechny stejne)
-- zobrazovani chyb, pokud se nepodari ulozit workcamp
+- [ ] vytvorit novou organizaci
+- [ ] zobrazovani chyb, pokud se nepodari ulozit workcamp
+
 
 # Outgoing
  - [ ] dashboard
@@ -11,8 +13,8 @@ Zpravy
   - [x] formatovani textu (bold,linky...)
 
 Workflow
-  - [ ] zmenit stav bez odeslani zpravy
-  - [ ] (bug) nechat prihlasku pripojenou ke zprave i po odeslani
+  - [x] zmenit stav bez odeslani zpravy
+  - [x] (bug) nechat prihlasku pripojenou ke zprave i po odeslani
   - [ ] pridat dalsi kroky - odeslani a prijeti evaluacniho dotazniku (evaluation_sent/received?)
 
 Workcampy

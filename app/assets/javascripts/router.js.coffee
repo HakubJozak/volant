@@ -1,4 +1,4 @@
-Volant.Router.map () ->
+Volant.Router.map ->
   @resource 'apply_forms'
   @route 'payments'
   @resource 'volunteers'
@@ -14,11 +14,13 @@ Volant.Router.map () ->
 
   @resource 'imported_workcamps'
 
-  @resource 'incoming'
+  @resource 'incoming_workcamps', path: '/incoming/workcamps'
+  @resource 'ltv_workcamps', path: '/ltv/workcamps'
 
 
   @resource 'organizations'
-  @resource('organization', path: '/organizations/:organization_id')
+  @resource 'organization', path: '/organizations/:organization_id'
+
   @resource 'message', {path: '/messages/:message_id'}
   @resource 'messages'
 

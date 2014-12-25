@@ -5,7 +5,7 @@ class WorkcampsController < ApplicationController
   before_action :find_workcamp, only: [ :show, :update, :destroy, :cancel_import, :confirm_import ]
 
   def index
-    search = Outgoing::Workcamp.order(:name).page(current_page)
+    search = workcamps.order(:name).page(current_page)
     search = search.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
     search = add_year_scope(search)
 
@@ -122,12 +122,12 @@ class WorkcampsController < ApplicationController
   private
 
   def find_workcamp
-    @workcamp = Workcamp.find(params[:id])
+    @workcamp = workcamps.find(params[:id])
   end
 
   def filter
     params.permit(:starred,:state,:p,:year,:q,:from,:to,:min_duration,:max_duration,:min_age,
-                  :max_age,:free,:free_males,:free_females,
+                  :max_age,:free,:free_males,:free_females,:type,
                   :tag_ids => [], :country_ids => [], :workcamp_intention_ids => [], :organization_ids => [])
   end
 
@@ -147,4 +147,15 @@ class WorkcampsController < ApplicationController
               :longitude, :latitude, :requirements,
               :organization_id, :country_id, :tag_ids => [], :workcamp_intention_ids => [])
   end
+
+  def workcamps
+    if params[:type] == 'incoming'
+      # TODO - rather use organization_id to distinguish it
+      Workcamp.where(type: 'Incoming::Workcamp')
+    else
+      Workcamp
+    end
+  end
+
+
 end

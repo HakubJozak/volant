@@ -7,6 +7,15 @@ class Workcamp < ActiveRecord::Base
 
   create_date_time_accessors
 
+  include Outgoing::FreePlacesUpdater
+  before_save :update_free_places_for_workcamp
+
+  validates_presence_of :name, :country, :organization, :publish_mode
+
+  has_many :workcamp_assignments, dependent: :destroy, class_name: 'Outgoing::WorkcampAssignment'
+  has_many :apply_forms, through: :workcamp_assignments, dependent: :destroy, class_name: 'Outgoing::ApplyForm'
+
+
   DURATION_SQL = '(EXTRACT(epoch FROM age("end","begin"))/(3600 * 24))'
   scope :min_duration, lambda { |d| where("#{DURATION_SQL} >= ?", d) }
   scope :max_duration, lambda { |d| where("#{DURATION_SQL} <= ?", d) }
