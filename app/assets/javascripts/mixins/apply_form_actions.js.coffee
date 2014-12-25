@@ -10,7 +10,7 @@ Volant.ApplyFormActions = Ember.Mixin.create
     apply_form_action: (action,form) ->
       switch action
         when 'pay'
-          @send 'pay'
+          @send 'pay',form
 
         when 'cancel'
           url = "/apply_forms/#{form.get('id')}/cancel"

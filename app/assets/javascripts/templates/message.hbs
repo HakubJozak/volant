@@ -28,12 +28,18 @@
 
       {{#unless delivered}}
       <label class="col-lg-1 control-label">Template</label>
-      <div class="col-lg-5">
+      <div class="col-lg-4">
           {{view Ember.Select
           contentBinding='controllers.email_templates.content'
           optionLabelPath="content.action_name"
-          selectionBinding="emailTemplate"
+          selectionBinding="selectedTemplate"
           class="form-control" }}
+      </div>
+      <div class="col-lg-1">
+        <button type="button" class="btn btn-default" {{action 'useSelectedTemplate'}} title='Use selected template'>
+          {{fa 'refresh'}}
+          Use
+        </button>
       </div>
       {{/unless}}
     </div>
@@ -113,7 +119,7 @@
   <button type="submit" class="btn btn-default">
     Save & Close
   </button>
-  <button type="button" class="btn btn-primary" {{action 'send_message' }}>
+  <button type="button" class="btn btn-primary" {{action 'sendMessage' }}>
     {{fa 'send-o'}}
     Send
   </button>

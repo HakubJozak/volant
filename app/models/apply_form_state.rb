@@ -39,6 +39,11 @@ class ApplyFormState
                else []
                end
 
+    # remove workcamp related actions, if there is no current workcamp
+    unless form.current_assignment
+      @actions.delete_if { |k,v| [ :ask,:accept,:reject,:infosheet ].include?(k) }
+    end
+
     # TODO - solve in model
     @time = if String === time
               Time.parse time

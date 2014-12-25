@@ -20,7 +20,7 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
     @render('apply_forms')
 
   actions:
-    pay: ->
+    pay: (form) ->
       @transitionTo('apply_form',form,{ queryParams: { anchor: 'payment-fields'}})
 
     search: ->

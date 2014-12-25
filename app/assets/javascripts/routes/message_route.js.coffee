@@ -7,31 +7,32 @@ Volant.MessageRoute = Volant.BaseRoute.extend({
     else
       @transitionTo 'messages'
 
-  setupController: (controller,model) ->
+  setupController: (controller,message) ->
     @store.find('email_template').then (templates) =>
-      tmpl = templates.findBy('action',model.get('action'))
+      tmpl = templates.findBy('action',message.get('action'))
       @controllerFor('email_templates').set('content',templates)
-      controller.set('emailTemplate',tmpl)
+      controller.set('selectedTemplate',tmpl)
 
-      if model.get('isNew') && tmpl
-        context = @message_context(model).then (context) ->
-          console.log 'Message context', context
-          model.set 'subject', tmpl.eval_field('subject',context)
-          model.set 'html_body', tmpl.eval_field('body',context)
-          model.set 'from', tmpl.eval_field('from',context)
-          model.set 'to', tmpl.eval_field('to',context)
-          model.set 'cc', tmpl.eval_field('cc',context)
-          model.set 'bcc', tmpl.eval_field('bcc',context)
-      else
-        console.info 'sheet'
+      if message.get('isNew') && tmpl
+        @applyTemplate(tmpl,message)
 
-    @_super(controller,model)
+    @_super(controller,message)
 
-  message_context: (model) ->
-    model.get('apply_form').then (apply_form) =>
+  applyTemplate: (tmpl,message) ->
+    context = @message_context(message).then (context) ->
+      console.log 'Message context', context
+      message.set 'subject', tmpl.eval_field('subject',context)
+      message.set 'html_body', tmpl.eval_field('body',context)
+      message.set 'from', tmpl.eval_field('from',context)
+      message.set 'to', tmpl.eval_field('to',context)
+      message.set 'cc', tmpl.eval_field('cc',context)
+      message.set 'bcc', tmpl.eval_field('bcc',context)
+
+  message_context: (message) ->
+    message.get('apply_form').then (apply_form) =>
       apply_form.get('current_workcamp').then (workcamp) =>
         context = {}
-        user = model.get('user')
+        user = message.get('user')
 
         if user
           context.user = user.for_email()
@@ -53,7 +54,11 @@ Volant.MessageRoute = Volant.BaseRoute.extend({
 
 
   actions:
-    send_message: ->
+    useTemplate: (tmpl) ->
+      @applyTemplate(tmpl,@currentModel)
+      false
+
+    sendMessage: ->
       @currentModel.save().then (msg) =>
         form = msg.get('apply_form')
         url = "/messages/#{msg.get('id')}/deliver"
