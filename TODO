@@ -1,5 +1,4 @@
 - [ ] 'oblibene' campy a prihlasky pro kazdeho uzivatel zvlast (ted je to pro vsechny stejne)
-- [ ] vytvorit novou organizaci
 - [ ] zobrazovani chyb, pokud se nepodari ulozit workcamp
 
 
@@ -12,6 +11,10 @@ Zpravy
   - [ ] pridavani priloh ke zpravam
   - [x] formatovani textu (bold,linky...)
 
+Organizace
+  - [ ] vytvorit novou organizaci
+  - [ ] uprava clenstvi v sitich organizaci
+
 Workflow
   - [x] zmenit stav bez odeslani zpravy
   - [x] (bug) nechat prihlasku pripojenou ke zprave i po odeslani
@@ -23,7 +26,7 @@ Workcampy
 
 Prihlasky
   - filtrovani prehledu podle
-    - [ ] stavu prihlasky
+    - [x] stavu prihlasky
     - [ ] tagu
   - [ ] razeni (hvezdicka,termin podani,prijmeni)
   - vytvoreni prihlasky
