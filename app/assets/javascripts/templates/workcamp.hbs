@@ -25,7 +25,7 @@
 
         {{#model-field errors=errors.country class="col-lg-3"}}
           {{view Ember.Select
-            contentBinding='controllers.countries.content'
+            contentBinding='controllers.countries.arrangedContent'
             selectionBinding='country'
             optionValuePath="content"
             optionLabelPath="content.name"
@@ -67,7 +67,7 @@
         <label class="col-lg-2 control-label">Organization</label>
         <div class="col-lg-3">
           {{view Ember.Select
-              contentBinding='controllers.organizations.content'
+              contentBinding='controllers.organizations.arrangedContent'
               selectionBinding='organization'
               optionValuePath="content"
               optionLabelPath="content.name"
@@ -99,7 +99,7 @@
         <div class="col-lg-3">
           {{view 'collection-picker'
             targetBinding='workcamp_intentions'
-            contentBinding='controllers.workcamp_intentions.content'
+            contentBinding='controllers.workcamp_intentions.arrangedContent'
             prompt='Add intention...'
             optionValuePath="content.id"
             optionLabelPath="content.code"

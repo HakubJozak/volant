@@ -43,6 +43,7 @@ Sprava zemi
 Platby
  - [ ] vyhledavani plateb
  - [ ] parovani existujicich plateb s existujici prihlaskou
+ - [ ] importovani plateb z FIO API
 
 Import
   - PEF

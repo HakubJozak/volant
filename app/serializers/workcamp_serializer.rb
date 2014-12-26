@@ -18,11 +18,7 @@ class WorkcampSerializer < Barbecue::BaseSerializer
   readonly_attributes :id, :free_places, :free_places_for_males, :free_places_for_females, :state, :duration
 
   def workcamp_assignments
-    if object.respond_to?(:workcamp_assignments)
-      object.workcamp_assignments
-    else
-      []
-    end
+    object.workcamp_assignments
   end
 
   def workcamp_intentions

@@ -5,7 +5,7 @@ class WorkcampIntentionsController < ApplicationController
 
   # GET /workcamp_intentions
   def index
-    @workcamp_intentions = WorkcampIntention.all
+    @workcamp_intentions = WorkcampIntention.order(:code)
     render json: @workcamp_intentions, each_serializer: WorkcampIntentionSerializer
   end
 
@@ -46,6 +46,6 @@ class WorkcampIntentionsController < ApplicationController
   end
 
   def workcamp_intention_params
-    params.require(:workcamp_intention).permit(*WorkcampIntentionSerializer.writable)
+    params.require(:workcamp_intention).permit(:code, :description_en, :description_cz)
   end
 end

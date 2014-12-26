@@ -1,2 +1,2 @@
-Volant.WorkcampIntentionsController = Ember.ArrayController.extend({
-})
+Volant.WorkcampIntentionsController = Ember.ArrayController.extend
+  sortProperties: ['code']

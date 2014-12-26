@@ -14,8 +14,10 @@ table.table.table-striped.table-hover
         td
           link-to 'organization' this
             name
+            if website
+              '   {{external-link website}}
         td
-          join email_contacts 'address'
+          join-emails email_contacts 'address'
         td
           join networks 'name'
 
