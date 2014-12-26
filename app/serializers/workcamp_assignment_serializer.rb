@@ -1,4 +1,4 @@
-class WorkcampAssignmentSerializer < Barbecue::BaseSerializer
+class WorkcampAssignmentSerializer < ApplicationSerializer
   attributes :id, :order, :accepted, :rejected, :asked, :infosheeted, :state
   has_one :workcamp, embed: :ids, include: true, serializer: WorkcampSerializer
   has_one :apply_form, embed: :ids, include: true, serializer: ApplyFormSerializer

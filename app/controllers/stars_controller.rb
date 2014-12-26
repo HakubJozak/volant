@@ -3,9 +3,15 @@ class StarsController < ApplicationController
 
   def create
     record = model.find(star_params[:id])
-    record.update_column(:starred, star_params[:value])
+
+    if star_params[:value] == 'true'
+      record.add_star(current_user)
+    else
+      record.remove_star(current_user)
+    end
+
     # TODO: render just 'starred' attribute change
-    render json: record, root: model.to_s.downcase
+    render json: record, root: model.to_s
   end
 
   private

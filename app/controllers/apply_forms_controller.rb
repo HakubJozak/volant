@@ -12,7 +12,7 @@ class ApplyFormsController < ApplicationController
     search = add_year_scope(search)
 
     if filter[:starred]
-      search = search.where(starred: true)
+      search = search.starred_by(current_user)
     end
 
     if query = filter[:q]

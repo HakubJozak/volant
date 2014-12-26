@@ -22,7 +22,7 @@ class WorkcampsController < ApplicationController
     end
 
     if filter[:starred]
-      search = search.where(starred: true)
+      search = search.starred_by(current_user)
     end
 
     if from = filter[:from]

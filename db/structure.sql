@@ -124,7 +124,6 @@ CREATE TABLE workcamps (
     free_places integer DEFAULT 0 NOT NULL,
     free_places_for_males integer DEFAULT 0 NOT NULL,
     free_places_for_females integer DEFAULT 0 NOT NULL,
-    starred boolean DEFAULT false NOT NULL,
     project_id character varying(255)
 );
 
@@ -153,8 +152,7 @@ CREATE TABLE apply_forms (
     current_workcamp_id_cached integer,
     current_assignment_id_cached integer,
     type character varying(255) DEFAULT 'Outgoing::ApplyForm'::character varying NOT NULL,
-    confirmed timestamp without time zone,
-    starred boolean DEFAULT false NOT NULL
+    confirmed timestamp without time zone
 );
 
 
@@ -960,6 +958,39 @@ ALTER SEQUENCE sessions_id_seq OWNED BY sessions.id;
 
 
 --
+-- Name: starrings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE starrings (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    favorite_id integer NOT NULL,
+    favorite_type character varying(255) NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: starrings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE starrings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: starrings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE starrings_id_seq OWNED BY starrings.id;
+
+
+--
 -- Name: taggings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1323,6 +1354,13 @@ ALTER TABLE ONLY sessions ALTER COLUMN id SET DEFAULT nextval('sessions_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY starrings ALTER COLUMN id SET DEFAULT nextval('starrings_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY taggings ALTER COLUMN id SET DEFAULT nextval('taggings_id_seq'::regclass);
 
 
@@ -1527,6 +1565,14 @@ ALTER TABLE ONLY payments
 
 ALTER TABLE ONLY sessions
     ADD CONSTRAINT sessions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: starrings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY starrings
+    ADD CONSTRAINT starrings_pkey PRIMARY KEY (id);
 
 
 --
@@ -2210,4 +2256,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141129212750');
 INSERT INTO schema_migrations (version) VALUES ('20141219104230');
 
 INSERT INTO schema_migrations (version) VALUES ('20141219133401');
+
+INSERT INTO schema_migrations (version) VALUES ('20141226215131');
 

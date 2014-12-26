@@ -1,4 +1,4 @@
-class MessageSerializer < Barbecue::BaseSerializer
+class MessageSerializer < ApplicationSerializer
   has_one :apply_form, embed: :ids, include: false
   has_one :user, embed: :ids, include: true
 

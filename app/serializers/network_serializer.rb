@@ -1,3 +1,3 @@
-class NetworkSerializer < Barbecue::BaseSerializer
+class NetworkSerializer < ApplicationSerializer
   attributes :id,:name
 end

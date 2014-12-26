@@ -1,4 +1,4 @@
-class VolunteerSerializer < Barbecue::BaseSerializer
+class VolunteerSerializer < ApplicationSerializer
 
    writable_attributes :firstname, :lastname, :gender,
   :email, :phone,

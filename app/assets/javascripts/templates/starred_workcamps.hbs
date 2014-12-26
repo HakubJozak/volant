@@ -11,7 +11,9 @@
           </a>
         {{/if}}
       </td>
-      <td><i {{ bind-attr class=":fa starred:fa-star:fa-star-o" }} {{ action 'toggle_starred' }}></i></td>
+      <td>
+        {{partial 'star'}}
+      </td>
       <td>{{code}}</td>
       <td>
         {{#link-to 'workcamp' this}}{{name}}{{/link-to}}

@@ -1,4 +1,4 @@
-class ApplyFormSerializer < Barbecue::BaseSerializer
+class ApplyFormSerializer < ApplicationSerializer
   attributes :id, :starred, :fee, :general_remarks,
   :motivation, :confirmed, :cancelled, :created_at,
   :state

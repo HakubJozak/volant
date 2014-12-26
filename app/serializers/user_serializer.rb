@@ -1,4 +1,4 @@
-class UserSerializer < Barbecue::BaseSerializer
+class UserSerializer < ApplicationSerializer
   attributes :id, :email, :first_name, :last_name, :unsent_messages_count
 
   def unsent_messages_count

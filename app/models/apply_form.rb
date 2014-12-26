@@ -4,6 +4,7 @@ require 'rexml/document'
 # TODO - set new AF fee smartly
 class ApplyForm < ActiveRecord::Base
   include ::Alerts
+  include Stars::Model
 
   acts_as_taggable
 
@@ -31,6 +32,10 @@ class ApplyForm < ActiveRecord::Base
     self.cancelled = Time.now
     save!
     self
+  end
+
+  def starred?(user)
+    starrings.where(user: user).count > 0
   end
 
   def cancelled?

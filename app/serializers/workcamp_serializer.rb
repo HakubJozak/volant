@@ -1,4 +1,4 @@
-class WorkcampSerializer < Barbecue::BaseSerializer
+class WorkcampSerializer < ApplicationSerializer
   has_one :organization, embed: :ids, include: true
   has_one :country, embed: :ids, include: true
   has_many :tags, embed: :ids, include: true, serializer: TagSerializer

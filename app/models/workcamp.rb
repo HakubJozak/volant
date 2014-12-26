@@ -4,6 +4,7 @@ class Workcamp < ActiveRecord::Base
   include AllianceExporter
   include ActiveRecord::Diff
   include Import::WorkcampExtension
+  include Stars::Model
 
   create_date_time_accessors
 
@@ -91,7 +92,7 @@ class Workcamp < ActiveRecord::Base
   alias :workcamp_intention_ids= :intention_ids=
 
   validates_presence_of :country, :code, :name, :places
-  validates_presence_of :extra_fee_currency, :if => Proc.new {|wc| wc.extra_fee && wc.extra_fee > 0}, :message => "je povinná. (Je vyplněn poplatek, ale nikoliv jeho měna. Doplňte měnu poplatku.)"
+  validates_presence_of :extra_fee_currency, :if => Proc.new {|wc| wc.extra_fee && wc.extra_fee > 0},:message => "je povinná. (Je vyplněn poplatek, ale nikoliv jeho měna. Doplňte měnu poplatku.)"
 
   acts_as_taggable
 
@@ -108,26 +109,6 @@ class Workcamp < ActiveRecord::Base
     else
       nil
     end
-  end
-
-  def term
-    "#{localize(self.begin)} - #{localize(self.end)}"
-  end
-
-  def running?
-    return false unless self.begin && self.end
-    today = Date.today
-    self.begin <= today && self.end >= today
-  end
-
-  def over?
-    return false unless self.end
-    self.end < Date.today
-  end
-
-  # TODO - implement
-  def wanted
-    false
   end
 
   # returns true if there is no more place left for volunteers of the same gender as 'volunteer'
