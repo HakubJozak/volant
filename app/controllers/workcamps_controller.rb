@@ -13,6 +13,10 @@ class WorkcampsController < ApplicationController
       search = search.imported_or_updated
     end
 
+    if mode = filter[:publish_mode]
+      search = search.where(publish_mode: mode)
+    end
+
     if query = filter[:q]
       search = search.query(filter[:q])
     end
@@ -127,7 +131,7 @@ class WorkcampsController < ApplicationController
 
   def filter
     params.permit(:starred,:state,:p,:year,:q,:from,:to,:min_duration,:max_duration,:min_age,
-                  :max_age,:free,:free_males,:free_females,:type,
+                  :max_age,:free,:free_males,:free_females,:type,:publish_mode,
                   :tag_ids => [], :country_ids => [], :workcamp_intention_ids => [], :organization_ids => [])
   end
 
