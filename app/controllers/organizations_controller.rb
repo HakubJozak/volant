@@ -3,11 +3,13 @@ class OrganizationsController < ApplicationController
   before_action :find, only: [ :update, :destroy, :show ]
 
   def index
-    if page = params[:p]
-      orgs = organizations.page(page)
+    if page = filter[:p]
+      orgs = organizations.joins(:country).includes(:networks)
+      orgs = orgs.query(filter[:q]) if filter[:q].present?
+      orgs = orgs.order('countries.code ASC, organizations.name ASC').page(page)
       render json: orgs, meta: { pagination: pagination_info(orgs) }, each_serializer: OrganizationSerializer
     else
-      orgs = organizations
+      orgs = organizations.all
       render json: orgs, each_serializer: OrganizationSerializer
     end
   end
@@ -24,15 +26,18 @@ class OrganizationsController < ApplicationController
     end
   end
 
-
   private
 
   def organizations
-    Organization.order(:name)
+    Organization
   end
 
   def find
-    @org = Organization.find(params[:id])
+    @org = orgnizations.find(params[:id])
+  end
+
+  def filter
+    params.permit(:q,:p)
   end
 
   def org_params

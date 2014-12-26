@@ -1,0 +1,23 @@
+form.form.form-horizontal.search-form submit="search" role="form"
+  partial 'query'
+
+table.table.table-striped.table-hover
+  thead
+    th Country
+    th Name
+    th Emails
+    th Partners
+  tbody
+    each
+      tr
+        td  {{small-flag country}} {{country.name}}
+        td
+          link-to 'organization' this
+            name
+        td
+          join email_contacts 'address'
+        td
+          join networks 'name'
+
+
+render 'pagination'

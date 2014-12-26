@@ -12,6 +12,11 @@ Ember.Handlebars.helper "truncate", (str, len) ->
   else
     str
 
+Ember.Handlebars.helper "join", (array, attribute) ->
+  names = array.map (r) -> r.get(attribute)
+  names.join(', ')
+
+
 Ember.Handlebars.helper "mail-to", (email) ->
   new Handlebars.SafeString "<a href='mailto:#{email}' title='Open your email app with #{email}' >#{email}</a>"
 

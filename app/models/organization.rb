@@ -9,9 +9,12 @@ class Organization < ActiveRecord::Base
   has_many :emails, :class_name => 'EmailContact', :dependent => :destroy
   has_many :networks, :through => :partnerships
 
-  def self.find_all_ordered_by_countries
-    Organization.find(:all, :joins => [ :country ], :order => 'countries.code ASC, organizations.name ASC')
-  end
+  # TODO: same as Workcamp.query - merge?
+  scope :query, lambda { |q|
+    table = self.arel_table
+    arel = table[:name].matches("%#{query}%").or(table[:code].matches("%#{query}%"))
+    where(arel)
+  }
 
   # kinds: :incoming, :outgoing, :off
   def email(kind = :outgoing)
