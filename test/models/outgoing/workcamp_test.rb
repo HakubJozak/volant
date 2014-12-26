@@ -9,13 +9,6 @@ module Outgoing
         @wc = Factory.create(:outgoing_workcamp, :begin => 1.day.from_now, :end => 10.days.from_now)
       end
 
-      should "correctly pick the accepted forms on workcamp" do
-        inside = Factory.create(:workcamp_assignment, :accepted => Time.now, :workcamp => @wc)
-        outside = Factory.create(:workcamp_assignment, :accepted => nil, :workcamp => @wc)
-        assert_equal 2, @wc.apply_forms.reload.size
-        assert_equal inside.apply_form, @wc.accepted_forms.first
-      end
-
       should "recognize almost full workcamp" do
         @wc.workcamp_assignments.destroy_all
         @wc.places = 2
