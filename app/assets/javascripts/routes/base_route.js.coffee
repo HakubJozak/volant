@@ -84,7 +84,10 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin,
     @controllerFor('application').set('flash', {type: 'error', message: msg })
 
   prepareSelectControllers: ->
-    @controllerFor('countries').set('content', @store.filter('country',{},-> true))
+    @setupCountries()
     @controllerFor('workcamp_intentions').set('content', @store.filter('workcamp_intention',{},-> true))
     @controllerFor('organizations').set('content', @store.filter('organization',{},-> true))
     @controllerFor('tags').set('content', @store.filter('tag',{},-> true))
+
+  setupCountries: () ->
+    @controllerFor('countries').set('content', @store.filter('country',{},-> true))

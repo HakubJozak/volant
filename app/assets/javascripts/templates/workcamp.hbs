@@ -24,14 +24,7 @@
         {{/model-field}}
 
         {{#model-field errors=errors.country class="col-lg-3"}}
-          {{view Ember.Select
-            contentBinding='controllers.countries.arrangedContent'
-            selectionBinding='country'
-            optionValuePath="content"
-            optionLabelPath="content.name"
-            class="form-control"
-            prompt='Choose a country'
-            }}
+          {{partial 'inputs/country'}}
         {{/model-field}}
       </div>
 
@@ -64,7 +57,15 @@
 
       <div class="form-group">
         {{#model-field errors=errors.organization}}
-        <label class="col-lg-2 control-label">Organization</label>
+          <label class="col-lg-2 control-label">
+            {{#if organization}}
+              {{#link-to 'organization' organization}}
+              Organization
+              {{/link-to}}
+            {{else}}
+              Organization
+            {{/if}}
+          </label>
         <div class="col-lg-3">
           {{view Ember.Select
               contentBinding='controllers.organizations.arrangedContent'
@@ -73,8 +74,8 @@
               optionLabelPath="content.name"
               class="form-control"
               prompt='Choose an organization'
-            }}
-        </div>
+              }}
+         </div>
         {{/model-field}}
 
         <label class="col-lg-1 control-label">Fee</label>

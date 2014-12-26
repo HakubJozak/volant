@@ -33,7 +33,7 @@ class OrganizationsController < ApplicationController
   end
 
   def find
-    @org = orgnizations.find(params[:id])
+    @org = organizations.find(params[:id])
   end
 
   def filter

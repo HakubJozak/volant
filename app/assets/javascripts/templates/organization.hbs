@@ -34,9 +34,22 @@
             </div>
 
             <div class="form-group col-lg-4">
-              <label class=" control-label">Website</label>
+              <label class=" control-label">
+                Website
+                {{#if website}}
+                  {{external-link website}}
+                {{/if}}
+              </label>
               {{input value=website class="form-control"}}
+            </div>
+          </div>
 
+          <div class='row'>
+            <div class="form-group col-lg-4">
+              <label class=" control-label">Country</label>
+              {{#model-field errors=errors.country}}
+                {{partial 'inputs/country'}}
+              {{/model-field}}
             </div>
           </div>
         </fieldset>

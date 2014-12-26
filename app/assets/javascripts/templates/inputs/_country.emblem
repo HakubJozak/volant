@@ -1,0 +1,1 @@
+view Ember.Select contentBinding='controllers.countries.arrangedContent' selectionBinding='country' optionValuePath="content" optionLabelPath="content.name"   class="form-control" prompt='Choose a country'
