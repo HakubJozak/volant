@@ -173,12 +173,4 @@ class Workcamp < ActiveRecord::Base
     date ? I18n.localize(date) : '?'
   end
 
-  protected
-
-  def before_save
-    self.places ||= 2
-    self.places_for_males ||= 2
-    self.places_for_females ||= 2
-  end
-
 end
