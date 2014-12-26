@@ -70,6 +70,7 @@ module Outgoing
       form = nil
       birthnumber = attrs[:volunteer_attributes][:birthnumber]
       volunteer = Volunteer.find_by_birthnumber(birthnumber)
+
       workcamps = attrs.delete(:workcamp_ids).to_a.map do |id|
 	Outgoing::Workcamp.live.find(id)
       end
