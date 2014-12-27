@@ -2,7 +2,7 @@ class WorkcampsController < ApplicationController
   respond_to :json
 
   serialization_scope :current_user
-  before_action :find_workcamp, except: [ :index ]
+  before_action :find_workcamp, except: [ :index,:create ]
 
   def index
     search = workcamps.order(:name).page(current_page)
@@ -90,7 +90,7 @@ class WorkcampsController < ApplicationController
 
   # POST /workcamps
   def create
-    @workcamp = Outgoing::Workcamp.new(workcamp_params)
+    @workcamp = workcamps.new(workcamp_params)
 
     if @workcamp.save
       render json: @workcamp, serializer: WorkcampSerializer
@@ -142,7 +142,7 @@ class WorkcampsController < ApplicationController
     params.except(*readonly)
       .require(:workcamp)
       .except(*readonly)
-      .permit(:starred, :name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
+      .permit(:name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
               :area, :accomodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,
               :region, :capacity_natives, :capacity_teenagers, :capacity_males, :capacity_females,
               :airport, :train, :publish_mode,:places, :places_for_males, :places_for_females,
