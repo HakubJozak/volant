@@ -67,6 +67,10 @@ GEM
     bootstrap-generators (3.2.0)
       railties (>= 3.1.0)
     builder (3.2.2)
+    byebug (3.5.1)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     chunky_png (1.3.3)
@@ -82,6 +86,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    columnize (0.9.0)
     commonjs (0.2.7)
     compass (0.12.7)
       chunky_png (~> 1.2)
@@ -89,6 +94,7 @@ GEM
       sass (~> 3.2.19)
     compass-rails (2.0.0)
       compass (>= 0.12.2)
+    debugger-linecache (1.2.0)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -208,6 +214,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (2.0.0)
+      byebug (~> 3.4)
+      pry (~> 0.10)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
     puma (2.9.2)
@@ -320,6 +329,7 @@ DEPENDENCIES
   momentjs-rails (~> 2.8.3)
   paperclip
   pg
+  pry-byebug
   pry-rails
   puma
   rack-jsonp-middleware

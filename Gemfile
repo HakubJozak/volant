@@ -31,8 +31,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use unicorn as the app server
 # gem 'unicorn'
 
-gem 'paperclip'
 gem 'pry-rails', group: [:development, :test]
+gem 'pry-byebug', group: [:development, :test]
+
+
+gem 'paperclip'
 gem 'differ'
 gem 'htmlentities'
 gem 'acts-as-taggable-on'
