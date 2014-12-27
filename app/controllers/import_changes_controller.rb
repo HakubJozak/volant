@@ -19,7 +19,7 @@ class ImportChangesController < ApplicationController
     if @import_change.update(import_change_params)
       render json: @import_change, serializer: ImportChangeSerializer
     else
-      render json: { errors:  @import_change.errors }, status: 422
+      render_error(@import_change)
     end
   end
 

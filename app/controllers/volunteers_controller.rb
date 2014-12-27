@@ -16,7 +16,7 @@ class VolunteersController < ApplicationController
     if  @volunteer.update(volunteer_params)
       render json: @volunteer, serializer: VolunteerSerializer
     else
-      render json: { errors: @volunteer.errors }, status: 422
+      render_error(@volunteer)
     end
   end
 

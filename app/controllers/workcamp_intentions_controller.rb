@@ -20,7 +20,7 @@ class WorkcampIntentionsController < ApplicationController
     if @workcamp_intention.save
       render json: @workcamp_intention, serializer: WorkcampIntentionSerializer
     else
-      render json: { errors:  @workcamp_intention.errors }, status: 422
+      render_error(@workcamp_intention)
     end
   end
 
@@ -29,7 +29,7 @@ class WorkcampIntentionsController < ApplicationController
     if @workcamp_intention.update(workcamp_intention_params)
       render json: @workcamp_intention, serializer: WorkcampIntentionSerializer
     else
-      render json: { errors:  @workcamp_intention.errors }, status: 422
+      render_error(@workcamp_intention)
     end
   end
 

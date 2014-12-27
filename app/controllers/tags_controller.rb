@@ -20,7 +20,7 @@ class TagsController < ApplicationController
     if @tag.save
       render json: @tag, serializer: TagSerializer
     else
-      render json: { errors:  @tag.errors }, status: 422
+      render_error(@tag)
     end
   end
 
@@ -29,7 +29,7 @@ class TagsController < ApplicationController
     if @tag.update(tag_params)
       render json: @tag, serializer: TagSerializer
     else
-      render json: { errors:  @tag.errors }, status: 422
+      render_error(@tag)
     end
   end
 

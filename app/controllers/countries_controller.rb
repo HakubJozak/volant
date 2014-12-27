@@ -20,7 +20,7 @@ class CountriesController < ApplicationController
     if @country.save
       render json: @country, serializer: CountrySerializer
     else
-      render json: { errors:  @country.errors }, status: 422
+      render_error(@country)
     end
   end
 
@@ -29,7 +29,7 @@ class CountriesController < ApplicationController
     if @country.update(country_params)
       render json: @country, serializer: CountrySerializer
     else
-      render json: { errors:  @country.errors }, status: 422
+      render_error(@country)
     end
   end
 

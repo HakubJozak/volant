@@ -58,7 +58,7 @@ class ApplyFormsController < ApplicationController
     if @apply_form.save
       render_apply_form
     else
-      render json: { errors: @apply_form.errors }, status: 422
+      render_error(@apply_form)
     end
   end
 

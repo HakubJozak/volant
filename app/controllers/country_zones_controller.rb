@@ -20,7 +20,7 @@ class CountryZonesController < ApplicationController
     if @country_zone.save
       render json: @country_zone, serializer: CountryZoneSerializer
     else
-      render json: { errors:  @country_zone.errors }, status: 422
+      render_error(@country_zone)
     end
   end
 
@@ -29,7 +29,7 @@ class CountryZonesController < ApplicationController
     if @country_zone.update(country_zone_params)
       render json: @country_zone, serializer: CountryZoneSerializer
     else
-      render json: { errors:  @country_zone.errors }, status: 422
+      render_error(@country_zone)
     end
   end
 

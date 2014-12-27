@@ -23,7 +23,7 @@ class OrganizationsController < ApplicationController
     if @org.save
       render json: @org, serializer: OrganizationSerializer
     else
-      render json: { errors:  @org.errors }, status: 422
+      render_error(@org)
     end
   end
 
@@ -36,7 +36,7 @@ class OrganizationsController < ApplicationController
     if  @org.update(org_params)
       render json: @org, serializer: OrganizationSerializer
     else
-      render json: { errors: @org.errors }, status: 422
+      render_error(@org)
     end
   end
 
