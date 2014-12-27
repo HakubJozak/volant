@@ -13,7 +13,9 @@ Volant.OrganizationRoute = Volant.BaseRoute.extend
       false
 
   setup_mini_workcamps: ->
-    model = @modelFor(@routeName)
+
     year = @controllerFor('application').get('year')
-    @store.find('workcamp',{ organization_id: model.get('id'),year: year }).then (orgs) =>
-      @controllerFor('mini_workcamps').set('model', orgs)
+    workcamps  = @store.filter('workcamp',{ organization_ids: [ @currentModel.get('id') ],year: year }, (wc) =>
+      wc.get('organization.id') == @currentModel.get('id'))
+
+    @controllerFor('mini_workcamps').set('model', workcamps)
