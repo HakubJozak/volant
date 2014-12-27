@@ -11,7 +11,8 @@ class Workcamp < ActiveRecord::Base
   include Outgoing::FreePlacesUpdater
   before_save :update_free_places_for_workcamp
 
-  validates_presence_of :name, :country, :organization, :publish_mode
+  validates_presence_of :country, :code, :name, :places, :organization, :publish_mode
+  validates_presence_of :extra_fee_currency, :if => Proc.new {|wc| wc.extra_fee && wc.extra_fee > 0},:message => "je povinná. (Je vyplněn poplatek, ale nikoliv jeho měna. Doplňte měnu poplatku.)"
 
   has_many :workcamp_assignments, dependent: :destroy, class_name: 'Outgoing::WorkcampAssignment'
   has_many :apply_forms, through: :workcamp_assignments, dependent: :destroy, class_name: 'Outgoing::ApplyForm'
@@ -90,9 +91,6 @@ class Workcamp < ActiveRecord::Base
                           :join_table => 'workcamp_intentions_workcamps',
                           :delete_sql => 'DELETE FROM workcamp_intentions_workcamps WHERE workcamp_id=#{id}'
   alias :workcamp_intention_ids= :intention_ids=
-
-  validates_presence_of :country, :code, :name, :places
-  validates_presence_of :extra_fee_currency, :if => Proc.new {|wc| wc.extra_fee && wc.extra_fee > 0},:message => "je povinná. (Je vyplněn poplatek, ale nikoliv jeho měna. Doplňte měnu poplatku.)"
 
   acts_as_taggable
 

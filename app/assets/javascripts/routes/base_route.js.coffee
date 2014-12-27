@@ -41,8 +41,10 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin,
         @go_to_plural_route(@currentModel)
         @flash_info 'Saved.'
        ), ( (e) =>
-         console.warn e
-         @flash_error 'Failed.'
+         if e.full_rails_message?
+           @flash_error e.full_rails_message
+         else
+           @flash_error 'Save failed.'
        )
       false
 

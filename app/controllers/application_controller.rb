@@ -42,4 +42,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def render_error(model)
+    full = model.errors.full_messages.join('. ')
+    render json: { errors: model.errors, full_message: "#{full}." }, status: 422
+  end
+
+
+
 end

@@ -1,7 +1,7 @@
 class ApplyFormsController < ApplicationController
 
   serialization_scope :current_user
-  before_action :find_apply_form, only: [ :show, :update, :destroy, :cancel, :ask, :accept, :infosheet, :reject ]
+  before_action :find_apply_form, except: [ :index,:create ]
 
   def index
     search = Outgoing::ApplyForm.page(current_page).order("#{ApplyForm.table_name}.created_at desc")
@@ -66,7 +66,7 @@ class ApplyFormsController < ApplicationController
     if  @apply_form.update(apply_form_params)
       render_apply_form
     else
-      render json: { errors: @apply_form.errors }, status: 422
+      render_error(@apply_form)
     end
   end
 

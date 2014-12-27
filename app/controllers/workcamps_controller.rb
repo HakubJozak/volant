@@ -95,7 +95,7 @@ class WorkcampsController < ApplicationController
     if @workcamp.save
       render json: @workcamp, serializer: WorkcampSerializer
     else
-      render json: { errors: @workcamp.errors }, status: 422
+      render_error(@workcamp)
     end
   end
 
@@ -103,7 +103,7 @@ class WorkcampsController < ApplicationController
     if  @workcamp.update(workcamp_params)
       render json: @workcamp, serializer: WorkcampSerializer
     else
-      render json: { errors: @workcamp.errors }, status: 422
+      render_error(@workcamp)
     end
   end
 

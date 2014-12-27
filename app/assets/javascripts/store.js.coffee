@@ -4,13 +4,20 @@
 Volant.ApplicationStore = DS.Store.extend({
 })
 
+
 # Override the default adapter with the `DS.ActiveModelAdapter` which
 # is built to work nicely with the ActiveModel::Serializers gem.
 Volant.ApplicationAdapter = DS.ActiveModelAdapter.extend({
   coalesceFindRequests: true
-  # findMany: (store,type,ids) ->
-  #   console.info 'caught',type,ids
-  #   @_super(store,type,ids)
+
+  ajaxError: (jqXHR) ->
+    invalid_error = @_super(jqXHR)
+
+    if jqXHR && jqXHR.status == 422
+      json = Ember.$.parseJSON(jqXHR.responseText)
+      invalid_error.full_rails_message = json.full_message
+
+    invalid_error
 })
 
 
@@ -25,12 +32,11 @@ Volant.ApplicationSerializer = DS.ActiveModelSerializer.extend({
         json[json_key].push(item.get('id'))
     else
       @_super(record,json.relationship)
+
 })
 
 Volant.ApplyFormAdapter = Volant.ApplicationAdapter.extend({
   ajaxError: (jqXHR) ->
-    error = this._super(jqXHR)
-
     if jqXHR && jqXHR.status == 422
       json = Ember.$.parseJSON(jqXHR.responseText)
       errors = json.errors
@@ -56,7 +62,7 @@ Volant.ApplyFormAdapter = Volant.ApplicationAdapter.extend({
       console.info errors
       return new DS.InvalidError(errors)
     else
-      return error
+      return @_super(jqXHR)
 
 
 })
