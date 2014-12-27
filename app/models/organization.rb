@@ -1,7 +1,7 @@
 class Organization < ActiveRecord::Base
 
 #  has_many :email_contacts
-  has_many :workcamps
+  has_many :workcamps, dependent: :destroy
   belongs_to :country
   validates_presence_of :name, :code, :country
 
@@ -12,7 +12,7 @@ class Organization < ActiveRecord::Base
   # TODO: same as Workcamp.query - merge?
   scope :query, lambda { |q|
     table = self.arel_table
-    arel = table[:name].matches("%#{query}%").or(table[:code].matches("%#{query}%"))
+    arel = table[:name].matches("%#{q}%").or(table[:code].matches("%#{q}%"))
     where(arel)
   }
 
