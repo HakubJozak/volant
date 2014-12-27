@@ -17,6 +17,16 @@ class WorkcampSerializer < ApplicationSerializer
 
   readonly_attributes :id, :free_places, :free_places_for_males, :free_places_for_females, :state, :duration
 
+  def type
+    if object.is_a?(Ltv::Workcamp)
+      'ltv'
+    elsif object.organization.code == 'SDA'
+      'incoming'
+    else
+      'outgoing'
+    end
+  end
+
   def workcamp_assignments
     object.workcamp_assignments
   end

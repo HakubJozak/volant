@@ -1,6 +1,8 @@
 Volant.Organization = DS.Model.extend
   country: DS.belongsTo('country')
-  email_contacts: DS.hasMany('email_contact')
+  email_contacts: DS.hasMany('email_contact',async: true)
+  networks: DS.hasMany('network',async: true)
+
   name: DS.attr 'string'
   code: DS.attr 'string'
   address: DS.attr 'string'
@@ -9,7 +11,6 @@ Volant.Organization = DS.Model.extend
   mobile: DS.attr 'string'
   fax: DS.attr 'string'
   website: DS.attr 'string'
-  networks: DS.hasMany('network')
 
   outgoing_email: (->
     'change-me@google.com'

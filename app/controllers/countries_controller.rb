@@ -5,7 +5,7 @@ class CountriesController < ApplicationController
 
   # GET /countries
   def index
-    @countries = Country.joins(:country_zone).order(:name_en).all
+    @countries = Country.joins(:country_zone).includes(:country_zone).order(:name_en).all
     render json: @countries, each_serializer: CountrySerializer
   end
 

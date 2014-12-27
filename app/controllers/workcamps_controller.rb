@@ -131,7 +131,7 @@ class WorkcampsController < ApplicationController
 
   def filter
     params.permit(:starred,:state,:p,:year,:q,:from,:to,:min_duration,:max_duration,:min_age,
-                  :max_age,:free,:free_males,:free_females,:type,:publish_mode,
+                  :max_age,:free,:free_males,:free_females,:publish_mode,
                   :tag_ids => [], :country_ids => [], :workcamp_intention_ids => [], :organization_ids => [])
   end
 
@@ -153,7 +153,7 @@ class WorkcampsController < ApplicationController
   end
 
   def workcamps
-    case params[:type]
+    case params[:type] || params[:workcamp].try(:[],:type)
     when 'incoming' then Workcamp.where(organization_id: current_organization)
     when 'ltv' then Ltv::Workcamp
     else Workcamp

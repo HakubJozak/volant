@@ -10,7 +10,7 @@ class OrganizationsController < ApplicationController
       render json: orgs, meta: { pagination: pagination_info(orgs) }, each_serializer: OrganizationSerializer
     else
       orgs = organizations.all
-      render json: orgs, each_serializer: OrganizationSerializer
+      render json: orgs, each_serializer: MiniOrganizationSerializer
     end
   end
 
