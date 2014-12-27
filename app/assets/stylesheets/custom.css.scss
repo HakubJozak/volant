@@ -229,7 +229,7 @@ table.import-changes {
 
   z-index: 1000000;
 
-  .close {
+  button.close {
     position: relative;
     top: -0.8em;
   }
@@ -273,4 +273,29 @@ table.import-changes {
 
 .btn.huge.green {
   @include huge-button($green,lighten($green,45%));
+}
+
+.flash {
+  display: none;
+
+  // TODO: use Bootstrap constants
+  position: fixed;
+  left: 0;
+  top: 41px;
+  color: black;
+
+  &.info { background-color: transparentize($brown,0.5);  }
+  &.success {  background-color: transparentize($green,0.7); }
+  &.error {  background-color: transparentize($red,0.6); }
+  &.warning {  background-color: transparentize($yellow,0.5); }
+
+  width: 100%;
+  text-align: center;
+  padding:0.3em;
+  vertical-align: middle;
+
+  button.close {
+    position: relative;
+    top: -0.8em;
+  }
 }

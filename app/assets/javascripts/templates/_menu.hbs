@@ -11,21 +11,23 @@
       {{#link-to 'index' class="navbar-brand"}}
         Volant
       {{/link-to}}
-        <form  class="navbar-form  navbar-left col-lg-1" >
-          {{view Ember.Select
-          content=modes
-          value=mode
-          class="form-control"
-          }}
-          {{view Ember.Select
-          content=years
-          value=year
-          class="form-control"
-          }}
-        </form>
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      <form  class="navbar-form  navbar-left col-lg-1" >
+        {{view Ember.Select
+               content=modes
+               value=mode
+               class="form-control"
+               }}
+
+        {{view Ember.Select
+          content=years
+          value=year
+          class="form-control"
+        }}
+      </form>
+
       <ul class="nav navbar-nav">
         {{#link-li}}{{#link-to 'incoming_workcamps'}}Incoming{{/link-to}}{{/link-li}}
         {{#link-li}}{{#link-to 'ltv_workcamps'}}LTV{{/link-to}}{{/link-li}}
@@ -45,10 +47,6 @@
       </ul>
 
        {{ outlet 'item_controls'}}
-
-       {{#if flash}}
-         {{ view Volant.SmallFlashView flashBinding="flash" }}
-       {{/if}}
 
        <ul class='nav navbar-nav navbar-right right-icons'>
          {{#link-li}}
@@ -75,4 +73,6 @@
 
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
+
+  {{view Volant.SmallFlashView flashBinding='flash'}}
 </nav>

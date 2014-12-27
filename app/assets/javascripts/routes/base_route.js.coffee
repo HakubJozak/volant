@@ -78,10 +78,12 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin,
       controller.set('controllers.pagination.model', Ember.Object.create(hash))
 
   flash_info: (msg) ->
-    @controllerFor('application').set('flash', {type: 'success', message: msg })
+    flash = Ember.Object.create(type: 'success', message: msg)
+    @controllerFor('application').set('flash', flash)
 
   flash_error: (msg) ->
-    @controllerFor('application').set('flash', {type: 'error', message: msg })
+    flash = Ember.Object.create(type: 'error', message: msg)
+    @controllerFor('application').set('flash',flash)
 
   prepareSelectControllers: ->
     @setupCountries()
