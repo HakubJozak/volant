@@ -4,13 +4,37 @@ class WorkcampsControllerTest < ActionController::TestCase
   setup do
     Workcamp.destroy_all
     @workcamp = Factory(:workcamp)
-    sign_in users(:john)
+    sign_in @john = users(:john)
   end
 
-  test "should get index" do
+  test "index" do
     get :index, p: 1
     assert_response :success
     assert_equal Workcamp.count, json_response['meta']['pagination']['total']
+  end
+
+  test 'index for incoming' do
+    Workcamp.destroy_all
+    target = Factory(:workcamp, organization: organizations(:inex))
+    dummy = Factory(:workcamp)
+
+    get :index, type: 'incoming'
+
+    assert_response :success
+    assert_equal 1, json_response['meta']['pagination']['total']
+    assert_equal target.id, json_response['workcamps'].first['id']
+  end
+
+  test 'index for LTV' do
+    Workcamp.destroy_all
+    target = Factory(:ltv_workcamp, organization: organizations(:inex))
+    dummy = Factory(:workcamp)
+
+    get :index, type: 'ltv'
+
+    assert_response :success
+    assert_equal 1, json_response['meta']['pagination']['total']
+    assert_equal target.id, json_response['workcamps'].first['id']
   end
 
   test "search by code" do
@@ -127,9 +151,12 @@ class WorkcampsControllerTest < ActionController::TestCase
 
   test 'filter by starred' do
     Workcamp.destroy_all
-    target = Factory(:workcamp, starred: true)
-    dummy = Factory(:workcamp, starred: false)
+    target = Factory(:workcamp)
+    target.add_star(@john)
+    dummy = Factory(:workcamp)
+
     get :index, starred: true
+
     assert_response :success
     assert_equal 1, json_response['workcamps'].size
     assert_equal target.id, json_response['workcamps'].first['id']

@@ -2,7 +2,7 @@ class WorkcampsController < ApplicationController
   respond_to :json
 
   serialization_scope :current_user
-  before_action :find_workcamp, only: [ :show, :update, :destroy, :cancel_import, :confirm_import ]
+  before_action :find_workcamp, except: [ :index ]
 
   def index
     search = workcamps.order(:name).page(current_page)
@@ -79,8 +79,8 @@ class WorkcampsController < ApplicationController
 
 
     render json: search,
-           meta: { pagination: pagination_info(search) },
-           each_serializer: WorkcampSerializer
+    meta: { pagination: pagination_info(search) },
+    each_serializer: WorkcampSerializer
   end
 
 
@@ -153,13 +153,11 @@ class WorkcampsController < ApplicationController
   end
 
   def workcamps
-    if params[:type] == 'incoming'
-      # TODO - rather use organization_id to distinguish it
-      Workcamp.where(type: 'Incoming::Workcamp')
-    else
-      Workcamp
+    case params[:type]
+    when 'incoming' then Workcamp.where(organization_id: current_organization)
+    when 'ltv' then Ltv::Workcamp
+    else Workcamp
     end
   end
-
 
 end

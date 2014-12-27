@@ -1,5 +1,5 @@
 Volant.LtvWorkcampsRoute = Volant.WorkcampsRoute.extend
-  default_filter: -> { publish_mode: 'LTV' }
+  default_filter: -> { type: 'ltv' }
 
   controllerName: 'workcamps'
   templateName: 'workcamps'

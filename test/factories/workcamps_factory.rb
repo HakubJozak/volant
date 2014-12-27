@@ -30,5 +30,8 @@ end
 Factory.define :incoming_workcamp, :class => Incoming::Workcamp, :parent => :workcamp do |wc|
 end
 
+Factory.define :ltv_workcamp, :class => Ltv::Workcamp, :parent => :workcamp do |wc|
+end
+
 Factory.define :outgoing_workcamp, :class => Outgoing::Workcamp, :parent => :workcamp do |wc|
 end

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :default_format_json
 
+  private
 
   def pagination_info(scope)
     {
@@ -18,6 +19,11 @@ class ApplicationController < ActionController::Base
 
   def current_page
     params[:p] || params[:page] || 1
+  end
+
+  def current_organization
+    # TODO: take the code from organization
+    @current_organization ||= Organization.find_by_code('SDA')
   end
 
   def add_year_scope(search)
