@@ -37,10 +37,15 @@
 </tr>
 {{/unless}}
 {{else}}
-<tr {{action 'edit' }}>
+<tr>
+
+  <td>
+    <a {{action 'edit' }} href="#">
+      {{name}}
+    </a>
+  </td>
+  <td>{{mail-to address}}</td>
   <td>{{kind}}</td>
-  <td>{{address}}</td>
-  <td>{{name}}</td>
   <td>{{notes}}</td>
   <td>
     <button type="button" class="btn btn-danger" {{ action 'remove' this bubbles=false}}>
