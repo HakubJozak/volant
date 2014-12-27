@@ -5,8 +5,8 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
 
   title: (model) -> "#{model.get('name')}"
 
-  setupController: (controller,model,queryParmas) ->
-    @_super(controller,model,queryParmas)
+  setupController: (controller,model,queryParams) ->
+    @_super(controller,model,queryParams)
 
     starred = @store.filter 'workcamp',{ starred: true }, (wc) ->
       wc.get('starred')

@@ -1,16 +1,19 @@
 Volant.Router.map ->
-  @resource 'apply_forms'
+
   @route 'payments'
   @resource 'volunteers'
-  @resource('volunteer', path: '/volunteers/:volunteer_id')
+  @resource 'volunteer', path: '/volunteers/:volunteer_id'
 
-  @route 'new_apply_form', path: '/apply_forms/new'
+  @resource 'apply_forms'
   @route 'apply_form', path: '/apply_forms/:apply_form_id'
+  @route 'new_apply_form', path: '/apply_forms/new'
 
-  @resource 'workcamps', ->
-    @route 'new'
+  @resource 'workcamps'
+  @resource 'workcamp', path: '/workcamps/:workcamp_id'
+  @route 'new_workcamp', path: '/workcamps/:type/new'
 
-  @resource('workcamp', path: '/workcamps/:workcamp_id')
+
+
 
   @resource 'imported_workcamps'
 

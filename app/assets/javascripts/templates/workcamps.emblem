@@ -17,7 +17,7 @@ form.form.form-horizontal.form-search submit='search' role='form'
         | Filter
       '
       .btn-group
-        link-to 'workcamps.new' class='btn btn-success'
+        link-to 'new_workcamp' 'ltv' class='btn btn-success'
           | Create
         button.btn.btn-success.dropdown-toggle type="button" data-toggle="dropdown" aria-expanded="false"
           span.caret

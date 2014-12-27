@@ -28,14 +28,13 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
 
   title: -> "Workcamps"
 
-  setupController: (controller,model) ->
-    @_super(controller, model)
+  setupController: (controller,model,queryParams) ->
+    @_super(controller, model,queryParams)
     @prepareSelectControllers()
 
   actions:
-    create: ->
-      wc = @store.createRecord('workcamp')
-      @transitionTo 'workcamp',wc
+    new: (type) ->
+      @transitionTo 'workcamps.new',type
 
     save: ->
       @flash_info('Saving...')
