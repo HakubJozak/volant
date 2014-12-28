@@ -2,72 +2,70 @@
 
 <div class="row">
   <div class="col-lg-8">
+    <h2>
+      {{partial 'star'}}
+      {{#if name}}
+        {{name}}
+      {{else}}
+        <span class="text-muted">New Workcamp</span>
+      {{/if}}
+    </h2>
+    <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
+      <fieldset>
+        <legend></legend>
+        <div class="form-group" >
+          {{#model-field errors=errors.name}}
+            <label class="col-lg-2 control-label">Name</label>
+            <div class="col-lg-7" data-tooltip>
+              {{input value=name class='form-control' }}
+            </div>
+          {{/model-field}}
 
-  <h2>
-    {{partial 'star'}}
-    {{#if name}}
-      {{name}}
-    {{else}}
-      <span class="text-muted">New Workcamp</span>
-    {{/if}}
-  </h2>
-
-  <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
-     <fieldset>
-       <legend></legend>
-       <div class="form-group" >
-        {{#model-field errors=errors.name}}
-        <label class="col-lg-2 control-label">Name</label>
-        <div class="col-lg-7" data-tooltip>
-          {{input value=name class='form-control' }}
-        </div>
-        {{/model-field}}
-
-        {{#model-field errors=errors.country class="col-lg-3"}}
+          {{#model-field errors=errors.country class="col-lg-3"}}
           {{partial 'inputs/country'}}
-        {{/model-field}}
-      </div>
+          {{/model-field}}
+        </div>
 
-      <div class="form-group">
-        {{#model-field errors=errors.code}}
-          <label class="col-lg-2 control-label">Code</label>
+        <div class="form-group">
+          {{#model-field errors=errors.code}}
+            <label class="col-lg-2 control-label">Code</label>
+            <div class="col-lg-3">
+              {{ input value=code class='form-control'}}
+            </div>
+          {{/model-field}}
+
+          <label class="col-lg-1 control-label">Dates</label>
           <div class="col-lg-3">
-          {{ input value=code class='form-control'}}
+            {{view Volant.DateView dateBinding='begin' }}
           </div>
-        {{/model-field}}
 
-        <label class="col-lg-1 control-label">Dates</label>
-        <div class="col-lg-3">
-          {{view Volant.DateView dateBinding='begin' }}
+          <div class="col-lg-3">
+            {{view Volant.DateView class="form-control" dateBinding='end' }}
+          </div>
         </div>
 
-        <div class="col-lg-3">
-          {{view Volant.DateView class="form-control" dateBinding='end' }}
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Languages</label>
+          <div class="col-lg-3">{{input value=language class="form-control"}}</div>
+
+          <label class="col-lg-1 control-label" title="Age limit from - to">Age</label>
+          <div class="col-lg-3">{{input value=minimal_age type="number" class="form-control"}}</div>
+          <div class="col-lg-3">{{input value=maximal_age type="number" class="form-control"}}</div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Languages</label>
-        <div class="col-lg-3">{{input value=language class="form-control"}}</div>
-
-        <label class="col-lg-1 control-label" title="Age limit from - to">Age</label>
-        <div class="col-lg-3">{{input value=minimal_age type="number" class="form-control"}}</div>
-        <div class="col-lg-3">{{input value=maximal_age type="number" class="form-control"}}</div>
-      </div>
-
-      <div class="form-group">
-        {{#model-field errors=errors.organization}}
-          <label class="col-lg-2 control-label">
-            {{#if organization}}
-              {{#link-to 'organization' organization}}
-              Organization
-              {{/link-to}}
-            {{else}}
-              Organization
-            {{/if}}
-          </label>
-        <div class="col-lg-3">
-          {{view Ember.Select
+        <div class="form-group">
+          {{#model-field errors=errors.organization}}
+            <label class="col-lg-2 control-label">
+              {{#if organization}}
+                {{#link-to 'organization' organization}}
+                Organization
+                {{/link-to}}
+              {{else}}
+                Organization
+              {{/if}}
+            </label>
+            <div class="col-lg-3">
+              {{view Ember.Select
               contentBinding='controllers.organizations.arrangedContent'
               selectionBinding='organization'
               optionValuePath="content"
@@ -75,168 +73,168 @@
               class="form-control"
               prompt='Choose an organization'
               }}
-         </div>
-        {{/model-field}}
+            </div>
+          {{/model-field}}
 
-        <label class="col-lg-1 control-label">Fee</label>
-        <div class="col-lg-3">{{input value=extra_fee type="decimal" class="form-control" placeholder='Amount'}}</div>
-        <div class="col-lg-3">{{input value=extra_fee_currency  class="form-control" placeholder='Currency'}}</div>
-      </div>
+          <label class="col-lg-1 control-label">Fee</label>
+          <div class="col-lg-3">{{input value=extra_fee type="decimal" class="form-control" placeholder='Amount'}}</div>
+          <div class="col-lg-3">{{input value=extra_fee_currency  class="form-control" placeholder='Currency'}}</div>
+        </div>
 
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Tags</label>
-        <div class="col-lg-3">
-          {{view 'collection-picker'
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Tags</label>
+          <div class="col-lg-3">
+            {{view 'collection-picker'
             targetBinding='tags'
             contentBinding='controllers.tags.arrangedContent'
             prompt='Add tag...'
             class="form-control" }}
+          </div>
+          {{view 'labels-list' contentBinding='tags' class="col-lg-7"}}
         </div>
-        {{view 'labels-list' contentBinding='tags' class="col-lg-7"}}
-      </div>
 
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Intentions</label>
-        <div class="col-lg-3">
-          {{view 'collection-picker'
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Intentions</label>
+          <div class="col-lg-3">
+            {{view 'collection-picker'
             targetBinding='workcamp_intentions'
             contentBinding='controllers.workcamp_intentions.arrangedContent'
             prompt='Add intention...'
             optionValuePath="content.id"
             optionLabelPath="content.code"
             class="form-control" }}
-        </div>
-        {{view 'labels-list' contentBinding='workcamp_intentions' class="col-lg-7"}}
-      </div>
-
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Publish</label>
-        <div class="col-lg-3">
-          {{view Ember.Select
-          value=publish_mode
-          content=publish_modes
-          optionValuePath="content.code"
-          optionLabelPath="content.label"
-          class="form-control"
-          }}
-        </div>
-        <div class="col-lg-7">
-        </div>
-      </div>
-    </fieldset>
-
-    <fieldset>
-      <legend>Placement</legend>
-
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Capacity</label>
-        <div class="col-lg-2">{{input value=capacity type="number" class="form-control"}}</div>
-
-        <label class="col-lg-1 control-label">Females</label>
-        <div class="col-lg-1">{{input value=capacity_females type="number" class="form-control"}}</div>
-
-        <label class="col-lg-1 control-label">Males</label>
-        <div class="col-lg-1">{{input value=capacity_males type="number" class="form-control"}}</div>
-
-        <label class="col-lg-1 control-label">Teenagers</label>
-        <div class="col-lg-1">{{input value=capacity_teenagers type="number" class="form-control"}}</div>
-
-        <label class="col-lg-1 control-label">Natives</label>
-        <div class="col-lg-1">
-          {{input value=capacity_natives type="number" class="form-control col-lg-1"}}</div>
-      </div>
-
-      <div class="form-group">
-        {{#model-field errors=errors.places}}
-          <label class="col-lg-2 control-label">Places</label>
-          <div class="col-lg-2">{{input value=places type="number" class="form-control col-lg-1"}}</div>
-        {{/model-field}}
-
-        {{#model-field errors=errors.places_for_females}}
-          <label class="col-lg-1 control-label">Females</label>
-          <div class="col-lg-1">{{input value=places_for_females type="number" class="form-control col-lg-1"}}</div>
-        {{/model-field}}
-
-        {{#model-field errors=errors.places_for_males}}
-          <label class="col-lg-1 control-label">Males</label>
-          <div class="col-lg-1">
-            {{input value=places_for_males type="number" class="form-control col-lg-1"}}
           </div>
-        {{/model-field}}
-      </div>
+          {{view 'labels-list' contentBinding='workcamp_intentions' class="col-lg-7"}}
+        </div>
 
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Free</label>
-        <div class="col-lg-2"><p class="form-control-static">{{ free_places }}</p></div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Publish</label>
+          <div class="col-lg-3">
+            {{view Ember.Select
+            value=publish_mode
+            content=publish_modes
+            optionValuePath="content.code"
+            optionLabelPath="content.label"
+            class="form-control"
+            }}
+          </div>
+          <div class="col-lg-7">
+          </div>
+        </div>
+      </fieldset>
 
-        <label class="col-lg-1 control-label">Females</label>
-        <div class="col-lg-1"><p class="form-control-static">{{ free_places_for_females }}</p></div>
+      <fieldset>
+        <legend>Placement</legend>
 
-        <label class="col-lg-1 control-label">Males</label>
-        <div class="col-lg-1"><p class="form-control-static">{{ free_places_for_males }}</p></div>
-      </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Capacity</label>
+          <div class="col-lg-2">{{input value=capacity type="number" class="form-control"}}</div>
 
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Asked</label>
-        <div class="col-lg-2"><p class="form-control-static">{{ asked_for_places }}</p></div>
+          <label class="col-lg-1 control-label">Females</label>
+          <div class="col-lg-1">{{input value=capacity_females type="number" class="form-control"}}</div>
 
-        <label class="col-lg-1 control-label">Females</label>
-        <div class="col-lg-1"><p class="form-control-static">{{ asked_for_places_females }}</p></div>
+          <label class="col-lg-1 control-label">Males</label>
+          <div class="col-lg-1">{{input value=capacity_males type="number" class="form-control"}}</div>
 
-        <label class="col-lg-1 control-label">Males</label>
-        <div class="col-lg-1"><p class="form-control-static">{{ asked_for_places_males }}</p></div>
-      </div>
-    </fieldset>
+          <label class="col-lg-1 control-label">Teenagers</label>
+          <div class="col-lg-1">{{input value=capacity_teenagers type="number" class="form-control"}}</div>
 
-    <fieldset>
-      <legend>Location</legend>
+          <label class="col-lg-1 control-label">Natives</label>
+          <div class="col-lg-1">
+            {{input value=capacity_natives type="number" class="form-control col-lg-1"}}</div>
+        </div>
 
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Region</label>
-        <div class="col-lg-10">{{input value=region class="form-control" rows="3" }}</div>
-      </div>
+        <div class="form-group">
+          {{#model-field errors=errors.places}}
+            <label class="col-lg-2 control-label">Places</label>
+            <div class="col-lg-2">{{input value=places type="number" class="form-control col-lg-1"}}</div>
+          {{/model-field}}
 
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Area</label>
-        <div class="col-lg-10">{{input value=area class="form-control" rows="3"}}</div>
-      </div>
+          {{#model-field errors=errors.places_for_females}}
+            <label class="col-lg-1 control-label">Females</label>
+            <div class="col-lg-1">{{input value=places_for_females type="number" class="form-control col-lg-1"}}</div>
+          {{/model-field}}
 
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Train</label>
-        <div class="col-lg-4">{{input value=train type="text" class="form-control"}}</div>
+          {{#model-field errors=errors.places_for_males}}
+            <label class="col-lg-1 control-label">Males</label>
+            <div class="col-lg-1">
+              {{input value=places_for_males type="number" class="form-control col-lg-1"}}
+            </div>
+          {{/model-field}}
+        </div>
 
-        <label class="col-lg-2 control-label">Latitude</label>
-        <div class="col-lg-4">{{input value=latitude type="decimal" class="form-control"}}</div>
-      </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Free</label>
+          <div class="col-lg-2"><p class="form-control-static">{{ free_places }}</p></div>
 
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Airport</label>
-        <div class="col-lg-4">{{input value=airport type="text" class="form-control"}}</div>
+          <label class="col-lg-1 control-label">Females</label>
+          <div class="col-lg-1"><p class="form-control-static">{{ free_places_for_females }}</p></div>
 
-        <label class="col-lg-2 control-label">Longitude</label>
-        <div class="col-lg-4">{{input value=longitude type="decimal" class="form-control"}}</div>
-      </div>
-     </fieldset>
+          <label class="col-lg-1 control-label">Males</label>
+          <div class="col-lg-1"><p class="form-control-static">{{ free_places_for_males }}</p></div>
+        </div>
 
-     <fieldset>
-      <legend>Details</legend>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Asked</label>
+          <div class="col-lg-2"><p class="form-control-static">{{ asked_for_places }}</p></div>
 
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Accomodation</label>
-        <div class="col-lg-10">{{input value=accomodation class="form-control"}}</div>
-      </div>
+          <label class="col-lg-1 control-label">Females</label>
+          <div class="col-lg-1"><p class="form-control-static">{{ asked_for_places_females }}</p></div>
 
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Work</label>
-        <div class="col-lg-10">{{textarea value=workdesc class="form-control" rows="3" }}</div>
-      </div>
+          <label class="col-lg-1 control-label">Males</label>
+          <div class="col-lg-1"><p class="form-control-static">{{ asked_for_places_males }}</p></div>
+        </div>
+      </fieldset>
 
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Description</label>
-        <div class="col-lg-10">{{textarea value=description class="form-control" rows="3" }}</div>
-      </div>
+      <fieldset>
+        <legend>Location</legend>
 
-      <div class="form-group">
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Region</label>
+          <div class="col-lg-10">{{input value=region class="form-control" rows="3" }}</div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Area</label>
+          <div class="col-lg-10">{{input value=area class="form-control" rows="3"}}</div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Train</label>
+          <div class="col-lg-4">{{input value=train type="text" class="form-control"}}</div>
+
+          <label class="col-lg-2 control-label">Latitude</label>
+          <div class="col-lg-4">{{input value=latitude type="decimal" class="form-control"}}</div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Airport</label>
+          <div class="col-lg-4">{{input value=airport type="text" class="form-control"}}</div>
+
+          <label class="col-lg-2 control-label">Longitude</label>
+          <div class="col-lg-4">{{input value=longitude type="decimal" class="form-control"}}</div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Details</legend>
+
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Accomodation</label>
+          <div class="col-lg-10">{{input value=accomodation class="form-control"}}</div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Work</label>
+          <div class="col-lg-10">{{textarea value=workdesc class="form-control" rows="3" }}</div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Description</label>
+          <div class="col-lg-10">{{textarea value=description class="form-control" rows="3" }}</div>
+        </div>
+
+        <div class="form-group">
         <label class="col-lg-2 control-label">Notes</label>
         <div class="col-lg-10">{{textarea value=notes class="form-control" rows="3" }}</div>
       </div>
@@ -256,11 +254,9 @@
      </div>
   </form>
 
+  </div>
   <div class="col-lg-4">
     <h3>Applications</h3>
     {{view Barbecue.BsTabsView currentTab='assigned' tabs='Assigned,Starred,Search' viewPrefix='workcamp/tabs/'}}
-  </div>
-</div>
-
   </div>
 </div>
