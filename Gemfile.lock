@@ -1,12 +1,13 @@
 GIT
   remote: git://github.com/HakubJozak/barbecue.git
-  revision: 9ef0bdcb0adbe9b3475383166ed68b9ba0db71ab
+  revision: 69a465668baaa6e445111f0f08c4edc224f746ff
   branch: master
   specs:
     barbecue (0.0.1)
       active_model_serializers
       barber
       ember-rails
+      emblem-rails
       rails (~> 4.1)
 
 GIT
@@ -36,7 +37,7 @@ GEM
       activesupport (= 4.1.2)
       builder (~> 3.1)
       erubis (~> 2.7.0)
-    active_model_serializers (0.8.2)
+    active_model_serializers (0.8.3)
       activemodel (>= 3.0)
     activemodel (4.1.2)
       activesupport (= 4.1.2)
@@ -56,10 +57,10 @@ GEM
     addressable (2.3.6)
     ansi (1.4.3)
     arel (5.0.1.20140414130214)
-    barber (0.4.2)
+    barber (0.6.0)
       ember-source
       execjs
-      handlebars-source
+      handlebars-source (>= 1.0.0.rc.4)
     barber-emblem (0.1.1)
       barber (>= 0.4.1)
       emblem-source
@@ -108,9 +109,9 @@ GEM
       http_parser.rb (~> 0.6.0)
     ember-data-source (1.0.0.beta.11)
       ember-source
-    ember-rails (0.15.0)
+    ember-rails (0.16.0)
       active_model_serializers
-      barber (>= 0.4.1)
+      barber (>= 0.6.0)
       ember-data-source (>= 1.0.0.beta.5)
       ember-source (>= 1.1.0)
       execjs (>= 1.2)
@@ -125,7 +126,7 @@ GEM
     emblem-source (0.3.17)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    execjs (2.2.1)
+    execjs (2.2.2)
     factory_girl (2.6.4)
       activesupport (>= 2.3.9)
     factory_girl_rails (1.7.0)
@@ -151,8 +152,8 @@ GEM
     hitimes (1.2.2)
     htmlentities (4.3.1)
     http_parser.rb (0.6.0)
-    i18n (0.6.11)
-    jquery-rails (3.1.1)
+    i18n (0.7.0)
+    jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (4.0.3)
@@ -189,7 +190,7 @@ GEM
     mina-puma (0.1.2)
       mina
       puma
-    minitest (5.4.3)
+    minitest (5.5.0)
     minitest-reporters (1.0.4)
       ansi
       builder
@@ -241,7 +242,7 @@ GEM
       activesupport (= 4.1.2)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.3.2)
+    rake (10.4.2)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -272,10 +273,10 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.1.3)
+    sprockets-rails (2.2.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
-      sprockets (~> 2.8)
+      sprockets (>= 2.8, < 4.0)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
