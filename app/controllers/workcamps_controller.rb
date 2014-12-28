@@ -5,6 +5,13 @@ class WorkcampsController < ApplicationController
   before_action :find_workcamp, except: [ :index,:create ]
 
   def index
+    # TODO refactor
+    if ids = params[:ids]
+      search = workcamps.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
+      render json: search.find(*ids), each_serializer: WorkcampSerializer
+      return
+    end
+
     search = workcamps.order(:name).page(current_page)
     search = search.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
     search = add_year_scope(search)
@@ -78,9 +85,7 @@ class WorkcampsController < ApplicationController
     end
 
 
-    render json: search,
-    meta: { pagination: pagination_info(search) },
-    each_serializer: WorkcampSerializer
+    render json: search, meta: { pagination: pagination_info(search) }, each_serializer: WorkcampSerializer
   end
 
 
