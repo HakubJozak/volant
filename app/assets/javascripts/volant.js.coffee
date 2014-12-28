@@ -12,6 +12,7 @@
 #= require modernizr
 #= require date-polyfill/date-polyfill.min
 #= require markdown
+#= require Chart
 
 #= require barbecue
 

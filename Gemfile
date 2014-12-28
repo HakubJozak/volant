@@ -52,6 +52,7 @@ gem 'devise'
 gem 'momentjs-rails', '~> 2.8.3'
 gem 'modernizr-rails'
 gem 'jquery-ui-rails'
+gem 'chart-js-rails'
 
 
 # All Things Bootstrap
@@ -67,6 +68,7 @@ gem 'rack-jsonp-middleware'
 
 # only email templates data migration
 gem 'redcarpet', require: false
+
 
 
 group :development do
