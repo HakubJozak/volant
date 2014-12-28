@@ -1,7 +1,4 @@
 Volant.ApplicationRoute = Ember.Route.extend
-  # setupController: (model,controller,queryParams) ->
-  #   @controllerFor
-
   actions:
     yearChanged: ->
       false

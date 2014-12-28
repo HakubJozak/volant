@@ -1,4 +1,14 @@
 Volant.AjaxToStoreMixin = Ember.Mixin.create
+  fetchJSON: (url) ->
+    new Promise (resolve, reject) =>
+      $.ajax url, {
+         success: (response) ->
+           resolve(response)
+         error: (e) ->
+           console.error(e)
+           reject(e)
+       }
+
   ajax_to_store: (url,data = {}) ->
     new Promise (resolve, reject) =>
       csrf_token = $('meta[name="csrf-token"]').attr('content')

@@ -1,4 +1,4 @@
-Volant.ApplicationController = Ember.ObjectController.extend({
+Volant.ApplicationController = Ember.ObjectController.extend
   years: [ 'All','2015','2014','2013','2012','2011','2010']
   year: '2014'
 
@@ -23,4 +23,3 @@ Volant.ApplicationController = Ember.ObjectController.extend({
   # ltvMenu: Ember.computed.equal('mode','LTV')
 
   flash: null
-})

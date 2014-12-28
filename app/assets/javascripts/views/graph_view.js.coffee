@@ -1,11 +1,10 @@
 Volant.GraphView = Ember.View.extend
   tagName: 'canvas'
-  controllerName: 'outgoing/statistics'
   attributeBindings: ['width']
 
   didInsertElement: ->
     data = {
-      labels: ["January","February","March","April","May","June","July"],
+      labels: @get('data').recentApplyForms.labels,
       datasets: [
         # {
         #   fillColor: "rgba(220,220,220,0.5)",
@@ -19,7 +18,7 @@ Volant.GraphView = Ember.View.extend
           strokeColor : "rgba(151,187,205,1)",
           pointColor : "rgba(151,187,205,1)",
           pointStrokeColor : "#fff",
-          data: [28,48,40,19,96,27,100]
+          data: @get('data').recentApplyForms.data
         }
       ]
     }

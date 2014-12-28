@@ -47,6 +47,8 @@ Rails.application.routes.draw do
 
   resources :email_templates, except: [ :edit, :new ]
 
+  get '/stats/:name', to: 'statistics#show'
+
   root 'dashboard#index'
   get 'dashboard/index'
 
@@ -54,6 +56,7 @@ Rails.application.routes.draw do
 
   # JSON API - not to clash with the above route ^
   resources :users
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
