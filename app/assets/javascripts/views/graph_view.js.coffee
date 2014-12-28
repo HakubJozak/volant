@@ -24,6 +24,8 @@ Volant.GraphView = Ember.View.extend
     }
 
     # set same width as parent
-    @$()[0].width = @$().parent().width()
+    canvas = @$()[0]
+    canvas.width = @$().parent().width()
+    canvas.height = 200
     ctx = @$().get(0).getContext("2d")
     chart = new Chart(ctx).Line(data)

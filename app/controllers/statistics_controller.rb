@@ -1,10 +1,19 @@
 class StatisticsController < ApplicationController
   def show
-    all = {
-      data: [28,48,40,19,96,27,-55],
-      labels: ["January","February","March","April","May","June","Julyyy"]
+    stats = Outgoing::ApplyForm.group('date(created_at)').where('created_at >= ?',30.days.ago).count
+    data = []
+    labels = []
+
+    (30.days.ago.to_date..Date.today).each do |date|
+      data << stats[date] || 0
+      labels << date
+    end
+
+    json = {
+      data: data,
+      labels: labels
     }
 
-    render json: { recentApplyForms: all}
+    render json: { recentApplyForms: json}
   end
 end
