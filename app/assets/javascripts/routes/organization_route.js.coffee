@@ -6,6 +6,8 @@ Volant.OrganizationRoute = Volant.BaseRoute.extend
     @_super(controller,model)
     @setupCountries()
     @setup_mini_workcamps()
+    @currentModel.get('email_contacts').then (contacts) =>
+      @controllerFor('email_contacts').set('model',contacts)
 
   actions:
     yearChanged: ->
@@ -13,9 +15,9 @@ Volant.OrganizationRoute = Volant.BaseRoute.extend
       false
 
   setup_mini_workcamps: ->
+    unless @currentModel.get('isNew')
+      year = @controllerFor('application').get('year')
+      workcamps  = @store.filter('workcamp',{ organization_ids: [ @currentModel.get('id') ],year: year }, (wc) =>
+        wc.get('organization.id') == @currentModel.get('id'))
 
-    year = @controllerFor('application').get('year')
-    workcamps  = @store.filter('workcamp',{ organization_ids: [ @currentModel.get('id') ],year: year }, (wc) =>
-      wc.get('organization.id') == @currentModel.get('id'))
-
-    @controllerFor('mini_workcamps').set('model', workcamps)
+      @controllerFor('mini_workcamps').set('model', workcamps)

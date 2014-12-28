@@ -12,16 +12,13 @@ Volant.Router.map ->
   @resource 'workcamp', path: '/workcamps/:workcamp_id'
   @route 'new_workcamp', path: '/workcamps/:type/new'
 
-
-
-
   @resource 'imported_workcamps'
-
   @resource 'incoming_workcamps', path: '/incoming/workcamps'
   @resource 'ltv_workcamps', path: '/ltv/workcamps'
 
   @resource 'organizations'
   @resource 'organization', path: '/organizations/:organization_id'
+  @resource 'new_organization', path: '/organizations/new'
 
   @resource 'message', {path: '/messages/:message_id'}
   @resource 'messages'

@@ -29,6 +29,7 @@
 #= require_tree ./components
 #= require_tree ./templates
 #= require ./routes/base_route
+#= require ./routes/organization_route
 #= require ./routes/workcamps_route
 #= require_tree ./routes
 #= require ./router

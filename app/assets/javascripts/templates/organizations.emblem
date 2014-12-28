@@ -1,5 +1,15 @@
 form.form.form-horizontal.search-form submit="search" role="form"
-  partial 'query'
+  .row
+    .col-lg-1
+      label.control-label Keyword
+    .col-lg-9
+      partial 'query'
+    .col-lg-2.text-right
+      link-to 'new_organization' class='btn btn-success'
+        fa 'plus'
+        '
+        ' Create
+
 
 table.table.table-striped.table-hover
   thead

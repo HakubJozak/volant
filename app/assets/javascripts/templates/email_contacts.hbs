@@ -14,7 +14,61 @@
   </thead>
   <tbody>
     {{#each itemController="email_contact" }}
-      {{partial 'email_contact'}}
+      {{#if edited_or_new}}
+        <tr>
+          <td>{{input value=name action="save" placeholder="Name" class='form-control'}}</td>
+          <td>{{input value=address type=email action="save" placeholder="email address" class='form-control'}}</td>
+          <td>
+            {{view Ember.Select
+            value=kind
+            content=kinds
+            optionValuePath="content.id"
+            optionLabelPath="content.label"
+            class="form-control" }}
+          </td>
+          <td>{{input value=notes action="save" class='form-control'}}</td>
+          <td>
+            <div class="form-group">
+              {{#if isNew}}
+                <button type="button" class="btn btn-danger" {{ action 'remove' this }}>
+                  {{fa 'trash-o'}}
+                </button>
+              {{else}}
+                <button type="button" class="btn btn-danger" {{ action 'rollback' }}>
+                  {{fa 'times'}}
+                </button>
+              {{/if}}
+
+              <button type="submit" class="btn btn-success"  {{ action 'save' }}>
+                {{fa 'check'}}
+              </button>
+            </div>
+          </td>
+        </tr>
+        {{#unless isValid}}
+          <tr>
+            <td colspan='5'>
+              <span class='text-danger'>{{ join-errors errors }}</span>
+            </td>
+          </tr>
+        {{/unless}}
+      {{else}}
+        <tr>
+          <td>
+            <a {{action 'edit' }} href="#">
+              {{name}}
+            </a>
+          </td>
+          <td>{{mail-to address}}</td>
+          <td>{{kind}}</td>
+          <td>{{notes}}</td>
+          <td>
+            <button type="button" class="btn btn-danger" {{ action 'remove' this bubbles=false}}>
+              <i class="fa fa-trash-o"></i>
+            </button>
+          </td>
+        </tr>
+      {{/if}}
     {{/each}}
   </tbody>
 </table>
