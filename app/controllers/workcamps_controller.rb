@@ -11,7 +11,7 @@ class WorkcampsController < ApplicationController
     else
       search = workcamps.order(:name).page(current_page)
       search = search.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
-      search = search.filter_by_hash(filter)
+      search = search.filter_by_hash(filter,current_user)
       search = add_year_scope(search)
       render json: search, meta: { pagination: pagination_info(search) }, each_serializer: WorkcampSerializer
     end

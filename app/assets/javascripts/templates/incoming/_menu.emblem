@@ -1,0 +1,7 @@
+link-li
+  link-to 'incoming_workcamps' title='Incoming Workcamps'
+    | Our Workcamps
+
+link-li
+  link-to 'apply_forms' title='Incoming Applications'
+    | Participants

@@ -1,0 +1,11 @@
+link-li
+  link-to 'workcamps' title='Outgoing Workcamps'
+    | Workcamps
+
+link-li
+  link-to 'apply_forms' title='Outgoing Applications'
+    | Applications
+
+link-li
+  link-to 'payments' title='Payments'
+    | Payments

@@ -68,7 +68,7 @@ class Workcamp < ActiveRecord::Base
     where("workcamps.organization_id in (?)",ids)
   }
 
-  scope :filter_by_hash, lambda { |filter|
+  scope :filter_by_hash, lambda { |filter,current_user|
     search = where('TRUE')
 
     if filter[:state]

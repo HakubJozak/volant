@@ -29,20 +29,12 @@
       </form>
 
       <ul class="nav navbar-nav">
-        {{#link-li}}{{#link-to 'incoming_workcamps'}}Incoming{{/link-to}}{{/link-li}}
-        {{#link-li}}{{#link-to 'ltv_workcamps'}}LTV{{/link-to}}{{/link-li}}
+       {{partial modeMenuTemplate}}
 
-        {{#link-li}}{{#link-to 'workcamps'}}Workcamps{{/link-to}}{{/link-li}}
-        {{#link-li}}{{#link-to 'apply_forms'}}Applications{{/link-to}}{{/link-li}}
-
-       {{#menu-dropdown title="More"}}
-          {{#link-li}}{{#link-to 'imported_workcamps'}}Imported Workcamps{{/link-to}}{{/link-li}}
-          <li class="divider"></li>
+       {{#menu-dropdown title="Contacts"}}
           {{#link-li}}{{#link-to 'volunteers'}}Volunteers{{/link-to}}{{/link-li}}
-          {{#link-li}}{{#link-to 'payments'}}Payments{{/link-to}}{{/link-li}}
-          <li class="divider"></li>
           {{#link-li}}{{#link-to 'organizations' }}Organizations{{/link-to}}{{/link-li}}
-          <li><a href="#">Partners</a></li>
+          <li><a href="#">Networks</a></li>
        {{/menu-dropdown}}
       </ul>
 
