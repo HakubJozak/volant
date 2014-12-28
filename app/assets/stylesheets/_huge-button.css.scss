@@ -1,0 +1,28 @@
+@import "compass/css3";
+
+@mixin huge-button($color,$bgcolor) {
+  &:hover {
+    background-color: $bgcolor;
+    @include single-text-shadow($color: lighten($color,40%),$hoff: 1px,$voff: 1px);
+
+    i.fa {
+      color: $color;
+      @include single-text-shadow(none);
+    }
+
+    border: 1px solid $color;
+  }
+
+  i.fa {
+    color: #eee;
+    font-size: 550%;
+    display: block;
+  }
+
+  p { margin-top: 1em; }
+
+  font-size: 120%;
+  min-height: 6em;
+  width: 100%;
+  border: 1px solid transparent;
+}
