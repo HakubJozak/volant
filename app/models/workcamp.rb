@@ -68,6 +68,80 @@ class Workcamp < ActiveRecord::Base
     where("workcamps.organization_id in (?)",ids)
   }
 
+  scope :filter_by_hash, lambda { |filter|
+    search = where('TRUE')
+
+    if filter[:state]
+      search = search.imported_or_updated
+    end
+
+    if mode = filter[:publish_mode]
+      search = search.where(publish_mode: mode)
+    end
+
+    if query = filter[:q]
+      search = search.query(filter[:q])
+    end
+
+    if filter[:starred]
+      search = search.starred_by(current_user)
+    end
+
+    if from = filter[:from]
+      search = search.where("begin >= ?",Date.parse(from))
+    end
+
+    if to = filter[:to]
+      search = search.where("\"end\" <= ?",Date.parse(to))
+    end
+
+    if md = filter[:min_duration]
+      search = search.min_duration(md)
+    end
+
+    if md = filter[:max_duration]
+      search = search.max_duration(md)
+    end
+
+    if ma = filter[:min_age]
+      search = search.where("minimal_age >= ?",ma)
+    end
+
+    if ma = filter[:max_age]
+      search = search.where("maximal_age <= ?",ma)
+    end
+
+    if fp = filter[:free]
+      search = search.where("free_places >= ?",fp)
+    end
+
+    if fp = filter[:free_females]
+      search = search.where("free_places_for_females >= ?",fp)
+    end
+
+    if fp = filter[:free_males]
+      search = search.where("free_places_for_males >= ?",fp)
+    end
+
+    if ids = filter[:tag_ids].presence
+      search = search.with_tags(*ids)
+    end
+
+    if ids = filter[:workcamp_intention_ids].presence
+      search = search.with_workcamp_intentions(*ids)
+    end
+
+    if ids = filter[:country_ids].presence
+      search = search.with_countries(*ids)
+    end
+
+    if ids = filter[:organization_ids].presence
+      search = search.with_organizations(*ids)
+    end
+
+    search
+  }
+
 
 
   # TODO - fix tests and allow validation
@@ -86,13 +160,13 @@ class Workcamp < ActiveRecord::Base
 
   # TODO: make it workcamp_intentions
   has_and_belongs_to_many :intentions,
-                          -> { readonly },
-                          :class_name => 'WorkcampIntention',
-                          :join_table => 'workcamp_intentions_workcamps',
-                          :delete_sql => 'DELETE FROM workcamp_intentions_workcamps WHERE workcamp_id=#{id}'
+  -> { readonly },
+  :class_name => 'WorkcampIntention',
+  :join_table => 'workcamp_intentions_workcamps',
+  :delete_sql => 'DELETE FROM workcamp_intentions_workcamps WHERE workcamp_id=#{id}'
   alias :workcamp_intention_ids= :intention_ids=
 
-  acts_as_taggable
+    acts_as_taggable
 
   def tag_ids=(ids)
     loaded = ColoredTag.find(ids)
@@ -133,16 +207,16 @@ class Workcamp < ActiveRecord::Base
 
   def format_for_csv(field,object)
     case field
-      when 'country' then object.country.name
-      when 'organization' then self.organization.name
-#      when 'networks' then self.organization.networks.map { |n| n.name }.join(",") if networks.size > 0
+    when 'country' then object.country.name
+    when 'organization' then self.organization.name
+      #      when 'networks' then self.organization.networks.map { |n| n.name }.join(",") if networks.size > 0
     end || ""
   end
 
   def to_xml(params = {})
     # this fix is needed because the view columns doesn't have properly recognized type
     params.update :methods => [ :free_places_for_females, :free_places_for_males, :free_places ],
-                  :except => [ :free_places_for_females, :free_places_for_males, :free_places ]
+    :except => [ :free_places_for_females, :free_places_for_males, :free_places ]
     super(params)
   end
 

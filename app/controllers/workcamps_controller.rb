@@ -5,87 +5,16 @@ class WorkcampsController < ApplicationController
   before_action :find_workcamp, except: [ :index,:create ]
 
   def index
-    # TODO refactor
-    if ids = params[:ids]
+    if ids = filter[:ids]
       search = workcamps.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
       render json: search.find(*ids), each_serializer: WorkcampSerializer
-      return
+    else
+      search = workcamps.order(:name).page(current_page)
+      search = search.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
+      search = search.filter_by_hash(filter)
+      search = add_year_scope(search)
+      render json: search, meta: { pagination: pagination_info(search) }, each_serializer: WorkcampSerializer
     end
-
-    search = workcamps.order(:name).page(current_page)
-    search = search.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
-    search = add_year_scope(search)
-
-    if filter[:state]
-      search = search.imported_or_updated
-    end
-
-    if mode = filter[:publish_mode]
-      search = search.where(publish_mode: mode)
-    end
-
-    if query = filter[:q]
-      search = search.query(filter[:q])
-    end
-
-    if filter[:starred]
-      search = search.starred_by(current_user)
-    end
-
-    if from = filter[:from]
-      search = search.where("begin >= ?",Date.parse(from))
-    end
-
-    if to = filter[:to]
-      search = search.where("\"end\" <= ?",Date.parse(to))
-    end
-
-    if md = filter[:min_duration]
-      search = search.min_duration(md)
-    end
-
-    if md = filter[:max_duration]
-      search = search.max_duration(md)
-    end
-
-    if ma = filter[:min_age]
-      search = search.where("minimal_age >= ?",ma)
-    end
-
-    if ma = filter[:max_age]
-      search = search.where("maximal_age <= ?",ma)
-    end
-
-    if fp = filter[:free]
-      search = search.where("free_places >= ?",fp)
-    end
-
-    if fp = filter[:free_females]
-      search = search.where("free_places_for_females >= ?",fp)
-    end
-
-    if fp = filter[:free_males]
-      search = search.where("free_places_for_males >= ?",fp)
-    end
-
-    if ids = filter[:tag_ids].presence
-      search = search.with_tags(*ids)
-    end
-
-    if ids = filter[:workcamp_intention_ids].presence
-      search = search.with_workcamp_intentions(*ids)
-    end
-
-    if ids = filter[:country_ids].presence
-      search = search.with_countries(*ids)
-    end
-
-    if ids = filter[:organization_ids].presence
-      search = search.with_organizations(*ids)
-    end
-
-
-    render json: search, meta: { pagination: pagination_info(search) }, each_serializer: WorkcampSerializer
   end
 
 
@@ -154,7 +83,7 @@ class WorkcampsController < ApplicationController
               :accepted_places, :accepted_places_males, :accepted_places_females,
               :asked_for_places, :asked_for_places_males, :asked_for_places_females,
               :longitude, :latitude, :requirements,
-              :organization_id, :country_id, :tag_ids => [], :workcamp_intention_ids => [])
+              :organization_id, :country_id, :tag_ids => [], :workcamp_intention_ids => [],:ids => [])
   end
 
   def workcamps
