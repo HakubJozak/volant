@@ -243,3 +243,31 @@ table.import-changes {
 .btn.huge.green {
   @include huge-button($green,lighten($green,45%));
 }
+
+.graph-view {
+  position: relative;
+
+  .legend-container {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    background-color: white;
+    border: 2px dashed lighten(black,90%);
+    padding: 0.2em 0.5em;
+
+    & > ul {
+      vertical-align: middle;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      span {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        border: 1px solid $border-color;
+        margin: 3px;
+      }
+    }
+  }
+}
