@@ -271,3 +271,13 @@ table.import-changes {
     }
   }
 }
+
+.favorites {
+  padding-right: 4em;
+
+  h4.list-group-item-heading { font-size: 110%; }
+  .list-group-item {
+    border: none;
+    border-top: 1px solid lighten(#ccc,5%);
+  }
+}

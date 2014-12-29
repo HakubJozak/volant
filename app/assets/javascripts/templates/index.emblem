@@ -1,0 +1,66 @@
+.row
+  .col-lg-4.favorites
+    h3 Favorites
+    .list-group
+      each starred itemController='object'
+        if isWorkcamp
+          .list-group-item
+            h4.list-group-item-heading
+              partial 'star'
+              link-to 'workcamp' this
+                = name
+            p.list-group-item-text
+              ' {{small-flag country}} |
+              ' {{partial 'free_places'}} |
+              ' {{duration}} days,
+              ' {{join workcamp_intentions 'code'}}
+              ' {{join tags 'name'}}
+
+        else
+          .list-group-item
+            h4.list-group-item-heading
+              partial 'star'
+              link-to 'apply_form' this
+                partial 'apply_form/title'
+            p.list-group-item-text
+              ' {{mail-to volunteer.email}},
+              ' {{volunteer.phone}},
+              / if current_workcamp
+              /   link-to 'workcamp' current_workcamp
+              /     = current_workcamp.name
+
+
+
+  .col-lg-8
+    h3
+      ' Statistics
+      small Years
+    view 'graph' data=recentApplyFormsStats
+
+    .col-lg-6
+      table.table.dashboard
+        tbody
+          tr
+            td 2
+            td
+              link-to 'apply_forms'
+                | are currently on a project
+          tr
+            td 4
+            td
+              link-to 'apply_forms'
+                | leave this week
+
+    .col-lg-6
+      table.table.dashboard
+        tbody
+          tr
+            td 1
+            td
+              link-to 'apply_forms'
+                | return this week
+          tr
+            td 3
+            td
+              link-to 'apply_forms'
+               |new applications today
