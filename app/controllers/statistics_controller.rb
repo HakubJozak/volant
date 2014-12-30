@@ -6,7 +6,13 @@ class StatisticsController < ApplicationController
     if params[:name] == 'outgoing'
       year = params[:year].to_i
       year = Date.today.year unless year > 0
-      render json: { applyFormCounts: applyFormCounts(year)}
+      render json: {
+        applyFormCounts: applyFormCounts(year),
+        onProject: 5,
+        returns: 6,
+        leaves: 7,
+        news: 8
+      }
     else
       head :not_found
     end

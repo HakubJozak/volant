@@ -8,12 +8,12 @@
       table.table.dashboard
         tbody
           tr
-            td 2
+            td = outgoingStats.onProject
             td
               link-to 'apply_forms'
                 | are currently on a project
           tr
-            td 4
+            td = outgoingStats.leaves
             td
               link-to 'apply_forms'
                 | leave this week
@@ -22,12 +22,12 @@
       table.table.dashboard
         tbody
           tr
-            td 1
+            td = outgoingStats.returns
             td
               link-to 'apply_forms'
                 | return this week
           tr
-            td 3
+            td = outgoingStats.news
             td
               link-to 'apply_forms'
                |new applications today
