@@ -31,6 +31,27 @@ module Outgoing
       joins(:volunteer).where(str,like, like, like,like)
     }
 
+    scope :accepted, lambda {
+      joins(:current_assignment).where(cancelled: nil).where('workcamp_assignments.accepted IS NOT NULL')
+    }
+
+    scope :on_project, lambda { |day = Date.today|
+      accepted.joins(:current_workcamp).where("workcamps.begin <= :day AND workcamps.end >= :day",day: day)
+    }
+
+    scope :returns_between, lambda { |from,to|
+      accepted.joins(:current_workcamp).where("workcamps.end >= ? AND workcamps.end <= ?",from,to)
+    }
+
+    scope :leaves_between, lambda { |from,to|
+      accepted.joins(:current_workcamp).where("workcamps.begin >= ? AND workcamps.begin <= ?",from,to)
+    }
+
+    scope :just_submitted, lambda { |day = Date.today|
+      where('date(created_at) = ?',day)
+    }
+
+
     def current_message
       messages.not_sent.first
     end

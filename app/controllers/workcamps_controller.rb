@@ -66,7 +66,9 @@ class WorkcampsController < ApplicationController
   def filter
     params.permit(:starred,:state,:p,:year,:q,:from,:to,:min_duration,:max_duration,:min_age,
                   :max_age,:free,:free_males,:free_females,:publish_mode,
-                  :tag_ids => [], :country_ids => [], :workcamp_intention_ids => [], :organization_ids => [])
+                  :tag_ids => [], :country_ids => [],
+                  :workcamp_intention_ids => [], :organization_ids => [],
+                  :ids => [])
   end
 
   # Only allow a trusted parameter "white list" through.
@@ -83,7 +85,7 @@ class WorkcampsController < ApplicationController
               :accepted_places, :accepted_places_males, :accepted_places_females,
               :asked_for_places, :asked_for_places_males, :asked_for_places_females,
               :longitude, :latitude, :requirements,
-              :organization_id, :country_id, :tag_ids => [], :workcamp_intention_ids => [],:ids => [])
+              :organization_id, :country_id, :tag_ids => [], :workcamp_intention_ids => [])
   end
 
   def workcamps

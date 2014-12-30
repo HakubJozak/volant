@@ -59,8 +59,9 @@ Volant.ApplyFormAdapter = Volant.ApplicationAdapter.extend({
           errors[association] ||= {}
           errors[association][innerAttribute] = errors[attr]
 
-      console.info errors
-      return new DS.InvalidError(errors)
+      invalid_error = new DS.InvalidError(errors)
+      invalid_error.full_rails_message = json.full_message
+      return invalid_error
     else
       return @_super(jqXHR)
 

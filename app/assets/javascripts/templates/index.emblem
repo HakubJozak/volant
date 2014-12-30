@@ -11,7 +11,7 @@
             td = outgoingStats.onProject
             td
               link-to 'apply_forms'
-                | are currently on a project
+                | are currently on project
           tr
             td = outgoingStats.leaves
             td

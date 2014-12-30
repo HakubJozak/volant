@@ -4,14 +4,16 @@ class StatisticsController < ApplicationController
     #        else
     #        end
     if params[:name] == 'outgoing'
+      today = Date.today
       year = params[:year].to_i
-      year = Date.today.year unless year > 0
+      year = today.year unless year > 0
+
       render json: {
         applyFormCounts: applyFormCounts(year),
-        onProject: 5,
-        returns: 6,
-        leaves: 7,
-        news: 8
+        onProject: apply_forms.on_project.count,
+        returns: apply_forms.returns_between(today,today + 7.days).count,
+        leaves: apply_forms.leaves_between(today,today + 7.days).count,
+        news: apply_forms.just_submitted.count
       }
     else
       head :not_found
@@ -28,7 +30,7 @@ class StatisticsController < ApplicationController
   end
 
   def app_count_by_month(year)
-    counts = Outgoing::ApplyForm.year(year).group('extract(month from created_at)').count
+    counts = apply_forms.year(year).group('extract(month from created_at)').count
     date = Date.new(2014)
     labels = []
     data = []
@@ -43,7 +45,7 @@ class StatisticsController < ApplicationController
   end
 
   def recent30
-    stats = Outgoing::ApplyForm.group('date(created_at)').where('created_at >= ?',30.days.ago).count
+    stats = apply_forms.group('date(created_at)').where('created_at >= ?',30.days.ago).count
     data = []
     labels = []
 
@@ -53,5 +55,9 @@ class StatisticsController < ApplicationController
     end
 
     { data: data,  labels: labels }
+  end
+
+  def apply_forms
+    Outgoing::ApplyForm
   end
 end
