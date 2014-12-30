@@ -4,33 +4,35 @@
       ' Outgoing Applications Submitted
     view 'graph' data=outgoingStats
 
-    .col-lg-6
-      table.table.dashboard
-        tbody
-          tr
-            td = outgoingStats.onProject
-            td
-              link-to 'apply_forms'
-                | are currently on project
-          tr
-            td = outgoingStats.leaves
-            td
-              link-to 'apply_forms'
-                | leave this week
+    hr
+    .row
+      .col-lg-6
+        table.table.dashboard
+          tbody
+            tr
+              td = outgoingStats.onProject
+              td
+                link-to 'apply_forms'
+                  | are currently on project
+            tr
+              td = outgoingStats.leaves
+              td
+                link-to 'apply_forms'
+                  | leave this week
 
-    .col-lg-6
-      table.table.dashboard
-        tbody
-          tr
-            td = outgoingStats.returns
-            td
-              link-to 'apply_forms'
-                | return this week
-          tr
-            td = outgoingStats.news
-            td
-              link-to 'apply_forms'
-               |new applications today
+      .col-lg-6
+        table.table.dashboard
+          tbody
+            tr
+              td = outgoingStats.returns
+              td
+                link-to 'apply_forms'
+                  | return this week
+            tr
+              td = outgoingStats.news
+              td
+                link-to 'apply_forms'
+                 |new applications today
 
   .col-lg-4.favorites
     h3 Favorites
