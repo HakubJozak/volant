@@ -69,7 +69,12 @@
       </form>
   </div>
   <div class="col-lg-4">
-    <h3>Workcamps in {{year}}</h3>
+    <h3>
+      Workcamps in {{year}}
+      <button class='btn btn-success pull-right' {{action 'newWorkcamp'}}>
+        {{fa 'plus'}} Create
+      </button>
+    </h3>
     {{ render 'mini_workcamps'  }}
   </div>
 </div>

@@ -14,6 +14,12 @@ Volant.OrganizationRoute = Volant.BaseRoute.extend
       @setup_mini_workcamps()
       false
 
+    newWorkcamp: ->
+      org = @currentModel
+      attrs = { organization: org, code: org.get('code') }
+      @transitionTo 'new_workcamp','outgoing', {queryParams: attrs}
+      false
+
   setup_mini_workcamps: ->
     unless @currentModel.get('isNew')
       year = @controllerFor('application').get('year')
