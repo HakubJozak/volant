@@ -1,7 +1,7 @@
 outlet
 
 form.form.form-horizontal.search-form submit="search" role="form"
-  .row
+  .form-group
     .col-lg-1
       label.control-label Keyword
     .col-lg-9
@@ -11,7 +11,7 @@ form.form.form-horizontal.search-form submit="search" role="form"
         fa 'plus'
         '
         ' Create
-  .row
+  .form-group
     .col-lg-1
       label.control-label State
     .col-lg-2

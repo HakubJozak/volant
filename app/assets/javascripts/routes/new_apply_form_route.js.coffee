@@ -6,4 +6,4 @@ Volant.NewApplyFormRoute = Volant.ApplyFormRoute.extend
 
   model: (params) ->
     volunteer = @store.createRecord('volunteer')
-    @store.createRecord('apply_form', volunteer: volunteer)
+    @store.createRecord('apply_form', volunteer: volunteer,fee: 2500)
