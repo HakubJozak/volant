@@ -3,16 +3,21 @@ class StatisticsController < ApplicationController
     # json = if params[:name] == 'recent30'
     #        else
     #        end
-
-    render json: { applyFormCounts: applyFormCounts }
+    if params[:name] == 'outgoing'
+      year = params[:year].to_i
+      year = Date.today.year unless year > 0
+      render json: { applyFormCounts: applyFormCounts(year)}
+    else
+      head :not_found
+    end
   end
 
   private
 
-  def applyFormCounts
+  def applyFormCounts(year)
     {
-      lastYear: app_count_by_month(2013),
-      currentYear: app_count_by_month(2014)
+      lastYear: app_count_by_month(year - 1),
+      currentYear: app_count_by_month(year)
     }
   end
 
@@ -28,7 +33,7 @@ class StatisticsController < ApplicationController
       date = date.next_month
     end
 
-    { labels: labels, data: data }
+    { labels: labels, data: data, title: year }
   end
 
   def recent30

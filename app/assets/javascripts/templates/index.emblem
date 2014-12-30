@@ -1,4 +1,37 @@
 .row
+  .col-lg-8
+    h3
+      ' Outgoing Applications Submitted
+    view 'graph' data=outgoingStats
+
+    .col-lg-6
+      table.table.dashboard
+        tbody
+          tr
+            td 2
+            td
+              link-to 'apply_forms'
+                | are currently on a project
+          tr
+            td 4
+            td
+              link-to 'apply_forms'
+                | leave this week
+
+    .col-lg-6
+      table.table.dashboard
+        tbody
+          tr
+            td 1
+            td
+              link-to 'apply_forms'
+                | return this week
+          tr
+            td 3
+            td
+              link-to 'apply_forms'
+               |new applications today
+
   .col-lg-4.favorites
     h3 Favorites
     .list-group
@@ -28,39 +61,3 @@
               / if current_workcamp
               /   link-to 'workcamp' current_workcamp
               /     = current_workcamp.name
-
-
-
-  .col-lg-8
-    h3
-      ' Statistics
-      small Years
-    view 'graph' data=recentApplyFormsStats
-
-    .col-lg-6
-      table.table.dashboard
-        tbody
-          tr
-            td 2
-            td
-              link-to 'apply_forms'
-                | are currently on a project
-          tr
-            td 4
-            td
-              link-to 'apply_forms'
-                | leave this week
-
-    .col-lg-6
-      table.table.dashboard
-        tbody
-          tr
-            td 1
-            td
-              link-to 'apply_forms'
-                | return this week
-          tr
-            td 3
-            td
-              link-to 'apply_forms'
-               |new applications today

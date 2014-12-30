@@ -4,7 +4,7 @@ Volant.ListController = Ember.ArrayController.extend({
   year: Ember.computed.alias('controllers.application.year')
 
   # automatic refresh on year selection
-  year_observer: ( ->
+  yearObserver: ( ->
     Ember.run.once(this,'send','yearChanged');
   ).observes('year')
 
