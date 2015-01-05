@@ -1000,7 +1000,7 @@ CREATE TABLE taggings (
     taggable_id integer,
     taggable_type character varying(255),
     created_at timestamp without time zone,
-    context character varying(128),
+    context character varying(128) DEFAULT 'tags'::character varying,
     tagger_id integer,
     tagger_type character varying(255)
 );
@@ -1779,13 +1779,6 @@ CREATE INDEX index_workcamps_on_id ON workcamps USING btree (id);
 
 
 --
--- Name: index_workcamps_on_id_and_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_workcamps_on_id_and_type ON workcamps USING btree (id, type);
-
-
---
 -- Name: index_workcamps_on_state; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2234,8 +2227,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140702122905');
 INSERT INTO schema_migrations (version) VALUES ('20140904142136');
 
 INSERT INTO schema_migrations (version) VALUES ('20141007183833');
-
-INSERT INTO schema_migrations (version) VALUES ('20141009132207');
 
 INSERT INTO schema_migrations (version) VALUES ('20141013143540');
 

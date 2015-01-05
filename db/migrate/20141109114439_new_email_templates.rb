@@ -13,4 +13,5 @@ class NewEmailTemplates < ActiveRecord::Migration
     end
 
     Adhoc::migrate_email_templates
+  end
 end
