@@ -68,12 +68,12 @@ gem 'rack-jsonp-middleware'
 
 # only email templates data migration
 gem 'redcarpet', require: false
+gem 'letter_opener'
 
 
 
 group :development do
   gem 'faker'
-  gem 'letter_opener'
   gem 'spring'
   gem 'guard-livereload', '2.3.1', require: false
   gem 'mina', require: false

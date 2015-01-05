@@ -11,7 +11,3 @@ development:
 test:
   <<: *common
   database: volant_test
-
-production:
-  <<: *common
-  database: volant_production

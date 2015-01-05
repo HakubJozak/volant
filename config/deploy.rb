@@ -2,7 +2,7 @@ require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
 require 'mina/rvm'
-require 'mina/puma'
+
 
 # Basic settings:
 #   domain       - The hostname to SSH to.
@@ -11,15 +11,15 @@ require 'mina/puma'
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 
-
 task :staging do
   set :domain, 'volant.jizera'
   set :deploy_to, '/home/jakub/volant'
+  invoke :'rvm:use[ruby-2.1.4]'
 end
 
 task :production do
-  set :deploy_to, '/home/volant2'
-  raise 'Not ready for production yet.'
+  set :deploy_to, '/home/volant'
+  set :domain, 'pelican.amagical.net'
 end
 
 set :repository, 'git@github.com:HakubJozak/volant.git'
@@ -42,7 +42,7 @@ task :environment do
   # invoke :'rbenv:load'
 
   # For those using RVM, use this to load an RVM version@gemset.
-  invoke :'rvm:use[ruby-2.1.4]'
+
 end
 
 # Put any custom mkdir's in here for when `mina setup` is ran.
@@ -52,11 +52,11 @@ task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/log"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log"]
 
-  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/tmp/sockets"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/sockets"]
+  # queue! %[mkdir -p "#{deploy_to}/#{shared_path}/tmp/sockets"]
+  # queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/sockets"]
 
-  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/tmp/pids"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/pids"]
+  # queue! %[mkdir -p "#{deploy_to}/#{shared_path}/tmp/pids"]
+  # queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/pids"]
 
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/config"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config"]
@@ -66,7 +66,7 @@ task :setup => :environment do
 end
 
 desc "Deploys the current version to the server."
-task :deploy => [ :environment, :staging ]do
+task :deploy => [ :environment ]do
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
@@ -78,9 +78,8 @@ task :deploy => [ :environment, :staging ]do
     invoke :'deploy:cleanup'
 
     to :launch do
-      # queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
-      # queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
-      invoke :'puma:restart'
+      queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
+      queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
     end
   end
 end
