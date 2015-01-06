@@ -12,13 +12,15 @@ require 'mina/rvm'
 
 
 task :staging do
-  set :domain, 'volant.jizera'
+  set :user, 'jakub'
   set :deploy_to, '/home/jakub/volant'
+  set :domain, 'volant.jizera'
   invoke :'rvm:use[ruby-2.1.4]'
 end
 
 task :production do
-  set :deploy_to, '/home/volant'
+  set :user, 'rails'
+  set :deploy_to, '/home/rails/volant'
   set :domain, 'pelican.amagical.net'
 end
 
@@ -31,7 +33,7 @@ set :branch, 'ember'
 set :shared_paths, ['config/database.yml', 'log']
 
 # Optional settings:
-set :user, 'jakub'    # Username in the server to SSH to.
+
 set :forward_agent, true     # SSH forward_agent.
 
 # This task is the environment that is loaded for most commands, such as
