@@ -8,3 +8,7 @@ sending volunteers to similar organization across the globe. As all those NGOs h
 for any other such institution without bigger changes.
 
 Built on Rails 4 and Ember.
+
+## Requirements on Debian/Ubuntu
+
+    sudo apt-get install libpq-dev

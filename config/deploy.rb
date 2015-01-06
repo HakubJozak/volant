@@ -86,6 +86,11 @@ task :deploy => [ :environment ]do
   end
 end
 
+
+task :restart => [ :environment ] do
+  queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
+end
+
 # For help in making your deploy script, see the Mina documentation:
 #
 #  - http://nadarei.co/mina
