@@ -27,12 +27,13 @@ Workcampy
   - [ ] zobrazit mapu podle souradnic a/nebo 'train' a 'airport'
 
 Prihlasky
+  - zobrazovani tagu
   - filtrovani prehledu podle
     - [x] stavu prihlasky
     - [ ] tagu
   - [ ] razeni (hvezdicka,termin podani,prijmeni)
   - vytvoreni prihlasky
-    - [ ] pro noveho dobrovolnika
+    - [x] pro noveho dobrovolnika
     - [ ] pro existujiciho dobrovolnika
   - alerty
     - [ ] po 3 dnech po zažádání o přijetí
