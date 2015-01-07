@@ -1,6 +1,6 @@
 Volant.ApplicationController = Ember.ObjectController.extend
   years: [ 'All','2016','2015','2014','2013','2012','2011','2010']
-  year: '2015'
+  year: moment().year().toString()
 
   modes: [ 'Outgoing','Incoming','LTV']
   mode: 'Outgoing'
