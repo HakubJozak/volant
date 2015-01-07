@@ -66,6 +66,6 @@ class MessagesController < ApplicationController
       params[:message].delete(:sent_at)
     end
 
-    params.require(:message).permit(MessageSerializer.public_attributes)
+    params.require(:message).permit(:to, :from, :cc, :bcc, :subject, :body, :html_body, :user_id, :email_template_id,  :action, :attachments_attributes => [])
   end
 end

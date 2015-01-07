@@ -3,7 +3,7 @@ class AttachmentSerializer < ActiveModel::Serializer
   has_one :message, embed: :ids, include: false
 
   def filename
-    object.file.try(:filename)    
+    object.file.try(:filename) || '[no-name]'
   end
 
   def url
