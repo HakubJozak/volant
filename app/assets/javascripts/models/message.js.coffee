@@ -1,6 +1,7 @@
 Volant.Message = DS.Model.extend
   user: DS.belongsTo 'user'
   apply_form: DS.belongsTo 'apply_form',async: true
+  attachments: DS.hasMany 'attachment',async: true
 
   to: DS.attr 'string'
   cc: DS.attr 'string'

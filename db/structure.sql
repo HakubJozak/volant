@@ -208,6 +208,39 @@ CREATE VIEW apply_forms_view AS
 
 
 --
+-- Name: attachments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE attachments (
+    id integer NOT NULL,
+    file character varying(255),
+    type character varying(255) DEFAULT 'Attachment'::character varying NOT NULL,
+    message_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: attachments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE attachments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: attachments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE attachments_id_seq OWNED BY attachments.id;
+
+
+--
 -- Name: bookings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1207,6 +1240,13 @@ ALTER TABLE ONLY apply_forms ALTER COLUMN id SET DEFAULT nextval('apply_forms_id
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY attachments ALTER COLUMN id SET DEFAULT nextval('attachments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY bookings ALTER COLUMN id SET DEFAULT nextval('bookings_id_seq'::regclass);
 
 
@@ -1405,6 +1445,14 @@ ALTER TABLE ONLY workcamps ALTER COLUMN id SET DEFAULT nextval('workcamps_id_seq
 
 ALTER TABLE ONLY apply_forms
     ADD CONSTRAINT apply_forms_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY attachments
+    ADD CONSTRAINT attachments_pkey PRIMARY KEY (id);
 
 
 --
@@ -2249,4 +2297,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141219104230');
 INSERT INTO schema_migrations (version) VALUES ('20141219133401');
 
 INSERT INTO schema_migrations (version) VALUES ('20141226215131');
+
+INSERT INTO schema_migrations (version) VALUES ('20150107124536');
 

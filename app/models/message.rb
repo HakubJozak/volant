@@ -2,6 +2,7 @@ class Message < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :apply_form
+  has_many :attachments
 
   validates_presence_of :user
   validates_inclusion_of :action, in: %w(ask accept reject send infosheet)

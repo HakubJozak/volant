@@ -35,7 +35,7 @@ gem 'pry-rails', group: [:development, :test]
 gem 'pry-byebug', group: [:development, :test]
 
 
-gem 'paperclip'
+gem 'carrierwave'
 gem 'differ'
 gem 'htmlentities'
 gem 'acts-as-taggable-on'

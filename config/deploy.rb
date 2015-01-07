@@ -57,6 +57,9 @@ task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/config"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config"]
 
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/uploads"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/uploads"]
+
   queue! %[touch "#{deploy_to}/#{shared_path}/config/database.yml"]
   queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml'."]
 end

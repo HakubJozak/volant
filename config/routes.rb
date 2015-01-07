@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :volunteers, except: [ :edit, :new ]
   resources :tags, except: [ :edit, :new ]
   resources :payments, except: [ :edit, :new ]
+  resources :attachments, except: [ :edit, :new ]  
 
   post '/workcamps/import', to: 'import#create'
   resources :import_changes, except: [ :create ]
