@@ -2,6 +2,7 @@
 
 <table class="table table-striped table-hover">
   <thead>
+    <th></th>
     <th>Subject</th>
     <th>Action</th>
     <th>To</th>
@@ -12,6 +13,11 @@
   <tbody>
     {{#each}}
       <tr {{bind-attr class="delivered::warning"}}>
+        <td>
+          {{#if attachments}}
+            {{fa 'paperclip'}}
+          {{/if}}
+        </td>
         <td>
           {{#link-to 'message' this}}
             {{#if subject}}
@@ -39,7 +45,6 @@
             {{/link-to}}
           {{/if}}
         </td>
-        <td></td>
       </tr>
     {{/each}}
   </tbody>

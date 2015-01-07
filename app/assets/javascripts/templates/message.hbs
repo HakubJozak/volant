@@ -107,10 +107,30 @@
     {{#if delivered}}
       <div class="form-group" >
         <label class="col-lg-1 control-label">Sent at</label>
-        <div class="col-lg-10">
+        <div class="col-lg-5">
           <p class="form-control-static">
-            {{format-date sent_at}}
+            {{format-date sentAt}}
           </p>
+        </div>
+      </div>
+
+      <div class="form-group" >
+        <label class="col-lg-1 control-label">Attachments</label>
+        <div class="col-lg-5">
+          <p class="form-control-static">
+          {{#each attachments}}
+            <a {{bind-attr href=url}}>
+              {{filename}}
+            </a>,
+          {{/each}}
+          </p>
+        </div>
+      </div>
+    {{else}}
+      <div class="form-group" >
+        <label class="col-lg-1 control-label">Attachments</label>
+        <div class="col-lg-5">
+         {{# view "file-upload" contentBinding="" }}
         </div>
       </div>
     {{/if}}
