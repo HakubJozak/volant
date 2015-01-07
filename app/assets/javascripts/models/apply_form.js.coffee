@@ -43,3 +43,52 @@ Volant.ApplyForm = DS.Model.extend
 
   add_workcamp: (wc) ->
     console.info wc.id
+
+
+Volant.ApplyFormAdapter = Volant.ApplicationAdapter.extend
+  ajaxError: (jqXHR) ->
+    if jqXHR && jqXHR.status == 422
+      json = Ember.$.parseJSON(jqXHR.responseText)
+      errors = json.errors
+
+      for attr of errors
+        # Set errors on the nested records, for example:
+        #  { errors:
+        #  { 'payment.amount': [ "must not be blank" ] }
+        #  { 'payment.returned_date': [ "must not be blank" ] }
+        #
+        # becomes
+        #
+        # { 'payment': { amount: [ "must not be blank" ],
+        #                returned_date: [ 'must not be blank' ] }
+        # }
+        #
+        if match = attr.match(/([a-z_]+)\.([a-z_]+)/)
+          association = match[1]
+          innerAttribute = match[2]
+          errors[association] ||= {}
+          errors[association][innerAttribute] = errors[attr]
+
+      invalid_error = new DS.InvalidError(errors)
+      invalid_error.full_rails_message = json.full_message
+      return invalid_error
+    else
+      return @_super(jqXHR)
+
+
+Volant.ApplyFormSerializer = DS.ActiveModelSerializer.extend
+  serialize: (apply_form,opts) ->
+    json = @_super(apply_form,opts)
+
+  serializeBelongsTo: (record, json, relationship) ->
+    if relationship.key == 'payment'
+      if payment = record.get('payment')
+        json['payment_attributes'] = @serialize(payment,includeId: true)
+
+      if volunteer = record.get('volunteer')
+        json['volunteer_attributes'] = @serialize(volunteer,includeId: true)
+
+      json
+    else
+      @_super(record,json,relationship)
+
