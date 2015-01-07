@@ -1,4 +1,4 @@
-Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin,
+Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
   afterModel: (model,transition) ->
     if title = @get('title')
       $(document).attr('title', "#{title.call(this,model)} - Volant")
@@ -10,6 +10,9 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin,
     @_super(controller,model)
 
   actions:
+    closeModal: ->
+      @disconnectOutlet 'modal'
+        
     toggle_starred: (model) ->
       data = { star: { id: model.get('id'), model: model.constructor.typeKey.decamelize(), value: !model.get('starred') }}
       @ajax_to_store('/stars',data).then (payload) =>
@@ -78,14 +81,6 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin,
     modelType = model.get('type') if model.get?
     if hash = @store.typeMapFor(modelType).metadata.pagination
       controller.set('controllers.pagination.model', Ember.Object.create(hash))
-
-  flash_info: (msg) ->
-    flash = Ember.Object.create(type: 'success', message: msg)
-    @controllerFor('application').set('flash', flash)
-
-  flash_error: (msg) ->
-    flash = Ember.Object.create(type: 'error', message: msg)
-    @controllerFor('application').set('flash',flash)
 
   prepareSelectControllers: ->
     @setupCountries()

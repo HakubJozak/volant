@@ -13,17 +13,6 @@
   <div class="alert alert-danger" role="alert">{{join-errors errors}}</div>
 {{/if}}
 
-<form id='upload-form' enctype="multipart/form-data" {{ action 'uploadAttachment' on="submit" }} class='form-horizontal'>
-<div class="form-group">
-  <label class="col-lg-1 control-label">Attachment</label>
-  <div class="col-lg-3">
-    {{input type='file' name="attachment[file]" class='form-control'}}
-  </div>
-  <div class="col-lg-3">
-    <button class='btn btn-primary' type='submit'>Upload</button>
-  </div>
-</div>
-</form>
 
 <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
   <fieldset>
@@ -57,10 +46,10 @@
           class="form-control" }}
         </div>
         <div class="col-lg-1">
-          <button type="button" class="btn btn-default" {{action 'useSelectedTemplate'}} title='Use selected template'>
+          <a href='#' type="button" class="btn btn-default" {{action 'useSelectedTemplate'}} title='Use selected template'>
             {{fa 'refresh'}}
             Use
-          </button>
+          </a>
         </div>
       {{/unless}}
     </div>
@@ -125,6 +114,11 @@
               {{filename}}
             </a>,
           {{/each}}
+          {{#unless delivered}}
+            <a href='#' class='btn btn-default' title='Attach Files' {{action 'showUploadDialog'}} >
+              {{fa 'paperclip'}} Add
+            </a>
+          {{/unless}}
         </p>
       </div>
 
@@ -146,12 +140,12 @@
   <div class='row'>
     <div class="col-lg-11 col-lg-offset-1">
     {{#unless delivered}}
-    <button type="submit" class="btn btn-default">
-      Save & Close
-    </button>
     <button type="button" class="btn btn-primary" {{action 'sendMessage' }}>
       {{fa 'send-o'}}
       Send
+    </button>
+    <button type="submit" class="btn btn-default">
+      Save & Close
     </button>
     {{/unless}}
 

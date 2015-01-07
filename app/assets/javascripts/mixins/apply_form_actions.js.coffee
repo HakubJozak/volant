@@ -1,9 +1,6 @@
 Volant.ApplyFormActions = Ember.Mixin.create
 
   actions:
-    closeModal: ->
-      @disconnectOutlet 'modal'
-
     pay: ->
       @controllerFor('apply_form').set('anchor','payment-fields')
 
