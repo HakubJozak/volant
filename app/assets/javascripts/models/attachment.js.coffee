@@ -2,7 +2,8 @@ Volant.Attachment = DS.Model.extend
   url: DS.attr 'string'
   filename: DS.attr 'string'
   message: DS.belongsTo 'message'
-  file: DS.attr 'file'  
+  name: Ember.computed.alias('filename')
+#  file: DS.attr 'file'
 
 # Volant.AttachmentAdapter = Volant.ApplicationAdapter.extend
 #   # enables file upload

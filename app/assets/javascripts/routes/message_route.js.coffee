@@ -73,5 +73,9 @@ Volant.MessageRoute = Volant.BaseRoute.extend
       @render 'message/upload_attachment',outlet: 'modal',model: @currentModel, controller: 'message_upload_attachment'
       false
 
+    destroyAttachment: (attachment) ->
+      console.log 'Attachment destroyed.'
+      attachment.destroyRecord()
+      false
 
   

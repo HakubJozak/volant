@@ -109,16 +109,16 @@
       <label class="col-lg-1 control-label">Attachments</label>
       <div class="col-lg-5">
         <p class="form-control-static">
-          {{#each attachments}}
-            <a {{bind-attr href=url}}>
-              {{filename}}
-            </a>,
-          {{/each}}
-          {{#unless delivered}}
+          {{#if delivered}}
+            {{#each attachments}}
+              <a {{bind-attr href=url}}>{{filename}}</a>,
+            {{/each}}
+          {{else}}
+            {{view 'labels-list' contentBinding='attachments' removeAction='destroyAttachment'}}
             <a href='#' class='btn btn-default' title='Attach Files' {{action 'showUploadDialog'}} >
               {{fa 'paperclip'}} Add
             </a>
-          {{/unless}}
+          {{/if}}
         </p>
       </div>
 
