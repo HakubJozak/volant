@@ -1,9 +1,12 @@
 class MessageMailer < ActionMailer::Base
 
   def standard_email(msg)
-    #attachments['lang.csv'] = File.read("#{Rails.root}/db/languages.csv")
     msg.attachments.each do |a|
-      attachments[a.file.original_name] = a.file.read
+      if a.file
+        if filename = a.file_identifier
+          attachments[filename] = a.file.read
+        end
+      end
     end
 
     mail(to: msg.to,

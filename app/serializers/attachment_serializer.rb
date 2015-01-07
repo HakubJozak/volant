@@ -1,9 +1,9 @@
-class AttachmentSerializer < ActiveModel::Serializer
+class AttachmentSerializer < ApplicationSerializer
   attributes :id, :url, :filename
   has_one :message, embed: :ids, include: false
 
   def filename
-    object.file.try(:filename) || '[no-name]'
+    object.file_identifier || '[no-name]'
   end
 
   def url
