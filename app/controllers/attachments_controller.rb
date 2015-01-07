@@ -17,6 +17,7 @@ class AttachmentsController < ApplicationController
   # POST /attachments
   def create
     @attachment = Attachment.new(attachment_params)
+
     if @attachment.save
       render json: @attachment, serializer: AttachmentSerializer
     else
@@ -46,6 +47,6 @@ class AttachmentsController < ApplicationController
   end
 
   def attachment_params
-    params.require(:attachment).permit(:file)
+    params.require(:attachment).permit(:file,:message_id)
   end
 end

@@ -1,4 +1,4 @@
-Volant.MessageRoute = Volant.BaseRoute.extend({
+Volant.MessageRoute = Volant.BaseRoute.extend
   title: (model) -> "#{model.get('subject')}"
 
   model: (params) ->
@@ -68,4 +68,35 @@ Volant.MessageRoute = Volant.BaseRoute.extend({
         =>
           @flash_error 'Send failed'
       false
-})
+
+    uploadAttachment: (attachment) ->
+      data = new FormData($('#upload-form')[0])
+      data.append 'attachment[message_id]', @currentModel.get('id')
+      @send_files('/attachments',data).then ((response) =>
+        @store.pushPayload(response)
+        @flash_info('File uploaded.')        
+      ), =>
+        @flash_error('Upload failed.')
+                              
+
+  send_files: (url,data) ->
+    new Promise (resolve, reject) =>
+      csrf_token = $('meta[name="csrf-token"]').attr('content')
+      csrf_param = $('meta[name="csrf-param"]').attr('content')
+      data.append('authenticity_token',csrf_token)
+
+      $.ajax
+        url: url
+        type: "POST"
+        success: (response) =>
+          resolve(response)
+
+        error: (error) =>
+          reject(error)
+
+        data: data
+        cache: false
+        contentType: false
+        processData: false
+
+  

@@ -13,6 +13,18 @@
   <div class="alert alert-danger" role="alert">{{join-errors errors}}</div>
 {{/if}}
 
+<form id='upload-form' enctype="multipart/form-data" {{ action 'uploadAttachment' on="submit" }} class='form-horizontal'>
+<div class="form-group">
+  <label class="col-lg-1 control-label">Attachment</label>
+  <div class="col-lg-3">
+    {{input type='file' name="attachment[file]" class='form-control'}}
+  </div>
+  <div class="col-lg-3">
+    <button class='btn btn-primary' type='submit'>Upload</button>
+  </div>
+</div>
+</form>
+
 <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
   <fieldset>
     <div class="form-group" >
@@ -36,20 +48,20 @@
       </div>
 
       {{#unless delivered}}
-      <label class="col-lg-1 control-label">Template</label>
-      <div class="col-lg-4">
+        <label class="col-lg-1 control-label">Template</label>
+        <div class="col-lg-4">
           {{view Ember.Select
           contentBinding='controllers.email_templates.content'
           optionLabelPath="content.title"
           selectionBinding="selectedTemplate"
           class="form-control" }}
-      </div>
-      <div class="col-lg-1">
-        <button type="button" class="btn btn-default" {{action 'useSelectedTemplate'}} title='Use selected template'>
-          {{fa 'refresh'}}
-          Use
-        </button>
-      </div>
+        </div>
+        <div class="col-lg-1">
+          <button type="button" class="btn btn-default" {{action 'useSelectedTemplate'}} title='Use selected template'>
+            {{fa 'refresh'}}
+            Use
+          </button>
+        </div>
       {{/unless}}
     </div>
 
@@ -63,7 +75,7 @@
       <div class="col-lg-5">
         <p class="form-control-static">
           {{#link-to 'apply_form' apply_form}}
-            {{apply_form.name}}
+          {{apply_form.name}}
           {{/link-to}}
         </p>
       </div>
@@ -79,7 +91,7 @@
       <div class="col-lg-5">
         <p class="form-control-static">
           {{#link-to 'workcamp' apply_form.current_workcamp}}
-            {{apply_form.current_workcamp.name}}
+          {{apply_form.current_workcamp.name}}
           {{/link-to}}
         </p>
       </div>
@@ -95,7 +107,7 @@
       <div class="col-lg-5">
         <p class="form-control-static">
           {{#link-to 'organization' apply_form.current_workcamp.organization}}
-            {{apply_form.current_workcamp.organization.name}}
+          {{apply_form.current_workcamp.organization.name}}
           {{/link-to}}
         </p>
       </div>
@@ -104,37 +116,26 @@
       </div>
     </div>
 
-    {{#if delivered}}
-      <div class="form-group" >
-        <label class="col-lg-1 control-label">Sent at</label>
-        <div class="col-lg-5">
-          <p class="form-control-static">
-            {{format-date sentAt}}
-          </p>
-        </div>
-      </div>
-
-      <div class="form-group" >
-        <label class="col-lg-1 control-label">Attachments</label>
-        <div class="col-lg-5">
-          <p class="form-control-static">
+    <div class="form-group" >
+      <label class="col-lg-1 control-label">Attachments</label>
+      <div class="col-lg-5">
+        <p class="form-control-static">
           {{#each attachments}}
             <a {{bind-attr href=url}}>
               {{filename}}
             </a>,
           {{/each}}
-          </p>
-        </div>
+        </p>
       </div>
-    {{else}}
-      <div class="form-group" >
-        <label class="col-lg-1 control-label">Attachments</label>
-        <div class="col-lg-5">
-         {{# view "file-upload" contentBinding="" }}
-        </div>
-      </div>
-    {{/if}}
 
+      <label class="col-lg-1 control-label">Sent at</label>
+      <div class="col-lg-5">
+        <p class="form-control-static">
+          {{format-date sentAt}}
+        </p>
+      </div>
+    </div>
+    
     <div class="form-group email-body-area" >
       <div class="col-lg-11 col-lg-offset-1">
         {{native-editor editable=editable value=html_body}}
@@ -158,4 +159,5 @@
     </div>
   </div>
 </form>
+
 </div>

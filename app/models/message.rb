@@ -2,7 +2,7 @@ class Message < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :apply_form
-  has_many :attachments
+  has_many :attachments, dependent: :destroy
   accepts_nested_attributes_for :attachments
   
   validates_presence_of :user
