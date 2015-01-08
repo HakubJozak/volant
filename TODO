@@ -1,18 +1,18 @@
-- [x] 'oblibene' campy a prihlasky pro kazdeho uzivatel zvlast (ted je to pro vsechny stejne)
-- [ ] zobrazovani chyb, pokud se nepodari ulozit workcamp
-
+# Bugs
+- [x] 'oblibene' campy a prihlasky pro kazdeho uzivatele zvlast (ted je to pro vsechny stejne)
+- [x] zobrazovani chyb, pokud se nepodari ulozit workcamp
 
 # Outgoing
- - [ ] dashboard
+ - [x] dashboard
 
 Zpravy
   - [ ] pripojovani VEF ke zpravam
   - [ ] pripojovani infosheetu ke zpravam
-  - [ ] pridavani priloh ke zpravam
+  - [x] pridavani priloh ke zpravam
   - [x] formatovani textu (bold,linky...)
 
 Organizace
-  - [ ] vytvorit novou organizaci
+  - [x] vytvorit novou organizaci
   - [ ] uprava clenstvi v sitich organizaci
 
 Workflow
@@ -27,7 +27,7 @@ Workcampy
   - [ ] zobrazit mapu podle souradnic a/nebo 'train' a 'airport'
 
 Prihlasky
-  - zobrazovani tagu
+  - [ ] zobrazovani tagu
   - filtrovani prehledu podle
     - [x] stavu prihlasky
     - [ ] tagu
@@ -61,8 +61,10 @@ Export
   - VEF PDF,HTML
   - friday list
 
+
 # MTV/LTV
  - Dashboard
+ - a vubec vsechno...
 
 # Incoming
  - [ ] Dashboard
