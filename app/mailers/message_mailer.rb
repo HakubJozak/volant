@@ -11,8 +11,7 @@ class MessageMailer < ActionMailer::Base
 
     mail(to: msg.to,
          from: msg.from,
-         subject: msg.subject,
-         content_type: "text/html") do |format|
+         subject: msg.subject) do |format|
       format.html { render text: msg.html_body.to_s }
     end
   end
