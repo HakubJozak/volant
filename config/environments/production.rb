@@ -69,10 +69,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address:              'smtp.sendgrid.net',
+    address:              'smtp.mandrillapp.com',
     domain:               'volant.pelican.amagical.net',
-    user_name:            Rails.application.secrets.sendgrid_username,
-    password:             Rails.application.secrets.sendgrid_password,
+    user_name:            Rails.application.secrets.mandrill_username,
+    password:             Rails.application.secrets.mandrill_password,
     port:                 587,
     authentication:       'plain',
     enable_starttls_auto: true
