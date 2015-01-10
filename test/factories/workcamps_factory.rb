@@ -4,7 +4,6 @@ Factory.define :workcamp do |w|
   w.sequence(:name) { |n| "Dummy name #{n}" }
   w.country { Country.first }
   w.organization { Organization.first }
-  w.intentions {|i| (1..3).to_a.map { i.association(:workcamp_intention) } }
   w.language "English"
   w.begin 20.days.from_now
   w.end 1.month.from_now

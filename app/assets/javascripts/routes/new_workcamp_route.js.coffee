@@ -4,6 +4,9 @@ Volant.NewWorkcampRoute = Volant.WorkcampRoute.extend
 
   model: (params,transition) ->
     defaults = {
+      language: 'English'
+      minimal_age: 18
+      maximal_age: 99
       places: 2
       places_for_males: 2
       places_for_females: 2

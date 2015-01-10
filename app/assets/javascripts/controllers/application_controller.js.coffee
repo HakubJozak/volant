@@ -10,6 +10,10 @@ Volant.ApplicationController = Ember.ObjectController.extend
     "#{mode}/menu"
   ).property('mode')
 
+  modeName: (->
+    @get('mode').toLocaleLowerCase()
+  ).property('mode')
+
   modeChange: ( ->
     url = switch @get('mode').toLocaleLowerCase()
             when 'incoming' then '/'

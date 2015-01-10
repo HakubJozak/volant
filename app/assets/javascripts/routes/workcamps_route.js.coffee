@@ -1,6 +1,7 @@
-Volant.WorkcampsRoute = Volant.BaseRoute.extend({
+Volant.WorkcampsRoute = Volant.BaseRoute.extend
   default_filter: -> {}
-
+  newWorkcampType: 'outgoing'
+  
   model: (params) ->
     filter = @default_filter()
     filter.q = params.query
@@ -30,6 +31,7 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
 
   setupController: (controller,model,queryParams) ->
     @_super(controller, model,queryParams)
+    controller.set 'newWorkcampType',@get('newWorkcampType')
     @prepareSelectControllers()
 
   actions:
@@ -55,5 +57,3 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend({
     search: ->
       @refresh()
       false
-
-})

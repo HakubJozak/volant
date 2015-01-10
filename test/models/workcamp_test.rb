@@ -114,6 +114,16 @@ class WorkcampTest < ActiveSupport::TestCase
     assert_not_nil Workcamp.first.to_csv
   end
 
+  test "create with intentions" do
+    inex = organizations(:inex)
+    attrs = Factory.attributes_for(:workcamp, country_id: inex.country.id, organization_id: inex.id)
+    attrs[:workcamp_intention_ids] = [ workcamp_intentions(:animal).id ]
+    
+    wc = Workcamp.new(attrs)
+    
+    assert wc.save, wc.errors.full_messages
+  end
+  
   # TODO - uncomment when AS is removed
   # should 'ignore temporary workcamps' do
   #   before =  Workcamp.count

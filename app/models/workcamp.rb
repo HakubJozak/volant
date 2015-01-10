@@ -159,14 +159,13 @@ class Workcamp < ActiveRecord::Base
   belongs_to :organization
 
   # TODO: make it workcamp_intentions
-  has_and_belongs_to_many :intentions,
-  -> { readonly },
-  :class_name => 'WorkcampIntention',
-  :join_table => 'workcamp_intentions_workcamps',
-  :delete_sql => 'DELETE FROM workcamp_intentions_workcamps WHERE workcamp_id=#{id}'
+  has_and_belongs_to_many :intentions,  -> { readonly },
+                          validate: false, class_name: 'WorkcampIntention',
+                          join_table: 'workcamp_intentions_workcamps',
+                          delete_sql: 'DELETE FROM workcamp_intentions_workcamps WHERE workcamp_id=#{id}'
   alias :workcamp_intention_ids= :intention_ids=
 
-    acts_as_taggable
+  acts_as_taggable
 
   def tag_ids=(ids)
     loaded = ColoredTag.find(ids)

@@ -12,9 +12,8 @@ body {
   margin: 0 1em 1em 1em;
 }
 
-textarea {
+textarea.form-control {
   min-width: 85%;
-  min-height: 10em;
 }
 
 .fa-star-o {

@@ -8,7 +8,7 @@ form.form.form-horizontal.form-search submit='search' role='form'
     .col-lg-3.pull-right
       if isDirty
         button.btn.btn-danger type='button' click='save'
-          | Save
+          | Save All
 
       button.btn.btn-default{ action 'toggle' 'editing_visible'} type='button'
         fa 'pencil-square-o'
@@ -17,8 +17,8 @@ form.form.form-horizontal.form-search submit='search' role='form'
         | Filter
       '
       .btn-group
-        link-to 'new_workcamp' 'ltv' class='btn btn-success'
-          | Create
+        link-to 'new_workcamp' newWorkcampType class='btn btn-success'
+          | Create #{capitalize newWorkcampType}
         button.btn.btn-success.dropdown-toggle type="button" data-toggle="dropdown" aria-expanded="false"
           span.caret
           span.sr-only
