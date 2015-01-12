@@ -99,7 +99,10 @@ class ApplyFormsController < ApplicationController
 
   def infosheet
     @apply_form.infosheet
-    render_apply_form
+    payload = Payload.new(
+                          apply_forms: [ @apply_form ],
+                          workcamp_assignments: @apply_form.workcamp_assignments)
+    render json: payload, serializer: PayloadSerializer
   end
 
   private
