@@ -8,9 +8,10 @@ Volant.Attachment = DS.Model.extend
   workcamp: DS.belongsTo 'workcamp', async: true
 
   name: (->
-    switch @get 'type'
-      when 'VefAttachment' then 'VEF'
-      else @get('filename')
+    @get('filename') ||
+      switch @get 'type'
+        when 'VefAttachment' then 'VEF'
+        else @get('filename')
   ).property('filename','type')
 
 

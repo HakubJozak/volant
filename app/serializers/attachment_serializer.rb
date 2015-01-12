@@ -5,7 +5,7 @@ class AttachmentSerializer < ApplicationSerializer
   has_one :workcamp, embed: :ids, include: false    
 
   def filename
-    object.file_identifier || '[no-name]'
+    object.filename
   end
 
   def url
