@@ -22,6 +22,13 @@ Volant.ApplyFormActionPickerController = Ember.ObjectController.extend Volant.Aj
             user: user
           }
 
+          vef = @store.createRecord 'attachment', {
+            type: 'VefAttachment'
+            apply_form: apply_form
+          }
+
+          message.get('attachments').pushObject(vef)
+
           @transitionToRoute('message',message)
 
       @send 'closeModal'

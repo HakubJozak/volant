@@ -21,7 +21,7 @@ Volant.ApplicationAdapter = DS.ActiveModelAdapter.extend({
 })
 
 
-Volant.ApplicationSerializer = DS.ActiveModelSerializer.extend({
+Volant.ApplicationSerializer = DS.ActiveModelSerializer.extend
   serializeHasMany: (record, json, relationship) ->
     json_key = "#{relationship.key.singularize()}_ids"
     records = Ember.get(record, relationship.key)
@@ -32,8 +32,6 @@ Volant.ApplicationSerializer = DS.ActiveModelSerializer.extend({
         json[json_key].push(item.get('id'))
     else
       @_super(record,json.relationship)
-
-})
 
 
 # Transforms Date to avoid miss-match with rails date

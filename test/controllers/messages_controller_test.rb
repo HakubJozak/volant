@@ -39,10 +39,27 @@ class MessagesControllerTest < ActionController::TestCase
       attrs = Factory.attributes_for(:message)
       form = Factory(:apply_form)
       attrs[:apply_form_id] = form.id
+
       post :create, message: attrs
 
       assert_response :success, response.body.to_s
       assert_not_nil json_response['message']['id']
+    end
+  end
+
+  test 'create with VEF attachment' do
+    assert_difference('Message.count') do
+      attrs = Factory.attributes_for(:message)
+      form = Factory(:apply_form)
+      attrs[:attachments] = [{ type: 'VefAttachment', apply_form_id: form}]
+
+      post :create, message: attrs
+      
+      puts @response.body.to_s
+      assert_not_nil id = json_response['message']['id']
+      assert_not_nil saved = Message.find(id)
+      assert_equal VefAttachment, saved.attachments.first.class
+      assert_equal form.id, saved.attachments.first.apply_form.id
     end
   end
 

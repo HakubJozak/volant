@@ -4,7 +4,6 @@ class CreateAttachments < ActiveRecord::Migration
       t.string :file
       t.string :type, default: 'Attachment', null: false
       t.belongs_to :message
-
       t.timestamps
     end
   end

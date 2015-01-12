@@ -62,10 +62,11 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    if params[:message]
-      params[:message].delete(:sent_at)
-    end
+    params[:message].delete(:sent_at) if params[:message]
+    params[:message][:attachments_attributes] = params[:message][:attachments]
 
-    params.require(:message).permit(:to, :from, :cc, :bcc, :subject, :body, :html_body, :user_id, :email_template_id,  :action, :attachments_attributes => [])
+    params.require(:message).permit(:to, :from, :cc, :bcc, :subject, :body, :html_body,
+                                    :user_id, :email_template_id,  :action,
+                                    :attachments_attributes => [:id, :type, :workcamp_id, :apply_form_id])
   end
 end

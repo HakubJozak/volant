@@ -2,7 +2,6 @@ Volant.Message = DS.Model.extend
   user: DS.belongsTo 'user'
   apply_form: DS.belongsTo 'apply_form',async: true
   attachments: DS.hasMany 'attachment'
-
   to: DS.attr 'string'
   cc: DS.attr 'string'
   bcc: DS.attr 'string'
@@ -16,3 +15,9 @@ Volant.Message = DS.Model.extend
   # for the collision with {{action}} helper in Handlebars templates
   action_name: Ember.computed.alias('action')
   delivered: Ember.computed.alias('sentAt')
+
+
+Volant.MessageSerializer = Volant.ApplicationSerializer.extend DS.EmbeddedRecordsMixin,
+  attrs:
+    attachments: { embedded: 'always' }
+

@@ -217,7 +217,9 @@ CREATE TABLE attachments (
     type character varying(255) DEFAULT 'Attachment'::character varying NOT NULL,
     message_id integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    workcamp_id integer,
+    apply_form_id integer
 );
 
 
@@ -2299,4 +2301,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141219133401');
 INSERT INTO schema_migrations (version) VALUES ('20141226215131');
 
 INSERT INTO schema_migrations (version) VALUES ('20150107124536');
+
+INSERT INTO schema_migrations (version) VALUES ('20150112142151');
 

@@ -1,10 +1,27 @@
 Volant.Attachment = DS.Model.extend
+  type: DS.attr 'string'
   url: DS.attr 'string'
   filename: DS.attr 'string'
   message: DS.belongsTo 'message'
-  name: Ember.computed.alias('filename')
-#  file: DS.attr 'file'
 
+  applyForm: DS.belongsTo 'apply_form', async: true
+  workcamp: DS.belongsTo 'workcamp', async: true
+
+  name: (->
+    switch @get 'type'
+      when 'VefAttachment' then 'VEF'
+      else @get('filename')
+  ).property('filename','type')
+
+
+Volant.AttachmentSerializer = Volant.ApplicationSerializer.extend DS.EmbeddedRecordsMixin,
+  attrs:
+    workcamp: { serialize: 'ids' }
+    applyForm: { serialize: 'ids' }    
+
+
+
+#  file: DS.attr 'file'
 # Volant.AttachmentAdapter = Volant.ApplicationAdapter.extend
 #   # enables file upload
 #   ajaxOptions: (url, type, hash) ->
