@@ -99,13 +99,16 @@ class ApplyFormsController < ApplicationController
 
   def infosheet
     @apply_form.infosheet
-    payload = Payload.new(
-                          apply_forms: [ @apply_form ],
-                          workcamp_assignments: @apply_form.workcamp_assignments)
-    render json: payload, serializer: PayloadSerializer
+    render_apply_form
   end
 
   private
+
+  def render_state_change
+    payload = Payload.new(apply_forms: [ @apply_form ],
+                          workcamp_assignments: @apply_form.workcamp_assignments)
+    render json: payload, serializer: PayloadSerializer
+  end
 
   def find_apply_form
     @apply_form = ApplyForm.find(params[:id])

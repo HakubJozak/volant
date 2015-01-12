@@ -29,7 +29,7 @@ class VefAttachment < Attachment
   end
 
   def filename
-    if v = apply_form.volunteer
+    if v = apply_form.try(:volunteer)
       stripped = strip_cs_chars("#{v.firstname}_#{v.lastname}_#{v.birthdate}")
       "VEF_#{stripped.underscore}.xml"
     else
