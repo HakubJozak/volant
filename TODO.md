@@ -60,6 +60,7 @@ Export
   - VEF XML
   - VEF PDF,HTML
   - friday list
+  - Statistiky
 
 
 # MTV/LTV

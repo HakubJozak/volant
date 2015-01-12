@@ -24,6 +24,10 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
       @send('createAssignment',wc,@currentModel)
       false
 
+    reactivate: ->
+      @currentModel.set 'cancelled',null
+      @currentModel.save()        
+
     create_payment: ->
       form = @modelFor('apply_form')
       payment = @store.createRecord('payment',apply_form: form,amount: form.get('fee'),mean: 'CASH', received: new Date())

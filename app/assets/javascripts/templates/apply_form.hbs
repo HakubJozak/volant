@@ -9,6 +9,21 @@
     </h2>
 
     <form class="form" role="form" {{action 'save' on="submit"}}>
+      {{#if cancelled }}
+        <hr>
+        <div class='row'>
+          <div class="form-group col-lg-2">
+            <label class=" control-label">Cancelled At</label>
+          </div>
+          <div class="form-group col-lg-3">          
+            {{view Volant.DateView dateBinding='cancelled' }}
+          </div>
+          <div class="form-group col-lg-6">
+            <button class="btn btn-success" type="button" {{action 'reactivate'}}>Reactivate</button>          
+          </div>
+        </div>
+      {{/if }}
+
       {{#with volunteer }}
         {{partial 'volunteer_fields'}}
       {{/with}}
@@ -52,7 +67,7 @@
       </fieldset>
 
       <button class='btn btn-primary' type='submit'>Save</button>
-      {{ button 'Cancel' 'rollback' 'btn-default' }}
+      {{ button 'Cancel Changes' 'rollback' 'btn-default' }}
       {{ button 'Delete' 'remove' 'btn btn-danger pull-right' }}
     </form>
 </div>
