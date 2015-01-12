@@ -60,9 +60,11 @@
           </div>
         </fieldset>
 
-        {{#unless isNew}}
+        {{#if isNew}}
+          <p class='text-muted'>Please save the organization to add its email contacts.</p>
+        {{else}}
           {{render 'email_contacts' }}
-        {{/unless}}
+        {{/if}}
 
         <button type="submit" class="btn btn-primary">Save</button>
         {{ button 'Cancel' 'rollback' 'btn-default' }}
