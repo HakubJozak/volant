@@ -16,8 +16,8 @@ Volant.Attachment = DS.Model.extend
 
 Volant.AttachmentSerializer = Volant.ApplicationSerializer.extend DS.EmbeddedRecordsMixin,
   attrs:
-    workcamp: { serialize: 'ids' }
-    applyForm: { serialize: 'ids' }    
+    workcamp: { serialize: 'id', deserialize: 'id' }
+    applyForm: { serialize: 'id', deserialize: 'id' }
 
 
 

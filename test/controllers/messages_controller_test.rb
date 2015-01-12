@@ -55,7 +55,6 @@ class MessagesControllerTest < ActionController::TestCase
 
       post :create, message: attrs
       
-      puts @response.body.to_s
       assert_not_nil id = json_response['message']['id']
       assert_not_nil saved = Message.find(id)
       assert_equal VefAttachment, saved.attachments.first.class

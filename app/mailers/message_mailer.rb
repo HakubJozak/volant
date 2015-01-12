@@ -2,11 +2,8 @@ class MessageMailer < ActionMailer::Base
 
   def standard_email(msg)
     msg.attachments.each do |a|
-      if a.file
-        if filename = a.file_identifier
-          attachments[filename] = a.file.read
-        end
-      end
+      next unless a.has_data?
+      attachments[a.filename] = a.data
     end
 
     mail(to: msg.to,
