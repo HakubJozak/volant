@@ -12,7 +12,7 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
   actions:
     closeModal: ->
       @disconnectOutlet 'modal'
-        
+
     toggle_starred: (model) ->
       data = { star: { id: model.get('id'), model: model.constructor.typeKey.decamelize(), value: !model.get('starred') }}
       @ajax_to_store('/stars',data).then (payload) =>
@@ -40,9 +40,8 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
     save: ->
       console.log 'Saving',@currentModel
       @currentModel.get('errors').clear()
-      @currentModel.save().then ( (wc) =>
-        @go_to_plural_route(@currentModel)
-        @flash_info 'Saved.'
+      @currentModel.save().then ( (saved_record) =>
+        @afterSave(saved_record)
        ), ( (e) =>
          if e.full_rails_message?
            @flash_error e.full_rails_message
@@ -71,11 +70,22 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
       @go_to_plural_route()
       false
 
-  # ----- Normal Methods ------
+  # Override those
 
-  go_to_plural_route: ->
-    next_route = @currentModel.constructor.typeKey.decamelize().pluralize()
+  afterSave: (record) ->
+    @go_to_plural_route(record)
+    @flash_info('Saved.')
+
+
+  # ----- Normal Methods ------
+  
+  go_to_plural_route: (record) ->
+    next_route = record.constructor.typeKey.decamelize().pluralize()
     @transitionTo next_route if @routeName != next_route
+
+  # goToSingularRoute: (record) ->
+  #   next_route = record.constructor.typeKey.decamelize()
+  #   @transitionTo(next_route,record) if @routeName != next_route
 
   setupPagination: (controller,model) ->
     modelType = model.get('type') if model.get?
