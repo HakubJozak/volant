@@ -8,6 +8,7 @@
 
 #= require moment
 #= require moment/cs
+#= require moment/en-au
 #= require jquery.ui.datepicker
 #= require modernizr
 #= require date-polyfill/date-polyfill.min
@@ -49,7 +50,7 @@
 #       Volant.advanceReadiness()
 # })
 
-moment.locale('en')
+moment.locale('en-au')
 
 Ember.Application.initializer
   name: 'setCurrentUser'

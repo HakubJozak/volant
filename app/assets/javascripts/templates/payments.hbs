@@ -15,7 +15,9 @@
         <td>
           {{#if apply_form}}
             {{#link-to 'apply_form' apply_form}}
-              {{apply_form.name}}
+              {{#with apply_form}}
+                {{partial 'apply_form/title'}}                
+              {{/with}}
             {{/link-to}}
           {{else}}
             -

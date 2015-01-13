@@ -1,18 +1,3 @@
-Ember.Handlebars.helper 'dates', (wc) ->
-  from = wc.get('begin')
-  to = wc.get('end')
-  year_from = if from? then from.getFullYear() else '?'
-  year_to = if to? then to.getFullYear() else '?'
-
-  if year_from == year_to
-    fmt = 'M/D'
-    text = "#{moment(from).format(fmt)} - #{moment(to).format(fmt)}, #{year_from}"
-  else
-    fmt = 'L'
-    "#{moment(from).format(fmt)} - #{moment(to).format(fmt)}"
-
-
-
 Ember.Handlebars.helper 'age-range', (wc) ->
   min = wc.get('minimal_age')
   max = wc.get('maximal_age')
