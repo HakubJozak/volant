@@ -1,3 +1,13 @@
+# Web
+ - filtr: na 'nove' a 'specha',
+ - filtr: volani na podobne workcampy
+ - filtr: typ
+ - email o nove prihlasce
+ - zruseni paginace p=3.1428
+ 
+ - mtv_count & workcamp_count v zemich
+
+
 # Bugs
 - [x] 'oblibene' campy a prihlasky pro kazdeho uzivatele zvlast (ted je to pro vsechny stejne)
 - [x] zobrazovani chyb, pokud se nepodari ulozit workcamp
@@ -27,7 +37,7 @@ Workcampy
   - [ ] zobrazit mapu podle souradnic a/nebo 'train' a 'airport'
 
 Prihlasky
-  - [ ] zobrazovani tagu
+- [ ] zobrazovani tagu
   - filtrovani prehledu podle
     - [x] stavu prihlasky
     - [ ] tagu

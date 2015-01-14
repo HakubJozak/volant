@@ -91,4 +91,3 @@ Volant.ApplyFormSerializer = DS.ActiveModelSerializer.extend
       json
     else
       @_super(record,json,relationship)
-

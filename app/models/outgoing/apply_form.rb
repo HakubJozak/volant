@@ -70,6 +70,8 @@ module Outgoing
       self.reload
     end
 
+    alias :add_workcamp :assign_workcamp
+
     # TODO - retrieve from parameter and check for other apply forms
     def after_initialize
       self.fee ||= 2200

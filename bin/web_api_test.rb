@@ -17,6 +17,14 @@ json = JSON.generate(apply_form: {
                        email: 'anton.spelec@gmail.com',
                        phone: '+420 777 123 456',
                        fax: "I do not own such device",
+
+                       street: 'Unter den Linden 45',
+                       city: 'Pest',
+                       zipcode: '89056'
+                       
+                       contact_street:
+                       contact_zipcode:
+                       
                        emergency_day: '+420 777 999 999',
                        emergency_night: '+420 777 999 999',
                        emergency_name: 'Yo Mama',
@@ -26,8 +34,8 @@ json = JSON.generate(apply_form: {
                        workcamp_ids: [ 45588, 46406 ]
                      })
 
-host = '128.199.36.58'
-# host = 'localhost'
+# host = 'volant.pelican.amagical.net'
+host = 'localhost'
 
 response = Net::HTTP.new(host,9090).post('/v1/apply_forms', json, { 'Content-Type' =>  'application/json' })
 

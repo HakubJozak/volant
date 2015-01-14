@@ -25,7 +25,7 @@ class VefAttachment < Attachment
   end
 
   def data
-    '<vef></vef>'
+    Export::VefXml.new(apply_form).to_xml
   end
 
   def filename

@@ -20,4 +20,3 @@ Volant.Message = DS.Model.extend
 Volant.MessageSerializer = Volant.ApplicationSerializer.extend DS.EmbeddedRecordsMixin,
   attrs:
     attachments: { embedded: 'always' }
-

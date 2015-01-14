@@ -4,11 +4,14 @@ Factory.define :person do |f|
   f.email "jakub.hozak@gmail.com"
   f.gender "m"
   f.phone "+420 777 855 359"
-  f.birthdate "1982-03-27"
   f.birthnumber "8203270438"
   f.nationality "Czech"
   f.occupation "Programator"
   f.city "Praha"
+  f.zipcode '10100'
+  f.street 'Somewhere 22'
+  f.birthdate 20.years.ago
+  f.past_experience 'Rich'
 end
 
 Factory.define :volunteer, :class => Volunteer, :parent => :person do |f|

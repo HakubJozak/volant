@@ -3,20 +3,13 @@ source 'https://rubygems.org'
 
 ruby '2.1.5'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.2'
-
 gem 'pg'
-
 gem 'sass-rails', '~> 4.0.3'
 gem 'compass-rails'
-
 gem 'uglifier', '>= 1.3.0'
-
 gem 'coffee-rails', '~> 4.0.0'
-
-# gem 'therubyracer',  platforms: :ruby
-
+gem 'nokogiri'
 
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -48,7 +41,6 @@ gem "active_model_serializers", '~> 0.8.2'
 gem 'kaminari'
 gem 'devise'
 
-
 gem 'momentjs-rails', '~> 2.8.3'
 gem 'modernizr-rails'
 gem 'jquery-ui-rails'
@@ -67,11 +59,12 @@ gem 'rack-jsonp-middleware'
 
 # only email templates data migration
 gem 'redcarpet', require: false
-gem 'letter_opener'
+
 
 
 
 group :development do
+  gem 'letter_opener'
   gem 'faker'
   gem 'spring'
   gem 'guard-livereload', '2.3.1', require: false

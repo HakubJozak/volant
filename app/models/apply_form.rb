@@ -1,7 +1,5 @@
 require 'rexml/document'
 
-
-# TODO - set new AF fee smartly
 class ApplyForm < ActiveRecord::Base
   include ::Alerts
   include Stars::Model
@@ -10,6 +8,13 @@ class ApplyForm < ActiveRecord::Base
 
   create_date_time_accessors
 
+  # TODO: replace by real DB attributes
+  delegate :firstname, :lastname, :gender, :email, :phone, :birthdate, :birthnumber,
+           :nationality, :occupation, :account, :emergency_name, :emergency_day,
+           :emergency_night, :speak_well, :speak_some, :special_needs, :past_experience, :comments,
+           :fax, :street, :city, :zipcode, :contact_street, :contact_city, :contact_zipcode,
+           :birthplace, :note, to: :volunteer
+  
   scope :year, lambda { |year|
     year = year.to_i
     where "(#{ApplyForm.table_name}.created_at >= ? AND #{ApplyForm.table_name}.created_at < ?)", Date.new(year,1,1), Date.new(year + 1,1,1)    }
@@ -27,7 +32,6 @@ class ApplyForm < ActiveRecord::Base
     toggle_date(:cancelled)
   end
 
-  # Cancels the form and returns self to enable method chaining.
   def cancel
     self.cancelled = Time.now
     save!
