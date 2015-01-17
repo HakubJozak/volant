@@ -25,10 +25,19 @@ class EmailTemplate < ActiveRecord::Base
   def data
     raise 'Missing apply_form' unless @apply_form 
     @data ||= {
-      volunteer: @apply_form.volunteer.attributes
+      volunteer: @apply_form.volunteer.attributes,
+      workcamps_list: workcamps_list
     }
   end
 
+  def workcamps_list
+    items = @apply_form.workcamps.map do |wc|
+      "<li>#{wc.code} - #{wc.name}, #{wc.begin} - #{wc.end}</li>"
+    end.join("\n")
+
+    "<ul>#{items}</ul>"
+  end
+  
   class MessageData
     include ActiveModel::Model
     attr_accessor :to,:from,:cc,:bcc,:subject,:body
