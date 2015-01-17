@@ -3,7 +3,7 @@
  - filtr: volani na podobne workcampy
  - filtr: typ
  - email o nove prihlasce
- - zruseni paginace p=3.1428
+ - zruseni paginace p=3.14159
  
  - mtv_count & workcamp_count v zemich
 
@@ -16,7 +16,7 @@
  - [x] dashboard
 
 Zpravy
-  - [ ] pripojovani VEF ke zpravam
+  - [x] pripojovani VEF ke zpravam
   - [ ] pripojovani infosheetu ke zpravam
   - [x] pridavani priloh ke zpravam
   - [x] formatovani textu (bold,linky...)
@@ -26,9 +26,9 @@ Organizace
   - [ ] uprava clenstvi v sitich organizaci
 
 Workflow
+  - [ ] automaticke poslani zpravy po obdrzeni prihlasky 
   - [x] zmenit stav bez odeslani zpravy
   - [x] (bug) nechat prihlasku pripojenou ke zprave i po odeslani
-  - [ ] automaticke poslani zpravy po obdrzeni prihlasky 
   - [ ] pridat dalsi kroky - odeslani a prijeti evaluacniho dotazniku (evaluation_sent/received?)
 
 Workcampy
@@ -66,11 +66,12 @@ Import
   - VEF(xml)
 
 Export
-  - PEF XML
-  - VEF XML
-  - VEF PDF,HTML
-  - friday list
-  - Statistiky
+  - [ ] Statistiky
+  - [ ] PEF XML
+  - [x] VEF XML
+  - [ ] VEF PDF,HTML
+  - [ ] friday list
+
 
 
 # MTV/LTV
