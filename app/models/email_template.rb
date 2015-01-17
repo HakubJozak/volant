@@ -35,7 +35,7 @@ class EmailTemplate < ActiveRecord::Base
       "<li>#{wc.code} - #{wc.name}, #{wc.begin} - #{wc.end}</li>"
     end.join("\n")
 
-    "<ul>#{items}</ul>"
+    "<ol>#{items}</ol>"
   end
   
   class MessageData

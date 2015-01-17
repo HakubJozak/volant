@@ -19,7 +19,7 @@ class EmailTemplateTest < ActiveSupport::TestCase
     assert_equal 'you@there.com',email.to
     assert_equal 'info@inexsda.cz',email.from
     assert_equal 'Zprava o prijeti',email.subject
-    body = "<p>Milá zájemkyně/ milý zájemce,</p>\n <ul><li>CODE - Name, 2014-12-12 - 2015-01-01</li></ul>"
+    body = "<p>Milá zájemkyně/ milý zájemce,</p>\n <ol><li>CODE - Name, 2014-12-12 - 2015-01-01</li></ol>"
     assert_equal body,email.body
   end
 
