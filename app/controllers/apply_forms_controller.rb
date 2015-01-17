@@ -102,6 +102,11 @@ class ApplyFormsController < ApplicationController
     render_apply_form
   end
 
+  def vef
+    builder = Export::VefXml.new(@apply_form)
+    send_data builder.to_xml, filename: builder.filename
+  end
+
   private
 
   def render_state_change

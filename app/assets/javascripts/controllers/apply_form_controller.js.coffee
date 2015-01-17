@@ -11,6 +11,11 @@ Volant.ApplyFormController = Volant.ObjectController.extend({
   queryParams: ['anchor']
   anchor: null
 
+  vefXmlUrl: (->
+    if id = @get('model.id')
+      "/apply_forms/#{id}/vef.xml"
+  ).property('model.id')      
+
   actions:
     rollback: ->
       reset = (m) ->

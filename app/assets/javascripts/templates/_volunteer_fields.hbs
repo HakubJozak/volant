@@ -72,6 +72,44 @@
       {{input value=fax type="phone" class="form-control"}}
     </div>
   </div>
+
+  <div class='row'>
+    <div class="form-group col-lg-4">
+      {{#model-field errors=errors.street}}
+        <label class=" control-label">Street</label>
+        {{input value=street class="form-control" type='text'}}
+      {{/model-field}}
+    </div>
+
+    <div class="form-group col-lg-4">
+      <label class=" control-label">City</label>
+      {{input value=city type="text" class="form-control"}}
+    </div>
+
+    <div class="form-group col-lg-4">
+      <label class=" control-label">Zipcode</label>
+      {{input value=zipcode type="text" class="form-control"}}
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class="form-group col-lg-4">
+      {{#model-field errors=errors.street}}
+        <label class=" control-label">Contact Street</label>
+        {{input value=contact_street class="form-control" type='text' placeholder=street}}
+      {{/model-field}}
+    </div>
+
+    <div class="form-group col-lg-4">
+      <label class=" control-label">Contact City</label>
+      {{input value=contact_city type="text" class="form-control" placeholder=city}}
+    </div>
+
+    <div class="form-group col-lg-4">
+      <label class=" control-label">Contact Zipcode</label>
+      {{input value=contact_zipcode type="text" class="form-control" placeholder=zipcode}}
+    </div>
+  </div>
 </fieldset>
 
 <fieldset>

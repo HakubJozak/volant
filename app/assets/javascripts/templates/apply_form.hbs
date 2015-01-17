@@ -1,9 +1,19 @@
 <div class='row'>
 <div class="col-lg-8">
-    <h2 class=''>
+    <h2>
       {{partial 'star' }}
       {{partial 'apply_form/title'}}
+
       <span class='pull-right'>
+        {{#if vefXmlUrl}}
+          <small class='vef-download-button'>
+          <a {{ bind-attr href=vefXmlUrl }} >
+            <span class="label label-default">
+              {{fa 'download'}} VEF.xml
+            </span>
+          </a>
+          </small>
+        {{/if}}
         {{ partial 'action_buttons' }}
       </span>
     </h2>

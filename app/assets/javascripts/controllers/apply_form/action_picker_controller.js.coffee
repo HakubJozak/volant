@@ -22,12 +22,12 @@ Volant.ApplyFormActionPickerController = Ember.ObjectController.extend Volant.Aj
             user: user
           }
 
-          vef = @store.createRecord 'attachment', {
-            type: 'VefAttachment'
-            applyForm: apply_form
-          }
-
-          message.get('attachments').pushObject(vef)
+          if action_name == 'ask'
+            vef = @store.createRecord 'attachment', {
+              type: 'VefAttachment'
+              applyForm: apply_form
+            }
+            message.get('attachments').pushObject(vef)
 
           @transitionToRoute('message',message)
 

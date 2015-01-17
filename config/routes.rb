@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   resources :workcamps, except: [ :edit, :new ] do
     member do
+      # Project Exchange Form - XML
+      get :pef
       post :cancel_import
       post :confirm_import
     end
@@ -37,6 +39,8 @@ Rails.application.routes.draw do
       post :accept
       post :reject
       post :infosheet
+      # Volunteer Exchange Form
+      get :vef
     end
   end
 

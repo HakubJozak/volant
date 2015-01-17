@@ -289,3 +289,10 @@ table.import-changes {
     border-top: 1px solid lighten(#ccc,5%);
   }
 }
+
+.vef-download-button {
+  position: relative;
+  top: -3px;   
+  font-size: normal;  
+  margin-right: 0.05em;
+}

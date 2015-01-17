@@ -8,6 +8,7 @@
         fa 'times'
 
     .panel-body
+      p Do you want to send an email too?
       .row
         .col-lg-4
           .btn.huge.green click='openMessage'
