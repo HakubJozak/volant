@@ -31,7 +31,7 @@ class EmailTemplate < ActiveRecord::Base
   end
 
   def workcamps_list
-    items = @apply_form.workcamps.map do |wc|
+    items = @apply_form.workcamps.reload.map do |wc|
       "<li>#{wc.code} - #{wc.name}, #{wc.begin} - #{wc.end}</li>"
     end.join("\n")
 
@@ -40,7 +40,13 @@ class EmailTemplate < ActiveRecord::Base
   
   class MessageData
     include ActiveModel::Model
+    include ActiveModel::Serialization
+
     attr_accessor :to,:from,:cc,:bcc,:subject,:body
+
+    def attributes
+      { to: nil,from: nil,cc: nil,bcc: nil,subject: nil,body: nil}
+    end
   end
   
 end

@@ -32,4 +32,4 @@ form.form submit='save' role="form"
 
   button.btn.btn-primary type="submit" Save
   button.btn.btn-default type="button" click='rollback' Cancel
-  button.btn.btn-danger.pull-right type="button" Cancel click='remove'
+  button.btn.btn-danger.pull-right type="button" click='remove' Delete

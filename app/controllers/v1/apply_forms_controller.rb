@@ -8,6 +8,7 @@ class V1::ApplyFormsController < V1::BaseController
     form = Outgoing::ApplyForm.create_by_birthnumber(attrs)
 
     if form.valid? && form.volunteer.valid?
+      ApplyFormMailer.submitted(form).deliver
       render nothing: true
     else
       render json: { errors:  form.errors }, status: :unprocessable_entity
