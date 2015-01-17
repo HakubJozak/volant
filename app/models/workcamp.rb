@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class Workcamp < ActiveRecord::Base
-
+  
   include AllianceExporter
   include ActiveRecord::Diff
   include Import::WorkcampExtension
