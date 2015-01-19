@@ -1,3 +1,3 @@
 class NetworkSerializer < ApplicationSerializer
-  attributes :id,:name
+  attributes :id,:name,:web
 end

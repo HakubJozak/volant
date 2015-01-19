@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :countries, except: [ :edit, :new ]
   resources :country_zones, only: [ :index ]
   resources :organizations, except: [ :edit, :new ]
+  resources :networks, except: [ :edit, :new ]  
   resources :workcamp_intentions, except: [ :edit, :new ]
   resources :volunteers, except: [ :edit, :new ]
   resources :tags, except: [ :edit, :new ]

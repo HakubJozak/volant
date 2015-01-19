@@ -1,6 +1,6 @@
 # Web
- - [ ] filtr: na 'nove' a 'specha', (scope)
- - [ ] filtr: volani na podobne workcampy
+ - [x] filtr: na 'nove' a 'specha', (scope)
+ - [ ] podobne workcampy
  - [ ] filtr: typ
  - [x] email o nove prihlasce
  - [x] zruseni paginace
