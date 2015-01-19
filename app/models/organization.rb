@@ -5,9 +5,11 @@ class Organization < ActiveRecord::Base
   belongs_to :country
   validates_presence_of :name, :code, :country
 
-  has_many :partnerships, :dependent => :destroy
-  has_many :emails, :class_name => 'EmailContact', :dependent => :destroy
-  has_many :networks, :through => :partnerships
+  has_many :partnerships, dependent: :destroy
+  has_many :emails, class_name: 'EmailContact', dependent: :destroy
+  has_many :networks, through: :partnerships, validate: false
+
+  accepts_nested_attributes_for :networks
 
   # TODO: same as Workcamp.query - merge?
   scope :query, lambda { |q|

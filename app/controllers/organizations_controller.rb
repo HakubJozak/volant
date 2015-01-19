@@ -55,7 +55,7 @@ class OrganizationsController < ApplicationController
   end
 
   def org_params
-    params.require(:organization).permit(:name, :code, :country_id, :website, :phone, :mobile,:contact_person)
+    params.require(:organization).permit(:name, :code, :country_id, :website, :phone, :mobile,:contact_person,:network_ids => [])
   end
 
 end

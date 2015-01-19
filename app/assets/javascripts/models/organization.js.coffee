@@ -1,7 +1,7 @@
 Volant.Organization = DS.Model.extend
   country: DS.belongsTo('country')
   email_contacts: DS.hasMany('email_contact',async: true)
-  networks: DS.hasMany('network',async: true)
+  networks: DS.hasMany('network',async: true, embedded: 'always')
 
   name: DS.attr 'string'
   code: DS.attr 'string'
