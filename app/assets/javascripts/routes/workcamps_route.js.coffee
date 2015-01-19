@@ -2,6 +2,10 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend
   default_filter: -> {}
   newWorkcampType: 'outgoing'
   
+  queryParams:
+    order:
+      refreshModel: true
+
   model: (params) ->
     filter = @default_filter()
     filter.q = params.query

@@ -65,7 +65,15 @@
     prompt='Organization'
     }}
   </div>
+</div>
 
+  <div class="row">
+    <div class="col-lg-1">
+      <label class="control-label">Sort by</label>
+    </div>
+    <div class="col-lg-2">
+      {{view Ember.Select value=order  content=orderOptions  class="form-control" }}
+    </div>
   </div>
 </div>
 

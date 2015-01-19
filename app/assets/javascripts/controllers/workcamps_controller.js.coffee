@@ -37,8 +37,8 @@ Volant.WorkcampsController = Volant.ListController.extend
       when 'from' then ['from']
       when 'to' then ['to']
       when 'country' then ['country.name_en']      
-    @set 'sortProperties',sorting
-  ).property('order')      
+    @set 'sortProperties',props
+  ).observes('order')
 
 
   isDirty: (->

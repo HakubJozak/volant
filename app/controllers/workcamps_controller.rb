@@ -9,8 +9,8 @@ class WorkcampsController < ApplicationController
       search = workcamps.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
       render json: search.find(*ids), each_serializer: WorkcampSerializer
     else
-      search = workcamps.order(current_order).page(current_page)
-      search = search.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
+      search = workcamps.order(current_order).page(current_page).joins(:country)
+      search = search.includes(:workcamp_assignments,:organization,:tags,:intentions)
       search = search.filter_by_hash(filter,current_user)
       search = add_year_scope(search)
       render json: search, meta: { pagination: pagination_info(search) }, each_serializer: WorkcampSerializer
@@ -22,7 +22,7 @@ class WorkcampsController < ApplicationController
     when 'code' then :code
     when 'from' then :'begin'
     when 'to' then :'end'
-    when 'country'then 'country.name_en'
+    when 'country'then 'countries.name_en'
     else :name
     end
   end
