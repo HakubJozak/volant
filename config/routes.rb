@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   namespace :v1 do
     resources :countries, only: [ :index ]
     resources :workcamp_intentions, only: [ :index ]
-    resources :workcamps, only: [ :index, :show ]
+    resources :workcamps, only: [ :index, :show ] do
+      get 'short', on: :collection
+    end
     resources :apply_forms, only: [ :create ]
   end
 

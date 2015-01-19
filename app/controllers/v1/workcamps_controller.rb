@@ -5,7 +5,8 @@ class V1::WorkcampsController < V1::BaseController
   before_action :find_workcamp, only: [ :show ]
 
   def index
-    search = Outgoing::Workcamp.order(:name).page(current_page).live.published
+    search = Outgoing::Workcamp.order(:name).live.published
+    search = search.page(current_page)
     search = search.includes(:country,:organization,:tags,:intentions)
     search = add_year_scope(search)
 
@@ -64,6 +65,12 @@ class V1::WorkcampsController < V1::BaseController
            each_serializer: V1::WorkcampSerializer
   end
 
+  def short
+    search = Outgoing::Workcamp.live.published
+    search = add_year_scope(search)
+    render json: search, each_serializer: V1::ShortWorkcampSerializer
+  end
+
   def show
     render json: @workcamp, serializer: V1::WorkcampSerializer
   end
@@ -79,6 +86,10 @@ class V1::WorkcampsController < V1::BaseController
 
   def find_workcamp
     @workcamp = Outgoing::Workcamp.find(params[:id])
+  end
+
+  def short_list
+    params[:short].present?
   end
 
   def ages(people)
