@@ -57,8 +57,19 @@
                 {{partial 'inputs/country'}}
               {{/model-field}}
             </div>
+
+            <div class="form-group col-lg-8">
+              <label class=" control-label">Networks</label>
+              {{view 'collection-picker'
+              targetBinding='networks'
+              contentBinding='controllers.networks.arrangedContent'
+              prompt='Add partnership...'
+              class="form-control" }}
+              {{view 'labels-list' contentBinding='networks'}}
+            </div>
           </div>
         </fieldset>
+
 
         {{#if isNew}}
           <p class='text-muted'>Please save the organization to add its email contacts.</p>
