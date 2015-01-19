@@ -1,0 +1,22 @@
+h3
+  | Network &nbsp;
+  = name
+
+= errors.messages
+
+form submit="save" class="form"
+  .form-group
+    model-field errors=errors.name
+      label.control-label Name
+      = input value=name class="form-control"
+  .form-group
+    model-field errors=errors.web
+      label.control-label Web
+      = input value=web class="form-control"
+
+  .button-group
+    button.btn.btn-primary type="submit" Save
+    button.btn.btn-default{action "rollback"} type="button" Cancel
+
+    unless isNew
+      button.btn.btn-danger.pull-right{action "remove"} type="button" Delete

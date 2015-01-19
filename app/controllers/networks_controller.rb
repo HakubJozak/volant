@@ -46,6 +46,6 @@ class NetworksController < ApplicationController
   end
 
   def network_params
-    params.require(:network).permit(*NetworkSerializer.writable)
+    params.require(:network).permit(:name,:web)
   end
 end

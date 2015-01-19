@@ -31,6 +31,10 @@ Volant.Router.map ->
     @route 'new'
     @resource 'country', {path: ':country_id'}
 
+  @resource 'networks', ->
+    @route 'new'
+    @resource 'network', {path: ':network_id'}
+
   @resource 'tags', ->
     @route 'new'
     @resource 'tag', {path: ':tag_id'}
