@@ -1,11 +1,10 @@
 # Web
- - filtr: na 'nove' a 'specha',
- - filtr: volani na podobne workcampy
- - filtr: typ
- - email o nove prihlasce
- - zruseni paginace p=3.14159
- 
- - mtv_count & workcamp_count v zemich
+ - [ ] filtr: na 'nove' a 'specha', (scope)
+ - [ ] filtr: volani na podobne workcampy
+ - [ ] filtr: typ
+ - [ ] email o nove prihlasce
+ - [ ] zruseni paginace p=3.14159
+ - [x] mtv_count & workcamp_count v zemich
 
 
 # Bugs
@@ -17,7 +16,7 @@
 
 Zpravy
   - [x] pripojovani VEF ke zpravam
-  - [ ] pripojovani infosheetu ke zpravam
+  - [ ] PLUS - automaticke pripojovani infosheetu ke zpravam
   - [x] pridavani priloh ke zpravam
   - [x] formatovani textu (bold,linky...)
 
@@ -26,15 +25,15 @@ Organizace
   - [ ] uprava clenstvi v sitich organizaci
 
 Workflow
-  - [ ] automaticke poslani zpravy po obdrzeni prihlasky 
+  - [x] automaticke poslani zpravy po obdrzeni prihlasky 
   - [x] zmenit stav bez odeslani zpravy
   - [x] (bug) nechat prihlasku pripojenou ke zprave i po odeslani
-  - [ ] pridat dalsi kroky - odeslani a prijeti evaluacniho dotazniku (evaluation_sent/received?)
+  - [ ] PLUS - pridat dalsi kroky - odeslani a prijeti evaluacniho dotazniku (evaluation_sent/received?)
 
 Workcampy
   - [ ] razeni (zeme,kod,od,do,nazev projektu)
-  - [ ] vytvorit kopii workcampu (v nove sezone)
-  - [ ] zobrazit mapu podle souradnic a/nebo 'train' a 'airport'
+  - [ ] PLUS - vytvorit kopii workcampu (v nove sezone)
+  - [ ] PLUS - zobrazit mapu podle souradnic a/nebo 'train' a 'airport'
 
 Prihlasky
 - [ ] zobrazovani tagu
@@ -44,7 +43,7 @@ Prihlasky
   - [ ] razeni (hvezdicka,termin podani,prijmeni)
   - vytvoreni prihlasky
     - [x] pro noveho dobrovolnika
-    - [ ] pro existujiciho dobrovolnika
+    - [ ] PLUS - pro existujiciho dobrovolnika
   - alerty
     - [ ] po 3 dnech po zažádání o přijetí
     - [ ] 5 týdnů před začátkem workcampu když není odeslán infosheet
@@ -58,21 +57,19 @@ Sprava zemi
 
 Platby
  - [ ] vyhledavani plateb
- - [ ] parovani existujicich plateb s existujici prihlaskou
- - [ ] importovani plateb z FIO API
+ - [ ] PLUS - parovani existujicich plateb s existujici prihlaskou
+ - [ ] PLUS - importovani plateb z FIO API
 
 Import
-  - PEF
-  - VEF(xml)
+  - [x] PEF (? - not tested)
+  - [ ] PLUS - VEF.xml
 
 Export
   - [ ] Statistiky
-  - [ ] PEF XML
+  - [ ] PLUS - PEF XML
   - [x] VEF XML
   - [ ] VEF PDF,HTML
   - [ ] friday list
-
-
 
 # MTV/LTV
  - Dashboard

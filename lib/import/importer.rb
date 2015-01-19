@@ -83,7 +83,7 @@ module Import
 
     def guess_by_code_and_year(wc)
       query = Outgoing::Workcamp.where(code: wc.code)
-      query = query.by_year(wc.begin.year) if wc.begin
+      query = query.year(wc.begin.year) if wc.begin
       query.first
     end
 

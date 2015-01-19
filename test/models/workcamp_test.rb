@@ -30,10 +30,10 @@ class WorkcampTest < ActiveSupport::TestCase
   end
 
   test 'scope with_workcamp_intentions' do
-    a = @wc.intentions[0]
-    b = @wc.intentions[1]
+    @wc.intentions << (agri = workcamp_intentions(:agri))
+    @wc.intentions << (refugee = workcamp_intentions(:refugee))
 
-    result = Workcamp.with_workcamp_intentions(a.id,b.id)
+    result = Workcamp.with_workcamp_intentions(agri.id,refugee.id)
 
     assert result.map(&:id).include?(@wc.id)
   end
@@ -48,20 +48,6 @@ class WorkcampTest < ActiveSupport::TestCase
     org = @wc.organization
     result = Workcamp.with_organizations(org.id,777777)
     assert result.map(&:id).include?(@wc.id)
-  end
-
-  test "have term" do
-    @wc.begin = @wc.end = nil
-    assert_equal '? - ?', @wc.term
-    @wc.begin = Date.new(2002, 3, 27)
-    @wc.end = Date.new(2002, 3, 28)
-
-    # TODO: 03.2002 - 28.03.2002' - for the Czech locale
-    I18n.locale = :en
-    assert_equal "2002-03-27 - 2002-03-28", @wc.term
-
-    I18n.locale = :cz
-    assert_equal "27.03.2002 - 28.03.2002", @wc.term
   end
 
   test "validate based on schema rules" do
@@ -84,7 +70,7 @@ class WorkcampTest < ActiveSupport::TestCase
     wc = Factory(:outgoing_workcamp,
                  :begin => Date.new(1848,1,1),
                  :end => Date.new(1848,2,2))
-    assert_equal wc, Workcamp.by_year(1848).first
+    assert_equal wc, Workcamp.year(1848).first
   end
 
   test 'duration' do

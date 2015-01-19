@@ -5,7 +5,7 @@ class V1::WorkcampsController < V1::BaseController
   before_action :find_workcamp, only: [ :show ]
 
   def index
-    search = Outgoing::Workcamp.order(:name).page(current_page).live
+    search = Outgoing::Workcamp.order(:name).page(current_page).live.published
     search = search.includes(:country,:organization,:tags,:intentions)
     search = add_year_scope(search)
 
