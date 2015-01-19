@@ -30,4 +30,11 @@ form.form.form-horizontal.form-search submit='search' role='form'
   if filter_visible
     partial 'workcamps/filter'
 
+  .row
+    .col-lg-1
+      label.control-label Sort by
+    .col-lg-2
+      view Ember.Select value=order  content=orderOptions  class="form-control"
+
+
 partial 'workcamps/list'
