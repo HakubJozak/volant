@@ -1,6 +1,14 @@
 Volant.MessageRoute = Volant.BaseRoute.extend
   title: (model) -> "#{model.get('subject')}"
 
+  afterSave: (record) ->
+    # we have to filter duplicate attachment leftovers    
+    record.get('attachments').forEach (a) ->
+      a.deleteRecord() if a.get('isNew')      
+            
+    @transitionTo 'message',record
+    @flash_info('Message saved.')
+
   model: (params) ->
     if params.message_id != 'null'
       @store.find('message', params.message_id)
@@ -77,5 +85,3 @@ Volant.MessageRoute = Volant.BaseRoute.extend
       console.log 'Attachment destroyed.'
       attachment.destroyRecord()
       false
-
-  

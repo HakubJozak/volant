@@ -22,7 +22,7 @@ Zpravy
 
 Organizace
   - [x] vytvorit novou organizaci
-  - [ ] uprava clenstvi v sitich organizaci
+  - [x] uprava clenstvi v sitich organizaci
 
 Workflow
   - [x] automaticke poslani zpravy po obdrzeni prihlasky 

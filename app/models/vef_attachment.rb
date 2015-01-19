@@ -11,7 +11,7 @@ class VefAttachment < Attachment
   end
 
   def filename
-    Export::VefXml.new(apply_form).filanema
+    Export::VefXml.new(apply_form).filename
   end
 end
 
