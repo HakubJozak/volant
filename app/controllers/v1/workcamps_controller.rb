@@ -14,12 +14,20 @@ class V1::WorkcampsController < V1::BaseController
       search = search.query(filter[:q])
     end
 
+    if scope = filter[:scope]
+      if scope == 'new'
+        search = search.where('created_at > ?',7.days.ago)
+      elsif scope == 'urgent'
+        search = search.where('free_places > 0 AND "begin" >= current_date AND "begin" <= ?',14.day.from_now)        
+      end
+    end
+
     if from = filter[:from]
-      search = search.where("begin >= ?",Date.parse(from))
+      search = search.where('"begin" >= ?',Date.parse(from))
     end
 
     if to = filter[:to]
-      search = search.where("\"end\" <= ?",Date.parse(to))
+      search = search.where('"end" <= ?',Date.parse(to))
     end
 
     if md = filter[:min_duration]
@@ -78,7 +86,7 @@ class V1::WorkcampsController < V1::BaseController
   private
 
   def filter
-    params.permit(:q,:from,:to,:min_duration,:max_duration,:country_zone_id,
+    params.permit(:q,:scope,:from,:to,:min_duration,:max_duration,:country_zone_id,
                   :people => [ [:a,:g] ],
                   :tag_ids => [], :country_ids => [],
                   :workcamp_intention_ids => [], :organization_ids => [])

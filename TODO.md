@@ -2,8 +2,8 @@
  - [ ] filtr: na 'nove' a 'specha', (scope)
  - [ ] filtr: volani na podobne workcampy
  - [ ] filtr: typ
- - [ ] email o nove prihlasce
- - [ ] zruseni paginace p=3.14159
+ - [x] email o nove prihlasce
+ - [x] zruseni paginace
  - [x] mtv_count & workcamp_count v zemich
 
 
