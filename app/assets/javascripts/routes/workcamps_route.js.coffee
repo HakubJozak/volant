@@ -6,6 +6,7 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend
     filter = @default_filter()
     filter.q = params.query
     filter.p = params.page
+    filter.order = params.order
     filter.year = params.year unless params.year == 'All'
 
     attrs = [ 'from','to','min_duration','max_duration', 'min_age','max_age',

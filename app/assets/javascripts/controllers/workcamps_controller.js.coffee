@@ -2,11 +2,16 @@ Volant.WorkcampsController = Volant.ListController.extend
   needs: ['countries','workcamp_intentions','organizations','tags','starred_workcamps']
 
   page: 1
-  queryParams: ['query','page','year','from','to', 'min_duration','max_duration',
-                'min_age','max_age', 'free', 'free_males', 'free_females']
+  queryParams: ['query','order','page','year','from','to',
+                'min_duration','max_duration',
+                'min_age','max_age', 'free',
+                'free_males', 'free_females']
 
   query_placeholder: "part of workcamp's name or code"
 
+  order: 'code'
+  orderOptions: ['name','code','from','to','country']      
+  
   query: ''
   from: null
   to: null
@@ -22,8 +27,19 @@ Volant.WorkcampsController = Volant.ListController.extend
   tags: []
   organizations: []
 
-  # sortProperties: ['name']
-  # sortAscending: true
+  sortProperties: ['name']
+  sortAscending: true
+
+  setSorting: (->
+    props = switch @get('order')    
+      when 'name' then ['name']
+      when 'code' then ['code']
+      when 'from' then ['from']
+      when 'to' then ['to']
+      when 'country' then ['country.name_en']      
+    @set 'sortProperties',sorting
+  ).property('order')      
+
 
   isDirty: (->
     @get('model').any (wc) ->

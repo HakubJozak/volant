@@ -4,7 +4,6 @@ Volant.WorkcampController = Ember.ObjectController.extend {
   publish_modes: [ { code: 'NEVER', label: 'Never' },
                    { code: 'ALWAYS', label: 'Always' },
                    { code: 'SEASON', label: 'During season' }
-                   { code: 'LTV', label: 'LTV/MTV' }
                   ]
 
   # isDirty: Ember.computed.or('model.isDirty','changed')
