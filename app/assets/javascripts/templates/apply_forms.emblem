@@ -52,6 +52,11 @@ table.table.table-striped.table-hover
             | (
             = volunteer.age
             | )
+          '    
+          each tags
+            = tag this
+            '
+
         td
           apply-form-state-icon state
         td
