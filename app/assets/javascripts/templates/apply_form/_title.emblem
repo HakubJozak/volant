@@ -5,3 +5,6 @@ small
   capitalize state.name
   '
   apply-form-state-icon state
+  '
+  each tags
+    = tag this

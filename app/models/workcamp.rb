@@ -167,14 +167,8 @@ class Workcamp < ActiveRecord::Base
   alias :workcamp_intention_ids= :intention_ids=
 
   acts_as_taggable
-
-  def tag_ids=(ids)
-    loaded = ColoredTag.find(ids)
-    strings = loaded.map(&:name).join(',')
-    self.tag_list = strings
-    self.tags
-  end
-
+  include TaggableExtension
+  
   def duration
     if self.end and self.begin
       (self.end.to_time - self.begin.to_time).to_i / 1.day + 1

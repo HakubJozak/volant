@@ -11,6 +11,7 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
     starred = @store.filter 'workcamp',{ starred: true }, (wc) ->
       wc.get('starred')
 
+    @setupTagsController()
     @controllerFor('starred_workcamps').set('model',starred)
     @controllerFor('workcamp_assignments').set('model',model.get('workcamp_assignments'))
     @controllerFor('payment').set('model',model.get('payment'))
@@ -26,7 +27,7 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
 
     reactivate: ->
       @currentModel.set 'cancelled',null
-      @currentModel.save()        
+      @currentModel.save()
 
     create_payment: ->
       form = @modelFor('apply_form')

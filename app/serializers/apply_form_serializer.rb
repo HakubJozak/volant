@@ -7,6 +7,7 @@ class ApplyFormSerializer < ApplicationSerializer
 
   has_one :volunteer, embed: :ids, include: true
   has_one :payment, embed: :ids, include: true
+  has_many :tags, embed: :ids, include: true, serializer: TagSerializer  
 
   has_one :current_workcamp, embed: :ids, include: true, root: 'workcamps'
   has_one :current_assignment, embed: :ids, include: true, root: 'workcamp_assignments'

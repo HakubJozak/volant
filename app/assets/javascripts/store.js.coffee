@@ -4,7 +4,7 @@ Volant.ApplicationStore = DS.Store.extend({
 
 # Override the default adapter with the `DS.ActiveModelAdapter` which
 # is built to work nicely with the ActiveModel::Serializers gem.
-Volant.ApplicationAdapter = DS.ActiveModelAdapter.extend({
+Volant.ApplicationAdapter = DS.ActiveModelAdapter.extend
   coalesceFindRequests: true
 
   ajaxError: (jqXHR) ->
@@ -15,7 +15,7 @@ Volant.ApplicationAdapter = DS.ActiveModelAdapter.extend({
       invalid_error.full_rails_message = json.full_message
 
     invalid_error
-})
+
 
 
 Volant.ApplicationSerializer = DS.ActiveModelSerializer.extend
@@ -32,20 +32,20 @@ Volant.ApplicationSerializer = DS.ActiveModelSerializer.extend
 
 
 # Transforms Date to avoid miss-match with rails date
-Volant.IsodateTransform  = DS.DateTransform.extend({
+Volant.IsodateTransform  = DS.DateTransform.extend
   serialize: (date) ->
     if date then moment(date).format("YYYY-MM-DD") else null
-})
 
 
-Volant.StateTransform = DS.Transform.extend({
+
+Volant.StateTransform = DS.Transform.extend
   serialize: (deserialized) ->
     # we do not send state tot the server
     null
 
   deserialize: (hash) ->
     Ember.Object.create(name: hash.name, info: hash.info, actions: hash.actions)
-})
+
 
 Volant.FileTransform = DS.Transform.extend
   serialize: (jsonData) ->
@@ -60,13 +60,18 @@ DS.Model.reopen({
   # and selected `properties` accessible via plain old JS notation.
   #
   for_email: (properties...) ->
-    result = {}
+    hash = {}
     @eachAttribute (attr) =>
-      result[attr] = @get(attr)
+      hash[attr] = @get(attr)
 
     for prop in properties
-      result[prop] = @get(prop)
+      hash[prop] = @get(prop)
 
-    result
+    if tags = @get('tags')    
+      hash.tags = {}
+      tags.forEach (tag) ->
+        hash.tags[tag.get('name')] = true
+
+    hash
 
 })

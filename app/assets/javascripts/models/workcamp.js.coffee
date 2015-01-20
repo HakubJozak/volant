@@ -84,7 +84,4 @@ Volant.Workcamp = DS.Model.extend
     hash = @_super()
     hash.begin_string = moment(@get('begin')).format('D.M.YYYY')
     hash.end_string = moment(@get('end')).format('D.M.YYYY')
-    hash.tags = {}
-    @get('tags').forEach (tag) ->
-      hash.tags[tag.get('name')] = true
     hash

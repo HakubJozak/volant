@@ -8,9 +8,7 @@
         {{#if vefXmlUrl}}
           <small class='vef-download-button'>
           <a {{ bind-attr href=vefXmlUrl }} >
-            <span class="label label-default">
-              {{fa 'download'}} VEF.xml
-            </span>
+            {{fa 'download'}} VEF.xml
           </a>
           </small>
         {{/if}}
@@ -62,6 +60,19 @@
       <fieldset>
         <legend>Application Details</legend>
         <div class='row'>
+
+        <div class="form-group col-lg-12">
+          <label class="control-label">Tags</label>
+          <div>
+            {{view 'collection-picker'
+            targetBinding='tags'
+            contentBinding='controllers.tags.arrangedContent'
+            prompt='Add tag...'
+            class="form-control" }}
+          </div>
+          {{view 'labels-list' contentBinding='tags'}}
+        </div>
+
           <div class="form-group col-lg-12">
             {{#model-field errors=errors.motivation}}
             <label class=" control-label">Motivation</label>

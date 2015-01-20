@@ -5,6 +5,7 @@ class ApplyForm < ActiveRecord::Base
   include Stars::Model
 
   acts_as_taggable
+  include TaggableExtension  
 
   create_date_time_accessors
 

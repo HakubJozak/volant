@@ -4,6 +4,7 @@ Volant.ApplyForm = DS.Model.extend
   current_message: DS.belongsTo 'message',async: true, inverse: null
   state: DS.attr 'state'
 
+  tags: DS.hasMany('tag',embedded: 'always')
   workcamp_assignments:  DS.hasMany 'workcamp_assignment', async: true, inverse: 'apply_form'
   volunteer:  DS.belongsTo 'volunteer'
   payment:  DS.belongsTo 'payment'

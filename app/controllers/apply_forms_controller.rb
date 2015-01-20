@@ -121,6 +121,7 @@ class ApplyFormsController < ApplicationController
 
   def apply_form_params
     params.require(:apply_form).permit(:general_remarks, :motivation, :volunteer_id, :cancelled, :confirmed, :fee,
+                                       tag_ids: [],
                                        payment_attributes: PaymentSerializer.writable, volunteer_attributes: VolunteerSerializer.writable)
   end
 
