@@ -34,7 +34,6 @@ Volant.Workcamp = DS.Model.extend
   airport: DS.attr 'string'
   train: DS.attr 'string'
   publish_mode: DS.attr 'string'
-  tag_list: DS.attr 'string'
 
   # TODO: extract Placement data type
   places: DS.attr 'number'

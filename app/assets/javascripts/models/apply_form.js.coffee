@@ -77,10 +77,7 @@ Volant.ApplyFormAdapter = Volant.ApplicationAdapter.extend
       return @_super(jqXHR)
 
 
-Volant.ApplyFormSerializer = DS.ActiveModelSerializer.extend
-  serialize: (apply_form,opts) ->
-    json = @_super(apply_form,opts)
-
+Volant.ApplyFormSerializer = Volant.ApplicationSerializer.extend
   serializeBelongsTo: (record, json, relationship) ->
     if relationship.key == 'payment'
       if payment = record.get('payment')
