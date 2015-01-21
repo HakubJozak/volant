@@ -1,5 +1,4 @@
-Volant.ApplicationStore = DS.Store.extend({
-})
+Volant.ApplicationStore = DS.Store.extend()
 
 
 # Override the default adapter with the `DS.ActiveModelAdapter` which
@@ -55,7 +54,7 @@ Volant.FileTransform = DS.Transform.extend
     externalData
 
 
-DS.Model.reopen({
+DS.Model.reopen
   # Creates plain old JS object with all the Ember attributes
   # and selected `properties` accessible via plain old JS notation.
   #
@@ -74,4 +73,4 @@ DS.Model.reopen({
 
     hash
 
-})
+

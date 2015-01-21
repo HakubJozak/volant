@@ -48,7 +48,20 @@
         </td>
         <td>{{order}}.</td>
         <td>
-          {{fa 'user'}}{{relevantFreePlaces.confirmed}}({{relevantFreePlaces.asked}})
+          {{#view Volant.RelevantFreePlacesView data-content='sdfsdf' workcamp=workcamp}}
+          <button type="button" class="btn btn-default" data-toggle="popover">
+          {{#if relevantFreePlaces.empty}}
+            {{#if apply_form.male}}
+              {{fa 'male'}}              
+            {{else}}
+              {{fa 'female'}}                            
+            {{/if}}
+            <b>{{relevantFreePlaces.confirmed}}</b>({{relevantFreePlaces.asked}})
+          {{else}}
+            {{fa 'users'}}
+          {{/if}}
+          </button>            
+          {{/view}}
         </td>
         <td>{{workcamp-state-icon state}}</td>
         <td>{{workcamp.code}}</td>

@@ -79,3 +79,5 @@ Ember.Application.initializer
       # container.injection('controller', 'current_user', 'controller:currentUser')
 
 window.Volant = Ember.Application.create()
+
+
