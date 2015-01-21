@@ -26,8 +26,11 @@
           <div class="form-group col-lg-3">          
             {{view Volant.DateView dateBinding='cancelled' }}
           </div>
-          <div class="form-group col-lg-6">
-            <button class="btn btn-success" type="button" {{action 'reactivate'}}>Reactivate</button>          
+          <div class="form-group col-lg-2">
+            <button class="btn btn-success" type="button" {{action 'reactivate'}}>Reactivate</button>
+          </div>
+          <div class="form-group col-lg-4">
+            <p class='text-muted'>{{state.info}}</p>
           </div>
         </div>
       {{/if }}

@@ -1,8 +1,10 @@
 Ember.Handlebars.helper 'apply-form-state-icon', (state) ->
   if state?
     key = if typeof state isnt 'string'
+            info = state.get('info')
             state.get('name').toLowerCase()
           else
+            info = state
             state
 
     icon = switch key
@@ -15,7 +17,7 @@ Ember.Handlebars.helper 'apply-form-state-icon', (state) ->
              when "cancelled" then 'times-circle-o'
              else ''
 
-  new Handlebars.SafeString "<i title='#{key}' class='fa fa-#{icon} #{key}'></i>"
+  new Handlebars.SafeString "<i title='#{info}' class='fa fa-#{icon} #{key}'></i>"
 
 
 
