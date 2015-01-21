@@ -25,7 +25,7 @@
   <div class="col-lg-2">
     {{view 'collection-picker'
     targetBinding='workcamp_intentions'
-    contentBinding='controllers.workcamp_intentions.content'
+    contentBinding='controllers.workcamp_intentions.arrangedContent'
     optionValuePath="content.id"
     optionLabelPath="content.code"
     class="form-control"
@@ -36,7 +36,7 @@
   <div class="col-lg-2">
     {{view 'collection-picker'
     targetBinding='tags'
-    contentBinding='controllers.tags.content'
+    contentBinding='controllers.tags.arrangedContent'
     optionValuePath="content.id"
     optionLabelPath="content.name"
     class="form-control"
@@ -47,7 +47,7 @@
   <div class="col-lg-2">
     {{view 'collection-picker'
     targetBinding='countries'
-    contentBinding='controllers.countries.content'
+    contentBinding='controllers.countries.arrangedContent'
     optionValuePath="content.id"
     optionLabelPath="content.name"
     class="form-control"

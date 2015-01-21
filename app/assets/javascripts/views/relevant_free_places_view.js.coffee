@@ -12,6 +12,7 @@ Volant.RelevantFreePlacesView = Ember.View.extend
     toggle = @$('[data-toggle="popover"]')
     toggle.popover
       html: true
+      title: 'Free Places'
       content: """
         <table class='table table-condensed free-places-popover'>
           <tr>
@@ -36,7 +37,7 @@ Volant.RelevantFreePlacesView = Ember.View.extend
           </tr>                  
         </table>
       """
-      title: 'Free Places'
+
     
 
   
