@@ -1,7 +1,21 @@
 Volant.WorkcampAssignmentController = Ember.ObjectController.extend({
   needs: 'apply_form'
+  apply_form: Ember.computed.alias 'controllers.apply_form'
+  
   edited: false
   edited_or_new: Ember.computed.or('edited','isNew')
+
+  relevantFreePlaces: (->
+    if @get('apply_form.male')    
+      Ember.Object.create
+        confirmed: @get('workcamp.free_places_for_males')
+        asked: @get('workcamp.asked_for_places_males')        
+    else
+      Ember.Object.create
+        confirmed: @get('workcamp.free_places_for_females')
+        asked: @get('workcamp.asked_for_places_females')                    
+  ).property('apply_form.gender','workcamp.free_places','workcamp.free_places_for_females','workcamp.free_places_for_males')
+        
 
   status: (->
     if @get('isCurrentWorkcamp')
