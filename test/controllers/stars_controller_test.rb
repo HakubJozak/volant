@@ -9,16 +9,16 @@ class StarsControllerTest < ActionController::TestCase
 
   test 'create star for workcamp' do
     wc = Factory(:workcamp)
-    post :create, star: { id: wc.id, model: 'workcamp', value: true }
+    post :create, star: { id: wc.id, model: 'workcamp', value: 'true' }
     assert_response :success
-    assert wc.reload.starred, 'workcamp is not starred'
+    assert wc.reload.starred?(@john), 'workcamp is not starred'
   end
 
   test 'create star for apply form' do
-    wc = Factory(:apply_form)
-    post :create, star: { id: wc.id, model: 'apply_form', value: true }
+    form = Factory(:apply_form)
+    post :create, star: { id: form.id, model: 'apply_form', value: 'true' }
     assert_response :success
-    assert wc.reload.starred, 'apply_form is not starred'
+    assert form.reload.starred?(@john), 'apply_form is not starred'
   end
 
   # test 'create star for volunteer' do

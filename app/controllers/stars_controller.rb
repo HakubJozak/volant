@@ -4,7 +4,7 @@ class StarsController < ApplicationController
   def create
     record = model.find(star_params[:id])
 
-    if star_params[:value] == 'true'
+    if [true,'true','1'].include? star_params[:value]
       record.add_star(current_user)
     else
       record.remove_star(current_user)

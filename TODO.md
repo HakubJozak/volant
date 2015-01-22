@@ -1,7 +1,7 @@
 # Outgoing
  - [x] API pro web: vyhledat podobne workcampy
  - [x] API pro web: filtr podle typu LTV/outgoing
- - [ ] upravit free_places importovanych workcampu podle pravidel INEXu (<7 => 1, jinak 2)
+ - [ ] export VEF HTML
  - [ ] zobrazeni seznamu workcampu podle zadani
  - [ ] zobrazeni seznamu prihlasek podle zadani 
  - [ ] filtrovani prihlasek podle tagu
@@ -9,13 +9,17 @@
  - [ ] alert po 3 dnech po zažádání o přijetí
  - [ ] alert 5 týdnů před začátkem workcampu když není odeslán infosheet
  - [ ] alert 4 týdny před začátkem workcampu pokud nemáme pojištění - pokud tam tedy to pojištění nějak zakomponujeme
+ - [ ] upravit free_places importovanych workcampu podle pravidel INEXu (<7 => 1, jinak 2)
  - [ ] vyhledavani plateb
- - [ ] export VEF HTML
  - [ ] filtr workcampu - age do jednoho pole a ucesat
+ - [ ] opravit testy
 
 ---- prepnuti na zivou databazi --------------------------------------------------------
 
  - [ ] export CSV workcampu a prihlasek (pro statistiky)
+
+----BONUSY --------------------------------------------------------
+
  - [ ] PLUS - parovani existujicich plateb s existujici prihlaskou
  - [ ] PLUS - importovani plateb z FIO API
  - [ ] PLUS - automaticke pripojovani podminek ucasti ke zprave o prijeti prihlasky
@@ -27,7 +31,7 @@
  - [ ] PLUS - PEF XML
  - [ ] PLUS - export/import friday listu podle ADIHu
 
-# MTV/LTV
+# LTV
  - Dashboard
  - a vubec vsechno...
 
