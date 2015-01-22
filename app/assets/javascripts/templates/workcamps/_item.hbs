@@ -13,14 +13,13 @@
 
     <div class="col-lg-6">
       <h4 class="list-group-item-heading">
-        {{#link-to 'workcamp' this}}{{name}}{{/link-to}}
+        {{#link-to 'workcamp' this}}{{code}} &ndash; {{name}}{{/link-to}}
 
         <small>
           {{duration}} days
         </small>
       </h4>
       <p class="list-group-item-text">
-        {{#link-to 'organization' organization}}{{code}}{{/link-to}},
         {{age-range this }},
         {{join workcamp_intentions 'code'}}
       </p>
