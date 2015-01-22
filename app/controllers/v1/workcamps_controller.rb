@@ -6,6 +6,7 @@ class V1::WorkcampsController < V1::BaseController
 
   def index
     search = workcamps.page(current_page)
+    search = add_year_scope(search)
     search = search.includes(:country,:organization,:tags,:intentions)
 
     if query = filter[:q]
@@ -72,11 +73,13 @@ class V1::WorkcampsController < V1::BaseController
   end
 
   def short
+    search = add_year_scope(search)
     render json: workcamps, each_serializer: V1::ShortWorkcampSerializer
   end
 
   def similar
     search = workcamps.similar_to(@workcamp).limit(10)
+    search = add_year_scope(search)
     search = search.includes(:country,:organization,:tags,:intentions)    
     render json: search, each_serializer: V1::WorkcampSerializer    
   end
@@ -95,13 +98,16 @@ class V1::WorkcampsController < V1::BaseController
   end
 
   def workcamps
-    search = Outgoing::Workcamp.order(:name).live.published
-    search = add_year_scope(search)
+    model = case params[:type]
+            when 'ltv' then Ltv::Workcamp
+            when 'incoming' then Incoming::Workcamp              
+            else Outgoing::Workcamp
+            end
+    model.order(:name).live.published  
   end
-
   
   def find_workcamp
-    @workcamp = Outgoing::Workcamp.find(params[:id])
+    @workcamp = workcamps.find(params[:id])
   end
 
   def short_list

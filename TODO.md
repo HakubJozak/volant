@@ -1,6 +1,6 @@
 # Outgoing
- - [ ] API pro web: vyhledat podobne workcampy
- - [ ] API pro web: filtr podle typu LTV/outgoing
+ - [x] API pro web: vyhledat podobne workcampy
+ - [x] API pro web: filtr podle typu LTV/outgoing
  - [ ] upravit free_places importovanych workcampu podle pravidel INEXu (<7 => 1, jinak 2)
  - [ ] zobrazeni seznamu workcampu podle zadani
  - [ ] zobrazeni seznamu prihlasek podle zadani 

@@ -22,6 +22,13 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     assert_equal @workcamp.id, json_response['workcamps'].first['id'].to_i
   end
 
+  test 'search LTV' do
+    target = Factory(:ltv_workcamp)
+    get :index, type: 'ltv'
+    assert_equal 1, json_response['meta']['pagination']['total']
+    assert_equal target.id, json_response['workcamps'][0]['id']
+  end
+
   test "search by intentions" do
     dummy = Factory(:outgoing_workcamp)
     agri = workcamp_intentions(:agri)
