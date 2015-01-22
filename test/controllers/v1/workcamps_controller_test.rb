@@ -79,4 +79,25 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     assert_equal @workcamp.id, json_response['workcamps'].first['id'].to_i
   end
 
+  test "short" do
+    10.times { Factory(:outgoing_workcamp) }
+    get :short
+    assert_response :success
+    assert_nil json_response['meta'], 'there should be no pagination present'
+    assert_equal 11,json_response['workcamps'].size
+  end
+
+  test 'similar' do
+    dummy = Factory(:outgoing_workcamp, country: countries(:IT))
+    target = Factory(:outgoing_workcamp)
+    @workcamp.intentions.each { |i| target.intentions << i }
+    target.save
+
+    get :similar, id: @workcamp.id
+    
+    assert_response :success
+    assert_equal 1,json_response['workcamps'].size    
+    assert_equal target.id,json_response['workcamps'][0]['id']
+  end
+
 end

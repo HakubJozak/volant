@@ -1,7 +1,6 @@
 require 'test_helper'
 
 
-# TODO - move import tests to different file
 class WorkcampTest < ActiveSupport::TestCase
 
   fixtures :all
@@ -38,6 +37,21 @@ class WorkcampTest < ActiveSupport::TestCase
     assert result.map(&:id).include?(@wc.id)
   end
 
+  test 'similar_to scope' do
+    target = Factory(:workcamp)
+    dummy = Factory(:workcamp, country: countries(:AT))    
+    @wc.intentions << (agri = workcamp_intentions(:agri))
+    @wc.intentions << (refugee = workcamp_intentions(:refugee))
+    target.intentions << agri << refugee
+    
+    result = Workcamp.similar_to(@wc)
+    ids = result.map(&:id)
+    
+    assert_equal ids.first, target.id
+    refute ids.include?(@wc.id), 'Original WC should not be included as similar'
+    refute ids.include?(dummy.id), 'Different countries should be excluded'    
+  end
+  
   test 'scope with_countries' do
     country = @wc.country
     result = Workcamp.with_countries(country.id,777777)
@@ -91,15 +105,12 @@ class WorkcampTest < ActiveSupport::TestCase
     end
   end
 
-  test "conversion to XML" do
-    assert_not_nil Workcamp.first.to_xml
-  end
-
   test "csv export" do
     skip 'CSV export not implemented for workcamps'
     assert_not_nil Workcamp.first.to_csv
   end
 
+  # regression bug (validation of intentions while saving workcamps)
   test "create with intentions" do
     inex = organizations(:inex)
     attrs = Factory.attributes_for(:workcamp, country_id: inex.country.id, organization_id: inex.id)
@@ -109,12 +120,5 @@ class WorkcampTest < ActiveSupport::TestCase
     
     assert wc.save, wc.errors.full_messages
   end
-  
-  # TODO - uncomment when AS is removed
-  # should 'ignore temporary workcamps' do
-  #   before =  Workcamp.count
-  #   2.times { Factory.create(:workcamp, :state => 'imported') }
-  #   assert_equal before, Workcamp.count
-  # end
 
 end

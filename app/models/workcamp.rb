@@ -70,6 +70,12 @@ class Workcamp < ActiveRecord::Base
     where("workcamps.organization_id in (?)",ids)
   }
 
+  # same country, same intentions
+  scope :similar_to, lambda { |wc|
+    same_intentions = wc.intentions.map(&:id)
+    where(country_id: wc.country_id).where("id <> ?",wc.id).with_workcamp_intentions(*same_intentions)
+  }
+
   scope :filter_by_hash, lambda { |filter,current_user|
     search = where('TRUE')
 

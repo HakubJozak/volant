@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :workcamp_intentions, only: [ :index ]
     resources :workcamps, only: [ :index, :show ] do
       get 'short', on: :collection
+      get 'similar', on: :member
     end
     resources :apply_forms, only: [ :create ]
   end

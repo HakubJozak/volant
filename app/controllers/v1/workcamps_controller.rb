@@ -2,13 +2,11 @@ class V1::WorkcampsController < V1::BaseController
   respond_to :json
 
   serialization_scope :current_user
-  before_action :find_workcamp, only: [ :show ]
+  before_action :find_workcamp, only: [ :show, :similar ]
 
   def index
-    search = Outgoing::Workcamp.order(:name).live.published
-    search = search.page(current_page)
+    search = workcamps.page(current_page)
     search = search.includes(:country,:organization,:tags,:intentions)
-    search = add_year_scope(search)
 
     if query = filter[:q]
       search = search.query(filter[:q])
@@ -74,9 +72,13 @@ class V1::WorkcampsController < V1::BaseController
   end
 
   def short
-    search = Outgoing::Workcamp.live.published
-    search = add_year_scope(search)
-    render json: search, each_serializer: V1::ShortWorkcampSerializer
+    render json: workcamps, each_serializer: V1::ShortWorkcampSerializer
+  end
+
+  def similar
+    search = workcamps.similar_to(@workcamp).limit(10)
+    search = search.includes(:country,:organization,:tags,:intentions)    
+    render json: search, each_serializer: V1::WorkcampSerializer    
   end
 
   def show
@@ -92,6 +94,12 @@ class V1::WorkcampsController < V1::BaseController
                   :workcamp_intention_ids => [], :organization_ids => [])
   end
 
+  def workcamps
+    search = Outgoing::Workcamp.order(:name).live.published
+    search = add_year_scope(search)
+  end
+
+  
   def find_workcamp
     @workcamp = Outgoing::Workcamp.find(params[:id])
   end
