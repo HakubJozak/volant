@@ -9,9 +9,6 @@ Volant.WorkcampsController = Volant.ListController.extend
 
   query_placeholder: "part of workcamp's name or code"
 
-  order: 'code'
-  orderOptions: ['name','code','from','to','country']      
-  
   query: ''
   from: null
   to: null
@@ -27,16 +24,18 @@ Volant.WorkcampsController = Volant.ListController.extend
   tags: []
   organizations: []
 
+  order: 'name'
+  orderOptions: ['name','code','from','to','country']
   sortProperties: ['name']
   sortAscending: true
 
   setSorting: (->
-    props = switch @get('order')    
+    props = switch @get('order')
       when 'name' then ['name']
       when 'code' then ['code']
       when 'from' then ['from']
       when 'to' then ['to']
-      when 'country' then ['country.name_en']      
+      when 'country' then ['country.name_en']
     @set 'sortProperties',props
   ).observes('order')
 

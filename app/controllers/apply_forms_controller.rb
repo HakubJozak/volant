@@ -4,11 +4,12 @@ class ApplyFormsController < ApplicationController
   before_action :find_apply_form, except: [ :index,:create ]
 
   def index
-    search = Outgoing::ApplyForm.page(current_page).order("#{ApplyForm.table_name}.created_at desc")
+    search = Outgoing::ApplyForm.page(current_page)
     # TODO: move to scopes
     search = search.joins('LEFT OUTER JOIN workcamps ON workcamps.id = current_workcamp_id_cached')
     search = search.joins('LEFT OUTER JOIN workcamp_assignments ON workcamp_assignments.id = current_assignment_id_cached')
     search = search.includes(:volunteer)
+    search = search.order(current_order)
     search = add_year_scope(search)
 
     if filter[:starred]
@@ -33,15 +34,6 @@ class ApplyFormsController < ApplicationController
       end
     end
 
-    # dir = params[:asc] ? :asc : :desc
-    # if params[:sort]
-    #   case params[:sort].to_sym
-    #   when :created_at
-    #     search.order(created_at: dir)
-    #   when :name
-    #     search.order("volunteers.lastname #{dir}, volunteers.firstname #{dir}").order(created_at: dir)
-    #   end
-    # end
     render json: search,
            meta: { pagination: pagination_info(search) },
            each_serializer: ApplyFormSerializer
@@ -103,26 +95,23 @@ class ApplyFormsController < ApplicationController
   end
 
   def vef
-    respond_to do |format|
-      format.xml  {
-        builder = Export::VefXml.new(@apply_form)
-        send_data builder.data, filename: builder.filename
-      }
-
-      format.html {
-        builder = Export::VefHtml.new(@apply_form)
-        send_data builder.data, filename: builder.filename
-      }
-
-      format.pdf {
-        builder = Export::VefPdf.new(@apply_form)
-        send_data builder.data, filename: builder.filename
-      }      
+    builder = respond_to do |format|
+      format.xml  { Export::VefXml.new(@apply_form) }
+      format.html { Export::VefHtml.new(@apply_form) }
+      format.pdf { Export::VefPdf.new(@apply_form) }
     end
 
+    send_data builder.data, filename: builder.filename
   end
 
   private
+
+  def current_order
+    case filter[:order].presence
+    when 'createdAt' then "#{ApplyForm.table_name}.created_at desc"
+    else "#{Volunteer.table_name}.lastname"
+    end
+  end  
 
   def render_state_change
     payload = Payload.new(apply_forms: [ @apply_form ],
@@ -141,7 +130,7 @@ class ApplyFormsController < ApplicationController
   end
 
   def filter
-    params.permit(:starred,:q,:state,:p,:year)
+    params.permit(:starred,:q,:state,:p,:year,:order)
   end
 
   def render_apply_form
