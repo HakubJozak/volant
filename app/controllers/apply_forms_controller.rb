@@ -111,9 +111,8 @@ class ApplyFormsController < ApplicationController
 
       format.html {
         builder = Export::VefHtml.new(@apply_form)
-        send_data builder.data, filename: builder.filename
+        send_data builder.data
       }
-
     end
 
   end

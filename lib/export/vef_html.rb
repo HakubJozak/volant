@@ -1,7 +1,7 @@
 class Export::VefHtml < Export::VefBase
 
   def sufix
-    'html'
+    ''
   end
   
   def to_html

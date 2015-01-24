@@ -7,14 +7,23 @@ Volant.ApplyFormController = Volant.ObjectController.extend({
     Ember.Object.create(label: "Bank", id: 'BANK')
    ]
 
-
   queryParams: ['anchor']
   anchor: null
 
   vefXmlUrl: (->
     if id = @get('model.id')
       "/apply_forms/#{id}/vef.xml"
-  ).property('model.id')      
+  ).property('model.id')
+
+  vefHtmlUrl: (->
+    if id = @get('model.id')
+      "/apply_forms/#{id}/vef.html"
+  ).property('model.id')
+
+  vefPdfUrl: (->
+    if id = @get('model.id')
+      "/apply_forms/#{id}/vef.pdf"
+  ).property('model.id')    
 
   actions:
     rollback: ->

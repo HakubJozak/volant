@@ -300,3 +300,9 @@ table.import-changes {
 .free-places-popover {
   text-align: center;
 }
+
+#toolbar {
+  position: fixed;
+  bottom: 0;
+  right: 1em;
+}

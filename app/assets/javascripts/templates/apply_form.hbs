@@ -5,13 +5,6 @@
       {{partial 'apply_form/title'}}
 
       <span class='pull-right'>
-        {{#if vefXmlUrl}}
-          <small class='vef-download-button'>
-          <a {{ bind-attr href=vefXmlUrl }} >
-            {{fa 'download'}} VEF.xml
-          </a>
-          </small>
-        {{/if}}
         {{ partial 'action_buttons' }}
       </span>
     </h2>
@@ -101,5 +94,23 @@
   {{view Barbecue.BsTabsView currentTab='assigned' tabs='Assigned,Starred,Search' viewPrefix='apply_form/tabs/'}}
 </div>
 </div>
+
+<div id='toolbar' class="panel panel-default">
+  <div class="panel-heading">Toolbar</div>
+  <div class="panel-body">
+  {{#if vefXmlUrl}}
+    <a {{ bind-attr href=vefXmlUrl }} >
+      {{fa 'download'}} XML
+    </a>
+    <a {{ bind-attr href=vefHtmlUrl }} >
+      {{fa 'download'}} HTML
+    </a>
+    <a {{ bind-attr href=vefPdfUrl }} >
+      {{fa 'download'}} PDF
+    </a>    
+  {{/if}}
+  </div>
+</div>
+<div >
 
 {{outlet modal}}
