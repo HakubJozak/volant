@@ -20,7 +20,8 @@ module Import
       each_workcamp do |node|
         begin
           if wc = make_workcamp(node)
-            setup_imported_workcamp(wc)
+            wc.publish_mode = 'SEASON'
+            compute_free_places(wc)        
 
             if old = find_workcamp_like(wc)
               old.import_changes.delete_all
@@ -80,6 +81,17 @@ module Import
 
 
     private
+
+    def compute_free_places(wc)
+      if wc.capacity == nil or wc.capacity > 7
+        wc.places = 2
+      else
+        wc.places = 1
+      end
+
+      wc.places_for_females = [ wc.places, wc.capacity_females ].compact.min
+      wc.places_for_males = [ wc.places, wc.capacity_males ].compact.min
+    end
 
     def guess_by_code_and_year(wc)
       query = Outgoing::Workcamp.where(code: wc.code)

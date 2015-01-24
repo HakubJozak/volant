@@ -89,6 +89,8 @@ module Import
       end
     end
 
+    private
+    
     def add_to_field(attr, wc, node, name)
       if content = to_text(node, name)
         if wc.send(attr)
@@ -97,7 +99,6 @@ module Import
           wc.send(attr.to_s + '=', content)
         end
       end
-
     end
   end
 end

@@ -32,14 +32,16 @@
  - [ ] PLUS - export/import friday listu podle ADIHu
 
 # LTV
- - Dashboard
- - a vubec vsechno...
+ - [ ] CRUD workcampu
+ - [ ] CRUD prihlasky 
+ - [ ] Dashboard
+
 
 # Incoming
- - [ ] Dashboard
+
  - [ ] potvrzovani prihlasek linkem
  - [ ] rezervace
-
+ - [ ] Dashboard
 
 
 

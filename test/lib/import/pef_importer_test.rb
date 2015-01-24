@@ -28,32 +28,32 @@ module Import
       assert wc.imported?
       assert_equal 'EST', wc.organization.code
       assert_equal 'Estonia', wc.country.name
-      assert wc.tag_list.include?('teenage')
-      assert wc.tag_list.include?('extra fee')
       assert_equal false, wc.tag_list.include?('disabled')
       assert_equal false, wc.tag_list.include?('family')
       assert_equal wc.intentions.size, 1
 
-
       expected = {
-        :code => 'EST T5',
-        :name => 'WHV DOWN TOWN TALLINN',
-        :language => 'eng,eng',
-        :extra_fee => 200,
-        :workdesc => 'work_is_hard',
+        code: 'EST T5',
+        name: 'WHV DOWN TOWN TALLINN',
+        language: 'eng,eng',
+        extra_fee: 200,
+        workdesc: 'work_is_hard',
+        places: 2,
+        places_for_females: 2,
+        places_for_males: 2,        
         # TODO remove the newlines
-        :notes => "must_be_alive\n\n",
-        :extra_fee_currency => 'EUR',
-        :begin => Date.new(2011,7,25),
-        :end => Date.new(2011,8,7),
-        :minimal_age => 14,
-        :maximal_age => 17,
-        :longitude => 24.7544715,
-        :latitude => 59.4388619
+        notes: "must_be_alive\n\n",
+        extra_fee_currency: 'EUR',
+        begin: Date.new(2011,7,25),
+        end: Date.new(2011,8,7),
+        minimal_age: 14,
+        maximal_age: 17,
+        longitude: 24.7544715,
+        latitude: 59.4388619
       }
 
       expected.each do |attr,expected|
-        assert_equal expected, wc.send(attr)
+        assert_equal expected, wc.send(attr), "#{attr} is incorrect"
       end
     end
 
