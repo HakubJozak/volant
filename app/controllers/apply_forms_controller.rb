@@ -103,8 +103,19 @@ class ApplyFormsController < ApplicationController
   end
 
   def vef
-    builder = Export::VefXml.new(@apply_form)
-    send_data builder.to_xml, filename: builder.filename
+    respond_to do |format|
+      format.xml  {
+        builder = Export::VefXml.new(@apply_form)
+        send_data builder.data, filename: builder.filename
+      }
+
+      format.html {
+        builder = Export::VefHtml.new(@apply_form)
+        send_data builder.data, filename: builder.filename
+      }
+
+    end
+
   end
 
   private

@@ -9,7 +9,7 @@
  - [ ] alert po 3 dnech po zažádání o přijetí
  - [ ] alert 5 týdnů před začátkem workcampu když není odeslán infosheet
  - [ ] alert 4 týdny před začátkem workcampu pokud nemáme pojištění - pokud tam tedy to pojištění nějak zakomponujeme
- - [ ] upravit free_places importovanych workcampu podle pravidel INEXu (<7 => 1, jinak 2)
+ - [x] upravit free_places importovanych workcampu podle pravidel INEXu (<7 => 1, jinak 2)
  - [ ] vyhledavani plateb
  - [ ] filtr workcampu - age do jednoho pole a ucesat
  - [ ] opravit testy

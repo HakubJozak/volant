@@ -1,10 +1,6 @@
-class Export::VefXml
-  include CzechUtils
-
-  attr_reader :apply_form
-
-  def initialize(apply_form)
-    @form = apply_form
+class Export::VefXml < Export::VefBase
+  def sufix
+    'xml'
   end
 
   def emergency_contact
@@ -35,16 +31,6 @@ class Export::VefXml
     end
   end
 
-  def filename
-    if v = @form.try(:volunteer)
-      stripped = strip_cs_chars("#{v.firstname}_#{v.lastname}")
-      "VEF_SDA_#{stripped.underscore}.xml"
-    else
-      'vef.xml'
-    end
-  end
-
-  
   def to_xml(options = {})
     f = @form
     builder = Nokogiri::XML::Builder.new do |xml|
@@ -99,5 +85,7 @@ class Export::VefXml
     end
     builder.to_xml
   end
+
+  alias :data :to_xml
 end
 
