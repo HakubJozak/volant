@@ -1,7 +1,9 @@
 # Outgoing
+ - [ ] BUG: Tab Starred na prihlaskach nefunguje
+ 
  - [x] API pro web: vyhledat podobne workcampy
  - [x] API pro web: filtr podle typu LTV/outgoing
- - [ ] export VEF HTML
+ - [x] export VEF HTML
  - [ ] zobrazeni seznamu workcampu podle zadani
  - [ ] zobrazeni seznamu prihlasek podle zadani 
  - [ ] filtrovani prihlasek podle tagu
@@ -16,6 +18,7 @@
 
 ---- prepnuti na zivou databazi --------------------------------------------------------
 
+
  - [ ] export CSV workcampu a prihlasek (pro statistiky)
 
 ----BONUSY --------------------------------------------------------
@@ -28,6 +31,7 @@
  - [ ] PLUS - vytvorit kopii workcampu (v nove sezone)
  - [ ] PLUS - zobrazit mapu podle souradnic a/nebo 'train' a 'airport'
  - [ ] PLUS - vytvoreni prihlasky pro existujiciho dobrovolnika
+ - [x] PLUS - export VEF PDF (1 hour)
  - [ ] PLUS - PEF XML
  - [ ] PLUS - export/import friday listu podle ADIHu
 

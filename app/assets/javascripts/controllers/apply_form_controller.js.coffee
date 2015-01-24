@@ -10,20 +10,9 @@ Volant.ApplyFormController = Volant.ObjectController.extend({
   queryParams: ['anchor']
   anchor: null
 
-  vefXmlUrl: (->
-    if id = @get('model.id')
-      "/apply_forms/#{id}/vef.xml"
-  ).property('model.id')
-
-  vefHtmlUrl: (->
-    if id = @get('model.id')
-      "/apply_forms/#{id}/vef.html"
-  ).property('model.id')
-
-  vefPdfUrl: (->
-    if id = @get('model.id')
-      "/apply_forms/#{id}/vef.pdf"
-  ).property('model.id')    
+  vefXmlUrl: (-> @attachmentUrl 'xml' ).property('model.id')
+  vefHtmlUrl: (-> @attachmentUrl 'html' ).property('model.id')
+  vefPdfUrl: (-> @attachmentUrl 'pdf' ).property('model.id')    
 
   actions:
     rollback: ->
@@ -35,6 +24,11 @@ Volant.ApplyFormController = Volant.ObjectController.extend({
       false
 
   models: -> [ @get('model'), @get('model.volunteer'), @get('model.payment') ]
+
+  attachmentUrl: (sufix) ->
+    if id = @get('model.id')
+      "/apply_forms/#{id}/vef.#{sufix}" 
+  
 
 
 })
