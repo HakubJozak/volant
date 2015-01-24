@@ -32,7 +32,7 @@ form.form.form-horizontal.form-search submit='search' role='form'
 
   .row
     .col-lg-1
-      label.control-label Sort by
+      label.control-label Order by
     .col-lg-2
       view Ember.Select value=order  content=orderOptions  class="form-control"
 

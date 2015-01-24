@@ -17,6 +17,14 @@ form.form.form-horizontal.search-form submit="search" role="form"
     .col-lg-2
       view Volant.ApplyFormStateSelect value=state
 
+  .form-group
+    .col-lg-1
+      label.control-label Order by
+    .col-lg-2
+      view Ember.Select value=order  content=orderOptions  class="form-control"
+
+
+
 
 table.table.table-striped.table-hover
   thead
