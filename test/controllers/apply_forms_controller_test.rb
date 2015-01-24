@@ -30,13 +30,28 @@ class ApplyFormsControllerTest < ActionController::TestCase
     wc = Factory(:outgoing_workcamp, name: 'My favorite camp')
     @apply_form.assign_workcamp(wc)
 
-
     get :index
     assert_response :success
 
     assert_equal 1, json_response['apply_forms'].size
     assert_equal wc.id, json_response['apply_forms'].first['current_workcamp_id']
   end
+
+  test 'show' do
+    get :show, id: @apply_form.id
+    assert_response :success
+    assert_equal 1, json_response['apply_forms'].size    
+  end
+
+  test 'vef.html' do
+    get :vef, id: @apply_form.id, format: :html
+    assert_response :success
+  end
+
+  test 'vef.xml' do
+    get :vef, id: @apply_form.id, format: :xml
+    assert_response :success
+  end    
 
   test 'filter by state' do
     ApplyForm.destroy_all
