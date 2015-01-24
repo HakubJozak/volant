@@ -36,10 +36,6 @@ module Volant
     require 'rack/jsonp'
     config.middleware.use Rack::JSONP
 
-    require 'pdfkit'
-    config.middleware.use PDFKit::Middleware, {}, :only => [ %r[^/apply_forms/[0-9]+/vef] ]
-    
-
     config.generators do |g|
       g.orm             :active_record
       g.template_engine false # :erb

@@ -111,8 +111,13 @@ class ApplyFormsController < ApplicationController
 
       format.html {
         builder = Export::VefHtml.new(@apply_form)
-        send_data builder.data
+        send_data builder.data, filename: builder.filename
       }
+
+      format.pdf {
+        builder = Export::VefPdf.new(@apply_form)
+        send_data builder.data, filename: builder.filename
+      }      
     end
 
   end

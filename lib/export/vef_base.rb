@@ -1,5 +1,4 @@
 class Export::VefBase
-
   include CzechUtils
   attr_reader :form
 
