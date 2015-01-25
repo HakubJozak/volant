@@ -16,10 +16,6 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
     @controllerFor('workcamp_assignments').set('model',model.get('workcamp_assignments'))
     @controllerFor('payment').set('model',model.get('payment'))
 
-  renderTemplate: ->
-    @_super()
-    @render('quick_save',into: 'application', outlet: 'item_controls')
-
   actions:
     addWorkcamp: (wc) ->
       @send('createAssignment',wc,@currentModel)
