@@ -96,8 +96,8 @@
 </div>
 
 <div id='toolbar' class="panel panel-default">
-  <div class="panel-heading">Toolbar</div>
   <div class="panel-body">
+
   {{#if vefXmlUrl}}
     <a {{ bind-attr href=vefXmlUrl }} >
       {{fa 'download'}} XML
@@ -109,6 +109,13 @@
       {{fa 'download'}} PDF
     </a>    
   {{/if}}
+
+  <button type="button" class="btn btn-default" {{ action 'rollback' }}>
+    {{ fa 'times' }} Cancel
+  </button>
+  <button type="button" class="btn btn-primary" {{ action 'save' }}>
+    {{ fa 'check' }} Save
+  </button>
   </div>
 </div>
 <div >

@@ -5,10 +5,6 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend
   title: (wc) ->
     "#{wc.get('name')} - #{wc.get('code')}"
 
-  renderTemplate: ->
-    @_super()
-    @render('quick_save',into: 'application', outlet: 'item_controls')
-
   setupController: (controller,model,queryParams) ->
     @_super(controller,model,queryParams)
     @controllerFor('starred_apply_forms').set('content', @store.find('apply_form',starred: true));
