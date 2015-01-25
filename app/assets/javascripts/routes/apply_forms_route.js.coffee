@@ -1,8 +1,8 @@
 Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
 
   queryParams:
-    order:
-      refreshModel: true  
+    order: { refreshModel: true }
+    sortAscending: { refreshModel: true }
 
   model: (params) ->
     @store.find('apply_form', {
@@ -11,6 +11,7 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
       q: params.query
       order: params.order      
       state: params.state
+      asc: params.sortAscending
     })
 
   title: -> "Applications"

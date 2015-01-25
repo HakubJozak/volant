@@ -22,6 +22,8 @@ form.form.form-horizontal.search-form submit="search" role="form"
       label.control-label Order by
     .col-lg-2
       view Ember.Select value=order  content=orderOptions  class="form-control"
+    .col-lg-2
+      view Ember.Select value=sortAscending  contentBinding='sortAscendingOptions' optionValuePath="content.id" optionLabelPath="content.name" class="form-control"
 
 
 

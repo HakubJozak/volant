@@ -21,6 +21,14 @@ class ApplicationController < ActionController::Base
     params[:p] || params[:page] || 1
   end
 
+  def current_order_direction
+    if ['true',true,1].include?(params[:asc])
+      'asc'
+    else
+      'desc'
+    end
+  end
+  
   def current_organization
     # TODO: take the code from organization
     @current_organization ||= Organization.find_by_code('SDA')

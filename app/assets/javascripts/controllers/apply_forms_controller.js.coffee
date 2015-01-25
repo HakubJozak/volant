@@ -3,20 +3,22 @@ Volant.ApplyFormsController = Volant.ListController.extend({
   query: null
   state: null
 
-  queryParams: ['page','year','query','state','order']
+  queryParams: ['page','year','query','state','order','sortAscending']
   query_placeholder: "Search by name, birth number, payment account or keyword..."
 
   order: 'createdAt'
   orderOptions: ['createdAt','name']
   sortProperties: ['createdAt']
+
   sortAscending: false
+  sortAscendingOptions: [ {name:'Ascending', id: true },{ name:'Descending', id: false }]
   
   setSorting: (->
     props = switch @get('order')
       when 'createdAt' then ['createdAt']
       when 'name' then ['name']
     @set 'sortProperties',props
-  ).observes('order')
+  ).observes('order','sortAscending')
 
   actions:
     reset: ->

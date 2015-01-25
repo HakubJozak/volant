@@ -19,11 +19,11 @@ class WorkcampsController < ApplicationController
 
   def current_order
     case filter[:order].presence
-    when 'code' then :code
-    when 'from' then :'begin'
-    when 'to' then :'end'
-    when 'country'then 'countries.name_en'
-    else :name
+    when 'code' then "code #{current_order_direction}"
+    when 'from' then "begin #{current_order_direction}"
+    when 'to' then "end #{current_order_direction}"
+    when 'country'then "countries.name_en #{current_order_direction}"
+    else "name #{current_order_direction}"
     end
   end
 

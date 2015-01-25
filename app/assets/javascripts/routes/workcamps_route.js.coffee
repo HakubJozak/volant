@@ -3,14 +3,15 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend
   newWorkcampType: 'outgoing'
   
   queryParams:
-    order:
-      refreshModel: true
+    order: { refreshModel: true }
+    sortAscending: { refreshModel: true }
 
   model: (params) ->
     filter = @default_filter()
     filter.q = params.query
     filter.p = params.page
     filter.order = params.order
+    filter.asc = params.sortAscending    
     filter.year = params.year unless params.year == 'All'
 
     attrs = [ 'from','to','min_duration','max_duration', 'min_age','max_age',

@@ -35,8 +35,8 @@ class ApplyFormsController < ApplicationController
     end
 
     render json: search,
-           meta: { pagination: pagination_info(search) },
-           each_serializer: ApplyFormSerializer
+    meta: { pagination: pagination_info(search) },
+    each_serializer: ApplyFormSerializer
   end
 
   def destroy
@@ -108,8 +108,8 @@ class ApplyFormsController < ApplicationController
 
   def current_order
     case filter[:order].presence
-    when 'createdAt' then "#{ApplyForm.table_name}.created_at desc"
-    else "#{Volunteer.table_name}.lastname"
+    when 'createdAt' then "#{ApplyForm.table_name}.created_at #{current_order_direction}"
+    else "#{Volunteer.table_name}.lastname #{current_order_direction},#{Volunteer.table_name}.firstname #{current_order_direction}"
     end
   end  
 
