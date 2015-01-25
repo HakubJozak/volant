@@ -1,0 +1,34 @@
+.list-group-item
+  .row
+    .col-lg-1
+      div
+        = partial 'star'
+        = small-flag country
+      small
+        = country.name
+    .col-lg-1
+      p.list-group-item-text
+        format-date from
+      p.list-group-item-text
+        format-date to
+    .col-lg-6
+      h4.list-group-item-heading
+        link-to 'workcamp' this
+          | {{code}} &ndash; {{name}}
+        small
+          = duration
+          ' days
+        
+      p.list-group-item-text
+        |  {{age-range this }}, {{join workcamp_intentions 'code'}} 
+        each tags
+          tag this
+    .col-lg-2
+      h4.list-group-item-heading
+        partial 'free_places'
+    .col-lg-2
+      p.list-group-item-text
+        each workcamp_assignments
+          = link-to 'apply_form' apply_form
+            = apply_form.name
+

@@ -7,19 +7,18 @@
  - [ ] zobrazeni seznamu workcampu podle zadani
  - [ ] zobrazeni seznamu prihlasek podle zadani 
  - [ ] filtrovani prihlasek podle tagu
- - [ ] razeni prihlasek (hvezdicka,termin podani,prijmeni)
+ - [x] razeni prihlasek (hvezdicka,termin podani,prijmeni)
  - [ ] alert po 3 dnech po zažádání o přijetí
  - [ ] alert 5 týdnů před začátkem workcampu když není odeslán infosheet
  - [ ] alert 4 týdny před začátkem workcampu pokud nemáme pojištění - pokud tam tedy to pojištění nějak zakomponujeme
  - [x] upravit free_places importovanych workcampu podle pravidel INEXu (<7 => 1, jinak 2)
  - [ ] vyhledavani plateb
- - [ ] filtr workcampu - age do jednoho pole a ucesat
  - [ ] opravit testy
 
 ---- prepnuti na zivou databazi --------------------------------------------------------
 
-
  - [ ] export CSV workcampu a prihlasek (pro statistiky)
+ - [ ] filtr workcampu - age do jednoho pole a ucesat vizual
 
 ----BONUSY --------------------------------------------------------
 
