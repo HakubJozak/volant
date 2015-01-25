@@ -4,8 +4,11 @@
   <div class="col-lg-8">
     <h2>
       {{partial 'star'}}
-      {{#if name}}
-        {{name}}
+      {{#if country}}
+        {{flag country}}
+      {{/if}}
+      {{#if code}}
+        {{code}} &ndash; {{name}}
       {{else}}
         <span class="text-muted">New Workcamp</span>
       {{/if}}
