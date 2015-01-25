@@ -1,4 +1,6 @@
-Volant.RelevantFreePlacesView = Ember.View.extend
+Volant.PlacementInfoView = Ember.View.extend
+  templateName: 'placement_info'
+
   attributeBindings: ['data-content']
 
   didInsertElement: ->

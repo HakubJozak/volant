@@ -1,0 +1,12 @@
+.button.btn.btn-default type="button" data-toggle="popover"
+  if relevantFreePlaces.empty
+    if apply_form.male
+      fa 'male'
+    else
+      fa 'female'
+    '    
+    = relevantFreePlaces.confirmed
+    sub = relevantFreePlaces.asked
+  else
+    fa 'users'
+
