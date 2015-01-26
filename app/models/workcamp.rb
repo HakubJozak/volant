@@ -2,7 +2,7 @@
 class Workcamp < ActiveRecord::Base
 
   DURATION_SQL = '(EXTRACT(epoch FROM age("end","begin"))/(3600 * 24))'
-  SEASON_START = Date.new(2015,3,1)
+  SEASON_START = Date.new(2015,1,1)
   
   include AllianceExporter
   include ActiveRecord::Diff
