@@ -31,10 +31,16 @@
         partial 'free_places'
     .col-lg-3
       p.list-group-item-heading
-        each workcamp_assignments itemController='workcamp_assignment_inside_workcamp'
+        each workcamp_assignments itemController='workcampAssignmentInsideWorkcamp'
           = link-to 'apply_form' apply_form
-            if 
-            | {{apply_form.name}} ({{apply_form.age}}) {{apply-form-state-icon apply_form.state}}
-            each apply_form.tags
-              tag this
-          | ,
+            if isCurrentWorkcamp
+              | {{apply_form.name}} ({{apply_form.age}}) {{apply-form-state-icon apply_form.state}}
+              each apply_form.tags
+                tag this
+            else
+              span.text-muted
+                ' {{apply_form.name}} ({{apply_form.age}}) {{apply-form-state-icon apply_form.state}}
+                each apply_form.tags
+                  ' {{tag this}} 
+      
+          ' ,

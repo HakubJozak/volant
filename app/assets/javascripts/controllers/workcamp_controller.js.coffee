@@ -1,4 +1,4 @@
-Volant.WorkcampController = Ember.ObjectController.extend {
+Volant.WorkcampController = Ember.ObjectController.extend
   needs: ['countries','workcamp_intentions','organizations','tags','starred_apply_forms']
 
   publish_modes: [ { code: 'NEVER', label: 'Never' },
@@ -21,4 +21,4 @@ Volant.WorkcampController = Ember.ObjectController.extend {
       if @get('organization')
         @set('country', @get('organization.country'))
   ).observes('organization')
-}
+
