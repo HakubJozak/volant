@@ -36,7 +36,8 @@ table.table.table-striped.table-hover
     th
       | Name
     th colspan="3"
-      | Workcamp
+      | Workcamp and Actions
+    th
   tbody
     each itemController='apply_form'
       tr
@@ -60,15 +61,26 @@ table.table.table-striped.table-hover
             | )
           '    
           each tags
-            = tag this
-            '
+            ' {{tag this}}
+
 
         td
           apply-form-state-icon state
         td
           partial 'action_buttons'
         td
-          link-to 'workcamp' current_workcamp
-            current_workcamp.name
+          with current_workcamp
+            link-to 'workcamp' this
+              ' {{code}} &ndash; {{name}},
+            ' {{age-range this }}
+            each tags
+              ' {{tag this}}
+            if extraFee
+              span.label.label-warning class='extra-fee-label'
+                | {{extraFee}} {{extraFeeCurrency}}
+        td
+          button.btn.btn-danger.btn-xs{ action 'remove' this }
+            fa 'trash-o'
+
 
 render 'pagination'

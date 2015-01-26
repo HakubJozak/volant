@@ -20,6 +20,16 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
     @render('apply_forms')
 
   actions:
+    remove: (record) ->
+      return unless confirm("Really delete #{record.get('name')}")  
+      record.destroyRecord().then (=>
+        @flash_info 'Deleted.'
+      ), ( (e) =>
+        console.error e
+        @flash_error "Failed."
+      )
+      false
+
     pay: (form) ->
       @transitionTo('apply_form',form,{ queryParams: { anchor: 'payment-fields'}})
 

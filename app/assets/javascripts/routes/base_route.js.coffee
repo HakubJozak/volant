@@ -50,11 +50,12 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
        )
       false
 
-    remove: ->
-      if @currentModel.get('isNew')
-        @currentModel.deleteRecord()
+    remove: (record) ->
+      record ||= @currentModel
+      if record.get('isNew')
+        record.deleteRecord()
       else
-        @currentModel.destroyRecord().then (=>
+        record.destroyRecord().then (=>
           @flash_info 'Deleted.'
           @go_to_plural_route()
           ), ( (e) =>
