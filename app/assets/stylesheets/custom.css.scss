@@ -78,6 +78,14 @@ h2 i.fa {
   top: 25px;
 }
 
+td .apply-form-action-dropdown {
+  width: 7em;
+
+  & > button:first-child {
+    width: 75%;
+  }  
+}
+
 tr.workcamp_assignment {
   i.fa-circle { color: $green; }
 }

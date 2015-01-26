@@ -4,7 +4,7 @@
   {{/link-to}}
 {{else}}
   {{#if state.actions.firstObject }}
-    <div class="btn-group">
+    <div class="btn-group apply-form-action-dropdown">
       <button {{action 'apply_form_action' state.actions.firstObject this bubbles=false}} type="button" class="btn btn-default btn-sm">
         {{capitalize state.actions.firstObject}}
       </button>
