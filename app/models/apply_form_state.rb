@@ -25,17 +25,17 @@ class ApplyFormState
 
     @actions = case name
                when :asked
-                 [ :accept, :reject, :cancel ]
+                 [ :accept, :reject,  :cancel ]
                when :paid
-                 [ :ask, :reject, :cancel ]
+                 [ :ask, :reject,  :cancel ]
                when :accepted
-                 [ :infosheet, :cancel ]
+                 [ :infosheet,  :cancel ]
                when :rejected
-                 [ :cancel ]
+                 [  :cancel ]
                when :not_paid
-                 [ :pay, :cancel ]
+                 [ :pay,  :cancel ]
                when :infosheeted
-                 [ :cancel ]
+                 [  :cancel ]
                else []
                end
 

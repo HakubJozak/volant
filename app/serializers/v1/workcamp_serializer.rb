@@ -11,8 +11,17 @@ class V1::WorkcampSerializer < ActiveModel::Serializer
       :free_places, :free_places_for_males, :free_places_for_females,
       :duration,
       :longitude, :latitude, :requirements,
-      :created_at
+      :created_at,
+      :type
 
+  def type
+    case object
+    when Ltv::Workcamp then 'ltv'
+    when Incoming::Workcamp then 'incoming'
+    else 'outgoing'
+    end
+  end
+  
   def workcamp_intentions
     object.intentions
   end

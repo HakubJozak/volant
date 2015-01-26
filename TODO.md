@@ -4,7 +4,7 @@
  - [x] API pro web: vyhledat podobne workcampy
  - [x] API pro web: filtr podle typu LTV/outgoing
  - [x] export VEF HTML
- - [ ] zobrazeni seznamu workcampu podle zadani
+ - [x] zobrazeni seznamu workcampu podle zadani
  - [ ] zobrazeni seznamu prihlasek podle zadani 
  - [ ] filtrovani prihlasek podle tagu
  - [x] razeni prihlasek (hvezdicka,termin podani,prijmeni)

@@ -9,6 +9,9 @@ Volant.ApplyFormActions = Ember.Mixin.create
         when 'pay'
           @send 'pay',form
 
+        when 'email'
+          console.info 'emailing'
+
         when 'cancel'
           url = "/apply_forms/#{form.get('id')}/cancel"
           @ajax_to_store(url).then (payload) =>

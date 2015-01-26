@@ -26,23 +26,17 @@ form.form.form-horizontal.search-form submit="search" role="form"
       view Ember.Select value=sortAscending  contentBinding='sortAscendingOptions' optionValuePath="content.id" optionLabelPath="content.name" class="form-control"
 
 
-
-
 table.table.table-striped.table-hover
   thead
     th
     th
       | Submitted
     th
+      | Payment
+    th
       | Name
     th colspan="3"
       | Workcamp
-    th
-      | Email
-    th
-      | Birth number
-    th
-      | Payment
   tbody
     each itemController='apply_form'
       tr
@@ -52,7 +46,9 @@ table.table.table-striped.table-hover
             .label.label-success title='Submitted today'
               | New
         td
-          long-date createdAt
+          format-date createdAt
+        td
+          payment.amount
         td
           link-to 'apply_form' this
             = gender-sign volunteer.gender
@@ -74,11 +70,5 @@ table.table.table-striped.table-hover
         td
           link-to 'workcamp' current_workcamp
             current_workcamp.name
-        td
-          mail-to volunteer.email
-        td
-          volunteer.birthnumber
-        td
-          payment.amount
 
 render 'pagination'

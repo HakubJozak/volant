@@ -29,6 +29,7 @@ Ember.Handlebars.helper 'apply-form-action-icon', (name) ->
     ask: 'envelope-o'
     infosheet: 'suitcase'
     pay: 'money'
+    email: 'envelope-o' 
     cancel: 'times'
   }
   icon = "<i class='fa fa-#{icons[name]}'></i>"

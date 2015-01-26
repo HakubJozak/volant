@@ -24,7 +24,10 @@ Ember.Handlebars.helper "join-emails", (array, attribute) ->
 
 
 Ember.Handlebars.helper "mail-to", (email) ->
-  new Handlebars.SafeString "<a href='mailto:#{email}' title='Open your email app with #{email}' >#{email}</a>"
+  new Handlebars.SafeString "<a href='mailto:#{email}' target='_blank' title='Open your email app with #{email}' >#{email}</a>"
+
+Ember.Handlebars.helper "mail-to-title", (email,title) ->
+  new Handlebars.SafeString "<a href='mailto:#{email}' target='_blank' title='Open your email app with #{email}' >#{title}</a>"  
 
 Ember.Handlebars.helper "external-link", (link) ->
   a = "<a href='#{link}' target='_blank'><i class='fa fa-external-link'></i></a>"

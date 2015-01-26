@@ -18,6 +18,10 @@
             {{ apply-form-action-icon action_name }} {{capitalize action_name}}
           </a></li>
         {{/each}}
+        <li>
+          {{mail-to-title email "<i class='fa fa-envelope-o'></i> Email"}}
+        </li>
+
       </ul>
     </div>
   {{/if}}
