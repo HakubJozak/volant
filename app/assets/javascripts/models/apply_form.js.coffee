@@ -17,7 +17,9 @@ Volant.ApplyForm = DS.Model.extend
   general_remarks: DS.attr 'string'
   motivation: DS.attr 'string'
 
+  gender: Ember.computed.alias('volunteer.gender')
   name: Ember.computed.alias('volunteer.name')
+  age: Ember.computed.alias('volunteer.age')  
   email: Ember.computed.alias('volunteer.email')
   createdToday: (-> moment().isSame(@get('createdAt'),'day')  ).property('createdAt')
 

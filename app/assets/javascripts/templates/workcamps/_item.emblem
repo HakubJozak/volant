@@ -11,16 +11,16 @@
         format-date from
       p.list-group-item-text
         format-date to
-    .col-lg-6
+    .col-lg-5
       h4.list-group-item-heading
         link-to 'workcamp' this
           | {{code}} &ndash; {{name}}
         small
           = duration
           ' days
-        
+
       p.list-group-item-text
-        |  {{age-range this }}, {{join workcamp_intentions 'code'}} 
+        |  {{age-range this }}, {{join workcamp_intentions 'code'}}
         each tags
           tag this
         if extraFee
@@ -29,9 +29,12 @@
     .col-lg-2
       h4.list-group-item-heading
         partial 'free_places'
-    .col-lg-2
-      p.list-group-item-text
-        each workcamp_assignments
+    .col-lg-3
+      p.list-group-item-heading
+        each workcamp_assignments itemController='workcamp_assignment_inside_workcamp'
           = link-to 'apply_form' apply_form
-            = apply_form.name
-
+            if 
+            | {{apply_form.name}} ({{apply_form.age}}) {{apply-form-state-icon apply_form.state}}
+            each apply_form.tags
+              tag this
+          | ,

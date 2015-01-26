@@ -14,8 +14,9 @@ class V1::WorkcampsController < V1::BaseController
     end
 
     if scope = filter[:scope]
+      # TODO: move to model
       if scope == 'new'
-        search = search.where('created_at > ?',7.days.ago)
+        search = search.where('workcamps.created_at > ?',7.days.ago)
       elsif scope == 'urgent'
         search = search.where('free_places > 0 AND "begin" >= current_date AND "begin" <= ?',14.day.from_now)        
       end

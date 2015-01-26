@@ -101,7 +101,15 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     get :index, people: [ { a: 93} ]
     assert_response :success
     assert_equal @workcamp.id, json_response['workcamps'].first['id'].to_i
-  end  
+  end
+
+  test 'search by scope' do
+    get :index, scope: 'new', country_zone_id: @workcamp.country.country_zone.id
+    assert_response :success
+
+    get :index, scope: 'urgent'
+    assert_response :success    
+  end
 
   test "short" do
     10.times { Factory(:outgoing_workcamp) }
