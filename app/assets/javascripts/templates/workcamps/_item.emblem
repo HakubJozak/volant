@@ -21,8 +21,7 @@
 
       p.list-group-item-text
         |  {{age-range this }}, {{join workcamp_intentions 'code'}}
-        each tags
-          tag this
+        tag-list tags
         if extraFee
           span.label.label-warning class='extra-fee-label'
             | {{extraFee}} {{extraFeeCurrency}}
