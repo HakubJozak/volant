@@ -86,6 +86,23 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     assert_equal @workcamp.id, json_response['workcamps'].first['id'].to_i
   end
 
+  test 'search by gender' do
+    @workcamp.update_columns(free_places_for_females: 0,
+                             free_places_for_males: 1,
+                             free_places: 1)
+    get :index, people: [ { g: 'm'} ]
+    assert_response :success
+    assert_equal @workcamp.id, json_response['workcamps'].first['id'].to_i
+  end
+
+  test 'search by age' do
+    @workcamp.update_columns(minimal_age: 90,
+                             maximal_age: 100)
+    get :index, people: [ { a: 93} ]
+    assert_response :success
+    assert_equal @workcamp.id, json_response['workcamps'].first['id'].to_i
+  end  
+
   test "short" do
     10.times { Factory(:outgoing_workcamp) }
     get :short

@@ -34,6 +34,14 @@
  - [ ] PLUS - PEF XML
  - [ ] PLUS - export/import friday listu podle ADIHu
 
+---- Napady ----
+
+ - [ ] PLUS - [filtr workcampu] podle zemi by u jmena zeme ukazoval i pocet workcampu
+ - [ ] PLUS - [filtr workcampu] pridat regiony
+
+
+ 
+
 # LTV
  - [ ] CRUD workcampu
  - [ ] CRUD prihlasky 

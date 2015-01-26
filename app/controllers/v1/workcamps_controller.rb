@@ -42,8 +42,11 @@ class V1::WorkcampsController < V1::BaseController
       search = search.where("free_places >= ?",people.count)
       search = search.where("free_places_for_females >= ?",sum_females(people))
       search = search.where("free_places_for_males >= ?",sum_males(people))
-      search = search.where("minimal_age <= ?",ages(people).min)
-      search = search.where("maximal_age >= ?",ages(people).max)
+
+      unless ages(people).empty?
+        search = search.where("minimal_age <= ?",ages(people).min)
+        search = search.where("maximal_age >= ?",ages(people).max)
+      end
     end
 
     if ids = filter[:tag_ids]
@@ -115,7 +118,7 @@ class V1::WorkcampsController < V1::BaseController
   end
 
   def ages(people)
-    people.map { |p| p[:a].to_i }
+    people.map { |p| p[:a].try(:to_i) }.compact
   end
 
   def sum_males(people)

@@ -24,7 +24,7 @@
         each tags
           tag this
         if extraFee
-          span.label.label-danger
+          span.label.label-warning class='extra-fee-label'
             | {{extraFee}} {{extraFeeCurrency}}
     .col-lg-2
       h4.list-group-item-heading
