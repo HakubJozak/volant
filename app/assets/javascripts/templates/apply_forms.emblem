@@ -62,24 +62,26 @@ table.table.table-striped.table-hover
           '    
           if tags
             br
-            each tags
-              ' {{tag this}}
-
+            tag-list tags
 
         td
           apply-form-state-icon state
         td
           partial 'action_buttons'
         td
-          with current_workcamp
-            link-to 'workcamp' this
-              ' {{code}} &ndash; {{name}},
+          if current_workcamp
+            with current_workcamp
+              link-to 'workcamp' this
+                ' {{code}} &ndash; {{name}},
 
-            br
-            ' {{format-date from}} &ndash; {{format-date to}},
-            ' {{age-range this}},
-            partial 'workcamp/extra_fee'
-            tag-list tags
+              br
+              ' {{format-date from}} &ndash; {{format-date to}},
+              ' {{age-range this}},
+              partial 'workcamp/extra_fee'
+              tag-list tags
+          else
+            span.text-muted
+              | No workcamps assigned.
 
         td
           button.btn.btn-danger.btn-xs{ action 'remove' this }

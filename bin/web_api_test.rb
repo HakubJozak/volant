@@ -28,13 +28,16 @@ json = JSON.generate(apply_form: {
                        speak_well: 'Český a Maďarský',
                        speak_some: 'Dojč',
                        past_experience: 'I used to shoot things 100 years ago.',
-                       workcamp_ids: [ 30878,29710 ]
+                       workcamp_ids: [ ]
                      })
 
 # host = 'volant.pelican.amagical.net'
-host = 'localhost'
+# port = 80
 
-response = Net::HTTP.new(host,9090).post('/v1/apply_forms', json, { 'Content-Type' =>  'application/json' })
+host = 'localhost'
+port = 9090
+
+response = Net::HTTP.new(host,port).post('/v1/apply_forms', json, { 'Content-Type' =>  'application/json' })
 
 
 puts response.body

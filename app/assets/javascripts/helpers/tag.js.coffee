@@ -5,6 +5,7 @@ Ember.Handlebars.helper 'tag', (tag) ->
   new Handlebars.SafeString "<span class='label label-default' style='color:#{text_color}; background-color:#{color};' >#{name}</span>"
 
 Ember.Handlebars.helper 'tag-list', (tags) ->
+  return unless tags
   html = tags.map (tag) ->
     name = tag.get('name')
     color = tag.get('color')
