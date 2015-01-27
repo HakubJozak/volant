@@ -85,6 +85,7 @@ end
 
 
 task :restart => [ :environment ] do
+  puts 'Restarting...'
   queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
 end
 
