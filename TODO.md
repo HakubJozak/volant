@@ -1,18 +1,19 @@
 # Outgoing
  - [ ] BUG: Tab Starred na prihlaskach nefunguje
+ - [ ] opravit testy
+
  - [x] API pro web: vyhledat podobne workcampy
  - [x] API pro web: filtr podle typu LTV/outgoing
  - [x] export VEF HTML
  - [x] zobrazeni seznamu workcampu podle zadani
  - [x] zobrazeni seznamu prihlasek podle zadani 
- - [ ] filtrovani prihlasek podle tagu
  - [x] razeni prihlasek (hvezdicka,termin podani,prijmeni)
  - [x] upravit free_places importovanych workcampu podle pravidel INEXu (<7 => 1, jinak 2)
- - [ ] opravit testy
- - [ ] email info o chybach pro vyvojare
+ - [x] email info o chybach pro vyvojare
 
 ---- prepnuti na zivou databazi --------------------------------------------------------
 
+ - [ ] filtrovani prihlasek podle tagu
  - [ ] alert po 3 dnech po zažádání o přijetí
  - [ ] alert 5 týdnů před začátkem workcampu když není odeslán infosheet
  - [ ] alert 4 týdny před začátkem workcampu pokud nemáme pojištění - pokud tam tedy to pojištění nějak zakomponujeme
