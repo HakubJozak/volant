@@ -22,9 +22,7 @@
       p.list-group-item-text
         |  {{age-range this }}, {{join workcamp_intentions 'code'}}
         tag-list tags
-        if extraFee
-          span.label.label-warning class='extra-fee-label'
-            | {{extraFee}} {{extraFeeCurrency}}
+        partial 'workcamp/extra_fee'
     .col-lg-2
       h4.list-group-item-heading
         partial 'free_places'

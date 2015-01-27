@@ -1,0 +1,3 @@
+if extraFee
+  span.label.label-warning class='extra-fee-label'
+    | {{extraFee}} {{extraFeeCurrency}}
