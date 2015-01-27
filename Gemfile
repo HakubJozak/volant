@@ -12,6 +12,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'nokogiri'
 gem 'handlebars'
 gem 'pdfkit'
+gem 'exception_notification'
+
 
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

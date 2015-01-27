@@ -9,6 +9,7 @@
  - [x] razeni prihlasek (hvezdicka,termin podani,prijmeni)
  - [x] upravit free_places importovanych workcampu podle pravidel INEXu (<7 => 1, jinak 2)
  - [ ] opravit testy
+ - [ ] email info o chybach pro vyvojare
 
 ---- prepnuti na zivou databazi --------------------------------------------------------
 

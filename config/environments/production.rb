@@ -95,4 +95,13 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.middleware.use ExceptionNotification::Rack, {
+    email: {
+      email_prefix: "[volant-error] ",
+      sender_address: %{"Volant" <no-reply@inexsda.cz>},
+      exception_recipients: %w{jakub.hozak@gmail.com}
+    }
+  }
+
 end
