@@ -111,7 +111,7 @@ class V1::WorkcampsController < V1::BaseController
   end
   
   def find_workcamp
-    @workcamp = workcamps.find(params[:id])
+    @workcamp = Workcamp.find(params[:id])
   end
 
   def short_list
