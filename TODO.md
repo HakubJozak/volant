@@ -1,5 +1,5 @@
 # Outgoing
- - [ ] BUG: Tab Starred na prihlaskach nefunguje
+ - [x] BUG: Tab Starred na prihlaskach nefunguje
  - [ ] opravit testy
 
  - [x] API pro web: vyhledat podobne workcampy
