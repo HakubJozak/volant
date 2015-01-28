@@ -1,6 +1,6 @@
 class ImportChange < ActiveRecord::Base
 
-  belongs_to :workcamp, :class_name => 'Outgoing::Workcamp'
+  belongs_to :workcamp #, :class_name => 'Outgoing::Workcamp'
   before_save :regenerate_diff
 
   def apply!
