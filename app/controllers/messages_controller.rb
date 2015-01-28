@@ -42,11 +42,17 @@ class MessagesController < ApplicationController
   # PATCH/PUT /messages/1/send
   def deliver
     @message.deliver!
-    @message.apply_form.messages(false)
-    payload = Payload.new(messages: [ @message],
+
+    if @message.apply_form
+      # TODO: test this branch
+      @message.apply_form.messages(false)
+      payload = Payload.new(messages: [ @message],
                           apply_forms: [ @message.apply_form ],
                           workcamp_assignments: @message.apply_form.workcamp_assignments)
-    render json: payload, serializer: PayloadSerializer
+      render json: payload, serializer: PayloadSerializer
+    else
+      respond_with(@message)
+    end
   end
 
   # DELETE /messages/1
