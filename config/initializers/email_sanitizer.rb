@@ -1,6 +1,6 @@
 class SanitizeEmailInterceptor
   def self.delivering_email(message)
-    message.to = ['info@inexsda.cz','jakub.hozak@gmail.com']
+    message.to = ['info@inexsda.cz','jakub.hozak@gmail.com','workcamp@inexsda.cz']
     message.subject = "[testing] #{message.subject}"
   end
 end

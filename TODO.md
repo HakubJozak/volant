@@ -1,6 +1,5 @@
 # Outgoing
  - [x] BUG: Tab Starred na prihlaskach nefunguje
- - [ ] opravit testy
 
  - [x] API pro web: vyhledat podobne workcampy
  - [x] API pro web: filtr podle typu LTV/outgoing
@@ -13,6 +12,8 @@
 
 ---- prepnuti na zivou databazi --------------------------------------------------------
 
+ - [ ] opravit testy
+ - [ ] uprava nastaveni: konec sezony apd.
  - [ ] filtrovani prihlasek podle tagu
  - [ ] alert po 3 dnech po zažádání o přijetí
  - [ ] alert 5 týdnů před začátkem workcampu když není odeslán infosheet

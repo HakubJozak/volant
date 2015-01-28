@@ -9,23 +9,22 @@ require 'mina/rvm'
 #   deploy_to    - Path to deploy into.
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
+set :repository, 'git@github.com:HakubJozak/volant.git'
 
 
 task :staging do
-  set :user, 'jakub'
-  set :deploy_to, '/home/jakub/volant'
-  set :domain, 'volant.jizera'
-  invoke :'rvm:use[ruby-2.1.4]'
+  set :user, 'rails'
+  set :deploy_to, '/home/rails/volant-staging'
+  set :domain, 'pelican.amagical.net'  
+  set :branch, 'ember'
 end
 
 task :production do
   set :user, 'rails'
   set :deploy_to, '/home/rails/volant'
   set :domain, 'pelican.amagical.net'
+  set :branch, 'ember'
 end
-
-set :repository, 'git@github.com:HakubJozak/volant.git'
-set :branch, 'ember'
 
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
@@ -44,7 +43,6 @@ task :environment do
   # invoke :'rbenv:load'
 
   # For those using RVM, use this to load an RVM version@gemset.
-
 end
 
 # Put any custom mkdir's in here for when `mina setup` is ran.
@@ -89,9 +87,7 @@ task :restart => [ :environment ] do
   queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
 end
 
-# For help in making your deploy script, see the Mina documentation:
-#
-#  - http://nadarei.co/mina
-#  - http://nadarei.co/mina/tasks
-#  - http://nadarei.co/mina/settings
-#  - http://nadarei.co/mina/helpers
+# Stopping
+# cd /etc/apache2/
+# ln -s sites-available/volant sites-enabled/001-volant
+
