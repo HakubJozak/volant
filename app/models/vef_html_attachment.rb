@@ -1,4 +1,4 @@
-class VefHtmlAttachment < Attachment
+class VefHtmlAttachment < VefAttachment
   belongs_to :apply_form
   validates_presence_of :apply_form
 
