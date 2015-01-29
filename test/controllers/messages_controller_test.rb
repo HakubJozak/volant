@@ -51,14 +51,18 @@ class MessagesControllerTest < ActionController::TestCase
     assert_difference('Message.count') do
       attrs = Factory.attributes_for(:message)
       form = Factory(:apply_form)
-      attrs[:attachments] = [{ type: 'VefAttachment', apply_form_id: form}]
+      attrs[:attachments] = [{ type: 'VefAttachment', apply_form_id: form},
+                             { type: 'VefHtmlAttachment', apply_form_id: form},
+                             { type: 'VefPdfAttachment', apply_form_id: form}]
 
       post :create, message: attrs
       
       assert_not_nil id = json_response['message']['id']
       assert_not_nil saved = Message.find(id)
-      assert_equal VefAttachment, saved.attachments.first.class
       assert_equal form.id, saved.attachments.first.apply_form.id
+
+      assert_equal 3, saved.attachments.size
+      assert_equal [VefAttachment,VefHtmlAttachment,VefPdfAttachment], saved.attachments.map(&:class)
     end
   end
 

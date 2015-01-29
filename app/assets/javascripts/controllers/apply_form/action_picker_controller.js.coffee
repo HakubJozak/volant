@@ -23,11 +23,14 @@ Volant.ApplyFormActionPickerController = Ember.ObjectController.extend Volant.Aj
           }
 
           if action_name == 'ask'
-            vef = @store.createRecord 'attachment', {
-              type: 'VefAttachment'
-              applyForm: apply_form
-            }
-            message.get('attachments').pushObject(vef)
+            xml = @store.createRecord 'attachment', { type: 'VefAttachment',applyForm: apply_form }
+            pdf = @store.createRecord 'attachment', { type: 'VefPdfAttachment',applyForm: apply_form }
+            html = @store.createRecord 'attachment', { type: 'VefHtmlAttachment',applyForm: apply_form }                        
+
+            attachments = message.get('attachments')
+            attachments.pushObject(vef)
+            attachments.pushObject(html)
+            attachments.pushObject(pdf)
 
           @transitionToRoute('message',message)
 
