@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
   end
 
   def show
-    respond_with(@message)
+    render_message
   end
 
   def create
@@ -30,13 +30,13 @@ class MessagesController < ApplicationController
       @message.save
     end
 
-    respond_with(@message)
+    render_message
   end
 
   # PATCH/PUT /messages/1
   def update
     @message.update(message_params)
-    respond_with(@message)
+    render_message
   end
 
   # PATCH/PUT /messages/1/send
@@ -51,17 +51,21 @@ class MessagesController < ApplicationController
                           workcamp_assignments: @message.apply_form.workcamp_assignments)
       render json: payload, serializer: PayloadSerializer
     else
-      respond_with(@message)
+      render_message
     end
   end
 
   # DELETE /messages/1
   def destroy
     @message.destroy
-    respond_with(@message)
+    head :no_content
   end
 
   private
+
+  def render_message
+    render json: @message, serializer: MessageSerializer
+  end
 
   def set_message
     @message = Message.find(params[:id])

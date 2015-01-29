@@ -3,10 +3,10 @@ Volant.MessageRoute = Volant.BaseRoute.extend
 
   afterSave: (record) ->
     # we have to filter duplicate attachment leftovers    
-    record.get('attachments').forEach (a) ->
-      a.deleteRecord() if a.get('isNew')      
-            
-    @transitionTo 'message',record
+#    record.get('attachments').forEach (record) -> record.delete()
+    record.get('attachments').reload()     
+    @transitionTo 'message',record.get('id')
+    @refresh()    
     @flash_info('Message saved.')
 
   model: (params) ->
