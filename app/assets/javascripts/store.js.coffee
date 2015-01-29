@@ -36,7 +36,6 @@ Volant.IsodateTransform  = DS.DateTransform.extend
     if date then moment(date).format("YYYY-MM-DD") else null
 
 
-
 Volant.StateTransform = DS.Transform.extend
   serialize: (deserialized) ->
     # we do not send state tot the server

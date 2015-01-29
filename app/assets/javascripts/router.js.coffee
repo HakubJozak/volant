@@ -21,6 +21,7 @@ Volant.Router.map ->
   @resource 'new_organization', path: '/organizations/new'
 
   @resource 'message', {path: '/messages/:message_id'}
+  @resource 'new_message', {path: '/apply_forms/:apply_form_id/messages/new/:action_name'}  
   @resource 'messages'
 
   @resource 'users', ->

@@ -15,19 +15,6 @@ Volant.ApplyFormActionPickerController = Ember.ObjectController.extend Volant.Aj
       apply_form = @get('apply_form')
 
       @store.find('user',@get('current_user.content.id')).then (user) =>
-        apply_form.get('current_workcamp').then (workcamp) =>
-          message = @store.createRecord 'message', {
-            action: action_name
-            apply_form: apply_form
-            user: user
-          }
-
-          if action_name == 'ask'
-            attachments = message.get('attachments')
-            attachments.createRecord { type: 'VefAttachment',applyForm: apply_form }
-            attachments.createRecord { type: 'VefPdfAttachment',applyForm: apply_form }
-            attachments.createRecord { type: 'VefHtmlAttachment',applyForm: apply_form }                        
-
-          @transitionToRoute('message',message)
+      @transitionToRoute('new_message',apply_form.get('id'),action_name)
 
       @send 'closeModal'

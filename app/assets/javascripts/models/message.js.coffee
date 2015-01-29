@@ -17,6 +17,7 @@ Volant.Message = DS.Model.extend
   delivered: Ember.computed.alias('sentAt')
 
 
+
 Volant.MessageSerializer = Volant.ApplicationSerializer.extend DS.EmbeddedRecordsMixin,
   attrs:
-    attachments: { embedded: 'always' }
+    attachments: { serialize: 'records', deserialize: 'ids' }
