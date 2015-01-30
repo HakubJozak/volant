@@ -5,6 +5,10 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
     sortAscending: { refreshModel: true }
     state: { refreshModel: true }    
 
+  setupController: (controller,model,queryParams) ->
+    @_super(controller, model,queryParams)
+    @setupTagsController()
+
   model: (params) ->
     @store.find('apply_form', {
       p: params.page
@@ -13,6 +17,7 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
       order: params.order      
       state: params.state
       asc: params.sortAscending
+      tag_ids: @controllerFor(@routeName).get('tags').mapBy('id')
     })
 
   title: -> "Applications"

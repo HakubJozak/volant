@@ -16,6 +16,10 @@ class ApplyFormsController < ApplicationController
       search = search.starred_by(current_user)
     end
 
+    if filter[:tag_ids]
+      search = search.joins(:tags).with_tags(*filter[:tag_ids])
+    end
+
     if query = filter[:q]
       search = search.query(filter[:q])
     end
@@ -130,7 +134,7 @@ class ApplyFormsController < ApplicationController
   end
 
   def filter
-    params.permit(:starred,:q,:state,:p,:year,:order)
+    params.permit(:starred,:q,:state,:p,:year,:order,:tag_ids => [])
   end
 
   def render_apply_form

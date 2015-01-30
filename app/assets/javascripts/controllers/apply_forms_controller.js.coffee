@@ -1,7 +1,10 @@
-Volant.ApplyFormsController = Volant.ListController.extend({
+Volant.ApplyFormsController = Volant.ListController.extend
+  needs: ['tags']
+
   page: 1
   query: null
   state: null
+  tags: []
 
   queryParams: ['page','year','query','state','order','sortAscending']
   query_placeholder: "Search by name, birth number, payment account or keyword..."
@@ -36,6 +39,3 @@ Volant.ApplyFormsController = Volant.ListController.extend({
 #   optionValuePath="content"
 #   optionLabelPath="content"
 #   class="form-control"}}
-
-
-})

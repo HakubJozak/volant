@@ -19,6 +19,16 @@ form.form.form-horizontal.search-form submit="search" role="form"
 
   .form-group
     .col-lg-1
+      label.control-label Tags
+    .col-lg-2
+      view 'collection-picker'  targetBinding='tags'  contentBinding='controllers.tags.arrangedContent'  optionValuePath="content.id"  optionLabelPath="content.name"  prompt='Tags'
+    .col-lg-8
+      view 'labels-list' contentBinding='tags'
+
+
+
+  .form-group
+    .col-lg-1
       label.control-label Order by
     .col-lg-2
       view Ember.Select value=order  content=orderOptions  class="form-control"

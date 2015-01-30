@@ -1,4 +1,5 @@
 Volant.CollectionPickerView = Ember.Select.extend({
+  classNames: ['form-control']
   optionValuePath: "content.id"
   optionLabelPath: "content.name"
 

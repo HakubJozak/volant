@@ -5,7 +5,7 @@ class ApplyForm < ActiveRecord::Base
   include Stars::Model
 
   acts_as_taggable
-  include TaggableExtension  
+  include TaggableExtension
 
   create_date_time_accessors
 
@@ -15,7 +15,7 @@ class ApplyForm < ActiveRecord::Base
            :emergency_night, :speak_well, :speak_some, :special_needs, :past_experience, :comments,
            :fax, :street, :city, :zipcode, :contact_street, :contact_city, :contact_zipcode,
            :birthplace, :note, to: :volunteer
-  
+
   scope :year, lambda { |year|
     year = year.to_i
     where "(#{ApplyForm.table_name}.created_at >= ? AND #{ApplyForm.table_name}.created_at < ?)", Date.new(year,1,1), Date.new(year + 1,1,1)    }
