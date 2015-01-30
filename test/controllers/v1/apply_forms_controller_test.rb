@@ -3,6 +3,8 @@ require 'test_helper'
 
 class V1::ApplyFormsControllerTest < ActionController::TestCase
   setup do
+    DataLoader.load_emails
+    
     @camps = 12.times.map { Factory(:outgoing_workcamp) }
     @attrs = {
       past_experience: 'I used to shoot things 100 years ago.',
