@@ -10,10 +10,10 @@ class VolunteerTest < ActiveSupport::TestCase
 
 
   test "age computation" do
-    v = @jakub
-    assert_equal 26, v.age(Date.new(2009,1,31))
-    assert_equal 1, v.age(Date.new(1983,3,27))
-    assert_equal 0, v.age(Date.new(1983,3,26))
+    @jakub.birthdate = Date.new(1995,1,30)
+    assert_equal 14, @jakub.age(Date.new(2009,1,31))
+    assert_equal 1, @jakub.age(Date.new(1997,1,29))
+    assert_equal 0, @jakub.age(Date.new(1996,1,25))
   end
 
   test "schema driven validation" do

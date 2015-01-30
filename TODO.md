@@ -30,6 +30,7 @@ Bugy
  - [x] PLUS - export VEF PDF (1h)
  - [ ] PLUS - PEF XML
  - [ ] PLUS - export/import friday listu podle ADIHu
+ - [ ] PLUS - seznam prihlasek ke kazdemu dobrovolnikovi na jeho karte
 
 ---- Napady ----
 
