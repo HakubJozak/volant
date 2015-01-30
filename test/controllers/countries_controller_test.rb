@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class CountriesControllerTest < ActionController::TestCase
+
   setup do
     @country = Factory(:country)
     sign_in users(:john)

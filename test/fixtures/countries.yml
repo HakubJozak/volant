@@ -1,14 +1,14 @@
 CZ:
- code: CZ
- name_cz: Česko
- name_en: Czechia
- country_zone: eastern_europe
+  code: CZ
+  name_cz: Česko
+  name_en: Czechia
+  country_zone: europe_eastern
 
 IT:
- code: IT
- name_cz: Italie
- name_en: Italia
- country_zone: europe_western
+  code: IT
+  name_cz: Italie
+  name_en: Italia
+  country_zone: europe_western
 
 AT:
   code: AT
