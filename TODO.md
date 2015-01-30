@@ -4,9 +4,8 @@
 
  - [x] opravit testy
  - [x] filtrovani prihlasek podle tagu
- - [ ] alert po 3 dnech po zažádání o přijetí
- - [ ] alert 5 týdnů před začátkem workcampu když není odeslán infosheet
- - [ ] alert 4 týdny před začátkem workcampu pokud nemáme pojištění - pokud tam tedy to pojištění nějak zakomponujeme
+ - [x] alert po 3 dnech po zažádání o přijetí
+ - [x] alert 5 týdnů před začátkem workcampu když není odeslán infosheet
  - [ ] export CSV workcampu a prihlasek (pro statistiky)
  - [ ] vyhledavani plateb
  - [ ] specialni pohled WC na upravy podle friday listu
@@ -31,8 +30,8 @@ Bugy
  - [ ] PLUS - PEF XML
  - [ ] PLUS - export/import friday listu podle ADIHu
  - [ ] PLUS - seznam prihlasek ke kazdemu dobrovolnikovi na jeho karte
+ - [ ] PLUS - pojisteni (a alert 4 týdny před začátkem workcampu pokud nemáme pojištění)
 
----- Napady ----
 
  - [ ] PLUS - [filtr workcampu] podle zemi by u jmena zeme ukazoval i pocet workcampu
  - [ ] PLUS - [filtr workcampu] pridat regiony

@@ -17,6 +17,10 @@ Volant.ApplyForm = DS.Model.extend
   general_remarks: DS.attr 'string'
   motivation: DS.attr 'string'
 
+  noResponseAlert: DS.attr 'boolean'
+  missingInfosheetAlert: DS.attr 'boolean'
+  hasAlert: Ember.computed.or('noResponseAlert','missingInfosheetAlert')
+
   gender: Ember.computed.alias('volunteer.gender')
   name: Ember.computed.alias('volunteer.name')
   age: Ember.computed.alias('volunteer.age')  

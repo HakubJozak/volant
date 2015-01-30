@@ -126,7 +126,7 @@ module Outgoing
 
       case state
       when "alerts"
-          filter_sql << '('
+        filter_sql << '('
         filter_sql << " ((#{wa}.asked <= ?) AND #{wa}.accepted IS NULL AND #{wa}.rejected IS NULL and cancelled IS NULL)"
         filter_sql << ' OR '
         filter_sql << " (cancelled IS NULL AND #{wa}.accepted IS NOT NULL AND #{wa}.infosheeted IS NULL AND #{Workcamp.table_name}.\"begin\" <= ?)"

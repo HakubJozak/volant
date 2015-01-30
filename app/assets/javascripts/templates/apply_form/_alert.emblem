@@ -1,0 +1,9 @@
+if noResponseAlert
+  span title='No response for more than 3 days'
+    fa 'bell-o'
+    fa 'question-circle'  
+
+if missingInfosheetAlert
+  span  title='Infosheet missing'
+    fa 'bell-o'
+    fa 'file-text-o'  
