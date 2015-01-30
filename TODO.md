@@ -27,7 +27,7 @@ Bugy
  - [ ] PLUS - vytvorit kopii workcampu (v nove sezone)
  - [ ] PLUS - zobrazit mapu podle souradnic a/nebo 'train' a 'airport'
  - [ ] PLUS - vytvoreni prihlasky pro existujiciho dobrovolnika
- - [x] PLUS - export VEF PDF (1 hour)
+ - [x] PLUS - export VEF PDF (1h)
  - [ ] PLUS - PEF XML
  - [ ] PLUS - export/import friday listu podle ADIHu
 

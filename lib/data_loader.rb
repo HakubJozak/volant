@@ -25,10 +25,12 @@ module DataLoader
       f.each_line { |line| body += line}
 
 
-      t = EmailTemplate.new(:subject => subjects[action],
-                            :body => body,
-                            :title => descs[action],
-                            :action => action)
+      t = EmailTemplate.new(subject: subjects[action],
+                            to: 'fake@there.net',
+                            from: 'fake@here.net',                            
+                            body: body,
+                            title: descs[action],
+                            action: action)
       t.save!
     end
   end
