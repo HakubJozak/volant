@@ -7,12 +7,6 @@ class Incoming::WorkcampTest < ActiveSupport::TestCase
       @wc = Factory.create(:incoming_workcamp)
     end
 
-    should "be able to assign leaders" do
-      @wc.leaders.create!(:firstname => 'A', :lastname => 'A',
-                          :email => 'some@some', :gender => 'm')
-      assert_equal 1, @wc.leaders.count
-    end
-
     context "with participants" do
       setup do
         @wc.participants << Factory.create(:participant, :birthdate => nil)

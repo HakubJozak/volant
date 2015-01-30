@@ -47,39 +47,6 @@ module Outgoing
           assert_equal @xaverov, Outgoing::Workcamp.find_by_name_or_code('xwe')[0]
         end
      end
-
-      context "with imported" do
-        setup do
-          Outgoing::Workcamp::destroy_all
-          @imported = Factory.create(:outgoing_workcamp, :state => 'imported')
-          @updated = Factory.create(:outgoing_workcamp, :state => 'updated')
-          @normal = Factory.create(:outgoing_workcamp)
-          @updated.import_changes.create(:field => 'name', :value => 'COOL!')
-        end
-
-        should 'import_all!' do
-          Outgoing::Workcamp.import_all!
-          assert_equal 3, Outgoing::Workcamp.count
-          assert Outgoing::Workcamp.all.all? { |wc| wc.state == nil }
-
-          @updated.reload
-          assert_equal 0, @updated.import_changes.size
-          assert_equal @updated.name, 'COOL!'
-        end
-
-        should 'cancel_import!' do
-          assert_equal 3, Outgoing::Workcamp.count
-          assert_equal 2, Outgoing::Workcamp.imported_or_updated.count
-          Outgoing::Workcamp.cancel_import!
-          assert_equal 0, Outgoing::Workcamp.imported_or_updated.count
-          assert_equal 2, Outgoing::Workcamp.count
-
-          @updated.reload
-          assert_equal 0, @updated.import_changes(true).size
-          assert_equal false,  @updated.updated?
-        end
-      end
-
     end
   end
 end

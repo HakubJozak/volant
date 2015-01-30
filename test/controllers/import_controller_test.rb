@@ -7,7 +7,7 @@ class ImportControllerTest < ActionController::TestCase
 
   test 'create' do
     Factory(:organization, name: 'LUNARIA', code: 'LUNAR')
-    file = Rack::Test::UploadedFile.new('test/fixtures/xml/PEF_lunar31_20141112.xml')
+    file = Rack::Test::UploadedFile.new("#{Rails.root}/test/fixtures/xml/PEF_lunar31_20141112.xml")
 
     post :create, { pef: file }
     assert_response :success

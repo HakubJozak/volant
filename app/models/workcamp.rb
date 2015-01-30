@@ -3,7 +3,7 @@ class Workcamp < ActiveRecord::Base
 
   DURATION_SQL = '(EXTRACT(epoch FROM age("end","begin"))/(3600 * 24))'
   SEASON_START = Date.new(2015,1,1)
-  
+
   include AllianceExporter
   include ActiveRecord::Diff
   include Import::WorkcampExtension
@@ -26,7 +26,7 @@ class Workcamp < ActiveRecord::Base
 
   scope :published, -> { where %{(publish_mode = 'ALWAYS') OR (publish_mode = 'SEASON' AND current_date >= ?  AND ("begin" IS NULL or "begin" >= current_date))},SEASON_START }
 
-  
+
   scope :year, lambda { |year|
     year = year.to_i
     where '(extract(YEAR from workcamps.begin) = ? OR extract(YEAR FROM workcamps.end) = ?)', year,year
@@ -174,7 +174,7 @@ class Workcamp < ActiveRecord::Base
 
   acts_as_taggable
   include TaggableExtension
-  
+
   def duration
     if self.end and self.begin
       (self.end.to_time - self.begin.to_time).to_i / 1.day + 1
