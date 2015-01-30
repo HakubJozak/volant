@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!
   before_action :default_format_json
-
+  serialization_scope :current_user
+  
   private
 
   def pagination_info(scope)

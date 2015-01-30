@@ -3,7 +3,7 @@
 ---- prepnuti na zivou databazi --------------------------------------------------------
 
  - [x] opravit testy
- - [ ] filtrovani prihlasek podle tagu
+ - [x] filtrovani prihlasek podle tagu
  - [ ] alert po 3 dnech po zažádání o přijetí
  - [ ] alert 5 týdnů před začátkem workcampu když není odeslán infosheet
  - [ ] alert 4 týdny před začátkem workcampu pokud nemáme pojištění - pokud tam tedy to pojištění nějak zakomponujeme

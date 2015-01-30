@@ -1,6 +1,5 @@
 class ApplyFormsController < ApplicationController
 
-  serialization_scope :current_user
   before_action :find_apply_form, except: [ :index,:create ]
 
   def index
