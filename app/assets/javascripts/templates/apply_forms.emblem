@@ -26,7 +26,7 @@ form.form.form-horizontal.search-form submit="search" role="form"
       view Ember.Select value=sortAscending  contentBinding='sortAscendingOptions' optionValuePath="content.id" optionLabelPath="content.name" class="form-control"
 
 
-table.table.table-striped.table-hover
+table.table.table-striped.table-hover#apply-forms-list
   thead
     th
     th
@@ -40,7 +40,7 @@ table.table.table-striped.table-hover
     th    
   tbody
     each itemController='apply_form'
-      tr
+      tr.apply-form
         td
           partial 'star'
           if createdToday
@@ -84,7 +84,7 @@ table.table.table-striped.table-hover
               | No workcamps assigned.
 
         td
-          button.btn.btn-danger.btn-xs{ action 'remove' this }
+          button.btn.btn-default.remove-button{ action 'confirmedRemove' this }
             fa 'trash-o'
 
 

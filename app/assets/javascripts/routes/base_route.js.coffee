@@ -64,6 +64,15 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
           )
       false
 
+    confirmedRemove: (record) ->
+      return unless confirm("Do you really want to delete '#{record.get('name')}'?")  
+      record.destroyRecord().then (=>
+        @flash_info 'Deleted.'
+      ), ( (e) =>
+        console.error e
+        @flash_error "Failed."
+      )
+      false
 
     rollback: ->
       @currentModel.get('errors').clear()

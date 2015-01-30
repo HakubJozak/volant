@@ -318,3 +318,24 @@ table.import-changes {
   bottom: 0;
   right: 1em;
 }
+
+@mixin remove-button-hover {
+  .remove-button {
+    border: 1px solid transparent; 
+    background-color: transparent;
+    &:hover { 
+      border: 1px solid $border-color; 
+      background-color: white;
+    }
+  }  
+}
+
+table#apply-forms-list {
+  @include remove-button-hover;
+}
+
+#workcamps-list {
+  .row { position: relative; }
+  .remove-button { position: absolute; top: 0; right: 5px; }
+  @include remove-button-hover;
+}

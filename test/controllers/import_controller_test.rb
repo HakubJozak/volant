@@ -10,8 +10,8 @@ class ImportControllerTest < ActionController::TestCase
     file = Rack::Test::UploadedFile.new("#{Rails.root}/test/fixtures/xml/PEF_lunar31_20141112.xml")
 
     post :create, { pef: file }
-    assert_response :success
 
+    assert_response :success
     assert_equal json_response, {"import_messages"=>[{"level"=>"success", "text"=>"Workcamp AGAPE 06(LUNAR 31) prepared for creation."}]}
     # wc = json_response['workcamps'].first
     # assert_equal 'imported',wc['state']
