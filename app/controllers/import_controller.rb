@@ -4,11 +4,7 @@ class ImportController < ApplicationController
       messages << { level: level, text: msg }
     end
 
-    json = {
-      import_messages: messages
-    }
-
-    render json: json
+    render json: { import_messages: messages  }
   end
 
   private
