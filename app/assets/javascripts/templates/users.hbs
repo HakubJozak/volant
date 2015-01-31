@@ -5,16 +5,22 @@
       <thead>
         <th>Name</th>
         <th>Email</th>
-        <th class='text-right'>{{#link-to 'users.new'}}{{fa 'plus'}}{{/link-to}}</th>
+        <th class='text-right'>{{#link-to 'users.new' class='btn btn-success'}}{{fa 'plus'}}{{/link-to}}</th>
       </thead>
       <tbody>
         {{#each}}
           <tr>
             <td>
-              {{#link-to 'user' this}}{{name}}{{/link-to}}
+              {{#link-to 'user' this}}
+              {{#if name}}
+                {{name}}
+              {{else}}
+                [No-Name]
+              {{/if}}
+              {{/link-to}}
             </td>
             <td>
-              {{#link-to 'user' this}}{{email}}{{/link-to}}
+              {{email}}
             </td>
             <td></td>
           </tr>

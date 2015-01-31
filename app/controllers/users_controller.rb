@@ -4,8 +4,13 @@ class UsersController < ApplicationController
   before_action :find, only: [ :update, :destroy ]
 
   def create
-    user = User.create(user_params)
-    respond_with user
+    user = User.new(user_params)
+
+    if user.save
+      respond_with(user)
+    else
+      render_error(user)
+    end
   end
 
   def destroy
@@ -14,8 +19,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    respond_with @user
+    if @user.update(user_params)
+      respond_with @user
+    else
+      render_error(@user)
+    end
   end
 
   def index
