@@ -13,7 +13,9 @@
  - [ ] filtr workcampu - age do jednoho pole a ucesat vizual
 
 Bugy
- 
+
+ - [ ] automatický mail (zažádání o přijetí) - u data narození se přiřadí hodina „+GMT +0200 (Střední Evropa (letní čas))“
+ - [ ] vkládání xml - failed, nenahrálo se
  - [ ] import - missing project_id vyvola 500
 
 ----BONUSY --------------------------------------------------------

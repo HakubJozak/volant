@@ -63,8 +63,8 @@ Volant.Workcamp = DS.Model.extend
   becameError: ->
    console.error 'there was an error saving a workcamp!'
 
-  to: Ember.computed.alias('begin')
-  from: Ember.computed.alias('end')
+  from: Ember.computed.alias('begin')
+  to: Ember.computed.alias('end')
 
   assignments_by_state: Ember.computed.sort 'workcamp_assignments', (wa,wb) ->
     priorities = [ 'infosheeted', 'accepted', 'asked','paid','not_paid', 'rejected', 'cancelled' ]
