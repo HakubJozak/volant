@@ -1,5 +1,4 @@
 Volant.WorkcampAssignmentInsideWorkcampController = Ember.ObjectController.extend
-
   isCurrentWorkcamp: ( ->
     wc = @get('workcamp.id')
     current = @get('apply_form.current_workcamp.id')

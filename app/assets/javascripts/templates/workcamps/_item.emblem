@@ -36,10 +36,4 @@
               | {{apply_form.name}} ({{apply_form.age}}) {{apply-form-state-icon apply_form.state}}
               each apply_form.tags
                 tag this
-            else
-              span.text-muted
-                ' {{apply_form.name}} ({{apply_form.age}}) {{apply-form-state-icon apply_form.state}}
-                each apply_form.tags
-                  ' {{tag this}} 
-      
-          ' ,
+            ' ,
