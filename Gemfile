@@ -55,16 +55,17 @@ gem 'chart-js-rails'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
+
 # Bonus
 gem 'devise-bootstrap-views'
 gem 'bootstrap-generators', '~> 3.2.0'
 gem 'barbecue', github: 'HakubJozak/barbecue', branch: 'master'
 gem 'rack-jsonp-middleware'
 
-# only email templates data migration
-gem 'redcarpet', require: false
+gem 'font-awesome-rails'
 
-
+# only email templates data migration 
+# gem 'redcarpet', require: false
 
 
 group :development do
