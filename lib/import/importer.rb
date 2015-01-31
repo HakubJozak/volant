@@ -47,7 +47,7 @@ module Import
               wcs << wc
             end
           end
-        rescue ActiveRecord::ActiveRecordError => e
+        rescue ActiveRecord::ActiveRecordError,Import::Error => e
           error e.message
         end
       end

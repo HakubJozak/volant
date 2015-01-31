@@ -7,7 +7,7 @@ class ImportControllerTest < ActionController::TestCase
 
   test 'create' do
     Factory(:organization, name: 'LUNARIA', code: 'LUNAR')
-    post :create, { pef: fixture_file_upload 'xml/PEF_lunar31_20141112.xml' }
+    post :create, { pef: fixture_file_upload('xml/PEF_lunar31_20141112.xml') }
     assert_response :success
     assert_equal json_response, {"import_messages"=>[{"level"=>"success", "text"=>"Workcamp AGAPE 06(LUNAR 31) prepared for creation."}]}
     # wc = json_response['workcamps'].first
