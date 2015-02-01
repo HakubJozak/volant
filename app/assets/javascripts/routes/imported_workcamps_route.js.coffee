@@ -15,10 +15,10 @@ Volant.ImportedWorkcampsRoute = Volant.WorkcampsRoute.extend
       @controllerFor('imported_workcamps').set('messages',[])
       @send_files('/workcamps/import',data).then ( (messages) =>
         @controllerFor('imported_workcamps').set('messages',messages)
-        @flash_info('Import succesful')
+        @flash_info('Import finished. See the results below.')
         @refresh()
         ), ((e) =>
-        @flash_error('Import failed') )
+        @flash_error('Import failed.') )
       false
 
   # --- private ---

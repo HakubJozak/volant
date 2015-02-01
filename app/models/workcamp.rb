@@ -14,7 +14,7 @@ class Workcamp < ActiveRecord::Base
   include Outgoing::FreePlacesUpdater
   before_save :update_free_places_for_workcamp
 
-  validates_presence_of :country, :code, :name, :places, :organization, :publish_mode
+  validates_presence_of :country, :code, :name, :places, :places_for_males, :places_for_females, :organization, :publish_mode
   validates_presence_of :extra_fee_currency, :if => Proc.new {|wc| wc.extra_fee && wc.extra_fee > 0},:message => "je povinná. (Je vyplněn poplatek, ale nikoliv jeho měna. Doplňte měnu poplatku.)"
 
   has_many :workcamp_assignments, dependent: :destroy, class_name: 'Outgoing::WorkcampAssignment'
@@ -138,6 +138,14 @@ class Workcamp < ActiveRecord::Base
     search
   }
 
+
+  def self.find_by_project_id(project_id)
+    if project_id.present?
+      where(project_id: project_id).first
+    else
+      nil
+    end
+  end
 
 
   # TODO - fix tests and allow validation

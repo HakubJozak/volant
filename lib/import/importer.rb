@@ -36,7 +36,7 @@ module Import
               else
                 wc = old
                 wc.state = 'updated'
-                warning "Workcamp #{wc.name}(#{wc.code}) prepared for update."
+                info "Workcamp #{wc.name}(#{wc.code}) prepared for update."
                 wc.save!
                 wcs << wc
               end

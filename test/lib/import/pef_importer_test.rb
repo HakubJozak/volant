@@ -63,12 +63,14 @@ module Import
       assert_equal wc.project_id, 'f9c91026d627166ce372501d4c55f690'
     end
 
-    test 'raise on missing project_id' do
+    test 'report missing project_id' do
       file = File.new(Rails.root.join('test/fixtures/xml/pef_missing_project_id.xml'))
       importer = Import::PefImporter.new(file)
-      message = nil
-      importer.import! {|level,msg| message = msg }
-      assert_equal "Workcamp 'LUNAR 31 - AGAPE 06' is missing project_id attribute.",message
+      messages = []
+      importer.import! {|l,m| messages << [l,m] }
+
+      assert_equal [[:warning, "Workcamp 'LUNAR 31 - AGAPE 06' is missing project_id attribute."],
+                    [:success, "Workcamp AGAPE 06(LUNAR 31) prepared for creation."]],messages
     end
 
 

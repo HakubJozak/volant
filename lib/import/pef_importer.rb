@@ -44,7 +44,7 @@ module Import
         if project_id = node.attributes['id'].try(:strip).presence
           wc.project_id = project_id
         else
-          raise Import::Error.new("Workcamp '#{wc.code} - #{wc.name}' is missing project_id attribute.")
+          warning "Workcamp '#{wc.code} - #{wc.name}' is missing project_id attribute."
         end
 
         wc.workdesc = to_text(node, 'descr_work')
@@ -90,7 +90,7 @@ module Import
     end
 
     private
-    
+
     def add_to_field(attr, wc, node, name)
       if content = to_text(node, name)
         if wc.send(attr)
