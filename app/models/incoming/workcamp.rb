@@ -1,8 +1,27 @@
+require 'digest'
+
 class Incoming::Workcamp < ::Workcamp
   default_scope -> { order 'begin' }
 
   has_many :bookings, :class_name => 'Incoming::Booking'
   has_many :participants, :class_name => 'Incoming::Participant', :dependent => :nullify
+
+  validates :begin, presence: true
+  validates :end, presence: true  
+  validates :project_id, uniqueness: true
+
+  after_validation do
+    # generate_project_id
+    self.project_id ||= begin
+                          md5 = Digest::MD5.new
+                          md5 << name
+                          md5 << code
+                          md5 << self.begin.to_s
+                          md5 << self.end.to_s                          
+                          md5.hexdigest
+                        end
+  end
+  
 
   def free_places
     capacity - participants.not_cancelled.count - bookings.count

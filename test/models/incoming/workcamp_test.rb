@@ -9,11 +9,13 @@ class Incoming::WorkcampTest < ActiveSupport::TestCase
 
   test 'project_id' do
     wc = Incoming::Workcamp.create!(name: 'Some',code: 'SOM',
+                                    begin: Date.today,
+                                    end: 10.days.from_now,
                                     places: 2,places_for_males: 2,
                                     places_for_females: 2,
                                     country: countries(:AT),
                                     organization: Organization.first)
-    assert_equal 'f9c91026d627166ce372501d4c55f690', wc.project_id
+    assert_equal '5947613951d22e3d37f429269c686743', wc.project_id
   end
   
 
