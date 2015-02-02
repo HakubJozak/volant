@@ -13,8 +13,8 @@
 __Bugy__
 
  - [ ] automatický mail (zažádání o přijetí) - u data narození se přiřadí hodina „+GMT +0200 (Střední Evropa (letní čas))“
- - [ ] vkládání xml - failed, nenahrálo se
- - [ ] import - missing project_id vyvola 500
+ - [x] vkládání xml - failed, nenahrálo se
+ - [x] import - missing project_id vyvola 500
 
 ----BONUSY --------------------------------------------------------
 

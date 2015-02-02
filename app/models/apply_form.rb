@@ -6,6 +6,7 @@ class ApplyForm < ActiveRecord::Base
 
   acts_as_taggable
   include TaggableExtension
+  include Export::Excel::ApplyForm
 
   create_date_time_accessors
 
