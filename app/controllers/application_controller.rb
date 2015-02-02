@@ -35,6 +35,10 @@ class ApplicationController < ActionController::Base
     @current_organization ||= Organization.find_by_code('SDA')
   end
 
+  def current_year
+    params[:year] || nil
+  end
+
   def add_year_scope(search)
     if year = params[:year]
       if year.to_i > 0

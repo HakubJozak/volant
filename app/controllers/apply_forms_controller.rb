@@ -7,7 +7,8 @@ class ApplyFormsController < ApplicationController
 
     respond_to do |format|
       format.csv {
-        render text: apply_forms.to_csv
+        search = add_year_scope(apply_forms)
+        send_data search.to_csv, filename: "#{current_year || 'all'}_applications.csv"
       }
       
       format.json {

@@ -1,8 +1,8 @@
 Ember.Handlebars.helper 'csv-download-link', (base) ->
   year = @get('year')
   new Handlebars.SafeString """
-    <a href="#{base}?year=#{year}">
-       <i title="Download CSV for #{year}">CSV</i>
+    <a href="#{base}?year=#{year}" title="Download CSV for #{year}">
+       <i class='fa fa-download'></i> CSV
     </a>       
    """
 

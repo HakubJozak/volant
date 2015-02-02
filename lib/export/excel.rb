@@ -11,7 +11,7 @@ module Export
           apply_forms = joins(:volunteer).includes(:payment,current_workcamp: [ :intentions,:organization ]).
             references(:current_workcamp,:current_assignment,:payment)
 
-          form_attrs = [ :created_at, :cancelled, :general_remarks, :motivation, :fee ]
+          form_attrs = [ :id,:created_at, :cancelled, :general_remarks, :motivation, :fee ]
           payment_attrs = [ :amount, :received, :description, :returned_date, :returned_amount ]
           org_attrs = [ :country, :name, :networks, :phone, :mobile ]
           wc_attrs = [ :code, :name, :begin, :end, :intentions, :extra_fee ]

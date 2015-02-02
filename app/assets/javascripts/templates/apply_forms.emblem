@@ -34,8 +34,6 @@ form.form.form-horizontal.search-form submit="search" role="form"
       view Ember.Select value=sortAscending  contentBinding='sortAscendingOptions' optionValuePath="content.id" optionLabelPath="content.name" class="form-control"
     .col-lg-offset-5.col-lg-2.text-right
       csv-download-link '/apply_forms.csv'
-      a href='/apply_forms.csv?year=2014'
-        ' {{fa 'download'}} CSV
 
 
 table.table.table-striped.table-hover#apply-forms-list
