@@ -1,3 +1,13 @@
+Ember.Handlebars.helper 'csv-download-link', (base) ->
+  year = @get('year')
+  new Handlebars.SafeString """
+    <a href="#{base}?year=#{year}">
+       <i title="Download CSV for #{year}">CSV</i>
+    </a>       
+   """
+
+
+
 Ember.Handlebars.helper 'apply-form-state-icon', (state) ->
   if state?
     key = if typeof state isnt 'string'

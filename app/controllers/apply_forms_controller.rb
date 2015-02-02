@@ -3,43 +3,52 @@ class ApplyFormsController < ApplicationController
   before_action :find_apply_form, except: [ :index,:create ]
 
   def index
-    search = Outgoing::ApplyForm.page(current_page)
-    # TODO: move to scopes
-    search = search.joins('LEFT OUTER JOIN workcamps ON workcamps.id = current_workcamp_id_cached')
-    search = search.joins('LEFT OUTER JOIN workcamp_assignments ON workcamp_assignments.id = current_assignment_id_cached')
-    search = search.includes(:volunteer)
-    search = search.order(current_order)
-    search = add_year_scope(search)
+    apply_forms = Outgoing::ApplyForm
 
-    if filter[:starred]
-      search = search.starred_by(current_user)
+    respond_to do |format|
+      format.csv {
+        render text: apply_forms.to_csv
+      }
+      
+      format.json {
+        search = apply_forms.page(current_page)
+        search = search.joins('LEFT OUTER JOIN workcamps ON workcamps.id = current_workcamp_id_cached')
+        search = search.joins('LEFT OUTER JOIN workcamp_assignments ON workcamp_assignments.id = current_assignment_id_cached')
+        search = search.includes(:volunteer)
+        search = search.order(current_order)
+        search = add_year_scope(search)
+
+        if filter[:starred]
+          search = search.starred_by(current_user)
+        end
+
+        if filter[:tag_ids]
+          search = search.joins(:tags).with_tags(*filter[:tag_ids])
+        end
+
+        if query = filter[:q]
+          search = search.query(filter[:q])
+        end
+
+        if state = filter[:state]
+          # TODO: put those inside model
+          case state
+          when 'on_project'
+            today = Date.today
+            search = search.where("workcamps.begin <= ? AND workcamps.end >= ?",today,today)
+            search = search.where('workcamp_assignments.accepted IS NOT NULL and cancelled IS NULL ')
+          when 'without_payment'
+            search = search.joins('left outer join payments on payments.apply_form_id = apply_forms.id').state_filter(state)
+          else
+            search = search.state_filter(state)
+          end
+        end
+
+        render json: search,
+        meta: { pagination: pagination_info(search) },
+        each_serializer: ApplyFormSerializer
+      }
     end
-
-    if filter[:tag_ids]
-      search = search.joins(:tags).with_tags(*filter[:tag_ids])
-    end
-
-    if query = filter[:q]
-      search = search.query(filter[:q])
-    end
-
-    if state = filter[:state]
-      # TODO: put those inside model
-      case state
-      when 'on_project'
-        today = Date.today
-        search = search.where("workcamps.begin <= ? AND workcamps.end >= ?",today,today)
-        search = search.where('workcamp_assignments.accepted IS NOT NULL and cancelled IS NULL ')
-      when 'without_payment'
-        search = search.joins('left outer join payments on payments.apply_form_id = apply_forms.id').state_filter(state)
-      else
-        search = search.state_filter(state)
-      end
-    end
-
-    render json: search,
-    meta: { pagination: pagination_info(search) },
-    each_serializer: ApplyFormSerializer
   end
 
   def destroy

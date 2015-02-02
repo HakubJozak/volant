@@ -16,6 +16,7 @@ Volant.ApplyFormsController = Volant.ListController.extend
   sortAscending: false
   sortAscendingOptions: [ {name:'Ascending', id: true },{ name:'Descending', id: false }]
   
+
   setSorting: (->
     props = switch @get('order')
       when 'createdAt' then ['createdAt']
