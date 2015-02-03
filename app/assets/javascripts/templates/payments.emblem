@@ -1,0 +1,43 @@
+form.form.form-horizontal.form-search submit='search' role='form'
+  .form-group
+    .col-lg-1
+      label.control-label Search
+    .col-lg-8
+      partial 'query'
+
+table.table.table-striped.table-hover
+  thead
+    th Application
+    th Received
+    th Amount
+    th Account
+    th colspan="3"
+      | Returned
+    th Description
+  tbody
+    each
+      tr{action 'go_to_detail' this}
+        td
+          if apply_form
+            link-to 'apply_form' apply_form
+              with apply_form
+                partial 'apply_form/title'
+          else
+            ' -
+        td
+          | {{format-date received}}
+        td
+          | {{amount}}
+        td
+          if by_bank
+            | {{account}}/{{bank_code}}
+          else
+            ' Cash
+        td  format-date returned_date
+        td  returned_amount
+        td  returned_reason
+        td  description
+
+render 'pagination'
+
+

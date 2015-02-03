@@ -4,8 +4,12 @@ class PaymentsController < ApplicationController
 
   def index
     search = Payment.page(current_page).order('received desc')
-    search = search.includes(:apply_form)
+    search = search.includes(:apply_form).references(:apply_form)
     search = add_year_scope(search)
+
+    if q = filter[:q].presence
+      search = search.query(q)
+    end
 
     render json: search, each_serializer: PaymentSerializer, meta: { pagination: pagination_info(search) }
   end
@@ -40,6 +44,10 @@ class PaymentsController < ApplicationController
 
   def set_payment
     @payment = Payment.find(params[:id])
+  end
+
+  def filter
+    params.permit(:q,:p,)
   end
 
   def payment_params

@@ -21,6 +21,11 @@ class Payment < ActiveRecord::Base
   scope :returned, -> { where 'returned_amount IS NOT NULL' }
   scope :not_assigned, -> { where 'apply_form_id IS NULL' }
 
+  scope :query, lambda { |query|
+    q = "%#{query}%"
+    where "return_reason ILIKE ? OR account ILIKE ? OR name ILIKE ?",q,q,q
+  }
+
   def to_label
     # TODO
     "platba číslo #{id}"

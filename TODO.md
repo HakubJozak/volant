@@ -4,8 +4,9 @@
  - [x] filtrovani prihlasek podle tagu
  - [x] alert po 3 dnech po zažádání o přijetí
  - [x] alert 5 týdnů před začátkem workcampu když není odeslán infosheet
- - [ ] export CSV workcampu a prihlasek (pro statistiky)
- - [ ] vyhledavani plateb
+ - [x] export CSV prihlasek (pro statistiky)
+ - [ ] export CSV workcampu 
+ - [x] vyhledavani plateb
  - [ ] specialni pohled WC na upravy podle friday listu
  - [ ] uprava nastaveni: konec sezony apd.
  - [ ] filtr workcampu - age do jednoho pole a ucesat vizual

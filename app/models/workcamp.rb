@@ -34,7 +34,8 @@ class Workcamp < ActiveRecord::Base
 
   scope :query, lambda { |query|
     wcs = self.arel_table
-    arel = wcs[:name].matches("%#{query}%").or(wcs[:code].matches("%#{query}%"))
+    q = "%#{q}%"
+    arel = wcs[:name].matches(q).or(wcs[:code].matches(q))
     where(arel)
   }
 

@@ -3,7 +3,7 @@ outlet
 form.form.form-horizontal.search-form submit="search" role="form"
   .form-group
     .col-lg-1
-      label.control-label Keyword
+      label.control-label Search
     .col-lg-9
       partial 'query'
     .col-lg-2.text-right

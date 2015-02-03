@@ -2,7 +2,7 @@ form.form.form-horizontal.form-search submit='search' role='form'
   .form-group
     .col-lg-1
       label.control-label
-        | Keyword
+        | Search
     .col-lg-8
       partial 'query'
     .col-lg-3.pull-right
