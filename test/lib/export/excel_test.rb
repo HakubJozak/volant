@@ -3,19 +3,22 @@ require 'test_helper'
 module Export
   class CsvTest < ActiveSupport::TestCase
 
-      setup do
-        Factory.create(:apply_form)
-        o = Factory.create(:organization)
-        f = Factory.create(:paid_form)
-        f.current_workcamp.organization = o
-        f.current_workcamp.save!
-        f.save!
-      end
+    setup do
+      @austria = countries(:AT)
+      Factory.create(:apply_form)
+      f = Factory.create(:paid_form)
+      org = Factory.create(:organization,country: @austria,code: 'XYZ')
+      f.current_workcamp.organization = org
+      f.current_workcamp.save!
+      f.save!
+    end
 
-      # TODO - test output
-      should "produce valid CSV" do
+    # TODO - test output
+    test "#csv" do
       csv = Outgoing::ApplyForm.to_csv
       assert_equal csv.lines.count, 3
-      end
+      assert_match /;Austria;/,csv
+      assert_match /XYZ/,csv      
+    end
   end
 end

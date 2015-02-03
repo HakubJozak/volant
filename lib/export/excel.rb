@@ -13,7 +13,7 @@ module Export
 
           form_attrs = [ :id,:created_at, :cancelled, :general_remarks, :motivation, :fee ]
           payment_attrs = [ :amount, :received, :description, :returned_date, :returned_amount ]
-          org_attrs = [ :country, :name, :networks, :phone, :mobile ]
+          org_attrs = [ :country, :name, :code, :networks, :phone, :mobile ]
           wc_attrs = [ :code, :name, :begin, :end, :intentions, :extra_fee ]
           volunteer_attrs = [ :firstname, :lastname, :gender, :age, :birthnumber, :birthdate,
                               :nationality, :occupation, :email, :phone,
@@ -34,11 +34,11 @@ module Export
             apply_forms.find_each do |form|
               d = []
               wc = form.current_workcamp
-              d.concat csv_data( form_attrs, form)
-              d.concat csv_data( volunteer_attrs, form.volunteer)
-              d.concat csv_data( payment_attrs, form.payment)
-              d.concat csv_data( wc_attrs, wc)
-              d.concat csv_data( org_attrs, wc ? wc.organization : nil)
+              d.concat csv_data(form_attrs, form)
+              d.concat csv_data(volunteer_attrs, form.volunteer)
+              d.concat csv_data(payment_attrs, form.payment)
+              d.concat csv_data(wc_attrs, wc)
+              d.concat csv_data(org_attrs, wc ? wc.organization : nil)
               csv << d
             end
           end
@@ -59,7 +59,9 @@ module Export
 
             if Date === value or a == :created_at
               I18n.l(value.to_date) rescue nil
-            elsif a == :intentions or a == :networks
+            elsif Country === value
+              value.name_en
+            elsif [:intentions,:networks,:tags].include?(a)
               value.join(',') rescue nil
             else
               value
