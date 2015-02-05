@@ -12,7 +12,7 @@ Volant.ApplyFormController = Volant.ObjectController.extend({
 
   vefXmlUrl: (-> @attachmentUrl 'xml' ).property('model.id')
   vefHtmlUrl: (-> @attachmentUrl 'html' ).property('model.id')
-  vefPdfUrl: (-> @attachmentUrl 'pdf' ).property('model.id')    
+  vefPdfUrl: (-> @attachmentUrl 'pdf' ).property('model.id')
 
   actions:
     rollback: ->
@@ -27,8 +27,8 @@ Volant.ApplyFormController = Volant.ObjectController.extend({
 
   attachmentUrl: (sufix) ->
     if id = @get('model.id')
-      "/apply_forms/#{id}/vef.#{sufix}" 
-  
+      "/apply_forms/#{id}/vef.#{sufix}"
+
 
 
 })

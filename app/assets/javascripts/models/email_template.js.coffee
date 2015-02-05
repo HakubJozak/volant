@@ -1,4 +1,4 @@
-Volant.EmailTemplate = DS.Model.extend({
+Volant.EmailTemplate = DS.Model.extend
   action: DS.attr 'string'
   title: DS.attr 'string'
   to: DS.attr 'string'
@@ -16,4 +16,4 @@ Volant.EmailTemplate = DS.Model.extend({
       Handlebars.compile(source)(context)
     else
       ''
-})
+

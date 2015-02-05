@@ -27,7 +27,7 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
 
     create_payment: ->
       form = @modelFor('apply_form')
-      payment = @store.createRecord('payment',apply_form: form,amount: form.get('fee'),mean: 'CASH', received: new Date())
+      payment = @store.createRecord('payment',apply_form: form,amount: form.get('fee'),mean: 'BANK', received: new Date())
       @controllerFor('payment').set('content',payment)
       false
 

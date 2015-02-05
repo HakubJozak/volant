@@ -19,6 +19,7 @@
 __Bugy__
 
  - [ ] automatický mail (zažádání o přijetí) - u data narození se přiřadí hodina „+GMT +0200 (Střední Evropa (letní čas))“
+ - [ ] vyhledavani dobrovolniku nefunguje (hledat i podle emailu)
  - [x] vkládání xml - failed, nenahrálo se
  - [x] import - missing project_id vyvola 500
 
