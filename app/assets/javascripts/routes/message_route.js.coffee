@@ -2,8 +2,13 @@ Volant.MessageRoute = Volant.BaseRoute.extend
   title: (model) -> "#{model.get('subject')}"
 
   afterSave: (record) ->
-    @transitionTo 'message',record.get('id')
     @flash_info('Message saved.')
+
+    if form = record.get('apply_form')
+      @transitionTo 'apply_form',form.get('id')
+    else
+      @transitionTo 'message',record.get('id')            
+
 
   model: (params) ->
     if params.message_id != 'null'
