@@ -3,7 +3,7 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
   queryParams:
     order: { refreshModel: true }
     sortAscending: { refreshModel: true }
-    state: { refreshModel: true }    
+    state: { refreshModel: true }
 
   setupController: (controller,model,queryParams) ->
     @_super(controller, model,queryParams)
@@ -14,7 +14,7 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
       p: params.page
       year: params.year
       q: params.query
-      order: params.order      
+      order: params.order
       state: params.state
       asc: params.sortAscending
       tag_ids: @controllerFor(@routeName).get('tags').mapBy('id')

@@ -10,12 +10,9 @@ Volant.ApplyFormsController = Volant.ListController.extend
   query_placeholder: "Search by name, birth number, payment account or keyword..."
 
   order: 'createdAt'
-  orderOptions: ['createdAt','name']
+  orderOptions: [ {id: 'createdAt', name: 'Submitted'},{id:'name', name: 'Name'}]
   sortProperties: ['createdAt']
 
-  sortAscending: false
-  sortAscendingOptions: [ {name:'Ascending', id: true },{ name:'Descending', id: false }]
-  
 
   setSorting: (->
     props = switch @get('order')

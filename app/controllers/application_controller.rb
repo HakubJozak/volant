@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :default_format_json
   serialization_scope :current_user
-  
+
   private
 
   def pagination_info(scope)
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
       'desc'
     end
   end
-  
+
   def current_organization
     # TODO: take the code from organization
     @current_organization ||= Organization.find_by_code('SDA')
