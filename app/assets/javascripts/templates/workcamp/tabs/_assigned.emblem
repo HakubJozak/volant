@@ -3,7 +3,7 @@ table.table.table-condensed.col-lg-12.sidepanel
     each assignments_by_state
       tr
         td
-          .btn.btn-default{ action 'removeAssignment' this bubbles='false'}
+          .btn.btn-default{ action 'removeAssignment' this true bubbles='false'}
             fa 'minus'
         td
           apply-form-state-icon state

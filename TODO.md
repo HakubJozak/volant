@@ -1,3 +1,8 @@
+# LTV
+ - [ ] CRUD workcampu
+ - [ ] CRUD prihlasky 
+ - [ ] Dashboard
+
 # Outgoing
 
  - [x] opravit testy
@@ -34,17 +39,10 @@ __Bugy__
  - [ ] PLUS - seznam prihlasek ke kazdemu dobrovolnikovi na jeho karte
  - [ ] PLUS - pojisteni (a alert 4 týdny před začátkem workcampu pokud nemáme pojištění)
 
-
  - [ ] PLUS - [filtr workcampu] podle zemi by u jmena zeme ukazoval i pocet workcampu
  - [ ] PLUS - [filtr workcampu] pridat regiony
 
 
- 
-
-# LTV
- - [ ] CRUD workcampu
- - [ ] CRUD prihlasky 
- - [ ] Dashboard
 
 
 # Incoming

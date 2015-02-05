@@ -29,7 +29,13 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
         @flash_info "#{person} assigned to #{code}."
       false
 
-    removeAssignment: (wa) ->
+    removeAssignment: (wa,warn) ->
+      if warn
+        who = wa.get('apply_form.name')
+        wc = wa.get('workcamp.name')
+        msg = "Do you really want to remove '#{wc}' from the application of #{who}?"
+        return unless window.confirm(msg)
+        
       if wa.get('isNew')
         @get('model').removeObject(wa)
       else
@@ -65,7 +71,7 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
       false
 
     confirmedRemove: (record) ->
-      return unless confirm("Do you really want to delete '#{record.get('name')}'?")  
+      return unless confirm("Do you really want to delete '#{record.get('name')}'?")
       record.destroyRecord().then (=>
         @flash_info 'Deleted.'
       ), ( (e) =>
@@ -111,5 +117,5 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
   setupCountries: () ->
     @controllerFor('countries').set('content', @store.filter('country',{},-> true))
 
-  setupTagsController: () ->    
+  setupTagsController: () ->
     @controllerFor('tags').set('content', @store.filter('tag',{},-> true))

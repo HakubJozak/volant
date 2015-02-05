@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+rails server -p 9090
