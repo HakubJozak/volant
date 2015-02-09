@@ -7,7 +7,8 @@ form.form.form-horizontal.search-form submit="search" role="form"
     .col-lg-9
       partial 'query'
     .col-lg-2.text-right
-      link-to 'new_apply_form' class='btn btn-success'
+
+      link-to 'new_apply_form' newModelType class='btn btn-success'
         ' {{fa 'plus'}} Create
   .form-group
     .col-lg-1

@@ -26,7 +26,7 @@ __Bugy__
  - [x] import - missing project_id vyvola 500
 
 ----BONUSY --------------------------------------------------------
-
+ - [ ] PLUS - fulltext
  - [ ] PLUS - 'při hledání campů v přihlášce (vpravo na boku) bychom preferovaly' vidět stejne info jako u prirazenych
  - [ ] PLUS - parovani existujicich plateb s existujici prihlaskou
  - [ ] PLUS - importovani plateb z FIO API

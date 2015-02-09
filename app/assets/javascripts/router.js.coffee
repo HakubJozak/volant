@@ -5,8 +5,10 @@ Volant.Router.map ->
   @resource 'volunteer', path: '/volunteers/:volunteer_id'
 
   @resource 'apply_forms'
+  @resource 'ltv_apply_forms', path: '/ltv/apply_forms'
   @route 'apply_form', path: '/apply_forms/:apply_form_id'
-  @route 'new_apply_form', path: '/apply_forms/new'
+  @route 'new_apply_form', path: '/apply_forms/:type/new'
+
 
   @resource 'workcamps'
   @resource 'workcamp', path: '/workcamps/:workcamp_id'
@@ -21,7 +23,7 @@ Volant.Router.map ->
   @resource 'new_organization', path: '/organizations/new'
 
   @resource 'message', {path: '/messages/:message_id'}
-  @resource 'new_message', {path: '/apply_forms/:apply_form_id/messages/new/:action_name'}  
+  @resource 'new_message', {path: '/apply_forms/:apply_form_id/messages/new/:action_name'}
   @resource 'messages'
 
   @resource 'users', ->

@@ -7,6 +7,7 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
 
   setupController: (controller,model,queryParams) ->
     @_super(controller, model,queryParams)
+    controller.set 'newModelType',@get('newModelType')
     @setupTagsController()
 
   model: (params) ->
