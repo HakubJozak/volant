@@ -7,7 +7,7 @@ Volant.MessageRoute = Volant.BaseRoute.extend
     if form = record.get('apply_form')
       @transitionTo 'apply_form',form.get('id')
     else
-      @transitionTo 'message',record.get('id')            
+      @transitionTo 'message',record.get('id')
 
 
   model: (params) ->

@@ -65,11 +65,9 @@ DS.Model.reopen
     for prop in properties
       hash[prop] = @get(prop)
 
-    if tags = @get('tags')    
+    if tags = @get('tags')
       hash.tags = {}
       tags.forEach (tag) ->
         hash.tags[tag.get('name')] = true
 
     hash
-
-

@@ -15,10 +15,12 @@
  - [ ] specialni pohled WC na upravy podle friday listu
  - [ ] uprava nastaveni: konec sezony apd.
  - [ ] filtr workcampu - age do jednoho pole a ucesat vizual
-
+ - [ ] nastaveni (zacatek sezony,default org code)
 __Bugy__
 
- - [ ] automatický mail (zažádání o přijetí) - u data narození se přiřadí hodina „+GMT +0200 (Střední Evropa (letní čas))“
+ - [ ] - zobrazování přihlášených/přijatých lidí ve výpisu workcampů - schování (měli to být ti, což už byli přijati jinde) proběhlo asi až moc důkladně, situace: účastnice se hlásí na 3 workcampy, nemá zaplaceno, ve výpisu se zobrazuje pouze u 1 prvního v přihlášce, u ostatních se zobrazuje jako ",", viz výstřižek, po rozkliknutí mě to hodí k ní na přihlášku, ale klikám vlastně jen na čárku
+
+ - [x] automatický mail (zažádání o přijetí) - u data narození se přiřadí hodina „+GMT +0200 (Střední Evropa (letní čas))“
  - [ ] vyhledavani dobrovolniku nefunguje (hledat i podle emailu)
  - [x] vkládání xml - failed, nenahrálo se
  - [x] import - missing project_id vyvola 500
