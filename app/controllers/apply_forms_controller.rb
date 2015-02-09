@@ -27,7 +27,7 @@ class ApplyFormsController < ApplicationController
           search = search.joins(:tags).with_tags(*filter[:tag_ids])
         end
 
-        if query = filter[:q]
+        if query = filter[:q].presence
           search = search.query(filter[:q])
         end
 

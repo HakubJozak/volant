@@ -6,7 +6,7 @@ class VolunteersController < ApplicationController
   def index
     search = Volunteer.order(:created_at).page(current_page)
 
-    if q = filter[:q]
+    if q = filter[:q].presence
       search = search.query(q)
     end
 

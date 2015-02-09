@@ -13,6 +13,7 @@ class Volunteer < Person
   CSV_FIELDS = %w(firstname lastname age gender email phone birthdate birthnumber nationality occupation city contact_city)
 
   scope :query, lambda { |query|
+    unless query.blank?
       like = "%#{query}%"
       str = """
             firstname ILIKE ? or
@@ -22,6 +23,7 @@ class Volunteer < Person
             email ILIKE ?
            """
       where(str,like, like, like,like,like)
+    end
   }
 
 
