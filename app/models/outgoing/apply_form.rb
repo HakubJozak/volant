@@ -26,9 +26,10 @@ module Outgoing
             firstname ILIKE ? or
             lastname ILIKE  ? or
             birthnumber ILIKE ? or
+            email ILIKE ? or
             general_remarks ILIKE ?
            """
-      joins(:volunteer).where(str,like, like, like,like)
+      joins(:volunteer).where(str,like, like, like,like,like)
     }
 
     scope :accepted, lambda {

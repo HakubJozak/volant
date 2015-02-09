@@ -7,7 +7,7 @@ Volant.ApplyFormsController = Volant.ListController.extend
   tags: []
 
   queryParams: ['page','year','query','state','order','sortAscending']
-  query_placeholder: "Search by name, birth number, payment account or keyword..."
+  query_placeholder: "Search by name, birth number, email, bank account or keyword..."
 
   order: 'createdAt'
   orderOptions: [ {id: 'createdAt', name: 'Submitted'},{id:'name', name: 'Name'}]

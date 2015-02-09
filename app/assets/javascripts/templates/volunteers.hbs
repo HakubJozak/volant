@@ -1,4 +1,13 @@
-{{partial 'query'}}
+<form {{action 'search' on='submit'}}>
+  <div class='col-lg-1'>
+    <label class='control-label'>
+      Search
+    </label>
+  </div>
+  <div class='col-lg-9'>
+    {{partial 'query'}}    
+  </div>
+</form>
 
 <table class="table table-striped table-hover">
   <thead>

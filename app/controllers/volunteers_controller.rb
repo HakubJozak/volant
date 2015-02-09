@@ -4,8 +4,11 @@ class VolunteersController < ApplicationController
   before_action :find_volunteer, only: [ :show, :update, :destroy ]
 
   def index
-    current_page = params[:p] || 1
     search = Volunteer.order(:created_at).page(current_page)
+
+    if q = filter[:q]
+      search = search.query(q)
+    end
 
     render json: search,
            meta: { pagination: pagination_info(search) },
@@ -29,6 +32,10 @@ class VolunteersController < ApplicationController
 
   def find_volunteer
     @volunteer = Volunteer.find(params[:id])
+  end
+
+  def filter
+    params.permit(:q,:p)
   end
 
   def volunteer_params

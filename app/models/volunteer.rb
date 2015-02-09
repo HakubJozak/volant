@@ -2,7 +2,7 @@
 # FIXME - move to Outgoing module
 class Volunteer < Person
   include CzechUtils
-  
+
   create_date_time_accessors
 
   validates_presence_of :firstname, :lastname, :gender, :email
@@ -12,13 +12,17 @@ class Volunteer < Person
 
   CSV_FIELDS = %w(firstname lastname age gender email phone birthdate birthnumber nationality occupation city contact_city)
 
-  def self.sql_for_name_search
-    # concat the volunteer searchable fields to run fulltext search over them
-    "(#{table_name}.firstname || ' ' || " +
-    " #{table_name}.lastname  || ' ' || " +
-    " #{table_name}.birthnumber  || ' ' || " +
-    " #{table_name}.email)"
-  end
+  scope :query, lambda { |query|
+      like = "%#{query}%"
+      str = """
+            firstname ILIKE ? or
+            lastname ILIKE  ? or
+            birthnumber ILIKE ? or
+            phone ILIKE ? or
+            email ILIKE ?
+           """
+      where(str,like, like, like,like,like)
+  }
 
 
 
