@@ -13,10 +13,12 @@ Volant.EmailTemplate = DS.Model.extend
 
   eval_field: (field,context) ->
     if source = @get(field)
-      options = { helpers: {
-              'long-date': (d) -> moment(d).format('LL')
-              'short-date': (d) -> moment(d).format('L')              
-              }}
+      options = { helpers: Volant.EmailTemplate.helpers }
       Handlebars.compile(source)(context,options)
     else
       ''
+
+Volant.EmailTemplate.helpers = { 
+  'long-date': (d) -> moment(d).format('LL')
+  'short-date': (d) -> moment(d).format('L')              
+}

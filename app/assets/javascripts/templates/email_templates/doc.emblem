@@ -38,20 +38,14 @@
     ul
       = each attr in userAttributes
         li user.#{attr}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
-            
 
 .panel.panel-default
   .panel-heading
     | Helpers
   .panel-body
     p Helpers are used to change the way in which a variable is output.
+    ul
+      = each attr in helpers
+        li #{attr}
 
 
