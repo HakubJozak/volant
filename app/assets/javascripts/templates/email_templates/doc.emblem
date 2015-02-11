@@ -3,8 +3,8 @@
     | Overview
   .panel-body
     p
-      | Volant email templates are written in __Handlebars__      
-        and the resulting message is in __HTML__. Here are some links
+      | Volant email templates are written in Handlebars      
+        and the resulting message is in HTML. Here are some links
         that should help you get started:
         
     ul
@@ -22,6 +22,12 @@
   .panel-heading
     | Variables
   .panel-body
+    p 
+      | Data related to the current message are stored in variables
+        listed below. They can be printed using double or triple curly
+        brackets.
+      b Not all variables are available in all contexts!
+
     h4 Volunteer
     ul
       = each attr in volunteerAttributes
