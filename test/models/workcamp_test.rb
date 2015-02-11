@@ -39,19 +39,19 @@ class WorkcampTest < ActiveSupport::TestCase
 
   test 'similar_to scope' do
     target = Factory(:workcamp)
-    dummy = Factory(:workcamp, country: countries(:AT))    
+    dummy = Factory(:workcamp, country: countries(:AT))
     @wc.intentions << (agri = workcamp_intentions(:agri))
     @wc.intentions << (refugee = workcamp_intentions(:refugee))
     target.intentions << agri << refugee
-    
+
     result = Workcamp.similar_to(@wc)
     ids = result.map(&:id)
-    
+
     assert_equal ids.first, target.id
     refute ids.include?(@wc.id), 'Original WC should not be included as similar'
-    refute ids.include?(dummy.id), 'Different countries should be excluded'    
+    refute ids.include?(dummy.id), 'Different countries should be excluded'
   end
-  
+
   test 'scope with_countries' do
     country = @wc.country
     result = Workcamp.with_countries(country.id,777777)
@@ -115,10 +115,21 @@ class WorkcampTest < ActiveSupport::TestCase
     inex = organizations(:inex)
     attrs = Factory.attributes_for(:workcamp, country_id: inex.country.id, organization_id: inex.id)
     attrs[:workcamp_intention_ids] = [ workcamp_intentions(:animal).id ]
-    
+
     wc = Workcamp.new(attrs)
-    
+
     assert wc.save, wc.errors.full_messages
   end
 
+  test 'query' do
+    Workcamp.destroy_all
+    target = Factory.create(:workcamp,code: 'MYCODE')
+    dummy = Factory.create(:workcamp,code: 'XXX')
+
+    result = Workcamp.joins(:organization).query('MYCODE')
+    
+    assert_equal 1,result.size
+    assert_equal target.id,result.first.id
+  end
+  
 end

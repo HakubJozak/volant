@@ -33,10 +33,8 @@ class Workcamp < ActiveRecord::Base
   }
 
   scope :query, lambda { |query|
-    wcs = self.arel_table
-    q = "%#{q}%"
-    arel = wcs[:name].matches(q).or(wcs[:code].matches(q))
-    where(arel)
+    like = "%#{query}%"
+    where("workcamps.name ILIKE ? or workcamps.code ILIKE ?",like,like)
   }
 
   scope :with_workcamp_intentions, lambda { |*ids|
@@ -76,8 +74,8 @@ class Workcamp < ActiveRecord::Base
       search = search.where(publish_mode: mode)
     end
 
-    if query = filter[:q]
-      search = search.query(filter[:q])
+    if q = filter[:q].presence
+      search = search.query(q)
     end
 
     if filter[:starred]

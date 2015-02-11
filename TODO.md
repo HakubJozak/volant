@@ -3,6 +3,9 @@
  - [ ] CRUD prihlasky 
  - [ ] Dashboard
 
+ - [ ]  Volant: LMTV - původně jste se s Nikolou bavili o možnosti zadat projekt na časový úsek ale bez specifikace termínů (jsou projekty, které jsou otevřené celý rok s minimální a maximální dobou účasti). Pamatuješ si, jak jste se ohledně toho domluvili, najdeš to někde ve svých poznámkách? Bude tohle možné ještě dopsat, nějak vyřešit?
+ - [x]  Volant: Organizace - přidat adresu pro mailing LMTV
+
 # Outgoing
  - [x] dokumentace k email sablonam (zejmena promenne, ktere jsou k dispozici)
  - [ ] filtrovani podle roku 'nefunguje' na webu (nastavit 'season' vsem ktere jsou mimo 2015)
@@ -15,23 +18,21 @@
  - [x] alert 5 týdnů před začátkem workcampu když není odeslán infosheet
  - [x] export CSV prihlasek (pro statistiky)
  - [x] vyhledavani plateb
-
  - [ ] uprava nastaveni: konec sezony apd.
- - [ ] filtr workcampu - age do jednoho pole a ucesat vizual
+
  - [ ] nastaveni (zacatek sezony,default org code)
- - [ ] pridat 'return reason' do exportu plateb
+ - [x] pridat 'return reason' do exportu plateb
  - [ ] seradit abecedne filtr organizaci na vyhledavani workcampu
  - [ ] region1 a region2 u emailovych sablon, extra fee
  - [ ] poslat snippety a seznam helperu na data
- - [ ]  Volant: LMTV - původně jste se s Nikolou bavili o možnosti zadat projekt na časový úsek ale bez specifikace termínů (jsou projekty, které jsou otevřené celý rok s minimální a maximální dobou účasti). Pamatuješ si, jak jste se ohledně toho domluvili, najdeš to někde ve svých poznámkách? Bude tohle možné ještě dopsat, nějak vyřešit?
- - [x]  Volant: Organizace - přidat adresu pro mailing LMTV
- - [ ]  Volant: přece jen prosíme přidat do exportu CSV dva údaje - region a zone
+
+ - [x]  Volant: přece jen prosíme přidat do exportu CSV dva údaje - region a zone
 
 __Bugy__
  - [ ] detail prihlasky, nefunguje 'storno'
  - [ ] prokliky s dashboardu nefuguji
  - [ ] bug strankovani
- - [ ] workcampu se nehledaji podle kodu
+ - [x] workcampy se nehledaji podle kodu
  - [ ] incoming smichan s outgoingem - workcampy
  - [ ] - zobrazování přihlášených/přijatých lidí
        - bud je to aktualni workcamp
@@ -43,6 +44,7 @@ __Bugy__
 
 ----BONUSY --------------------------------------------------------
 
+ - [ ] filtr workcampu - age do jednoho pole a ucesat vizual
  - [ ] specialni pohled WC na upravy podle friday listu
  - [ ] PLUS - fulltext
  - [ ] PLUS - 'při hledání campů v přihlášce (vpravo na boku) bychom preferovaly' vidět stejne info jako u prirazenych
