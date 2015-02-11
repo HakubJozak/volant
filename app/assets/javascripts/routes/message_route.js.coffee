@@ -47,7 +47,9 @@ Volant.MessageRoute = Volant.BaseRoute.extend
           context.user = user.for_email()
 
         if apply_form
-          context.apply_form = apply_form.for_email()
+          context.application = apply_form.for_email()
+          # legacy alias
+          context.apply_form = context.application
 
           if volunteer = apply_form.get('volunteer')
             context.volunteer = volunteer.for_email()

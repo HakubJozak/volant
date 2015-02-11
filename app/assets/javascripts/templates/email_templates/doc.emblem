@@ -29,11 +29,15 @@
     h4 Application
     ul
       = each attr in applicationAttributes
-        li apply_form.#{attr}
+        li application.#{attr}
     h4 Workcamp
     ul
       = each attr in workcampAttributes
         li workcamp.#{attr}
+    h4 Organization
+    ul
+      = each attr in organizationAttributes
+        li organization.#{attr}
     h4 User
     ul
       = each attr in userAttributes
