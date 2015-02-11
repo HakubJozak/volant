@@ -1,0 +1,57 @@
+.panel.panel-default
+  .panel-heading
+    | Overview
+  .panel-body
+    p
+      | Volant email templates are written in __Handlebars__      
+        and the resulting message is in __HTML__. Here are some links
+        that should help you get started:
+        
+    ul
+      li
+        a href="http://www.jakpsatweb.cz/html/"  HTML How To
+      li
+        a href="http://www.jakpsatweb.cz/html/nejdulezitejsi.html"  Useful Tags
+      li
+        a href="http://www.jakpsatweb.cz/html/rejstrik.html"  All Tags
+      li
+        a href="http://handlebarsjs.com/Handlebars" Handlebars Templating
+
+
+.panel.panel-default
+  .panel-heading
+    | Variables
+  .panel-body
+    h4 Volunteer
+    ul
+      = each attr in volunteerAttributes
+        li volunteer.#{attr}
+    h4 Application
+    ul
+      = each attr in applicationAttributes
+        li apply_form.#{attr}
+    h4 Workcamp
+    ul
+      = each attr in workcampAttributes
+        li workcamp.#{attr}
+    h4 User
+    ul
+      = each attr in userAttributes
+        li user.#{attr}
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
+=======
+
+>>>>>>> Stashed changes
+            
+
+.panel.panel-default
+  .panel-heading
+    | Helpers
+  .panel-body
+    p Helpers are used to change the way in which a variable is output.
+
+

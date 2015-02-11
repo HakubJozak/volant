@@ -4,7 +4,11 @@
  - [ ] Dashboard
 
 # Outgoing
-
+ - [x] dokumentace k email sablonam (zejmena promenne, ktere jsou k dispozici)
+ - [ ] filtrovani podle roku 'nefunguje' na webu (nastavit 'season' vsem ktere jsou mimo 2015)
+ - [ ] season start 13.3.2015
+ - [ ] prepnout mailing na normalni
+ 
  - [x] opravit testy
  - [x] filtrovani prihlasek podle tagu
  - [x] alert po 3 dnech po zažádání o přijetí
@@ -16,10 +20,20 @@
  - [ ] uprava nastaveni: konec sezony apd.
  - [ ] filtr workcampu - age do jednoho pole a ucesat vizual
  - [ ] nastaveni (zacatek sezony,default org code)
+ - [ ] pridat 'return reason' do exportu plateb
+ - [ ] seradit abecedne filtr organizaci na vyhledavani workcampu
+ - [ ] region1 a region2 u emailovych sablon, extra fee
+ - [ ] poslat snippety a seznam helperu na data
+
 __Bugy__
-
- - [ ] - zobrazování přihlášených/přijatých lidí ve výpisu workcampů - schování (měli to být ti, což už byli přijati jinde) proběhlo asi až moc důkladně, situace: účastnice se hlásí na 3 workcampy, nemá zaplaceno, ve výpisu se zobrazuje pouze u 1 prvního v přihlášce, u ostatních se zobrazuje jako ",", viz výstřižek, po rozkliknutí mě to hodí k ní na přihlášku, ale klikám vlastně jen na čárku
-
+ - [ ] detail prihlasky, nefunguje 'storno'
+ - [ ] prokliky s dashboardu nefuguji
+ - [ ] bug strankovani
+ - [ ] workcampu se nehledaji podle kodu
+ - [ ] incoming smichan s outgoingem - workcampy
+ - [ ] - zobrazování přihlášených/přijatých lidí
+       - bud je to aktualni workcamp
+       - neni aktualni, ale nejsem jinam prijatej
  - [x] automatický mail (zažádání o přijetí) - u data narození se přiřadí hodina „+GMT +0200 (Střední Evropa (letní čas))“
  - [x] vyhledavani dobrovolniku nefunguje (hledat i podle emailu)
  - [x] vkládání xml - failed, nenahrálo se
@@ -44,6 +58,7 @@ __Bugy__
 
  - [ ] PLUS - [filtr workcampu] podle zemi by u jmena zeme ukazoval i pocet workcampu
  - [ ] PLUS - [filtr workcampu] pridat regiony
+ - [ ] PLUS - razeni dobrovolniku
 
 
 

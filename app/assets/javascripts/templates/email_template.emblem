@@ -1,35 +1,40 @@
-h3
-  if action_name
-    capitalize action_name
-    small   {{title}}
-  else
-    = title
-    '
-    small Custom
+.row
+  .col-lg-8
+    h3
+      if action_name
+        capitalize action_name
+        small {{title}}
+      else
+        = title
+        '
+        small Custom
 
-form.form submit='save' role="form"
-  .form-group
-    label.control-label Title
-    = input value=title class="form-control"
-  .form-group
-    label.control-label From
-    = input value=from class="form-control"
-  .form-group
-    label.control-label To
-    = input value=to class="form-control"
-  .form-group
-    label.control-label Cc
-    = input value=cc class="form-control"
-  .form-group
-    label.control-label Bcc
-    = input value=bcc class="form-control"
-  .form-group
-    label.control-label Subject
-    = input value=subject class="form-control"
-  .form-group
-    label.control-label Body
-    = textarea value=body class="form-control" rows=30
+    form.form submit='save' role="form"
+      .form-group
+        label.control-label Title
+        = input value=title class="form-control"
+      .form-group
+        label.control-label From
+        = input value=from class="form-control"
+      .form-group
+        label.control-label To
+        = input value=to class="form-control"
+      .form-group
+        label.control-label Cc
+        = input value=cc class="form-control"
+      .form-group
+        label.control-label Bcc
+        = input value=bcc class="form-control"
+      .form-group
+        label.control-label Subject
+        = input value=subject class="form-control"
+      .form-group
+        label.control-label Body
+        = textarea value=body class="form-control" rows=30
 
-  button.btn.btn-primary type="submit" Save
-  button.btn.btn-default type="button" click='rollback' Cancel
-  button.btn.btn-danger.pull-right type="button" click='remove' Delete
+      button.btn.btn-primary type="submit" Save
+      button.btn.btn-default type="button" click='rollback' Cancel
+      button.btn.btn-danger.pull-right type="button" click='remove' Delete
+
+  .col-lg-4
+    partial 'email_templates/doc'

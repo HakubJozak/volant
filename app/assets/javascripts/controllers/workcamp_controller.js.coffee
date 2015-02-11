@@ -21,4 +21,3 @@ Volant.WorkcampController = Ember.ObjectController.extend
       if @get('organization')
         @set('country', @get('organization.country'))
   ).observes('organization')
-

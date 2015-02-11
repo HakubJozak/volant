@@ -18,7 +18,7 @@ class V1::WorkcampsController < V1::BaseController
       if scope == 'new'
         search = search.where('workcamps.created_at > ?',7.days.ago)
       elsif scope == 'urgent'
-        search = search.where('free_places > 0 AND "begin" >= current_date AND "begin" <= ?',14.day.from_now)        
+        search = search.where('free_places > 0 AND "begin" >= current_date AND "begin" <= ?',14.day.from_now)
       end
     end
 
@@ -84,8 +84,8 @@ class V1::WorkcampsController < V1::BaseController
   def similar
     search = workcamps.similar_to(@workcamp).limit(10)
     search = add_year_scope(search)
-    search = search.includes(:country,:organization,:tags,:intentions)    
-    render json: search, each_serializer: V1::WorkcampSerializer    
+    search = search.includes(:country,:organization,:tags,:intentions)
+    render json: search, each_serializer: V1::WorkcampSerializer
   end
 
   def show
@@ -104,12 +104,12 @@ class V1::WorkcampsController < V1::BaseController
   def workcamps
     model = case params[:type]
             when 'ltv' then Ltv::Workcamp
-            when 'incoming' then Incoming::Workcamp              
+            when 'incoming' then Incoming::Workcamp
             else Outgoing::Workcamp
             end
-    model.order(:name).live.published  
+    model.order(:name).live.published
   end
-  
+
   def find_workcamp
     @workcamp = Workcamp.find(params[:id])
   end
