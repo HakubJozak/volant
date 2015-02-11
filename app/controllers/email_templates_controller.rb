@@ -16,14 +16,22 @@ class EmailTemplatesController < ApplicationController
   # POST /email_templates
   def create
     @email_template = EmailTemplate.new(email_template_params)
-    @email_template.save
-    respond_with(@email_template)
+
+    if @email_template.save
+      respond_with(@email_template)
+    else
+      render_error(@email_template)
+    end
+
   end
 
   # PATCH/PUT /email_templates/1
   def update
-    @email_template.update(email_template_params)
-    respond_with(@email_template)
+    if @email_template.update(email_template_params)
+      respond_with(@email_template)
+    else
+      render_error(@email_template)
+    end
   end
 
   # DELETE /email_templates/1

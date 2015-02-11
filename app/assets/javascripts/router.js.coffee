@@ -47,5 +47,5 @@ Volant.Router.map ->
     @resource 'workcamp_intention', {path: ':workcamp_intention_id'}
 
   @resource 'email_templates', ->
-    @route 'new'
-    @resource 'email_template', {path: ':email_template_id'}
+  @route 'new_email_template', {path: '/email_templates/new'}
+  @resource 'email_template', {path: '/email_templates/:email_template_id'}
