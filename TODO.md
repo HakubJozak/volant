@@ -14,9 +14,8 @@
  - [x] alert po 3 dnech po zažádání o přijetí
  - [x] alert 5 týdnů před začátkem workcampu když není odeslán infosheet
  - [x] export CSV prihlasek (pro statistiky)
- - [ ] export CSV workcampu 
  - [x] vyhledavani plateb
- - [ ] specialni pohled WC na upravy podle friday listu
+
  - [ ] uprava nastaveni: konec sezony apd.
  - [ ] filtr workcampu - age do jednoho pole a ucesat vizual
  - [ ] nastaveni (zacatek sezony,default org code)
@@ -24,6 +23,9 @@
  - [ ] seradit abecedne filtr organizaci na vyhledavani workcampu
  - [ ] region1 a region2 u emailovych sablon, extra fee
  - [ ] poslat snippety a seznam helperu na data
+ - [ ]  Volant: LMTV - původně jste se s Nikolou bavili o možnosti zadat projekt na časový úsek ale bez specifikace termínů (jsou projekty, které jsou otevřené celý rok s minimální a maximální dobou účasti). Pamatuješ si, jak jste se ohledně toho domluvili, najdeš to někde ve svých poznámkách? Bude tohle možné ještě dopsat, nějak vyřešit?
+ - [x]  Volant: Organizace - přidat adresu pro mailing LMTV
+ - [ ]  Volant: přece jen prosíme přidat do exportu CSV dva údaje - region a zone
 
 __Bugy__
  - [ ] detail prihlasky, nefunguje 'storno'
@@ -40,6 +42,8 @@ __Bugy__
  - [x] import - missing project_id vyvola 500
 
 ----BONUSY --------------------------------------------------------
+
+ - [ ] specialni pohled WC na upravy podle friday listu
  - [ ] PLUS - fulltext
  - [ ] PLUS - 'při hledání campů v přihlášce (vpravo na boku) bychom preferovaly' vidět stejne info jako u prirazenych
  - [ ] PLUS - parovani existujicich plateb s existujici prihlaskou

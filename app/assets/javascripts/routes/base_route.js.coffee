@@ -35,7 +35,7 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
         wc = wa.get('workcamp.name')
         msg = "Do you really want to remove '#{wc}' from the application of #{who}?"
         return unless window.confirm(msg)
-        
+
       if wa.get('isNew')
         @get('model').removeObject(wa)
       else

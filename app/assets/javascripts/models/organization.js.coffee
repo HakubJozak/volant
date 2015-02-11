@@ -12,9 +12,9 @@ Volant.Organization = DS.Model.extend
   fax: DS.attr 'string'
   website: DS.attr 'string'
 
-  outgoing_email: (->
-    'change-me@google.com'
-  ).property('email_contacts.@each')
+  outgoing_email: DS.attr 'string'
+  incoming_email: DS.attr 'string'
+  ltv_email: DS.attr 'string'
 
-  for_email: ->
-    @_super('outgoing_email')
+  
+

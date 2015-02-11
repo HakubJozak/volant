@@ -18,15 +18,18 @@ class Organization < ActiveRecord::Base
     where(arel)
   }
 
-  # kinds: :incoming, :outgoing, :off
-  def email(kind = :outgoing)
-    contact = emails.find_by_kind(kind.to_s.upcase)
-    contact ? contact.address : nil
+  # Delegates for Export::Excel
+  def country_zone
+    country.country_zone.name_en
   end
 
-  def to_s
-    name
+  def country_region
+    country.region
   end
+
+  def country_name
+    country.name_en
+  end    
 
   ## TODO - cache
   def self.default_organization

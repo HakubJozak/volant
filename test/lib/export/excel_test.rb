@@ -18,7 +18,7 @@ module Export
       csv = Outgoing::ApplyForm.to_csv
       assert_equal csv.lines.count, 3
       assert_match /;Austria;/,csv
-      assert_match /XYZ/,csv      
+      assert_match /XYZ/,csv
     end
   end
 end

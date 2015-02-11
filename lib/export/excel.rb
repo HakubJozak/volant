@@ -12,8 +12,8 @@ module Export
             references(:current_workcamp,:current_assignment,:payment)
 
           form_attrs = [ :id,:created_at, :cancelled, :general_remarks, :motivation, :fee ]
-          payment_attrs = [ :amount, :received, :description, :returned_date, :returned_amount ]
-          org_attrs = [ :country, :name, :code, :networks, :phone, :mobile ]
+          payment_attrs = [ :amount, :received, :description, :returned_date, :returned_amount, :return_reason ]
+          org_attrs = [ :country_name, :country_region, :country_zone, :name, :code, :networks, :phone, :mobile ]
           wc_attrs = [ :code, :name, :begin, :end, :intentions, :extra_fee ]
           volunteer_attrs = [ :firstname, :lastname, :gender, :age, :birthnumber, :birthdate,
                               :nationality, :occupation, :email, :phone,
@@ -52,15 +52,13 @@ module Export
 
         def csv_data(attrs, obj)
           # use empty array if the object is nil
-          obj = attrs.map { nil } unless obj
+          return attrs.map { nil } unless obj
 
           attrs.map do |a|
-            value = obj.send(a) rescue nil
+            value = obj.send(a)
 
             if Date === value or a == :created_at
               I18n.l(value.to_date) rescue nil
-            elsif Country === value
-              value.name_en
             elsif [:intentions,:networks,:tags].include?(a)
               value.join(',') rescue nil
             else

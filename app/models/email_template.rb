@@ -23,12 +23,14 @@ class EmailTemplate < ActiveRecord::Base
   end
 
   private
-  
+
   def data
-    raise 'Missing apply_form' unless @apply_form 
+    raise 'Missing apply_form' unless @apply_form
     @data ||= {
       volunteer: @apply_form.volunteer.attributes,
-      workcamps_list: workcamps_list
+      workcamps_list: workcamps_list,
+      application: @apply_form.attributes,
+      workcamp: @apply_form.current_workcamp.try(:attributes)
     }
   end
 
@@ -39,7 +41,7 @@ class EmailTemplate < ActiveRecord::Base
 
     "<ol>#{items}</ol>"
   end
-  
+
   class MessageData
     include ActiveModel::Model
     include ActiveModel::Serialization
@@ -50,5 +52,5 @@ class EmailTemplate < ActiveRecord::Base
       { to: nil,from: nil,cc: nil,bcc: nil,subject: nil,body: nil}
     end
   end
-  
+
 end
