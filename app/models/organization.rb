@@ -20,7 +20,7 @@ class Organization < ActiveRecord::Base
 
   # Delegates for Export::Excel
   def country_zone
-    country.country_zone.name_en
+    country.country_zone.try(:name_en)
   end
 
   def country_region

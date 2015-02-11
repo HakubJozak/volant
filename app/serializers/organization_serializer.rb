@@ -8,15 +8,15 @@ class OrganizationSerializer < ApplicationSerializer
     :address,  :contact_person,  :phone,  :mobile,  :fax,  :website
 
   def outgoing_email
-    email_contacts.outgoing.first.address
+    email_contacts.outgoing.first.try(:address)
   end
 
   def incoming_email
-    email_contacts.incoming.first.address
+    email_contacts.incoming.first.try(:address)
   end
 
   def ltv_email
-    email_contacts.ltv.first.address
+    email_contacts.ltv.first.try(:address)
   end  
   
   def email_contacts
