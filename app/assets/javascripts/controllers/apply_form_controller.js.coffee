@@ -16,11 +16,10 @@ Volant.ApplyFormController = Volant.ObjectController.extend({
 
   actions:
     rollback: ->
-      reset = (m) ->
-        m.get('errors').clear();
-        m.rollback()
-
-      reset(m) for m in @models()
+      for m in @models()
+        m.get('errors').clear()
+        m.rollback()      
+      @transitionTo 'apply_forms'
       false
 
   models: -> [ @get('model'), @get('model.volunteer'), @get('model.payment') ]

@@ -32,8 +32,8 @@
       p.list-group-item-heading
         each workcamp_assignments itemController='workcampAssignmentInsideWorkcamp'
           = link-to 'apply_form' apply_form
-            if isCurrentWorkcamp
+            if isRelevant
               | {{apply_form.name}} ({{apply_form.age}}) {{apply-form-state-icon apply_form.state}}
               each apply_form.tags
                 tag this
-            ' ,
+              ' ,

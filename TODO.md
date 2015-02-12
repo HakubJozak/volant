@@ -29,12 +29,12 @@
  - [x]  Volant: přece jen prosíme přidat do exportu CSV dva údaje - region a zone
 
 __Bugy__
- - [ ] detail prihlasky, nefunguje 'storno'
+ - [x] detail prihlasky, nefunguje 'storno'
  - [ ] prokliky s dashboardu nefuguji
  - [ ] bug strankovani
  - [x] workcampy se nehledaji podle kodu
  - [ ] incoming smichan s outgoingem - workcampy
- - [ ] - zobrazování přihlášených/přijatých lidí
+ - [x] - zobrazování přihlášených/přijatých lidí
        - bud je to aktualni workcamp
        - neni aktualni, ale nejsem jinam prijatej
  - [x] automatický mail (zažádání o přijetí) - u data narození se přiřadí hodina „+GMT +0200 (Střední Evropa (letní čas))“
