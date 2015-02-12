@@ -43,6 +43,14 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
       @flash_info "Workcamp removed from the application."
       false
 
+    refresh: ->
+      @refresh()
+      false
+
+    search: ->
+      @refresh()
+      false
+
     save: ->
       console.log 'Saving',@currentModel
       @currentModel.get('errors').clear()

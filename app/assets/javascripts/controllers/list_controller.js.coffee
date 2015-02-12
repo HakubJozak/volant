@@ -1,4 +1,4 @@
-Volant.ListController = Ember.ArrayController.extend({
+Volant.ListController = Ember.ArrayController.extend
 
   needs: ['application','pagination']
   year: Ember.computed.alias('controllers.application.year')
@@ -12,9 +12,11 @@ Volant.ListController = Ember.ArrayController.extend({
   ).observes('year')
 
   actions:
+    search: ->
+      @set('page',1)
+      true
+
     set_page: (p) ->
       @set('page',p)
-      @send 'search'
+      @send 'refresh'
       false
-
-})
