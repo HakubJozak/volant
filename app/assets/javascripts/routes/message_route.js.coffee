@@ -28,14 +28,18 @@ Volant.MessageRoute = Volant.BaseRoute.extend
     @_super(controller,message)
 
   applyTemplate: (tmpl,message) ->
-    context = @message_context(message).then (context) ->
+    context = @message_context(message).then (context) =>
+      error = (e) =>
+        console.error e
+        @flash_error e
+
       console.log 'Message context', context
-      message.set 'subject', tmpl.eval_field('subject',context)
-      message.set 'html_body', tmpl.eval_field('body',context)
-      message.set 'from', tmpl.eval_field('from',context)
-      message.set 'to', tmpl.eval_field('to',context)
-      message.set 'cc', tmpl.eval_field('cc',context)
-      message.set 'bcc', tmpl.eval_field('bcc',context)
+      message.set 'subject', tmpl.eval_field('subject',context,error)
+      message.set 'html_body', tmpl.eval_field('body',context,error)
+      message.set 'from', tmpl.eval_field('from',context,error)
+      message.set 'to', tmpl.eval_field('to',context,error)
+      message.set 'cc', tmpl.eval_field('cc',context,error)
+      message.set 'bcc', tmpl.eval_field('bcc',context,error)
 
   message_context: (message) ->
     message.get('apply_form').then (apply_form) =>
