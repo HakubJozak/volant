@@ -31,7 +31,7 @@
 __Bugy__
  - [x] detail prihlasky, nefunguje 'storno'
  - [ ] prokliky s dashboardu nefuguji
- - [ ] bug strankovani
+ - [x] bug strankovani
  - [x] workcampy se nehledaji podle kodu
  - [ ] incoming smichan s outgoingem - workcampy
  - [x] - zobrazování přihlášených/přijatých lidí
