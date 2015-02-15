@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, # :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  belongs_to :account
   has_many :messages
   has_many :starrings
   has_many :favorites, through: :starrings

@@ -55,6 +55,40 @@ CREATE VIEW accepted_assignments AS
 
 
 --
+-- Name: accounts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE accounts (
+    id integer NOT NULL,
+    organization_id integer,
+    season_start date,
+    organization_response_limit integer,
+    infosheet_waiting_limit integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: accounts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE accounts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: accounts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE accounts_id_seq OWNED BY accounts.id;
+
+
+--
 -- Name: countries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1235,6 +1269,13 @@ ALTER SEQUENCE workcamps_id_seq OWNED BY workcamps.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY accounts ALTER COLUMN id SET DEFAULT nextval('accounts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY apply_forms ALTER COLUMN id SET DEFAULT nextval('apply_forms_id_seq'::regclass);
 
 
@@ -1439,6 +1480,14 @@ ALTER TABLE ONLY workcamp_intentions ALTER COLUMN id SET DEFAULT nextval('workca
 --
 
 ALTER TABLE ONLY workcamps ALTER COLUMN id SET DEFAULT nextval('workcamps_id_seq'::regclass);
+
+
+--
+-- Name: accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY accounts
+    ADD CONSTRAINT accounts_pkey PRIMARY KEY (id);
 
 
 --
@@ -2303,4 +2352,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141226215131');
 INSERT INTO schema_migrations (version) VALUES ('20150107124536');
 
 INSERT INTO schema_migrations (version) VALUES ('20150112142151');
+
+INSERT INTO schema_migrations (version) VALUES ('20150212151917');
 

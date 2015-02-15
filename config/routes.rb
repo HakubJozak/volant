@@ -65,6 +65,7 @@ Rails.application.routes.draw do
 
   # JSON API - not to clash with the above route ^
   resources :users
+  resources :accounts, only: [ :update, :show ]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

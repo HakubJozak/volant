@@ -2,7 +2,6 @@
 class Workcamp < ActiveRecord::Base
 
   DURATION_SQL = '(EXTRACT(epoch FROM age("end","begin"))/(3600 * 24))'
-  SEASON_START = Date.new(2015,1,1)
 
   include AllianceExporter
   include ActiveRecord::Diff
@@ -21,10 +20,9 @@ class Workcamp < ActiveRecord::Base
   has_many :apply_forms, through: :workcamp_assignments, dependent: :destroy, class_name: 'Outgoing::ApplyForm'
 
   scope :min_duration, lambda { |d| where("#{DURATION_SQL} >= ?", d) }
-
   scope :max_duration, lambda { |d| where("#{DURATION_SQL} <= ?", d) }
 
-  scope :published, -> { where %{(publish_mode = 'ALWAYS') OR (publish_mode = 'SEASON' AND current_date >= ?  AND ("begin" IS NULL or "begin" >= current_date))},SEASON_START }
+  scope :published, -> (season_start) { where %{(publish_mode = 'ALWAYS') OR (publish_mode = 'SEASON' AND current_date >= ?  AND ("begin" IS NULL or "begin" >= current_date))},season_start}
 
 
   scope :year, lambda { |year|

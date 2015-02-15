@@ -12,6 +12,14 @@ end
 class ActiveSupport::TestCase
   fixtures :all
 
+  setup do
+    Account.create!(organization: Organization.find_by_code('SDA'),
+                    organization_response_limit: 4,
+                    infosheet_waiting_limit: 30,
+                    season_start: Date.new(2015,3,15))
+    Factory.create(:organization, code:'SDA')
+  end
+
   def assert_valid(record)
     assert record.valid?, "Record #{record.inspect} is invalid"
   end
@@ -83,10 +91,5 @@ class ActiveSupport::TestCase
 
   def authorize_as(user)
     @request.env["HTTP_AUTHORIZATION"] = user ? ActionController::HttpAuthentication::Basic.encode_credentials(users(user).login, 'test') : nil
-  end
-
-  def create_default_organization
-#    Factory.create(:organization, :code => Volant::Config::default_organization_code)
-    Factory.create(:organization, :code => 'SDA')
   end
 end
