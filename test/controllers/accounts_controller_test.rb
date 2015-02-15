@@ -2,8 +2,14 @@ require 'test_helper'
 
 class AccountsControllerTest < ActionController::TestCase
   setup do
-    @account = Factory(:account)
     sign_in users(:john)
+    @account = Account.current
+  end
+
+  test "index" do
+    get :index
+    assert_response :success
+    assert_equal 1,json_response['accounts'].size
   end
 
   test "update" do
@@ -11,10 +17,5 @@ class AccountsControllerTest < ActionController::TestCase
     assert_response :success, response.body.to_s
   end
 
-  test "destroy" do
-    assert_difference('Account.count', -1) do
-      delete :destroy, id: @account
-      assert_response :success, response.body.to_s
-    end
-  end
+
 end

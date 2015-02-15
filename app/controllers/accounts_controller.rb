@@ -3,6 +3,10 @@ class AccountsController < ApplicationController
 
   before_action :find_account, except: [:index,:create]
 
+  def index
+    render json: Account.all, each_serializer: AccountSerializer
+  end
+
   # GET /accounts/1
   def show
     render json: @account, serializer: AccountSerializer
@@ -20,10 +24,11 @@ class AccountsController < ApplicationController
   private
 
   def find_account
-    @account = Account.find(params[:id])
+    @account = Account.current
+    # @account = Account.find(params[:id])
   end
 
   def account_params
-    params.require(:account).permit(:season_start, :ask_response_limit, :infosheet_waiting_limit)
+    params.require(:account).permit(:season_start, :organization_response_limit, :infosheet_waiting_limit,:organization_id)
   end
 end
