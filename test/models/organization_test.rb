@@ -4,7 +4,6 @@ class OrganizationTest < ActiveSupport::TestCase
 
 
   def setup
-    create_default_organization
     @seeds = Factory.create(:organization)
     @seeds.emails.create(:address => 'out@example.com', :kind => 'OUTGOING')
     @seeds.emails.create(:address => 'in@example.com', :kind => 'INCOMING')

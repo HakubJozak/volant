@@ -60,10 +60,10 @@ CREATE VIEW accepted_assignments AS
 
 CREATE TABLE accounts (
     id integer NOT NULL,
-    organization_id integer,
-    season_start date,
-    organization_response_limit integer,
-    infosheet_waiting_limit integer,
+    organization_id integer NOT NULL,
+    season_start date DEFAULT '2015-03-15'::date NOT NULL,
+    organization_response_limit integer DEFAULT 4 NOT NULL,
+    infosheet_waiting_limit integer DEFAULT 4 NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
