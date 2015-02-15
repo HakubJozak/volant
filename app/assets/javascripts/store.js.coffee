@@ -1,22 +1,6 @@
 Volant.ApplicationStore = DS.Store.extend()
 
 
-# Override the default adapter with the `DS.ActiveModelAdapter` which
-# is built to work nicely with the ActiveModel::Serializers gem.
-Volant.ApplicationAdapter = DS.ActiveModelAdapter.extend
-  coalesceFindRequests: true
-
-  ajaxError: (jqXHR) ->
-    invalid_error = @_super(jqXHR)
-
-    if jqXHR && jqXHR.status == 422
-      json = Ember.$.parseJSON(jqXHR.responseText)
-      invalid_error.full_rails_message = json.full_message
-
-    invalid_error
-
-
-
 Volant.ApplicationSerializer = DS.ActiveModelSerializer.extend
   serializeHasMany: (record, json, relationship) ->
     json_key = "#{relationship.key.singularize()}_ids"

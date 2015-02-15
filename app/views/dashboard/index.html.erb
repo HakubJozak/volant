@@ -10,6 +10,7 @@
   <%- if user_signed_in? %>
     <meta name="current-user" content="<%= UserSerializer.new(current_user).to_json %>" />
   <% end %>
+  <meta name="current-account-id" content="<%= Account.current.id %>" />
 </head>
 <body>
   <%= yield %>

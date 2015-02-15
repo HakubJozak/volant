@@ -20,8 +20,8 @@ class ApplyFormSerializer < ApplicationSerializer
 
   def missing_infosheet_alert
     object.no_infosheet?
-  end  
-  
+  end
+
   def current_message
     object.current_message
   end

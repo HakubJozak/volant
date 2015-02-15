@@ -49,3 +49,5 @@ Volant.Router.map ->
   @resource 'email_templates', ->
   @route 'new_email_template', {path: '/email_templates/new'}
   @resource 'email_template', {path: '/email_templates/:email_template_id'}
+
+  @route 'account'

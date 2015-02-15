@@ -18,6 +18,7 @@
 #= require barbecue
 
 #= require_self
+#= require_tree ./adapters
 #= require ./store
 #= require_tree ./mixins
 #= require_tree ./models
@@ -79,5 +80,3 @@ Ember.Application.initializer
       # container.injection('controller', 'current_user', 'controller:currentUser')
 
 window.Volant = Ember.Application.create()
-
-

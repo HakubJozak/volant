@@ -1,0 +1,23 @@
+h3
+  ' Account Settings
+
+= errors.messages
+
+form submit="save" class="form"
+  .form-group
+    model-field errors=errors.seasonStart
+      label.control-label Season start
+      = view Volant.DateView dateBinding='seasonStart'
+
+  .form-group
+    model-field errors=errors.organization_response_limit
+      label.control-label Organization response limit
+      = input value=organizationResponseLimit class="form-control" type="number"
+  .form-group
+    model-field errors=errors.infosheet_waiting_limit
+      label.control-label Infosheet waiting limit
+      = input value=infosheetWaitingLimit class="form-control" type="number"
+
+  .button-group
+    button.btn.btn-primary type="submit" Save
+    button.btn.btn-default{action "rollback"} type="button" Cancel
