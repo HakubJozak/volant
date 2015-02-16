@@ -8,8 +8,8 @@
 
 # Outgoing
  - [x] dokumentace k email sablonam (zejmena promenne, ktere jsou k dispozici)
- - [ ] filtrovani podle roku 'nefunguje' na webu (nastavit 'season' vsem ktere jsou mimo 2015)
- - [ ] season start 13.3.2015
+ - [x] filtrovani podle roku 'nefunguje' na webu (nastavit 'season' vsem ktere jsou mimo 2015)
+ - [x] season start 13.3.2015
  - [ ] prepnout mailing na normalni
  
  - [x] opravit testy
@@ -18,7 +18,7 @@
  - [x] alert 5 týdnů před začátkem workcampu když není odeslán infosheet
  - [x] export CSV prihlasek (pro statistiky)
  - [x] vyhledavani plateb
- - [ ] uprava nastaveni: konec sezony apd.
+ - [x] uprava nastaveni: konec sezony apd.
 
  - [ ] nastaveni (zacatek sezony,default org code)
  - [x] pridat 'return reason' do exportu plateb
