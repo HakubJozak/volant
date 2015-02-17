@@ -5,5 +5,9 @@ Volant.IncomingWorkcampsRoute = Volant.WorkcampsRoute.extend
   controllerName: 'workcamps'
   templateName: 'workcamps'
 
+  afterSave: (record) ->
+    @transitionTo('incoming/workcamps')
+    @flash_info('Saved.')
+
   title: ->
     "Workcamps - Incoming"

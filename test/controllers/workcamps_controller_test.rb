@@ -168,13 +168,26 @@ class WorkcampsControllerTest < ActionController::TestCase
   end
 
   test "create" do
-    assert_difference('Workcamp.count') do
+    assert_difference('Outgoing::Workcamp.count') do
       inex = organizations(:inex)
       attrs = Factory.attributes_for(:workcamp, country_id: inex.country.id, organization_id: inex.id)
       post :create, workcamp: attrs
 
       assert_response :success, response.body.to_s
       assert_not_nil json_response['workcamp']['id'], json_response
+    end
+  end
+
+  test "create incoming" do
+    assert_difference('Incoming::Workcamp.count') do
+      inex = organizations(:inex)
+      attrs = Factory.attributes_for(:incoming_workcamp, country_id: inex.country.id, organization_id: inex.id, type: 'incoming')
+
+      post :create, workcamp: attrs
+
+      assert_response :success, response.body.to_s
+      assert_not_nil json_response['workcamp']['id'], json_response
+      assert_equal 'incoming',json_response['workcamp']['type']
     end
   end
 

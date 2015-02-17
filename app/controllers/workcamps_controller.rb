@@ -99,8 +99,10 @@ class WorkcampsController < ApplicationController
   end
 
   def workcamps
-    case params[:type] || params[:workcamp].try(:[],:type)
-    when 'incoming' then Workcamp.where(organization_id: current_organization)
+    type = params[:type] || params[:workcamp].try(:[],:type)
+    
+    case type.try(:downcase)
+    when 'incoming' then Incoming::Workcamp
     when 'ltv' then Ltv::Workcamp
     else Workcamp
     end

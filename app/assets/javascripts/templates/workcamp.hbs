@@ -8,10 +8,15 @@
         {{flag country}}
       {{/if}}
       {{#if code}}
-        {{code}} &ndash; {{name}}
+        {{code}} &ndash;
+      {{/if}}
+      
+      {{#if name}}
+        {{name}}
       {{else}}
         <span class="text-muted">New Workcamp</span>
       {{/if}}
+      <small>{{type}}
     </h2>
     <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
       <fieldset>

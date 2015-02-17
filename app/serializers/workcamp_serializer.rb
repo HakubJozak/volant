@@ -15,12 +15,13 @@ class WorkcampSerializer < ApplicationSerializer
       :longitude, :latitude, :requirements,
       :organization_id, :country_id
 
-  readonly_attributes :id, :free_places, :free_places_for_males, :free_places_for_females, :state, :duration
+  readonly_attributes :id, :free_places, :free_places_for_males, :free_places_for_females, :state, :duration, :type
 
   def type
-    if object.is_a?(Ltv::Workcamp)
+    case object
+    when Ltv::Workcamp
       'ltv'
-    elsif object.organization.code == 'SDA'
+    when Incoming::Workcamp
       'incoming'
     else
       'outgoing'
