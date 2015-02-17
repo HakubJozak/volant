@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
       apply_form = ApplyForm.find(id)
       @message = apply_form.messages.build(message_params)
       @message.user = current_user
-      apply_form.save
+      apply_form.save(validate: false)
     else
       @message = Message.new(message_params)
       @message.user = current_user

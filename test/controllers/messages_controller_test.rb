@@ -38,6 +38,8 @@ class MessagesControllerTest < ActionController::TestCase
     assert_difference('Message.count') do
       attrs = Factory.attributes_for(:message)
       form = Factory(:apply_form)
+      # regression - should not fail for invalid applications
+      form.update_column(:motivation,nil)
       attrs[:apply_form_id] = form.id
 
       post :create, message: attrs
@@ -56,7 +58,7 @@ class MessagesControllerTest < ActionController::TestCase
                              { type: 'VefPdfAttachment', apply_form_id: form}]
 
       post :create, message: attrs
-      
+
       assert_not_nil id = json_response['message']['id']
       assert_not_nil saved = Message.find(id)
       assert_equal form.id, saved.attachments.first.apply_form.id
