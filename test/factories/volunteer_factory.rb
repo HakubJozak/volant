@@ -12,6 +12,8 @@ Factory.define :person do |f|
   f.street 'Somewhere 22'
   f.birthdate 20.years.ago
   f.past_experience 'Rich'
+  f.emergency_day '23239'
+  f.emergency_name 'Tony'  
 end
 
 Factory.define :volunteer, :class => Volunteer, :parent => :person do |f|

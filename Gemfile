@@ -64,14 +64,13 @@ gem 'rack-jsonp-middleware'
 
 gem 'font-awesome-rails'
 
-# only email templates data migration 
+# only email templates data migration
 # gem 'redcarpet', require: false
 
 
 group :development do
   gem 'letter_opener'
   gem 'faker'
-  gem 'spring'
   gem 'guard-livereload', '2.3.1', require: false
   gem 'mina', require: false
 #  gem 'mina-puma', require: false
