@@ -33,5 +33,5 @@ end
 Factory.define :participant, :class => Incoming::Participant, :parent => :person do |p|
   p.association :country
   p.association :organization
-  p.apply_form { Incoming::ApplyForm.create }
+  p.apply_form { Incoming::ApplyForm.create(motivation: 'stuff') }
 end
