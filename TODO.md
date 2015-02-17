@@ -29,8 +29,10 @@
  - [x]  Volant: přece jen prosíme přidat do exportu CSV dva údaje - region a zone
 
 __Bugy__
+ - [ ] prvni priloha se posle prazdna a je 'untitled'
+ - [ ] pri zakladani workcampu se nekdy nedari jej ulozit a zobrazi se 2 workcampy pod sebou
  - [x] detail prihlasky, nefunguje 'storno'
- - [ ] prokliky s dashboardu nefuguji
+ - [ ] prokliky s dashboardu nefunguji
  - [x] bug strankovani
  - [x] workcampy se nehledaji podle kodu
  - [ ] incoming smichan s outgoingem - workcampy
