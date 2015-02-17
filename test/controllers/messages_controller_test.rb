@@ -83,6 +83,16 @@ class MessagesControllerTest < ActionController::TestCase
     assert_not_nil json_response['message']['sent_at']
   end
 
+  test 'deliver' do
+    form = Factory(:paid_form)
+    form.update_column(:motivation,nil)
+    @message.update_attribute(:apply_form,form)
+
+    post :deliver, id: @message.id
+
+    assert_response :success, response.body.to_s
+  end
+
   test "destroy" do
     assert_difference('Message.count', -1) do
       delete :destroy, id: @message

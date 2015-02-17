@@ -22,7 +22,7 @@ class Message < ActiveRecord::Base
 
         if apply_form && ALLOWED_ACTIONS.include?(action.to_sym)
           apply_form.send(action)
-          apply_form.save!
+          apply_form.save(validate: false)
         end
 
         save!
