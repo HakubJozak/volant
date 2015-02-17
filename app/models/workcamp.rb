@@ -22,7 +22,7 @@ class Workcamp < ActiveRecord::Base
   scope :min_duration, lambda { |d| where("#{DURATION_SQL} >= ?", d) }
   scope :max_duration, lambda { |d| where("#{DURATION_SQL} <= ?", d) }
 
-  scope :published, -> (season_start) { where %{(publish_mode = 'ALWAYS') OR (publish_mode = 'SEASON' AND current_date >= ?  AND ("begin" IS NULL or "begin" >= current_date))},season_start}
+  scope :published, -> (season_end) { where %{(publish_mode = 'ALWAYS') OR (publish_mode = 'SEASON' AND "begin" <= ?  AND "begin" >= current_date)},season_end}
 
 
   scope :year, lambda { |year|

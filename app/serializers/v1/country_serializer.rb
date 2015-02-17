@@ -13,11 +13,11 @@ class V1::CountrySerializer < ActiveModel::Serializer
   end
 
   def workcamps_count
-    object.workcamps.published(Account.current.season_start).count
+    object.workcamps.published(Account.current.season_end).count
   end
 
   def ltv_count
-    object.ltv_projects.published(Account.current.season_start).count
+    object.ltv_projects.published(Account.current.season_end).count
   end
 
 
