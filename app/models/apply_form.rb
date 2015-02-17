@@ -10,6 +10,8 @@ class ApplyForm < ActiveRecord::Base
 
   create_date_time_accessors
 
+  validates_presence_of :motivation
+
   # TODO: replace by real DB attributes
   delegate :firstname, :lastname, :gender, :email, :phone, :birthdate, :birthnumber,
            :nationality, :occupation, :account, :emergency_name, :emergency_day,

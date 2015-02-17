@@ -4,7 +4,7 @@ require 'test_helper'
 class V1::ApplyFormsControllerTest < ActionController::TestCase
   setup do
     DataLoader.load_emails
-    
+
     @camps = 12.times.map { Factory(:outgoing_workcamp) }
     @attrs = {
       past_experience: 'I used to shoot things 100 years ago.',
@@ -25,7 +25,11 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       emergency_name: 'Yo Mama',
       speak_well: 'Český a Maďarský',
       speak_some: 'Dojč',
-      workcamp_ids: @camps.map(&:id)
+      workcamp_ids: @camps.map(&:id),
+      street: 'Ulise v Prace 22',
+      city: 'Prag',
+      zipcode: '00001',
+      motivation: 'Ich mochte gehen na workcamp.'
     }
   end
 
@@ -48,6 +52,19 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
     assert_not_nil json['errors']['volunteer.birthnumber']
   end
 
+  test 'create: validation' do
+    attrs = [ :firstname, :lastname, :birthnumber, :occupation, :birthdate, :email,
+              :phone, :gender, :street, :city, :zipcode, :emergency_name, :emergency_day,
+            ]
+      attrs.each do |attr|
+      @attrs[attr] = ''
+      post :create, apply_form: @attrs
+      assert_not_nil json['errors']["volunteer.#{attr}"],
+                     "Presence of #{attr} was not validated"
+    end
+
+  end
+  
   test 'create: update old volunteer data' do
     old = Factory(:volunteer, birthnumber: '0103260424', firstname: 'OldName')
 

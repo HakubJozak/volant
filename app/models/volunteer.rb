@@ -5,7 +5,10 @@ class Volunteer < Person
 
   create_date_time_accessors
 
-  validates_presence_of :firstname, :lastname, :gender, :email
+  validates_presence_of :firstname, :lastname, :birthnumber, :occupation, :birthdate, :email,
+                        :phone, :gender, :street, :city, :zipcode, :emergency_name, :emergency_day
+
+  
   has_many :apply_forms, :class_name => 'Outgoing::ApplyForm'
 
   scope :named, -> { where('rejected IS NULL') }
