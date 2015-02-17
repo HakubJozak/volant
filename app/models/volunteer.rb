@@ -9,7 +9,7 @@ class Volunteer < Person
                         :phone, :gender, :street, :city, :zipcode, :emergency_name, :emergency_day
 
 
-  has_many :apply_forms, :class_name => 'Outgoing::ApplyForm'
+  has_many :apply_forms, :class_name => 'Outgoing::ApplyForm', validate: false
 
   scope :named, -> { where('rejected IS NULL') }
 

@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :account
-  has_many :messages
+  has_many :messages, validate: false
   has_many :starrings
-  has_many :favorites, through: :starrings
+  has_many :favorites, through: :starrings, validate: false
 
   # to allow Volant 1 and 2 run above the same DB at first
   self.table_name = 'devise_users'

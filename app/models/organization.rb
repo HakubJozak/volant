@@ -1,7 +1,7 @@
 class Organization < ActiveRecord::Base
 
 #  has_many :email_contacts
-  has_many :workcamps, dependent: :destroy
+  has_many :workcamps, dependent: :destroy, validate: false
   belongs_to :country
   validates_presence_of :name, :code, :country
 
