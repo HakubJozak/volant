@@ -22,12 +22,12 @@ class V1::WorkcampsController < V1::BaseController
       end
     end
 
-    if from = filter[:from]
-      search = search.where('"begin" >= ?',Date.parse(from))
+    if from = date_param(:from)
+      search = search.where('"begin" >= ?',from)
     end
 
-    if to = filter[:to]
-      search = search.where('"end" <= ?',Date.parse(to))
+    if to = date_param(:to)
+      search = search.where('"end" <= ?',to)
     end
 
     if md = filter[:min_duration]
@@ -134,5 +134,12 @@ class V1::WorkcampsController < V1::BaseController
     people.inject(0) { |sum,person| sum + (person[:g].to_s.downcase == gender ? 1 : 0) }
   end
 
+  def date_param(attr)
+    if str = filter[attr].presence
+      Date.parse(str)
+    end
+  rescue ArgumentError
+    nil
+  end
 
 end

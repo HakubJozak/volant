@@ -108,7 +108,7 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     assert_response :success
 
     get :index, scope: 'urgent'
-    assert_response :success    
+    assert_response :success
   end
 
   test "short" do
@@ -126,10 +126,31 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     target.save
 
     get :similar, id: @workcamp.id
-    
+
     assert_response :success
-    assert_equal 1,json_response['workcamps'].size    
+    assert_equal 1,json_response['workcamps'].size
     assert_equal target.id,json_response['workcamps'][0]['id']
   end
 
+  test 'search by from' do
+    Workcamp.destroy_all
+    target = Factory(:outgoing_workcamp, begin: 30.days.from_now)
+    get :index, from: 15.days.from_now.to_s
+    assert_response :success
+    assert_equal target.id,json_response['workcamps'][0]['id']
+    
+    # regression to parse_errors
+    get :index, from: 'cerven'
+    assert_response :success    
+  end
+
+
+  test 'search by to' do
+    # regression to parse_errors
+    get :index, to: 'cerven'
+    assert_response :success    
+  end
+  
+
+  
 end
