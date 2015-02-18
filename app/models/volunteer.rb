@@ -6,7 +6,7 @@ class Volunteer < Person
   create_date_time_accessors
 
   validates_presence_of :firstname, :lastname, :birthnumber, :occupation, :birthdate, :email,
-                        :phone, :gender, :street, :city, :emergency_name, :emergency_day # :zipcode
+                        :phone, :gender, :street, :city, :emergency_name, :emergency_day, :zipcode
 
 
   has_many :apply_forms, :class_name => 'Outgoing::ApplyForm', validate: false
