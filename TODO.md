@@ -1,9 +1,9 @@
 # Bugy
  - [x] email 'ask' nema seznam workcampu
- - [ ] ve Volantu se neda vytvorit nova prihlaska
+ - [x] ve Volantu se neda vytvorit nova prihlaska
  - [ ] krome 'ask' emailu se neposilaji skryte kopie
  - [ ] prvni priloha se posle prazdna a je 'untitled'
- - [ ] pri zakladani workcampu se nekdy nedari jej ulozit a zobrazi se 2 workcampy pod sebou
+ - [x] pri zakladani workcampu se nekdy nedari jej ulozit a zobrazi se 2 workcampy pod sebou
  - [x] detail prihlasky, nefunguje 'storno'
  - [ ] prokliky s dashboardu nefunguji
  - [x] bug strankovani

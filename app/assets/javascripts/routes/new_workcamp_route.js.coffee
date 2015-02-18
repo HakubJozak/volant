@@ -1,5 +1,6 @@
 Volant.NewWorkcampRoute = Volant.WorkcampRoute.extend
-  templateName: 'workcamp'
+
+  viewName: 'workcamp'
   controllerName: 'workcamp'
 
   afterSave: (record) ->
