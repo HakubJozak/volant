@@ -6,6 +6,10 @@ Volant.NewApplyFormRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
   title: ->
     'New application'
 
+  afterSave: (record) ->
+    @transitionTo 'apply_forms'
+    @flash_info('Saved.')
+
   model: (params,transition) ->
     defaults = {
       volunteer: @store.createRecord('volunteer')

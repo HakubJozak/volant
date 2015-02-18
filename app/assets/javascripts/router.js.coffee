@@ -6,21 +6,21 @@ Volant.Router.map ->
 
   @resource 'apply_forms'
   @resource 'ltv_apply_forms', path: '/ltv/apply_forms'
-  @route 'apply_form', path: '/apply_forms/:apply_form_id'
   @route 'new_apply_form', path: '/apply_forms/:type/new'
+  @route 'apply_form', path: '/apply_forms/:apply_form_id'
 
-
-  @resource 'workcamps'
-  @resource 'workcamp', path: '/workcamps/:workcamp_id'
   @route 'new_workcamp', path: '/workcamps/:type/new'
+  @resource 'workcamp', path: '/workcamps/:workcamp_id'
+  @resource 'workcamps'
 
   @resource 'imported_workcamps'
   @resource 'incoming_workcamps', path: '/incoming/workcamps'
   @resource 'ltv_workcamps', path: '/ltv/workcamps'
 
   @resource 'organizations'
-  @resource 'organization', path: '/organizations/:organization_id'
   @resource 'new_organization', path: '/organizations/new'
+  @resource 'organization', path: '/organizations/:organization_id'
+
 
   @resource 'message', {path: '/messages/:message_id'}
   @resource 'new_message', {path: '/apply_forms/:apply_form_id/messages/new/:action_name'}

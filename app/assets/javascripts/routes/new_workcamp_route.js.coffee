@@ -2,6 +2,10 @@ Volant.NewWorkcampRoute = Volant.WorkcampRoute.extend
   templateName: 'workcamp'
   controllerName: 'workcamp'
 
+  afterSave: (record) ->
+    @transitionTo 'workcamps'
+    @flash_info('Saved.')
+
   model: (params,transition) ->
     defaults = {
       language: 'English'

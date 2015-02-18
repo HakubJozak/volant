@@ -105,7 +105,10 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
 
   go_to_plural_route: (record = @currentModel) ->
     next_route = record.constructor.typeKey.decamelize().pluralize()
-    @transitionTo next_route if @routeName != next_route
+
+    if @routeName != next_route
+      console.log "Transiting to #{@routeName}"    
+      @transitionTo next_route
 
   # goToSingularRoute: (record) ->
   #   next_route = record.constructor.typeKey.decamelize()
