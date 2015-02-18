@@ -1,3 +1,21 @@
+# Bugy
+ - [ ] ve Volantu se neda vytvorit nova prihlaska
+ - [ ] krome 'ask' emailu se neposilaji skryte kopie
+ - [ ] prvni priloha se posle prazdna a je 'untitled'
+ - [ ] pri zakladani workcampu se nekdy nedari jej ulozit a zobrazi se 2 workcampy pod sebou
+ - [x] detail prihlasky, nefunguje 'storno'
+ - [ ] prokliky s dashboardu nefunguji
+ - [x] bug strankovani
+ - [x] workcampy se nehledaji podle kodu
+ - [ ] incoming smichan s outgoingem - workcampy
+ - [x] - zobrazování přihlášených/přijatých lidí
+       - bud je to aktualni workcamp
+       - neni aktualni, ale nejsem jinam prijatej
+ - [x] automatický mail (zažádání o přijetí) - u data narození se přiřadí hodina „+GMT +0200 (Střední Evropa (letní čas))“
+ - [x] vyhledavani dobrovolniku nefunguje (hledat i podle emailu)
+ - [x] vkládání xml - failed, nenahrálo se
+ - [x] import - missing project_id vyvola 500
+
 # LTV
  - [ ] CRUD workcampu
  - [ ] CRUD prihlasky 
@@ -27,22 +45,6 @@
  - [ ] poslat snippety a seznam helperu na data
 
  - [x]  Volant: přece jen prosíme přidat do exportu CSV dva údaje - region a zone
-
-__Bugy__
- - [ ] prvni priloha se posle prazdna a je 'untitled'
- - [ ] pri zakladani workcampu se nekdy nedari jej ulozit a zobrazi se 2 workcampy pod sebou
- - [x] detail prihlasky, nefunguje 'storno'
- - [ ] prokliky s dashboardu nefunguji
- - [x] bug strankovani
- - [x] workcampy se nehledaji podle kodu
- - [ ] incoming smichan s outgoingem - workcampy
- - [x] - zobrazování přihlášených/přijatých lidí
-       - bud je to aktualni workcamp
-       - neni aktualni, ale nejsem jinam prijatej
- - [x] automatický mail (zažádání o přijetí) - u data narození se přiřadí hodina „+GMT +0200 (Střední Evropa (letní čas))“
- - [x] vyhledavani dobrovolniku nefunguje (hledat i podle emailu)
- - [x] vkládání xml - failed, nenahrálo se
- - [x] import - missing project_id vyvola 500
 
 ----BONUSY --------------------------------------------------------
 

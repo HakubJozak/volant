@@ -1,5 +1,13 @@
-' {{volunteer.firstname}} {{volunteer.lastname}}({{volunteer.age}})
-gender-sign volunteer.gender
+if volunteer.lastname
+  ' {{volunteer.firstname}} {{volunteer.lastname}}
+else
+  ' New Application
+
+if volunteer.age
+  ' ({{volunteer.age}})
+
+if name
+  gender-sign volunteer.gender
 
 small
   capitalize state.name

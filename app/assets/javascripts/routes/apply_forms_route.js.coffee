@@ -1,5 +1,6 @@
 Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
-
+  newModelType: 'outgoing'
+  
   queryParams:
     order: { refreshModel: true }
     sortAscending: { refreshModel: true }
