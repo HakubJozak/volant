@@ -28,7 +28,7 @@ json = JSON.generate(apply_form: {
                        speak_well: 'Český a Maďarský',
                        speak_some: 'Dojč',
                        past_experience: 'I used to shoot things 100 years ago.',
-                       workcamp_ids: [ ]
+                       workcamp_ids: [ 46858, 46849, 0,]
                      })
 
 # host = 'volant.pelican.amagical.net'

@@ -1,4 +1,5 @@
 # Bugy
+ - [x] email 'ask' nema seznam workcampu
  - [ ] ve Volantu se neda vytvorit nova prihlaska
  - [ ] krome 'ask' emailu se neposilaji skryte kopie
  - [ ] prvni priloha se posle prazdna a je 'untitled'

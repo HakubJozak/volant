@@ -30,10 +30,19 @@ class EmailTemplate < ActiveRecord::Base
       volunteer: @apply_form.volunteer.attributes,
       workcamps_list: workcamps_list,
       application: @apply_form.attributes,
+      apply_form: @apply_form.attributes,
       workcamp: @apply_form.current_workcamp.try(:attributes)
     }
   end
 
+  # TODO: deprecate in favor of:
+  #
+  #   <ol>
+  #   {{#each application.workcamps}}
+  #     <li>{{wc.code}} - {{wc.name}}</li>
+  #   {{/each}}
+  #  </ol>
+  #
   def workcamps_list
     items = @apply_form.workcamps.reload.map do |wc|
       "<li>#{wc.code} - #{wc.name}, #{wc.begin} - #{wc.end}</li>"

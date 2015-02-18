@@ -1,6 +1,8 @@
 Volant.NewApplyFormRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
   controllerName: 'apply_form'
+
   templateName: 'apply_form'
+
   title: ->
     'New application'
 

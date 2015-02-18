@@ -96,9 +96,9 @@ module Outgoing
       volunteer = Volunteer.find_by_birthnumber(birthnumber)
 
       workcamps = attrs.delete(:workcamp_ids).to_a.map do |id|
-	Outgoing::Workcamp.live.find(id)
-      end
-
+        Workcamp.find_by_id(id)
+      end.compact
+      
       Volunteer.transaction do
         if volunteer
           form = volunteer.apply_forms.new(attrs)
