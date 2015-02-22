@@ -5,7 +5,6 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
   setup do
     DataLoader.load_emails
 
-    @camps = []
     @attrs = {
       past_experience: 'I used to shoot things 100 years ago.',
       general_remarks: 'vegetarian',
@@ -25,7 +24,6 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       emergency_name: 'Yo Mama',
       speak_well: 'Český a Maďarský',
       speak_some: 'Dojč',
-      workcamp_ids: @camps,
       street: 'Ulise v Prace 22',
       city: 'Prag',
       zipcode: '00001',
@@ -35,9 +33,9 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
 
   test 'create' do
     assert_difference('Outgoing::ApplyForm.count') do
-      12.times.each { @camps << Factory(:outgoing_workcamp) }
+      camps = 3.times.map { Factory(:outgoing_workcamp).id }
 
-      post :create, apply_form: @attrs
+      post :create, apply_form: @attrs.merge(workcamp_ids: camps)
 
       assert_response :success, response.body.to_s
       assert_not_nil form = form_by_birthnumber('0103260424')
@@ -45,15 +43,16 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       assert_equal 'Špelec',form.volunteer.lastname
       assert_equal :not_paid, form.state.name
       assert_equal '0103260424', form.volunteer.birthnumber
+      assert_equal 3, form.workcamps.reload.count
     end
   end
 
 
   test 'create LTV' do
     assert_difference('Ltv::ApplyForm.count') do
-      12.times.each { @camps << Factory(:ltv_workcamp) }
+      camps = 5.times.map { Factory(:ltv_workcamp).id }
       
-      post :create, apply_form: @attrs.merge(type: 'ltv')
+      post :create, apply_form: @attrs.merge(type: 'ltv', workcamp_ids: camps)
 
       assert_response :success, response.body.to_s
       assert_not_nil form = form_by_birthnumber('0103260424')
@@ -96,13 +95,15 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
 
   test 'create LTV: update old volunteer data' do
     assert_difference('Ltv::ApplyForm.count') do
+      camps = 5.times.map { Factory(:ltv_workcamp).id }
       old = Factory(:volunteer, birthnumber: '0103260424', firstname: 'OldName')
 
-      post :create, apply_form: @attrs.merge(type: 'ltv')
+      post :create, apply_form: @attrs.merge(type: 'ltv', workcamp_ids: camps)
 
       assert_not_nil form = form_by_birthnumber('0103260424')
       assert_equal 'Anton',form.volunteer.firstname
       assert_equal old.id,form.volunteer.id
+      assert_equal 5, form.workcamps.size
     end
   end
 

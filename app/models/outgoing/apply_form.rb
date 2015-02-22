@@ -8,14 +8,14 @@ module Outgoing
     validates_presence_of :volunteer, :fee
     delegate :asked, :accepted, :rejected, :rejected?, :infosheeted, to: :current_assignment, allow_nil: true
 
+    has_one :payment, dependent: :nullify # , select: 'id, apply_form_id, amount, returned_amount, received, returned_date, return_reason'
+    has_many :messages, dependent: :nullify, validate: false
     belongs_to :volunteer, class_name: 'Volunteer'
+
     belongs_to :current_workcamp, foreign_key: 'current_workcamp_id_cached', class_name: 'Outgoing::Workcamp'
     belongs_to :current_assignment, foreign_key: 'current_assignment_id_cached', class_name: 'Outgoing::WorkcampAssignment'
-
-    has_one :payment, dependent: :nullify # , select: 'id, apply_form_id, amount, returned_amount, received, returned_date, return_reason'
     has_many :workcamps, -> { order 'workcamp_assignments."order" ASC' }, through: :workcamp_assignments, class_name: 'Outgoing::Workcamp', validate: false
     has_many :workcamp_assignments, -> { order '"order" ASC' }, dependent: :delete_all, class_name: 'Outgoing::WorkcampAssignment', validate: false
-    has_many :messages, dependent: :nullify, validate: false
 
     accepts_nested_attributes_for :payment
     accepts_nested_attributes_for :volunteer
@@ -96,9 +96,9 @@ module Outgoing
       volunteer = Volunteer.find_by_birthnumber(birthnumber)
 
       workcamps = attrs.delete(:workcamp_ids).to_a.map do |id|
-        Workcamp.find_by_id(id)
+        ::Workcamp.find_by_id(id)
       end.compact
-      
+
       Volunteer.transaction do
         if volunteer
           form = self.new(attrs)
