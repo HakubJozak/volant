@@ -3,7 +3,7 @@
 require 'json'
 require 'net/http'
 
-json = JSON.generate(apply_form: {
+attrs = { apply_form: {
                        motivation: 'I want to be a movie star',
                        general_remarks: 'vegetarian',
                        gender: 'm',
@@ -20,7 +20,7 @@ json = JSON.generate(apply_form: {
                        city: 'Pest',
                        zipcode: '89056',
                        contact_street: '',
-                       contact_city: '',                       
+                       contact_city: '',
                        contact_zipcode: '',
                        emergency_day: '+420 777 999 999',
                        emergency_night: '+420 777 999 999',
@@ -29,7 +29,7 @@ json = JSON.generate(apply_form: {
                        speak_some: 'Dojč',
                        past_experience: 'I used to shoot things 100 years ago.',
                        workcamp_ids: [ 46858, 46849, 0,]
-                     })
+  }}
 
 # host = 'volant.pelican.amagical.net'
 # port = 80
@@ -37,8 +37,14 @@ json = JSON.generate(apply_form: {
 host = 'localhost'
 port = 9090
 
+puts 'Short'
+json = JSON.generate(attrs)
 response = Net::HTTP.new(host,port).post('/v1/apply_forms', json, { 'Content-Type' =>  'application/json' })
+puts response.body
+puts response.code
 
-
+puts 'Ltv'
+json = JSON.generate(attrs.merge(type: 'ltv'))
+response = Net::HTTP.new(host,port).post('/v1/apply_forms', json, { 'Content-Type' =>  'application/json' })
 puts response.body
 puts response.code

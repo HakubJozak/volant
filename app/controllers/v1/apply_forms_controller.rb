@@ -1,6 +1,8 @@
 class V1::ApplyFormsController < V1::BaseController
   respond_to :json
 
+  skip_before_action :verify_authenticity_token
+  
   def create
     attrs = embed_volunteer_attributes(apply_form_params)
     form = apply_forms.create_by_birthnumber(attrs)

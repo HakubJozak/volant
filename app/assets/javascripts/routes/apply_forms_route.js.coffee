@@ -1,4 +1,5 @@
 Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
+  default_filter: -> { type: 'ltv' }
   newModelType: 'outgoing'
   
   queryParams:
@@ -12,15 +13,15 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
     @setupTagsController()
 
   model: (params) ->
-    @store.find('apply_form', {
-      p: params.page
-      year: params.year
-      q: params.query
-      order: params.order
-      state: params.state
-      asc: params.sortAscending
-      tag_ids: @controllerFor(@routeName).get('tags').mapBy('id')
-    })
+    filter = @default_filter()
+    filter.p = params.page
+    filter.year = params.year
+    filter.q = params.query
+    filter.order = params.order
+    filter.state = params.state
+    filter.asc = params.sortAscending
+    filter.tag_ids = @controllerFor(@routeName).get('tags').mapBy('id')
+    @store.find('apply_form', filter)
 
   title: -> "Applications"
 

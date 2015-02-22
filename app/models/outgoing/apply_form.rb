@@ -96,7 +96,12 @@ module Outgoing
       volunteer = Volunteer.find_by_birthnumber(birthnumber)
 
       workcamps = attrs.delete(:workcamp_ids).to_a.map do |id|
-        ::Workcamp.find_by_id(id)
+        # TODO: handle smarter
+        if self === Outgoing::ApplyForm
+          Outgoing::Workcamp.find_by_id(id)
+        else
+          Ltv::Workcamp.find_by_id(id)
+        end
       end.compact
 
       Volunteer.transaction do
