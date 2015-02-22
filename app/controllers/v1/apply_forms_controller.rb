@@ -1,11 +1,9 @@
 class V1::ApplyFormsController < V1::BaseController
   respond_to :json
 
-  skip_before_action :verify_authenticity_token
-
   def create
     attrs = embed_volunteer_attributes(apply_form_params)
-    form = Outgoing::ApplyForm.create_by_birthnumber(attrs)
+    form = apply_forms.create_by_birthnumber(attrs)
 
     if form.valid? && form.volunteer.valid?
       ApplyFormMailer.submitted(form).deliver
@@ -48,6 +46,15 @@ class V1::ApplyFormsController < V1::BaseController
       general_remarks: original[:general_remarks],
       workcamp_ids: original[:workcamp_ids]
     }
+  end
+
+  def apply_forms
+    type = params[:type] || params[:apply_form].try(:[],:type)
+
+    case type.try(:downcase)
+    when 'ltv' then Ltv::ApplyForm
+    else Outgoing::ApplyForm
+    end
   end
 
 end

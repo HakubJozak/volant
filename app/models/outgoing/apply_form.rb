@@ -101,11 +101,12 @@ module Outgoing
       
       Volunteer.transaction do
         if volunteer
-          form = volunteer.apply_forms.new(attrs)
+          form = self.new(attrs)
+          form.volunteer = volunteer
           volunteer.assign_attributes(attrs[:volunteer_attributes])
           volunteer.save && form.save
         else
-          form = Outgoing::ApplyForm.new(attrs)
+          form = self.new(attrs)
           form.save
         end
 

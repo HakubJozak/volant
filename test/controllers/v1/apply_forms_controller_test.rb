@@ -49,11 +49,11 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
   end
 
 
-  test 'create ltv' do
+  test 'create LTV' do
     assert_difference('Ltv::ApplyForm.count') do
       12.times.each { @camps << Factory(:ltv_workcamp) }
       
-      post :create, apply_form: @attrs
+      post :create, apply_form: @attrs.merge(type: 'ltv')
 
       assert_response :success, response.body.to_s
       assert_not_nil form = form_by_birthnumber('0103260424')
@@ -94,6 +94,19 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
     assert_equal old.id,form.volunteer.id
   end
 
+  test 'create LTV: update old volunteer data' do
+    assert_difference('Ltv::ApplyForm.count') do
+      old = Factory(:volunteer, birthnumber: '0103260424', firstname: 'OldName')
+
+      post :create, apply_form: @attrs.merge(type: 'ltv')
+
+      assert_not_nil form = form_by_birthnumber('0103260424')
+      assert_equal 'Anton',form.volunteer.firstname
+      assert_equal old.id,form.volunteer.id
+    end
+  end
+
+  
   private
 
   def form_by_birthnumber(bn)
