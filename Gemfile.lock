@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/HakubJozak/barbecue.git
-  revision: 2c173a7c1b5092c5bd2d379d3ed863abd2487484
+  revision: 733de4c6e4d13d09486eee256a442c56889ec256
   branch: master
   specs:
     barbecue (0.0.1)

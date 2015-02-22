@@ -5,7 +5,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
   setup do
     DataLoader.load_emails
 
-    @camps = 12.times.map { Factory(:outgoing_workcamp) }
+    @camps = []
     @attrs = {
       past_experience: 'I used to shoot things 100 years ago.',
       general_remarks: 'vegetarian',
@@ -25,7 +25,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       emergency_name: 'Yo Mama',
       speak_well: 'Český a Maďarský',
       speak_some: 'Dojč',
-      workcamp_ids: @camps.map(&:id),
+      workcamp_ids: @camps,
       street: 'Ulise v Prace 22',
       city: 'Prag',
       zipcode: '00001',
@@ -35,17 +35,36 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
 
   test 'create' do
     assert_difference('Outgoing::ApplyForm.count') do
-      post :create, apply_form: @attrs
-      assert_response :success, response.body.to_s
-    end
+      12.times.each { @camps << Factory(:outgoing_workcamp) }
 
-    assert_not_nil form = form_by_birthnumber('0103260424')
-    assert_equal 'Anton',form.volunteer.firstname
-    assert_equal 'Špelec',form.volunteer.lastname
-    assert_equal :not_paid, form.state.name
-    assert_equal '0103260424', form.volunteer.birthnumber
+      post :create, apply_form: @attrs
+
+      assert_response :success, response.body.to_s
+      assert_not_nil form = form_by_birthnumber('0103260424')
+      assert_equal 'Anton',form.volunteer.firstname
+      assert_equal 'Špelec',form.volunteer.lastname
+      assert_equal :not_paid, form.state.name
+      assert_equal '0103260424', form.volunteer.birthnumber
+    end
   end
 
+
+  test 'create ltv' do
+    assert_difference('Ltv::ApplyForm.count') do
+      12.times.each { @camps << Factory(:ltv_workcamp) }
+      
+      post :create, apply_form: @attrs
+
+      assert_response :success, response.body.to_s
+      assert_not_nil form = form_by_birthnumber('0103260424')
+      assert_equal 'Anton',form.volunteer.firstname
+      assert_equal 'Špelec',form.volunteer.lastname
+      assert_equal :not_paid, form.state.name
+      assert_equal '0103260424', form.volunteer.birthnumber
+    end
+  end
+
+  
   test 'create: birthnumber validation' do
     @attrs[:birthnumber] = '010326/0424'
     post :create, apply_form: @attrs

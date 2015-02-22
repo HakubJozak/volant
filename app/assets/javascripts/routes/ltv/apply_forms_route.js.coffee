@@ -10,4 +10,4 @@ Volant.LtvApplyFormsRoute = Volant.ApplyFormsRoute.extend
   templateName: 'apply_forms'
 
   title: ->
-    "ApplyForms - LTV"
+    "Applications - LTV"

@@ -3,14 +3,12 @@ class ApplyFormsController < ApplicationController
   before_action :find_apply_form, except: [ :index,:create ]
 
   def index
-    apply_forms = Outgoing::ApplyForm
-
     respond_to do |format|
       format.csv {
         search = add_year_scope(apply_forms)
         send_data search.to_csv, filename: "#{current_year || 'all'}_applications.csv"
       }
-      
+
       format.json {
         search = apply_forms.page(current_page)
         search = search.joins('LEFT OUTER JOIN workcamps ON workcamps.id = current_workcamp_id_cached')
@@ -58,7 +56,7 @@ class ApplyFormsController < ApplicationController
   end
 
   def create
-    @apply_form = Outgoing::ApplyForm.new(apply_form_params)
+    @apply_form = apply_forms.new(apply_form_params)
 
     if @apply_form.save
       render_apply_form
@@ -124,7 +122,7 @@ class ApplyFormsController < ApplicationController
     when 'createdAt' then "#{ApplyForm.table_name}.created_at #{current_order_direction}"
     else "#{Volunteer.table_name}.lastname #{current_order_direction},#{Volunteer.table_name}.firstname #{current_order_direction}"
     end
-  end  
+  end
 
   def render_state_change
     payload = Payload.new(apply_forms: [ @apply_form ],
@@ -133,7 +131,7 @@ class ApplyFormsController < ApplicationController
   end
 
   def find_apply_form
-    @apply_form = ApplyForm.find(params[:id])
+    @apply_form = apply_forms.find(params[:id])
   end
 
   def apply_form_params
@@ -149,5 +147,16 @@ class ApplyFormsController < ApplicationController
   def render_apply_form
     render json: @apply_form, serializer: ApplyFormSerializer
   end
+
+  def apply_forms
+    type = params[:type] || params[:apply_form].try(:[],:type)
+
+    case type.try(:downcase)
+    when 'incoming' then Incoming::ApplyForm
+    when 'ltv' then Ltv::ApplyForm
+    else Outgoing::ApplyForm
+    end
+  end
+
 
 end
