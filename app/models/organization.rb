@@ -29,7 +29,7 @@ class Organization < ActiveRecord::Base
 
   def country_name
     country.name_en
-  end    
+  end
 
   ## TODO - cache
   def self.default_organization

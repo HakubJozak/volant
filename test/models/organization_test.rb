@@ -14,12 +14,7 @@ class OrganizationTest < ActiveSupport::TestCase
     assert_not_nil Organization.default_organization
   end
 
-  test "test outgoing email" do
-    assert_equal 'out@example.com', @seeds.email
-    assert_equal 'in@example.com', @seeds.email(:incoming)
-  end
-
-  test "there are two emails for Seed" do
+  test "there are three emails for Seeds" do
     assert_equal 3, @seeds.emails.size
   end
 
