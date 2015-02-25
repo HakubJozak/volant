@@ -15,8 +15,8 @@ class WorkcampsControllerTest < ActionController::TestCase
 
   test 'index for incoming' do
     Workcamp.destroy_all
-    target = Factory(:workcamp, organization: organizations(:inex))
-    dummy = Factory(:workcamp)
+    target = Factory(:incoming_workcamp, organization: organizations(:inex))
+    dummy = Factory(:outgoing_workcamp)
 
     get :index, type: 'incoming'
 

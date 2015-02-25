@@ -100,7 +100,7 @@ class WorkcampsController < ApplicationController
 
   def workcamps
     type = params[:type] || params[:workcamp].try(:[],:type)
-    
+
     case type.try(:downcase)
     when 'incoming' then Incoming::Workcamp
     when 'ltv' then Ltv::Workcamp

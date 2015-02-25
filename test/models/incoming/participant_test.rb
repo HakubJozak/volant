@@ -25,11 +25,11 @@ module Incoming
     end
 
     test "delegate some field calls to apply form" do
-      [ :general_remarks, :motivation ].each do |attr|
-        assert_equal nil, @participant.send(attr)
-        @participant.send("#{attr.to_s}=", 'test')
-        assert_equal 'test', @participant.send(attr)
-      end
+      @participant.apply_form.general_remarks = 'OJOJ!'
+      assert_equal 'OJOJ!', @participant.general_remarks
+
+      @participant.apply_form.motivation = 'TOMA!'
+      assert_equal 'TOMA!', @participant.motivation
     end
 
     test "be cancellable" do
