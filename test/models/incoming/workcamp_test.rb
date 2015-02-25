@@ -7,17 +7,24 @@ class Incoming::WorkcampTest < ActiveSupport::TestCase
     @wc = Factory.create(:incoming_workcamp)
   end
 
+  test 'project_id of invalid workcamp' do
+    wc = Incoming::Workcamp.create(name: 'Some')
+    refute wc.save
+    assert_nil wc.project_id
+  end
+  
   test 'project_id' do
-    wc = Incoming::Workcamp.create!(name: 'Some',code: 'SOM',
+    wc = Incoming::Workcamp.create!(name: 'Some',
+                                    code: 'SOM',
                                     begin: Date.today,
                                     end: 10.days.from_now,
                                     places: 2,places_for_males: 2,
                                     places_for_females: 2,
                                     country: countries(:AT),
                                     organization: Organization.first)
-    assert_equal '5947613951d22e3d37f429269c686743', wc.project_id
+    assert_equal '4e162d60aa68605f2d425e9da678cca4', wc.project_id
   end
-  
+
 
   context "with participants" do
     setup do
@@ -32,9 +39,6 @@ class Incoming::WorkcampTest < ActiveSupport::TestCase
                                          :gender => Person::MALE
                                          )
     end
-
-    context "in English" do
-      setup { I18n.locale = 'en' }
 
       should "export participants to CSV file" do
         skip 'not implemented yet'
@@ -69,5 +73,5 @@ class Incoming::WorkcampTest < ActiveSupport::TestCase
       end
     end
 
-  end
+
 end

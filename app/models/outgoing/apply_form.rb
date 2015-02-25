@@ -12,11 +12,6 @@ module Outgoing
     has_many :messages, dependent: :nullify, validate: false
     belongs_to :volunteer, class_name: 'Volunteer'
 
-    belongs_to :current_workcamp, foreign_key: 'current_workcamp_id_cached', class_name: 'Outgoing::Workcamp'
-    belongs_to :current_assignment, foreign_key: 'current_assignment_id_cached', class_name: 'Outgoing::WorkcampAssignment'
-    has_many :workcamps, -> { order 'workcamp_assignments."order" ASC' }, through: :workcamp_assignments, class_name: 'Outgoing::Workcamp', validate: false
-    has_many :workcamp_assignments, -> { order '"order" ASC' }, dependent: :delete_all, class_name: 'Outgoing::WorkcampAssignment', validate: false
-
     accepts_nested_attributes_for :payment
     accepts_nested_attributes_for :volunteer
 
@@ -96,13 +91,15 @@ module Outgoing
       volunteer = Volunteer.find_by_birthnumber(birthnumber)
 
       workcamps = attrs.delete(:workcamp_ids).to_a.map do |id|
+        ::Workcamp.find_by_id(id)
         # TODO: handle smarter
-        if self === Outgoing::ApplyForm
-          Outgoing::Workcamp.find_by_id(id)
-        else
-          Ltv::Workcamp.find_by_id(id)
-        end
+        # if self === Outgoing::ApplyForm
+        #   Outgoing::Workcamp.find_by_id(id)
+        # else
+        #   Ltv::Workcamp.find_by_id(id)
+        # end
       end.compact
+
 
       Volunteer.transaction do
         if volunteer
