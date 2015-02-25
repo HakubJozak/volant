@@ -16,9 +16,11 @@
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <form  class="navbar-form  navbar-left col-lg-1" >
         {{view Ember.Select
-               content=modes
-               value=mode
+               contentBinding='modes'
+               valueBinding='mode'
                class="form-control"
+               optionLabelPath='content.name'
+               optionValuePath='content.id'               
                }}
 
         {{view Ember.Select

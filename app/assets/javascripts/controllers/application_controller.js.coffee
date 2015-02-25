@@ -2,25 +2,33 @@ Volant.ApplicationController = Ember.ObjectController.extend
   years: [ 'All','2016','2015','2014','2013','2012','2011','2010']
   year: moment().year().toString()
 
-  modes: [ 'Outgoing','Incoming','LTV']
-  mode: 'Outgoing'
+  modes: [ { name: 'Outgoing',id: 'outgoing' },
+           { name: 'Incoming',id: 'incoming' },
+           { name: 'LTV', id: 'ltv' } ]
+  mode: 'outgoing'
 
   modeMenuTemplate: ( ->
-    mode = @get('mode').toLocaleLowerCase()
+    mode = @get('mode')
     "#{mode}/menu"
   ).property('mode')
 
-  modeName: (->
-    @get('mode').toLocaleLowerCase()
-  ).property('mode')
-
   modeChange: ( ->
-    url = switch @get('mode').toLocaleLowerCase()
-            when 'incoming' then '/'
-            when 'outgoing' then '/'
-            when 'ltv' then '/'
-    @transitionToRoute('index')
+    url = switch @get('mode')
+            when 'incoming' then 'incoming_workcamps'
+            when 'ltv' then 'ltv_workcamps'
+            else 'index'
+    @transitionToRoute(url)
   ).observes('mode')
+
+  actions:
+    goToWorkcamps: ->
+      route = switch @get('mode')
+                when 'incoming' then 'incoming_workcamps'
+                when 'ltv' then 'ltv_workcamps'
+                else  'workcamps'
+      @transitionToRoute(route)
+      false
+            
 
   # outgoingMenu: Ember.computed.equal('mode','Outgoing')
   # incomingMenu: Ember.computed.equal('mode','Incoming')

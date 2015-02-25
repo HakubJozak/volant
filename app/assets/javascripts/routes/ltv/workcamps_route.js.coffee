@@ -5,9 +5,5 @@ Volant.LtvWorkcampsRoute = Volant.WorkcampsRoute.extend
   controllerName: 'workcamps'
   templateName: 'workcamps'
 
-  afterSave: (record) ->
-    @transitionTo 'ltv/workcamps'
-    @flash_info('Saved.')
-
   title: ->
     "Workcamps - LTV"
