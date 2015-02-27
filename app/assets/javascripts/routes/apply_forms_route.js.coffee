@@ -1,7 +1,7 @@
 Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
-  default_filter: -> { type: 'ltv' }
+  default_filter: -> { type: 'outgoing' }
   newModelType: 'outgoing'
-  
+
   queryParams:
     order: { refreshModel: true }
     sortAscending: { refreshModel: true }
