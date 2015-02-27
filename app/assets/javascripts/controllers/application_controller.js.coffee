@@ -20,16 +20,6 @@ Volant.ApplicationController = Ember.ObjectController.extend
     @transitionToRoute(url)
   ).observes('mode')
 
-  actions:
-    goToWorkcamps: ->
-      route = switch @get('mode')
-                when 'incoming' then 'incoming_workcamps'
-                when 'ltv' then 'ltv_workcamps'
-                else  'workcamps'
-      @transitionToRoute(route)
-      false
-            
-
   # outgoingMenu: Ember.computed.equal('mode','Outgoing')
   # incomingMenu: Ember.computed.equal('mode','Incoming')
   # ltvMenu: Ember.computed.equal('mode','LTV')

@@ -2,6 +2,10 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
   model: (params) ->
     @store.find('apply_form', params.apply_form_id)
 
+  afterSave: (record) ->
+    @flash_info('Saved.')
+    @send 'goToApplyForms'
+
   title: (model) -> "#{model.get('name')}"
 
   setupController: (controller,model,queryParams) ->
