@@ -1,10 +1,12 @@
-Volant.CollectionPickerView = Ember.Select.extend({
+Volant.CollectionPickerView = Ember.Select.extend
   classNames: ['form-control']
   optionValuePath: "content.id"
   optionLabelPath: "content.name"
+  onChange: null
 
-  watch: (->
-    tag = @get('selection')
-    @get('target').pushObject(tag)
-  ).observes('selection')
-})
+  change: ->
+    record = @get('selection')
+    @get('target').pushObject(record)
+
+    if action = @get('onChange')
+      @send action, record         

@@ -33,6 +33,7 @@ Volant.WorkcampsController = Volant.ListController.extend
                  { id:'country', name:'Country'}]
 
 
+
   setSorting: (->
     props = switch @get('order')
       when 'name' then ['name']
@@ -56,6 +57,10 @@ Volant.WorkcampsController = Volant.ListController.extend
     toggle: (property) ->
       @toggleProperty(property)
       false
+
+    filterOrganizationsByCountry: (country) ->
+      console.info country.get('name')  
+      false      
 
     reset: ->
       # TODO: dry by getting the default values
