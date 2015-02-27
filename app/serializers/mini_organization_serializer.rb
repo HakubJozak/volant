@@ -6,4 +6,5 @@ class MiniOrganizationSerializer < ApplicationSerializer
              :mobile,
              :fax,
              :website
+  has_one :country, embed: :ids, include: true  
 end

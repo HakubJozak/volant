@@ -3,6 +3,7 @@ Volant.OrganizationsController = Volant.ListController.extend
   queryParams: ['page','query' ]
   needs: [ 'mini_workcamps' ]
   sortProperties: ['name']
+  sortAscending: true
   query: null
 
   actions:

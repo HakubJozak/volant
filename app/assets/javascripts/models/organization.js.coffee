@@ -16,5 +16,7 @@ Volant.Organization = DS.Model.extend
   incoming_email: DS.attr 'string'
   ltv_email: DS.attr 'string'
 
-  
+  label: (->
+    "#{@get('name')} (#{@get('country.name_en')})"      
+  ).property('name','country.id')
 

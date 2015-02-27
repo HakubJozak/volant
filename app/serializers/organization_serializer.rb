@@ -17,8 +17,8 @@ class OrganizationSerializer < ApplicationSerializer
 
   def ltv_email
     email_contacts.ltv.first.try(:address)
-  end  
-  
+  end
+
   def email_contacts
     object.emails
   end
