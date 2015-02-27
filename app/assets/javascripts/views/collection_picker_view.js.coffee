@@ -6,7 +6,9 @@ Volant.CollectionPickerView = Ember.Select.extend
 
   change: ->
     record = @get('selection')
-    @get('target').pushObject(record)
+    @get('targetCollection').pushObject(record)
+    action = @get('onChange')
 
-    if action = @get('onChange')
-      @send action, record         
+    if action?
+      @get('controller').send(action,record)
+  

@@ -20,7 +20,7 @@ form.form.form-horizontal.search-form submit="search" role="form"
     .col-lg-1
       label.control-label Tags
     .col-lg-2
-      view 'collection-picker'  targetBinding='tags'  contentBinding='controllers.tags.arrangedContent'  optionValuePath="content.id"  optionLabelPath="content.name"  prompt='Tags'
+      view 'collection-picker'  targetCollectionBinding='tags'  contentBinding='controllers.tags.arrangedContent'  optionValuePath="content.id"  optionLabelPath="content.name"  prompt='Tags'
     .col-lg-8
       view 'labels-list' contentBinding='tags'
 

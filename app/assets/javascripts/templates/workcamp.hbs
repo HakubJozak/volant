@@ -93,7 +93,7 @@
           <label class="col-lg-2 control-label">Tags</label>
           <div class="col-lg-3">
             {{view 'collection-picker'
-            targetBinding='tags'
+            targetCollectionBinding='tags'
             contentBinding='controllers.tags.arrangedContent'
             prompt='Add tag...'
             class="form-control" }}
@@ -105,7 +105,7 @@
           <label class="col-lg-2 control-label">Intentions</label>
           <div class="col-lg-3">
             {{view 'collection-picker'
-            targetBinding='workcamp_intentions'
+            targetCollectionBinding='workcamp_intentions'
             contentBinding='controllers.workcamp_intentions.arrangedContent'
             prompt='Add intention...'
             optionValuePath="content.id"

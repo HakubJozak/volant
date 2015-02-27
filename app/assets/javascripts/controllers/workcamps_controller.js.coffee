@@ -59,7 +59,7 @@ Volant.WorkcampsController = Volant.ListController.extend
       false
 
     filterOrganizationsByCountry: (country) ->
-      console.info country.get('name')  
+      console.info country.get('name')
       false      
 
     reset: ->
