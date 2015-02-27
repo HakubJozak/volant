@@ -59,7 +59,11 @@ Volant.WorkcampsController = Volant.ListController.extend
       false
 
     filterOrganizationsByCountry: (country) ->
-      console.info country.get('name')
+      if country 
+        id = country.get('id')
+        @get('controllers.organizations').set('content', @store.filter('organization',{ country_id: id},(org) => org.get('country.id') == id))
+      else
+        @get('controllers.organizations').set('content', @store.filter('organization',{ country_id: id},-> true))
       false      
 
     reset: ->
