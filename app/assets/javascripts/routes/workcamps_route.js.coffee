@@ -14,7 +14,7 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend
     filter.asc = params.sortAscending
     filter.year = params.year unless params.year == 'All'
 
-    attrs = [ 'from','to','min_duration','max_duration', 'min_age','max_age',
+    attrs = [ 'from','to','min_duration','max_duration','age'
               'free', 'free_males', 'free_females' ]
 
     for attr in attrs

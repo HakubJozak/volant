@@ -4,7 +4,7 @@ Volant.WorkcampsController = Volant.ListController.extend
   page: 1
   queryParams: ['query','page','year','from','to',
                 'min_duration','max_duration',
-                'min_age','max_age', 'free',
+                'age', 'free',
                 'free_males', 'free_females',
                 'sortAscending','order']
 
@@ -15,8 +15,7 @@ Volant.WorkcampsController = Volant.ListController.extend
   to: null
   min_duration: null
   max_duration: null
-  min_age: null
-  max_age: null
+  age: null
   free: null
   free_males: null
   free_females: null
@@ -74,8 +73,7 @@ Volant.WorkcampsController = Volant.ListController.extend
       @set('to',null)
       @set('min_duration',null)
       @set('max_duration',null)
-      @set('min_age',null)
-      @set('max_age',null)
+      @set('age',null)
       @set('free',null)
       @set('free_males',null)
       @set('free_females',null)

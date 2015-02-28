@@ -92,16 +92,12 @@ class Workcamp < ActiveRecord::Base
       search = search.min_duration(md)
     end
 
-    if md = filter[:max_duration]
+    if md = filter[:max_duration].presence
       search = search.max_duration(md)
     end
 
-    if ma = filter[:min_age]
-      search = search.where("minimal_age >= ?",ma)
-    end
-
-    if ma = filter[:max_age]
-      search = search.where("maximal_age <= ?",ma)
+    if age = filter[:age].presence
+      search = search.where("minimal_age <= ? and maximal_age >= ?",age,age)
     end
 
     if fp = filter[:free]
