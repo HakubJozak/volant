@@ -138,19 +138,19 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     get :index, from: 15.days.from_now.to_s
     assert_response :success
     assert_equal target.id,json_response['workcamps'][0]['id']
-    
+
     # regression to parse_errors
     get :index, from: 'cerven'
-    assert_response :success    
+    assert_response :success
   end
 
 
   test 'search by to' do
     # regression to parse_errors
     get :index, to: 'cerven'
-    assert_response :success    
+    assert_response :success
   end
-  
 
-  
+
+
 end

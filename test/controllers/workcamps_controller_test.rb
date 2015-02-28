@@ -130,10 +130,10 @@ class WorkcampsControllerTest < ActionController::TestCase
 
   test 'age' do
     Workcamp.destroy_all
-    target = Factory(:workcamp, minimal_age: 15, maximal_age: 30)
-    dummy = Factory(:workcamp, minimal_age: 11, maximal_age: 40)
+    target = Factory(:workcamp, minimal_age: 40, maximal_age: 60)
+    dummy = Factory(:workcamp, minimal_age: 15, maximal_age: 30)
 
-    get :index, min_age: 14, maximal_age: 35
+    get :index, age: 55
 
     assert_response :success
     assert_equal 1, json_response['workcamps'].size
