@@ -16,7 +16,7 @@ class ActiveSupport::TestCase
     Account.create!(organization: Organization.find_by_code('SDA'),
                     organization_response_limit: 4,
                     infosheet_waiting_limit: 30,
-                    season_start: Date.new(2015,3,15))
+                    season_end: Date.new(2015,3,15))
     Factory.create(:organization, code:'SDA')
   end
 

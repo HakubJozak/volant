@@ -29,6 +29,6 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:season_start, :organization_response_limit, :infosheet_waiting_limit,:organization_id)
+    params.require(:account).permit(:season_end, :organization_response_limit, :infosheet_waiting_limit,:organization_id)
   end
 end

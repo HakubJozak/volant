@@ -1,7 +1,7 @@
 # Bugy
  - [x] email 'ask' nema seznam workcampu
  - [x] ve Volantu se neda vytvorit nova prihlaska
- - [ ] krome 'ask' emailu se neposilaji skryte kopie
+ - [x] krome 'ask' emailu se neposilaji skryte kopie
  - [ ] prvni priloha se posle prazdna a je 'untitled'
  - [x] pri zakladani workcampu se nekdy nedari jej ulozit a zobrazi se 2 workcampy pod sebou
  - [x] detail prihlasky, nefunguje 'storno'
@@ -20,7 +20,6 @@
 # LTV
  - [ ] CRUD workcampu
  - [ ] CRUD prihlasky 
- - [ ] Dashboard
 
  - [ ]  Volant: LMTV - původně jste se s Nikolou bavili o možnosti zadat projekt na časový úsek ale bez specifikace termínů (jsou projekty, které jsou otevřené celý rok s minimální a maximální dobou účasti). Pamatuješ si, jak jste se ohledně toho domluvili, najdeš to někde ve svých poznámkách? Bude tohle možné ještě dopsat, nějak vyřešit?
  - [x]  Volant: Organizace - přidat adresu pro mailing LMTV
@@ -29,7 +28,7 @@
  - [x] dokumentace k email sablonam (zejmena promenne, ktere jsou k dispozici)
  - [x] filtrovani podle roku 'nefunguje' na webu (nastavit 'season' vsem ktere jsou mimo 2015)
  - [x] season start 13.3.2015
- - [ ] prepnout mailing na normalni
+ - [x] prepnout mailing na normalni
  
  - [x] opravit testy
  - [x] filtrovani prihlasek podle tagu
@@ -39,7 +38,7 @@
  - [x] vyhledavani plateb
  - [x] uprava nastaveni: konec sezony apd.
 
- - [ ] nastaveni (zacatek sezony,default org code)
+ - [x] nastaveni (zacatek sezony,default org code)
  - [x] pridat 'return reason' do exportu plateb
  - [ ] seradit abecedne filtr organizaci na vyhledavani workcampu
  - [ ] region1 a region2 u emailovych sablon, extra fee

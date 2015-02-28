@@ -4,13 +4,13 @@
   např. Requirements u:
   http://www.inexsda.cz/cs/workcamp/46849-an-lac-eco-community)
 
-- 'prihlas se' a ostatni tlacitko (pagination) nefunguji
+- 'prihlas se' a ostatni tlacitko (pagination) nefunguji cela
 - 404 z googlu - http://www.inexsda.cz/data/attachments/Tiskoviny/INEX_Vyrocni%20zprava_2010_www.pdf
-- http://www.inexsda.cz/cs/workcamp/47245 zmenit na slugy
 - formular prihlasky - pretekajici vyska pole
 - detaily obrazku na klik
 - nejasne rozliseni LTV/Workcampu je zmatek
 - vyhledavani
+  - search is breaking the web - query by melo byt v hashtagu
   - boxy s prihlaskami lezou do
   - default vyhleda jenom ty s volnymi misty pro zeny, coz neni captain obvious
   - vysledky by mely zobrazovat 'duration'

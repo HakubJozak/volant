@@ -61,7 +61,7 @@ CREATE VIEW accepted_assignments AS
 CREATE TABLE accounts (
     id integer NOT NULL,
     organization_id integer NOT NULL,
-    season_start date DEFAULT '2015-03-15'::date NOT NULL,
+    season_end date DEFAULT '2015-03-15'::date NOT NULL,
     organization_response_limit integer DEFAULT 4 NOT NULL,
     infosheet_waiting_limit integer DEFAULT 4 NOT NULL,
     created_at timestamp without time zone,
@@ -2354,4 +2354,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150107124536');
 INSERT INTO schema_migrations (version) VALUES ('20150112142151');
 
 INSERT INTO schema_migrations (version) VALUES ('20150212151917');
+
+INSERT INTO schema_migrations (version) VALUES ('20150228104912');
 

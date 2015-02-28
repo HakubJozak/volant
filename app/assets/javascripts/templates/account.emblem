@@ -5,9 +5,10 @@ h3
 
 form submit="save" class="form"
   .form-group
-    model-field errors=errors.seasonStart
-      label.control-label Season start
-      = view Volant.DateView dateBinding='seasonStart'
+    model-field errors=errors.seasonEnd
+      label.control-label Season ends
+      = view Volant.DateView dateBinding='seasonEnd'
+      span.help-block Workcamps with publish mode SEASON that start beyond this date are hidden.
 
   .form-group
     model-field errors=errors.organization_response_limit
