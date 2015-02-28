@@ -8,6 +8,8 @@ class MessageMailer < ActionMailer::Base
 
     mail(to: msg.to,
          from: msg.from,
+         cc: msg.cc,
+         bcc: msg.bcc,
          subject: msg.subject) do |format|
       format.html { render text: msg.html_body.to_s }
     end
