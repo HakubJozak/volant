@@ -1,21 +1,20 @@
 class Organization < ActiveRecord::Base
 
-#  has_many :email_contacts
   has_many :workcamps, dependent: :destroy, validate: false
   belongs_to :country
   validates_presence_of :name, :code, :country
 
   has_many :partnerships, dependent: :destroy
+  # has_many :email_contacts
   has_many :emails, class_name: 'EmailContact', dependent: :destroy
   has_many :networks, through: :partnerships, validate: false
 
   accepts_nested_attributes_for :networks
 
   # TODO: same as Workcamp.query - merge?
-  scope :query, lambda { |q|
-    table = self.arel_table
-    arel = table[:name].matches("%#{q}%").or(table[:code].matches("%#{q}%"))
-    where(arel)
+  scope :query, lambda { |query|
+    like = "%#{query}%"
+    where("organizations.name ILIKE ? or organizations.code ILIKE ? or countries.name_en ILIKE ?",like,like,like)    
   }
 
   # Delegates for Export::Excel
