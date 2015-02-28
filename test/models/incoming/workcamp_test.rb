@@ -14,15 +14,16 @@ class Incoming::WorkcampTest < ActiveSupport::TestCase
   end
   
   test 'project_id' do
+    today = Date.new(2015,2,28)
     wc = Incoming::Workcamp.create!(name: 'Some',
                                     code: 'SOM',
-                                    begin: Date.today,
-                                    end: 10.days.from_now,
+                                    begin: today,
+                                    end: today + 10.days,
                                     places: 2,places_for_males: 2,
                                     places_for_females: 2,
                                     country: countries(:AT),
                                     organization: Organization.first)
-    assert_equal '4e162d60aa68605f2d425e9da678cca4', wc.project_id
+    assert_equal '6028cfc772fa77c2f34c7d0061b6583c', wc.project_id
   end
 
 
