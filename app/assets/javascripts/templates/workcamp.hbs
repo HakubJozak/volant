@@ -31,7 +31,7 @@
           
           {{#model-field errors=errors.name}}
             <div class="col-lg-7" data-tooltip>
-              {{input value=name class='form-control' }}
+              {{input value=name class='form-control' placeholder="Name"}}
             </div>
           {{/model-field}}
         </div>
@@ -137,9 +137,9 @@
         <legend>Extra Fee</legend>
         <div class="form-group">
           <label class="col-lg-2 control-label">Amount</label>
-          <div class="col-lg-3">{{input value=extraFee type="decimal" class="form-control" placeholder='Amount'}}</div>
+          <div class="col-lg-3">{{input value=extraFee type="decimal" class="form-control" placeholder='0'}}</div>
           <label class="col-lg-1 control-label">Currency</label>
-          <div class="col-lg-3">{{input value=extraFeeCurrency  class="form-control" placeholder='Currency'}}</div>
+          <div class="col-lg-3">{{input value=extraFeeCurrency  class="form-control" placeholder=''}}</div>
         </div>          
       </fieldset>
 

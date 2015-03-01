@@ -6,7 +6,8 @@ class WorkcampSerializer < ApplicationSerializer
   has_many :workcamp_assignments, embed: :ids, include: false
   has_many :import_changes, embed: :ids, include: true
 
-  writable_attributes :starred, :name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
+  attributes :id, :free_places, :free_places_for_males, :free_places_for_females, :state, :duration, :type,
+      :starred, :name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
       :area, :accomodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,
       :region, :capacity_natives, :capacity_teenagers, :capacity_males, :capacity_females,
       :airport, :train, :publish_mode,:places, :places_for_males, :places_for_females,
@@ -15,7 +16,6 @@ class WorkcampSerializer < ApplicationSerializer
       :longitude, :latitude, :requirements,
       :organization_id, :country_id
 
-  readonly_attributes :id, :free_places, :free_places_for_males, :free_places_for_females, :state, :duration, :type
 
   def type
     case object
