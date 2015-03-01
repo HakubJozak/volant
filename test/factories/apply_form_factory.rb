@@ -20,6 +20,13 @@ Factory.define :paid_form, parent: :apply_form do |f|
   end
 end
 
+Factory.define :paid_ltv_form, parent: :apply_form, class: Ltv::ApplyForm do |f|
+  f.after_create do |form|
+     Factory.create(:workcamp_assignment, apply_form: form)
+     form.reload
+  end
+end
+
 
 Factory.define :form_male, parent: :apply_form do |f|
   f.association :volunteer, factory: :male
