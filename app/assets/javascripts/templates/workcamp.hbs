@@ -16,67 +16,46 @@
       {{else}}
         <span class="text-muted">New Workcamp</span>
       {{/if}}
-      <small>{{type}}
+      <small>{{capitalize type}}
     </h2>
     <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
       <fieldset>
         <legend></legend>
         <div class="form-group" >
+          {{#model-field errors=errors.code}}
+            <label class="col-lg-2 control-label">Code &amp; Name</label>
+            <div class="col-lg-3">
+              {{ input value=code class='form-control' placeholder="Code"}}
+            </div>
+          {{/model-field}}
+          
           {{#model-field errors=errors.name}}
-            <label class="col-lg-2 control-label">Name</label>
             <div class="col-lg-7" data-tooltip>
               {{input value=name class='form-control' }}
             </div>
           {{/model-field}}
-
-          {{#model-field errors=errors.code}}
-            <div class="col-lg-3">
-              {{ input value=code class='form-control' placeholder="Code"}}
-            </div>
-          {{/model-field}}  
         </div>
 
         <div class="form-group">
-          <label class="col-lg-2 control-label">Country</label>
-          {{#model-field errors=errors.country}}
-          <div class="col-lg-3">
-            {{partial 'inputs/country'}}
-          </div>
-          {{/model-field}}
-
-
-
-          <label class="col-lg-1 control-label">Dates</label>
-          <div class="col-lg-3">
-            {{view Volant.DateView dateBinding='from' }}
-          </div>
-
-          <div class="col-lg-3">
-            {{view Volant.DateView class="form-control" dateBinding='to' }}
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Languages</label>
-          <div class="col-lg-3">{{input value=language class="form-control"}}</div>
-
-          <label class="col-lg-1 control-label" title="Age limit from - to">Age</label>
-          <div class="col-lg-3">{{input value=minimal_age type="number" class="form-control"}}</div>
-          <div class="col-lg-3">{{input value=maximal_age type="number" class="form-control"}}</div>
-        </div>
-
-        <div class="form-group">
-          {{#model-field errors=errors.organization}}
-            <label class="col-lg-2 control-label">
+            <label class="col-lg-2 control-label" title='Organization'>
+              Country &amp; 
               {{#if organization}}
                 {{#link-to 'organization' organization}}
-                Organization
+                Org
                 {{/link-to}}
               {{else}}
-                Organization
+                Org
               {{/if}}
             </label>
+
+          {{#model-field errors=errors.country}}
             <div class="col-lg-3">
+              {{partial 'inputs/country'}}
+            </div>
+          {{/model-field}}
+
+          {{#model-field errors=errors.organization}}
+            <div class="col-lg-7">
               {{view Ember.Select
               contentBinding='controllers.organizations.arrangedContent'
               selectionBinding='organization'
@@ -87,40 +66,29 @@
               }}
             </div>
           {{/model-field}}
-
-          <label class="col-lg-1 control-label">Fee</label>
-          <div class="col-lg-3">{{input value=extraFee type="decimal" class="form-control" placeholder='Amount'}}</div>
-          <div class="col-lg-3">{{input value=extraFeeCurrency  class="form-control" placeholder='Currency'}}</div>
+          
         </div>
 
         <div class="form-group">
-          <label class="col-lg-2 control-label">Tags</label>
+          <label class="col-lg-2 control-label">When</label>
           <div class="col-lg-3">
-            {{view 'collection-picker'
-            targetCollectionBinding='tags'
-            contentBinding='controllers.tags.arrangedContent'
-            prompt='Add tag...'
-            class="form-control" }}
+            {{view Volant.DateView dateBinding='from' placeholder='From' }}
           </div>
-          {{view 'labels-list' contentBinding='tags' class="col-lg-7"}}
-        </div>
 
-        <div class="form-group">
-          <label class="col-lg-2 control-label">Intentions</label>
           <div class="col-lg-3">
-            {{view 'collection-picker'
-            targetCollectionBinding='workcamp_intentions'
-            contentBinding='controllers.workcamp_intentions.arrangedContent'
-            prompt='Add intention...'
-            optionValuePath="content.id"
-            optionLabelPath="content.code"
-            class="form-control" }}
+            {{view Volant.DateView class="form-control" dateBinding='to' }}
           </div>
-          {{view 'labels-list' contentBinding='workcamp_intentions' class="col-lg-7"}}
+
+          <label class="col-lg-1 control-label">Duration</label>
+          <div class="col-lg-3">{{input value=duration type="number" class="form-control"}}</div>
         </div>
 
         <div class="form-group">
-          <label class="col-lg-2 control-label">Publish</label>
+          <label class="col-lg-2 control-label" title="Age limit from - to">Age Limit</label>
+          <div class="col-lg-3">{{input value=minimal_age type="number" class="form-control"}}</div>
+          <div class="col-lg-3">{{input value=maximal_age type="number" class="form-control"}}</div>
+
+          <label class="col-lg-1 control-label">Publish</label>
           <div class="col-lg-3">
             {{view Ember.Select
             value=publish_mode
@@ -130,10 +98,51 @@
             class="form-control"
             }}
           </div>
-          <div class="col-lg-7">
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Labels</label>            
+            <div class="col-lg-3">
+            {{view 'collection-picker'
+            targetCollectionBinding='workcamp_intentions'
+            contentBinding='controllers.workcamp_intentions.arrangedContent'
+            prompt='Add intention...'
+            optionValuePath="content.id"
+            optionLabelPath="content.code"
+            class="form-control" }}
+            </div>
+
+          <div class="col-lg-3">
+            {{view 'collection-picker'
+            targetCollectionBinding='tags'
+            contentBinding='controllers.tags.arrangedContent'
+            prompt='Add tag...'
+            class="form-control" }}
           </div>
+
+          <label class="col-lg-1 control-label">Languages</label>
+          <div class="col-lg-3">{{input value=language class="form-control"}}</div>          
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-2 control-label"></label>            
+          {{view 'labels-list' contentBinding='workcamp_intentions' class="col-lg-3"}}
+          <label class="col-lg-1 control-label"></label>                      
+          {{view 'labels-list' contentBinding='tags' class="col-lg-6"}}
         </div>
       </fieldset>
+
+      <fieldset>
+        <legend>Extra Fee</legend>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Amount</label>
+          <div class="col-lg-3">{{input value=extraFee type="decimal" class="form-control" placeholder='Amount'}}</div>
+          <label class="col-lg-1 control-label">Currency</label>
+          <div class="col-lg-3">{{input value=extraFeeCurrency  class="form-control" placeholder='Currency'}}</div>
+        </div>          
+      </fieldset>
+
 
       <fieldset>
         <legend>Placement</legend>
