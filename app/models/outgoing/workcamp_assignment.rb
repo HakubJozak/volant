@@ -21,7 +21,7 @@ module Outgoing
     [ "accept", "reject", "ask", "infosheet" ].each do |action|
       define_method(action) do |time = nil|
         time ||= Time.now
-        self.update_column( "#{action}ed", time)
+        self.update_attribute( "#{action}ed", time)
         self
       end
     end
