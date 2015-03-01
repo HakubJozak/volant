@@ -19,13 +19,11 @@ module Outgoing
     scope :not_rejected, :conditions => [ 'rejected IS NULL']
 
     [ "accept", "reject", "ask", "infosheet" ].each do |action|
-      eval %{
-      def #{action}(time = nil)
+      define_method(action) do |time = nil|
         time ||= Time.now
-        self.update_attribute( "#{action}ed", time)
+        self.update_column( "#{action}ed", time)
         self
       end
-    }
     end
 
     # TODO - DRY - this should be dealt with on one place

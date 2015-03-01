@@ -3,7 +3,8 @@ require 'test_helper'
 
 class V1::ApplyFormsControllerTest < ActionController::TestCase
   setup do
-    DataLoader.load_emails
+    Factory(:email_template,action: 'submitted')
+    Factory(:email_template,action: 'ltv/submitted',body: 'LTV')
 
     @attrs = {
       past_experience: 'I used to shoot things 100 years ago.',
@@ -51,7 +52,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
   test 'create LTV' do
     assert_difference('Ltv::ApplyForm.count') do
       camps = 5.times.map { Factory(:ltv_workcamp).id }
-      
+
       post :create, apply_form: @attrs.merge(type: 'ltv', workcamp_ids: camps)
 
       assert_response :success, response.body.to_s
@@ -63,7 +64,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
     end
   end
 
-  
+
   test 'create: birthnumber validation' do
     @attrs[:birthnumber] = '010326/0424'
     post :create, apply_form: @attrs
@@ -82,7 +83,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
     end
 
   end
-  
+
   test 'create: update old volunteer data' do
     old = Factory(:volunteer, birthnumber: '0103260424', firstname: 'OldName')
 
@@ -107,7 +108,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
     end
   end
 
-  
+
   private
 
   def form_by_birthnumber(bn)

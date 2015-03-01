@@ -13,8 +13,6 @@ class ApplyForm < ActiveRecord::Base
   
   create_date_time_accessors
 
-  validates_presence_of :motivation
-
   belongs_to :current_workcamp, foreign_key: 'current_workcamp_id_cached', class_name: 'Workcamp'
   belongs_to :current_assignment, foreign_key: 'current_assignment_id_cached', class_name: 'Outgoing::WorkcampAssignment'
   has_many :workcamps, -> { order 'workcamp_assignments."order" ASC' }, through: :workcamp_assignments, class_name: 'Workcamp', validate: false
@@ -32,7 +30,6 @@ class ApplyForm < ActiveRecord::Base
     year = year.to_i
     where "(#{ApplyForm.table_name}.created_at >= ? AND #{ApplyForm.table_name}.created_at < ?)", Date.new(year,1,1), Date.new(year + 1,1,1)    }
 
-  validates_presence_of :volunteer, :fee
   delegate :asked, :accepted, :rejected, :rejected?, :infosheeted, to: :current_assignment, allow_nil: true
 
   has_one :payment, dependent: :nullify # , select: 'id, apply_form_id, amount, returned_amount, received, returned_date, return_reason'
@@ -222,9 +219,12 @@ class ApplyForm < ActiveRecord::Base
   # TODO - use Proc, Method or at least define_method
   [ "accept","ask","reject","infosheet" ].each do |action|
     define_method(action) do |time = Time.now|
-      raise "This apply form has no current assignment, cannot run action #{action}" unless self.current_assignment
-      current_assignment.send(action,time)
-      self.reload
+      if self.current_assignment
+        current_assignment.send(action,time)
+        self.reload
+      else
+        raise "This apply form has no current assignment, cannot run action #{action}" 
+      end
     end
   end
 
@@ -282,10 +282,7 @@ class ApplyForm < ActiveRecord::Base
   def self.update_cache_for(id)
     stmt = "select current_workcamp_id, current_assignment_id from apply_forms_view where id=#{id}"
     result = connection.select_rows(stmt)[0]
-    a = ApplyForm.find(id)
-    a.current_workcamp_id_cached = result[0]
-    a.current_assignment_id_cached = result[1]
-    a.save
+    ApplyForm.where(id: id).update_all(current_workcamp_id_cached: result[0], current_assignment_id_cached: result[1])
   end
   
 end

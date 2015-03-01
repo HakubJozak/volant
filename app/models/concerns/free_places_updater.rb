@@ -3,9 +3,9 @@ module FreePlacesUpdater
 
   def update_free_places
     if self.respond_to?(:workcamps)
-      self.workcamps.reload.each { |wc| wc.save! }
+      self.workcamps.reload.each { |wc| wc.save(validate: false) }
     elsif self.respond_to?(:workcamp)
-      self.workcamp.save!
+      self.workcamp.save(validate: false)
     else
       raise "Cannot update free places. #{self.inspect} has no workcamp(s) association."
     end
