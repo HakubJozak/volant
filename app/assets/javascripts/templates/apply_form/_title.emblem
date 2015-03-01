@@ -7,13 +7,13 @@ if volunteer.age
   ' ({{volunteer.age}})
 
 if name
-  gender-sign volunteer.gender
+  ' {{gender-sign volunteer.gender}}
 
 small
   capitalize state.name
   '
   apply-form-state-icon state
-  '
+  ' 
   each tags
     ' {{tag this}}
 
