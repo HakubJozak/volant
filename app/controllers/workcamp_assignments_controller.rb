@@ -14,10 +14,13 @@ class WorkcampAssignmentsController < ApplicationController
 
   # POST /workcamp_assignments
   def create
-    @wa = workcamp_assignments.new(workcamp_assignment_params)
-    @wa.save
-    # respond_with(@wa)
-    render json: @wa, serializer: WorkcampAssignmentSerializer
+    wa = workcamp_assignments.new(workcamp_assignment_params)
+    
+    if wa.save
+      render json: wa, serializer: WorkcampAssignmentSerializer
+    else
+      render_error(wa)      
+    end
   end
 
   # PATCH/PUT /workcamp_assignments/1
@@ -47,11 +50,6 @@ class WorkcampAssignmentsController < ApplicationController
   end
 
   def workcamp_assignments
-    type = params[:type] || params[:apply_form].try(:[],:type)
-
-    case type.try(:downcase)
-    when 'ltv' then Ltv::WorkcampAssignment
-    else Outgoing::WorkcampAssignment
-    end
-  end  
+    Outgoing::WorkcampAssignment
+  end
 end

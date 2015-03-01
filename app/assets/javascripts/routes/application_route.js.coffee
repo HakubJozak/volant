@@ -10,7 +10,7 @@ Volant.ApplicationRoute = Ember.Route.extend
       @transitionTo(route)
       false
 
-    goToApplyForms: ->      
+    goToApplyForms: ->
       route = switch @get('mode')
                 when 'incoming' then 'incoming_apply_forms'
                 when 'ltv' then 'ltv_apply_forms'

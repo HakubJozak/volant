@@ -3,50 +3,55 @@ class ApplyFormsController < ApplicationController
   before_action :find_apply_form, except: [ :index,:create ]
 
   def index
-    respond_to do |format|
-      format.csv {
-        search = add_year_scope(apply_forms)
-        send_data search.to_csv, filename: "#{current_year || 'all'}_applications.csv"
-      }
+    if ids = filter[:ids]
+      search = ApplyForm.includes(:volunteer)
+      render json: search.find(*ids), each_serializer: ApplyFormSerializer
+    else
+      respond_to do |format|
+        format.csv {
+          search = add_year_scope(apply_forms)
+          send_data search.to_csv, filename: "#{current_year || 'all'}_applications.csv"
+        }
 
-      format.json {
-        search = apply_forms.page(current_page)
-        search = search.joins('LEFT OUTER JOIN workcamps ON workcamps.id = current_workcamp_id_cached')
-        search = search.joins('LEFT OUTER JOIN workcamp_assignments ON workcamp_assignments.id = current_assignment_id_cached')
-        search = search.includes(:volunteer)
-        search = search.order(current_order)
-        search = add_year_scope(search)
+        format.json {
+          search = apply_forms.page(current_page)
+          search = search.joins('LEFT OUTER JOIN workcamps ON workcamps.id = current_workcamp_id_cached')
+          search = search.joins('LEFT OUTER JOIN workcamp_assignments ON workcamp_assignments.id = current_assignment_id_cached')
+          search = search.includes(:volunteer)
+          search = search.order(current_order)
+          search = add_year_scope(search)
 
-        if filter[:starred]
-          search = search.starred_by(current_user)
-        end
-
-        if filter[:tag_ids]
-          search = search.joins(:tags).with_tags(*filter[:tag_ids])
-        end
-
-        if query = filter[:q].presence
-          search = search.query(filter[:q])
-        end
-
-        if state = filter[:state]
-          # TODO: put those inside model
-          case state
-          when 'on_project'
-            today = Date.today
-            search = search.where("workcamps.begin <= ? AND workcamps.end >= ?",today,today)
-            search = search.where('workcamp_assignments.accepted IS NOT NULL and cancelled IS NULL ')
-          when 'without_payment'
-            search = search.joins('left outer join payments on payments.apply_form_id = apply_forms.id').state_filter(state)
-          else
-            search = search.state_filter(state)
+          if filter[:starred]
+            search = search.starred_by(current_user)
           end
-        end
 
-        render json: search,
-        meta: { pagination: pagination_info(search) },
-        each_serializer: ApplyFormSerializer
-      }
+          if filter[:tag_ids]
+            search = search.joins(:tags).with_tags(*filter[:tag_ids])
+          end
+
+          if query = filter[:q].presence
+            search = search.query(filter[:q])
+          end
+
+          if state = filter[:state]
+            # TODO: put those inside model
+            case state
+            when 'on_project'
+              today = Date.today
+              search = search.where("workcamps.begin <= ? AND workcamps.end >= ?",today,today)
+              search = search.where('workcamp_assignments.accepted IS NOT NULL and cancelled IS NULL ')
+            when 'without_payment'
+              search = search.joins('left outer join payments on payments.apply_form_id = apply_forms.id').state_filter(state)
+            else
+              search = search.state_filter(state)
+            end
+          end
+
+          render json: search,
+          meta: { pagination: pagination_info(search) },
+          each_serializer: ApplyFormSerializer
+        }
+      end
     end
   end
 
@@ -131,7 +136,7 @@ class ApplyFormsController < ApplicationController
   end
 
   def find_apply_form
-    @apply_form = apply_forms.find(params[:id])
+    @apply_form = ApplyForm.find(params[:id])
   end
 
   def apply_form_params

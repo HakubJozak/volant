@@ -1,13 +1,9 @@
-Volant.NewApplyFormRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
+Volant.NewApplyFormRoute = Volant.ApplyFormRoute.extend Volant.ApplyFormActions,
   viewName: 'apply_form'
   controllerName: 'apply_form'
 
   title: ->
     'New application'
-
-  afterSave: (record) ->
-    @transitionTo 'apply_forms'
-    @flash_info('Saved.')
 
   model: (params,transition) ->
     defaults = {
@@ -17,5 +13,5 @@ Volant.NewApplyFormRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
     }
 
     # like Hash#merge in JS
-    opts = $.extend(defaults,transition.queryParams)    
+    opts = $.extend(defaults,transition.queryParams)
     @store.createRecord('apply_form', opts)

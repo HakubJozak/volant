@@ -190,16 +190,17 @@ class WorkcampsControllerTest < ActionController::TestCase
   end
 
 
-  test "should update workcamp" do
+  test "update" do
     id = ColoredTag.find_by_name('family').id
 
-    patch :update, id: @workcamp, workcamp: { name: 'edited', code: 'new-code', :'end' =>  "2014-06-26", tag_ids: [id]}
+    patch :update, id: @workcamp, workcamp: { duration: 333, name: 'edited', code: 'new-code', :'end' =>  "2014-06-26", tag_ids: [id]}
     assert_response :success
 
     assert_equal Date.new(2014,6,26), @workcamp.reload.end
     assert_equal ['family'], @workcamp.reload.tag_list
     assert_equal 'edited', json_response['workcamp']['name']
     assert_equal 'new-code', json_response['workcamp']['code']
+    assert_equal 333, json_response['workcamp']['duration']    
   end
 
   test "should destroy workcamp" do

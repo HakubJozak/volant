@@ -1,4 +1,6 @@
 Volant.ApplyForm = DS.Model.extend
+  type: DS.attr 'string'
+  
   current_workcamp:  DS.belongsTo 'workcamp', async: true
   current_assignment:  DS.belongsTo 'workcamp_assignment', async: true
   current_message: DS.belongsTo 'message',async: true, inverse: null
@@ -23,7 +25,7 @@ Volant.ApplyForm = DS.Model.extend
 
   gender: Ember.computed.alias('volunteer.gender')
   name: Ember.computed.alias('volunteer.name')
-  age: Ember.computed.alias('volunteer.age')  
+  age: Ember.computed.alias('volunteer.age')
   email: Ember.computed.alias('volunteer.email')
   createdToday: (-> moment().isSame(@get('createdAt'),'day')  ).property('createdAt')
 

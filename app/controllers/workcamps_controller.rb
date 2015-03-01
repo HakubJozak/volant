@@ -6,7 +6,7 @@ class WorkcampsController < ApplicationController
 
   def index
     if ids = filter[:ids]
-      search = workcamps.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
+      search = Workcamp.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
       render json: search.find(*ids), each_serializer: WorkcampSerializer
     else
       search = workcamps.order(current_order).page(current_page).joins(:country)
@@ -44,7 +44,7 @@ class WorkcampsController < ApplicationController
   end
 
   def update
-    if  @workcamp.update(workcamp_params)
+    if @workcamp.update(workcamp_params)
       render json: @workcamp, serializer: WorkcampSerializer
     else
       render_error(@workcamp)
@@ -70,7 +70,7 @@ class WorkcampsController < ApplicationController
   private
 
   def find_workcamp
-    @workcamp = workcamps.find(params[:id])
+    @workcamp = Workcamp.find(params[:id])
   end
 
   def filter
@@ -83,7 +83,7 @@ class WorkcampsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def workcamp_params
-    readonly = [ :state,:free_places,:free_places_for_males,:free_places_for_females, :duration, :tag_list, :sci_id, :sci_code ]
+    readonly = [ :state,:free_places,:free_places_for_males,:free_places_for_females, :tag_list, :sci_id, :sci_code ]
 
     params.except(*readonly)
       .require(:workcamp)
@@ -94,13 +94,13 @@ class WorkcampsController < ApplicationController
               :airport, :train, :publish_mode,:places, :places_for_males, :places_for_females,
               :accepted_places, :accepted_places_males, :accepted_places_females,
               :asked_for_places, :asked_for_places_males, :asked_for_places_females,
-              :longitude, :latitude, :requirements,
+              :longitude, :latitude, :requirements, :duration,
               :organization_id, :country_id, :tag_ids => [], :workcamp_intention_ids => [])
   end
 
   def workcamps
     type = params[:type] || params[:workcamp].try(:[],:type)
-    
+
     case type.try(:downcase)
     when 'incoming' then Incoming::Workcamp
     when 'ltv' then Ltv::Workcamp
