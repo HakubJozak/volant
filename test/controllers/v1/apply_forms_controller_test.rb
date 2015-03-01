@@ -61,6 +61,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       assert_equal 'Špelec',form.volunteer.lastname
       assert_equal :not_paid, form.state.name
       assert_equal '0103260424', form.volunteer.birthnumber
+      assert_equal Ltv::ApplyForm, form.class      
     end
   end
 
@@ -105,6 +106,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       assert_equal 'Anton',form.volunteer.firstname
       assert_equal old.id,form.volunteer.id
       assert_equal 5, form.workcamps.size
+      assert_equal Ltv::ApplyForm, form.class
     end
   end
 
@@ -112,7 +114,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
   private
 
   def form_by_birthnumber(bn)
-    Outgoing::ApplyForm.joins(:volunteer).where(people: { birthnumber: bn}).first
+    ApplyForm.joins(:volunteer).where(people: { birthnumber: bn}).first
   end
 
 end
