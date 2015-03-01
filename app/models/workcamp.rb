@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class Workcamp < ActiveRecord::Base
 
-  DURATION_SQL = '(EXTRACT(epoch FROM age("end","begin"))/(3600 * 24))'
+  # DURATION_SQL = '(EXTRACT(epoch FROM age("end","begin"))/(3600 * 24))'
 
   include AllianceExporter
   include ActiveRecord::Diff
@@ -19,8 +19,8 @@ class Workcamp < ActiveRecord::Base
   validates_presence_of :country, :code, :name, :places, :places_for_males, :places_for_females, :organization, :publish_mode
   validates_presence_of :extra_fee_currency, :if => Proc.new {|wc| wc.extra_fee && wc.extra_fee > 0},:message => "je povinná. (Je vyplněn poplatek, ale nikoliv jeho měna. Doplňte měnu poplatku.)"
 
-  scope :min_duration, lambda { |d| where("#{DURATION_SQL} >= ?", d) }
-  scope :max_duration, lambda { |d| where("#{DURATION_SQL} <= ?", d) }
+  scope :min_duration, lambda { |d| where("duration >= ?", d) }
+  scope :max_duration, lambda { |d| where("duration <= ?", d) }
 
   scope :published, -> (season_end) { where %{(publish_mode = 'ALWAYS') OR (publish_mode = 'SEASON' AND "begin" <= ?  AND "begin" >= current_date)},season_end}
 
@@ -164,14 +164,6 @@ class Workcamp < ActiveRecord::Base
   acts_as_taggable
   include TaggableExtension
 
-  def duration
-    if self.end and self.begin
-      (self.end.to_time - self.begin.to_time).to_i / 1.day + 1
-    else
-      nil
-    end
-  end
-
   # returns true if there is no more place left for volunteers of the same gender as 'volunteer'
   def full?(volunteer)
     self.send("free_places_for_#{volunteer.gender_sufix}") <= 0
@@ -210,6 +202,19 @@ class Workcamp < ActiveRecord::Base
   end
 
   private
+
+  def set_duration
+    self.duration ||= computed_duration
+  end
+  
+  def computed_duration
+    if self.end and self.begin
+      (self.end.to_time - self.begin.to_time).to_i / 1.day + 1
+    else
+      nil
+    end
+  end
+
 
   def localize(date)
     date ? I18n.localize(date) : '?'
