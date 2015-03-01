@@ -49,6 +49,14 @@ class ApplicationController < ActionController::Base
     search
   end
 
+  def workcamp_type(type)
+    case type.try(:downcase)
+    when 'incoming' then Incoming::Workcamp
+    when 'ltv' then Ltv::Workcamp
+    else Workcamp
+    end
+  end
+
   def default_format_json
     if request.headers["HTTP_ACCEPT"].nil? && params[:format].nil?
       request.format = "json"

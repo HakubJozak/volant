@@ -1,6 +1,10 @@
-Ember.Handlebars.helper 'capitalize', (str,options) ->
+Ember.Handlebars.helper 'capitalize', (str) ->
   str.capitalize() if str
 
+Ember.Handlebars.helper 'upcase', (str) ->
+  console.info str
+  str.toUpperCase() if str
+  
 Ember.Handlebars.helper 'humanize', (str,options) ->
   if str
     str.capitalize().replace('_',' ')
@@ -27,7 +31,7 @@ Ember.Handlebars.helper "mail-to", (email) ->
   new Handlebars.SafeString "<a href='mailto:#{email}' target='_blank' title='Open your email app with #{email}' >#{email}</a>"
 
 Ember.Handlebars.helper "mail-to-title", (email,title) ->
-  new Handlebars.SafeString "<a href='mailto:#{email}' target='_blank' title='Open your email app with #{email}' >#{title}</a>"  
+  new Handlebars.SafeString "<a href='mailto:#{email}' target='_blank' title='Open your email app with #{email}' >#{title}</a>"
 
 Ember.Handlebars.helper "external-link", (link) ->
   a = "<a href='#{link}' target='_blank'><i class='fa fa-external-link'></i></a>"

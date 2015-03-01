@@ -1,5 +1,4 @@
 Volant.ImportedWorkcampsRoute = Volant.WorkcampsRoute.extend
-  controllerName: 'workcamps'
   title: -> "Imported Workcamps"
   default_filter: -> { state: 'imported' }
 
@@ -12,8 +11,9 @@ Volant.ImportedWorkcampsRoute = Volant.WorkcampsRoute.extend
   actions:
     import: ->
       data = new FormData($('#upload-form')[0])
+
       @controllerFor('imported_workcamps').set('messages',[])
-      @send_files('/workcamps/import',data).then ( (messages) =>
+      @_send_files('/workcamps/import',data).then ( (messages) =>
         @controllerFor('imported_workcamps').set('messages',messages)
         @flash_info('Import finished. See the results below.')
         @refresh()
@@ -23,13 +23,14 @@ Volant.ImportedWorkcampsRoute = Volant.WorkcampsRoute.extend
 
   # --- private ---
 
-  send_files: (url,data = {}) ->
+  _send_files: (url,data = {}) ->
     new Promise (resolve, reject) =>
       csrf_token = $('meta[name="csrf-token"]').attr('content')
       csrf_param = $('meta[name="csrf-param"]').attr('content')
 
       data = new FormData($('#upload-form')[0])
       data.append('authenticity_token',csrf_token)
+      data.append('type',@get('controller.mode'))
 
       $.ajax
         url: url

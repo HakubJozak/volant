@@ -6,7 +6,7 @@ module Import
     include XmlHelper
     include Import::Importer
 
-    def initialize(file)
+    def initialize(file,new_workcamp_class = Outgoing::Workcamp)
       # HACK - this shold not be happening, but somehow the file comes
       # read in the tests
       file.rewind if file.respond_to?(:rewind)
@@ -16,6 +16,7 @@ module Import
       org_code = to_text(@doc, '/projectform/organization_code') || to_text(@doc, '/projectform/Organization_code')
 
       @organization = Organization.find_by_code(org_code)
+      @new_workcamp_class = new_workcamp_class
     end
 
     def each_workcamp(&block)
@@ -31,7 +32,7 @@ module Import
         raise Import::Error.new("Unknown organization")
       end
 
-      Outgoing::Workcamp.new do |wc|
+      @new_workcamp_class.new do |wc|
         wc.country = Country.find_by_triple_code(node.elements['country'].text) || @organization.country
         wc.organization = @organization
 

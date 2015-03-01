@@ -40,7 +40,7 @@ module Import
         workdesc: 'work_is_hard',
         places: 2,
         places_for_females: 2,
-        places_for_males: 2,        
+        places_for_males: 2,
         # TODO remove the newlines
         notes: "must_be_alive\n\n",
         extra_fee_currency: 'EUR',
@@ -83,6 +83,12 @@ module Import
       wcs = Import::PefImporter.new(file).import!
       assert_equal 'updated',wcs.first.state
       assert wcs.first.import_changes.map(&:field).include?('name')
+    end
+
+    test "import LTV" do
+      file = File.new(Rails.root.join('test/fixtures/xml/PEF_lunar31_20141112.xml'))
+      Import::PefImporter.new(file,Ltv::Workcamp).import!.first
+      assert_not_nil wc = Ltv::Workcamp.find_by_project_id('f9c91026d627166ce372501d4c55f690')
     end
 
   end

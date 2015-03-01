@@ -35,6 +35,9 @@ Volant.Workcamp = DS.Model.extend
   train: DS.attr 'string'
   publish_mode: DS.attr 'string'
 
+  createdAt: DS.attr 'isodate'
+  updatedAt: DS.attr 'isodate'    
+
   # TODO: extract Placement data type
   places: DS.attr 'number'
   places_for_males: DS.attr 'number'
@@ -77,7 +80,7 @@ Volant.Workcamp = DS.Model.extend
     if from? and to?
       moment(to).diff(from,'days') + 1
     else
-      null              
+      null
   ).property('from','to')
 
   assignments_by_state: Ember.computed.sort 'workcamp_assignments', (wa,wb) ->

@@ -14,7 +14,7 @@ class WorkcampSerializer < ApplicationSerializer
       :accepted_places, :accepted_places_males, :accepted_places_females,
       :asked_for_places, :asked_for_places_males, :asked_for_places_females,
       :longitude, :latitude, :requirements,
-      :organization_id, :country_id
+      :organization_id, :country_id, :created_at, :updated_at
 
 
   def type

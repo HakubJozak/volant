@@ -73,6 +73,11 @@ class WorkcampsController < ApplicationController
     @workcamp = Workcamp.find(params[:id])
   end
 
+  def workcamps
+    type = params[:type] || params[:workcamp].try(:[],:type)
+    workcamp_type(type)
+  end
+  
   def filter
     params.permit(:starred,:state,:p,:order,:year,:q,:from,:to,:min_duration,:max_duration,:age,
                   :free,:free_males,:free_females,:publish_mode,
@@ -96,16 +101,6 @@ class WorkcampsController < ApplicationController
               :asked_for_places, :asked_for_places_males, :asked_for_places_females,
               :longitude, :latitude, :requirements, :duration,
               :organization_id, :country_id, :tag_ids => [], :workcamp_intention_ids => [])
-  end
-
-  def workcamps
-    type = params[:type] || params[:workcamp].try(:[],:type)
-
-    case type.try(:downcase)
-    when 'incoming' then Incoming::Workcamp
-    when 'ltv' then Ltv::Workcamp
-    else Workcamp
-    end
   end
 
 end
