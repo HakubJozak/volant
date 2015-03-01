@@ -9,8 +9,8 @@ module Outgoing
 
     create_date_time_accessors
 
-    belongs_to :apply_form, :class_name => 'ApplyForm'
-    belongs_to :workcamp, :class_name => 'Workcamp'
+    belongs_to :apply_form, :class_name => '::ApplyForm'
+    belongs_to :workcamp, :class_name => '::Workcamp'
     validates_presence_of :workcamp
 
     after_save :update_apply_form_cache

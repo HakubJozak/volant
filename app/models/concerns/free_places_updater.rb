@@ -1,4 +1,4 @@
-module Outgoing::FreePlacesUpdater
+module FreePlacesUpdater
   extend ActiveSupport::Concern
 
   def update_free_places
@@ -43,6 +43,5 @@ module Outgoing::FreePlacesUpdater
     # wc.update_attribute("free_places_for_females",
     #                     [ wc.free_places, wc.places_for_females - wc.accepted_places_females ].min)
   end
-
 
 end

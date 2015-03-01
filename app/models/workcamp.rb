@@ -8,7 +8,7 @@ class Workcamp < ActiveRecord::Base
 
   create_date_time_accessors
 
-  include Outgoing::FreePlacesUpdater
+  include FreePlacesUpdater
   before_save :update_free_places_for_workcamp
 
   has_many :workcamp_assignments, dependent: :destroy, class_name: 'Outgoing::WorkcampAssignment'

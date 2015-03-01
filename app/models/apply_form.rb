@@ -7,7 +7,10 @@ class ApplyForm < ActiveRecord::Base
   acts_as_taggable
   include TaggableExtension
   include Export::Excel::ApplyForm
-
+  include FreePlacesUpdater
+  after_save :update_free_places
+  after_destroy :update_free_places    
+  
   create_date_time_accessors
 
   validates_presence_of :motivation
