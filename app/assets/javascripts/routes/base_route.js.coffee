@@ -90,7 +90,7 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
     rollback: ->
       @currentModel.get('errors').clear()
       @currentModel.rollback()
-      @go_to_plural_route()
+      @afterRollback(@currentModel)
       false
 
   # Override those

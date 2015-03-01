@@ -33,11 +33,11 @@ table.table.table-striped.table-hover
             | {{account}}/{{bank_code}}
           else
             ' Cash
-        td  format-date returned_date
-        td  returned_amount
-        td  returned_reason
-        td  description
+        td  
+          if returned_date
+            ' {{format-date returned_date}}
+        td  {{returned_amount}}
+        td  {{returned_reason}}
+        td  {{description}}
 
 render 'pagination'
-
-

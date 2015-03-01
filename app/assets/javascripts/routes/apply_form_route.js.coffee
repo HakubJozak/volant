@@ -1,4 +1,4 @@
-Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
+Volant.ApplyFormRoute = Volant.BaseRoute.extend Volant.ApplyFormActions, 
   model: (params) ->
     @store.find('apply_form', params.apply_form_id)
 
@@ -10,7 +10,7 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
     @flash_info('Deleted.')
     @send 'goToApplyForms'
 
-  afterRollback: (record) ->    
+  afterRollback: (record) ->
     @send 'goToApplyForms'
     
   title: (model) -> "#{model.get('name')}"
@@ -31,6 +31,14 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
       @send('createAssignment',wc,@currentModel)
       false
 
+    rollback: ->
+      models = [ @get('model'), @get('model.volunteer'), @get('model.payment') ]
+      for m in models
+        m.get('errors').clear()
+        m.rollback()      
+      @send 'goToApplyForms'
+      false
+
     reactivate: ->
       @currentModel.set 'cancelled',null
       @currentModel.save()
@@ -41,4 +49,3 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
       @controllerFor('payment').set('content',payment)
       false
 
-})
