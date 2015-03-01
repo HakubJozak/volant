@@ -47,7 +47,7 @@
             p.list-group-item-text
               ' {{small-flag country}} |
               ' {{partial 'free_places'}} |
-              ' {{duration}} days,
+              ' {{computedOrSetDuration}} days,
               ' {{join workcamp_intentions 'code'}}
               ' {{join tags 'name'}}
 

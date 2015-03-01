@@ -14,13 +14,12 @@
     .col-lg-5
       h4.list-group-item-heading
         link-to 'workcamp' this
-          | {{code}} &ndash; {{name}}
+          ' {{code}} &ndash; {{name}}
         small
-          = duration
-          ' days
+          ' {{computedOrSetDuration}}&nbsp;days
 
       p.list-group-item-text
-        |  {{age-range this }}, {{join workcamp_intentions 'code'}}
+        ' {{age-range this }}, {{join workcamp_intentions 'code'}}
         tag-list tags
         partial 'workcamp/extra_fee'
     .col-lg-2
@@ -33,7 +32,7 @@
         each workcamp_assignments itemController='workcampAssignmentInsideWorkcamp'
           = link-to 'apply_form' apply_form
             if isRelevant
-              | {{apply_form.name}} ({{apply_form.age}}) {{apply-form-state-icon apply_form.state}}
+              ' {{apply_form.name}} ({{apply_form.age}}) {{apply-form-state-icon apply_form.state}}
               each apply_form.tags
                 tag this
               ' ,

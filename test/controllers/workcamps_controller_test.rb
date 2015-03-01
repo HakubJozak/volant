@@ -112,7 +112,6 @@ class WorkcampsControllerTest < ActionController::TestCase
 
     assert_equal 1, json_response['workcamps'].size
     assert_equal target.id, json_response['workcamps'].first['id']
-    assert target.duration >= 15
   end
 
   test 'max_duration' do
@@ -125,7 +124,6 @@ class WorkcampsControllerTest < ActionController::TestCase
 
     assert_equal 1, json_response['workcamps'].size
     assert_equal target.id, json_response['workcamps'].first['id']
-    assert target.duration <= 4
   end
 
   test 'age' do

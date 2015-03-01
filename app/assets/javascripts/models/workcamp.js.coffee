@@ -66,6 +66,20 @@ Volant.Workcamp = DS.Model.extend
   from: Ember.computed.alias('begin')
   to: Ember.computed.alias('end')
 
+  computedOrSetDuration: (->
+    @get('duration') || @get('computedDuration')
+  ).property('duration','computedDuration')
+
+  computedDuration: (->
+    from = @get('from')
+    to = @get('to')
+
+    if from? and to?
+      moment(to).diff(from,'days') + 1
+    else
+      null              
+  ).property('from','to')
+
   assignments_by_state: Ember.computed.sort 'workcamp_assignments', (wa,wb) ->
     priorities = [ 'infosheeted', 'accepted', 'asked','paid','not_paid', 'rejected', 'cancelled' ]
 

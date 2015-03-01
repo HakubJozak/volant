@@ -15,4 +15,5 @@ small
   apply-form-state-icon state
   '
   each tags
-    = tag this
+    ' {{tag this}}
+

@@ -5,7 +5,6 @@ class Workcamp < ActiveRecord::Base
   include ActiveRecord::Diff
   include Import::WorkcampExtension
   include Stars::Model
-  include DurationConcern
 
   create_date_time_accessors
 
@@ -26,6 +25,12 @@ class Workcamp < ActiveRecord::Base
     year = year.to_i
     where '(extract(YEAR from workcamps.begin) = ? OR extract(YEAR FROM workcamps.end) = ?)', year,year
   }
+
+  DURATION_SQL = '(EXTRACT(epoch FROM age("end","begin"))/(3600 * 24) + 1)'
+
+  scope :min_duration, lambda { |d| where("(duration IS NULL AND #{DURATION_SQL} >= ?) OR duration >= ?", d,d) }
+
+  scope :max_duration, lambda { |d| where("(duration IS NULL AND #{DURATION_SQL} <= ?) OR duration <= ?", d,d) }
 
   scope :query, lambda { |query|
     like = "%#{query}%"
