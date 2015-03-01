@@ -18,17 +18,18 @@ Volant.MessageRoute = Volant.BaseRoute.extend
 
   setupController: (controller,message) ->
     @store.find('email_template').then (templates) =>
-      tmpl = templates.findBy('action',message.get('action'))
-      @controllerFor('email_templates').set('content',templates)
-      controller.set('selectedTemplate',tmpl)
+      message.get('apply_form').then (apply_form) =>
+        tmpl = templates.findBy('action',@_templateNameFor(message,apply_form))
+        @controllerFor('email_templates').set('content',templates)
+        controller.set('selectedTemplate',tmpl)
 
-      if message.get('isNew') && tmpl
-        @applyTemplate(tmpl,message)
+        if message.get('isNew') && tmpl
+          @applyTemplate(tmpl,message,apply_form)
 
     @_super(controller,message)
 
-  applyTemplate: (tmpl,message) ->
-    context = @message_context(message).then (context) =>
+  applyTemplate: (tmpl,message,apply_form) ->
+    context = @_message_context(message,apply_form).then (context) =>
       error = (e) =>
         console.error e
         @flash_error e
@@ -41,31 +42,40 @@ Volant.MessageRoute = Volant.BaseRoute.extend
       message.set 'cc', tmpl.eval_field('cc',context,error)
       message.set 'bcc', tmpl.eval_field('bcc',context,error)
 
-  message_context: (message) ->
-    message.get('apply_form').then (apply_form) =>
-      apply_form.get('current_workcamp').then (workcamp) =>
-        context = {}
-        user = message.get('user')
+  _templateNameFor: (message,form) ->
+    action = message.get('action')
 
-        if user
-          context.user = user.for_email()
+    name = switch form.get('type')
+      when 'ltv' then "ltv/#{action}"
+      else action
 
-        if apply_form
-          context.application = apply_form.for_email()
-          # legacy alias
-          context.apply_form = context.application
+    console.log name
+    name          
 
-          if volunteer = apply_form.get('volunteer')
-            context.volunteer = volunteer.for_email()
+  _message_context: (message,apply_form) ->
+    apply_form.get('current_workcamp').then (workcamp) =>
+      context = {}
+      user = message.get('user')
 
-        if workcamp
-          context.workcamp = workcamp.for_email()
-          # legacy alias
-          context.wc = context.workcamp
+      if user
+        context.user = user.for_email()
 
-          if org = workcamp.get('organization')
-            context.organization = org.for_email()
-        context
+      if apply_form
+        context.application = apply_form.for_email()
+        # legacy alias
+        context.apply_form = context.application
+
+        if volunteer = apply_form.get('volunteer')
+          context.volunteer = volunteer.for_email()
+
+      if workcamp
+        context.workcamp = workcamp.for_email()
+        # legacy alias
+        context.wc = context.workcamp
+
+        if org = workcamp.get('organization')
+          context.organization = org.for_email()
+      context
 
 
   actions:

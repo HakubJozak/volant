@@ -1,7 +1,7 @@
 class ApplyFormSerializer < ApplicationSerializer
   attributes :id, :starred, :fee, :general_remarks,
   :motivation, :confirmed, :cancelled, :created_at,
-  :state,
+  :state, :type,
   :no_response_alert, :missing_infosheet_alert
 
   has_many :workcamp_assignments, embed: :ids, include: false
@@ -13,6 +13,17 @@ class ApplyFormSerializer < ApplicationSerializer
   has_one :current_workcamp, embed: :ids, include: true, root: 'workcamps'
   has_one :current_assignment, embed: :ids, include: true, root: 'workcamp_assignments'
   has_one :current_message, embed: :ids, include: false, root: 'messages'
+
+  def type
+    case object
+    when Ltv::ApplyForm
+      'ltv'
+    when Incoming::ApplyForm
+      'incoming'
+    else
+      'outgoing'
+    end
+  end
 
   def no_response_alert
     object.waits_too_long?
