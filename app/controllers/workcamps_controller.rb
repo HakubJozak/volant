@@ -6,7 +6,7 @@ class WorkcampsController < ApplicationController
 
   def index
     if ids = filter[:ids]
-      search = workcamps.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
+      search = Workcamp.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
       render json: search.find(*ids), each_serializer: WorkcampSerializer
     else
       search = workcamps.order(current_order).page(current_page).joins(:country)
@@ -70,7 +70,7 @@ class WorkcampsController < ApplicationController
   private
 
   def find_workcamp
-    @workcamp = workcamps.find(params[:id])
+    @workcamp = Workcamp.find(params[:id])
   end
 
   def filter

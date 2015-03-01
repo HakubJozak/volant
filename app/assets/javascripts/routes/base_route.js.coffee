@@ -69,9 +69,8 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
       if record.get('isNew')
         record.deleteRecord()
       else
-        record.destroyRecord().then (=>
-          @flash_info 'Deleted.'
-          @go_to_plural_route()
+        record.destroyRecord().then ( (record) =>
+          @afterRemove(record)
           ), ( (e) =>
            console.error e
            @flash_error "Failed."
@@ -95,7 +94,13 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
       false
 
   # Override those
+  afterRollback: (record) ->
+    @go_to_plural_route(record)
 
+  afterRemove: (record) ->
+    @go_to_plural_route()
+    @flash_info 'Deleted.'
+    
   afterSave: (record) ->
     @go_to_plural_route(record)
     @flash_info('Saved.')

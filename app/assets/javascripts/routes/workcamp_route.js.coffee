@@ -10,13 +10,16 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend
     @controllerFor('starred_apply_forms').set('content', @store.find('apply_form',starred: true));
     @prepareSelectControllers()
 
+  afterRemove: (record) ->
+    @send 'goToWorkcamps'    
+    @flash_info('Deleted.')
+
+  afterRollback: (record) ->    
+    @send 'goToWorkcamps'
+
   afterSave: (record) ->
-    # type = record.get('type')
-    # route = "#{type}_workcamps"
-    # @transitionTo route
     @flash_info('Saved.')
     @send 'goToWorkcamps'
-    
 
   actions:
     addApplyForm: (form) ->

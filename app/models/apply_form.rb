@@ -17,7 +17,7 @@ class ApplyForm < ActiveRecord::Base
   has_many :workcamps, -> { order 'workcamp_assignments."order" ASC' }, through: :workcamp_assignments, class_name: 'Workcamp', validate: false
   has_many :workcamp_assignments, -> { order '"order" ASC' }, dependent: :delete_all, class_name: 'Outgoing::WorkcampAssignment', validate: false
 
-  
+
   # TODO: replace by real DB attributes
   delegate :firstname, :lastname, :gender, :email, :phone, :birthdate, :birthnumber,
            :nationality, :occupation, :account, :emergency_name, :emergency_day,

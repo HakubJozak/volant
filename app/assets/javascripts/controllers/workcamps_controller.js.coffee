@@ -49,7 +49,7 @@ Volant.WorkcampsController = Volant.ListController.extend
       wc.get('isDirty')
   ).property('@each.isDirty')
 
-  filter_visible: true
+  filter_visible: false
   editing_visible: false
 
   actions:

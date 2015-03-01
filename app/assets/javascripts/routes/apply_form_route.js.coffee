@@ -6,6 +6,13 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend(Volant.ApplyFormActions, {
     @flash_info('Saved.')
     @send 'goToApplyForms'
 
+  afterRemove: (record) ->
+    @flash_info('Deleted.')
+    @send 'goToApplyForms'
+
+  afterRollback: (record) ->    
+    @send 'goToApplyForms'
+    
   title: (model) -> "#{model.get('name')}"
 
   setupController: (controller,model,queryParams) ->
