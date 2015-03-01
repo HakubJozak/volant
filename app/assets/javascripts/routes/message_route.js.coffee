@@ -80,7 +80,8 @@ Volant.MessageRoute = Volant.BaseRoute.extend
 
   actions:
     useTemplate: (tmpl) ->
-      @applyTemplate(tmpl,@currentModel)
+      @currentModel.get('apply_form').then (apply_form) =>
+        @applyTemplate(tmpl,@currentModel,apply_form)
       false
 
     sendMessage: ->
