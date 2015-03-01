@@ -29,18 +29,22 @@
             </div>
           {{/model-field}}
 
-          {{#model-field errors=errors.country class="col-lg-3"}}
-          {{partial 'inputs/country'}}
-          {{/model-field}}
+          {{#model-field errors=errors.code}}
+            <div class="col-lg-3">
+              {{ input value=code class='form-control' placeholder="Code"}}
+            </div>
+          {{/model-field}}  
         </div>
 
         <div class="form-group">
-          {{#model-field errors=errors.code}}
-            <label class="col-lg-2 control-label">Code</label>
-            <div class="col-lg-3">
-              {{ input value=code class='form-control'}}
-            </div>
+          <label class="col-lg-2 control-label">Country</label>
+          {{#model-field errors=errors.country}}
+          <div class="col-lg-3">
+            {{partial 'inputs/country'}}
+          </div>
           {{/model-field}}
+
+
 
           <label class="col-lg-1 control-label">Dates</label>
           <div class="col-lg-3">
