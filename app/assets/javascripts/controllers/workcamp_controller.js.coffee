@@ -12,6 +12,8 @@ Volant.WorkcampController = Ember.ObjectController.extend
   #   @set('changed', true)
   # ).observes('model.organization','model.country','model.tags.@each','model.workcamp_intentions.@each')
 
+  tagsAndIntents: Ember.computed.union('workcamp_intentions','tags')
+
   imported: Ember.computed.equal('state','imported')
   updated: Ember.computed.equal('state','updated')
   imported_or_updated: Ember.computed.or('imported','updated')
