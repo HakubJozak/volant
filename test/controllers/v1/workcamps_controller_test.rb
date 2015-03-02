@@ -19,7 +19,10 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal 1, json_response['meta']['pagination']['total']
-    assert_equal @workcamp.id, json_response['workcamps'].first['id'].to_i
+
+    wc = json_response['workcamps'].first
+    assert_equal @workcamp.id, wc['id'].to_i
+    assert_equal ['family','teenage'], wc['tags'].map {|t| t['name'] }
   end
 
   test 'search LTV' do

@@ -18,7 +18,7 @@ class ImportControllerTest < ActionController::TestCase
     assert_difference 'Ltv::Workcamp.count' do
       post :create, { pef: fixture_file_upload('xml/PEF_lunar31_20141112.xml'), type: 'ltv' }
       assert_response :success
-      assert_equal json_response, {"import_messages"=>[{"level"=>"success", "text"=>"Workcamp AGAPE 06(LUNAR 31) prepared for creation."}]}      
+      assert_equal json_response, {"import_messages"=>[{"level"=>"success", "text"=>"Workcamp AGAPE 06(LUNAR 31) prepared for creation."}]}
     end
   end
 

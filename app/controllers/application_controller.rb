@@ -53,6 +53,7 @@ class ApplicationController < ActionController::Base
     case type.try(:downcase)
     when 'incoming' then Incoming::Workcamp
     when 'ltv' then Ltv::Workcamp
+    when 'outgoing' then Outgoing::Workcamp
     else Workcamp
     end
   end

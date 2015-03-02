@@ -3,6 +3,7 @@ class V1::WorkcampSerializer < ActiveModel::Serializer
   has_one :country, serializer: V1::CountrySerializer
   has_many :workcamp_intentions, serializer: V1::WorkcampIntentionSerializer
 
+
   attributes :id, :name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
       :area, :accomodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,
       :region, :capacity_natives, :capacity_teenagers, :capacity_males, :capacity_females,
@@ -12,8 +13,10 @@ class V1::WorkcampSerializer < ActiveModel::Serializer
       :duration,
       :longitude, :latitude, :requirements,
       :created_at,
-      :type
+      :type, :tags
 
+#  has_many :tags, serializer: V1::TagSerializer, embed: true, include: true
+  
   def type
     case object
     when Ltv::Workcamp then 'ltv'
@@ -21,7 +24,7 @@ class V1::WorkcampSerializer < ActiveModel::Serializer
     else 'outgoing'
     end
   end
-  
+
   def workcamp_intentions
     object.intentions
   end

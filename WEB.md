@@ -5,7 +5,6 @@
   http://www.inexsda.cz/cs/workcamp/46849-an-lac-eco-community)
 
 - 'prihlas se' a ostatni tlacitko (pagination) nefunguji cela
-- 404 z googlu - http://www.inexsda.cz/data/attachments/Tiskoviny/INEX_Vyrocni%20zprava_2010_www.pdf
 - formular prihlasky - pretekajici vyska pole
 - detaily obrazku na klik
 - nejasne rozliseni LTV/Workcampu je zmatek

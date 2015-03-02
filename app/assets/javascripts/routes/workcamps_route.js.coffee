@@ -1,5 +1,5 @@
 Volant.WorkcampsRoute = Volant.BaseRoute.extend
-  default_filter: -> {}
+  default_filter: -> { type: 'outgoing' }
   newWorkcampType: 'outgoing'
 
   queryParams:
