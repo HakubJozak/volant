@@ -9,8 +9,8 @@ class ApplyForm < ActiveRecord::Base
   include Export::Excel::ApplyForm
   include FreePlacesUpdater
   after_save :update_free_places
-  after_destroy :update_free_places    
-  
+  after_destroy :update_free_places
+
   create_date_time_accessors
 
   belongs_to :current_workcamp, foreign_key: 'current_workcamp_id_cached', class_name: 'Workcamp'
@@ -24,7 +24,7 @@ class ApplyForm < ActiveRecord::Base
            :nationality, :occupation, :account, :emergency_name, :emergency_day,
            :emergency_night, :speak_well, :speak_some, :special_needs, :past_experience, :comments,
            :fax, :street, :city, :zipcode, :contact_street, :contact_city, :contact_zipcode,
-           :birthplace, :note, to: :volunteer
+           :birthplace, :note, :male?, :female?, to: :volunteer, allow_nil: true
 
   scope :year, lambda { |year|
     year = year.to_i
@@ -223,7 +223,7 @@ class ApplyForm < ActiveRecord::Base
         current_assignment.send(action,time)
         self.reload
       else
-        raise "This apply form has no current assignment, cannot run action #{action}" 
+        raise "This apply form has no current assignment, cannot run action #{action}"
       end
     end
   end
@@ -284,5 +284,5 @@ class ApplyForm < ActiveRecord::Base
     result = connection.select_rows(stmt)[0]
     ApplyForm.where(id: id).update_all(current_workcamp_id_cached: result[0], current_assignment_id_cached: result[1])
   end
-  
+
 end

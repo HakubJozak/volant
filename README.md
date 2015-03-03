@@ -1,4 +1,3 @@
-
 # Volant
 
 [![Build Status](https://travis-ci.org/HakubJozak/volant.svg)](https://travis-ci.org/HakubJozak/volant.svg?branch=ember)

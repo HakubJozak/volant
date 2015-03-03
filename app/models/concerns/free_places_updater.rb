@@ -23,10 +23,11 @@ module FreePlacesUpdater
       wc.workcamp_assignments.each do |wa|
         a = wa.apply_form
 
-        if a.volunteer and a.volunteer.send(condition) and !a.cancelled
+        if a.send(condition) and !a.cancelled
           accepted += 1 if wa.accepted
           asked += 1 if wa.state == :asked
         end
+
       end
 
       wc.send("accepted_places#{sufix}=", accepted)
@@ -36,12 +37,8 @@ module FreePlacesUpdater
     wc.free_places = wc.places - wc.accepted_places
     wc.free_places_for_males = [ wc.free_places, wc.places_for_males - wc.accepted_places_males ].min
     wc.free_places_for_females = [ wc.free_places, wc.places_for_females - wc.accepted_places_females ].min
-
-    # wc.update_attribute("free_places", wc.places - wc.accepted_places)
-    # wc.update_attribute("free_places_for_males",
-    #                     [ wc.free_places, wc.places_for_males - wc.accepted_places_males ].min)
-    # wc.update_attribute("free_places_for_females",
-    #                     [ wc.free_places, wc.places_for_females - wc.accepted_places_females ].min)
   end
+
+  
 
 end
