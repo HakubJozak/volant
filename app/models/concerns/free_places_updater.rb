@@ -18,16 +18,20 @@ module FreePlacesUpdater
               [ "_females", :female? ] ]
 
     kinds.each do |sufix, condition|
-      asked = accepted = 0
+      capacity = asked = accepted = 0
 
       wc.workcamp_assignments.each do |wa|
-        a = wa.apply_form
+        form = wa.apply_form
+        next if form.cancelled
+        next unless form.send(condition)
 
-        if a.send(condition) and !a.cancelled
+        case form
+        when Incoming::ApplyForm
+          capacity += 1 if wa.accepted
+        else
           accepted += 1 if wa.accepted
           asked += 1 if wa.state == :asked
         end
-
       end
 
       wc.send("accepted_places#{sufix}=", accepted)
@@ -39,6 +43,6 @@ module FreePlacesUpdater
     wc.free_places_for_females = [ wc.free_places, wc.places_for_females - wc.accepted_places_females ].min
   end
 
-  
+
 
 end
