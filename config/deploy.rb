@@ -15,15 +15,15 @@ set :repository, 'git@github.com:HakubJozak/volant.git'
 task :staging do
   set :user, 'rails'
   set :deploy_to, '/home/rails/volant-staging'
-  set :domain, 'pelican.amagical.net'  
-  set :branch, 'ember'
+  set :domain, 'pelican.amagical.net'
+  set :branch, 'master'
 end
 
 task :production do
   set :user, 'rails'
   set :deploy_to, '/home/rails/volant'
   set :domain, 'pelican.amagical.net'
-  set :branch, 'ember'
+  set :branch, 'master'
 end
 
 
@@ -90,4 +90,3 @@ end
 # Stopping
 # cd /etc/apache2/
 # ln -s sites-available/volant sites-enabled/001-volant
-
