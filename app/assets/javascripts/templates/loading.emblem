@@ -1,0 +1,4 @@
+.jumbotron.text-center
+  h2
+    ' Loading
+    i.fa.fa-cog.fa-spin
