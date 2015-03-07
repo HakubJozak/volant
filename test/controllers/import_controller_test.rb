@@ -22,4 +22,39 @@ class ImportControllerTest < ActionController::TestCase
     end
   end
 
+  test 'confirm_all' do
+    Workcamp.destroy_all
+    2.times { create_imported_wc }
+
+    assert_equal 2,Workcamp.imported_or_updated.count
+    assert_equal 0,Workcamp.live.count
+
+    put :confirm_all
+    
+    assert_equal 0,Workcamp.imported_or_updated.count
+    assert_equal 2,Workcamp.live.count    
+  end
+
+  test 'cancel_all' do
+    Workcamp.destroy_all
+    2.times { create_imported_wc }
+
+    assert_equal 2,Workcamp.imported_or_updated.count
+    assert_equal 0,Workcamp.live.count
+
+    delete :cancel_all
+    
+    assert_equal 0,Workcamp.imported_or_updated.count
+    assert_equal 0,Workcamp.live.count    
+    
+  end
+
+  private
+
+  def create_imported_wc
+    wc = Factory(:workcamp,state: 'imported')
+    Factory(:import_change, workcamp: wc)
+    wc
+  end
+  
 end
