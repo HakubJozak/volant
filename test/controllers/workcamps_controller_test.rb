@@ -191,7 +191,7 @@ class WorkcampsControllerTest < ActionController::TestCase
 
 
   test "update" do
-    family = ColoredTag.find_by_name('family').id
+    family = ColoredTag.find_by_name('family')
 
     patch :update, id: @workcamp, workcamp: { duration: 333, name: 'edited', code: 'new-code', :'end' =>  "2014-06-26", tag_ids: [family.id]}
     assert_response :success
@@ -209,11 +209,11 @@ class WorkcampsControllerTest < ActionController::TestCase
     @workcamp.intentions << Factory(:workcamp_intention)
     @workcamp.save!
 
-    put :update, id: @workcamp.id, workcamp: { tag_ids: nil, workcamp_intention_ids: [] }
+    put :update, id: @workcamp.id, workcamp: { tag_ids: nil, workcamp_intention_ids: nil }
     assert_response :success
 
-    assert_equal [],@workcamp.intentions
-    assert_equal [],@workcamp.tags
+    assert_equal [],@workcamp.intentions.reload
+    assert_equal [],@workcamp.tags.reload
   end
 
   test "should destroy workcamp" do
