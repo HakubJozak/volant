@@ -4,5 +4,15 @@ Volant.ImportedWorkcampsController = Ember.ArrayController.extend
   mode: Ember.computed.alias('controllers.application.mode')
   messages: []
 
-  
+  actions:
+    import: -> @_clearMessages() ; true
+    cancelAll: -> @_clearMessages() ; true
+    confirmAll: -> @_clearMessages() ; true
 
+  _clearMessages: ->
+    @set 'messages', []
+    true
+          
+
+
+    
