@@ -40,7 +40,7 @@ class ApplyFormsControllerTest < ActionController::TestCase
   test 'show' do
     get :show, id: @apply_form.id
     assert_response :success
-    assert_equal 1, json_response['apply_forms'].size    
+    assert_equal 1, json_response['apply_forms'].size
   end
 
   test 'vef.html' do
@@ -51,7 +51,7 @@ class ApplyFormsControllerTest < ActionController::TestCase
   test 'vef.xml' do
     get :vef, id: @apply_form.id, format: :xml
     assert_response :success
-  end    
+  end
 
   test 'filter by state' do
     ApplyForm.destroy_all
@@ -63,6 +63,19 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal 1,json_response['apply_forms'].size
     assert_equal accepted.id, json_response['apply_forms'][0]['id'].to_i
+  end
+
+  test 'filter infosheeted' do
+    ApplyForm.destroy_all
+    dummy = Factory(:accepted_form)
+    infosheeted = Factory(:accepted_form)
+    infosheeted.current_assignment.update_column :infosheeted, Date.today
+    
+    get :index, state: 'infosheeted'
+
+    assert_response :success
+    assert_equal 1,json_response['apply_forms'].size
+    assert_equal infosheeted.id, json_response['apply_forms'][0]['id'].to_i
   end
 
   test 'filter unpaid' do

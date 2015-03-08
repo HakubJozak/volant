@@ -171,6 +171,9 @@ class ApplyForm < ActiveRecord::Base
     when "accepted"
       filter_sql << " cancelled IS NULL AND #{wa}.accepted IS NOT NULL"
 
+    when "infosheeted"
+      filter_sql << " cancelled IS NULL AND #{wa}.infosheeted IS NOT NULL"
+      
     when "rejected"
       filter_sql << " cancelled IS NULL AND #{wa}.rejected IS NOT NULL"
     when "pending"
