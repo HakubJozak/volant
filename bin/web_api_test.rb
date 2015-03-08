@@ -31,17 +31,17 @@ attrs = { apply_form: {
                        workcamp_ids: [47059 ] # 46858
   }}
 
- host = 'volant.pelican.amagical.net'
- port = 80
+ # host = 'volant.pelican.amagical.net'
+ # port = 80
 
-#host = 'localhost'
-#port = 9090
+host = 'localhost'
+port = 9090
 
-# puts 'Short'
-# json = JSON.generate(attrs)
-# response = Net::HTTP.new(host,port).post('/v1/apply_forms', json, { 'Content-Type' =>  'application/json' })
-# puts response.body
-# puts response.code
+puts 'Short'
+json = JSON.generate(attrs)
+response = Net::HTTP.new(host,port).post('/v1/apply_forms', json, { 'Content-Type' =>  'application/json' })
+puts response.body
+puts response.code
 
 puts 'Ltv'
 json = JSON.generate(attrs.merge(type: 'ltv'))
