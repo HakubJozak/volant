@@ -16,13 +16,21 @@ class V1::WorkcampSerializer < ActiveModel::Serializer
       :type, :tags
 
 #  has_many :tags, serializer: V1::TagSerializer, embed: true, include: true
-  
+
   def type
     case object
     when Ltv::Workcamp then 'ltv'
     when Incoming::Workcamp then 'incoming'
     else 'outgoing'
     end
+  end
+
+  def duration
+    object.duration || if object.end and object.begin
+                         (object.end.to_time - object.begin.to_time).to_i / 1.day + 1
+                       else
+                         nil
+                       end
   end
 
   def workcamp_intentions

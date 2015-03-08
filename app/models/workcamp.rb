@@ -190,8 +190,6 @@ class Workcamp < ActiveRecord::Base
 
   private
 
-
-
   def localize(date)
     date ? I18n.localize(date) : '?'
   end
