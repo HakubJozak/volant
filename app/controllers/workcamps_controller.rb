@@ -102,9 +102,9 @@ class WorkcampsController < ApplicationController
               :longitude, :latitude, :requirements, :duration,
               :organization_id, :country_id, :tag_ids => [], :workcamp_intention_ids => [])
 
-    # HACK - dealing with [] being converted to nil Rails behaviour
-    safe_params[:tag_ids] = [] if safe_params[:tag_ids].nil?
-    safe_params[:workcamp_intention_ids] = [] if safe_params[:workcamp_intention_ids].nil?    
+    replace_nil_by_empty_array(safe_params,:tag_ids)
+    replace_nil_by_empty_array(safe_params,:workcamp_intention_ids)    
+
     safe_params
   end
 

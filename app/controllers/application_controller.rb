@@ -69,6 +69,10 @@ class ApplicationController < ActionController::Base
     render json: { errors: model.errors, full_message: "#{full}." }, status: 422
   end
 
-
+  # HACK - dealing with [] being converted to nil Rails behaviour
+  def replace_nil_by_empty_array(hash,name)
+    hash[name] = [] if hash[name].nil?
+    hash
+  end
 
 end

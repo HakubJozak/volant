@@ -140,9 +140,11 @@ class ApplyFormsController < ApplicationController
   end
 
   def apply_form_params
-    params.require(:apply_form).permit(:general_remarks, :motivation, :volunteer_id, :cancelled, :confirmed, :fee,
-                                       tag_ids: [],
-                                       payment_attributes: PaymentSerializer.writable, volunteer_attributes: VolunteerSerializer.writable)
+    safe_params = params.require(:apply_form).permit(:general_remarks, :motivation, :volunteer_id, :cancelled, :confirmed, :fee,
+                                                     tag_ids: [],
+                                                     payment_attributes: PaymentSerializer.writable,
+                                                     volunteer_attributes: VolunteerSerializer.writable)
+    replace_nil_by_empty_array(safe_params,:tag_ids)
   end
 
   def filter

@@ -118,6 +118,17 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_equal 1111, @apply_form.reload.payment.amount
   end
 
+  test "update - remove all tags" do
+    @apply_form.tags << ColoredTag.find_by_name('family')
+    @apply_form.save!
+
+    put :update, id: @apply_form.id, apply_form: { tag_ids: nil }
+    assert_response :success
+
+    assert_equal [],@apply_form.tags.reload
+  end
+  
+
   test 'cancel' do
     post :cancel, id: @apply_form.id
     assert_equal :cancelled,@apply_form.reload.state.name
