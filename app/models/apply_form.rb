@@ -149,6 +149,7 @@ class ApplyForm < ActiveRecord::Base
   # TODO: replace by state column on the ApplyForm
   def self.state_filter(state)
     wa = Outgoing::WorkcampAssignment.table_name
+    wc = Workcamp.table_name
     filter_sql = ''
     filter_params = []
 
@@ -157,7 +158,7 @@ class ApplyForm < ActiveRecord::Base
       filter_sql << '('
       filter_sql << " ((#{wa}.asked <= ?) AND #{wa}.accepted IS NULL AND #{wa}.rejected IS NULL and cancelled IS NULL)"
       filter_sql << ' OR '
-      filter_sql << " (cancelled IS NULL AND #{wa}.accepted IS NOT NULL AND #{wa}.infosheeted IS NULL AND #{Workcamp.table_name}.\"begin\" <= ?)"
+      filter_sql << " (cancelled IS NULL AND #{wa}.accepted IS NOT NULL AND #{wa}.infosheeted IS NULL AND #{wc}.\"begin\" <= ?)"
       filter_sql << ')'
       filter_params << InexRules.organization_response_limit
       filter_params << InexRules.infosheet_waiting_limit
