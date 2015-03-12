@@ -7,8 +7,8 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
     sortAscending: { refreshModel: true }
     state: { refreshModel: true }
 
-  setupController: (controller,model,queryParams) ->
-    @_super(controller, model,queryParams)
+  setupController: (controller,model,transition) ->
+    @_super(controller, model,transition)
     controller.set 'newModelType',@get('newModelType')
     @setupTagsController()
 

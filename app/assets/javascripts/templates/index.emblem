@@ -12,13 +12,13 @@
             tr
               td = outgoingStats.onProject
               td
-                link-to 'apply_forms'
+                link-to 'apply_forms' (query-params state="on_project")
                   | are currently on project
             tr
               td = outgoingStats.leaves
               td
-                link-to 'apply_forms'
-                  | leave this week
+                link-to 'apply_forms' (query-params state="leaves")
+                  | leave in a week 
 
       .col-lg-6
         table.table.dashboard
@@ -26,13 +26,13 @@
             tr
               td = outgoingStats.returns
               td
-                link-to 'apply_forms'
-                  | return this week
+                link-to 'apply_forms' (query-params state="returns")
+                  | return in a week
             tr
               td = outgoingStats.news
               td
-                link-to 'apply_forms'
-                 |new applications today
+                link-to 'apply_forms' (query-params state="just_submitted")
+                 | new applications
 
   .col-lg-4.favorites
     h3 Favorites
