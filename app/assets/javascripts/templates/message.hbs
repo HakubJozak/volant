@@ -115,9 +115,16 @@
             {{/each}}
           {{else}}
             {{view 'labels-list' contentBinding='attachments' removeAction='destroyAttachment'}}
-            <a href='#' class='btn btn-default' title='Attach Files' {{action 'showUploadDialog'}} >
-              {{fa 'paperclip'}} Add
-            </a>
+
+            {{#if isNew}}
+              <button type="submit" class="btn btn-default">
+                Save & Add Attachment
+              </button>
+            {{else}}              
+              <a href='#' class='btn btn-default' title='Attach Files' {{action 'showUploadDialog'}} >
+                {{fa 'paperclip'}} Add
+              </a>
+            {{/if}}
           {{/if}}
         </p>
       </div>
