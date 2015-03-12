@@ -35,7 +35,7 @@ class ApplyFormsController < ApplicationController
             # TODO: put those inside model
             case state
             when 'on_project'
-              search = search.on_project.count
+              search = search.on_project
 
             when 'just_submitted'
               search = search.just_submitted

@@ -53,6 +53,20 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'special states' do
+    get :index, state: 'leaves'
+    assert_response :success
+
+    get :index, state: 'returns'
+    assert_response :success
+
+    get :index, state: 'just_submitted'
+    assert_response :success
+    
+    get :index, state: 'on_project'
+    assert_response :success
+  end
+  
   test 'filter by state' do
     ApplyForm.destroy_all
     dummy = Factory(:paid_form)

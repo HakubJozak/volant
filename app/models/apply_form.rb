@@ -68,7 +68,7 @@ class ApplyForm < ActiveRecord::Base
   }
 
   scope :just_submitted, lambda { |day = Date.today|
-    where('date(created_at) > ?',day - 1)
+    where('date(apply_forms.created_at) > ?',day - 1)
   }
 
 
@@ -162,28 +162,34 @@ class ApplyForm < ActiveRecord::Base
       filter_sql << ')'
       filter_params << InexRules.organization_response_limit
       filter_params << InexRules.infosheet_waiting_limit
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))
 
     when "cancelled"
-      filter_sql <<  ' cancelled IS NOT NULL'
+      where('cancelled IS NOT NULL')
 
     when "asked"
       filter_sql << " #{wa}.asked IS NOT NULL AND #{wa}.accepted IS NULL AND #{wa}.rejected IS NULL and cancelled IS NULL"
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))      
 
     when "accepted"
       filter_sql << " cancelled IS NULL AND #{wa}.accepted IS NOT NULL"
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))      
 
     when "infosheeted"
       filter_sql << " cancelled IS NULL AND #{wa}.infosheeted IS NOT NULL"
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))      
       
     when "rejected"
       filter_sql << " cancelled IS NULL AND #{wa}.rejected IS NOT NULL"
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))            
+
     when "pending"
       filter_sql << " payments.id IS NOT NULL AND #{wa}.asked IS NULL AND #{wa}.accepted IS NULL and #{wa}.rejected IS NULL AND cancelled IS NULL"
-    when "without_payment"
-      filter_sql << ' payments.id IS NULL'
-    end
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))      
 
-    joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))
+    when "without_payment"
+      where('payments.id is NULL')
+    end
   end
 
   def self.find_records_like(text)
