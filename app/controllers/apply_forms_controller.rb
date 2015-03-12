@@ -37,9 +37,19 @@ class ApplyFormsController < ApplicationController
             # TODO: put those inside model
             case state
             when 'on_project'
+              search = search.on_project.count
+
+            when 'just_submitted'
+              search = search.just_submitted
+
+            when 'leaves'
               today = Date.today
-              search = search.where("workcamps.begin <= ? AND workcamps.end >= ?",today,today)
-              search = search.where('workcamp_assignments.accepted IS NOT NULL and cancelled IS NULL ')
+              search = search.leaves_between(today,today + 7.days)
+              
+            when 'returns'              
+              today = Date.today
+              search = search.returns_between(today,today + 7.days)
+
             when 'without_payment'
               search = search.joins('left outer join payments on payments.apply_form_id = apply_forms.id').state_filter(state)
             else

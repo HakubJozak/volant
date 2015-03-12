@@ -10,9 +10,9 @@ class StatisticsController < ApplicationController
 
       render json: {
         applyFormCounts: applyFormCounts(year),
-        onProject: apply_forms.on_project.count,
-        returns: apply_forms.returns_between(today,today + 7.days).count,
-        leaves: apply_forms.leaves_between(today,today + 7.days).count,
+        onProject: apply_forms.joins(:current_workcamp).on_project.count,
+        returns: apply_forms.joins(:current_workcamp).returns_between(today,today + 7.days).count,
+        leaves: apply_forms.joins(:current_workcamp).leaves_between(today,today + 7.days).count,
         news: apply_forms.just_submitted.count
       }
     else
