@@ -1,4 +1,12 @@
 class ImportController < ApplicationController
+  rescue_from(ActionController::ParameterMissing) do |e|
+    if e.param == :pef
+      render status: 422, text: 'PEF file missing'
+    else
+      raise
+    end
+  end
+
   def create
     wcs = Import::PefImporter.new(pef.read,clazz).import! do |level,msg|
       messages << { level: level, text: msg }
