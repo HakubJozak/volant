@@ -2,13 +2,14 @@ Ember.Handlebars.helper 'capitalize', (str) ->
   str.capitalize() if str
 
 Ember.Handlebars.helper 'upcase', (str) ->
-  console.info str
   str.toUpperCase() if str
-  
+
+Ember.Handlebars.helper 'downcase', (str) ->
+  str.toLowerCase() if str  
+
 Ember.Handlebars.helper 'humanize', (str,options) ->
   if str
     str.capitalize().replace('_',' ')
-
 
 Ember.Handlebars.helper "truncate", (str, len) ->
   if str? && str.length > len
