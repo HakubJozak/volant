@@ -15,8 +15,6 @@ class ApplyFormsController < ApplicationController
 
         format.json {
           search = apply_forms.page(current_page)
-          search = search.joins('LEFT OUTER JOIN workcamps ON workcamps.id = current_workcamp_id_cached')
-          search = search.joins('LEFT OUTER JOIN workcamp_assignments ON workcamp_assignments.id = current_assignment_id_cached')
           search = search.includes(:volunteer)
           search = search.order(current_order)
           search = add_year_scope(search)
@@ -55,6 +53,9 @@ class ApplyFormsController < ApplicationController
             else
               search = search.state_filter(state)
             end
+          else
+            search = search.joins('LEFT OUTER JOIN workcamps ON workcamps.id = current_workcamp_id_cached')
+                           .joins('LEFT OUTER JOIN workcamp_assignments ON workcamp_assignments.id = current_assignment_id_cached')
           end
 
           render json: search,
@@ -166,7 +167,7 @@ class ApplyFormsController < ApplicationController
   end
 
   def apply_forms
-    type = params[:type] || params[:apply_form].try(:[],:type)
+    type = params.delete(:type) || params[:apply_form].try(:delete,:type)
 
     case type.try(:downcase)
     when 'incoming' then Incoming::ApplyForm

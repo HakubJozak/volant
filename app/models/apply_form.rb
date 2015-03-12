@@ -56,15 +56,15 @@ class ApplyForm < ActiveRecord::Base
   }
 
   scope :on_project, lambda { |day = Date.today|
-    accepted.where("workcamps.begin <= :day AND workcamps.end >= :day",day: day)
+    accepted.joins(:current_workcamp).where("workcamps.begin <= :day AND workcamps.end >= :day",day: day)
   }
 
   scope :returns_between, lambda { |from,to|
-    accepted.where("workcamps.end >= ? AND workcamps.end <= ?",from,to)
+    accepted.joins(:current_workcamp).where("workcamps.end >= ? AND workcamps.end <= ?",from,to)
   }
 
   scope :leaves_between, lambda { |from,to|
-    accepted.where("workcamps.begin >= ? AND workcamps.begin <= ?",from,to)
+    accepted.joins(:current_workcamp).where("workcamps.begin >= ? AND workcamps.begin <= ?",from,to)
   }
 
   scope :just_submitted, lambda { |day = Date.today|
@@ -182,7 +182,7 @@ class ApplyForm < ActiveRecord::Base
       filter_sql << ' payments.id IS NULL'
     end
 
-    where(*[ filter_sql ].concat(filter_params))
+    joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))
   end
 
   def self.find_records_like(text)
