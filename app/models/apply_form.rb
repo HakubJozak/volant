@@ -189,6 +189,8 @@ class ApplyForm < ActiveRecord::Base
 
     when "without_payment"
       where('payments.id is NULL')
+    else
+      where('TRUE')
     end
   end
 

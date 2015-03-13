@@ -65,6 +65,10 @@ class ApplyFormsControllerTest < ActionController::TestCase
     
     get :index, state: 'on_project'
     assert_response :success
+
+    # regression test
+    get :index, state: ''
+    assert_response :success    
   end
   
   test 'filter by state' do
