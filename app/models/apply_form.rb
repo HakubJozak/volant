@@ -169,23 +169,23 @@ class ApplyForm < ActiveRecord::Base
 
     when "asked"
       filter_sql << " #{wa}.asked IS NOT NULL AND #{wa}.accepted IS NULL AND #{wa}.rejected IS NULL and cancelled IS NULL"
-      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))      
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))
 
     when "accepted"
       filter_sql << " cancelled IS NULL AND #{wa}.accepted IS NOT NULL"
-      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))      
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))
 
     when "infosheeted"
       filter_sql << " cancelled IS NULL AND #{wa}.infosheeted IS NOT NULL"
-      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))      
-      
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))
+
     when "rejected"
       filter_sql << " cancelled IS NULL AND #{wa}.rejected IS NOT NULL"
-      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))            
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))
 
     when "pending"
       filter_sql << " payments.id IS NOT NULL AND #{wa}.asked IS NULL AND #{wa}.accepted IS NULL and #{wa}.rejected IS NULL AND cancelled IS NULL"
-      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))      
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))
 
     when "without_payment"
       where('payments.id is NULL')
