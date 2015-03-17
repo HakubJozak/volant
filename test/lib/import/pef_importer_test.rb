@@ -11,6 +11,24 @@ module Import
       Factory(:country, code: 'US', triple_code: 'USA')
     end
 
+    # http://redmine.siven.onesim.net/issues/1366
+    test "empty organization code" do
+      invalid = """
+      <projectform>
+        <organization_code>  </organization_code>
+        <projects>
+          <project id='25493'></project>
+        </projects>
+      </projectform>
+      """
+
+      importer = PefImporter.new(invalid)
+
+      message = nil
+      importer.import! {|level,msg| message = msg }
+      assert_equal  "Unknown organization",message
+    end
+
     test "missing organization" do
       importer = PefImporter.new(File.new('test/fixtures/xml/pef2011-errors.xml'))
       message = nil
