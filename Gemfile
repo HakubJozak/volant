@@ -59,7 +59,7 @@ gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branc
 # Bonus
 gem 'devise-bootstrap-views'
 gem 'bootstrap-generators', '~> 3.2.0'
-gem 'barbecue', github: 'HakubJozak/barbecue', branch: 'master'
+gem 'barbecue', github: 'HakubJozak/barbecue', tag: 'v0.1'
 gem 'rack-jsonp-middleware'
 
 gem 'font-awesome-rails'

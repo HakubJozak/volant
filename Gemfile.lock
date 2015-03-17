@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/HakubJozak/barbecue.git
-  revision: 14736b72141c4469c8b77e4642a5cc38bcc74e6d
-  branch: master
+  revision: a63b281fb82ab2f2535143b6b7119db09194ca62
+  tag: v0.1
   specs:
-    barbecue (0.0.1)
+    barbecue (0.1)
       active_model_serializers
       barber
       ember-rails
