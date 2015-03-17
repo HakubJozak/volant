@@ -6,6 +6,7 @@ require 'net/http'
 attrs = { apply_form: {
                        motivation: 'I want to be a movie star',
                        general_remarks: 'vegetarian',
+                       special_needs: 'eggnog',
                        gender: 'm',
                        firstname: 'Anton',
                        lastname: 'Tester',
@@ -43,8 +44,8 @@ response = Net::HTTP.new(host,port).post('/v1/apply_forms', json, { 'Content-Typ
 puts response.body
 puts response.code
 
-puts 'Ltv'
-json = JSON.generate(attrs.merge(type: 'ltv'))
-response = Net::HTTP.new(host,port).post('/v1/apply_forms', json, { 'Content-Type' =>  'application/json' })
-puts response.body
-puts response.code
+# puts 'Ltv'
+# json = JSON.generate(attrs.merge(type: 'ltv'))
+# response = Net::HTTP.new(host,port).post('/v1/apply_forms', json, { 'Content-Type' =>  'application/json' })
+# puts response.body
+# puts response.code

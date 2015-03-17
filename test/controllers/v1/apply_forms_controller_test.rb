@@ -9,6 +9,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
     @attrs = {
       past_experience: 'I used to shoot things 100 years ago.',
       general_remarks: 'vegetarian',
+      special_needs: 'eggnog',
       gender: 'm',
       firstname: 'Anton',
       lastname: 'Špelec',
@@ -45,6 +46,9 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       assert_equal :not_paid, form.state.name
       assert_equal '0103260424', form.volunteer.birthnumber
       assert_equal 3, form.workcamps.reload.count
+      assert_equal form.general_remarks, 'vegetarian'
+      assert_equal form.past_experience, 'I used to shoot things 100 years ago.'
+      assert_equal form.special_needs, 'eggnog'
     end
   end
 
@@ -61,7 +65,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       assert_equal 'Špelec',form.volunteer.lastname
       assert_equal :not_paid, form.state.name
       assert_equal '0103260424', form.volunteer.birthnumber
-      assert_equal Ltv::ApplyForm, form.class      
+      assert_equal Ltv::ApplyForm, form.class
     end
   end
 

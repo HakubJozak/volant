@@ -2,7 +2,7 @@ class V1::ApplyFormsController < V1::BaseController
   respond_to :json
 
   skip_before_action :verify_authenticity_token
-  
+
   def create
     attrs = embed_volunteer_attributes(apply_form_params)
     form = apply_forms.create_by_birthnumber(attrs)
@@ -23,7 +23,7 @@ class V1::ApplyFormsController < V1::BaseController
                                        :street, :city, :zipcode,
                                        :contact_street, :contact_city, :contact_zipcode,
                                        :emergency_day, :emergency_night, :emergency_name,
-                                       :speak_well, :speak_some, :past_experience,
+                                       :speak_well, :speak_some, :past_experience, :special_needs,
                                        :motivation, :general_remarks, workcamp_ids: [])
 
 
@@ -38,6 +38,7 @@ class V1::ApplyFormsController < V1::BaseController
       :street, :city, :zipcode,
       :contact_street, :contact_city, :contact_zipcode,
       :emergency_day, :emergency_night, :emergency_name,
+      :special_needs,
       :speak_well, :speak_some, :past_experience ].each do |attr|
       volunteer[attr] = original.delete(attr)
     end
