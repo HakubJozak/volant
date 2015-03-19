@@ -7,6 +7,7 @@ class ApplyFormsControllerTest < ActionController::TestCase
   end
 
 
+
   # test 'sorting' do
   #   ApplyForm.destroy_all
 
@@ -37,6 +38,20 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_equal wc.id, json_response['apply_forms'].first['current_workcamp_id']
   end
 
+
+  # regression test for http://redmine.siven.onesim.net/issues/1430
+  test 'index with assigned incoming workcamp' do
+    wc = Factory(:incoming_workcamp, name: 'My favorite camp')
+    @apply_form.assign_workcamp(wc)
+    @apply_form.save!
+
+    get :index
+    assert_response :success
+
+    assert_equal 1, json_response['apply_forms'].size
+    assert_equal wc.id, json_response['apply_forms'].first['current_workcamp_id']
+  end
+  
   test 'show' do
     get :show, id: @apply_form.id
     assert_response :success

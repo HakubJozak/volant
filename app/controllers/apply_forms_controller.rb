@@ -43,8 +43,8 @@ class ApplyFormsController < ApplicationController
             when 'leaves'
               today = Date.today
               search = search.leaves_between(today,today + 7.days)
-              
-            when 'returns'              
+
+            when 'returns'
               today = Date.today
               search = search.returns_between(today,today + 7.days)
 
