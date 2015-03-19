@@ -4,45 +4,31 @@ require 'mina/git'
 require 'mina/rvm'
 
 
-# Basic settings:
-#   domain       - The hostname to SSH to.
-#   deploy_to    - Path to deploy into.
-#   repository   - Git repo to clone from. (needed by mina/git)
-#   branch       - Branch name to deploy. (needed by mina/git)
 set :repository, 'git@github.com:HakubJozak/volant.git'
-
+set :user, 'rails'
+set :branch, 'master'
 
 task :staging do
-  set :user, 'rails'
   set :deploy_to, '/home/rails/volant-staging'
   set :domain, 'pelican.amagical.net'
-  set :branch, 'master'
 end
 
 task :production do
-  set :user, 'rails'
   set :deploy_to, '/home/rails/volant'
   set :domain, 'pelican.amagical.net'
-  set :branch, 'master'
 end
 
 
-# Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
-# They will be linked in the 'deploy:link_shared_paths' step.
+
 set :shared_paths, ['config/database.yml', 'config/secrets.yml','log','public/uploads']
 
-# Optional settings:
 
-set :forward_agent, true     # SSH forward_agent.
+
+set :forward_agent, true
 
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
-  # If you're using rbenv, use this to load the rbenv environment.
-  # Be sure to commit your .rbenv-version to your repository.
-  # invoke :'rbenv:load'
-
-  # For those using RVM, use this to load an RVM version@gemset.
 end
 
 # Put any custom mkdir's in here for when `mina setup` is ran.
@@ -80,6 +66,14 @@ task :deploy => [ :environment ]do
     end
   end
 end
+
+namespace :db do
+  task :dump do
+    # ssh volant@bolen ...
+    # system "pg_dump -F p volant_production | gzip > now.sql.gz"
+  end
+end
+
 
 
 task :restart => [ :environment ] do
