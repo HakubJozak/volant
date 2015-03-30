@@ -36,7 +36,12 @@ module FreePlacesUpdater
 
       wc.send("accepted_places#{sufix}=", accepted)
       wc.send("asked_for_places#{sufix}=", asked)
+      wc.send("accepted_incoming_places#{sufix}=", capacity)
     end
+
+    wc.free_capacity = wc.capacity - wc.accepted_incoming_places
+    wc.free_capacity_males = [ wc.free_capacity, wc.capacity_males - wc.accepted_incoming_places_males ].min
+    wc.free_capacity_females = [ wc.free_capacity, wc.capacity_females - wc.accepted_incoming_places_females ].min    
 
     wc.free_places = wc.places - wc.accepted_places
     wc.free_places_for_males = [ wc.free_places, wc.places_for_males - wc.accepted_places_males ].min

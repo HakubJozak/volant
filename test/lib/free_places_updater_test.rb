@@ -80,7 +80,7 @@ class FreePlacesUpdaterTest < ActiveSupport::TestCase
   end
 
   test 'incoming' do
-    @wc.update_attribute(capacity: 6, capacity_males: 3, capacity_females: 3)
+    @wc.update_attributes(capacity: 6, capacity_males: 3, capacity_females: 3)
     form = Factory(:incoming_apply_form, volunteer: @male)
     male = @wc.workcamp_assignments.create(apply_form: form, order: 1)
     male.accept(1.day.ago)

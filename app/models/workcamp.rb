@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 class Workcamp < ActiveRecord::Base
 
+  attr_accessor :accepted_incoming_places, :accepted_incoming_places_males, :accepted_incoming_places_females
+  
   include AllianceExporter
   include ActiveRecord::Diff
   include Import::WorkcampExtension
