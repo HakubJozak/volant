@@ -1,20 +1,15 @@
 # -*- coding: utf-8 -*-
 # FIXME - move to Outgoing module
 class Volunteer < Person
-  PHONE_FORMAT = /\A\+?[0-9 \-\/]{6,20}\z/
-  PHONE_VALIDATION_MESSAGE = 'should be formatted like +420 123 456 789'
   CSV_FIELDS = %w(firstname lastname age gender email phone birthdate birthnumber nationality occupation city contact_city)
 
   include CzechUtils
+  include PhoneValidation
 
   create_date_time_accessors
 
   validates_presence_of :firstname, :lastname, :birthnumber, :occupation, :birthdate, :email,
                         :phone, :gender, :street, :city, :emergency_name, :emergency_day, :zipcode
-
-  validates :phone, format: { with: PHONE_FORMAT, message: PHONE_VALIDATION_MESSAGE }
-  validates :emergency_day, format: { with: PHONE_FORMAT, message: PHONE_VALIDATION_MESSAGE }
-  validates :emergency_night, format: { with: PHONE_FORMAT, message: PHONE_VALIDATION_MESSAGE }  
 
   has_many :apply_forms, :class_name => 'Outgoing::ApplyForm', validate: false
 

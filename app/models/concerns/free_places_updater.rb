@@ -39,6 +39,6 @@ module FreePlacesUpdater
     wc.free_places_for_females = [ wc.free_places, wc.places_for_females - wc.accepted_places_females ].min
   end
 
-  
+
 
 end

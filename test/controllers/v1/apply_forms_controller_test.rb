@@ -125,7 +125,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
         post :create, apply_form: { attr => invalid_number }
         assert_response 422
         errors = json[:errors][:"volunteer.#{attr}"]
-        assert_not_empty errors
+        assert_not_nil errors
         assert_match /should be formatted like/,errors.first, "#{attr} does not validate against #{invalid_number}"
       end
     end

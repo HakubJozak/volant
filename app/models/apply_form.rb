@@ -130,9 +130,11 @@ class ApplyForm < ActiveRecord::Base
         form = self.new(attrs)
         form.volunteer = volunteer
         volunteer.assign_attributes(attrs[:volunteer_attributes])
+        volunteer.validate_phones!
         volunteer.save && form.save
       else
         form = self.new(attrs)
+        form.volunteer.validate_phones!
         form.save
       end
 
