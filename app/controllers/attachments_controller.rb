@@ -16,7 +16,7 @@ class AttachmentsController < ApplicationController
 
   # POST /attachments
   def create
-    @attachment = Attachment.new(attachment_params)
+    @attachment = FileAttachment.new(attachment_params)
 
     if @attachment.save
       render json: @attachment, serializer: AttachmentSerializer

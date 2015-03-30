@@ -3,6 +3,7 @@
 --
 
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -51,7 +52,11 @@ CREATE TABLE workcamp_assignments (
 --
 
 CREATE VIEW accepted_assignments AS
-    SELECT a.apply_form_id, min(a."order") AS "order" FROM workcamp_assignments a WHERE ((a.accepted IS NOT NULL) AND (a.rejected IS NULL)) GROUP BY a.apply_form_id;
+ SELECT a.apply_form_id,
+    min(a."order") AS "order"
+   FROM workcamp_assignments a
+  WHERE ((a.accepted IS NOT NULL) AND (a.rejected IS NULL))
+  GROUP BY a.apply_form_id;
 
 
 --
@@ -63,7 +68,7 @@ CREATE TABLE accounts (
     organization_id integer NOT NULL,
     season_end date DEFAULT '2015-03-15'::date NOT NULL,
     organization_response_limit integer DEFAULT 4 NOT NULL,
-    infosheet_waiting_limit integer DEFAULT 4 NOT NULL,
+    infosheet_waiting_limit integer DEFAULT 30 NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -168,7 +173,16 @@ CREATE TABLE workcamps (
 --
 
 CREATE VIEW active_countries_view AS
-    SELECT DISTINCT c.id, c.code, c.name_cz, c.name_en, c.created_at, c.updated_at, c.triple_code FROM (countries c JOIN workcamps w ON ((c.id = w.country_id))) ORDER BY c.id, c.code, c.name_cz, c.name_en, c.created_at, c.updated_at, c.triple_code;
+ SELECT DISTINCT c.id,
+    c.code,
+    c.name_cz,
+    c.name_en,
+    c.created_at,
+    c.updated_at,
+    c.triple_code
+   FROM (countries c
+     JOIN workcamps w ON ((c.id = w.country_id)))
+  ORDER BY c.id, c.code, c.name_cz, c.name_en, c.created_at, c.updated_at, c.triple_code;
 
 
 --
@@ -196,7 +210,22 @@ CREATE TABLE apply_forms (
 --
 
 CREATE VIEW apply_forms_cached_view AS
-    SELECT application.id, application.volunteer_id, application.fee, application.cancelled, application.general_remarks, application.motivation, application.created_at, application.updated_at, application.current_workcamp_id_cached, application.current_assignment_id_cached, workcamp_assignments.accepted, workcamp_assignments.rejected, workcamp_assignments.asked, workcamp_assignments.infosheeted FROM (apply_forms application LEFT JOIN workcamp_assignments ON ((application.current_assignment_id_cached = workcamp_assignments.id)));
+ SELECT application.id,
+    application.volunteer_id,
+    application.fee,
+    application.cancelled,
+    application.general_remarks,
+    application.motivation,
+    application.created_at,
+    application.updated_at,
+    application.current_workcamp_id_cached,
+    application.current_assignment_id_cached,
+    workcamp_assignments.accepted,
+    workcamp_assignments.rejected,
+    workcamp_assignments.asked,
+    workcamp_assignments.infosheeted
+   FROM (apply_forms application
+     LEFT JOIN workcamp_assignments ON ((application.current_assignment_id_cached = workcamp_assignments.id)));
 
 
 --
@@ -223,7 +252,11 @@ ALTER SEQUENCE apply_forms_id_seq OWNED BY apply_forms.id;
 --
 
 CREATE VIEW pending_assignments AS
-    SELECT a.apply_form_id, min(a."order") AS "order" FROM workcamp_assignments a WHERE ((((a.accepted IS NULL) AND (a.asked IS NULL)) AND (a.rejected IS NULL)) OR ((a.asked IS NOT NULL) AND (a.rejected IS NULL))) GROUP BY a.apply_form_id;
+ SELECT a.apply_form_id,
+    min(a."order") AS "order"
+   FROM workcamp_assignments a
+  WHERE ((((a.accepted IS NULL) AND (a.asked IS NULL)) AND (a.rejected IS NULL)) OR ((a.asked IS NOT NULL) AND (a.rejected IS NULL)))
+  GROUP BY a.apply_form_id;
 
 
 --
@@ -231,7 +264,14 @@ CREATE VIEW pending_assignments AS
 --
 
 CREATE VIEW rejected_assignments AS
-    SELECT a.apply_form_id, a."order" FROM (workcamp_assignments a JOIN (SELECT c.apply_form_id, max(c."order") AS maximum FROM workcamp_assignments c GROUP BY c.apply_form_id) b USING (apply_form_id)) WHERE ((a."order" = b.maximum) AND (a.rejected IS NOT NULL));
+ SELECT a.apply_form_id,
+    a."order"
+   FROM (workcamp_assignments a
+     JOIN ( SELECT c.apply_form_id,
+            max(c."order") AS maximum
+           FROM workcamp_assignments c
+          GROUP BY c.apply_form_id) b USING (apply_form_id))
+  WHERE ((a."order" = b.maximum) AND (a.rejected IS NOT NULL));
 
 
 --
@@ -239,7 +279,45 @@ CREATE VIEW rejected_assignments AS
 --
 
 CREATE VIEW apply_forms_view AS
-    SELECT application.id, application.volunteer_id, application.fee, application.cancelled, application.general_remarks, application.motivation, application.created_at, application.updated_at, application.current_workcamp_id_cached, application.current_assignment_id_cached, workcamp.workcamp_id AS current_workcamp_id, workcamp.current_assignment_id, workcamp.accepted, workcamp.rejected, workcamp.asked, workcamp.infosheeted FROM (apply_forms application LEFT JOIN (SELECT assignment.id AS current_assignment_id, assignment.apply_form_id, assignment.workcamp_id, assignment.accepted, assignment.rejected, assignment.asked, assignment.infosheeted FROM (workcamp_assignments assignment JOIN (SELECT assignments.apply_form_id, min(assignments."order") AS "order" FROM ((SELECT pending_assignments.apply_form_id, pending_assignments."order" FROM pending_assignments UNION SELECT accepted_assignments.apply_form_id, accepted_assignments."order" FROM accepted_assignments) UNION SELECT rejected_assignments.apply_form_id, rejected_assignments."order" FROM rejected_assignments) assignments GROUP BY assignments.apply_form_id) latest ON (((assignment.apply_form_id = latest.apply_form_id) AND (assignment."order" = latest."order"))))) workcamp ON ((workcamp.apply_form_id = application.id)));
+ SELECT application.id,
+    application.volunteer_id,
+    application.fee,
+    application.cancelled,
+    application.general_remarks,
+    application.motivation,
+    application.created_at,
+    application.updated_at,
+    application.current_workcamp_id_cached,
+    application.current_assignment_id_cached,
+    workcamp.workcamp_id AS current_workcamp_id,
+    workcamp.current_assignment_id,
+    workcamp.accepted,
+    workcamp.rejected,
+    workcamp.asked,
+    workcamp.infosheeted
+   FROM (apply_forms application
+     LEFT JOIN ( SELECT assignment.id AS current_assignment_id,
+            assignment.apply_form_id,
+            assignment.workcamp_id,
+            assignment.accepted,
+            assignment.rejected,
+            assignment.asked,
+            assignment.infosheeted
+           FROM (workcamp_assignments assignment
+             JOIN ( SELECT assignments.apply_form_id,
+                    min(assignments."order") AS "order"
+                   FROM ( SELECT pending_assignments.apply_form_id,
+                            pending_assignments."order"
+                           FROM pending_assignments
+                        UNION
+                         SELECT accepted_assignments.apply_form_id,
+                            accepted_assignments."order"
+                           FROM accepted_assignments
+                        UNION
+                         SELECT rejected_assignments.apply_form_id,
+                            rejected_assignments."order"
+                           FROM rejected_assignments) assignments
+                  GROUP BY assignments.apply_form_id) latest ON (((assignment.apply_form_id = latest.apply_form_id) AND (assignment."order" = latest."order"))))) workcamp ON ((workcamp.apply_form_id = application.id)));
 
 
 --
@@ -1924,42 +2002,84 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 -- Name: apply_forms_cached_view_delete; Type: RULE; Schema: public; Owner: -
 --
 
-CREATE RULE apply_forms_cached_view_delete AS ON DELETE TO apply_forms_cached_view DO INSTEAD DELETE FROM apply_forms WHERE (apply_forms.id = old.id);
+CREATE RULE apply_forms_cached_view_delete AS
+    ON DELETE TO apply_forms_cached_view DO INSTEAD  DELETE FROM apply_forms
+  WHERE (apply_forms.id = old.id);
 
 
 --
 -- Name: apply_forms_cached_view_insert; Type: RULE; Schema: public; Owner: -
 --
 
-CREATE RULE apply_forms_cached_view_insert AS ON INSERT TO apply_forms_cached_view DO INSTEAD INSERT INTO apply_forms (volunteer_id, fee, cancelled, general_remarks, motivation, created_at, updated_at, current_workcamp_id_cached, current_assignment_id_cached) VALUES (new.volunteer_id, new.fee, new.cancelled, new.general_remarks, new.motivation, new.created_at, new.updated_at, new.current_workcamp_id_cached, new.current_assignment_id_cached) RETURNING apply_forms.id, apply_forms.volunteer_id, apply_forms.fee, apply_forms.cancelled, apply_forms.general_remarks, apply_forms.motivation, apply_forms.created_at, apply_forms.updated_at, apply_forms.current_workcamp_id_cached, apply_forms.current_assignment_id_cached, NULL::timestamp without time zone AS "apply_forms.accepted", NULL::timestamp without time zone AS "apply_forms.rejected", NULL::timestamp without time zone AS "apply_forms.asked", NULL::timestamp without time zone AS "apply_forms.infosheeted";
+CREATE RULE apply_forms_cached_view_insert AS
+    ON INSERT TO apply_forms_cached_view DO INSTEAD  INSERT INTO apply_forms (volunteer_id, fee, cancelled, general_remarks, motivation, created_at, updated_at, current_workcamp_id_cached, current_assignment_id_cached)
+  VALUES (new.volunteer_id, new.fee, new.cancelled, new.general_remarks, new.motivation, new.created_at, new.updated_at, new.current_workcamp_id_cached, new.current_assignment_id_cached)
+  RETURNING apply_forms.id,
+    apply_forms.volunteer_id,
+    apply_forms.fee,
+    apply_forms.cancelled,
+    apply_forms.general_remarks,
+    apply_forms.motivation,
+    apply_forms.created_at,
+    apply_forms.updated_at,
+    apply_forms.current_workcamp_id_cached,
+    apply_forms.current_assignment_id_cached,
+    NULL::timestamp without time zone AS "apply_forms.accepted",
+    NULL::timestamp without time zone AS "apply_forms.rejected",
+    NULL::timestamp without time zone AS "apply_forms.asked",
+    NULL::timestamp without time zone AS "apply_forms.infosheeted";
 
 
 --
 -- Name: apply_forms_cached_view_update; Type: RULE; Schema: public; Owner: -
 --
 
-CREATE RULE apply_forms_cached_view_update AS ON UPDATE TO apply_forms_cached_view DO INSTEAD UPDATE apply_forms SET volunteer_id = new.volunteer_id, fee = new.fee, cancelled = new.cancelled, general_remarks = new.general_remarks, motivation = new.motivation, created_at = new.created_at, updated_at = new.updated_at, current_workcamp_id_cached = new.current_workcamp_id_cached, current_assignment_id_cached = new.current_assignment_id_cached WHERE (apply_forms.id = old.id);
+CREATE RULE apply_forms_cached_view_update AS
+    ON UPDATE TO apply_forms_cached_view DO INSTEAD  UPDATE apply_forms SET volunteer_id = new.volunteer_id, fee = new.fee, cancelled = new.cancelled, general_remarks = new.general_remarks, motivation = new.motivation, created_at = new.created_at, updated_at = new.updated_at, current_workcamp_id_cached = new.current_workcamp_id_cached, current_assignment_id_cached = new.current_assignment_id_cached
+  WHERE (apply_forms.id = old.id);
 
 
 --
 -- Name: apply_forms_view_delete; Type: RULE; Schema: public; Owner: -
 --
 
-CREATE RULE apply_forms_view_delete AS ON DELETE TO apply_forms_view DO INSTEAD DELETE FROM apply_forms WHERE (apply_forms.id = old.id);
+CREATE RULE apply_forms_view_delete AS
+    ON DELETE TO apply_forms_view DO INSTEAD  DELETE FROM apply_forms
+  WHERE (apply_forms.id = old.id);
 
 
 --
 -- Name: apply_forms_view_insert; Type: RULE; Schema: public; Owner: -
 --
 
-CREATE RULE apply_forms_view_insert AS ON INSERT TO apply_forms_view DO INSTEAD INSERT INTO apply_forms (volunteer_id, fee, cancelled, general_remarks, motivation, created_at, updated_at) VALUES (new.volunteer_id, new.fee, new.cancelled, new.general_remarks, new.motivation, new.created_at, new.updated_at) RETURNING apply_forms.id, apply_forms.volunteer_id, apply_forms.fee, apply_forms.cancelled, apply_forms.general_remarks, apply_forms.motivation, apply_forms.created_at, apply_forms.updated_at, apply_forms.current_workcamp_id_cached, apply_forms.current_assignment_id_cached, 0, 0, NULL::timestamp without time zone AS "apply_forms.accepted", NULL::timestamp without time zone AS "apply_forms.rejected", NULL::timestamp without time zone AS "apply_forms.asked", NULL::timestamp without time zone AS "apply_forms.infosheeted";
+CREATE RULE apply_forms_view_insert AS
+    ON INSERT TO apply_forms_view DO INSTEAD  INSERT INTO apply_forms (volunteer_id, fee, cancelled, general_remarks, motivation, created_at, updated_at)
+  VALUES (new.volunteer_id, new.fee, new.cancelled, new.general_remarks, new.motivation, new.created_at, new.updated_at)
+  RETURNING apply_forms.id,
+    apply_forms.volunteer_id,
+    apply_forms.fee,
+    apply_forms.cancelled,
+    apply_forms.general_remarks,
+    apply_forms.motivation,
+    apply_forms.created_at,
+    apply_forms.updated_at,
+    apply_forms.current_workcamp_id_cached,
+    apply_forms.current_assignment_id_cached,
+    0,
+    0,
+    NULL::timestamp without time zone AS "apply_forms.accepted",
+    NULL::timestamp without time zone AS "apply_forms.rejected",
+    NULL::timestamp without time zone AS "apply_forms.asked",
+    NULL::timestamp without time zone AS "apply_forms.infosheeted";
 
 
 --
 -- Name: apply_forms_view_update; Type: RULE; Schema: public; Owner: -
 --
 
-CREATE RULE apply_forms_view_update AS ON UPDATE TO apply_forms_view DO INSTEAD UPDATE apply_forms SET volunteer_id = new.volunteer_id, fee = new.fee, cancelled = new.cancelled, general_remarks = new.general_remarks, motivation = new.motivation, created_at = new.created_at, updated_at = new.updated_at WHERE (apply_forms.id = old.id);
+CREATE RULE apply_forms_view_update AS
+    ON UPDATE TO apply_forms_view DO INSTEAD  UPDATE apply_forms SET volunteer_id = new.volunteer_id, fee = new.fee, cancelled = new.cancelled, general_remarks = new.general_remarks, motivation = new.motivation, created_at = new.created_at, updated_at = new.updated_at
+  WHERE (apply_forms.id = old.id);
 
 
 --
@@ -2359,4 +2479,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150212151917');
 INSERT INTO schema_migrations (version) VALUES ('20150228104912');
 
 INSERT INTO schema_migrations (version) VALUES ('20150301092749');
+
+INSERT INTO schema_migrations (version) VALUES ('20150330110301');
 

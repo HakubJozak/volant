@@ -22,10 +22,8 @@ Volant.NewMessageRoute = Volant.MessageRoute.extend
         if action_name == 'ask'
           html = @store.createRecord 'attachment',{ type: 'VefHtmlAttachment', applyForm: form }
           pdf = @store.createRecord 'attachment',{ type: 'VefPdfAttachment', applyForm: form }
-          xml = @store.createRecord 'attachment',{ type: 'VefAttachment', applyForm: form }                
+          xml = @store.createRecord 'attachment',{ type: 'VefXmlAttachment', applyForm: form }
           msg.get('attachments').pushObject(html)
           msg.get('attachments').pushObject(pdf)
-          msg.get('attachments').pushObject(xml)                
+          msg.get('attachments').pushObject(xml)
         msg
-
-

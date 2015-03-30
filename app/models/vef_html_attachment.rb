@@ -1,6 +1,14 @@
-class VefHtmlAttachment < VefAttachment
+class VefHtmlAttachment < VefXmlAttachment
   belongs_to :apply_form
   validates_presence_of :apply_form
+
+  def has_data?
+    true
+  end
+
+  def mime_type
+    'text/html'
+  end
 
   def data
     Export::VefHtml.new(apply_form).to_html
