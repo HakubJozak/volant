@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AttachmentsControllerTest < ActionController::TestCase
   setup do
-    @attachment = Factory(:attachment)
+    @attachment = Factory(:file_attachment)
     sign_in users(:john)
   end
 
@@ -14,7 +14,7 @@ class AttachmentsControllerTest < ActionController::TestCase
 
   test "create" do
     assert_difference('Attachment.count') do
-      post :create, attachment: Factory.attributes_for(:attachment)
+      post :create, attachment: Factory.attributes_for(:file_attachment)
 
       assert_response :success, response.body.to_s
       assert_not_nil json_response['attachment']['id'], json_response
@@ -22,7 +22,7 @@ class AttachmentsControllerTest < ActionController::TestCase
   end
 
   test "update" do
-    patch :update, id: @attachment, attachment: Factory.attributes_for(:attachment)
+    patch :update, id: @attachment, attachment: Factory.attributes_for(:file_attachment)
     assert_response :success, response.body.to_s
   end
 

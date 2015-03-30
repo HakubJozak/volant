@@ -1,10 +1,10 @@
 require 'test_helper'
 
-class VefAttachmentTest < ActiveSupport::TestCase
+class VefXmlAttachmentTest < ActiveSupport::TestCase
 
   setup do
     form = Factory.create(:paid_form)
-    @attachment = VefAttachment.new(apply_form: form)    
+    @attachment = VefXmlAttachment.new(apply_form: form)
   end
 
   test "#data" do

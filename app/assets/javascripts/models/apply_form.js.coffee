@@ -1,6 +1,6 @@
 Volant.ApplyForm = DS.Model.extend
   type: DS.attr 'string'
-  
+
   current_workcamp:  DS.belongsTo 'workcamp', async: true
   current_assignment:  DS.belongsTo 'workcamp_assignment', async: true
   current_message: DS.belongsTo 'message',async: true, inverse: null
@@ -22,13 +22,12 @@ Volant.ApplyForm = DS.Model.extend
   noResponseAlert: DS.attr 'boolean'
   missingInfosheetAlert: DS.attr 'boolean'
   hasAlert: Ember.computed.or('noResponseAlert','missingInfosheetAlert')
-
+  createdRecently: (-> moment().diff(@get('createdAt'),'day') < 2 ).property('createdAt')
+  
   gender: Ember.computed.alias('volunteer.gender')
   name: Ember.computed.alias('volunteer.name')
   age: Ember.computed.alias('volunteer.age')
   email: Ember.computed.alias('volunteer.email')
-  createdToday: (-> moment().isSame(@get('createdAt'),'day')  ).property('createdAt')
-
   male: Ember.computed.alias('volunteer.male')
   female: Ember.computed.alias('volunteer.female')
 

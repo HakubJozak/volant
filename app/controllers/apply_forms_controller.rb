@@ -15,8 +15,6 @@ class ApplyFormsController < ApplicationController
 
         format.json {
           search = apply_forms.page(current_page)
-          search = search.joins('LEFT OUTER JOIN workcamps ON workcamps.id = current_workcamp_id_cached')
-          search = search.joins('LEFT OUTER JOIN workcamp_assignments ON workcamp_assignments.id = current_assignment_id_cached')
           search = search.includes(:volunteer)
           search = search.order(current_order)
           search = add_year_scope(search)
@@ -37,14 +35,27 @@ class ApplyFormsController < ApplicationController
             # TODO: put those inside model
             case state
             when 'on_project'
+              search = search.on_project
+
+            when 'just_submitted'
+              search = search.just_submitted
+
+            when 'leaves'
               today = Date.today
-              search = search.where("workcamps.begin <= ? AND workcamps.end >= ?",today,today)
-              search = search.where('workcamp_assignments.accepted IS NOT NULL and cancelled IS NULL ')
+              search = search.leaves_between(today,today + 7.days)
+
+            when 'returns'
+              today = Date.today
+              search = search.returns_between(today,today + 7.days)
+
             when 'without_payment'
               search = search.joins('left outer join payments on payments.apply_form_id = apply_forms.id').state_filter(state)
             else
               search = search.state_filter(state)
             end
+          else
+            search = search.joins('LEFT OUTER JOIN workcamps ON workcamps.id = current_workcamp_id_cached')
+                           .joins('LEFT OUTER JOIN workcamp_assignments ON workcamp_assignments.id = current_assignment_id_cached')
           end
 
           render json: search,
@@ -140,9 +151,11 @@ class ApplyFormsController < ApplicationController
   end
 
   def apply_form_params
-    params.require(:apply_form).permit(:general_remarks, :motivation, :volunteer_id, :cancelled, :confirmed, :fee,
-                                       tag_ids: [],
-                                       payment_attributes: PaymentSerializer.writable, volunteer_attributes: VolunteerSerializer.writable)
+    safe_params = params.require(:apply_form).permit(:general_remarks, :motivation, :volunteer_id, :cancelled, :confirmed, :fee,
+                                                     tag_ids: [],
+                                                     payment_attributes: PaymentSerializer.writable,
+                                                     volunteer_attributes: VolunteerSerializer.writable)
+    replace_nil_by_empty_array(safe_params,:tag_ids)
   end
 
   def filter
@@ -154,7 +167,7 @@ class ApplyFormsController < ApplicationController
   end
 
   def apply_forms
-    type = params[:type] || params[:apply_form].try(:[],:type)
+    type = params.delete(:type) || params[:apply_form].try(:delete,:type)
 
     case type.try(:downcase)
     when 'incoming' then Incoming::ApplyForm

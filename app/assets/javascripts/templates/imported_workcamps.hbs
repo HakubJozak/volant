@@ -17,6 +17,13 @@
           <div class="col-lg-3">
             <button class='btn btn-primary' type='submit'>Import</button>
           </div>
+
+          {{#if arrangedContent}}
+            <div class="col-lg-5 pull-right">
+              <button class='btn btn-danger' type='submit' type='button' {{action 'cancelAll'}}>Cancel All</button>
+              <button class='btn btn-success' type='submit' type='button' {{action 'confirmAll'}}>Confirm All</button>              
+            </div>          
+          {{/if}}
         </div>
         </form>
       </div>
@@ -33,6 +40,8 @@
         {{/each}}
       </tbody>
     </table>
+
+    
     </div>
   </div>
 </div>

@@ -12,13 +12,33 @@ class V1::CountrySerializer < ActiveModel::Serializer
     object.country_zone.try(:name_en)
   end
 
+
   def workcamps_count
-    object.workcamps.published(Account.current.season_end).count
+    workcamps_scope.free.count
   end
 
+  
   def ltv_count
-    object.ltv_projects.published(Account.current.season_end).count
+    ltv_projects_scope.free.count
   end
+
+  # def free_ltv_count
+  # end
+
+  # def free_workcamps_count
+  # end
+  
+  
+
+  private
+
+  def workcamps_scope
+    object.workcamps.published(Account.current.season_end)
+  end
+
+  def ltv_projects_scope
+    object.ltv_projects.published(Account.current.season_end)
+  end  
 
 
 end

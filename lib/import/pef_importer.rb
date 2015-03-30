@@ -13,9 +13,6 @@ module Import
 
       @doc = REXML::Document.new(file)
       # handle common XML error
-      org_code = to_text(@doc, '/projectform/organization_code') || to_text(@doc, '/projectform/Organization_code')
-
-      @organization = Organization.find_by_code(org_code)
       @new_workcamp_class = new_workcamp_class
     end
 
@@ -25,10 +22,15 @@ module Import
       end
     end
 
+    def find_organization
+      org_code = to_text(@doc, '/projectform/organization_code') || to_text(@doc, '/projectform/Organization_code')
+      Organization.find_by_code(org_code)
+    end
+
     def make_workcamp(node)
       code = to_text(node, 'code')
 
-      unless @organization
+      unless @organization ||= find_organization
         raise Import::Error.new("Unknown organization")
       end
 

@@ -1,19 +1,20 @@
 # -*- coding: utf-8 -*-
 # FIXME - move to Outgoing module
 class Volunteer < Person
+  CSV_FIELDS = %w(firstname lastname age gender email phone birthdate birthnumber nationality occupation city contact_city)
+
   include CzechUtils
+  include PhoneValidation
 
   create_date_time_accessors
 
   validates_presence_of :firstname, :lastname, :birthnumber, :occupation, :birthdate, :email,
                         :phone, :gender, :street, :city, :emergency_name, :emergency_day, :zipcode
 
-
   has_many :apply_forms, :class_name => 'Outgoing::ApplyForm', validate: false
 
   scope :named, -> { where('rejected IS NULL') }
 
-  CSV_FIELDS = %w(firstname lastname age gender email phone birthdate birthnumber nationality occupation city contact_city)
 
   scope :query, lambda { |query|
     unless query.blank?

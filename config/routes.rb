@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   resources :attachments, except: [ :edit, :new ]
 
   post '/workcamps/import', to: 'import#create'
+  post '/workcamps/confirm_all', to: 'import#confirm_all'
+  post '/workcamps/cancel_all', to: 'import#cancel_all'    
+
   resources :import_changes, except: [ :create ]
 
   resources :workcamps, except: [ :edit, :new ] do

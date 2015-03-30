@@ -59,7 +59,7 @@ gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branc
 # Bonus
 gem 'devise-bootstrap-views'
 gem 'bootstrap-generators', '~> 3.2.0'
-gem 'barbecue', github: 'HakubJozak/barbecue', branch: 'master'
+gem 'barbecue', github: 'HakubJozak/barbecue', tag: 'v0.1', branch: '0.1'
 gem 'rack-jsonp-middleware'
 
 gem 'font-awesome-rails'
@@ -72,7 +72,7 @@ group :development do
   gem 'letter_opener'
   gem 'faker'
   gem 'guard-livereload', '2.3.1', require: false
-  gem 'mina', require: false
+  gem 'mina', '~> 0.3.3', require: false
 #  gem 'mina-puma', require: false
   gem 'puma', require: false
 end

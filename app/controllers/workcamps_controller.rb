@@ -90,7 +90,7 @@ class WorkcampsController < ApplicationController
   def workcamp_params
     readonly = [ :state,:free_places,:free_places_for_males,:free_places_for_females, :tag_list, :sci_id, :sci_code ]
 
-    params.except(*readonly)
+    safe_params = params.except(*readonly)
       .require(:workcamp)
       .except(*readonly)
       .permit(:name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
@@ -101,6 +101,11 @@ class WorkcampsController < ApplicationController
               :asked_for_places, :asked_for_places_males, :asked_for_places_females,
               :longitude, :latitude, :requirements, :duration,
               :organization_id, :country_id, :tag_ids => [], :workcamp_intention_ids => [])
+
+    replace_nil_by_empty_array(safe_params,:tag_ids)
+    replace_nil_by_empty_array(safe_params,:workcamp_intention_ids)    
+
+    safe_params
   end
 
 end

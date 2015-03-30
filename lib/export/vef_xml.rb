@@ -4,7 +4,7 @@ class Export::VefXml < Export::VefBase
   end
 
   def emergency_contact
-    [@form.emergency_name, @form.emergency_day,@form.emergency_night].compact.join(',')    
+    [@form.emergency_name, @form.emergency_day,@form.emergency_night].compact.join(',')
   end
 
   def address1
@@ -16,11 +16,11 @@ class Export::VefXml < Export::VefBase
   end
 
   def contact_address1
-    [@form.contact_street, @form.contact_city].compact.join(',')    
+    [@form.contact_street, @form.contact_city].compact.join(',')
   end
 
   def contact_address2
-    @form.contact_zipcode    
+    @form.contact_zipcode
   end
 
   def country
@@ -63,8 +63,8 @@ class Export::VefXml < Export::VefBase
         xml.language1 f.speak_well
         xml.language2 f.speak_some
 
-        xml.langlevel1 'Speak well'
-        xml.langlevel2 'Speak some'        
+        xml.langlevel1 3
+        xml.langlevel2 2
 
         xml.emergency_contact emergency_contact
 
@@ -77,9 +77,9 @@ class Export::VefXml < Export::VefBase
         xml.experience f.past_experience
         xml.motivation f.motivation
         # disability
-        
+
         f.workcamps.each_with_index do |wc,i|
-          xml.send("choice#{i}","#{wc.code} #{wc.name}")
+          xml.send("choice#{i+1}",wc.code)
         end
       }
     end
@@ -88,4 +88,3 @@ class Export::VefXml < Export::VefBase
 
   alias :data :to_xml
 end
-

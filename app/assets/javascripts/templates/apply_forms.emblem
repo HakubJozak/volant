@@ -51,8 +51,8 @@ table.table.table-striped.table-hover#apply-forms-list
           partial 'apply_form/alert'
         td
           partial 'star'
-          if createdToday
-            .label.label-success title='Submitted today'
+          if createdRecently
+            .label.label-success title='Submitted today or yesterday'
               | New
         td
           format-date createdAt

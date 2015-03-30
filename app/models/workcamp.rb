@@ -20,6 +20,10 @@ class Workcamp < ActiveRecord::Base
 
   scope :published, -> (season_end) { where %{(publish_mode = 'ALWAYS') OR (publish_mode = 'SEASON' AND "begin" <= ?  AND "begin" >= current_date)},season_end}
 
+  scope :free, -> (at_least = 1) {
+    where("free_places >= ?",at_least)
+  }
+  
 
   scope :year, lambda { |year|
     year = year.to_i
@@ -189,8 +193,6 @@ class Workcamp < ActiveRecord::Base
   end
 
   private
-
-  
 
   def localize(date)
     date ? I18n.localize(date) : '?'

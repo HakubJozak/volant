@@ -191,16 +191,29 @@ class WorkcampsControllerTest < ActionController::TestCase
 
 
   test "update" do
-    id = ColoredTag.find_by_name('family').id
+    family = ColoredTag.find_by_name('family')
 
-    patch :update, id: @workcamp, workcamp: { duration: 333, name: 'edited', code: 'new-code', :'end' =>  "2014-06-26", tag_ids: [id]}
+    patch :update, id: @workcamp, workcamp: { duration: 333, name: 'edited', code: 'new-code', :'end' =>  "2014-06-26", tag_ids: [family.id]}
     assert_response :success
 
     assert_equal Date.new(2014,6,26), @workcamp.reload.end
     assert_equal ['family'], @workcamp.reload.tag_list
     assert_equal 'edited', json_response['workcamp']['name']
     assert_equal 'new-code', json_response['workcamp']['code']
-    assert_equal 333, json_response['workcamp']['duration']    
+    assert_equal 333, json_response['workcamp']['duration']
+  end
+
+  # regression test for http://redmine.siven.onesim.net/issues/1330
+  test "update - remove all tags & intentions" do
+    @workcamp.tags << ColoredTag.find_by_name('family')
+    @workcamp.intentions << Factory(:workcamp_intention)
+    @workcamp.save!
+
+    put :update, id: @workcamp.id, workcamp: { tag_ids: nil, workcamp_intention_ids: nil }
+    assert_response :success
+
+    assert_equal [],@workcamp.intentions.reload
+    assert_equal [],@workcamp.tags.reload
   end
 
   test "should destroy workcamp" do

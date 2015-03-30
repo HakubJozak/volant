@@ -53,7 +53,7 @@ class MessagesControllerTest < ActionController::TestCase
     assert_difference('Message.count') do
       attrs = Factory.attributes_for(:message)
       form = Factory(:apply_form)
-      attrs[:attachments] = [{ type: 'VefAttachment', apply_form_id: form},
+      attrs[:attachments] = [{ type: 'VefXmlAttachment', apply_form_id: form},
                              { type: 'VefHtmlAttachment', apply_form_id: form},
                              { type: 'VefPdfAttachment', apply_form_id: form}]
 
@@ -64,7 +64,7 @@ class MessagesControllerTest < ActionController::TestCase
       assert_equal form.id, saved.attachments.first.apply_form.id
 
       assert_equal 3, saved.attachments.size
-      assert_equal [VefAttachment,VefHtmlAttachment,VefPdfAttachment], saved.attachments.map(&:class)
+      assert_equal [VefXmlAttachment,VefHtmlAttachment,VefPdfAttachment], saved.attachments.map(&:class)
     end
   end
 

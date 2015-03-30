@@ -9,7 +9,6 @@ Volant.MessageRoute = Volant.BaseRoute.extend
     else
       @transitionTo 'message',record.get('id')
 
-
   model: (params) ->
     if params.message_id != 'null'
       @store.find('message', params.message_id)
@@ -49,7 +48,6 @@ Volant.MessageRoute = Volant.BaseRoute.extend
       when 'ltv' then "ltv/#{action}"
       else action
 
-    console.log name
     name          
 
   _message_context: (message,apply_form) ->

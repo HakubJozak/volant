@@ -68,7 +68,7 @@ class ApplyForm < ActiveRecord::Base
   }
 
   scope :just_submitted, lambda { |day = Date.today|
-    where('date(created_at) = ?',day)
+    where('date(apply_forms.created_at) > ?',day - 1)
   }
 
 
@@ -130,9 +130,11 @@ class ApplyForm < ActiveRecord::Base
         form = self.new(attrs)
         form.volunteer = volunteer
         volunteer.assign_attributes(attrs[:volunteer_attributes])
+        volunteer.validate_phones!
         volunteer.save && form.save
       else
         form = self.new(attrs)
+        form.volunteer.validate_phones!
         form.save
       end
 
@@ -149,6 +151,7 @@ class ApplyForm < ActiveRecord::Base
   # TODO: replace by state column on the ApplyForm
   def self.state_filter(state)
     wa = Outgoing::WorkcampAssignment.table_name
+    wc = Workcamp.table_name
     filter_sql = ''
     filter_params = []
 
@@ -157,29 +160,40 @@ class ApplyForm < ActiveRecord::Base
       filter_sql << '('
       filter_sql << " ((#{wa}.asked <= ?) AND #{wa}.accepted IS NULL AND #{wa}.rejected IS NULL and cancelled IS NULL)"
       filter_sql << ' OR '
-      filter_sql << " (cancelled IS NULL AND #{wa}.accepted IS NOT NULL AND #{wa}.infosheeted IS NULL AND #{Workcamp.table_name}.\"begin\" <= ?)"
+      filter_sql << " (cancelled IS NULL AND #{wa}.accepted IS NOT NULL AND #{wa}.infosheeted IS NULL AND #{wc}.\"begin\" <= ?)"
       filter_sql << ')'
       filter_params << InexRules.organization_response_limit
       filter_params << InexRules.infosheet_waiting_limit
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))
 
     when "cancelled"
-      filter_sql <<  ' cancelled IS NOT NULL'
+      where('cancelled IS NOT NULL')
 
     when "asked"
       filter_sql << " #{wa}.asked IS NOT NULL AND #{wa}.accepted IS NULL AND #{wa}.rejected IS NULL and cancelled IS NULL"
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))
 
     when "accepted"
       filter_sql << " cancelled IS NULL AND #{wa}.accepted IS NOT NULL"
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))
+
+    when "infosheeted"
+      filter_sql << " cancelled IS NULL AND #{wa}.infosheeted IS NOT NULL"
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))
 
     when "rejected"
       filter_sql << " cancelled IS NULL AND #{wa}.rejected IS NOT NULL"
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))
+
     when "pending"
       filter_sql << " payments.id IS NOT NULL AND #{wa}.asked IS NULL AND #{wa}.accepted IS NULL and #{wa}.rejected IS NULL AND cancelled IS NULL"
-    when "without_payment"
-      filter_sql << ' payments.id IS NULL'
-    end
+      joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))
 
-    where(*[ filter_sql ].concat(filter_params))
+    when "without_payment"
+      where('payments.id is NULL')
+    else
+      where('TRUE')
+    end
   end
 
   def self.find_records_like(text)

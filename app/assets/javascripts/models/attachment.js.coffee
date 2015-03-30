@@ -10,9 +10,9 @@ Volant.Attachment = DS.Model.extend
   name: (->
     @get('filename') ||
       switch @get 'type'
-        when 'VefAttachment' then 'VEF.xml'
+        when 'VefXmlAttachment' then 'VEF.xml'
         when 'VefPdfAttachment' then 'VEF.pdf'
-        when 'VefHtmlAttachment' then 'VEF.html'        
+        when 'VefHtmlAttachment' then 'VEF.html'
         else @get('filename')
   ).property('filename','type')
 

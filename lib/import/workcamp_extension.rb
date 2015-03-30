@@ -40,12 +40,14 @@ module Import::WorkcampExtension
   module ClassMethods
     def import_all!
       imported_or_updated.find_each do |wc|
-        wc.import!
+        wc.confirm_import!
       end
     end
 
     def cancel_all_import!
-      ImportChange.destroy_all
+      imported_or_updated.find_each do |wc|
+        wc.cancel_import!
+      end
     end
 
     def find_by_name_or_code(text)

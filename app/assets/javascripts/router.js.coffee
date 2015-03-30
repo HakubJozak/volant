@@ -15,7 +15,7 @@ Volant.Router.map ->
 
   @resource 'imported_workcamps'
 
-  
+
   @resource 'incoming_workcamps', path: '/incoming/workcamps'
   @resource 'ltv_workcamps', path: '/ltv/workcamps'
 

@@ -1,9 +1,13 @@
-class VefAttachment < Attachment
+class VefXmlAttachment < Attachment
   belongs_to :apply_form
   validates_presence_of :apply_form
 
+  def mime_type
+    'text/xml'
+  end
+
   def has_data?
-    file != nil
+    true
   end
 
   def data

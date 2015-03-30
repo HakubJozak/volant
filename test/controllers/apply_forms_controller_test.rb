@@ -7,6 +7,7 @@ class ApplyFormsControllerTest < ActionController::TestCase
   end
 
 
+
   # test 'sorting' do
   #   ApplyForm.destroy_all
 
@@ -37,10 +38,24 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_equal wc.id, json_response['apply_forms'].first['current_workcamp_id']
   end
 
+
+  # regression test for http://redmine.siven.onesim.net/issues/1430
+  test 'index with assigned incoming workcamp' do
+    wc = Factory(:incoming_workcamp, name: 'My favorite camp')
+    @apply_form.assign_workcamp(wc)
+    @apply_form.save!
+
+    get :index
+    assert_response :success
+
+    assert_equal 1, json_response['apply_forms'].size
+    assert_equal wc.id, json_response['apply_forms'].first['current_workcamp_id']
+  end
+  
   test 'show' do
     get :show, id: @apply_form.id
     assert_response :success
-    assert_equal 1, json_response['apply_forms'].size    
+    assert_equal 1, json_response['apply_forms'].size
   end
 
   test 'vef.html' do
@@ -51,8 +66,26 @@ class ApplyFormsControllerTest < ActionController::TestCase
   test 'vef.xml' do
     get :vef, id: @apply_form.id, format: :xml
     assert_response :success
-  end    
+  end
 
+  test 'special states' do
+    get :index, state: 'leaves'
+    assert_response :success
+
+    get :index, state: 'returns'
+    assert_response :success
+
+    get :index, state: 'just_submitted'
+    assert_response :success
+    
+    get :index, state: 'on_project'
+    assert_response :success
+
+    # regression test
+    get :index, state: ''
+    assert_response :success    
+  end
+  
   test 'filter by state' do
     ApplyForm.destroy_all
     dummy = Factory(:paid_form)
@@ -63,6 +96,19 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal 1,json_response['apply_forms'].size
     assert_equal accepted.id, json_response['apply_forms'][0]['id'].to_i
+  end
+
+  test 'filter infosheeted' do
+    ApplyForm.destroy_all
+    dummy = Factory(:accepted_form)
+    infosheeted = Factory(:accepted_form)
+    infosheeted.current_assignment.update_column :infosheeted, Date.today
+    
+    get :index, state: 'infosheeted'
+
+    assert_response :success
+    assert_equal 1,json_response['apply_forms'].size
+    assert_equal infosheeted.id, json_response['apply_forms'][0]['id'].to_i
   end
 
   test 'filter unpaid' do
@@ -104,6 +150,17 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_equal 'endless', json_response['apply_form']['motivation']
     assert_equal 1111, @apply_form.reload.payment.amount
   end
+
+  test "update - remove all tags" do
+    @apply_form.tags << ColoredTag.find_by_name('family')
+    @apply_form.save!
+
+    put :update, id: @apply_form.id, apply_form: { tag_ids: nil }
+    assert_response :success
+
+    assert_equal [],@apply_form.tags.reload
+  end
+  
 
   test 'cancel' do
     post :cancel, id: @apply_form.id

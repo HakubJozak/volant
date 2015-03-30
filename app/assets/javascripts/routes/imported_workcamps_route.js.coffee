@@ -3,12 +3,20 @@ Volant.ImportedWorkcampsRoute = Volant.WorkcampsRoute.extend
   default_filter: -> { state: 'imported' }
 
   model: (params) ->
-    @store.find 'workcamp', state: 'imported'
+    @store.find 'workcamp', state: 'imported', p: params.page
     # @store.filter 'workcamp', state: 'imported', (wc) ->
     #   state = wc.get('state')
     #   state == 'imported' or state == 'updated'
 
   actions:
+    confirmAll: ->
+      @ajax_to_store('/workcamps/confirm_all').then(@_success('All changes confirmed.'),@_error)
+      false
+      
+    cancelAll: ->
+      @ajax_to_store('/workcamps/cancel_all').then(@_success('All changes cancelled.'),@_error)
+      false
+
     import: ->
       data = new FormData($('#upload-form')[0])
 
@@ -22,6 +30,14 @@ Volant.ImportedWorkcampsRoute = Volant.WorkcampsRoute.extend
       false
 
   # --- private ---
+
+  _success: (msg) ->
+    @flash_info(msg)
+    @refresh()
+
+  _error: ->
+    @flash_error('Action failed.')
+    @refresh()    
 
   _send_files: (url,data = {}) ->
     new Promise (resolve, reject) =>

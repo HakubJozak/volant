@@ -80,28 +80,6 @@ module Outgoing
       assert_not_nil Volunteer.find(volunteer_id)
     end
 
-    # test "conversion to CSV" do
-    #   I18n.locale = 'cz'
-    #   volunteer = Factory.create(:female, :firstname => 'Hana', :lastname => 'Hozakova')
-    #   data_line = Factory.create(:accepted_form, :volunteer => volunteer).to_csv
-    #   header_line = ApplyForm::CSV_HEADER
-
-    #   headers = header_line.split(",")
-    #   data = data_line.split(",")
-
-    #   hashed = Hash.new
-    #   headers.each_index do |i|
-    #     hashed[headers[i]] = (data[i] || '').tr('"',"")
-    #   end
-
-    #   assert_equal hashed['firstname'], 'Hana'
-    #   assert_equal hashed['lastname'], 'Hozakova'
-    #   assert_equal hashed['fee'], '2200.0'
-    #   assert_equal hashed['city'], 'Praha'
-    #   assert_equal hashed['occupation'], 'Programator'
-    #   assert_equal hashed['birthdate'], '1982-03-27'
-    # end
-
     test "workcamp list" do
       @f = Factory.create(:paid_form)
       @f.workcamp_assignments.delete_all
@@ -114,7 +92,7 @@ module Outgoing
     protected
 
     def assert_state(form, state)
-      assert form.is?(:paid), "#{form} is not in state '#{state.to_s}'"
+      assert form.is?(state), "#{form} is not in state '#{state.to_s}'"
     end
 
   end
