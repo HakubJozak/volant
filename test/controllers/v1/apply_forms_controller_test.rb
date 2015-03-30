@@ -73,7 +73,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
   test 'create: birthnumber validation' do
     @attrs[:birthnumber] = '010326/0424'
     post :create, apply_form: @attrs
-    assert_not_nil json['errors']['volunteer.birthnumber']
+    assert_not_nil json[:errors][:'volunteer.birthnumber']
   end
 
   test 'create: validation' do
@@ -83,7 +83,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       attrs.each do |attr|
       @attrs[attr] = ''
       post :create, apply_form: @attrs
-      assert_not_nil json['errors']["volunteer.#{attr}"],
+      assert_not_nil json[:errors][:"volunteer.#{attr}"],
                      "Presence of #{attr} was not validated"
     end
 
@@ -114,6 +114,24 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
     end
   end
 
+  test 'phone numbers validation' do
+    [ :phone, :emergency_day, :emergency_night ].each do |attr|
+      [ '+420/123456789','+420 123 456 789','0034-21-34-56','+420123456789', '123456789' ].each do |valid|
+        post :create, apply_form: { attr => valid }
+        refute json[:errors][:"volunteer.#{attr}"], "#{attr} should be valid (#{valid})"
+      end
+
+      [ '+420', 'invalid', '123'].each do |invalid_number|
+        post :create, apply_form: { attr => invalid_number }
+        assert_response 422
+        errors = json[:errors][:"volunteer.#{attr}"]
+        assert_not_empty errors
+        assert_match /should be formatted like/,errors.first, "#{attr} does not validate against #{invalid_number}"
+      end
+    end
+
+  end
+  
 
   private
 
