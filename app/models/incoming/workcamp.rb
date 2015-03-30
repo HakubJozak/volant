@@ -1,8 +1,6 @@
 require 'digest'
 
 class Incoming::Workcamp < ::Workcamp
-  default_scope -> { order 'begin' }
-
   has_many :bookings, :class_name => 'Incoming::Booking'
   has_many :participants, :class_name => 'Incoming::Participant', :dependent => :nullify
 

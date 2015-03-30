@@ -12,7 +12,7 @@ class Incoming::WorkcampTest < ActiveSupport::TestCase
     refute wc.save
     assert_nil wc.project_id
   end
-  
+
   test 'project_id' do
     today = Date.new(2015,2,28)
     wc = Incoming::Workcamp.create!(name: 'Some',
@@ -74,5 +74,13 @@ class Incoming::WorkcampTest < ActiveSupport::TestCase
       end
     end
 
+  # regression test for http://redmine.siven.onesim.net/issues/1479
+  test 'order by code' do
+    Incoming::Workcamp.destroy_all    
+    second = Factory(:incoming_workcamp,begin: Date.new(2014,1,1), code: 'BBB')
+    first = Factory(:incoming_workcamp,begin: Date.new(2015,1,1), code: 'AAA')
+    
+    assert_equal [first.id,second.id], Incoming::Workcamp.all.order(:code).map(&:id)
+  end
 
 end
