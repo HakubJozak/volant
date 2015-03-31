@@ -204,7 +204,9 @@ CREATE TABLE apply_forms (
     current_workcamp_id_cached integer,
     current_assignment_id_cached integer,
     type character varying(255) DEFAULT 'Outgoing::ApplyForm'::character varying NOT NULL,
-    confirmed timestamp without time zone
+    confirmed timestamp without time zone,
+    organization_id integer,
+    country_id integer
 );
 
 
@@ -2488,4 +2490,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150303102410');
 INSERT INTO schema_migrations (version) VALUES ('20150330110301');
 
 INSERT INTO schema_migrations (version) VALUES ('20150330211145');
+
+INSERT INTO schema_migrations (version) VALUES ('20150331120524');
 
