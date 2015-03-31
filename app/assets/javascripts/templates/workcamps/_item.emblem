@@ -1,17 +1,17 @@
 .list-group-item
   .row
-    .col-lg-1
+    .col-md-1
       div
         = partial 'star'
         = small-flag country
       small
         = country.name
-    .col-lg-1
+    .col-md-1
       p.list-group-item-text
         format-date from
       p.list-group-item-text
         format-date to
-    .col-lg-5
+    .col-md-5
       h4.list-group-item-heading
         link-to 'workcamp' this
           ' {{code}} &ndash; {{name}}
@@ -22,10 +22,10 @@
         ' {{age-range this }}, {{join workcamp_intentions 'code'}}
         tag-list tags
         partial 'workcamp/extra_fee'
-    .col-lg-2
+    .col-md-2
       h4.list-group-item-heading
         partial 'free_places'
-    .col-lg-3
+    .col-md-3
       button.btn.btn-default.remove-button{ action 'confirmedRemove' this }
         fa 'trash-o'
       p.list-group-item-heading

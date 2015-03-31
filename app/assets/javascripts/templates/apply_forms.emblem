@@ -2,33 +2,33 @@ outlet
 
 form.form.form-horizontal.search-form submit="search" role="form"
   .form-group
-    .col-lg-1
+    .col-md-1
       label.control-label Search
-    .col-lg-9
+    .col-md-9
       partial 'query'
-    .col-lg-2.text-right
+    .col-md-2.text-right
 
       link-to 'new_apply_form' newModelType class='btn btn-success'
         ' {{fa 'plus'}} Create
   .form-group
-    .col-lg-1
+    .col-md-1
       label.control-label State
-    .col-lg-2
+    .col-md-2
       view Volant.ApplyFormStateSelect value=state
 
   .form-group
-    .col-lg-1
+    .col-md-1
       label.control-label Tags
-    .col-lg-2
+    .col-md-2
       view 'collection-picker'  targetCollectionBinding='tags'  contentBinding='controllers.tags.arrangedContent'  optionValuePath="content.id"  optionLabelPath="content.name"  prompt='Tags'
-    .col-lg-8
+    .col-md-8
       view 'labels-list' contentBinding='tags'
 
 
 
   .form-group
     = partial 'order_by'
-    .col-lg-offset-5.col-lg-2.text-right
+    .col-md-offset-5.col-md-2.text-right
       csv-download-link '/apply_forms.csv'
 
 

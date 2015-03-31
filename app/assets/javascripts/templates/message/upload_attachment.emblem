@@ -8,8 +8,8 @@
     .panel-body
       form#upload-form.form-horizontal submit='uploadAttachment' enctype="multipart/form-data"
         .form-group
-          label.col-lg-2.control-label Attachment
-          .col-lg-8
+          label.col-md-2.control-label Attachment
+          .col-md-8
             = input type='file' name='attachment[file]' class='form-control'
-          .col-lg-1
+          .col-md-1
             button.btn.btn-primary type='submit' Upload

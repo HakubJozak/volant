@@ -1,5 +1,5 @@
 <div class='row'>
-<div class="col-lg-7">
+<div class="col-md-7">
     <h2>
       {{partial 'star' }}
       {{partial 'apply_form/title'}}
@@ -16,16 +16,16 @@
       {{#if cancelled}}
         <hr>
         <div class='row'>
-          <div class="form-group col-lg-2">
+          <div class="form-group col-md-2">
             <label class=" control-label">Cancelled on</label>
           </div>
-          <div class="form-group col-lg-3">          
+          <div class="form-group col-md-3">          
             {{view Volant.DateView dateBinding='cancelled' }}
           </div>
-          <div class="form-group col-lg-2">
+          <div class="form-group col-md-2">
             <button class="btn btn-success" type="button" {{action 'reactivate'}}>Reactivate</button>
           </div>
-          <div class="form-group col-lg-4">
+          <div class="form-group col-md-4">
             <p class='text-muted'>{{state.info}}</p>
           </div>
         </div>
@@ -40,7 +40,7 @@
         <div class='row'>
           {{#if payment }}
           {{else}}
-          <div class="form-group col-lg-4">
+          <div class="form-group col-md-4">
             <label class=" control-label">Fee</label>
             <div class="input-group">
               {{input value=fee class="form-control" type='number'}}
@@ -60,7 +60,7 @@
         <legend>Application Details</legend>
         <div class='row'>
 
-        <div class="form-group col-lg-12">
+        <div class="form-group col-md-12">
           <label class="control-label">Tags</label>
           <div>
             {{view 'collection-picker'
@@ -72,14 +72,14 @@
           {{view 'labels-list' contentBinding='tags'}}
         </div>
 
-          <div class="form-group col-lg-12">
+          <div class="form-group col-md-12">
             {{#model-field errors=errors.motivation}}
             <label class=" control-label">Motivation</label>
             {{textarea value=motivation class="form-control"}}
             {{/model-field}}
           </div>
 
-          <div class="form-group col-lg-12">
+          <div class="form-group col-md-12">
             <label class=" control-label">General Remarks</label>
             {{textarea value=general_remarks class="form-control" rows='2'}}
           </div>
@@ -92,7 +92,7 @@
     </form>
 </div>
 
-<div class="col-lg-5">
+<div class="col-md-5">
   <h3>Workcamps</h3>
   {{view Barbecue.BsTabsView currentTab='assigned' tabs='Assigned,Starred,Search' viewPrefix='apply_form/tabs/'}}
 </div>

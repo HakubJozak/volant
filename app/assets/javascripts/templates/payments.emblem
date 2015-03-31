@@ -1,8 +1,8 @@
 form.form.form-horizontal.form-search submit='search' role='form'
   .form-group
-    .col-lg-1
+    .col-md-1
       label.control-label Search
-    .col-lg-8
+    .col-md-8
       partial 'query'
 
 table.table.table-striped.table-hover
@@ -33,7 +33,7 @@ table.table.table-striped.table-hover
             | {{account}}/{{bank_code}}
           else
             ' Cash
-        td  
+        td
           if returned_date
             ' {{format-date returned_date}}
         td  {{returned_amount}}

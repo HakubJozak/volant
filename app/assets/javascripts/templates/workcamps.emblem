@@ -1,11 +1,11 @@
 form.form.form-horizontal.form-search submit='search' role='form'
   .form-group
-    .col-lg-1
+    .col-md-1
       label.control-label
         | Search
-    .col-lg-8
+    .col-md-8
       partial 'query'
-    .col-lg-3.pull-right
+    .col-md-3.pull-right
       if isDirty
         button.btn.btn-danger type='button' click='save'
           | Save All
@@ -32,7 +32,7 @@ form.form.form-horizontal.form-search submit='search' role='form'
 
   .form-group
     = partial 'order_by'
-    .col-lg-offset-5.col-lg-2.text-right
+    .col-md-offset-5.col-md-2.text-right
       csv-download-link '/workcamps.csv'
 
 partial 'workcamps/list'

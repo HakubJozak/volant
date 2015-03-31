@@ -1,4 +1,4 @@
-table.table.table-condensed.col-lg-12.sidepanel
+table.table.table-condensed.col-md-12.sidepanel
   tbody
     each assignments_by_state
       tr

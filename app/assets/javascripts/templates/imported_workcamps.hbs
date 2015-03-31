@@ -1,5 +1,5 @@
 <div class='row'>
-  <div class='col-lg-12'>
+  <div class='col-md-12'>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Import {{capitalize mode}} Workcamps</h3>
@@ -9,17 +9,17 @@
         <form id='upload-form' enctype="multipart/form-data" {{ action 'import' on="submit" }} class='form-horizontal'>
 
         <div class="form-group">
-          <label class="col-lg-1 control-label">PEF</label>
-          <div class="col-lg-3">
+          <label class="col-md-1 control-label">PEF</label>
+          <div class="col-md-3">
             {{input type='file' name="pef" class='form-control'}}
             <p class="help-block">Projects will be imported into {{upcase mode}} section.</p>
           </div>
-          <div class="col-lg-3">
+          <div class="col-md-3">
             <button class='btn btn-primary' type='submit'>Import</button>
           </div>
 
           {{#if arrangedContent}}
-            <div class="col-lg-5 pull-right">
+            <div class="col-md-5 pull-right">
               <button class='btn btn-danger' type='submit' type='button' {{action 'cancelAll'}}>Cancel All</button>
               <button class='btn btn-success' type='submit' type='button' {{action 'confirmAll'}}>Confirm All</button>              
             </div>          

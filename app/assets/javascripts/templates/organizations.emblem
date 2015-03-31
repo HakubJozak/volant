@@ -1,10 +1,10 @@
 form.form.form-horizontal.search-form submit="search" role="form"
   .row
-    .col-lg-1
+    .col-md-1
       label.control-label Keyword
-    .col-lg-9
+    .col-md-9
       partial 'query'
-    .col-lg-2.text-right
+    .col-md-2.text-right
       link-to 'new_organization' class='btn btn-success'
         fa 'plus'
         '

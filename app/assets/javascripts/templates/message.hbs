@@ -17,13 +17,13 @@
 <form class="form-horizontal" role="form" {{action 'save' on="submit"}}>
   <fieldset>
     <div class="form-group" >
-      <label class="col-lg-1 control-label">From</label>
-      <div class="col-lg-5">
+      <label class="col-md-1 control-label">From</label>
+      <div class="col-md-5">
         {{input-or-static attr=from readonly=delivered}}
       </div>
 
-      <label class="col-lg-1 control-label">Action</label>
-      <div class="col-lg-5">
+      <label class="col-md-1 control-label">Action</label>
+      <div class="col-md-5">
         <p class="form-control-static">
           {{action_name}}
         </p>
@@ -31,21 +31,21 @@
     </div>
 
     <div class="form-group" >
-      <label class="col-lg-1 control-label">To</label>
-      <div class="col-lg-5">
+      <label class="col-md-1 control-label">To</label>
+      <div class="col-md-5">
         {{input-or-static attr=to readonly=delivered}}
       </div>
 
       {{#unless delivered}}
-        <label class="col-lg-1 control-label">Template</label>
-        <div class="col-lg-4">
+        <label class="col-md-1 control-label">Template</label>
+        <div class="col-md-4">
           {{view Ember.Select
           contentBinding='controllers.email_templates.content'
           optionLabelPath="content.title"
           selectionBinding="selectedTemplate"
           class="form-control" }}
         </div>
-        <div class="col-lg-1">
+        <div class="col-md-1">
           <a href='#' type="button" class="btn btn-default" {{action 'useSelectedTemplate'}} title='Use selected template'>
             {{fa 'refresh'}}
             Use
@@ -55,13 +55,13 @@
     </div>
 
     <div class="form-group" >
-      <label class="col-lg-1 control-label">Cc</label>
-      <div class="col-lg-5">
+      <label class="col-md-1 control-label">Cc</label>
+      <div class="col-md-5">
         {{input-or-static attr=cc readonly=delivered}}
       </div>
 
-      <label class="col-lg-1 control-label">Application</label>
-      <div class="col-lg-5">
+      <label class="col-md-1 control-label">Application</label>
+      <div class="col-md-5">
         <p class="form-control-static">
           {{#link-to 'apply_form' apply_form}}
           {{apply_form.name}}
@@ -71,13 +71,13 @@
     </div>
 
     <div class="form-group" >
-      <label class="col-lg-1 control-label">Bcc</label>
-      <div class="col-lg-5">
+      <label class="col-md-1 control-label">Bcc</label>
+      <div class="col-md-5">
         {{input-or-static attr=bcc readonly=delivered}}
       </div>
 
-      <label class="col-lg-1 control-label">Workcamp</label>
-      <div class="col-lg-5">
+      <label class="col-md-1 control-label">Workcamp</label>
+      <div class="col-md-5">
         <p class="form-control-static">
           {{#link-to 'workcamp' apply_form.current_workcamp}}
           {{apply_form.current_workcamp.name}}
@@ -87,13 +87,13 @@
     </div>
 
     <div class="form-group" >
-      <label class="col-lg-1 control-label">Subject</label>
-      <div class="col-lg-5">
+      <label class="col-md-1 control-label">Subject</label>
+      <div class="col-md-5">
         {{input-or-static attr=subject readonly=delivered}}
       </div>
 
-      <label class="col-lg-1 control-label">Organization</label>
-      <div class="col-lg-5">
+      <label class="col-md-1 control-label">Organization</label>
+      <div class="col-md-5">
         <p class="form-control-static">
           {{#link-to 'organization' apply_form.current_workcamp.organization}}
           {{apply_form.current_workcamp.organization.name}}
@@ -101,13 +101,13 @@
         </p>
       </div>
 
-      <div class="col-lg-6">
+      <div class="col-md-6">
       </div>
     </div>
 
     <div class="form-group" >
-      <label class="col-lg-1 control-label">Attachments</label>
-      <div class="col-lg-5">
+      <label class="col-md-1 control-label">Attachments</label>
+      <div class="col-md-5">
         <p class="form-control-static">
           {{#if delivered}}
             {{#each attachments}}
@@ -129,8 +129,8 @@
         </p>
       </div>
 
-      <label class="col-lg-1 control-label">Sent at</label>
-      <div class="col-lg-5">
+      <label class="col-md-1 control-label">Sent at</label>
+      <div class="col-md-5">
         <p class="form-control-static">
           {{format-date sentAt}}
         </p>
@@ -138,14 +138,14 @@
     </div>
     
     <div class="form-group email-body-area" >
-      <div class="col-lg-11 col-lg-offset-1">
+      <div class="col-md-11 col-md-offset-1">
         {{native-editor editable=editable value=html_body}}
       </div>
     </div>
   </fieldset>
 
   <div class='row'>
-    <div class="col-lg-11 col-lg-offset-1">
+    <div class="col-md-11 col-md-offset-1">
     {{#unless delivered}}
     <button type="button" class="btn btn-primary" {{action 'sendMessage' }}>
       {{fa 'send-o'}}

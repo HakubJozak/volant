@@ -1,7 +1,7 @@
 {{errors.messages}}
 
 <div class='row'>
-  <div class="form-group col-lg-3">
+  <div class="form-group col-md-3">
     {{#if apply_form}}
       <label class=" control-label">Fee</label>
       {{input type='number' value=apply_form.fee class='form-control'}}
@@ -10,19 +10,19 @@
     {{/if}}
   </div>
 
-  <div class="form-group col-lg-3">
+  <div class="form-group col-md-3">
     {{#model-field errors=errors.amount}}
     <label class=" control-label">Received Amount</label>
     {{input value=amount class="form-control" type='number'}}
     {{/model-field}}
   </div>
 
-  <div class="form-group col-lg-3">
+  <div class="form-group col-md-3">
     <label class=" control-label">Received Date</label>
     {{view Volant.DateView dateBinding='received' }}
   </div>
 
-  <div class="form-group col-lg-3">
+  <div class="form-group col-md-3">
     <label class=" control-label">Mean</label>
      {{view Ember.Select
             value=mean
@@ -35,21 +35,21 @@
 
 {{#if return_visible }}
   <div class='row'>
-    <div class="form-group col-lg-3">
+    <div class="form-group col-md-3">
       {{#model-field errors=errors.returned_amount}}
       <label class=" control-label">Returned amount</label>
       {{input value=returned_amount class="form-control" type='number'}}
       {{/model-field}}
     </div>
 
-    <div class="form-group col-lg-3">
+    <div class="form-group col-md-3">
       {{#model-field errors=errors.returned_date}}
       <label class=" control-label">Returned date</label>
       {{view Volant.DateView dateBinding='returned_date' }}
       {{/model-field}}
     </div>
 
-    <div class="form-group col-lg-6">
+    <div class="form-group col-md-6">
       {{#model-field errors=errors.return_reason}}
       <label class=" control-label">Return reason</label>
       {{input value=return_reason class="form-control" }}
@@ -60,27 +60,27 @@
 
 {{#if by_bank}}
 <div class='row'>
-  <div class="form-group col-lg-3">
+  <div class="form-group col-md-3">
     <label class=" control-label">Account</label>
     {{input value=account class="form-control" }}
   </div>
 
-  <div class="form-group col-lg-3">
+  <div class="form-group col-md-3">
     <label class=" control-label">Bank code</label>
     {{input value=bank_code class="form-control" }}
   </div>
 
-  <div class="form-group col-lg-2">
+  <div class="form-group col-md-2">
     <label class=" control-label">Var.symbol</label>
     {{input value=var_symbol class="form-control" }}
   </div>
 
-  <div class="form-group col-lg-2">
+  <div class="form-group col-md-2">
     <label class=" control-label">Spec.symbol</label>
     {{input value=spec_symbol class="form-control" }}
   </div>
 
-  <div class="form-group col-lg-2">
+  <div class="form-group col-md-2">
     <label class=" control-label">Const.symbol</label>
     {{input value=const_symbol class="form-control" }}
   </div>
@@ -88,7 +88,7 @@
 {{/if}}
 
 <div class='row'>
-  <div class="form-group col-lg-6">
+  <div class="form-group col-md-6">
     <p>
     {{#unless return_visible }}
     <a title='Show return fields' class='btn'

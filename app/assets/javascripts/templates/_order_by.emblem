@@ -1,6 +1,6 @@
-.col-lg-1
+.col-md-1
   label.control-label Order by
-.col-lg-2
+.col-md-2
   view Ember.Select value=order  contentBinding='orderOptions'  class="form-control" optionValuePath="content.id" optionLabelPath="content.name"
-.col-lg-2
+.col-md-2
   view Ember.Select value=sortAscending  contentBinding='sortAscendingOptions' optionValuePath="content.id" optionLabelPath="content.name" class="form-control"

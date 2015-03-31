@@ -1,12 +1,12 @@
 .row
-  .col-lg-8
+  .col-md-8
     h3
       ' Outgoing Applications Submitted
     view 'graph' data=outgoingStats
 
     hr
     .row
-      .col-lg-6
+      .col-md-6
         table.table.dashboard
           tbody
             tr
@@ -18,9 +18,9 @@
               td = outgoingStats.leaves
               td
                 link-to 'apply_forms' (query-params state="leaves")
-                  | leave in a week 
+                  | leave in a week
 
-      .col-lg-6
+      .col-md-6
         table.table.dashboard
           tbody
             tr
@@ -34,7 +34,7 @@
                 link-to 'apply_forms' (query-params state="just_submitted")
                  | new applications
 
-  .col-lg-4.favorites
+  .col-md-4.favorites
     h3 Favorites
     .list-group
       each starred itemController='object'

@@ -1,5 +1,5 @@
 .row
-  .col-lg-8
+  .col-md-8
     h3
       if action_name
         capitalize action_name
@@ -36,5 +36,5 @@
       button.btn.btn-default type="button" click='rollback' Cancel
       button.btn.btn-danger.pull-right type="button" click='remove' Delete
 
-  .col-lg-4
+  .col-md-4
     partial 'email_templates/doc'

@@ -1,27 +1,27 @@
 <div class="form-group">
-  <label class="col-lg-1 control-label">Between</label>
-  <div class="col-lg-2">{{input value=from type="date" class="form-control"}}</div>
-  <div class="col-lg-2">{{input value=to type="date" class="form-control"}}</div>
+  <label class="col-md-1 control-label">Between</label>
+  <div class="col-md-2">{{input value=from type="date" class="form-control"}}</div>
+  <div class="col-md-2">{{input value=to type="date" class="form-control"}}</div>
 
-  <label class="col-lg-1 control-label">Duration</label>
-  <div class="col-lg-1">{{input value=min_duration type="number" class="form-control" placeholder='Min'}}</div>
-  <div class="col-lg-1">{{input value=max_duration type="number" class="form-control" placeholder='Max'}}</div>
+  <label class="col-md-1 control-label">Duration</label>
+  <div class="col-md-1">{{input value=min_duration type="number" class="form-control" placeholder='Min'}}</div>
+  <div class="col-md-1">{{input value=max_duration type="number" class="form-control" placeholder='Max'}}</div>
 </div>
 
 <div class="form-group">
-  <label class="col-lg-1 control-label">Free</label>
-  <div class="col-lg-1">{{input value=free type="number" class="form-control" placeholder='Any'}}</div>
-  <div class="col-lg-1">{{input value=free_females type="number" class="form-control" placeholder='Females'}}</div>
-  <div class="col-lg-1">{{input value=free_males type="number" class="form-control" placeholder='Males'}}</div>
+  <label class="col-md-1 control-label">Free</label>
+  <div class="col-md-1">{{input value=free type="number" class="form-control" placeholder='Any'}}</div>
+  <div class="col-md-1">{{input value=free_females type="number" class="form-control" placeholder='Females'}}</div>
+  <div class="col-md-1">{{input value=free_males type="number" class="form-control" placeholder='Males'}}</div>
 
-  <label class="col-lg-1 col-lg-offset-1 control-label">Age</label>
-  <div class="col-lg-1">{{input value=age type="number" class="form-control"}}</div>
+  <label class="col-md-1 col-md-offset-1 control-label">Age</label>
+  <div class="col-md-1">{{input value=age type="number" class="form-control"}}</div>
 </div>
 
 <div class="form-group">
-  <label class="col-lg-1 control-label">Having</label>
+  <label class="col-md-1 control-label">Having</label>
 
-  <div class="col-lg-2">
+  <div class="col-md-2">
     {{view 'collection-picker'
     targetCollectionBinding='workcamp_intentions'
     contentBinding='controllers.workcamp_intentions.arrangedContent'
@@ -32,7 +32,7 @@
     }}
   </div>
 
-  <div class="col-lg-2">
+  <div class="col-md-2">
     {{view 'collection-picker'
     targetCollectionBinding='tags'
     contentBinding='controllers.tags.arrangedContent'
@@ -43,7 +43,7 @@
     }}
   </div>
 
-  <div class="col-lg-2">
+  <div class="col-md-2">
     {{view 'collection-picker'
     targetCollectionBinding='countries'
     contentBinding='controllers.countries.arrangedContent'
@@ -55,7 +55,7 @@
     }}
   </div>
 
-  <div class="col-lg-2">
+  <div class="col-md-2">
     {{view 'collection-picker'
     targetCollectionBinding='organizations'
     contentBinding='controllers.organizations.arrangedContent'
@@ -69,7 +69,7 @@
 </div>
 
 <div class="form-group">
-  <div class="col-lg-offset-1 col-lg-11">
+  <div class="col-md-offset-1 col-md-11">
     {{view 'labels-list' contentBinding='workcamp_intentions' }}
     {{view 'labels-list' contentBinding='tags' }}
     {{view 'labels-list' contentBinding='countries' }}
