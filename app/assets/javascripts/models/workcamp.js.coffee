@@ -16,7 +16,6 @@ Volant.Workcamp = DS.Model.extend
   begin: DS.attr 'isodate'
   end: DS.attr 'isodate'
   duration: DS.attr 'number'
-  capacity: DS.attr 'number'
   minimal_age: DS.attr 'number'
   maximal_age: DS.attr 'number'
   area: DS.attr 'string'
@@ -27,16 +26,15 @@ Volant.Workcamp = DS.Model.extend
   extraFee: DS.attr 'number'
   extraFeeCurrency: DS.attr 'string'
   region: DS.attr 'string'
-  capacity_natives: DS.attr 'number'
-  capacity_teenagers: DS.attr 'number'
-  capacity_males: DS.attr 'number'
-  capacity_females: DS.attr 'number'
   airport: DS.attr 'string'
   train: DS.attr 'string'
   publish_mode: DS.attr 'string'
+  requirements: DS.attr 'string'
+  longitude: DS.attr 'number'
+  latitude: DS.attr 'number'
 
   createdAt: DS.attr 'isodate'
-  updatedAt: DS.attr 'isodate'    
+  updatedAt: DS.attr 'isodate'
 
   # TODO: extract Placement data type
   places: DS.attr 'number'
@@ -55,13 +53,18 @@ Volant.Workcamp = DS.Model.extend
   free_places_for_males: DS.attr 'number'
   free_places_for_females: DS.attr 'number'
 
-  requirements: DS.attr 'string'
+  capacity: DS.attr 'number'
+  capacity_males: DS.attr 'number'
+  capacity_females: DS.attr 'number'
+  capacity_natives: DS.attr 'number'
+  capacity_teenagers: DS.attr 'number'
+  free_capacity: DS.attr 'number'
+  free_capacity_males: DS.attr 'number'
+  free_capacity_females: DS.attr 'number'
 
-  longitude: DS.attr 'number'
-  latitude: DS.attr 'number'
 
-  sci_id: DS.attr 'number'
-  sci_code: DS.attr 'string'
+
+
 
   becameError: ->
    console.error 'there was an error saving a workcamp!'
