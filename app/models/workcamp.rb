@@ -178,12 +178,16 @@ class Workcamp < ActiveRecord::Base
     (self.minimal_age <= age) and (self.maximal_age >= age)
   end
 
+  def capacity
+    read_attribute(:capacity) || 0
+  end
+  
   def capacity_males
-    read_attribute(:capacity_males) || capacity || 0
+    read_attribute(:capacity_males) || capacity
   end
 
   def capacity_females
-    read_attribute(:capacity_females) || capacity || 0
+    read_attribute(:capacity_females) || capacity
   end  
 
   def format_for_csv(field,object)

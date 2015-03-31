@@ -1,4 +1,4 @@
-Volant.ApplyFormRoute = Volant.BaseRoute.extend Volant.ApplyFormActions, 
+Volant.ApplyFormRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
   model: (params) ->
     @store.find('apply_form', params.apply_form_id)
 
@@ -12,7 +12,7 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
 
   afterRollback: (record) ->
     @send 'goToApplyForms'
-    
+
   title: (model) -> "#{model.get('name')}"
 
   setupController: (controller,model,queryParams) ->
@@ -32,10 +32,10 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
       false
 
     rollback: ->
-      models = [ @currentModel, @currentModel.get('volunteer'), @currentModel.get('payment') ]
+      models = [ @currentModel, @currentModel.get('payment') ]
       for m in models
         m.get('errors').clear()
-        m.rollback()      
+        m.rollback()
       @send 'goToApplyForms'
       false
 
@@ -48,4 +48,3 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
       payment = @store.createRecord('payment',apply_form: form,amount: form.get('fee'),mean: 'BANK', received: new Date())
       @controllerFor('payment').set('content',payment)
       false
-

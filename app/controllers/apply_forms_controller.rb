@@ -15,7 +15,6 @@ class ApplyFormsController < ApplicationController
 
         format.json {
           search = apply_forms.page(current_page)
-          search = search.includes(:volunteer)
           search = search.order(current_order)
           search = add_year_scope(search)
 
@@ -136,7 +135,7 @@ class ApplyFormsController < ApplicationController
   def current_order
     case filter[:order].presence
     when 'createdAt' then "#{ApplyForm.table_name}.created_at #{current_order_direction}"
-    else "#{Volunteer.table_name}.lastname #{current_order_direction},#{Volunteer.table_name}.firstname #{current_order_direction}"
+    else "#{ApplyForm.table_name}.lastname #{current_order_direction},#{ApplyForm.table_name}.firstname #{current_order_direction}"
     end
   end
 
@@ -153,8 +152,7 @@ class ApplyFormsController < ApplicationController
   def apply_form_params
     safe_params = params.require(:apply_form).permit(:general_remarks, :motivation, :volunteer_id, :cancelled, :confirmed, :fee,
                                                      tag_ids: [],
-                                                     payment_attributes: PaymentSerializer.writable,
-                                                     volunteer_attributes: VolunteerSerializer.writable)
+                                                     payment_attributes: PaymentSerializer.writable)
     replace_nil_by_empty_array(safe_params,:tag_ids)
   end
 

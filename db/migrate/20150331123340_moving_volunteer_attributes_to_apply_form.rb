@@ -17,7 +17,7 @@ class MovingVolunteerAttributesToApplyForm < ActiveRecord::Migration
 
     ApplyForm.reset_column_information
 
-    ApplyForm.find_each do |form|
+    ApplyForm.year(2015).find_each do |form|
       puts "#{form.name}(#{form.id})"
       
       (TEXTS + STRINGS + [:birthdate]).flatten.each do |attr|
