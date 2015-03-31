@@ -151,6 +151,16 @@ class ApplyFormsController < ApplicationController
 
   def apply_form_params
     safe_params = params.require(:apply_form).permit(:general_remarks, :motivation, :volunteer_id, :cancelled, :confirmed, :fee,
+                                                     :firstname, :lastname, :gender,
+                                                     :email, :phone,
+                                                     :speak_well, :speak_some,
+                                                     :birthdate, :birthnumber, :birthplace,
+                                                     :nationality, :occupation, :account, :emergency_name,
+                                                     :emergency_day, :emergency_night,
+                                                     :special_needs, :past_experience, :comments,
+                                                     :fax, :street, :city, :zipcode,
+                                                     :contact_street, :contact_city, :contact_zipcode,
+                                                     :note,
                                                      tag_ids: [],
                                                      payment_attributes: PaymentSerializer.writable)
     replace_nil_by_empty_array(safe_params,:tag_ids)

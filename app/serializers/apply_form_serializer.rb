@@ -4,6 +4,18 @@ class ApplyFormSerializer < ApplicationSerializer
   :state, :type,
   :no_response_alert, :missing_infosheet_alert
 
+
+  attributes :firstname, :lastname, :gender,
+      :email, :phone,
+      :speak_well, :speak_some,
+      :birthdate, :birthnumber, :birthplace,
+      :nationality, :occupation, :account, :emergency_name,
+      :emergency_day, :emergency_night,
+      :special_needs, :past_experience, :comments,
+      :fax, :street, :city, :zipcode,
+      :contact_street, :contact_city, :contact_zipcode,
+      :note  
+
   has_many :workcamp_assignments, embed: :ids, include: false
 
   has_one :volunteer, embed: :ids, include: true

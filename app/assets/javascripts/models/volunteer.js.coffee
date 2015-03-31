@@ -1,6 +1,7 @@
-Volant.Volunteer = DS.Model.extend({
+Volant.Volunteer = DS.Model.extend Volant.VolunteerMixin,
   apply_forms: DS.hasMany 'apply_form'
   age: DS.attr 'number'
+
   firstname: DS.attr 'string'
   lastname: DS.attr 'string'
   gender: DS.attr 'string'
@@ -27,19 +28,3 @@ Volant.Volunteer = DS.Model.extend({
   contact_city: DS.attr 'string'
   contact_zipcode: DS.attr 'string'
   note: DS.attr 'string'
-  account: DS.attr 'string'
-
-  male: Ember.computed.equal('gender','m')
-  female: Ember.computed.equal('gender','f')
-  teenage: Ember.computed.lt('age',18)
-
-  name: (->
-    first = @get('firstname')
-    last = @get('lastname')
-    "#{last} #{first}"
-    ).property('firstname', 'lastname')
-
-  for_email: ->
-    @_super('name','male','female','teenage')
-
-})

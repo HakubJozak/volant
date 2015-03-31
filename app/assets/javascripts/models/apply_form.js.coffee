@@ -1,4 +1,4 @@
-Volant.ApplyForm = DS.Model.extend
+Volant.ApplyForm = DS.Model.extend Volant.VolunteerMixin, 
   type: DS.attr 'string'
 
   current_workcamp:  DS.belongsTo 'workcamp', async: true
@@ -24,12 +24,34 @@ Volant.ApplyForm = DS.Model.extend
   hasAlert: Ember.computed.or('noResponseAlert','missingInfosheetAlert')
   createdRecently: (-> moment().diff(@get('createdAt'),'day') < 2 ).property('createdAt')
 
-  gender: Ember.computed.alias('volunteer.gender')
-  name: Ember.computed.alias('volunteer.name')
-  age: Ember.computed.alias('volunteer.age')
-  email: Ember.computed.alias('volunteer.email')
-  male: Ember.computed.alias('volunteer.male')
-  female: Ember.computed.alias('volunteer.female')
+  firstname: DS.attr 'string'
+  lastname: DS.attr 'string'
+  gender: DS.attr 'string'
+  email: DS.attr 'string'
+  phone: DS.attr 'string'
+  speak_well: DS.attr 'string'
+  speak_some: DS.attr 'string'
+  birthdate: DS.attr 'isodate'
+  birthnumber: DS.attr 'string'
+  birthplace: DS.attr 'string'
+  nationality: DS.attr 'string'
+  occupation: DS.attr 'string'
+  emergency_name: DS.attr 'string'
+  emergency_day: DS.attr 'string'
+  emergency_night: DS.attr 'string'
+  special_needs: DS.attr 'string'
+  past_experience: DS.attr 'string'
+  comments: DS.attr 'string'
+  fax: DS.attr 'string'
+  street: DS.attr 'string'
+  city: DS.attr 'string'
+  zipcode: DS.attr 'string'
+  contact_street: DS.attr 'string'
+  contact_city: DS.attr 'string'
+  contact_zipcode: DS.attr 'string'
+  note: DS.attr 'string'
+
+
 
   becameInvalid: ->
    @invalidate_association('volunteer')
@@ -51,6 +73,4 @@ Volant.ApplyForm = DS.Model.extend
   has_workcamp: (wc) ->
     @get('workcamp_assignments').any (wa) ->
       wa.get('workcamp.id') == wc.get('id')
-
-  add_workcamp: (wc) ->
-    console.info wc.id
+    

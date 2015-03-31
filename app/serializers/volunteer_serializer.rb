@@ -1,7 +1,7 @@
 class VolunteerSerializer < ApplicationSerializer
 
-   writable_attributes :firstname, :lastname, :gender,
-  :email, :phone,
+   attributes :id, :age, :firstname, :lastname, :gender,
+      :email, :phone,
       :speak_well, :speak_some,
       :birthdate, :birthnumber, :birthplace,
       :nationality, :occupation, :account, :emergency_name,
@@ -10,12 +10,4 @@ class VolunteerSerializer < ApplicationSerializer
       :fax, :street, :city, :zipcode,
       :contact_street, :contact_city, :contact_zipcode,
       :note
-
-  readonly_attributes :id, :age
 end
-
-# class ParticipantSerializer < VolunteerSerializer
-#   has_one :country, embed: :ids, include: true
-#   has_one :organization, embed: :ids, include: true
-#   has_one :workcamp, embed: :ids, include: true
-# end
