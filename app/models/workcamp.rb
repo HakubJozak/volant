@@ -178,6 +178,13 @@ class Workcamp < ActiveRecord::Base
     (self.minimal_age <= age) and (self.maximal_age >= age)
   end
 
+  def capacity_males
+    read_attribute(:capacity_males) || capacity || 0
+  end
+
+  def capacity_females
+    read_attribute(:capacity_females) || capacity || 0
+  end  
 
   def format_for_csv(field,object)
     case field
@@ -185,13 +192,6 @@ class Workcamp < ActiveRecord::Base
     when 'organization' then self.organization.name
       #      when 'networks' then self.organization.networks.map { |n| n.name }.join(",") if networks.size > 0
     end || ""
-  end
-
-  def to_xml(params = {})
-    # this fix is needed because the view columns doesn't have properly recognized type
-    params.update :methods => [ :free_places_for_females, :free_places_for_males, :free_places ],
-    :except => [ :free_places_for_females, :free_places_for_males, :free_places ]
-    super(params)
   end
 
   private
