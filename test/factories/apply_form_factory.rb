@@ -13,6 +13,14 @@ end
 Factory.define :incoming_apply_form, parent: :abstract_form,class: Incoming::ApplyForm do |f|
 end
 
+Factory.define :incoming_male_form, parent: :incoming_apply_form do |f|
+  f.association :volunteer, factory: :male
+end
+
+Factory.define :incoming_female_form, parent: :incoming_apply_form do |f|
+  f.association :volunteer, factory: :female
+end
+
 Factory.define :paid_form, parent: :apply_form do |f|
   f.after_create do |form|
      Factory.create(:workcamp_assignment, apply_form: form)

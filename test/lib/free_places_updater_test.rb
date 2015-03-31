@@ -8,7 +8,7 @@ class FreePlacesUpdaterTest < ActiveSupport::TestCase
 
     @male = Factory.create(:male)
     @female = Factory.create(:female)
-    
+
     @ma = Factory.create(:apply_form, volunteer: @male)
     @fa = Factory.create(:apply_form, volunteer: @female)
   end
@@ -80,15 +80,40 @@ class FreePlacesUpdaterTest < ActiveSupport::TestCase
   end
 
   test 'incoming' do
-    @wc.update_attributes(capacity: 6, capacity_males: 3, capacity_females: 3)
-    form = Factory(:incoming_apply_form, volunteer: @male)
-    male = @wc.workcamp_assignments.create(apply_form: form, order: 1)
-    male.accept(1.day.ago)
+    @wc.update_attributes(capacity: 6, capacity_males: 4, capacity_females: 2)
+    assign_and_accept(@wc,:incoming_female_form)
+    assign_and_accept(@wc,:incoming_male_form)
+
     @wc.reload
 
     assert_equal 2, @wc.free_places
-    assert_equal 5, @wc.free_capacity
-    assert_equal 2, @wc.free_capacity_males
-    assert_equal 3, @wc.free_capacity_females    
+    assert_equal 6, @wc.capacity
+    assert_equal 4, @wc.free_capacity
+    assert_equal 3, @wc.free_capacity_males
+    assert_equal 1, @wc.free_capacity_females
+  end
+
+  test 'incoming and outgoing' do
+    @wc.update_attributes(capacity: 8, capacity_males: 3, capacity_females: 5, places: 3)
+    2.times { assign_and_accept(@wc,:incoming_female_form) }
+    assign_and_accept(@wc,:incoming_male_form)
+    assign_and_accept(@wc,:form_male)
+    assign_and_accept(@wc,:form_female)
+
+    @wc.reload
+
+    assert_equal 1, @wc.free_places
+    assert_equal 1, @wc.free_places_for_males
+    assert_equal 1, @wc.free_places_for_females        
+
+    assert_equal 3, @wc.free_capacity
+    assert_equal 1, @wc.free_capacity_males
+    assert_equal 2, @wc.free_capacity_females
+  end
+
+  private
+
+  def assign_and_accept(wc,type)
+    wc.workcamp_assignments.create!(apply_form: Factory(type), order: 1).accept(1.day.ago)
   end
 end

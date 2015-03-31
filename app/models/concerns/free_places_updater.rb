@@ -29,6 +29,7 @@ module FreePlacesUpdater
         when Incoming::ApplyForm
           capacity += 1 if wa.accepted
         else
+          capacity += 1 if wa.accepted
           accepted += 1 if wa.accepted
           asked += 1 if wa.state == :asked
         end
