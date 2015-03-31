@@ -19,9 +19,10 @@ class MovingVolunteerAttributesToApplyForm < ActiveRecord::Migration
 
     ApplyForm.year(2015).find_each do |form|
       puts "#{form.name}(#{form.id})"
+      source = form.volunteer || form.participant
       
       (TEXTS + STRINGS + [:birthdate]).flatten.each do |attr|
-        form.send "#{attr}=", form.volunteer.send(attr)
+        form.send "#{attr}=", source.send(attr)
       end
       
       form.save(validate: false)

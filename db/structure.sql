@@ -142,8 +142,8 @@ CREATE TABLE workcamps (
     region character varying(255),
     capacity_natives integer,
     capacity_teenagers integer,
-    capacity_males integer DEFAULT 0,
-    capacity_females integer DEFAULT 0,
+    capacity_males integer,
+    capacity_females integer,
     airport character varying(255),
     train character varying(255),
     publish_mode character varying(255) DEFAULT 'ALWAYS'::character varying NOT NULL,
@@ -206,7 +206,34 @@ CREATE TABLE apply_forms (
     type character varying(255) DEFAULT 'Outgoing::ApplyForm'::character varying NOT NULL,
     confirmed timestamp without time zone,
     organization_id integer,
-    country_id integer
+    country_id integer,
+    firstname character varying(255),
+    lastname character varying(255),
+    gender character varying(255),
+    email character varying(255),
+    phone character varying(255),
+    birthnumber character varying(255),
+    occupation character varying(255),
+    account character varying(255),
+    emergency_name character varying(255),
+    emergency_day character varying(255),
+    emergency_night character varying(255),
+    speak_well character varying(255),
+    speak_some character varying(255),
+    fax character varying(255),
+    street character varying(255),
+    city character varying(255),
+    zipcode character varying(255),
+    contact_street character varying(255),
+    contact_city character varying(255),
+    contact_zipcode character varying(255),
+    birthplace character varying(255),
+    nationality character varying(255),
+    special_needs text,
+    past_experience text,
+    comments text,
+    note text,
+    birthdate date
 );
 
 
@@ -2492,4 +2519,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150330110301');
 INSERT INTO schema_migrations (version) VALUES ('20150330211145');
 
 INSERT INTO schema_migrations (version) VALUES ('20150331120524');
+
+INSERT INTO schema_migrations (version) VALUES ('20150331123340');
 
