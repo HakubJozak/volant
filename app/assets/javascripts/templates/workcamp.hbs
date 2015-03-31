@@ -226,11 +226,6 @@
 
 <div id='toolbar' class="panel panel-default">
   <div class="panel-body">
-    <button type="button" class="btn btn-default" {{ action 'rollback' }}>
-    {{ fa 'times' }} Cancel
-  </button>
-  <button type="button" class="btn btn-primary" {{ action 'save' }}>
-    {{ fa 'check' }} Save
-  </button>
+    {{partial 'save_buttons'}}
   </div>
 </div>
