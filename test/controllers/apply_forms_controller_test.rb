@@ -6,27 +6,6 @@ class ApplyFormsControllerTest < ActionController::TestCase
     sign_in users(:john)
   end
 
-
-
-  # test 'sorting' do
-  #   ApplyForm.destroy_all
-
-  #   volunteers = (1..5).to_a.map { |i|
-  #     f = Factory(:apply_form)
-  #     f.volunteer.firstname = 'John'
-  #     f.volunteer.lastname = i.to_s
-  #     f.volunteer.save!
-  #     f.volunteer
-  #   }
-
-  #   get :index, sort: 'name', asc: true
-  #   assert_response :success
-
-  #   assert_equal volunteers[0].id, json_response['apply_forms'].first['volunteer_id']
-  #   assert_equal volunteers[4].id, json_response['apply_forms'].last['volunteer_id']
-  # end
-
-
   test 'index' do
     wc = Factory(:outgoing_workcamp, name: 'My favorite camp')
     @apply_form.assign_workcamp(wc)
@@ -51,7 +30,7 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_equal 1, json_response['apply_forms'].size
     assert_equal wc.id, json_response['apply_forms'].first['current_workcamp_id']
   end
-  
+
   test 'show' do
     get :show, id: @apply_form.id
     assert_response :success
@@ -77,15 +56,15 @@ class ApplyFormsControllerTest < ActionController::TestCase
 
     get :index, state: 'just_submitted'
     assert_response :success
-    
+
     get :index, state: 'on_project'
     assert_response :success
 
     # regression test
     get :index, state: ''
-    assert_response :success    
+    assert_response :success
   end
-  
+
   test 'filter by state' do
     ApplyForm.destroy_all
     dummy = Factory(:paid_form)
@@ -103,7 +82,7 @@ class ApplyFormsControllerTest < ActionController::TestCase
     dummy = Factory(:accepted_form)
     infosheeted = Factory(:accepted_form)
     infosheeted.current_assignment.update_column :infosheeted, Date.today
-    
+
     get :index, state: 'infosheeted'
 
     assert_response :success
@@ -126,8 +105,7 @@ class ApplyFormsControllerTest < ActionController::TestCase
 
   test 'index with query' do
     ApplyForm.destroy_all
-    volunteer = Factory(:volunteer, firstname: 'John', lastname: 'Deer')
-    Factory(:apply_form, volunteer: volunteer)
+    Factory(:apply_form, firstname: 'John', lastname: 'Deer')
     3.times { Factory(:apply_form) }
 
     get :index
@@ -160,7 +138,7 @@ class ApplyFormsControllerTest < ActionController::TestCase
 
     assert_equal [],@apply_form.tags.reload
   end
-  
+
 
   test 'cancel' do
     post :cancel, id: @apply_form.id

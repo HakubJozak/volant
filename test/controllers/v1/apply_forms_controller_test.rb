@@ -40,15 +40,17 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       post :create, apply_form: @attrs.merge(workcamp_ids: camps)
 
       assert_response :success, response.body.to_s
-      assert_not_nil form = form_by_birthnumber('0103260424')
-      assert_equal 'Anton',form.volunteer.firstname
-      assert_equal 'Špelec',form.volunteer.lastname
-      assert_equal :not_paid, form.state.name
-      assert_equal '0103260424', form.volunteer.birthnumber
-      assert_equal 3, form.workcamps.reload.count
-      assert_equal form.general_remarks, 'vegetarian'
-      assert_equal form.past_experience, 'I used to shoot things 100 years ago.'
-      assert_equal form.special_needs, 'eggnog'
+      assert_not_nil @form = form_by_birthnumber('0103260424')
+
+      assert_saved_attribute 'Anton', :firstname
+      assert_saved_attribute 'Špelec', :lastname
+      assert_saved_attribute '0103260424', :birthnumber
+
+      assert_equal :not_paid, @form.state.name
+      assert_equal @form.general_remarks, 'vegetarian'
+      assert_equal @form.past_experience, 'I used to shoot things 100 years ago.'
+      assert_equal @form.special_needs, 'eggnog'
+      assert_equal 3, @form.workcamps.reload.count
     end
   end
 
@@ -60,12 +62,12 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       post :create, apply_form: @attrs.merge(type: 'ltv', workcamp_ids: camps)
 
       assert_response :success, response.body.to_s
-      assert_not_nil form = form_by_birthnumber('0103260424')
-      assert_equal 'Anton',form.volunteer.firstname
-      assert_equal 'Špelec',form.volunteer.lastname
-      assert_equal :not_paid, form.state.name
-      assert_equal '0103260424', form.volunteer.birthnumber
-      assert_equal Ltv::ApplyForm, form.class
+      assert_not_nil @form = form_by_birthnumber('0103260424')
+      assert_saved_attribute 'Anton', :firstname
+      assert_saved_attribute 'Špelec', :lastname
+      assert_saved_attribute '0103260424', :birthnumber
+      assert_equal :not_paid, @form.state.name
+      assert_equal Ltv::ApplyForm, @form.class
     end
   end
 
@@ -106,11 +108,11 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
 
       post :create, apply_form: @attrs.merge(type: 'ltv', workcamp_ids: camps)
 
-      assert_not_nil form = form_by_birthnumber('0103260424')
-      assert_equal 'Anton',form.volunteer.firstname
-      assert_equal old.id,form.volunteer.id
-      assert_equal 5, form.workcamps.size
-      assert_equal Ltv::ApplyForm, form.class
+      assert_not_nil @form = form_by_birthnumber('0103260424')
+      assert_saved_attribute 'Anton',:firstname
+      assert_equal old.id,@form.volunteer.id
+      assert_equal 5, @form.workcamps.size
+      assert_equal Ltv::ApplyForm, @form.class
     end
   end
 
@@ -129,11 +131,14 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
         assert_match /should be formatted like/,errors.first, "#{attr} does not validate against #{invalid_number}"
       end
     end
-
   end
   
-
   private
+
+  def assert_saved_attribute(value,attr)
+    assert_equal value, @form.volunteer.send(attr)
+    assert_equal value, @form.send(attr)    
+  end
 
   def form_by_birthnumber(bn)
     ApplyForm.joins(:volunteer).where(people: { birthnumber: bn}).first

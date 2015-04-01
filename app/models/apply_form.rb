@@ -42,11 +42,11 @@ class ApplyForm < ActiveRecord::Base
   scope :query, lambda { |query|
     like = "%#{query}%"
     str = """
-            firstname ILIKE ? or
-            lastname ILIKE  ? or
-            birthnumber ILIKE ? or
-            email ILIKE ? or
-            general_remarks ILIKE ?
+            #{ApplyForm.table_name}.firstname ILIKE ? or
+            #{ApplyForm.table_name}.lastname ILIKE  ? or
+            #{ApplyForm.table_name}.birthnumber ILIKE ? or
+            #{ApplyForm.table_name}.email ILIKE ? or
+            #{ApplyForm.table_name}.general_remarks ILIKE ?
            """
     joins(:volunteer).where(str,like, like, like,like,like)
   }
