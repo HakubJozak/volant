@@ -20,14 +20,6 @@ module Outgoing
       assert a.is?(:not_paid)
     end
 
-    # TODO - test and implement fee calculation
-    test "creation of new apply form" do
-      a = ApplyForm.new(:volunteer => Factory.create(:male),motivation: 'stuff')
-      a.save!
-      b = ApplyForm.find(a.id)
-      assert_equal a, b
-    end
-
     test "current_assignment" do
       form = Factory.create(:accepted_form)
       assert_not_nil form.current_assignment

@@ -1,5 +1,10 @@
 # do not use! it has no assignment
 Factory.define :abstract_form, class: ApplyForm do |f|
+  f.firstname 'John'
+  f.lastname 'Doe'
+  f.gender 'm'
+  f.birthnumber '01234567'
+  f.email 'john.doe@example.com'
   f.general_remarks "nothing to say"
   f.motivation "i WANT to go there"
 end

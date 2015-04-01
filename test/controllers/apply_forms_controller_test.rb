@@ -105,14 +105,14 @@ class ApplyFormsControllerTest < ActionController::TestCase
 
   test 'index with query' do
     ApplyForm.destroy_all
-    Factory(:apply_form, firstname: 'John', lastname: 'Deer')
-    3.times { Factory(:apply_form) }
+    Factory(:apply_form, firstname: 'Our', lastname: 'Target')
+    3.times { Factory(:apply_form, firstname: 'Someone', lastname: 'Else') }
 
     get :index
     assert_response :success
     assert_equal 4,json_response['apply_forms'].size
 
-    get :index, q: 'john'
+    get :index, q: 'target'
     assert_response :success
     assert_equal 1,json_response['apply_forms'].size
   end

@@ -19,13 +19,6 @@ module ApplyForm::WebApi
   
   module ClassMethods
     def create_by_birthnumber(attrs)
-      # TODO: replace by real DB attributes
-      # delegate :firstname, :lastname, :gender, :email, :phone, :birthdate, :birthnumber,
-      #          :nationality, :occupation, :account, :emergency_name, :emergency_day,
-      #          :emergency_night, :speak_well, :speak_some, :special_needs, :past_experience, :comments,
-      #          :fax, :street, :city, :zipcode, :contact_street, :contact_city, :contact_zipcode,
-      #          :birthplace, :note, :male?, :female?, to: :volunteer, allow_nil: true
-
       form = nil
 
       workcamps = attrs.delete(:workcamp_ids).to_a.map do |id|
@@ -37,7 +30,7 @@ module ApplyForm::WebApi
         form.strict_validation_on!
 
         if form.save
-          form.volunteer = Volunteer.find_by_birthnumber(form.birthnumber) || volunteer.new
+          form.volunteer = Volunteer.find_by_birthnumber(form.birthnumber) || Volunteer.new
           form.update_volunteer_data!
           form.save!
 

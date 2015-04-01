@@ -2,13 +2,18 @@ module PersonalMethods
   extend ActiveSupport::Concern
 
   included do
-    validates_presence_of :firstname, :lastname, :birthnumber, :occupation, :birthdate, :email,
-      :phone, :gender, :street, :city, :emergency_name, :emergency_day, :zipcode
+    validates_presence_of :firstname, :lastname, :birthnumber, :email
 
     validates_inclusion_of :gender, :in => %w( m f )
     validates :birthnumber, format: { with: /\A[0-9]+\z/, allow_blank: true}
     validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 
+    # strict validation only when using web interface
+    validates_presence_of :occupation, :birthdate, :email,
+                          :phone, :gender, :street, :city, :zipcode,
+                          :emergency_name, :emergency_day,
+                          if: :strict_validation?
+    
     include PhoneValidation
   end
 
