@@ -150,15 +150,6 @@ class ApplyForm < ActiveRecord::Base
     end
   end
 
-  def self.find_records_like(text)
-    search = '%' + text.downcase + '%'
-    self.find(:all,
-              :conditions => ['lower(people.lastname) LIKE ?', search],
-              :include => :volunteer,
-              :order => 'people.lastname ASC',
-              :limit => 15)
-  end
-
   # Returns list of possible actions for the Apply Form
   def actions
     state.actions
@@ -184,7 +175,6 @@ class ApplyForm < ActiveRecord::Base
     self.state.name == state
   end
 
-  # TODO - use Proc, Method or at least define_method
   [ "accept","ask","reject","infosheet" ].each do |action|
     define_method(action) do |time = Time.now|
       if self.current_assignment
@@ -194,19 +184,6 @@ class ApplyForm < ActiveRecord::Base
         raise "This apply form has no current assignment, cannot run action #{action}"
       end
     end
-  end
-
-  def name
-    who = (volunteer)? volunteer.name : '(?)'
-    "#{who} (#{I18n.localize(self.created_at.to_date)})"
-  end
-
-  def to_label
-    name
-  end
-
-  def toggle_cancelled
-    toggle_date(:cancelled)
   end
 
   def cancel
@@ -224,17 +201,6 @@ class ApplyForm < ActiveRecord::Base
   end
 
   private
-
-  def toggle_date(attr)
-    if send("#{attr}?")
-      self.send("#{attr}=", nil)
-    else
-      self.send("#{attr}=", Time.zone.now)
-    end
-
-    save!
-    self
-  end
 
   def self.filter(hash, attrs)
     filtered = {}
