@@ -10,7 +10,6 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
   setupController: (controller,model,transition) ->
     @_super(controller, model,transition)
     controller.set 'newModelType',@get('newModelType')
-    @setupTagsController()
 
   model: (params) ->
     filter = @default_filter()

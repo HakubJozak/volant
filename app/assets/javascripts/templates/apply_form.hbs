@@ -61,11 +61,7 @@
         <div class="form-group col-md-12">
           <label class="control-label">Tags</label>
           <div>
-            {{view 'collection-picker'
-            targetCollectionBinding='tags'
-            contentBinding='controllers.tags.arrangedContent'
-            prompt='Add tag...'
-            class="form-control" }}
+            {{partial 'inputs/tag_picker'}}
           </div>
           {{view 'labels-list' contentBinding='tags'}}
         </div>

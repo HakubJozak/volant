@@ -56,14 +56,7 @@
 
           {{#model-field errors=errors.organization}}
             <div class="col-md-7">
-              {{view Ember.Select
-              contentBinding='controllers.organizations.arrangedContent'
-              selectionBinding='organization'
-              optionValuePath="content"
-              optionLabelPath="content.label"
-              class="form-control"
-              prompt='Choose an organization'
-              }}
+              {{partial 'inputs/organization'}}
             </div>
           {{/model-field}}
           
@@ -116,11 +109,7 @@
             </div>
 
           <div class="col-md-3">
-            {{view 'collection-picker'
-            targetCollectionBinding='tags'
-            contentBinding='controllers.tags.arrangedContent'
-            prompt='Add tag...'
-            class="form-control" }}
+            {{partial 'inputs/tag_picker'}}
           </div>
 
           <label class="col-md-1 control-label">Languages</label>

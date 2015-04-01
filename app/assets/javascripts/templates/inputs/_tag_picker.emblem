@@ -1,0 +1,1 @@
+view 'collection-picker' targetCollectionBinding='tags' contentBinding='controllers.tagsSelect.arrangedContent' prompt='Add tag...' class="form-control" 

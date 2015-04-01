@@ -4,9 +4,8 @@ Volant.OrganizationRoute = Volant.BaseRoute.extend
 
   setupController: (controller,model) ->
     @_super(controller,model)
-    @setupCountries()
     @setup_mini_workcamps()
-    @controllerFor('networks').set('content', @store.filter('network',{},-> true))    
+    @controllerFor('networks').set('content', @store.filter('network',{},-> true))
     @currentModel.get('email_contacts').then (contacts) =>
       @controllerFor('email_contacts').set('model',contacts)
 

@@ -2,6 +2,6 @@ Volant.OrganizationsSelectController = Ember.ArrayController.extend
   sortProperties: ['name']
   sortAscending: true
 
-  content: (->
+  model: (->
     @store.find('organization')
   ).property()

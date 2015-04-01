@@ -123,15 +123,3 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
     modelType = model.get('type') if model.get?
     if hash = @store.typeMapFor(modelType).metadata.pagination
       controller.set('controllers.pagination.model', Ember.Object.create(hash))
-
-  prepareSelectControllers: ->
-    @setupCountries()
-    @setupTagsController()
-    @controllerFor('workcamp_intentions').set('content', @store.filter('workcamp_intention',{},-> true))
-
-
-  setupCountries: () ->
-    @controllerFor('countries').set('content', @store.filter('country',{},-> true))
-
-  setupTagsController: () ->
-    @controllerFor('tags').set('content', @store.filter('tag',{},-> true))

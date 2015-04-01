@@ -1,0 +1,1 @@
+view Ember.Select contentBinding='controllers.organizationsSelect.arrangedContent' selectionBinding='organization' optionValuePath="content" optionLabelPath="content.label" class="form-control" prompt='Choose an organization'

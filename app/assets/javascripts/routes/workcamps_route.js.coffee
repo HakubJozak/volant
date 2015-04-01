@@ -38,7 +38,6 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend
   setupController: (controller,model,queryParams) ->
     @_super(controller, model,queryParams)
     controller.set 'newWorkcampType',@get('newWorkcampType')
-    @prepareSelectControllers()
 
   actions:
     new: (type) ->
