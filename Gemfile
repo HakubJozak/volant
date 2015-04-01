@@ -48,6 +48,7 @@ gem 'devise'
 gem 'momentjs-rails', '~> 2.8.3'
 gem 'modernizr-rails'
 gem 'jquery-ui-rails'
+gem 'jquery-cookie-rails'
 gem 'chart-js-rails'
 
 

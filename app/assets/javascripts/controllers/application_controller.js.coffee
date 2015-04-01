@@ -13,10 +13,11 @@ Volant.ApplicationController = Ember.ObjectController.extend
   ).property('mode')
 
   modeChange: ( ->
-    url = switch @get('mode')
+    url = switch (mode = @get('mode'))
             when 'incoming' then 'incoming_workcamps'
             when 'ltv' then 'ltv_workcamps'
             else 'index'
+    $.cookie('volant-mode',mode)    
     @transitionToRoute(url)
   ).observes('mode')
 
