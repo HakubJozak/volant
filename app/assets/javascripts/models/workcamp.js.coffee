@@ -5,8 +5,8 @@ Volant.Workcamp = DS.Model.extend
   country: DS.belongsTo('country')
   organization: DS.belongsTo('organization')
   tags: DS.hasMany('tag',embedded: 'always')
-  workcamp_intentions: DS.hasMany('workcamp_intention',embedded: 'always')
-  workcamp_assignments: DS.hasMany('workcamp_assignment',async: true)
+  workcampIntentions: DS.hasMany('workcamp_intention',embedded: 'always')
+  workcampAssignments: DS.hasMany('workcamp_assignment',async: true)
   import_changes: DS.hasMany('import_change')
 
   name: DS.attr 'string'
@@ -62,9 +62,9 @@ Volant.Workcamp = DS.Model.extend
   free_capacity_males: DS.attr 'number'
   free_capacity_females: DS.attr 'number'
 
-
-
-
+  # legacy fallbacks
+  workcamp_assignments: Ember.computed.alias('workcampAssignments')
+  workcamp_intentions:  Ember.computed.alias('workcampIntentions')
 
   becameError: ->
    console.error 'there was an error saving a workcamp!'

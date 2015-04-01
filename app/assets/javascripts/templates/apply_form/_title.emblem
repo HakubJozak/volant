@@ -1,5 +1,8 @@
 if lastname
-  ' {{firstname}} {{lastname}}
+  if volunteer
+    = link-to name 'volunteer' volunteer
+  else
+    = name
 else
   ' New Application
 
@@ -10,8 +13,7 @@ if name
   ' {{gender-sign gender}}
 
 small
-  capitalize state.name
-  '
+  ' {{capitalize state.name}}
   apply-form-state-icon state
   '
   each tags

@@ -1,5 +1,5 @@
 Volant.WorkcampController = Ember.ObjectController.extend
-  needs: ['countriesSelect','workcamp_intentions','organizationsSelect','tagsSelect','starred_apply_forms']
+  needs: ['countriesSelect','workcampIntentionsSelect','organizationsSelect','tagsSelect','starred_apply_forms']
 
   publish_modes: [ { code: 'NEVER', label: 'Never' },
                    { code: 'ALWAYS', label: 'Always' },

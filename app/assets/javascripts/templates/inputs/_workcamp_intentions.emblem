@@ -1,0 +1,1 @@
+view 'collection-picker' targetCollectionBinding='workcamp_intentions' contentBinding='controllers.workcampIntentionsSelect.arrangedContent'  prompt='Add intention...'  optionValuePath="content.id" optionLabelPath="content.code" class="form-control"

@@ -18,6 +18,10 @@ class ApplyFormsController < ApplicationController
           search = search.order(current_order)
           search = add_year_scope(search)
 
+          if v = filter[:volunteer_id]
+            search = search.where(volunteer_id: v)
+          end
+
           if filter[:starred]
             search = search.starred_by(current_user)
           end
@@ -167,7 +171,7 @@ class ApplyFormsController < ApplicationController
   end
 
   def filter
-    params.permit(:starred,:q,:state,:p,:year,:order,:tag_ids => [])
+    params.permit(:starred,:q,:state,:p,:year,:order,:volunteer_id, :tag_ids => [], :ids => [])
   end
 
   def render_apply_form

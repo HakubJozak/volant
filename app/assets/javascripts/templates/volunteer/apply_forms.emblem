@@ -1,0 +1,12 @@
+h3 Applications
+
+table.table.table-condensed.table-hover
+  thead
+  tbody
+    each 
+      tr
+        td = state.name
+        td 
+          = link-to 'apply_form' this
+            = format-date createdAt
+        td = link-to currentWorkcamp.name 'workcamp' currentWorkcamp 

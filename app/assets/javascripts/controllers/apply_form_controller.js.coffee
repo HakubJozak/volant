@@ -1,7 +1,7 @@
 Volant.ApplyFormController = Volant.ObjectController.extend
 
-  needs: ['payment_means','starred_workcamps','workcamp_assignments','tags']
-  isDirty: Ember.computed.any('model.isDirty','model.volunteer.isDirty')
+  needs: ['payment_means','starred_workcamps','workcamp_assignments','tagsSelect']
+  isDirty: Ember.computed.any('model.isDirty')
 
   means: [
     Ember.Object.create(label: "Cash", id: 'CASH'),
@@ -18,4 +18,3 @@ Volant.ApplyFormController = Volant.ObjectController.extend
   attachmentUrl: (sufix) ->
     if id = @get('model.id')
       "/apply_forms/#{id}/vef.#{sufix}"
-

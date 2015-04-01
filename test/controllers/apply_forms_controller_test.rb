@@ -117,6 +117,17 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_equal 1,json_response['apply_forms'].size
   end
 
+  test 'filter by volunteer' do
+    target = Factory(:apply_form, firstname: 'Our', lastname: 'Target')
+    dummy = Factory(:apply_form)
+
+    get :index, volunteer_id: target.volunteer_id
+
+    assert_response :success
+    assert_equal 1, json[:apply_forms].size 
+    assert_equal target.id, json[:apply_forms][0][:id]
+  end
+
 
   test "update" do
     payment = Factory.attributes_for(:payment, amount: 1111)

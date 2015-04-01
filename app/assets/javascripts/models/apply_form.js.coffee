@@ -1,22 +1,21 @@
 Volant.ApplyForm = DS.Model.extend Volant.PersonalAttributesMixin, 
   type: DS.attr 'string'
-
-  current_workcamp:  DS.belongsTo 'workcamp', async: true
-  current_assignment:  DS.belongsTo 'workcamp_assignment', async: true
-  current_message: DS.belongsTo 'message',async: true, inverse: null
   state: DS.attr 'state'
 
-  tags: DS.hasMany('tag',embedded: 'always')
-  workcamp_assignments:  DS.hasMany 'workcamp_assignment', async: true, inverse: 'apply_form'
+  currentWorkcamp:  DS.belongsTo 'workcamp', async: true
+  currentAssignment:  DS.belongsTo 'workcamp_assignment', async: true
+  currentMessage: DS.belongsTo 'message',async: true, inverse: null
   volunteer:  DS.belongsTo 'volunteer'
   payment:  DS.belongsTo 'payment'
-
+  tags: DS.hasMany('tag',embedded: 'always')
+  workcampAssignments:  DS.hasMany 'workcamp_assignment', async: true, inverse: 'apply_form'
 
   confirmed: DS.attr 'isodate'
   createdAt: DS.attr 'isodate'
+  updatedAt: DS.attr 'isodate'  
   cancelled: DS.attr 'isodate'
   fee: DS.attr 'number'
-  general_remarks: DS.attr 'string'
+  generalRemarks: DS.attr 'string'
   motivation: DS.attr 'string'
 
   # server side flags
@@ -25,6 +24,13 @@ Volant.ApplyForm = DS.Model.extend Volant.PersonalAttributesMixin,
   missingInfosheetAlert: DS.attr 'boolean'
   hasAlert: Ember.computed.or('noResponseAlert','missingInfosheetAlert')
   createdRecently: (-> moment().diff(@get('createdAt'),'day') < 2 ).property('createdAt')
+
+  # legacy fallbacks      
+  current_workcamp:  Ember.computed.alias('currentWorkcamp')
+  current_assignment: Ember.computed.alias('currentAssignment')
+  current_message: Ember.computed.alias('currentMessage')
+  general_remarks: Ember.computed.alias('generalRemarks')
+  workcamp_assignments: Ember.computed.alias('workcampAssignments')        
 
   becameInvalid: ->
    @invalidate_association('volunteer')

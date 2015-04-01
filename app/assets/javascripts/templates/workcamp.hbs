@@ -99,13 +99,7 @@
         <div class="form-group">
           <label class="col-md-2 control-label">Labels</label>            
             <div class="col-md-3">
-            {{view 'collection-picker'
-            targetCollectionBinding='workcamp_intentions'
-            contentBinding='controllers.workcamp_intentions.arrangedContent'
-            prompt='Add intention...'
-            optionValuePath="content.id"
-            optionLabelPath="content.code"
-            class="form-control" }}
+              {{partial 'inputs/workcamp_intentions'}}
             </div>
 
           <div class="col-md-3">
