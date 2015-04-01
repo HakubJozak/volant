@@ -100,7 +100,7 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
   afterRemove: (record) ->
     @go_to_plural_route()
     @flash_info 'Deleted.'
-    
+
   afterSave: (record) ->
     @go_to_plural_route(record)
     @flash_info('Saved.')
@@ -128,7 +128,7 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
     @setupCountries()
     @setupTagsController()
     @controllerFor('workcamp_intentions').set('content', @store.filter('workcamp_intention',{},-> true))
-    @controllerFor('organizations').set('content', @store.filter('organization',{},-> true))
+
 
   setupCountries: () ->
     @controllerFor('countries').set('content', @store.filter('country',{},-> true))

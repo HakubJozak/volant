@@ -1,5 +1,5 @@
 Volant.WorkcampsController = Volant.ListController.extend
-  needs: ['countries','workcamp_intentions','organizations','tags','starred_workcamps']
+  needs: ['countries','workcamp_intentions','organizationsSelect','tags','starred_workcamps']
 
   page: 1
   queryParams: ['query','page','year','from','to',
@@ -60,9 +60,11 @@ Volant.WorkcampsController = Volant.ListController.extend
     filterOrganizationsByCountry: (country) ->
       if country
         id = country.get('id')
-        @get('controllers.organizations').set('content', @store.filter('organization',{ country_id: id},(org) => org.get('country.id') == id))
+        filtered = @store.filter('organization',{ country_id: id },(org) => org.get('country.id') == id)
+        @get('controllers.organizationsSelect').set('content', filtered)
       else
-        @get('controllers.organizations').set('content', @store.filter('organization',{ country_id: id},-> true))
+        all = @store.filter('organization',{ country_id: id},-> true)
+        @get('controllers.organizationsSelect').set('content', all)
       false
 
     reset: ->
