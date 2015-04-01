@@ -1,20 +1,8 @@
-class ApplyFormSerializer < ApplicationSerializer
+class ApplyFormSerializer < PersonSerializer
   attributes :id, :starred, :fee, :general_remarks,
-  :motivation, :confirmed, :cancelled, :created_at,
-  :state, :type,
-  :no_response_alert, :missing_infosheet_alert
-
-
-  attributes :firstname, :lastname, :gender,
-      :email, :phone,
-      :speak_well, :speak_some,
-      :birthdate, :birthnumber, :birthplace,
-      :nationality, :occupation, :account, :emergency_name,
-      :emergency_day, :emergency_night,
-      :special_needs, :past_experience, :comments,
-      :fax, :street, :city, :zipcode,
-      :contact_street, :contact_city, :contact_zipcode,
-      :note  
+             :motivation, :confirmed, :cancelled, :created_at, :updated_at,
+             :state, :type,
+             :no_response_alert, :missing_infosheet_alert
 
   has_many :workcamp_assignments, embed: :ids, include: false
 

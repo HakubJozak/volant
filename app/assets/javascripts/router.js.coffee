@@ -6,6 +6,7 @@ Volant.Router.map ->
 
   @resource 'apply_forms'
   @resource 'ltv_apply_forms', path: '/ltv/apply_forms'
+  @resource 'incoming_apply_forms', path: '/incoming/apply_forms'  
   @route 'new_apply_form', path: '/apply_forms/:type/new'
   @route 'apply_form', path: '/apply_forms/:apply_form_id'
 

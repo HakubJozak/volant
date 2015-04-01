@@ -58,8 +58,8 @@
               link-to 'apply_form' this
                 partial 'apply_form/title'
             p.list-group-item-text
-              ' {{mail-to volunteer.email}},
-              ' {{volunteer.phone}},
+              ' {{mail-to email}},
+              ' {{phone}},
               / if current_workcamp
               /   link-to 'workcamp' current_workcamp
               /     = current_workcamp.name

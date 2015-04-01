@@ -60,12 +60,12 @@ table.table.table-striped.table-hover#apply-forms-list
           payment.amount
         td
           link-to 'apply_form' this
-            = gender-sign volunteer.gender
+            = gender-sign gender
             '
             = name
             '
             | (
-            = volunteer.age
+            = age
             | )
           '
           if tags

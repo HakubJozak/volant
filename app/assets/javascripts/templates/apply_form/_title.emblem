@@ -1,19 +1,18 @@
-if volunteer.lastname
-  ' {{volunteer.firstname}} {{volunteer.lastname}}
+if lastname
+  ' {{firstname}} {{lastname}}
 else
   ' New Application
 
-if volunteer.age
-  ' ({{volunteer.age}})
+if age
+  ' ({{age}})
 
 if name
-  ' {{gender-sign volunteer.gender}}
+  ' {{gender-sign gender}}
 
 small
   capitalize state.name
   '
   apply-form-state-icon state
-  ' 
+  '
   each tags
     ' {{tag this}}
-

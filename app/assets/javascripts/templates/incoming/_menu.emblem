@@ -3,5 +3,5 @@ link-li
     | Our Workcamps
 
 link-li
-  link-to 'apply_forms' title='Incoming Applications'
-    | Participants
+  link-to 'incoming_apply_forms' title='Incoming Applications'
+    | VEFs

@@ -32,8 +32,7 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
       false
 
     rollback: ->
-      models = [ @currentModel, @currentModel.get('payment') ]
-      for m in models
+      for m in [ @currentModel, @currentModel.get('payment') ]
         m.get('errors').clear()
         m.rollback()
       @send 'goToApplyForms'
