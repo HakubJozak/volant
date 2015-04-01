@@ -14,19 +14,6 @@ class MovingVolunteerAttributesToApplyForm < ActiveRecord::Migration
     add_strings *STRINGS
     add_texts  *TEXTS
     add_column :apply_forms, :birthdate, :date
-
-    ApplyForm.reset_column_information
-
-    ApplyForm.year(2015).find_each do |form|
-      puts "#{form.name}(#{form.id})"
-      source = form.volunteer || form.participant
-      
-      (TEXTS + STRINGS + [:birthdate]).flatten.each do |attr|
-        form.send "#{attr}=", source.send(attr)
-      end
-      
-      form.save(validate: false)
-    end
   end
 
   private
