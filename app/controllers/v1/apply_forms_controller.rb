@@ -4,8 +4,7 @@ class V1::ApplyFormsController < V1::BaseController
   skip_before_action :verify_authenticity_token
 
   def create
-    attrs = embed_volunteer_attributes(apply_form_params)
-    form = apply_forms.create_by_birthnumber(attrs)
+    form = apply_forms.create_by_birthnumber(apply_form_params)
 
     if form.valid? && form.volunteer.valid?
       ApplyFormMailer.submitted(form).deliver
@@ -28,27 +27,6 @@ class V1::ApplyFormsController < V1::BaseController
 
 
 
-  end
-
-  # HACK: this will be gone when all fields are on ApplyForm
-  def embed_volunteer_attributes(original)
-    volunteer = {}
-    [ :gender, :firstname, :lastname, :birthnumber, :nationality, :birthdate,
-      :birthplace, :occupation, :email, :phone, :fax,
-      :street, :city, :zipcode,
-      :contact_street, :contact_city, :contact_zipcode,
-      :emergency_day, :emergency_night, :emergency_name,
-      :special_needs,
-      :speak_well, :speak_some, :past_experience ].each do |attr|
-      volunteer[attr] = original.delete(attr)
-    end
-
-    {
-      volunteer_attributes: volunteer,
-      motivation: original[:motivation],
-      general_remarks: original[:general_remarks],
-      workcamp_ids: original[:workcamp_ids]
-    }
   end
 
   def apply_forms

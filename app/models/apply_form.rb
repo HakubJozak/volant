@@ -3,7 +3,8 @@ require 'rexml/document'
 class ApplyForm < ActiveRecord::Base
   include ::Alerts
   include Stars::Model
-  include PersonalMethods  
+  include PersonalMethods
+  include ApplyForm::WebApi
 
   acts_as_taggable
   include TaggableExtension
@@ -30,7 +31,6 @@ class ApplyForm < ActiveRecord::Base
   belongs_to :volunteer, class_name: 'Volunteer'
 
   accepts_nested_attributes_for :payment
-  accepts_nested_attributes_for :volunteer
 
   scope :query, lambda { |query|
     like = "%#{query}%"
@@ -100,52 +100,6 @@ class ApplyForm < ActiveRecord::Base
     end
 
     result
-  end
-
-  def self.create_by_birthnumber(attrs)
-  # TODO: replace by real DB attributes
-  # delegate :firstname, :lastname, :gender, :email, :phone, :birthdate, :birthnumber,
-  #          :nationality, :occupation, :account, :emergency_name, :emergency_day,
-  #          :emergency_night, :speak_well, :speak_some, :special_needs, :past_experience, :comments,
-  #          :fax, :street, :city, :zipcode, :contact_street, :contact_city, :contact_zipcode,
-  #          :birthplace, :note, :male?, :female?, to: :volunteer, allow_nil: true
-
-    form = nil
-    birthnumber = attrs[:volunteer_attributes][:birthnumber]
-    volunteer = Volunteer.find_by_birthnumber(birthnumber)
-
-    workcamps = attrs.delete(:workcamp_ids).to_a.map do |id|
-      ::Workcamp.find_by_id(id)
-      # TODO: handle smarter
-      # if self === Outgoing::ApplyForm
-      #   Outgoing::Workcamp.find_by_id(id)
-      # else
-      #   Ltv::Workcamp.find_by_id(id)
-      # end
-    end.compact
-
-
-    Volunteer.transaction do
-      if volunteer
-        form = self.new(attrs)
-        form.volunteer = volunteer
-        volunteer.assign_attributes(attrs[:volunteer_attributes])
-        volunteer.validate_phones!
-        volunteer.save && form.save
-      else
-        form = self.new(attrs)
-        form.volunteer.validate_phones!
-        form.save
-      end
-
-      if form.valid? && form.volunteer.valid?
-        workcamps.each_with_index do |wc,i|
-          form.workcamp_assignments.create!(workcamp: wc, order: i+1)
-        end
-      end
-    end
-
-    form
   end
 
   # TODO: replace by state column on the ApplyForm

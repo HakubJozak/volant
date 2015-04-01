@@ -1,3 +1,3 @@
 class Ltv::ApplyForm < ::ApplyForm
-  validates_presence_of :volunteer, :fee
+  validates_presence_of :fee
 end

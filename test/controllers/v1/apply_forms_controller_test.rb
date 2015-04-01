@@ -82,11 +82,9 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
     attrs = [ :firstname, :lastname, :birthnumber, :occupation, :birthdate, :email,
               :phone, :gender, :street, :city, :zipcode, :emergency_name, :emergency_day,
             ]
-      attrs.each do |attr|
-      @attrs[attr] = ''
-      post :create, apply_form: @attrs
-      assert_not_nil json[:errors][:"volunteer.#{attr}"],
-                     "Presence of #{attr} was not validated"
+    attrs.each do |attr|
+      post :create, apply_form: @attrs.merge(attr => '')
+      assert_form_error attr
     end
 
   end
@@ -121,14 +119,18 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       [ '+420/123456789','+420 123 456 789','0034-21-34-56','+420123456789', '123456789' ].each do |valid|
         post :create, apply_form: { attr => valid }
         refute json[:errors][:"volunteer.#{attr}"], "#{attr} should be valid (#{valid})"
+        refute json[:errors][:"#{attr}"], "#{attr} should be valid (#{valid})"        
       end
 
       [ '+420', 'invalid', '123'].each do |invalid_number|
         post :create, apply_form: { attr => invalid_number }
         assert_response 422
-        errors = json[:errors][:"volunteer.#{attr}"]
-        assert_not_nil errors
+
+        assert_not_nil (errors = json[:errors][:"volunteer.#{attr}"])
         assert_match /should be formatted like/,errors.first, "#{attr} does not validate against #{invalid_number}"
+
+        assert_not_nil (errors = json[:errors][attr])
+        assert_match /should be formatted like/,errors.first, "#{attr} does not validate against #{invalid_number}"        
       end
     end
   end
@@ -140,8 +142,15 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
     assert_equal value, @form.send(attr)    
   end
 
+  def assert_form_error
+    msg = "Presence of #{attr} was not validated"
+    assert_not_nil json[:errors][attr],msg    
+    assert_not_nil json[:errors][:"volunteer.#{attr}"],msg
+  end
+  
   def form_by_birthnumber(bn)
-    ApplyForm.joins(:volunteer).where(people: { birthnumber: bn}).first
+    ApplyForm.find_by_birthnumber(bn)
+    # joins(:volunteer).where(people: { birthnumber: bn}).first
   end
 
 end
