@@ -11,7 +11,7 @@ module PhoneValidation
   def validate_phones?
     @validate_phones
   end
-  
+
   def validate_phones!
     @validate_phones = true
   end

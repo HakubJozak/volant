@@ -12,7 +12,7 @@ module ApplyForm::WebApi
       self.volunteer.send("#{attr}=", self.send(attr))
     end
 
-    self.volunteer.save!
+    self.volunteer.save
   end
 
 
@@ -35,6 +35,7 @@ module ApplyForm::WebApi
 
       ApplyForm.transaction do
         form = self.new(attrs)
+        form.validate_phones!
         # form.volunteer.validate_phones!
 
         if form.save

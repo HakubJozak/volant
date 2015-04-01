@@ -75,7 +75,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
   test 'create: birthnumber validation' do
     @attrs[:birthnumber] = '010326/0424'
     post :create, apply_form: @attrs
-    assert_not_nil json[:errors][:'volunteer.birthnumber']
+    assert_not_nil json[:errors][:birthnumber]
   end
 
   test 'create: validation' do
@@ -118,7 +118,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
     [ :phone, :emergency_day, :emergency_night ].each do |attr|
       [ '+420/123456789','+420 123 456 789','0034-21-34-56','+420123456789', '123456789' ].each do |valid|
         post :create, apply_form: { attr => valid }
-        refute json[:errors][:"volunteer.#{attr}"], "#{attr} should be valid (#{valid})"
+#        refute json[:errors][:"volunteer.#{attr}"], "#{attr} should be valid (#{valid})"
         refute json[:errors][:"#{attr}"], "#{attr} should be valid (#{valid})"        
       end
 
@@ -126,8 +126,8 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
         post :create, apply_form: { attr => invalid_number }
         assert_response 422
 
-        assert_not_nil (errors = json[:errors][:"volunteer.#{attr}"])
-        assert_match /should be formatted like/,errors.first, "#{attr} does not validate against #{invalid_number}"
+        # assert_not_nil (errors = json[:errors][:"volunteer.#{attr}"])
+        # assert_match /should be formatted like/,errors.first, "#{attr} does not validate against #{invalid_number}"
 
         assert_not_nil (errors = json[:errors][attr])
         assert_match /should be formatted like/,errors.first, "#{attr} does not validate against #{invalid_number}"        
@@ -142,10 +142,9 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
     assert_equal value, @form.send(attr)    
   end
 
-  def assert_form_error
+  def assert_form_error(attr)
     msg = "Presence of #{attr} was not validated"
     assert_not_nil json[:errors][attr],msg    
-    assert_not_nil json[:errors][:"volunteer.#{attr}"],msg
   end
   
   def form_by_birthnumber(bn)
