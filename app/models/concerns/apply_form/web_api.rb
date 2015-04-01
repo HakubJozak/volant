@@ -27,7 +27,6 @@ module ApplyForm::WebApi
       #          :birthplace, :note, :male?, :female?, to: :volunteer, allow_nil: true
 
       form = nil
-      volunteer = Volunteer.find_by_birthnumber(attrs[:birthnumber])
 
       workcamps = attrs.delete(:workcamp_ids).to_a.map do |id|
         ::Workcamp.find_by_id(id)
@@ -35,11 +34,10 @@ module ApplyForm::WebApi
 
       ApplyForm.transaction do
         form = self.new(attrs)
-        form.validate_phones!
-        # form.volunteer.validate_phones!
+        form.strict_validation_on!
 
         if form.save
-          form.build_volunteer unless form.volunteer
+          form.volunteer = Volunteer.find_by_birthnumber(form.birthnumber) || volunteer.new
           form.update_volunteer_data!
           form.save!
 
