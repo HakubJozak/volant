@@ -9,7 +9,7 @@ class Incoming::Participant < Person
 
   validates_presence_of :country
   validates_presence_of :organization
-  validates_presence_of :apply_form
+
 
   scope :females, -> { where(gender: Person::FEMALE) }
   scope :males, -> { where(gender: Person::MALE) }
@@ -18,11 +18,6 @@ class Incoming::Participant < Person
 
   [ :general_remarks, :motivation, :cancelled ].each do |attr|
     delegate attr, :"#{attr.to_s}=", :to => :apply_form
-  end
-
-  def after_initialize
-    self.country = organization.country if organization and country.nil?
-    self.apply_form = Incoming::ApplyForm.new unless apply_form
   end
 
   # def to_label

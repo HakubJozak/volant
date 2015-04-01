@@ -11,6 +11,8 @@ Factory.define :apply_form, parent: :abstract_form,class: Outgoing::ApplyForm do
 end
 
 Factory.define :incoming_apply_form, parent: :abstract_form,class: Incoming::ApplyForm do |f|
+  f.association :country
+  f.association :organization  
 end
 
 Factory.define :incoming_male_form, parent: :incoming_apply_form do |f|
