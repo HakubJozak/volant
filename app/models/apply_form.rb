@@ -3,6 +3,7 @@ require 'rexml/document'
 class ApplyForm < ActiveRecord::Base
   include ::Alerts
   include Stars::Model
+  include PersonalMethods  
 
   acts_as_taggable
   include TaggableExtension
@@ -17,14 +18,6 @@ class ApplyForm < ActiveRecord::Base
   belongs_to :current_assignment, foreign_key: 'current_assignment_id_cached', class_name: 'Outgoing::WorkcampAssignment'
   has_many :workcamps, -> { order 'workcamp_assignments."order" ASC' }, through: :workcamp_assignments, class_name: 'Workcamp', validate: false
   has_many :workcamp_assignments, -> { order '"order" ASC' }, dependent: :delete_all, class_name: 'Outgoing::WorkcampAssignment', validate: false
-
-
-  # TODO: replace by real DB attributes
-  delegate :firstname, :lastname, :gender, :email, :phone, :birthdate, :birthnumber,
-           :nationality, :occupation, :account, :emergency_name, :emergency_day,
-           :emergency_night, :speak_well, :speak_some, :special_needs, :past_experience, :comments,
-           :fax, :street, :city, :zipcode, :contact_street, :contact_city, :contact_zipcode,
-           :birthplace, :note, :male?, :female?, to: :volunteer, allow_nil: true
 
   scope :year, lambda { |year|
     year = year.to_i
@@ -110,6 +103,13 @@ class ApplyForm < ActiveRecord::Base
   end
 
   def self.create_by_birthnumber(attrs)
+  # TODO: replace by real DB attributes
+  # delegate :firstname, :lastname, :gender, :email, :phone, :birthdate, :birthnumber,
+  #          :nationality, :occupation, :account, :emergency_name, :emergency_day,
+  #          :emergency_night, :speak_well, :speak_some, :special_needs, :past_experience, :comments,
+  #          :fax, :street, :city, :zipcode, :contact_street, :contact_city, :contact_zipcode,
+  #          :birthplace, :note, :male?, :female?, to: :volunteer, allow_nil: true
+
     form = nil
     birthnumber = attrs[:volunteer_attributes][:birthnumber]
     volunteer = Volunteer.find_by_birthnumber(birthnumber)
