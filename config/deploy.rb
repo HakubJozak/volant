@@ -51,6 +51,13 @@ task :setup => :environment do
 
   queue! %[touch "#{deploy_to}/#{shared_path}/config/database.yml"]
   queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml'."]
+
+  if rails_env == 'staging'
+    queue! %[mkdir -p "#{deploy_to}/#{shared_path}/tmp/pids"]
+    queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/pids"]
+    queue! %[mkdir -p "#{deploy_to}/#{shared_path}/tmp/sockets"]
+    queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/sockets"]
+  end
 end
 
 desc "Deploys the current version to the server."
