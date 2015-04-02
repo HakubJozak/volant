@@ -92,23 +92,8 @@
 </div>
 </div>
 
-<div id='toolbar' class="panel panel-default">
-  <div class="panel-body">
+{{partial 'apply_form/toolbar'}}
 
-  {{#if vefXmlUrl}}
-    <a {{ bind-attr href=vefXmlUrl }} >
-      {{fa 'download'}} XML
-    </a>
-    <a {{ bind-attr href=vefHtmlUrl }} >
-      {{fa 'download'}} HTML
-    </a>
-    <a {{ bind-attr href=vefPdfUrl }} >
-      {{fa 'download'}} PDF
-    </a>    
-  {{/if}}
-
-  {{partial 'save_buttons'}}
-  </div>
 </div>
 <div >
 

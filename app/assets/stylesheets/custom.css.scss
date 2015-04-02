@@ -339,3 +339,14 @@ table#apply-forms-list {
   .remove-button { position: absolute; top: 0; right: 5px; }
   @include remove-button-hover;
 }
+
+.volunteer-card-icon {
+  .fa-user {
+    position: relative;
+    top: 2px;
+  }
+}
+
+#toolbar .volunteer-card-icon {
+  font-size: 75%;
+}

@@ -1,0 +1,21 @@
+#toolbar.panel.panel-default
+  .panel-body
+    if vefXmlUrl
+      a href=vefXmlUrl
+        ' {{fa 'download'}} XML
+      a href=vefHtmllUrl
+        ' {{fa 'download'}} HTML
+      a href=vefPdfUrl
+        ' {{fa 'download'}} PDF
+
+    if volunteer
+      link-to 'volunteer' volunteer class='btn btn-default' title="Volunteer's Card"
+        span.fa-stack.volunteer-card-icon
+          ' {{fa 'user fa-stack-1x'}}
+          ' {{fa 'file-o fa-stack-2x'}}
+        '  
+        ' Volunteer
+      '
+
+    partial 'save_buttons'
+

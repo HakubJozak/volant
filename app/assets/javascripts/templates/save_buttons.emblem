@@ -1,10 +1,10 @@
-button.btn.btn-primary click="save" type="button"
-  ' {{fa 'check'}} Save
+button.btn.btn-default click="rollback" type="button"
+  ' {{fa 'times'}} Back
 
 '
 
-button.btn.btn-default click="rollback" type="button"
-  ' {{fa 'times'}} Back
+button.btn.btn-primary click="save" type="button"
+  ' {{fa 'check'}} Save
 
 
 
