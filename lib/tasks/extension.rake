@@ -13,15 +13,18 @@ namespace :db do
     end
   end
 
+  task :unlock => :environment do
+    only_in_development!
+    User.all.each do |u|
+      puts "Unlocking #{u.email}"
+      u.update_attributes(password: 'password')
+    end
+  end
+  
+
   desc "Mangle sensitive data!"
   task :mangle => :environment do
-    unless Rails.env == 'development'
-      puts('Available only in development')
-      exit
-    else
-      require 'ruby-progressbar'
-      require 'faker'
-    end
+    only_in_development!
 
     bar = ProgressBar.create(:title => "People", :total => Person.count)
     Person.find_each do |v|
@@ -62,8 +65,18 @@ namespace :db do
       c.save
       bar.increment
     end
-
   end
 
+  private
+
+  def only_in_development!
+    unless Rails.env == 'development'
+      puts('Available only in development')
+      exit
+    else
+      require 'ruby-progressbar'
+      require 'faker'
+    end
+  end
 
 end
