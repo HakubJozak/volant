@@ -43,6 +43,17 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
       @flash_info "Workcamp removed from the application."
       false
 
+    userChangedMode: (mode) ->     
+      route = switch (mode)
+              when 'incoming' then 'incoming_workcamps'
+              when 'ltv' then 'ltv_workcamps'
+              else 'index'
+      $.cookie('volant-mode',mode)
+      console.info mode
+      @transitionTo(route)
+      false
+
+
     refresh: ->
       @refresh()
       false
