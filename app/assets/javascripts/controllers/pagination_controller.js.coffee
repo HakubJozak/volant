@@ -16,4 +16,3 @@ Volant.PaginationController = Ember.ObjectController.extend
     else
       null
   ).property('model.current_page')
-
