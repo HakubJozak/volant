@@ -74,8 +74,7 @@ group :development do
   gem 'faker'
   gem 'guard-livereload', '2.3.1', require: false
   gem 'mina', '~> 0.3.3', require: false
-#  gem 'mina-puma', require: false
-  gem 'puma', require: false
+  gem 'mina-puma', require: false
 end
 
 group :test do
@@ -83,4 +82,8 @@ group :test do
   gem "factory_girl_rails" #, "~> 1.0"
   gem 'minitest-reporters'
   gem 'mocha'
+end
+
+group :staging, :development do
+  gem 'puma', require: false
 end
