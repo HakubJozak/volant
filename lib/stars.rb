@@ -11,7 +11,7 @@ module Stars
     end
 
     def starred?(user)
-      starrings.where(user: user).count > 0
+      user.starrings.all.find { |s| s.favorite == self }
     end
 
     def remove_star(user)
