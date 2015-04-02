@@ -1,0 +1,12 @@
+#toolbar.panel.panel-default
+  .panel-body
+    if organization
+      link-to 'organization' organization class='btn btn-default' title="Organization Card"
+        span.fa-stack.org-card-icon
+          ' {{fa 'institution fa-stack-1x'}}
+          ' {{fa 'file-o fa-stack-2x'}}
+        '
+        ' Organization
+      '
+
+    partial 'save_buttons'

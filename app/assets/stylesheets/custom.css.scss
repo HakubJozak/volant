@@ -340,14 +340,17 @@ table#apply-forms-list {
   @include remove-button-hover;
 }
 
-.volunteer-card-icon {
-  i.fa-user {
-    position: relative;
-    top: 2px;
-  }
+.volunteer-card-icon .fa-user {
+  position: relative;
+  top: 2px;
 }
 
-
+.org-card-icon .fa-institution {
+  color: $grey;  
+  font-size: 90%;  
+  position: relative;
+  top: 2px;
+}
 
 
 #toolbar .fa-stack {

@@ -9,6 +9,10 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
     @setupPagination(controller,model)
     @_super(controller,model)
 
+  activate: ->
+    @_super()
+    window.scrollTo(0,0)
+
   actions:
     closeModal: ->
       @disconnectOutlet 'modal'
