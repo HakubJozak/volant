@@ -341,12 +341,15 @@ table#apply-forms-list {
 }
 
 .volunteer-card-icon {
-  .fa-user {
+  i.fa-user {
     position: relative;
     top: 2px;
   }
 }
 
-#toolbar .volunteer-card-icon {
+
+
+
+#toolbar .fa-stack {
   font-size: 75%;
 }

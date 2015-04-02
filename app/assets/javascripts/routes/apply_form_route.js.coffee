@@ -2,9 +2,9 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
   model: (params) ->
     @store.find('apply_form', params.apply_form_id)
 
-  afterSave: (record) ->
+  afterSave: (record,options = {}) ->
     @flash_info('Saved.')
-    @send 'goToApplyForms'
+    @send 'goToApplyForms' if options.redirect
 
   afterRemove: (record) ->
     @flash_info('Deleted.')

@@ -51,11 +51,11 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
       @refresh()
       false
 
-    save: ->
+    save: (redirect = true)->
       console.log 'Saving',@currentModel
       @currentModel.get('errors').clear()
       @currentModel.save().then ( (saved_record) =>
-        @afterSave(saved_record)
+        @afterSave(saved_record, redirect: redirect)
        ), ( (e) =>
          if e.full_rails_message?
            @flash_error e.full_rails_message

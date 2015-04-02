@@ -17,9 +17,9 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend
   afterRollback: (record) ->    
     @send 'goToWorkcamps'
 
-  afterSave: (record) ->
+  afterSave: (record,options = {}) ->
     @flash_info('Saved.')
-    @send 'goToWorkcamps'
+    @send 'goToWorkcamps' if options.redirect
 
   actions:
     addApplyForm: (form) ->
