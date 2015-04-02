@@ -3,21 +3,25 @@ require 'mina/rails'
 require 'mina/git'
 require 'mina/rvm'
 
-
 set :repository, 'git@github.com:HakubJozak/volant.git'
-set :user, 'rails'
-set :branch, 'master'
 
-task :staging do
-  set :deploy_to, '/home/rails/volant-staging'
-  set :domain, 'pelican.amagical.net'
-end
 
 task :production do
+  set :branch, 'master'
+  set :user, 'rails'
   set :deploy_to, '/home/rails/volant'
   set :domain, 'pelican.amagical.net'
+  set :rails_env, 'production'
 end
 
+
+task :staging do
+  set :branch, 'incoming'
+  set :user, 'jakub'
+  set :deploy_to, '/home/jakub/volant'
+  set :domain, '128.199.36.58'
+  set :rails_env, 'staging'
+end
 
 
 set :shared_paths, ['config/database.yml', 'config/secrets.yml','log','public/uploads']

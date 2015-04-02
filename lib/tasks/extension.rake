@@ -43,6 +43,26 @@ namespace :db do
         v.send("#{prefix}city=", Faker::Address.city)
       end
 
+
+      if v.respond_to?(:apply_forms)
+        v.apply_forms.each do |f|
+          f.firstname = v.firstname
+          f.lastname = v.lastname
+          f.birthnumber = v.birthnumber
+          f.email = v.email
+          f.phone = v.phone
+          f.birthdate = v.birthdate
+          f.emergency_name = v.emergency_name
+          f.emergency_day = v.emergency_day
+          f.emergency_night = v.emergency_night
+          f.street = v.street
+          f.city = v.city
+          f.street = v.contact_street
+          f.city = v.contact_city
+          f.save(validate: false)
+        end
+      end
+
       v.save!
       bar.increment
     end
