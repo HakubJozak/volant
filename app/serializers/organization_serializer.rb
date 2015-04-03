@@ -8,18 +8,25 @@ class OrganizationSerializer < ApplicationSerializer
     :address,  :contact_person,  :phone,  :mobile,  :fax,  :website
 
   def outgoing_email
-    email_contacts.outgoing.first.try(:address)
+    emails('OUTGOING')
   end
 
   def incoming_email
-    email_contacts.incoming.first.try(:address)
+    emails('INCOMING')
   end
 
   def ltv_email
-    email_contacts.ltv.first.try(:address)
+    emails('LTV')
   end
 
   def email_contacts
     object.emails
+  end
+  
+  private
+
+  def emails(kind)
+    # benefits from eager loading
+    object.emails.find { |a| a.kind == kind }.try(:address)
   end
 end

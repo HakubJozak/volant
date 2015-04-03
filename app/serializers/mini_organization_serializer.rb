@@ -5,6 +5,10 @@ class MiniOrganizationSerializer < ApplicationSerializer
              :phone,
              :mobile,
              :fax,
-             :website
-  has_one :country, embed: :ids, include: true  
+   :website,
+    :outgoing_email,  :incoming_email,  :ltv_email
+  has_one :country, embed: :ids, include: true
+
+
+  
 end

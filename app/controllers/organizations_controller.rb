@@ -3,14 +3,14 @@ class OrganizationsController < ApplicationController
   before_action :find_organization, except: [ :index, :create ]
 
   def index
+    orgs = organizations.joins(:country).includes(:emails,:networks)
+
     if filter[:p].present?
-      orgs = organizations.joins(:country).includes(:networks,:emails)
       orgs = orgs.query(filter[:q]) if filter[:q].present?
       orgs = orgs.order('countries.name_en ASC, organizations.name ASC').page(current_page)
       render json: orgs, meta: { pagination: pagination_info(orgs) }, each_serializer: OrganizationSerializer
     else
-      orgs = organizations.all
-      render json: orgs, each_serializer: MiniOrganizationSerializer
+      render json: orgs.all, each_serializer: OrganizationSerializer
     end
   end
 

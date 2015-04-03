@@ -1,5 +1,5 @@
 class WorkcampSerializer < ApplicationSerializer
-  has_one :organization, embed: :ids, include: true, serializer: MiniOrganizationSerializer
+  has_one :organization, embed: :ids, include: true, serializer: OrganizationSerializer
   has_one :country, embed: :ids, include: true
   has_many :tags, embed: :ids, include: true, serializer: TagSerializer
   has_many :workcamp_intentions, embed: :ids, include: true, serializer: WorkcampIntentionSerializer
