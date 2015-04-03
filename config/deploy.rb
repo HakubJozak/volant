@@ -58,6 +58,10 @@ task :setup => :environment do
     queue! %[mkdir -p "#{deploy_to}/#{shared_path}/tmp/sockets"]
     queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/sockets"]
   end
+
+  queue! "sudo apt-get install -y wkhtmltopdf xvfb"
+  queue! %[echo 'xvfb-run --server-args="-screen 0, 1024x768x24" /usr/bin/wkhtmltopdf $*' | sudo tee --append /usr/local/bin/wkhtmltopdf]
+  queue! "sudo chmod +x /usr/local/bin/wkhtmltopdf"
 end
 
 desc "Deploys the current version to the server."

@@ -17,4 +17,4 @@ Built on Rails 4 and Ember.
  - wkhtmltopdf (for PDF versions of VEFs)
 
     sudo apt-get install wkhtmltopdf xvfb
-    echo 'xvfb-run --server-args="-screen 0, 1024x768x24" /usr/bin/wkhtmltopdf $*' > /usr/local/bin/wkhtmltopdf
+    echo 'xvfb-run --server-args="-screen 0, 1024x768x24" /usr/bin/wkhtmltopdf $*' | sudo tee --apend /usr/local/bin/wkhtmltopdf
