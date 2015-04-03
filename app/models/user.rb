@@ -6,8 +6,10 @@ class User < ActiveRecord::Base
 
   belongs_to :account
   has_many :messages, validate: false
-  has_many :starrings
-  has_many :favorites, through: :starrings, validate: false
+
+  include Stars::User
+
+  
 
   # to allow Volant 1 and 2 run above the same DB at first
   self.table_name = 'devise_users'

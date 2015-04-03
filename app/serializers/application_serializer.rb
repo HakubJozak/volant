@@ -1,5 +1,6 @@
 class ApplicationSerializer < Barbecue::BaseSerializer
   def starred
-    object.starred?(current_user)
+    current_user.has_starred?(object)
+
   end
 end
