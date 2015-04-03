@@ -3,7 +3,7 @@ class Export::VefHtml < Export::VefBase
   def sufix
     'html'
   end
-  
+
   def to_html
     YamlUtils::eval_erb_file "#{Rails.root}/lib/export/vef.html.erb", binding
   end
@@ -11,7 +11,7 @@ class Export::VefHtml < Export::VefBase
   alias :data :to_html
 
   private
-  
+
   def form_fields
     [[ 'form_id', @form.id ]]
   end
@@ -41,7 +41,7 @@ class Export::VefHtml < Export::VefBase
       unless field == :dummy
         result << "          <tr>"
         result << "            <th>#{Volunteer.human_attribute_name(field, :locale => 'en' )}:</th>"
-        result << "            <td>#{@form.volunteer.send(field)}</td>"
+        result << "            <td class='#{h_card_attr(field)}'>#{@form.send(field)}</td>"
         result << "          </tr>"
       else
         # just a formatting fixing hack
@@ -63,6 +63,20 @@ class Export::VefHtml < Export::VefBase
       </p>
     </fieldset>
     }
+  end
+
+  private
+
+  def h_card_attr(attr)
+    {
+      firstname: 'p-given-name',
+      lastname: 'p-family-name',
+      email: 'u-email',
+      phone: 'p-tel',
+      gender: 'p-sex',
+      street: 'p-street-address',
+      city: 'p-locality'
+    }[attr] || "p-#{attr.to_s.dasherize}"
   end
 
 end

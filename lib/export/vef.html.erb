@@ -74,7 +74,7 @@ h1 {
 
 </style>
 </head>
-<body>
+<body class='h-card'>
   <center>
     <h1>INEX-SDA VOLUNTEER EXCHANGE FORM(VEF)</h1>
   </center>
@@ -92,8 +92,8 @@ h1 {
                  fieldset('4.LANGUAGES', [ :speak_well, :speak_some, :dummy  ]))
   %>
 
-  <%= long_text('5.REMARKS ON HEALTH / SPECIAL NEEDS / DIET', @form.volunteer.special_needs || 'None') %>
-  <%= long_text('6.PAST VOLUNTEER EXPERIENCE / GENERAL SKILLS', @form.volunteer.past_experience || 'None') %>
+  <%= long_text('5.REMARKS ON HEALTH / SPECIAL NEEDS / DIET', @form.special_needs || 'None') %>
+  <%= long_text('6.PAST VOLUNTEER EXPERIENCE / GENERAL SKILLS', @form.past_experience || 'None') %>
 
   <fieldset>
     <legend><strong>7.PROJECT CHOICES ACCORDING TO PREFERENCE</strong></legend>

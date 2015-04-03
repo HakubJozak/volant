@@ -3,7 +3,7 @@
     if vefXmlUrl
       a href=vefXmlUrl
         ' {{fa 'download'}} XML
-      a href=vefHtmllUrl
+      a href=vefHtmlUrl
         ' {{fa 'download'}} HTML
       a href=vefPdfUrl
         ' {{fa 'download'}} PDF
