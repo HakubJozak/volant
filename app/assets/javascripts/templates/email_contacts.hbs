@@ -17,7 +17,7 @@
       {{#if edited_or_new}}
         <tr>
           <td>{{input value=name action="save" placeholder="Name" class='form-control'}}</td>
-          <td>{{input value=address type=email action="save" placeholder="email address" class='form-control'}}</td>
+          <td>{{input value=address type="email" action="save" placeholder="email address" class='form-control'}}</td>
           <td>
             {{view Ember.Select
             value=kind
