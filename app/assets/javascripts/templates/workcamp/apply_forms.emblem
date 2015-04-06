@@ -23,5 +23,5 @@ table.table.table-condensed.sidepanel
             .btn.btn-default{ action 'removeAssignment' workcampAssignment true bubbles='false'}
               fa 'minus'
           else
-            .btn.btn-default{ action 'addAssignment' this workcamp  true bubbles='false'}
+            .btn.btn-default{ action 'createAssignment' workcamp this  true bubbles='false'}
               fa 'plus'
