@@ -11,9 +11,10 @@ table.table.table-condensed.sidepanel
             ' {{name}} ({{age}})
         td
           if workcampAssignment
-            apply-form-state-icon state
-          else
-            fa 'list-ol'
+            if isCurrent
+              apply-form-state-icon state
+            else
+              fa 'list-ol'
 
         td
           if workcampAssignment

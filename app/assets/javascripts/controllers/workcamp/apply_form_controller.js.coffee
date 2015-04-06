@@ -2,6 +2,10 @@ Volant.WorkcampApplyFormController = Ember.ObjectController.extend
   needs: ['workcamp']
   workcamp: Ember.computed.alias('controllers.workcamp.model')
 
+  isCurrent: (->
+    @get('workcampAssignment.id') == @get('currentAssignment.id')
+  ).property('workcampAssignment','currentAssignment')
+
   workcampAssignment: (->
     id = @get('workcamp.id')
     @get('model.workcampAssignments').findBy('workcamp.id', id)
