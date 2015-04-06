@@ -1,5 +1,5 @@
 class WorkcampAssignmentSerializer < ApplicationSerializer
   attributes :id, :order, :accepted, :rejected, :asked, :infosheeted, :state
-  has_one :workcamp, embed: :ids, include: true, serializer: WorkcampSerializer
-  has_one :apply_form, embed: :ids, include: true, serializer: ApplyFormSerializer
+  has_one :workcamp, embed: :ids, include: false, serializer: WorkcampSerializer
+  has_one :apply_form, embed: :ids, include: false, serializer: ApplyFormSerializer
 end

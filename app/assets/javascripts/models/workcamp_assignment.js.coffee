@@ -1,7 +1,7 @@
 Volant.WorkcampAssignment = DS.Model.extend
   state: DS.attr 'string'
   workcamp: DS.belongsTo('workcamp', inverse: 'workcampAssignments', async: true)
-  applyForm: DS.belongsTo('apply_form', inverse: 'workcampAssignments')
+  applyForm: DS.belongsTo('apply_form', inverse: 'workcampAssignments',async: true)
 
   order: DS.attr 'number'
   accepted: DS.attr 'isodate'
