@@ -1,5 +1,5 @@
-Volant.ApplyFormsController = Volant.ListController.extend
-  needs: ['tags']
+Volant.WorkcampsApplyFormsController = Ember.ArrayController.extend
+
 
   page: 1
   query: null
@@ -9,10 +9,10 @@ Volant.ApplyFormsController = Volant.ListController.extend
   queryParams: ['page','year','query','state','order','sortAscending']
   query_placeholder: "by name, birth number, email, bank account or keyword inside description"
 
-  order: 'createdAt'
-  orderOptions: [ {id: 'createdAt', name: 'Submitted'},{id:'name', name: 'Name'}]
-  sortProperties: ['createdAt']
+  sortProperties: ['state','currentAssignment']
 
+  sortFunction: (a,b) ->
+    
 
   setSorting: (->
     props = switch @get('order')

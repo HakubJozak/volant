@@ -1,27 +1,4 @@
 form.form submit='search'
   partial 'query'
 
-table.table.table-condensed.sidepanel
-  tbody
-    each itemController='workcamp_apply_form'
-      tr
-        td
-          if isAssigned
-            fa 'check'
-          else
-            .btn.btn-default{action 'addApplyForm' this }
-              fa 'plus'
-        td
-          partial 'star'
-        td
-          link-to 'apply_form' this
-            = name
-            '
-            = gender-sign apply_form.gender
-
-  tfoot
-    unless content
-      tr
-        td colspan="2"
-          .col-md-12.info.text-center
-            p.text-muted No applications found.
+render 'workcamp/apply_forms' this
