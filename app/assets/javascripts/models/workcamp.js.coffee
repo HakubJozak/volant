@@ -8,7 +8,7 @@ Volant.Workcamp = DS.Model.extend
   workcampIntentions: DS.hasMany('workcamp_intention',embedded: 'always')
   workcampAssignments: DS.hasMany('workcamp_assignment',async: true)
   import_changes: DS.hasMany('import_change')
-  applyForms: DS.hasMany('apply_form',async: true)
+  applyForms: DS.hasMany('apply_form',async: true,inverse: null)
 
   name: DS.attr 'string'
   code: DS.attr 'string'

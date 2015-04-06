@@ -5,6 +5,7 @@ class ApplyFormSerializer < PersonSerializer
              :no_response_alert, :missing_infosheet_alert
 
   has_many :workcamp_assignments, embed: :ids, include: false
+  has_many :workcamps, embed: :ids, include: false  
 
   has_one :country, embed: :ids, include: true
   has_one :volunteer, embed: :ids, include: true
