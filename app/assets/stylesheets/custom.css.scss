@@ -361,5 +361,7 @@ table#apply-forms-list {
   .fa-stack-2x {
     color: gray;
   }
-  @include single-text-shadow(1px 1px #AAA);
+  .fa-stack-1x {
+    @include single-text-shadow(1px 1px #AAA);
+  }
 }

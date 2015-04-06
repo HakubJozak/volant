@@ -28,7 +28,7 @@ Ember.Handlebars.helper 'apply-form-state-icon', (state) ->
              else ''
 
      html = """
-       <span class="fa-stack" title="#{info} state-icon">
+       <span class="fa-stack state-icon" title="#{info}">
          <i class="fa fa-stack-2x fa-circle"></i>
          <i class="fa fa-stack-1x fa-#{icon} fa-inverse #{key}"></i>
        </span>
