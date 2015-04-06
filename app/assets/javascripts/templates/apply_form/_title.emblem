@@ -1,6 +1,6 @@
 if lastname
   if volunteer
-    = link-to name 'volunteer' volunteer
+    = link-to name 'apply_form' this
   else
     = name
 else

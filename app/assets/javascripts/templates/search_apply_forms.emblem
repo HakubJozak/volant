@@ -3,7 +3,7 @@ form.form submit='search'
 
 table.table.table-condensed.sidepanel
   tbody
-    each itemController='apply_form_inside_workcamp'
+    each itemController='workcamp_apply_form'
       tr
         td
           if isAssigned

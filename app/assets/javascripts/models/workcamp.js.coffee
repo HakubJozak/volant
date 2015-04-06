@@ -8,6 +8,7 @@ Volant.Workcamp = DS.Model.extend
   workcampIntentions: DS.hasMany('workcamp_intention',embedded: 'always')
   workcampAssignments: DS.hasMany('workcamp_assignment',async: true)
   import_changes: DS.hasMany('import_change')
+  applyForms: DS.hasMany('apply_form',async: true)
 
   name: DS.attr 'string'
   code: DS.attr 'string'
@@ -85,19 +86,6 @@ Volant.Workcamp = DS.Model.extend
     else
       null
   ).property('from','to')
-
-  assignments_by_state: Ember.computed.sort 'workcamp_assignments', (wa,wb) ->
-    priorities = [ 'infosheeted', 'accepted', 'asked','paid','not_paid', 'rejected', 'cancelled' ]
-
-    a = priorities.indexOf wa.get('state')
-    b = priorities.indexOf wb.get('state')
-
-    if a > b
-      1
-    else if a < b
-      -1
-    else
-       0
 
   for_email: ->
     hash = @_super()

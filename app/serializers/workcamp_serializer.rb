@@ -6,6 +6,8 @@ class WorkcampSerializer < ApplicationSerializer
   has_many :workcamp_assignments, embed: :ids, include: false
   has_many :import_changes, embed: :ids, include: true
 
+  attributes :apply_form_ids
+
   attributes :id, :state, :duration, :type,
       :starred, :name, :code, :language, :begin, :end, :minimal_age, :maximal_age,
       :area, :accomodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,
@@ -31,6 +33,10 @@ class WorkcampSerializer < ApplicationSerializer
     else
       'outgoing'
     end
+  end
+
+  def apply_form_ids
+    object.workcamp_assignments.map { |wa| wa.apply_form_id }
   end
 
   def workcamp_assignments

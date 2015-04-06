@@ -6,6 +6,7 @@ class ApplyFormSerializer < PersonSerializer
 
   has_many :workcamp_assignments, embed: :ids, include: false
 
+  has_one :country, embed: :ids, include: true
   has_one :volunteer, embed: :ids, include: true
   has_one :payment, embed: :ids, include: true
   has_many :tags, embed: :ids, include: true, serializer: TagSerializer

@@ -3,7 +3,7 @@ Ember.Handlebars.helper 'csv-download-link', (base) ->
   new Handlebars.SafeString """
     <a href="#{base}?year=#{year}" title="Download CSV for #{year}">
        <i class='fa fa-download'></i> CSV
-    </a>       
+    </a>
    """
 
 
@@ -39,7 +39,7 @@ Ember.Handlebars.helper 'apply-form-action-icon', (name) ->
     ask: 'envelope-o'
     infosheet: 'suitcase'
     pay: 'money'
-    email: 'envelope-o' 
+    email: 'envelope-o'
     cancel: 'times'
   }
   icon = "<i class='fa fa-#{icons[name]}'></i>"

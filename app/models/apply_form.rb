@@ -15,6 +15,8 @@ class ApplyForm < ActiveRecord::Base
 
   create_date_time_accessors
 
+  belongs_to :country
+  belongs_to :organization
   belongs_to :current_workcamp, foreign_key: 'current_workcamp_id_cached', class_name: 'Workcamp'
   belongs_to :current_assignment, foreign_key: 'current_assignment_id_cached', class_name: 'Outgoing::WorkcampAssignment'
   has_many :workcamps, -> { order 'workcamp_assignments."order" ASC' }, through: :workcamp_assignments, class_name: 'Workcamp', validate: false

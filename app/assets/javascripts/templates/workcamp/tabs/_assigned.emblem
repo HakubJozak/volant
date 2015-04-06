@@ -1,12 +1,1 @@
-table.table.table-condensed.col-md-12.sidepanel
-  tbody
-    each assignments_by_state
-      tr
-        td
-          .btn.btn-default{ action 'removeAssignment' this true bubbles='false'}
-            fa 'minus'
-        td
-          apply-form-state-icon state
-        td
-          link-to 'apply_form' apply_form
-            | {{apply_form.name}} {{gender-sign apply_form.gender}}
+render 'workcamp/apply_forms' applyForms

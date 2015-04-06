@@ -1,0 +1,13 @@
+@import 'colors';
+
+
+.sidepanel {
+  border-left: 1px solid $border-color;
+
+  tr.apply-form {
+    td.gender { font-size: 1.5em; }  
+    img.flag { height: 1.5em; background-color: none; }  
+  }
+}
+
+

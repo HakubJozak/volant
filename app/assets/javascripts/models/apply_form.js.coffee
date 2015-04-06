@@ -2,13 +2,15 @@ Volant.ApplyForm = DS.Model.extend Volant.PersonalAttributesMixin,
   type: DS.attr 'string'
   state: DS.attr 'state'
 
-  currentWorkcamp:  DS.belongsTo 'workcamp', async: true
-  currentAssignment:  DS.belongsTo 'workcamp_assignment', async: true
-  currentMessage: DS.belongsTo 'message',async: true, inverse: null
+  country: DS.belongsTo('country')
   volunteer:  DS.belongsTo 'volunteer'
   payment:  DS.belongsTo 'payment'
   tags: DS.hasMany('tag',embedded: 'always')
-  workcampAssignments:  DS.hasMany 'workcamp_assignment', async: true, inverse: 'apply_form'
+
+  currentWorkcamp:  DS.belongsTo 'workcamp', async: true
+  currentAssignment:  DS.belongsTo 'workcamp_assignment', async: true
+  currentMessage: DS.belongsTo 'message',async: true, inverse: null
+  workcampAssignments:  DS.hasMany 'workcamp_assignment', async: true, inverse: 'applyForm'
 
   confirmed: DS.attr 'isodate'
   createdAt: DS.attr 'isodate'
@@ -50,6 +52,6 @@ Volant.ApplyForm = DS.Model.extend Volant.PersonalAttributesMixin,
           @get("#{association}.errors").add(key, inner[key])
 
   has_workcamp: (wc) ->
-    @get('workcamp_assignments').any (wa) ->
+    @get('workcampAssignments').any (wa) ->
       wa.get('workcamp.id') == wc.get('id')
     

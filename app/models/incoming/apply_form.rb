@@ -1,7 +1,5 @@
 module Incoming
   class ApplyForm < ::ApplyForm
-    belongs_to :country
-    belongs_to :organization
     belongs_to :participant, foreign_key: 'volunteer_id'
 
     validates :country, :organization, presence: true
