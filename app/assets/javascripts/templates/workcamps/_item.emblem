@@ -28,11 +28,17 @@
     .col-md-3
       button.btn.btn-default.remove-button{ action 'confirmedRemove' this }
         fa 'trash-o'
-      p.list-group-item-heading
-        each workcamp_assignments itemController='workcampAssignmentInsideWorkcamp'
-          = link-to 'apply_form' apply_form
-            if isRelevant
-              ' {{apply_form.name}} ({{apply_form.age}}) {{apply-form-state-icon apply_form.state}}
-              each apply_form.tags
-                tag this
-              ' ,
+      table.table-condensed    
+        tbody
+          each workcamp_assignments itemController='workcampAssignmentInsideWorkcamp'
+            tr
+              if isRelevant
+                td
+                  ' {{apply-form-state-icon apply_form.state}}
+                td
+                  small-flag apply_form.country
+                td
+                  = link-to 'apply_form' apply_form
+                    ' {{apply_form.name}} ({{apply_form.age}})
+                  each apply_form.tags
+                    tag this
