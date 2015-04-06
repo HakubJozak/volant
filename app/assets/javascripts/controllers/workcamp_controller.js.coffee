@@ -3,7 +3,13 @@ Volant.WorkcampController = Ember.ObjectController.extend
 
   starredApplyForms: (->
     @store.find('apply_form',starred: true)
-  ).property().volatile()      
+  ).property().volatile()
+
+  # applyForms: (->
+  #   @get('model.applyForms').map (form) =>    
+  #     ctrl = @get('container').lookupFactory('controller:workcamp_apply_form')
+  #     ctrl.create(model: form)
+  # ).property('model.applyForms.@each')
 
   publish_modes: [ { code: 'NEVER', label: 'Never' },
                    { code: 'ALWAYS', label: 'Always' },

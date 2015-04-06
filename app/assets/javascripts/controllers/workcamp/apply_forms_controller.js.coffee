@@ -1,32 +1,11 @@
-Volant.WorkcampsApplyFormsController = Ember.ArrayController.extend
-
-
-  page: 1
-  query: null
-  state: null
-  tags: []
-
-  queryParams: ['page','year','query','state','order','sortAscending']
-  query_placeholder: "by name, birth number, email, bank account or keyword inside description"
-
-  sortProperties: ['state','currentAssignment']
+Volant.WorkcampApplyFormsController = Ember.ArrayController.extend
+  needs: ['workcamp']
+  sortProperties: ['currentWorkcamp']
 
   sortFunction: (a,b) ->
-    
-
-  setSorting: (->
-    props = switch @get('order')
-      when 'createdAt' then ['createdAt']
-      when 'name' then ['name']
-    @set 'sortProperties',props
-  ).observes('order','sortAscending')
-
-  actions:
-    reset: ->
-      @set('query',null)
-      @send('search')
-      false
-
-  page_reset: (->
-    @set('page',1)
-  ).observes('query')
+    wc = @get('controllers.workcamp.id')    
+    aa = 0
+    bb = 0    
+    aa += 10000 if a? && a.get('id') == wc
+    bb += 10000 if b? && b.get('id') == wc
+    bb - aa

@@ -1,6 +1,6 @@
 table.table.table-condensed.sidepanel
   tbody
-    each itemController='workcampApplyForm'
+    each arrangedContent itemController='workcampApplyForm' 
       tr.apply-form
         td
           partial 'star'
