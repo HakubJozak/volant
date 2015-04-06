@@ -1,7 +1,7 @@
 {{partial 'workcamp/import_controls'}}
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-7">
     <h2>
       {{partial 'star'}}
       {{#if country}}
@@ -200,7 +200,7 @@
   </form>
 
   </div>
-  <div class="col-md-4">
+  <div class="col-md-5">
     <h3>Applications ({{applyForms.length}})</h3>
     {{view Barbecue.BsTabsView currentTab='assigned' tabs='Assigned,Starred,Search' viewPrefix='workcamp/tabs/'}}
   </div>
