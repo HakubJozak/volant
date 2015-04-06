@@ -18,16 +18,26 @@ Ember.Handlebars.helper 'apply-form-state-icon', (state) ->
             state
 
     icon = switch key
-             when "accepted" then 'thumbs-o-up'
-             when "rejected" then 'thumbs-o-down'
-             when "asked" then 'envelope-o'
+             when "not_paid" then 'upload'
              when "paid" then 'money'
-             when "not_paid" then 'circle-o'
+             when "accepted" then 'thumbs-up'
+             when "rejected" then 'thumbs-down'
+             when "asked" then 'envelope'
              when "infosheeted" then 'suitcase'
-             when "cancelled" then 'times-circle-o'
+             when "cancelled" then 'times'
              else ''
 
-  new Handlebars.SafeString "<i title='#{info}' class='fa fa-#{icon} #{key}'></i>"
+     html = """
+       <span class="fa-stack" title="#{info} state-icon">
+         <i class="fa fa-stack-2x fa-circle"></i>
+         <i class="fa fa-stack-1x fa-#{icon} fa-inverse #{key}"></i>
+       </span>
+     """  
+     new Handlebars.SafeString html
+
+
+                     
+
 
 
 

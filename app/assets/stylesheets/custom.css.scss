@@ -356,3 +356,10 @@ table#apply-forms-list {
 #toolbar .fa-stack {
   font-size: 75%;
 }
+
+.state-icon {
+  .fa-stack-2x {
+    color: gray;
+  }
+  @include single-text-shadow(1px 1px #AAA);
+}
