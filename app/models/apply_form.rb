@@ -190,7 +190,7 @@ class ApplyForm < ActiveRecord::Base
 
   def cancel
     self.cancelled = Time.now
-    save!
+    save(validate: false)
     self
   end
 

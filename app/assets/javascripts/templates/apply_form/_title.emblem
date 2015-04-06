@@ -1,3 +1,6 @@
+if country
+  = small-flag country
+
 if lastname
   if volunteer
     = link-to name 'apply_form' this
