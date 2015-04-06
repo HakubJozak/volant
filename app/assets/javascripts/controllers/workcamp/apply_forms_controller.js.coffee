@@ -30,10 +30,3 @@ Volant.ApplyFormsController = Volant.ListController.extend
   page_reset: (->
     @set('page',1)
   ).observes('query')
-
-# {{view Ember.Select
-#   contentBinding='sortOptions'
-#   valueBinding='sortProperties'
-#   optionValuePath="content"
-#   optionLabelPath="content"
-#   class="form-control"}}

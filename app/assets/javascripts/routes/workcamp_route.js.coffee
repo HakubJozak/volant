@@ -5,11 +5,6 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend
   title: (wc) ->
     "#{wc.get('name')} - #{wc.get('code')}"
 
-  setupController: (controller,model,queryParams) ->
-    @_super(controller,model,queryParams)
-    @controllerFor('starred_apply_forms').set('content', @store.find('apply_form',starred: true));
-
-
   afterRemove: (record) ->
     @send 'goToWorkcamps'    
     @flash_info('Deleted.')

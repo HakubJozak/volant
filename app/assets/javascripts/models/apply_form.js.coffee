@@ -11,6 +11,7 @@ Volant.ApplyForm = DS.Model.extend Volant.PersonalAttributesMixin,
   currentAssignment:  DS.belongsTo 'workcamp_assignment', async: true
   currentMessage: DS.belongsTo 'message',async: true, inverse: null
   workcampAssignments:  DS.hasMany 'workcamp_assignment', async: true, inverse: 'applyForm'
+  workcamps: DS.hasMany 'workcamp', async: true, inverse: 'applyForms'
 
   confirmed: DS.attr 'isodate'
   createdAt: DS.attr 'isodate'

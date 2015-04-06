@@ -1,6 +1,10 @@
 Volant.WorkcampController = Ember.ObjectController.extend
   needs: ['countriesSelect','workcampIntentionsSelect','organizationsSelect','tagsSelect','starred_apply_forms']
 
+  starredApplyForms: (->
+    @store.find('apply_form',starred: true)
+  ).property().volatile()      
+
   publish_modes: [ { code: 'NEVER', label: 'Never' },
                    { code: 'ALWAYS', label: 'Always' },
                    { code: 'SEASON', label: 'During season' }

@@ -1,1 +1,1 @@
-render 'starred_apply_forms'
+render 'workcamp/apply_forms' starredApplyForms
