@@ -30,15 +30,14 @@
         fa 'trash-o'
       table.table-condensed    
         tbody
-          each workcamp_assignments itemController='workcampAssignmentInsideWorkcamp'
+          each wa in activeAssignments
             tr
-              if isRelevant
-                td
-                  ' {{apply-form-state-icon apply_form.state}}
-                td
-                  small-flag apply_form.country
-                td
-                  = link-to 'apply_form' apply_form
-                    ' {{apply_form.name}} ({{apply_form.age}})
-                  each apply_form.tags
-                    tag this
+              td
+                ' {{apply-form-state-icon wa.applyForm.state}}
+              td
+                small-flag wa.applyForm.country
+              td
+                = link-to 'apply_form' wa.applyForm
+                  ' {{wa.applyForm.name}} ({{wa.applyForm.age}})
+                each wa.applyForm.tags
+                  tag this
