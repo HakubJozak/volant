@@ -24,9 +24,7 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
 
     createAssignment: (wc,form) ->
       order = form.get('workcamp_assignments.lastObject.order') + 1 || 1
-      wa = @store.createRecord('workcamp_assignment', workcamp: wc, apply_form: form, order: order)
-      form.get('workcamp_assignments').pushObject(wa)
-      wc.get('workcamp_assignments').pushObject(wa)
+      wa = @store.createRecord('workcamp_assignment', workcamp: wc, applyForm: form, order: order)
       wa.save().then =>
         code = wc.get('code')
         person = form.get('name')

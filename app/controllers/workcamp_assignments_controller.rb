@@ -15,11 +15,11 @@ class WorkcampAssignmentsController < ApplicationController
   # POST /workcamp_assignments
   def create
     wa = workcamp_assignments.new(workcamp_assignment_params)
-    
+
     if wa.save
-      render json: wa, serializer: WorkcampAssignmentSerializer
+      render_workcamp_assignment
     else
-      render_error(wa)      
+      render_error(wa)
     end
   end
 
@@ -48,6 +48,11 @@ class WorkcampAssignmentsController < ApplicationController
     params[:workcamp_assignment].delete(:state)
     params[:workcamp_assignment].permit(:order,:accepted,:rejected,:infosheeted,:asked,:apply_form_id,:workcamp_id)
   end
+
+  def render_workcamp_assignment
+    render json: { workcamp_assignment: { apply_form_id: wa.apply_form_id, workcamp_id: wa.workcamp_id, order: wa.order, id: wa.id }}
+  end
+
 
   def workcamp_assignments
     Outgoing::WorkcampAssignment
