@@ -5,8 +5,6 @@ Volant.SearchApplyFormsController = Ember.ArrayController.extend Volant.MiniSear
 
   query_placeholder: 'Name, Birthnumber, Email...'
   query: null
-  year: Ember.computed.alias('controllers.application.year')
-  mode: Ember.computed.alias('controllers.application.mode')
 
   actions:
     search: ->    
@@ -14,8 +12,3 @@ Volant.SearchApplyFormsController = Ember.ArrayController.extend Volant.MiniSear
       @store.find('apply_form',params).then (list) =>
         @set 'model',list
       false  
-
-    reset: ->
-      @set('query',null)
-      @send('search')
-      false

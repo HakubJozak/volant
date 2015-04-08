@@ -1,0 +1,16 @@
+table.table.table-condensed.sidepanel
+  tbody
+    each itemController='apply_form_workcamp'
+      tr.workcamp
+        td = view 'placement_info' workcamp=this applyForm=applyForm
+        td = code
+        td = free_places  
+        td
+          = format-date from
+          br
+          = format-date to
+        td = partial 'star'
+        td = link-to 'workcamp' this
+          = name
+
+  

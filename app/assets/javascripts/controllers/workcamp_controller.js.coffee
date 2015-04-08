@@ -6,7 +6,7 @@ Volant.WorkcampController = Ember.ObjectController.extend
   ).property().volatile()
 
   # applyForms: (->
-  #   @get('model.applyForms').map (form) =>    
+  #   @get('model.applyForms').map (form) =>
   #     ctrl = @get('container').lookupFactory('controller:workcamp_apply_form')
   #     ctrl.create(model: form)
   # ).property('model.applyForms.@each')

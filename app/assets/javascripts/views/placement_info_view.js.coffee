@@ -1,8 +1,6 @@
 Volant.PlacementInfoView = Ember.View.extend
   templateName: 'placement_info'
 
-  attributeBindings: ['data-content']
-
   applyForm: Ember.computed.alias('controller.applyForm')
   workcamp: Ember.computed.alias('controller.workcamp')  
 

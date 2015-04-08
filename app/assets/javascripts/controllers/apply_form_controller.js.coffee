@@ -8,6 +8,10 @@ Volant.ApplyFormController = Volant.ObjectController.extend
     Ember.Object.create(label: "Bank", id: 'BANK')
    ]
 
+  starredWorkcamps: (->
+    @store.find('workcamp',starred: true)
+  ).property().volatile()
+
   queryParams: ['anchor']
   anchor: null
 

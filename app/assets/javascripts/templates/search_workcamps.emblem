@@ -1,0 +1,5 @@
+form.form submit='search'
+  partial 'query'
+
+render 'apply_form/workcamps' model
+
