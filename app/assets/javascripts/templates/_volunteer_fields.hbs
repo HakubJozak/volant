@@ -29,7 +29,7 @@
   <div class='row'>
     <div class="form-group col-md-2">
       {{#model-field errors=errors.birthnumber}}
-        <label class=" control-label">Birth-number</label>
+        <label title='birth-number or passport number' class=" control-label">Birthnumber</label>
         {{input value=birthnumber class="form-control"}}
       {{/model-field}}      
     </div>
@@ -49,6 +49,31 @@
       {{input value=occupation class="form-control"}}
     </div>
   </div>
+</fieldset>
+
+<fieldset>
+  <legend>Passport</legend>
+  <div class='row'>
+    <div class="form-group col-md-4">
+      {{#model-field errors=errors.passportNumber}}
+        <label  class=" control-label">Passport Number</label>
+        {{input value=passportNumber class="form-control"}}
+      {{/model-field}}
+    </div>      
+      
+    <div class="form-group col-md-4">
+      {{#model-field errors=errors.passportExpiresAt}}
+        <label class=" control-label">Date of Expiry</label>
+        {{input value=passportExpiresAt class="form-control" type='date'}}
+      {{/model-field}}      
+    </div>
+
+    <div class="form-group col-md-4">
+      {{#model-field errors=errors.passportIssuedAt}}
+        <label class=" control-label">Date of Issue</label>
+        {{input value=passportIssuedAt type='date' class="form-control"}}
+      {{/model-field}}      
+    </div>      
 </fieldset>
 
 <fieldset>

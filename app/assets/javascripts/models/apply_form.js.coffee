@@ -17,6 +17,10 @@ Volant.ApplyForm = DS.Model.extend Volant.PersonalAttributesMixin,
   createdAt: DS.attr 'isodate'
   updatedAt: DS.attr 'isodate'  
   cancelled: DS.attr 'isodate'
+
+  passportNumber: DS.attr 'string'
+  passportIssuedAt: DS.attr 'string'
+  passportExpiresAt: DS.attr 'string'
   fee: DS.attr 'number'
   generalRemarks: DS.attr 'string'
   motivation: DS.attr 'string'

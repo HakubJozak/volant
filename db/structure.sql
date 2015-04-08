@@ -233,7 +233,10 @@ CREATE TABLE apply_forms (
     past_experience text,
     comments text,
     note text,
-    birthdate date
+    birthdate date,
+    passport_number character varying(255),
+    passport_issued_at date,
+    passport_expires_at date
 );
 
 
@@ -2521,4 +2524,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150330211145');
 INSERT INTO schema_migrations (version) VALUES ('20150331120524');
 
 INSERT INTO schema_migrations (version) VALUES ('20150331123340');
+
+INSERT INTO schema_migrations (version) VALUES ('20150408154336');
 

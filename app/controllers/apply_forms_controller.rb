@@ -163,6 +163,7 @@ class ApplyFormsController < ApplicationController
                                                      :emergency_day, :emergency_night,
                                                      :special_needs, :past_experience, :comments,
                                                      :fax, :street, :city, :zipcode,
+                                                     :passport_expires_at, :passport_issued_at, :passport_number,
                                                      :contact_street, :contact_city, :contact_zipcode,
                                                      :note,
                                                      tag_ids: [],

@@ -1,5 +1,6 @@
 class ApplyFormSerializer < PersonSerializer
   attributes :id, :starred, :fee, :general_remarks,
+             :passport_expires_at, :passport_issued_at, :passport_number,
              :motivation, :confirmed, :cancelled, :created_at, :updated_at,
              :state, :type,
              :no_response_alert, :missing_infosheet_alert
