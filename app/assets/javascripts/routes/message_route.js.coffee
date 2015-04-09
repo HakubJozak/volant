@@ -1,4 +1,6 @@
 Volant.MessageRoute = Volant.BaseRoute.extend
+  toolbar: 'message/toolbar'
+
   title: (model) -> "#{model.get('subject')}"
 
   afterSave: (record) ->

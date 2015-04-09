@@ -1,13 +1,11 @@
 Volant.WorkcampRoute = Volant.BaseRoute.extend
+  toolbar: 'workcamp/toolbar'
+  
   model: (params) ->
     @store.find('workcamp', params.workcamp_id)
 
   title: (wc) ->
     "#{wc.get('name')} - #{wc.get('code')}"
-
-  renderTemplate: ->
-    @_super()
-    @render('workcamp/toolbar',outlet: 'footer',into: 'application')
 
   afterRemove: (record) ->
     @send 'goToWorkcamps'    

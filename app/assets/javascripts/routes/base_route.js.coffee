@@ -1,4 +1,12 @@
 Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
+
+  renderTemplate: ->
+    @_super()
+    if tmpl = @get('toolbar')
+      @render(tmpl,outlet: 'footer',into: 'application')
+    else
+      @disconnectOutlet('footer',parentView: 'application')  
+
   afterModel: (model,transition) ->
     if title = @get('title')
       $(document).attr('title', "#{title.call(this,model)} - Volant")

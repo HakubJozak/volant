@@ -1,0 +1,20 @@
+/ TODO: DRY with save_buttons
+form.navbar-form.navbar-left
+  .form-group
+    button.btn.btn-success.navbar-btn click="save" type="button"
+      ' {{fa 'caret-right'}} Send
+
+    button.btn.btn-default.navbar-btn click="save" type="button"
+      ' {{fa 'caret-right'}} Save &amp; Continue
+    '
+    button.btn.btn-default.navbar-btn{action 'save' false} type="button"
+      ' {{fa 'check'}} Save
+    '
+    button.btn.btn-default.navbar-btn click="rollback" type="button"
+      ' {{fa 'times'}} Back
+
+
+form.navbar-form.navbar-right
+  .form-group
+    button.btn.btn-danger.navbar-btn{ action 'confirmedRemove' this }
+      ' {{fa 'trash'}} Delete

@@ -1,4 +1,6 @@
 Volant.ApplyFormRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
+  toolbar: 'apply_form/toolbar'
+  
   model: (params) ->
     @store.find('apply_form', params.apply_form_id)
 
@@ -14,10 +16,6 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
     @send 'goToApplyForms'
 
   title: (model) -> "#{model.get('name')}"
-
-  renderTemplate: ->
-    @_super()
-    @render('apply_form/toolbar',outlet: 'footer',into: 'application')  
 
   setupController: (controller,model,queryParams) ->
     @_super(controller,model,queryParams)
