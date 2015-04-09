@@ -189,14 +189,6 @@
           <div class="col-md-4">{{input value=longitude type="decimal" class="form-control"}}</div>
         </div>
       </fieldset>      
-
-     <div class="form-group">
-       <div class="col-md-offset-2 col-md-10">
-         <button type="submit" class="btn btn-primary">Save</button>
-         {{ button 'Cancel' 'rollback' 'btn-default' }}
-         {{ button 'Delete' 'remove' 'btn btn-danger pull-right' }}
-       </div>
-     </div>
   </form>
 
   </div>
@@ -205,5 +197,3 @@
     {{view Barbecue.BsTabsView currentTab='assigned' tabs='Assigned,Starred,Search' viewPrefix='workcamp/tabs/'}}
   </div>
 </div>
-
-{{partial 'workcamp/toolbar'}}

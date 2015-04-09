@@ -4,6 +4,15 @@
 @import "huge-button";
 
 
+body {
+  // because of fixed-nav-bar
+
+  margin: 0 1em 1em 1em;
+  margin-top: 70px;
+  margin-bottom: 60px;
+}
+
+
 
 textarea.form-control {
   min-width: 85%;
@@ -144,8 +153,8 @@ table.dashboard {
   }
 
   .form-control {
-     background-color: #D1B778;
-     border: 1px solid lighten(#D1B778,5%);
+//     background-color: #D1B778;
+//     border: 1px solid lighten(#D1B778,5%);
 //     color: white;
   }
 }

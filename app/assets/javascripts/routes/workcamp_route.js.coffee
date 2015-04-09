@@ -5,6 +5,10 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend
   title: (wc) ->
     "#{wc.get('name')} - #{wc.get('code')}"
 
+  renderTemplate: ->
+    @_super()
+    @render('workcamp/toolbar',outlet: 'footer',into: 'application')
+
   afterRemove: (record) ->
     @send 'goToWorkcamps'    
     @flash_info('Deleted.')

@@ -12,7 +12,7 @@ Volant.ImportedWorkcampsRoute = Volant.WorkcampsRoute.extend
     confirmAll: ->
       @ajax_to_store('/workcamps/confirm_all').then(@_success('All changes confirmed.'),@_error)
       false
-      
+
     cancelAll: ->
       @ajax_to_store('/workcamps/cancel_all').then(@_success('All changes cancelled.'),@_error)
       false
@@ -37,7 +37,7 @@ Volant.ImportedWorkcampsRoute = Volant.WorkcampsRoute.extend
 
   _error: ->
     @flash_error('Action failed.')
-    @refresh()    
+    @refresh()
 
   _send_files: (url,data = {}) ->
     new Promise (resolve, reject) =>
