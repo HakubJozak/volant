@@ -52,7 +52,25 @@
 </fieldset>
 
 <fieldset>
-  <legend>Passport</legend>
+  <legend>Passport &amp; Origin</legend>
+  <div class='row'>
+      <div class="form-group col-md-4">
+    {{#model-field errors=errors.country}}
+        <label  class=" control-label">Country</label>
+        {{partial 'inputs/country'}}
+    {{/model-field}}
+      </div>
+
+      <div class="col-md-8 form-group">
+    {{#model-field errors=errors.organization}}
+        <label  class=" control-label">Organization</label>
+        {{partial 'inputs/organization'}}
+
+    {{/model-field}}
+      </div>
+  </div>
+
+
   <div class='row'>
     <div class="form-group col-md-4">
       {{#model-field errors=errors.passportNumber}}

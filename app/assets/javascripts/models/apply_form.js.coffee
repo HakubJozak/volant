@@ -3,6 +3,7 @@ Volant.ApplyForm = DS.Model.extend Volant.PersonalAttributesMixin,
   state: DS.attr 'state'
 
   country: DS.belongsTo('country')
+  organization: DS.belongsTo('organization')  
   volunteer:  DS.belongsTo 'volunteer'
   payment:  DS.belongsTo 'payment'
   tags: DS.hasMany('tag',embedded: 'always')

@@ -3,6 +3,7 @@ Volant.ApplicationController = Ember.ObjectController.extend
   year: moment().year().toString()
 
   mode: 'outgoing'
+  incomingMode: Ember.computed.bool('mode','incoming')
 
   modeMenuTemplate: ( ->
     mode = @get('mode')

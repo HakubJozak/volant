@@ -1,6 +1,6 @@
 Volant.ApplyFormController = Volant.ObjectController.extend
 
-  needs: ['payment_means','starred_workcamps','workcamp_assignments','tagsSelect']
+  needs: ['payment_means','starred_workcamps','workcamp_assignments','tagsSelect','countriesSelect','organizationsSelect']
   isDirty: Ember.computed.any('model.isDirty')
 
   means: [

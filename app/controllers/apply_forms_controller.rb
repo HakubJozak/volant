@@ -165,7 +165,7 @@ class ApplyFormsController < ApplicationController
                                                      :fax, :street, :city, :zipcode,
                                                      :passport_expires_at, :passport_issued_at, :passport_number,
                                                      :contact_street, :contact_city, :contact_zipcode,
-                                                     :note,
+                                                     :note, :country_id, :organization_id,
                                                      tag_ids: [],
                                                      payment_attributes: PaymentSerializer.writable)
     replace_nil_by_empty_array(safe_params,:tag_ids)
