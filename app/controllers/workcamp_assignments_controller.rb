@@ -17,7 +17,7 @@ class WorkcampAssignmentsController < ApplicationController
     wa = workcamp_assignments.new(workcamp_assignment_params)
 
     if wa.save
-      render_workcamp_assignment
+      render_workcamp_assignment wa
     else
       render_error(wa)
     end
@@ -49,7 +49,7 @@ class WorkcampAssignmentsController < ApplicationController
     params[:workcamp_assignment].permit(:order,:accepted,:rejected,:infosheeted,:asked,:apply_form_id,:workcamp_id)
   end
 
-  def render_workcamp_assignment
+  def render_workcamp_assignment(wa)
     render json: { workcamp_assignment: { apply_form_id: wa.apply_form_id, workcamp_id: wa.workcamp_id, order: wa.order, id: wa.id }}
   end
 
