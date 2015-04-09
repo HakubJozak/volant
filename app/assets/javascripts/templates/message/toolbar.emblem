@@ -3,7 +3,7 @@ form.navbar-form.navbar-left
   .form-group
     button.btn.btn-success.navbar-btn click="save" type="button"
       ' {{fa 'caret-right'}} Send
-
+    '  
     button.btn.btn-default.navbar-btn click="save" type="button"
       ' {{fa 'caret-right'}} Save &amp; Continue
     '
