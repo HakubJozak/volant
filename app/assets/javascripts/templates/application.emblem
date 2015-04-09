@@ -1,0 +1,8 @@
+= partial 'menu'
+
+.container-fluid#content
+  = outlet
+
+nav.navbar.navbar-default.navbar-fixed-bottom#toolbar
+  .container-fluid
+    = outlet 'footer'

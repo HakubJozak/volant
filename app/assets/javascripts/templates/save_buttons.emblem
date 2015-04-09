@@ -1,15 +1,16 @@
-button.btn.btn-default click="rollback" type="button"
-  ' {{fa 'times'}} Back
-
-'
-button.btn.btn-default{action 'save' false} type="button"
-  ' {{fa 'check'}} Save
-'
-button.btn.btn-primary click="save" type="button"
-  ' {{fa 'caret-right'}} Save &amp; Continue
-
-
-
+form.navbar-form.navbar-left
+  .form-group
+    button.btn.btn-success.navbar-btn click="save" type="button"
+      ' {{fa 'caret-right'}} Save &amp; Continue
+    '
+    button.btn.btn-default.navbar-btn{action 'save' false} type="button"
+      ' {{fa 'check'}} Save
+    '
+    button.btn.btn-default.navbar-btn click="rollback" type="button"
+      ' {{fa 'times'}} Back
 
 
-
+form.navbar-form.navbar-right
+  .form-group
+    button.btn.btn-danger.navbar-btn
+      ' {{fa 'trash'}} Delete

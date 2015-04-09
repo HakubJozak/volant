@@ -15,6 +15,10 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
 
   title: (model) -> "#{model.get('name')}"
 
+  renderTemplate: ->
+    @_super()
+    @render('apply_form/toolbar',outlet: 'footer',into: 'application')  
+
   setupController: (controller,model,queryParams) ->
     @_super(controller,model,queryParams)
 

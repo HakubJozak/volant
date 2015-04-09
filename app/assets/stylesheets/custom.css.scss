@@ -4,11 +4,6 @@
 @import "huge-button";
 
 
-body {
-  // because of fixed-nav-bar
-  padding-top: 70px;
-  margin: 0 1em 1em 1em;
-}
 
 textarea.form-control {
   min-width: 85%;
@@ -69,12 +64,6 @@ h2 i.fa {
     margin-top: 20px;
     vertical-align: middle;
   }
-}
-
-#apply-form-toolbar {
-  position: relative;
-  text-align: right;
-  top: 25px;
 }
 
 td .apply-form-action-dropdown {
@@ -312,12 +301,6 @@ table.import-changes {
   color: lighten(black,20%);
 }
 
-#toolbar {
-  position: fixed;
-  bottom: 0;
-  right: 1em;
-}
-
 @mixin remove-button-hover {
   .remove-button {
     border: 1px solid transparent; 
@@ -353,9 +336,6 @@ table#apply-forms-list {
 }
 
 
-#toolbar .fa-stack {
-  font-size: 75%;
-}
 
 .state-icon {
   .fa-stack-2x {

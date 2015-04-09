@@ -1,0 +1,21 @@
+partial 'save_buttons'
+
+p.navbar-text.navbar-left
+  if vefXmlUrl
+    a.navbar-link href=vefXmlUrl 
+      ' {{fa 'download'}} XML
+    a.navbar-link href=vefHtmlUrl
+      ' {{fa 'download'}} HTML
+    a.navbar-link href=vefPdfUrl 
+      ' {{fa 'download'}} PDF
+
+  if volunteer
+    link-to 'volunteer' volunteer title="Volunteer's Card" class='navbar-link'
+      ' {{fa 'user'}} Volunteer's Card
+      /
+        span.fa-stack.volunteer-card-icon
+          ' {{fa 'user fa-stack-1x'}}
+          ' {{fa 'file-o fa-stack-2x'}}
+
+
+
