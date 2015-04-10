@@ -1,9 +1,9 @@
 form.navbar-form.navbar-left
   .form-group
-    button.btn.btn-success.navbar-btn click="save" type="button"
+    button.btn.btn-success.navbar-btn click="save" type="button" title='Enter'
       ' {{fa 'caret-right'}} Save &amp; Continue
     '
-    button.btn.btn-default.navbar-btn{action 'save' false} type="button"
+    button.btn.btn-default.navbar-btn{action 'save' false} type="button" title='Ctrl + S'
       ' {{fa 'check'}} Save
     '
     button.btn.btn-default.navbar-btn click="rollback" type="button"

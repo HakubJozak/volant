@@ -1,4 +1,4 @@
-Volant.ApplyFormView = Ember.View.extend
+Volant.ApplyFormView = Ember.View.extend Volant.SavingShortcutsMixin,
   templateName: 'apply_form'
 
   anchor: Ember.computed.alias('controller.anchor')

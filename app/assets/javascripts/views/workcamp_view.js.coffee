@@ -1,2 +1,2 @@
-Volant.WorkcampView = Ember.View.extend
+Volant.WorkcampView = Ember.View.extend Volant.SavingShortcutsMixin,
   templateName: 'workcamp'
