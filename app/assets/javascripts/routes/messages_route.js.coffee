@@ -6,4 +6,3 @@ Volant.MessagesRoute = Volant.BaseRoute.extend
   actions:
     search: ->
       @refresh()
-

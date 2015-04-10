@@ -2,10 +2,13 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
 
   renderTemplate: ->
     @_super()
+
     if tmpl = @get('toolbar')
       @render(tmpl,outlet: 'footer',into: 'application')
     else if @_paginationData()
       @render('toolbars/pagination',outlet: 'footer',into: 'application',controller: 'pagination')  
+    else if @currentModel.save? and @currentModel.constructor != DS.RecordArray
+      @render('toolbars/record_actions',outlet: 'footer',into: 'application')
     else
       @disconnectOutlet('footer',parentView: 'application')
 
