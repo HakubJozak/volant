@@ -150,6 +150,23 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_equal [],@apply_form.tags.reload
   end
 
+  test 'create' do
+    assert_difference 'ApplyForm.count',1 do
+      post :create, apply_form: Factory.attributes_for(:paid_form)
+      assert_response :success,response.body      
+    end
+  end
+
+  test 'create with workcamps' do
+    assert_difference 'Outgoing::WorkcampAssignment.count',1 do
+      assert_difference 'ApplyForm.count',1 do
+        wc = Factory(:outgoing_workcamp)
+        post :create, apply_form: Factory.attributes_for(:paid_form).merge(workcamp_ids: [wc.id])
+        assert_response :success,response.body
+      end
+    end
+  end
+  
 
   test 'cancel' do
     post :cancel, id: @apply_form.id

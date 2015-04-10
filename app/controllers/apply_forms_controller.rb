@@ -75,9 +75,15 @@ class ApplyFormsController < ApplicationController
   end
 
   def create
-    @apply_form = apply_forms.new(apply_form_params)
+    attrs = apply_form_params 
+    workcamp_ids = attrs.delete(:workcamp_ids) || []
+    @apply_form = apply_forms.new(attrs)
 
     if @apply_form.save
+      workcamp_ids.each_with_index do |id,i|
+        @apply_form.assign_workcamp(Workcamp.find(id))
+      end
+        
       render_apply_form
     else
       render_error(@apply_form)
@@ -167,6 +173,7 @@ class ApplyFormsController < ApplicationController
                                                      :contact_street, :contact_city, :contact_zipcode,
                                                      :note, :country_id, :organization_id,
                                                      tag_ids: [],
+                                                     workcamp_ids: [],                                                     
                                                      payment_attributes: PaymentSerializer.writable)
     replace_nil_by_empty_array(safe_params,:tag_ids)
   end

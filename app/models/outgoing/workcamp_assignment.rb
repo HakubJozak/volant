@@ -11,13 +11,19 @@ module Outgoing
 
     belongs_to :apply_form, :class_name => '::ApplyForm'
     belongs_to :workcamp, :class_name => '::Workcamp'
-    validates_presence_of :workcamp
+    validates_presence_of :workcamp, :order
 
     after_save :update_apply_form_cache
     after_destroy :update_apply_form_cache
 
     scope :not_rejected, :conditions => [ 'rejected IS NULL']
 
+    before_validation do
+      if order.nil? and apply_form
+        self.order = apply_form.workcamp_assignments.size + 1
+      end
+    end
+    
     [ "accept", "reject", "ask", "infosheet" ].each do |action|
       define_method(action) do |time = nil|
         time ||= Time.now
