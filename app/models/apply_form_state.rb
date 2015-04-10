@@ -13,7 +13,7 @@ class ApplyFormState
     end
 
     if form.paid?
-      ApplyFormState.new(:paid, form.payment.received, form)
+      ApplyFormState.new(:paid, form.payment.try(:received), form)
     else
       ApplyFormState.new(:not_paid, Date.today, form)
     end

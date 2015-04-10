@@ -1,11 +1,8 @@
 if country
-  = small-flag country
+  ' {{small-flag country}}
 
 if lastname
-  if volunteer
-    = link-to name 'apply_form' this
-  else
-    = name
+  ' {{link-to name 'apply_form' this}}
 else
   ' New Application
 
