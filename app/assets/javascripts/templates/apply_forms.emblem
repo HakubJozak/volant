@@ -94,6 +94,3 @@ table.table.table-striped.table-hover#apply-forms-list
         td
           button.btn.btn-default.remove-button{ action 'confirmedRemove' this }
             fa 'trash-o'
-
-
-render 'pagination'

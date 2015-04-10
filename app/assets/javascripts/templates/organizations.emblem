@@ -31,5 +31,3 @@ table.table.table-striped.table-hover
         td
           join networks 'name'
 
-
-render 'pagination'

@@ -39,5 +39,3 @@ table.table.table-striped.table-hover
         td  {{returned_amount}}
         td  {{returned_reason}}
         td  {{description}}
-
-render 'pagination'
