@@ -1,5 +1,6 @@
 Volant.LittleWorkcampController = Ember.ObjectController.extend
-  needs: [ 'workcamps' ]
+  needs: [ 'workcamps','application' ]
+  incomingMode: Ember.computed.alias('controllers.application.incomingMode')
   editing_visible: Ember.computed.alias('controllers.workcamps.editing_visible')
 
   activeAssignments: (->
