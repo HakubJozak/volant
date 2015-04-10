@@ -12,8 +12,6 @@ Volant.ApplyFormController = Volant.ObjectController.extend
     @store.find('workcamp',starred: true)
   ).property().volatile()
 
-  workcampToAssignId: null
-
   workcampToAssign: (->
     @store.find('workcamp',@get('model.workcampToAssignId'))      
   ).property('model.workcampToAssignId')

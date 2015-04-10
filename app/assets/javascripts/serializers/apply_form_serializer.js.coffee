@@ -2,8 +2,8 @@ Volant.ApplyFormSerializer = Volant.ApplicationSerializer.extend
   serializeIntoHash: (data, type, record,options) ->
     result = @_super(data,type,record,options)
 
-    if wc = record.get('workcampToAssign')
-      data.apply_form.workcamp_ids = [ wc.get('id') ]
+    if id = record.get('workcampToAssignId')
+      data.apply_form.workcamp_ids = [ id ]
 
     result
 
