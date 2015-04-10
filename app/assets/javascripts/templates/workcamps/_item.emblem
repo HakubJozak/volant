@@ -25,6 +25,8 @@
     .col-md-2
       h4.list-group-item-heading
         partial 'free_places'
+      a.btn.btn-default href=createApplyFormUrl
+        ' {{fa 'plus'}}
     .col-md-3
       button.btn.btn-default.remove-button{ action 'confirmedRemove' this }
         fa 'trash-o'
@@ -41,7 +43,3 @@
                   ' {{wa.applyForm.name}} ({{wa.applyForm.age}})
                 each wa.applyForm.tags
                   tag this
-          tr
-            td
-              button.btn.btn-default{ action 'createApplyForm' this }
-                ' {{fa 'plus'}} Add

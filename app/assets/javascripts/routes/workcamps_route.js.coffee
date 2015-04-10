@@ -51,7 +51,8 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend
         workcampToAssign: wc
 
       form = @store.createRecord 'apply_form',attrs
-      @transitionTo 'new_apply_form',form
+      # @transitionTo 'new_apply_form',{ type: 'incoming', queryParams: { fee: 333 } }
+      @transitionTo '/apply_forms/incoming/new?fee=333'  
       false
 
     save: ->

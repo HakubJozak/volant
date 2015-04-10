@@ -7,10 +7,14 @@ Volant.NewApplyFormRoute = Volant.ApplyFormRoute.extend Volant.ApplyFormActions,
 
   model: (params,transition) ->
     defaults = {
-      volunteer: @store.createRecord('volunteer')
       fee: 2200
       type: params.type
     }
+
+    if params.type != 'incoming'    
+      defaults.volunteer = @store.createRecord('volunteer')
+      # defatuls.country = cz
+      # defatuls.organization = inex
 
     # like Hash#merge in JS
     opts = $.extend(defaults,transition.queryParams)
