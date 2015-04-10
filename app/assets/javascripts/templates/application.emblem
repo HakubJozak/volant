@@ -5,4 +5,5 @@
 
 nav.navbar.navbar-default.navbar-fixed-bottom#toolbar
   .container-fluid
-    = outlet 'footer'
+    .collapse.navbar-collapse
+      = outlet 'footer'

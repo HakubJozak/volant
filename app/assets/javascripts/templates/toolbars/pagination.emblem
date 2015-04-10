@@ -1,0 +1,26 @@
+ul.nav.navbar.pagination.navbar-left
+  li{ bind-attr class="previous_page::disabled" }
+    a.navbar-link{ action "set_page" previous_page } href='#'
+      ' &laquo;
+  each pagination_bits itemController='pagination_bit'
+    if active
+      li.active
+        a.navbar-link href='#'
+          = content
+    else
+      if link
+        li
+          a.navbar-link{ action "set_page" this }  href='#'
+            = content
+      else
+        li.disabled
+          span = content
+
+
+  li{ bind-attr class="next_page::disabled" }
+    a.navbar-link{ action "set_page" next_page } href='#'
+      ' &raquo;
+
+
+p.navbar-right.navbar-text.pagination-info
+  ' Showing {{per_page}}/{{total}} records.

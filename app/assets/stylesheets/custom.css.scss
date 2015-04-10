@@ -63,17 +63,6 @@ h2 i.fa {
 }
 */
 
-.pagination-container {
-  /* .pagination { */
-  /*   margin-top: 0; */
-  /*   margin-bottom: 0; */
-  /* } */
-
-  .info {
-    margin-top: 20px;
-    vertical-align: middle;
-  }
-}
 
 td .apply-form-action-dropdown {
   width: 7em;
@@ -353,4 +342,12 @@ table#apply-forms-list {
   .fa-stack-1x {
     @include single-text-shadow(1px 1px #AAA);
   }
+}
+
+.pagination.navbar {
+  margin: 7px 0 0 0;
+}
+
+.navbar-text.pagination-info {
+  color: white;
 }

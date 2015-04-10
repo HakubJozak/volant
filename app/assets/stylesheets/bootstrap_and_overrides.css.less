@@ -35,16 +35,18 @@
 // @brand-danger:          #E76363;
 
 
-@brand-primary:  #704719; // #191970;
-@navbar-default-bg: #111;
-@navbar-default-link-color: white;
+@brand-primary:  #36555B;  // #5B5036;
 
-@navbar-default-link-active-bg:            darken(@navbar-default-bg, 13.5%);
+@navbar-default-bg: #333;
+@navbar-default-link-color: white;
+@navbar-default-link-active-bg: @brand-primary;    // darken(@navbar-default-bg, 13.5%);
+@navbar-default-link-active-color:  white; // lighten(@navbar-default-link-active-bg,40%);
+
+
 @navbar-default-link-disabled-color:       #ccc;
 @navbar-default-link-disabled-bg:          transparent;
 
 @navbar-default-link-hover-color: @gray-lighter;
-@navbar-default-link-active-color:         white;//@gray-lighter;
 @navbar-default-link-hover-bg:             transparent;
 
 @navbar-default-brand-color: @navbar-default-link-color;
@@ -423,20 +425,20 @@
 //##
 
 @pagination-color:                     @link-color;
-@pagination-bg:                        #fff;
-@pagination-border:                    #ddd;
+@pagination-bg:                        @navbar-default-bg;
+@pagination-border:                    lighten(@pagination-bg,10%);
 
 @pagination-hover-color:               @link-hover-color;
-@pagination-hover-bg:                  @gray-lighter;
-@pagination-hover-border:              #ddd;
+@pagination-hover-bg:                  lighten(@pagination-bg,10%);
+@pagination-hover-border:              @pagination-border;
 
-@pagination-active-color:              #fff;
-@pagination-active-bg:                 @brand-primary;
-@pagination-active-border:             @brand-primary;
+@pagination-active-color:              white;
+@pagination-active-bg:                 lighten(@pagination-bg,10%);
+@pagination-active-border:             @pagination-border;
 
 @pagination-disabled-color:            @gray-light;
-@pagination-disabled-bg:               #fff;
-@pagination-disabled-border:           #ddd;
+@pagination-disabled-bg:               @pagination-bg;
+@pagination-disabled-border:           @pagination-border;
 
 
 //== Pager

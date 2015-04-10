@@ -4,8 +4,10 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
     @_super()
     if tmpl = @get('toolbar')
       @render(tmpl,outlet: 'footer',into: 'application')
+    else if @_paginationData()
+      @render('toolbars/pagination',outlet: 'footer',into: 'application',controller: 'pagination')  
     else
-      @disconnectOutlet('footer',parentView: 'application')  
+      @disconnectOutlet('footer',parentView: 'application')
 
   afterModel: (model,transition) ->
     if title = @get('title')
@@ -53,7 +55,7 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
       @flash_info "Workcamp removed from the application."
       false
 
-    userChangedMode: (mode) ->     
+    userChangedMode: (mode) ->
       route = switch (mode)
               when 'incoming' then 'incoming_workcamps'
               when 'ltv' then 'ltv_workcamps'
@@ -142,6 +144,10 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
   #   @transitionTo(next_route,record) if @routeName != next_route
 
   setupPagination: (controller,model) ->
-    modelType = model.get('type') if model.get?
+    if data = @_paginationData()
+      controller.set('controllers.pagination.model', data)
+
+  _paginationData: (model = @currentModel) ->
+    modelType = model.get? && model.get('type')
     if hash = @store.typeMapFor(modelType).metadata.pagination
-      controller.set('controllers.pagination.model', Ember.Object.create(hash))
+      Ember.Object.create(hash)

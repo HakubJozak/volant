@@ -1,8 +1,8 @@
 #toolbar {
-  a.navbar-link { 
-   position: relative;
-   top: 5px;
-   color: white; 
+  .navbar-text > a.navbar-link { 
+     position: relative;
+     top: 5px;
+     color: white; 
   }
 
   .fa-stack {
