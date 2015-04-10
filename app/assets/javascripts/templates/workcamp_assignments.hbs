@@ -61,6 +61,8 @@
           {{#link-to 'workcamp' workcamp class=status}}
             {{workcamp.name}}
           {{/link-to}}
+          <br/>
+          {{tag-list workcamp.tags}}
         </td>
         <td >
           <a href='#' {{action 'removeAssignment' this bubbles=false}}>

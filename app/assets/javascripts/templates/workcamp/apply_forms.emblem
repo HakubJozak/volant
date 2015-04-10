@@ -11,6 +11,8 @@ table.table.table-condensed.sidepanel
         td
           link-to 'apply_form' this
             ' {{name}} ({{age}})
+          br
+            ' {{tag-list tags}}
         td
           if workcampAssignment
             if isCurrent

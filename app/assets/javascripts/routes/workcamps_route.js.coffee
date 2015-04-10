@@ -48,6 +48,7 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend
         workcamp: wc.get('model')
         fee: 0
         type: 'incoming'
+        workcampToAssign: wc
 
       form = @store.createRecord 'apply_form',attrs
       @transitionTo 'new_apply_form',form

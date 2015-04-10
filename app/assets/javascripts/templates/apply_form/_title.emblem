@@ -19,5 +19,3 @@ small
     span.label.label-default
       ' {{upcase type}}
 
-  each tags
-    ' {{tag this}}

@@ -1,0 +1,12 @@
+.list-group
+ .list-group-item
+   h4.list-group-item-heading
+     link-to 'workcamp' workcampToAssign
+       = workcampToAssign.name
+   p.list-group-item-text
+     ' {{small-flag workcampToAssign.country}}
+     ' {{workcampToAssign.computedOrSetDuration}} days,
+     ' {{age-range workcampToAssign }}, {{join workcampToAssign.workcamp_intentions 'code'}}
+     ' {{tag-list workcampToAssign.tags}}
+
+

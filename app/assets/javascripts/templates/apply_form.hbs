@@ -54,15 +54,6 @@
       <fieldset>
         <legend>Application Details</legend>
         <div class='row'>
-
-        <div class="form-group col-md-12">
-          <label class="control-label">Tags</label>
-          <div>
-            {{partial 'inputs/tag_picker'}}
-          </div>
-          {{view 'labels-list' contentBinding='tags'}}
-        </div>
-
           <div class="form-group col-md-12">
             {{#model-field errors=errors.motivation}}
             <label class=" control-label">Motivation</label>
@@ -82,7 +73,13 @@
 
 <div class="col-md-5">
   <h3>Workcamps</h3>
-  {{view Barbecue.BsTabsView currentTab='assigned' tabs='Assigned,Starred,Search' viewPrefix='apply_form/tabs/'}}
+ {{#if isNew }}
+   {{#if workcampToAssign}}
+     {{partial 'apply_form/workcamp_to_assign'}}
+   {{/if}}
+ {{else}}
+    {{view Barbecue.BsTabsView currentTab='assigned' tabs='Assigned,Starred,Search' viewPrefix='apply_form/tabs/'}}
+ {{/if}}
 </div>
 </div>
 
