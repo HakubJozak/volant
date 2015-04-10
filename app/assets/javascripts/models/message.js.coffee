@@ -15,9 +15,4 @@ Volant.Message = DS.Model.extend
   # for the collision with {{action}} helper in Handlebars templates
   action_name: Ember.computed.alias('action')
   delivered: Ember.computed.alias('sentAt')
-
-
-
-Volant.MessageSerializer = Volant.ApplicationSerializer.extend DS.EmbeddedRecordsMixin,
-  attrs:
-    attachments: { serialize: 'records', deserialize: 'ids' }
+  name: Ember.computed.alias('subject')
