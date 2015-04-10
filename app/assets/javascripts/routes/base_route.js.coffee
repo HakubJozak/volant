@@ -27,14 +27,21 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
     window.scrollTo(0,0)
 
   actions:
+    set_page: (p) ->
+      @controllerFor(@routeName).set('page',p)
+      @refresh()
+      false
+
     closeModal: ->
       @disconnectOutlet 'modal'
+      false
 
     toggle_starred: (model) ->
       data = { star: { id: model.get('id'), model: model.constructor.typeKey.decamelize(), value: !model.get('starred') }}
       @ajax_to_store('/stars',data).then (payload) =>
         console.log 'Starred'
-
+      false
+      
     createAssignment: (wc,form) ->
       order = form.get('workcamp_assignments.lastObject.order') + 1 || 1
       wa = @store.createRecord('workcamp_assignment', workcamp: wc, applyForm: form, order: order)

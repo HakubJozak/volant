@@ -16,8 +16,3 @@ Volant.ListController = Ember.ArrayController.extend
       @set('page',1)
       true
 
-    set_page: (p) ->
-      @set('page',p)
-      @send 'refresh'
-      false
-

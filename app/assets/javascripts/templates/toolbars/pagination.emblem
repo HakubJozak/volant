@@ -1,7 +1,11 @@
 ul.nav.navbar.pagination.navbar-left
   li{ bind-attr class="previous_page::disabled" }
-    a.navbar-link{ action "set_page" previous_page } href='#'
-      ' &laquo;
+    if previous_page
+      a.navbar-link{ action "set_page" previous_page }
+        ' &laquo;
+    else    
+      a.navbar-link
+        ' &laquo;
   each pagination_bits itemController='pagination_bit'
     if active
       li.active
@@ -18,8 +22,12 @@ ul.nav.navbar.pagination.navbar-left
 
 
   li{ bind-attr class="next_page::disabled" }
-    a.navbar-link{ action "set_page" next_page } href='#'
-      ' &raquo;
+    if next_page
+      a.navbar-link{ action "set_page" next_page }
+        ' &raquo;
+    else    
+      a.navbar-link
+        ' &raquo;
 
 
 p.navbar-right.navbar-text.pagination-info
