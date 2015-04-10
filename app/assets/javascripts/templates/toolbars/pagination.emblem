@@ -1,7 +1,7 @@
 ul.nav.navbar.pagination.navbar-left
   li{ bind-attr class="previous_page::disabled" }
     if previous_page
-      a.navbar-link{ action "set_page" previous_page }
+      a.navbar-link{ action "set_page" previous_page } href='#'
         ' &laquo;
     else    
       a.navbar-link
@@ -23,7 +23,7 @@ ul.nav.navbar.pagination.navbar-left
 
   li{ bind-attr class="next_page::disabled" }
     if next_page
-      a.navbar-link{ action "set_page" next_page }
+      a.navbar-link{ action "set_page" next_page } href='#'
         ' &raquo;
     else    
       a.navbar-link
