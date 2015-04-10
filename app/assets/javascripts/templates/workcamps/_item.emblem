@@ -41,3 +41,7 @@
                   ' {{wa.applyForm.name}} ({{wa.applyForm.age}})
                 each wa.applyForm.tags
                   tag this
+          tr
+            td
+              button.btn.btn-default{ action 'createApplyForm' this }
+                ' {{fa 'plus'}} Add

@@ -43,6 +43,16 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend
     new: (type) ->
       @transitionTo 'workcamps.new',type
 
+    createApplyForm: (wc) ->
+      attrs =
+        workcamp: wc.get('model')
+        fee: 0
+        type: 'incoming'
+
+      form = @store.createRecord 'apply_form',attrs
+      @transitionTo 'new_apply_form',form
+      false
+
     save: ->
       @flash_info('Saving...')
       for wc in @modelFor('workcamps').filterBy('isDirty',true)

@@ -5,7 +5,7 @@ Ember.Handlebars.helper 'upcase', (str) ->
   str.toUpperCase() if str
 
 Ember.Handlebars.helper 'downcase', (str) ->
-  str.toLowerCase() if str  
+  str.toLowerCase() if str
 
 Ember.Handlebars.helper 'humanize', (str,options) ->
   if str

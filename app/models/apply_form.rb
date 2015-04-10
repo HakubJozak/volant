@@ -170,7 +170,7 @@ class ApplyForm < ActiveRecord::Base
   end
 
   def paid?
-    payment and (payment.amount == self.fee)
+    (self.fee == 0) || (payment.try(:amount) == self.fee)
   end
 
   def is?(state)

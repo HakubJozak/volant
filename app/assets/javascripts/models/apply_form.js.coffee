@@ -1,4 +1,4 @@
-Volant.ApplyForm = DS.Model.extend Volant.PersonalAttributesMixin, 
+Volant.ApplyForm = DS.Model.extend Volant.PersonalAttributesMixin,
   type: DS.attr 'string'
   state: DS.attr 'state'
 
@@ -15,7 +15,7 @@ Volant.ApplyForm = DS.Model.extend Volant.PersonalAttributesMixin,
 
   confirmed: DS.attr 'isodate'
   createdAt: DS.attr 'isodate'
-  updatedAt: DS.attr 'isodate'  
+  updatedAt: DS.attr 'isodate'
   cancelled: DS.attr 'isodate'
 
   passportNumber: DS.attr 'string'
@@ -29,15 +29,17 @@ Volant.ApplyForm = DS.Model.extend Volant.PersonalAttributesMixin,
   starred: DS.attr 'boolean'
   noResponseAlert: DS.attr 'boolean'
   missingInfosheetAlert: DS.attr 'boolean'
+
   hasAlert: Ember.computed.or('noResponseAlert','missingInfosheetAlert')
   createdRecently: (-> moment().diff(@get('createdAt'),'day') < 2 ).property('createdAt')
+  ltvType: Ember.computed.equal('type','ltv')
 
-  # legacy fallbacks      
+  # legacy fallbacks
   current_workcamp:  Ember.computed.alias('currentWorkcamp')
   current_assignment: Ember.computed.alias('currentAssignment')
   current_message: Ember.computed.alias('currentMessage')
   general_remarks: Ember.computed.alias('generalRemarks')
-  workcamp_assignments: Ember.computed.alias('workcampAssignments')        
+  workcamp_assignments: Ember.computed.alias('workcampAssignments')
 
   becameInvalid: ->
    @invalidate_association('volunteer')
@@ -59,4 +61,3 @@ Volant.ApplyForm = DS.Model.extend Volant.PersonalAttributesMixin,
   has_workcamp: (wc) ->
     @get('workcampAssignments').any (wa) ->
       wa.get('workcamp.id') == wc.get('id')
-    

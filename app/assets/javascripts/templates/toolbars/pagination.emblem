@@ -1,4 +1,4 @@
-ul.nav.navbar.pagination.navbar-left
+ul.nav.navbar.pagination.navbar-right
   li{ bind-attr class="previous_page::disabled" }
     if previous_page
       a.navbar-link{ action "set_page" previous_page } href='#'
@@ -31,4 +31,4 @@ ul.nav.navbar.pagination.navbar-left
 
 
 p.navbar-right.navbar-text.pagination-info
-  ' Showing {{per_page}}/{{total}} records.
+  ' {{per_page}} / {{total}}

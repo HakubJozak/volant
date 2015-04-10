@@ -17,5 +17,10 @@ if name
 
 small
   = apply-form-state-icon state
+
+  if ltvType
+    span.label.label-default
+      ' {{upcase type}}
+
   each tags
     ' {{tag this}}
