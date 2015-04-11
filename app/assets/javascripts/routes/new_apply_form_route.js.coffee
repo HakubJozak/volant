@@ -6,7 +6,7 @@ Volant.NewApplyFormRoute = Volant.ApplyFormRoute.extend Volant.ApplyFormActions,
     'New application'
 
   afterSave: (form,opts) ->
-    @flash_info 'Created.'
+    @flash_info 'Application created.'
     if opts.redirect    
       @send 'goToApplyForms'        
     else
