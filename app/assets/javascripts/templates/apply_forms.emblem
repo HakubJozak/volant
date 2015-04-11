@@ -28,9 +28,6 @@ form.form.form-horizontal.search-form submit="search" role="form"
 
   .form-group
     = partial 'order_by'
-    .col-md-offset-5.col-md-2.text-right
-      csv-download-link '/apply_forms.csv'
-
 
 table.table.table-striped.table-hover#apply-forms-list
   thead

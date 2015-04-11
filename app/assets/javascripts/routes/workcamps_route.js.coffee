@@ -1,6 +1,7 @@
 Volant.WorkcampsRoute = Volant.BaseRoute.extend
   default_filter: -> { type: 'outgoing' }
   newWorkcampType: 'outgoing'
+  toolbar: 'workcamps/toolbar'
 
   queryParams:
     order: { refreshModel: true }

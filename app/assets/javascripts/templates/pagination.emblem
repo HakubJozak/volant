@@ -1,0 +1,35 @@
+ul.nav.navbar.pagination.navbar-right
+  li{ bind-attr class="previous_page::disabled" }
+    if previous_page
+      a.navbar-link{ action "set_page" previous_page } href='#'
+        ' &laquo;
+    else    
+      a.navbar-link
+        ' &laquo;
+  each pagination_bits itemController='pagination_bit'
+    if active
+      li.active
+        a.navbar-link href='#'
+          = content
+    else
+      if link
+        li
+          a.navbar-link{ action "set_page" this }  href='#'
+            = content
+      else
+        li.disabled
+          span = content
+
+
+  li{ bind-attr class="next_page::disabled" }
+    if next_page
+      a.navbar-link{ action "set_page" next_page } href='#'
+        ' &raquo;
+    else    
+      a.navbar-link
+        ' &raquo;
+
+
+p.navbar-right.navbar-text.pagination-info
+  ' {{per_page}} / {{total}}
+

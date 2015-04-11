@@ -32,7 +32,5 @@ form.form.form-horizontal.form-search submit='search' role='form'
 
   .form-group
     = partial 'order_by'
-    .col-md-offset-5.col-md-2.text-right
-      csv-download-link '/workcamps.csv'
 
 partial 'workcamps/list'

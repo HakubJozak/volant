@@ -1,7 +1,6 @@
 Volant.WorkcampsController = Volant.ListController.extend
   needs: ['countriesSelect','workcampIntentionsSelect','organizationsSelect','tagsSelect','starred_workcamps']
 
-
   page: 1
   queryParams: ['query','page','year','from','to',
                 'min_duration','max_duration',
@@ -10,6 +9,12 @@ Volant.WorkcampsController = Volant.ListController.extend
                 'sortAscending','order']
 
   query_placeholder: "part of workcamp's name or code"
+
+  csvDownloadUrl: (->
+    year = @get('year')
+    type = @get('mode')    
+    "/workcamps.csv?year=#{year}&type=#{type}"
+  ).property('year','mode')
 
   query: ''
   from: null

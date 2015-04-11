@@ -13,6 +13,12 @@ Volant.ApplyFormsController = Volant.ListController.extend
   orderOptions: [ {id: 'createdAt', name: 'Submitted'},{id:'name', name: 'Name'}]
   sortProperties: ['createdAt']
 
+  csvDownloadUrl: (->
+    year = @get('year')
+    type = @get('mode')    
+    "/apply_forms.csv?year=#{year}&type=#{type}"
+  ).property('year','mode')
+
 
   setSorting: (->
     props = switch @get('order')

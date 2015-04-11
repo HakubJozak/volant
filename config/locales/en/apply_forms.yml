@@ -48,8 +48,8 @@ en:
             paid: Paid %{time}
             infosheeted: Infosheet sent %{time}
             cancelled:
-              before: "Cancelled %{time}, before being accepted."
-              after: "Cancelled %{time}, %{after_accept_count} days after acceptation and %{to_wc_count} before beginning of the workcamp."
+              before: "Cancelled %{time} before being accepted."
+              after: "Cancelled %{time}. %{after_accept_count} days after acceptation and %{to_wc_count} before beginning of the workcamp."
             not_paid: Not paid (application is considered to be paid if its payment is exactly equal to the application fee).
 
         apply_form_actions:

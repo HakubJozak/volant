@@ -6,7 +6,7 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
     if tmpl = @get('toolbar')
       @render(tmpl,outlet: 'footer',into: 'application')
     else if @_paginationData()
-      @render('toolbars/pagination',outlet: 'footer',into: 'application',controller: 'pagination')  
+      @render('pagination',outlet: 'footer',into: 'application',controller: 'pagination')  
     else if @currentModel.save? and @currentModel.constructor != DS.RecordArray
       @render('toolbars/record_actions',outlet: 'footer',into: 'application')
     else
@@ -71,7 +71,6 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
               when 'ltv' then 'ltv_workcamps'
               else 'index'
       $.cookie('volant-mode',mode)
-      console.info mode
       @transitionTo(route)
       false
 

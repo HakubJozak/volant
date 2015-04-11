@@ -1,4 +1,5 @@
 Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
+  toolbar: 'apply_forms/toolbar'
   default_filter: -> { type: 'outgoing' }
   newModelType: 'outgoing'
 
