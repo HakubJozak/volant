@@ -5,8 +5,6 @@
 #= require handlebars
 #= require ember
 #= require ember-data
-#= require images
-
 #= require moment
 #= require moment/cs
 #= require moment/en-au
@@ -15,8 +13,10 @@
 #= require date-polyfill/date-polyfill.min
 #= require markdown
 #= require Chart
-
 #= require barbecue
+
+#= require ./images
+#= require ./fa_icon_names
 
 #= require_self
 #= require_tree ./adapters
