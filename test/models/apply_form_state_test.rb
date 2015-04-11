@@ -13,9 +13,9 @@ class ApplyFormStateTest < ActiveSupport::TestCase
   end
 
   test "actions" do
-    assert_equal [ :infosheet, :cancel ], @accepted.actions
+    assert_equal [ :ask, :accept, :reject, :cancel ], @paid.actions
     assert_equal [ :accept, :reject, :cancel ], @asked.actions
-    assert_equal [ :ask, :reject, :cancel ], @paid.actions
+    assert_equal [ :infosheet, :cancel ], @accepted.actions
     assert_equal [ :cancel ], @infosheeted.actions
   end
 
