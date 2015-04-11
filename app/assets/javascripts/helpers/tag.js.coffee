@@ -1,6 +1,6 @@
 makeTagMarkup = (tag) ->
   color = tag.get('color')
-  text_color = tag.get('text_color')
+  text_color = tag.get('textColor')
   name = tag.get('name') || ''
   symbol = tag.get('symbol')
 
@@ -14,9 +14,6 @@ makeTagMarkup = (tag) ->
 
 Ember.Handlebars.helper 'tag', (tag) ->
   new Handlebars.SafeString makeTagMarkup(tag)
-
-Ember.Handlebars.helper 'example-tag', (color,text_color) ->
-  new Handlebars.SafeString "<span class='label label-default' style='color:#{text_color}; background-color:#{color};' >Example</span>"
 
 Ember.Handlebars.helper 'tag-list', (tags) ->
   if tags

@@ -1,4 +1,3 @@
 class TagSerializer < ApplicationSerializer
-  readonly_attributes :id
-  writable_attributes :name, :color, :text_color
+  attributes :id, :name, :color, :text_color, :symbol
 end

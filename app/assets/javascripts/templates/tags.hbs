@@ -13,12 +13,16 @@
   <tbody>
     {{#each}}
       <tr>
-                        <td>
+        <td>
           {{#link-to 'tag' this}}
-            {{name}}
+            {{#if name}}
+              {{name}}              
+            {{else}}
+              [untitled]
+            {{/if}}
           {{/link-to}}
         </td>
-        <td>{{example-tag color text_color}}</td>
+        <td>{{tag this symbol color textColor}}</td>
       </tr>
     {{/each}}
   </tbody>

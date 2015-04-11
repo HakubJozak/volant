@@ -46,6 +46,6 @@ class TagsController < ApplicationController
   end
 
   def tag_params
-    params.require(:tag).permit(*TagSerializer.writable)
+    params.require(:tag).permit(:name, :color, :text_color, :symbol)
   end
 end

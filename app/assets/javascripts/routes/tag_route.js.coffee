@@ -1,4 +1,4 @@
-Volant.TagRoute = Volant.BaseRoute.extend({
+Volant.TagRoute = Volant.BaseRoute.extend
   model: (params) ->
-    @store.find('Tag',params.Tag_id)
-})
+    @store.find('tag',params.tag_id)
+

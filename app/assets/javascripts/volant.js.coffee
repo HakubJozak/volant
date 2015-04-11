@@ -16,9 +16,9 @@
 #= require barbecue
 
 #= require ./images
+#= require_self
 #= require ./fa_icon_names
 
-#= require_self
 #= require_tree ./adapters
 #= require_tree ./serializers
 #= require ./store

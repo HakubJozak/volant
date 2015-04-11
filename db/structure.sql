@@ -25,6 +25,13 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 SET search_path = public, pg_catalog;
 
+--
+-- Name: czech; Type: COLLATION; Schema: public; Owner: -
+--
+
+CREATE COLLATION czech (lc_collate = 'cs_CZ.utf8', lc_ctype = 'cs_CZ.utf8');
+
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -1062,11 +1069,11 @@ ALTER SEQUENCE payments_id_seq OWNED BY payments.id;
 
 CREATE TABLE people (
     id integer NOT NULL,
-    firstname character varying(255) NOT NULL,
-    lastname character varying(255) NOT NULL,
+    firstname character varying COLLATE public.czech NOT NULL,
+    lastname character varying COLLATE public.czech NOT NULL,
     gender character varying(255) NOT NULL,
     old_schema_key integer,
-    email character varying(255),
+    email character varying COLLATE public.czech,
     phone character varying(255),
     birthdate date,
     birthnumber character varying(255),
@@ -1217,7 +1224,8 @@ CREATE TABLE tags (
     name character varying(255) NOT NULL,
     color character varying(7) DEFAULT '#FF0000'::character varying NOT NULL,
     text_color character varying(7) DEFAULT '#FFFFFF'::character varying NOT NULL,
-    taggings_count integer DEFAULT 0
+    taggings_count integer DEFAULT 0,
+    symbol character varying(255)
 );
 
 
@@ -2526,4 +2534,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150331120524');
 INSERT INTO schema_migrations (version) VALUES ('20150331123340');
 
 INSERT INTO schema_migrations (version) VALUES ('20150408154336');
+
+INSERT INTO schema_migrations (version) VALUES ('20150411163911');
 

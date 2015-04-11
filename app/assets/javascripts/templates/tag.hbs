@@ -3,12 +3,19 @@
 {{errors.messages}}
 
 <form {{ action 'save' on='submit'}}>
-    <div class="form-group">
+  <div class="form-group">
     {{#model-field errors=errors.name}}
       <label class=" control-label">Name</label>
       {{input value=name class="form-control" }}
     {{/model-field}}
   </div>
+  <div class="form-group">
+    {{#model-field errors=errors.name}}
+      <label class=" control-label">Symbol</label>
+      {{view 'tag-symbol-select' selectionBinding='symbol'}}
+    {{/model-field}}
+  </div>
+  
     <div class="form-group">
     {{#model-field errors=errors.color}}
       <label class=" control-label">Color</label>
