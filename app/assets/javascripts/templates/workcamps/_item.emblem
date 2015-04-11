@@ -23,9 +23,9 @@
         tag-list tags
         partial 'workcamp/extra_fee'
     .col-md-2
-      h4.list-group-item-heading
-        partial 'free_places'
-      a.btn.btn-default href=createApplyFormUrl
+      h4.list-group-item-heading.free-places
+        ' {{partial 'free_places'}}
+      a.btn.btn-sm.btn-default href=createApplyFormUrl
         ' {{fa 'plus'}}
     .col-md-3
       button.btn.btn-default.remove-button{ action 'confirmedRemove' this }
