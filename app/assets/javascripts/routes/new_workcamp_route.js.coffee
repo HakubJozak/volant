@@ -1,5 +1,4 @@
 Volant.NewWorkcampRoute = Volant.WorkcampRoute.extend
-
   viewName: 'workcamp'
   controllerName: 'workcamp'
 
@@ -14,6 +13,9 @@ Volant.NewWorkcampRoute = Volant.WorkcampRoute.extend
       publish_mode: 'SEASON'
       type: params.type
     }
+
+    if params.type == 'incoming'
+      defaults.organization = 
 
     # like Hash#merge in JS
     opts = $.extend(defaults,transition.queryParams)

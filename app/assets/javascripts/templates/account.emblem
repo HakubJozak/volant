@@ -5,6 +5,15 @@ h3
 
 form submit="save" class="form"
   .form-group
+    model-field errors=errors.organization
+      label.control-label Organization
+      partial 'inputs/organization'
+    p.help-block 
+      ' Which organization is yours? 
+      ' Incoming workcamps will have is as well as
+      ' outgoing organizations.
+
+  .form-group
     model-field errors=errors.seasonEnd
       label.control-label Season ends
       = view Volant.DateView dateBinding='seasonEnd'
@@ -18,7 +27,3 @@ form submit="save" class="form"
     model-field errors=errors.infosheet_waiting_limit
       label.control-label Infosheet waiting limit
       = input value=infosheetWaitingLimit class="form-control" type="number"
-
-  .button-group
-    button.btn.btn-primary type="submit" Save
-    button.btn.btn-default{action "rollback"} type="button" Cancel
