@@ -40,7 +40,7 @@ class Workcamp < ActiveRecord::Base
 
   scope :query, lambda { |query|
     like = "%#{query}%"
-    where("workcamps.name ILIKE ? or workcamps.code ILIKE ?",like,like)
+    where("unaccent(workcamps.name) ILIKE unaccent(?) or workcamps.code ILIKE ?",like,like)
   }
 
   scope :with_workcamp_intentions, lambda { |*ids|

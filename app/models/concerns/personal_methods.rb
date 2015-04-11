@@ -15,6 +15,18 @@ module PersonalMethods
                           if: :strict_validation?
     
     include PhoneValidation
+
+    scope :query, lambda { |query|
+      unless query.blank?
+        q = "%#{query}%"
+
+        conditions = [ :firstname, :lastname, :email, :birthnumber, :phone ].map do |attr|
+          unaccented_like(attr)
+        end
+        
+        where conditions.join(' or '),q,q,q,q,q
+      end
+    }
   end
 
   

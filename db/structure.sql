@@ -32,6 +32,20 @@ SET search_path = public, pg_catalog;
 CREATE COLLATION czech (lc_collate = 'cs_CZ.utf8', lc_ctype = 'cs_CZ.utf8');
 
 
+--
+-- Name: unaccent; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS unaccent WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION unaccent; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
+
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -2536,4 +2550,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150331123340');
 INSERT INTO schema_migrations (version) VALUES ('20150408154336');
 
 INSERT INTO schema_migrations (version) VALUES ('20150411163911');
+
+INSERT INTO schema_migrations (version) VALUES ('20150411194550');
 

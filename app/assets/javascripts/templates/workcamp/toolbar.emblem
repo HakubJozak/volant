@@ -1,6 +1,8 @@
 = partial 'save_buttons'
 
 p.navbar-text
+
+
   if organization
     link-to 'organization' organization class='navbar-link'
       ' {{fa 'institution' }} Organization's Card

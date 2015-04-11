@@ -11,24 +11,6 @@ class Volunteer < Person
 
   scope :named, -> { where('rejected IS NULL') }
 
-
-  scope :query, lambda { |query|
-    unless query.blank?
-      like = "%#{query}%"
-      str = """
-            firstname ILIKE ? or
-            lastname ILIKE  ? or
-            birthnumber ILIKE ? or
-            phone ILIKE ? or
-            email ILIKE ?
-           """
-      where(str,like, like, like,like,like)
-    end
-  }
-
-
-
-
   def self.find_by_name_like(text)
     search = "%#{text.downcase}%"
     Volunteer.where("lower(lastname) LIKE ? or lower(firstname) LIKE ?", search, search).order('lastname ASC, firstname ASC').limit(15)

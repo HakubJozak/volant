@@ -34,18 +34,6 @@ class ApplyForm < ActiveRecord::Base
 
   accepts_nested_attributes_for :payment
 
-  scope :query, lambda { |query|
-    like = "%#{query}%"
-    str = """
-            #{ApplyForm.table_name}.firstname ILIKE ? or
-            #{ApplyForm.table_name}.lastname ILIKE  ? or
-            #{ApplyForm.table_name}.birthnumber ILIKE ? or
-            #{ApplyForm.table_name}.email ILIKE ? or
-            #{ApplyForm.table_name}.general_remarks ILIKE ?
-           """
-    joins(:volunteer).where(str,like, like, like,like,like)
-  }
-
   scope :accepted, lambda {
     joins(:current_assignment).where(cancelled: nil).where('workcamp_assignments.accepted IS NOT NULL')
   }

@@ -9,4 +9,3 @@ Volant.VolunteersController = Volant.ListController.extend
       @set 'query',''
       @set 'page',1
       @send 'search'
-
