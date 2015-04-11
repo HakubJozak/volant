@@ -5,7 +5,7 @@ module Incoming
     validates :country, :organization, presence: true
     
     alias :sending_organization :organization
-    
+
     def confirmed?
       !self.confirmed.nil?
     end

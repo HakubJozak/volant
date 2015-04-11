@@ -81,8 +81,9 @@ class ApplyForm < ActiveRecord::Base
               workcamp_assignments.last.order + 1
             end
 
-    workcamp_assignments.create!(apply_form: self, workcamp: wc, order: order)
+    wa = workcamp_assignments.create!(apply_form: self, workcamp: wc, order: order)
     self.reload
+    wa
   end
 
   alias :add_workcamp :assign_workcamp

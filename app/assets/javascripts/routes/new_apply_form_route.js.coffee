@@ -5,6 +5,13 @@ Volant.NewApplyFormRoute = Volant.ApplyFormRoute.extend Volant.ApplyFormActions,
   title: ->
     'New application'
 
+  afterSave: (form,opts) ->
+    @flash_info 'Created.'
+    if opts.redirect    
+      @send 'goToApplyForms'        
+    else
+      @transitionTo 'apply_form', form
+
   model: (params,transition) ->
     defaults = {
       fee: 2200

@@ -81,7 +81,12 @@ class ApplyFormsController < ApplicationController
 
     if @apply_form.save
       workcamp_ids.each_with_index do |id,i|
-        @apply_form.assign_workcamp(Workcamp.find(id))
+        wa = @apply_form.assign_workcamp(Workcamp.find(id))
+
+        # HACK over 9000 (but tested)
+        if workcamp_ids.size == 1 && @apply_form.is_a?(Incoming::ApplyForm)
+          @apply_form.accept
+        end        
       end
         
       render_apply_form

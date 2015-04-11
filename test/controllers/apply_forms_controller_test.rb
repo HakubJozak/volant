@@ -166,6 +166,26 @@ class ApplyFormsControllerTest < ActionController::TestCase
       end
     end
   end
+
+  test 'create incoming' do
+    assert_difference 'Outgoing::WorkcampAssignment.count',1 do
+      assert_difference 'Incoming::ApplyForm.count',1 do
+        wc = Factory(:incoming_workcamp)
+        attrs = Factory.attributes_for(:incoming_apply_form).merge({
+          workcamp_ids: [wc.id],
+          type: 'incoming',
+          country_id: Factory(:country).id,
+          organization_id: Factory(:organization).id
+        })
+
+        post :create, apply_form: attrs
+
+        assert_response :success,response.body
+        assert_not_nil form = Incoming::ApplyForm.find(json[:apply_forms].first[:id])
+        assert_equal :accepted, form.state.name
+      end
+    end
+  end
   
 
   test 'cancel' do
