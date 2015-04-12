@@ -1,8 +1,7 @@
-Volant.ListController = Ember.ArrayController.extend
+Volant.ListController = Ember.ArrayController.extend Volant.ModeAwareMixin,
 
   needs: ['application','pagination']
   year: Ember.computed.alias('controllers.application.year')
-  mode: Ember.computed.alias('controllers.application.mode')
 
   sortAscending: false
   sortAscendingOptions: [ {name:'Ascending', id: true },{ name:'Descending', id: false }]

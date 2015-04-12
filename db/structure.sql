@@ -824,7 +824,7 @@ CREATE TABLE messages (
     action character varying(255),
     user_id integer NOT NULL,
     email_template_id integer,
-    workcamp_assignment_id integer,
+    workcamp_id integer,
     sent_at timestamp without time zone,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -2559,4 +2559,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150411194550');
 INSERT INTO schema_migrations (version) VALUES ('20150412115324');
 
 INSERT INTO schema_migrations (version) VALUES ('20150412171113');
+
+INSERT INTO schema_migrations (version) VALUES ('20150412204639');
 

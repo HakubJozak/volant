@@ -1,8 +1,11 @@
 Volant.MessageController = Volant.ObjectController.extend
   needs: [ 'email_templates' ]
-  after_save_route: 'messages'
   editable: Ember.computed.not('delivered')
   selectedTemplate: null
+
+  workcamp: (->
+    @get('model.workcamp') || @get('applyForm.currentWorkcamp')
+  ).property('model.workcamp','applyForm.currentWorkcamp')
 
   actions:
     useSelectedTemplate: ->

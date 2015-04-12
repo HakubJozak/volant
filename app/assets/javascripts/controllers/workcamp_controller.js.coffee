@@ -1,4 +1,4 @@
-Volant.WorkcampController = Ember.ObjectController.extend
+Volant.WorkcampController = Ember.ObjectController.extend Volant.ModeAwareMixin,
   needs: ['countriesSelect','workcampIntentionsSelect','organizationsSelect','tagsSelect','starred_apply_forms']
 
   starredApplyForms: (->

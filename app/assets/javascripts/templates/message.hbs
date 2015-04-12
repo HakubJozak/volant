@@ -63,9 +63,11 @@
       <label class="col-md-1 control-label">Application</label>
       <div class="col-md-5">
         <p class="form-control-static">
-          {{#link-to 'apply_form' apply_form}}
-          {{apply_form.name}}
-          {{/link-to}}
+          {{#if applyForm}}
+            {{#link-to 'apply_form' apply_form}}
+              {{apply_form.name}}
+            {{/link-to}}
+          {{/if}}
         </p>
       </div>
     </div>
@@ -79,9 +81,11 @@
       <label class="col-md-1 control-label">Workcamp</label>
       <div class="col-md-5">
         <p class="form-control-static">
-          {{#link-to 'workcamp' apply_form.current_workcamp}}
-          {{apply_form.current_workcamp.name}}
-          {{/link-to}}
+          {{#if workcamp}}
+            {{#link-to 'workcamp' workcamp}}
+              {{workcamp.code}} {{workcamp.name}}
+            {{/link-to}}            
+          {{/if}}
         </p>
       </div>
     </div>

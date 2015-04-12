@@ -1,6 +1,7 @@
 Volant.Message = DS.Model.extend
   user: DS.belongsTo 'user'
-  apply_form: DS.belongsTo 'apply_form',async: true
+  applyForm: DS.belongsTo 'apply_form',async: true
+  workcamp: DS.belongsTo 'workcamp'
   attachments: DS.hasMany 'attachment'
   to: DS.attr 'string'
   cc: DS.attr 'string'
@@ -16,3 +17,6 @@ Volant.Message = DS.Model.extend
   action_name: Ember.computed.alias('action')
   delivered: Ember.computed.alias('sentAt')
   name: Ember.computed.alias('subject')
+
+  # legacy naming fallback
+  apply_form: Ember.computed.alias('applyForm')

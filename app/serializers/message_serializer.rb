@@ -1,5 +1,6 @@
 class MessageSerializer < ApplicationSerializer
-  has_one :apply_form, embed: :ids, include: false
+  has_one :apply_form, embed: :ids, include: true
+  has_one :workcamp, embed: :ids, include: true  
   has_one :user, embed: :ids, include: true
   has_many :attachments, embed: :ids, include: true, serializer: AttachmentSerializer
 

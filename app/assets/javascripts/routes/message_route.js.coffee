@@ -1,4 +1,6 @@
 Volant.MessageRoute = Volant.BaseRoute.extend
+  templateName: 'message'
+  controllerName: 'message'
   toolbar: 'message/toolbar'
 
   title: (model) -> "#{model.get('subject')}"
@@ -45,7 +47,10 @@ Volant.MessageRoute = Volant.BaseRoute.extend
 
   _templateNameFor: (message,form) ->
     action = message.get('action')
-    type = form.get('type')    
+    resource = form || message.get('workcamp')    
+    return action unless resource    
+
+    type = resource.get('type')
 
     if type == 'outgoing'
       action
@@ -53,7 +58,7 @@ Volant.MessageRoute = Volant.BaseRoute.extend
       "#{type}/#{action}"            
 
   _message_context: (message,apply_form) ->
-    apply_form.get('current_workcamp').then (workcamp) =>
+    apply_form.get('currentWorkcamp').then (workcamp) =>
       context = {}
       user = message.get('user')
 

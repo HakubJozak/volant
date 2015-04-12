@@ -171,6 +171,10 @@ class Workcamp < ActiveRecord::Base
   acts_as_taggable
   include TaggableExtension
 
+  def infosheet_all
+    # TODO
+  end
+  
   public
 
   def accepts_age?(age)

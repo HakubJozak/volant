@@ -3,7 +3,7 @@ require 'ostruct'
 class EmailTemplate < ActiveRecord::Base
   self.table_name = 'new_email_templates'
 
-  validates_presence_of :from,:to
+  validates_presence_of :from
 
   # used only for apply form submission
   def call(apply_form)

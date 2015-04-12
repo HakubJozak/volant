@@ -13,10 +13,17 @@ namespace :adhoc do
           end
         end
 
-        tmpl.save(validate: false)
+n        tmpl.save(validate: false)
       end
     end
 
+    task new_templates: :environment do
+      EmailTemplate.create! action: 'incoming/infosheet_all',
+                            title: 'Incoming: Send infosheet to all organizations involved',
+                            from: '{{user.email}}'
+    end
+
+    
     desc 'Converts all Participants into Incoming::ApplyForm'
     task participants: :environment do
       Incoming::Participant.find_each do |p|

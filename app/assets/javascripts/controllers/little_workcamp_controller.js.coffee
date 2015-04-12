@@ -1,7 +1,5 @@
-Volant.LittleWorkcampController = Ember.ObjectController.extend Volant.ToggleMixin,
+Volant.LittleWorkcampController = Ember.ObjectController.extend Volant.ToggleMixin, Volant.ModeAwareMixin,
   needs: [ 'workcamps','application' ]
-  mode: Ember.computed.alias('controllers.application.mode')
-  incomingMode: Ember.computed.alias('controllers.application.incomingMode')
   editing_visible: Ember.computed.alias('controllers.workcamps.editing_visible')
 
   showIdleAssignments: false
