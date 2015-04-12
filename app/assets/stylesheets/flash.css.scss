@@ -9,7 +9,7 @@
   top: 41px;
   color: black;
 
-  &.info { background-color: transparentize($brown,0.5);  }
+  &.info { background-color: transparentize($brand-primary,0.5);  }
   &.success {  background-color: transparentize($green,0.7); }
   &.error {  background-color: transparentize($red,0.6); }
   &.warning {  background-color: transparentize($yellow,0.5); }
