@@ -32,18 +32,18 @@ Volant.MessageRoute = Volant.BaseRoute.extend
     @_super(controller,message)
 
   applyTemplate: (tmpl,message,apply_form) ->
-    context = @_message_context(message,apply_form).then (context) =>
-      error = (e) =>
-        console.error e
-        @flash_error e
+    error = (e) =>
+      console.error e
+      @flash_error e
 
+    @_message_context(message,apply_form).then ((context) =>
       console.log 'Message context', context
       message.set 'subject', tmpl.eval_field('subject',context,error)
       message.set 'html_body', tmpl.eval_field('body',context,error)
       message.set 'from', tmpl.eval_field('from',context,error)
       message.set 'to', tmpl.eval_field('to',context,error)
       message.set 'cc', tmpl.eval_field('cc',context,error)
-      message.set 'bcc', tmpl.eval_field('bcc',context,error)
+      message.set 'bcc', tmpl.eval_field('bcc',context,error)),error
 
   _templateNameFor: (message,form) ->
     action = message.get('action')
@@ -58,7 +58,16 @@ Volant.MessageRoute = Volant.BaseRoute.extend
       "#{type}/#{action}"            
 
   _message_context: (message,apply_form) ->
-    apply_form.get('currentWorkcamp').then (workcamp) =>
+    if apply_form    
+      apply_form.get('currentWorkcamp').then =>
+        @_buildContext(message,apply_form,workcamp)
+    else
+      empty = (resolve,reject) -> resolve()
+      new Ember.RSVP.Promise(empty).then =>
+        @_buildContext(message,apply_form,message.get('workcamp'))
+            
+
+  _buildContext: (message,apply_form,workcamp) ->
       context = {}
       user = message.get('user')
 
@@ -80,7 +89,9 @@ Volant.MessageRoute = Volant.BaseRoute.extend
 
         if org = workcamp.get('organization')
           context.organization = org.for_email()
-      context
+
+      console.debug 'Message context:',context  
+      context  
 
 
   actions:
