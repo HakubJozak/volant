@@ -3,11 +3,12 @@ Volant.WorkcampAssignment = DS.Model.extend
   workcamp: DS.belongsTo('workcamp', inverse: 'workcampAssignments', async: true)
   applyForm: DS.belongsTo('apply_form', inverse: 'workcampAssignments',async: true)
 
-  order: DS.attr 'number'
+  position: DS.attr 'number'
   accepted: DS.attr 'isodate'
   rejected: DS.attr 'isodate'
   asked: DS.attr 'isodate'
   infosheeted: DS.attr 'isodate'
 
-  # legacy fallback      
+  # legacy naming fallback      
+  order: Ember.computed.alias('position')
   apply_form: Ember.computed.alias('applyForm')

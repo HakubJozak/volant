@@ -55,6 +55,8 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (3.2.6)
       activerecord (>= 3, < 5)
+    acts_as_list (0.6.0)
+      activerecord (>= 3.0)
     addressable (2.3.6)
     ansi (1.4.3)
     arel (5.0.1.20140414130214)
@@ -312,6 +314,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.8.2)
   acts-as-taggable-on
+  acts_as_list
   barbecue!
   bootstrap-generators (~> 3.2.0)
   carrierwave

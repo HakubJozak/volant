@@ -3,12 +3,12 @@
     {{#each itemController="workcamp_assignment" }}
     {{# if edited_or_new}}
       <tr>
-        <td colspan='7'>
+        <td colspan='9'>
           <h5>{{workcamp.name}}</h5>
           <form class='form'>
             <div class="form-group">
-              <label>Order</label>
-              {{ input value=order type='number' class="form-control" }}
+              <label>Position</label>
+              {{ input value=position type='number' class="form-control" }}
             </div>
 
             <div class="form-group">

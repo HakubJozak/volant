@@ -19,8 +19,8 @@ class ApplyForm < ActiveRecord::Base
   belongs_to :organization
   belongs_to :current_workcamp, foreign_key: 'current_workcamp_id_cached', class_name: 'Workcamp'
   belongs_to :current_assignment, foreign_key: 'current_assignment_id_cached', class_name: 'Outgoing::WorkcampAssignment'
-  has_many :workcamps, -> { order 'workcamp_assignments."order" ASC' }, through: :workcamp_assignments, class_name: 'Workcamp', validate: false
-  has_many :workcamp_assignments, -> { order '"order" ASC' }, dependent: :delete_all, class_name: 'Outgoing::WorkcampAssignment', validate: false
+  has_many :workcamps, -> { order 'workcamp_assignments."position" ASC' }, through: :workcamp_assignments, class_name: 'Workcamp', validate: false
+  has_many :workcamp_assignments, -> { order '"position" ASC' }, dependent: :delete_all, class_name: 'Outgoing::WorkcampAssignment', validate: false
 
   scope :year, lambda { |year|
     year = year.to_i
@@ -63,13 +63,13 @@ class ApplyForm < ActiveRecord::Base
     # don't do anything if it is already assigned
     return self if workcamp_assignments.any? { |wa| wa.workcamp == wc }
 
-    order = if workcamp_assignments.empty?
-              1
-            else
-              workcamp_assignments.last.order + 1
-            end
+    # order = if workcamp_assignments.empty?
+    #           1
+    #         else
+    #           workcamp_assignments.last.order + 1
+    #         end
 
-    wa = workcamp_assignments.create!(apply_form: self, workcamp: wc, order: order)
+    wa = workcamp_assignments.create!(apply_form: self, workcamp: wc)
     self.reload
     wa
   end
@@ -148,10 +148,6 @@ class ApplyForm < ActiveRecord::Base
 
   def state
     ApplyFormState.create(self)
-  end
-
-  def last_workcamp
-    workcamps.find(:first, :order => '"order" DESC')
   end
 
   def accepted?

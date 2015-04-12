@@ -26,15 +26,14 @@ class WorkcampAssignmentsController < ApplicationController
   # PATCH/PUT /workcamp_assignments/1
   def update
     @wa.update(workcamp_assignment_params)
-    @wa.apply_form.reload
-    render json: @wa
+    render_workcamp_assignment(@wa)
   end
 
   # DELETE /workcamp_assignments/1
   def destroy
     @wa.destroy
     @wa.apply_form.reload
-    render json: @wa
+    render json: @wa.apply_form.workcamp_assignments, each_serializer:  WorkcampAssignmentSerializer
   end
 
   private
@@ -47,15 +46,10 @@ class WorkcampAssignmentsController < ApplicationController
   def workcamp_assignment_params
     wa = params.require(:workcamp_assignment)
     wa.delete(:state)
-    wa.permit(:order,:accepted,:rejected,:infosheeted,:asked,:apply_form_id,:workcamp_id)
+    wa.permit(:position,:accepted,:rejected,:infosheeted,:asked,:apply_form_id,:workcamp_id)
   end
 
   def render_workcamp_assignment(wa)
-    # render json: {
-    #   workcamp_assignment: { apply_form_id: wa.apply_form_id, workcamp_id: wa.workcamp_id, order: wa.order, id: wa.id },
-    #   workcamps: [{ id: wa.workcamp_id, workcamp_assignment_ids: wa.workcamp.workcamp_assignment_ids }],
-    #   apply_forms: [{ id: wa.apply_form_id, workcamp_assignment_ids: wa.workcamp.workcamp_assignment_ids }]      
-    # }
     render json: wa, serializer: WorkcampAssignmentSerializer
   end
 

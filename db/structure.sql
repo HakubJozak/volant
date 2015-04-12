@@ -58,7 +58,7 @@ CREATE TABLE workcamp_assignments (
     id integer NOT NULL,
     apply_form_id integer,
     workcamp_id integer,
-    "order" integer NOT NULL,
+    "position" integer NOT NULL,
     accepted timestamp without time zone,
     rejected timestamp without time zone,
     asked timestamp without time zone,
@@ -74,7 +74,7 @@ CREATE TABLE workcamp_assignments (
 
 CREATE VIEW accepted_assignments AS
  SELECT a.apply_form_id,
-    min(a."order") AS "order"
+    min(a."position") AS "order"
    FROM workcamp_assignments a
   WHERE ((a.accepted IS NOT NULL) AND (a.rejected IS NULL))
   GROUP BY a.apply_form_id;
@@ -309,7 +309,7 @@ ALTER SEQUENCE apply_forms_id_seq OWNED BY apply_forms.id;
 
 CREATE VIEW pending_assignments AS
  SELECT a.apply_form_id,
-    min(a."order") AS "order"
+    min(a."position") AS "order"
    FROM workcamp_assignments a
   WHERE ((((a.accepted IS NULL) AND (a.asked IS NULL)) AND (a.rejected IS NULL)) OR ((a.asked IS NOT NULL) AND (a.rejected IS NULL)))
   GROUP BY a.apply_form_id;
@@ -321,13 +321,13 @@ CREATE VIEW pending_assignments AS
 
 CREATE VIEW rejected_assignments AS
  SELECT a.apply_form_id,
-    a."order"
+    a."position" AS "order"
    FROM (workcamp_assignments a
      JOIN ( SELECT c.apply_form_id,
-            max(c."order") AS maximum
+            max(c."position") AS maximum
            FROM workcamp_assignments c
           GROUP BY c.apply_form_id) b USING (apply_form_id))
-  WHERE ((a."order" = b.maximum) AND (a.rejected IS NOT NULL));
+  WHERE ((a."position" = b.maximum) AND (a.rejected IS NOT NULL));
 
 
 --
@@ -373,7 +373,7 @@ CREATE VIEW apply_forms_view AS
                          SELECT rejected_assignments.apply_form_id,
                             rejected_assignments."order"
                            FROM rejected_assignments) assignments
-                  GROUP BY assignments.apply_form_id) latest ON (((assignment.apply_form_id = latest.apply_form_id) AND (assignment."order" = latest."order"))))) workcamp ON ((workcamp.apply_form_id = application.id)));
+                  GROUP BY assignments.apply_form_id) latest ON (((assignment.apply_form_id = latest.apply_form_id) AND (assignment."position" = latest."order"))))) workcamp ON ((workcamp.apply_form_id = application.id)));
 
 
 --
@@ -2557,4 +2557,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150411163911');
 INSERT INTO schema_migrations (version) VALUES ('20150411194550');
 
 INSERT INTO schema_migrations (version) VALUES ('20150412115324');
+
+INSERT INTO schema_migrations (version) VALUES ('20150412171113');
 

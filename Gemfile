@@ -36,6 +36,7 @@ gem 'carrierwave'
 gem 'differ'
 gem 'htmlentities'
 gem 'acts-as-taggable-on'
+gem 'acts_as_list'
 
 gem 'ember-rails'
 gem 'emblem-rails'
