@@ -156,6 +156,10 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
     if data = @_paginationData()
       controller.set('controllers.pagination.model', data)
 
+  currentAccount: ->
+    id = $('meta[name="current-account-id"]').attr('content')
+    @store.find('account',id)         
+
   _paginationData: (model = @currentModel) ->
     modelType = model.get? && model.get('type')
     if hash = @store.typeMapFor(modelType).metadata.pagination

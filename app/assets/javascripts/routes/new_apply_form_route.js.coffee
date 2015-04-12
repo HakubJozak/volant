@@ -13,16 +13,17 @@ Volant.NewApplyFormRoute = Volant.ApplyFormRoute.extend Volant.ApplyFormActions,
       @transitionTo 'apply_form', form
 
   model: (params,transition) ->
-    defaults = {
-      fee: 2200
-      type: params.type
-    }
+    @currentAccount().then (account) =>
+      defaults = {
+        fee: 2200
+        type: params.type
+      }
 
-    if params.type != 'incoming'    
-      defaults.volunteer = @store.createRecord('volunteer')
-      # defatuls.country = cz
-      # defatuls.organization = inex
+      if params.type != 'incoming'    
+        defaults.volunteer = @store.createRecord('volunteer')
+        defaults.organization = account.get('organization')
+        defaults.country = account.get('organization.country')
 
-    # like Hash#merge in JS
-    opts = $.extend(defaults,transition.queryParams)
-    @store.createRecord('apply_form', opts)
+      # like Hash#merge in JS
+      opts = $.extend(defaults,transition.queryParams)
+      @store.createRecord('apply_form', opts)

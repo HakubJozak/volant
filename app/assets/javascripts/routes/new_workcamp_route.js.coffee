@@ -1,8 +1,6 @@
 Volant.NewWorkcampRoute = Volant.WorkcampRoute.extend
-  needs: ['account']
   viewName: 'workcamp'
   controllerName: 'workcamp'
-  currentAccount: Ember.computed.alias('controllers.account.current')
 
   afterSave: (wc,opts) ->
     @flash_info 'Workcamp created.'
@@ -12,8 +10,7 @@ Volant.NewWorkcampRoute = Volant.WorkcampRoute.extend
       @transitionTo 'workcamp',wc
   
   model: (params,transition) ->
-    id = $('meta[name="current-account-id"]').attr('content')
-    @store.find('account',id).then (account) =>
+    @currentAccount().then (account) =>
       defaults = {
         language: 'English'
         minimal_age: 18
