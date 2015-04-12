@@ -16,18 +16,18 @@ form.form.form-horizontal.search-form submit="search" role="form"
     .col-md-2
       view Volant.ApplyFormStateSelect value=state
 
-  .form-group
     .col-md-1
       label.control-label Tags
     .col-md-2
-      view 'collection-picker'  targetCollectionBinding='tags'  contentBinding='controllers.tags.arrangedContent'  optionValuePath="content.id"  optionLabelPath="content.name"  prompt='Tags'
-    .col-md-8
+      = partial 'inputs/tag_picker'
+
+    = partial 'order_by'
+
+  .form-group  
+    .col-md-12
       view 'labels-list' contentBinding='tags'
 
 
-
-  .form-group
-    = partial 'order_by'
 
 table.table.table-striped.table-hover#apply-forms-list
   thead

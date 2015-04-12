@@ -1,5 +1,5 @@
 Volant.ApplyFormsController = Volant.ListController.extend
-  needs: ['tags']
+  needs: ['tagsSelect']
 
   page: 1
   query: null
