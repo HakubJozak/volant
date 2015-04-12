@@ -17,15 +17,10 @@ module PersonalMethods
     include PhoneValidation
 
     scope :query, lambda { |query|
-      unless query.blank?
-        q = "%#{query}%"
-
-        conditions = [ :firstname, :lastname, :email, :birthnumber, :phone ].map do |attr|
-          unaccented_like(attr)
-        end
-        
-        where conditions.join(' or '),q,q,q,q,q
-      end
+      columns = [ :firstname,:lastname,:email,:birthnumber,:phone,:passport_number].map { |attr|
+        "#{table_name}.#{attr}"
+      }
+      fuzzy_like(*[query,columns].flatten)
     }
   end
 

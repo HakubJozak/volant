@@ -13,8 +13,7 @@ class Organization < ActiveRecord::Base
 
   # TODO: same as Workcamp.query - merge?
   scope :query, lambda { |query|
-    like = "%#{query}%"
-    where("organizations.name ILIKE ? or organizations.code ILIKE ? or countries.name_en ILIKE ?",like,like,like)    
+    fuzzy_like(query,'organizations.name','organizations.code','countries.name_en')
   }
 
   # Delegates for Export::Excel

@@ -42,6 +42,7 @@ class VolunteersController < ApplicationController
     params.require(:volunteer).except(:age).permit(:firstname, :lastname, :gender,
       :email, :phone,
       :speak_well, :speak_some,
+      :passport_expires_at, :passport_issued_at, :passport_number,
       :birthdate, :birthnumber, :birthplace,
       :nationality, :occupation, :account, :emergency_name,
       :emergency_day, :emergency_night,

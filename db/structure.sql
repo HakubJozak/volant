@@ -1116,7 +1116,10 @@ CREATE TABLE people (
     workcamp_id integer,
     country_id integer,
     note text,
-    organization_id integer
+    organization_id integer,
+    passport_number character varying(255),
+    passport_issued_at date,
+    passport_expires_at date
 );
 
 
@@ -2552,4 +2555,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150408154336');
 INSERT INTO schema_migrations (version) VALUES ('20150411163911');
 
 INSERT INTO schema_migrations (version) VALUES ('20150411194550');
+
+INSERT INTO schema_migrations (version) VALUES ('20150412115324');
 
