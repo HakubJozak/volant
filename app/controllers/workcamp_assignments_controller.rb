@@ -50,7 +50,12 @@ class WorkcampAssignmentsController < ApplicationController
   end
 
   def render_workcamp_assignment(wa)
-    render json: { workcamp_assignment: { apply_form_id: wa.apply_form_id, workcamp_id: wa.workcamp_id, order: wa.order, id: wa.id }}
+    render json: {
+      workcamp_assignment: { apply_form_id: wa.apply_form_id, workcamp_id: wa.workcamp_id, order: wa.order, id: wa.id },
+      workcamps: { id: wa.workcamp_id, workcamp_assignment_ids: wa.workcamp.workcamp_assignment_ids },
+      apply_forms: { id: wa.apply_form_id, workcamp_assignment_ids: wa.workcamp.workcamp_assignment_ids }      
+    }
+    #render json: wa, serializer: WorkcampAssignmentSerializer
   end
 
 

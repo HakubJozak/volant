@@ -42,6 +42,12 @@
     {{else}}
       <tr {{bind-attr class=":workcamp_assignment status"}}>
         <td>
+          <a href='#' {{action 'removeAssignment' this bubbles=false}}
+              class='btn btn-default btn-sm'>
+            {{fa 'minus'}}
+          </a>
+        </td>
+        <td>
           {{#if isCurrentWorkcamp}}
             {{fa 'circle'}}
           {{/if}}
@@ -65,9 +71,6 @@
           {{tag-list workcamp.tags}}
         </td>
         <td >
-          <a href='#' {{action 'removeAssignment' this bubbles=false}}>
-            {{fa 'times'}}
-          </a>
           <a href='#' {{action 'edit' bubbles=false}}>
             {{fa 'edit'}}
           </a>
