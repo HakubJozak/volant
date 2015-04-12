@@ -1,6 +1,6 @@
 Volant.ApplicationSerializer = DS.ActiveModelSerializer.extend
   serializeHasMany: (record, json, relationship) ->
-    json_key = "#{relationship.key.singularize()}_ids"
+    json_key = "#{relationship.key.singularize().underscore()}_ids"
     records = Ember.get(record, relationship.key)
 
     if records && relationship.options.embedded == 'always'
