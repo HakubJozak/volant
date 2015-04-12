@@ -45,12 +45,12 @@ Volant.MessageRoute = Volant.BaseRoute.extend
 
   _templateNameFor: (message,form) ->
     action = message.get('action')
+    type = form.get('type')    
 
-    name = switch form.get('type')
-      when 'ltv' then "ltv/#{action}"
-      else action
-
-    name          
+    if type == 'outgoing'
+      action
+    else
+      "#{type}/#{action}"            
 
   _message_context: (message,apply_form) ->
     apply_form.get('current_workcamp').then (workcamp) =>

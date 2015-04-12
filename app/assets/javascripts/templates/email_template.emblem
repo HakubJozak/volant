@@ -2,11 +2,10 @@
   .col-md-8
     h3
       if action_name
-        capitalize action_name
+        ' {{capitalize action_name}}
         small {{title}}
       else
-        = title
-        '
+        ' {{title}}
         small Custom
 
     form.form submit='save' role="form"
@@ -32,9 +31,5 @@
         label.control-label Body
         = textarea value=body class="form-control" rows=30
 
-      button.btn.btn-primary type="submit" Save
-      button.btn.btn-default type="button" click='rollback' Cancel
-      button.btn.btn-danger.pull-right type="button" click='remove' Delete
-
   .col-md-4
-    partial 'email_templates/doc'
+    partial 'email_templates/help'

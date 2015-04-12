@@ -1,0 +1,7 @@
+td
+  small-flag wa.applyForm.country
+td
+  = link-to 'apply_form' wa.applyForm
+    ' {{wa.applyForm.name}} ({{wa.applyForm.age}})
+  each wa.applyForm.tags
+    tag this

@@ -1,5 +1,6 @@
 namespace :adhoc do
   namespace :incoming do
+    desc 'Replaces {{volunteer.*}} by {{application.*}}'
     task emails: :environment do
       EmailTemplate.find_each do |tmpl|
         puts tmpl.title
@@ -16,6 +17,7 @@ namespace :adhoc do
       end
     end
 
+    desc 'Converts all Participants into Incoming::ApplyForm'
     task participants: :environment do
       Incoming::Participant.find_each do |p|
         form = p.apply_form

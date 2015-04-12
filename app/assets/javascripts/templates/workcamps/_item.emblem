@@ -36,10 +36,20 @@
             tr
               td
                 ' {{apply-form-state-icon wa.applyForm.state}}
-              td
-                small-flag wa.applyForm.country
-              td
-                = link-to 'apply_form' wa.applyForm
-                  ' {{wa.applyForm.name}} ({{wa.applyForm.age}})
-                each wa.applyForm.tags
-                  tag this
+              = partial 'workcamps/assignment'    
+
+          if idleAssignments    
+            if showIdleAssignments
+              each wa in idleAssignments
+                tr
+                  td
+                    ' {{fa 'list-ol'}}
+                    sub = wa.order
+                  = partial 'workcamps/assignment'
+            tr
+              td colspan='3'
+                button.btn.btn-default.btn-sm{ action 'toggle' 'showIdleAssignments'}
+                  if showIdleAssignments
+                    ' {{fa 'chevron-up'}} Hide {{idleAssignments.length}} idle
+                  else  
+                    ' {{fa 'chevron-right'}} {{idleAssignments.length}} idle

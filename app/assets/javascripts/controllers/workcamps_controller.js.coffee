@@ -1,4 +1,4 @@
-Volant.WorkcampsController = Volant.ListController.extend
+Volant.WorkcampsController = Volant.ListController.extend Volant.ToggleMixin,
   needs: ['countriesSelect','workcampIntentionsSelect','organizationsSelect','tagsSelect','starred_workcamps']
 
   page: 1
@@ -59,10 +59,6 @@ Volant.WorkcampsController = Volant.ListController.extend
   editing_visible: false
 
   actions:
-    toggle: (property) ->
-      @toggleProperty(property)
-      false
-
     filterOrganizationsByCountry: (country) ->
       if country
         id = country.get('id')
