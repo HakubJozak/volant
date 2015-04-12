@@ -14,6 +14,6 @@ class ActiveRecord::Base
   end
 
   def self.like_string(query)
-    "#{query}%"
+    "%#{query}%"
   end
 end

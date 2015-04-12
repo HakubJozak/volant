@@ -45,17 +45,18 @@ class WorkcampAssignmentsController < ApplicationController
 
   # TODO SECURITY: scope by organization, scope organization by logged in user!
   def workcamp_assignment_params
-    params[:workcamp_assignment].delete(:state)
-    params[:workcamp_assignment].permit(:order,:accepted,:rejected,:infosheeted,:asked,:apply_form_id,:workcamp_id)
+    wa = params.require(:workcamp_assignment)
+    wa.delete(:state)
+    wa.permit(:order,:accepted,:rejected,:infosheeted,:asked,:apply_form_id,:workcamp_id)
   end
 
   def render_workcamp_assignment(wa)
-    render json: {
-      workcamp_assignment: { apply_form_id: wa.apply_form_id, workcamp_id: wa.workcamp_id, order: wa.order, id: wa.id },
-      workcamps: { id: wa.workcamp_id, workcamp_assignment_ids: wa.workcamp.workcamp_assignment_ids },
-      apply_forms: { id: wa.apply_form_id, workcamp_assignment_ids: wa.workcamp.workcamp_assignment_ids }      
-    }
-    #render json: wa, serializer: WorkcampAssignmentSerializer
+    # render json: {
+    #   workcamp_assignment: { apply_form_id: wa.apply_form_id, workcamp_id: wa.workcamp_id, order: wa.order, id: wa.id },
+    #   workcamps: [{ id: wa.workcamp_id, workcamp_assignment_ids: wa.workcamp.workcamp_assignment_ids }],
+    #   apply_forms: [{ id: wa.apply_form_id, workcamp_assignment_ids: wa.workcamp.workcamp_assignment_ids }]      
+    # }
+    render json: wa, serializer: WorkcampAssignmentSerializer
   end
 
 

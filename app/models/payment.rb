@@ -22,8 +22,7 @@ class Payment < ActiveRecord::Base
   scope :not_assigned, -> { where 'apply_form_id IS NULL' }
 
   scope :query, lambda { |query|
-    q = "%#{query}%"
-    where "return_reason ILIKE ? OR account ILIKE ? OR name ILIKE ?",q,q,q
+    fuzzy_like(query,'payments.return_reason','payments.account','payments.name')
   }
 
   def to_label

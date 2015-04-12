@@ -39,8 +39,7 @@ class Workcamp < ActiveRecord::Base
   scope :max_duration, lambda { |d| where("(duration IS NULL AND #{DURATION_SQL} <= ?) OR duration <= ?", d,d) }
 
   scope :query, lambda { |query|
-    like = "%#{query}%"
-    where("unaccent(workcamps.name) ILIKE unaccent(?) or workcamps.code ILIKE ?",like,like)
+    fuzzy_like(query,'workcamps.name','workcamps.code','workcamps.description','workcamps.region','workcamps.workdesc','workcamps.region')
   }
 
   scope :with_workcamp_intentions, lambda { |*ids|

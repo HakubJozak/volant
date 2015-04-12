@@ -8,7 +8,7 @@ Volant.WorkcampsController = Volant.ListController.extend Volant.ToggleMixin,
                 'free_males', 'free_females',
                 'sortAscending','order']
 
-  query_placeholder: "part of workcamp's name or code"
+  query_placeholder: "part of workcamp's name, code or keyword from detailed descriptions"
 
   csvDownloadUrl: (->
     year = @get('year')
