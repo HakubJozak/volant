@@ -64,7 +64,11 @@ class MessagesController < ApplicationController
   private
 
   def render_message
-    render json: @message, serializer: MessageSerializer
+    if @message.valid?
+      render json: @message, serializer: MessageSerializer
+    else
+      render_error @message
+    end
   end
 
   def set_message

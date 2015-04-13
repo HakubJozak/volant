@@ -5,13 +5,13 @@ Volant.MessageRoute = Volant.BaseRoute.extend
 
   title: (model) -> "#{model.get('subject')}"
 
-  afterSave: (record) ->
+  afterSave: (msg) ->
     @flash_info('Message saved.')
 
-    if form = record.get('apply_form')
+    if form = msg.get('apply_form')
       @transitionTo 'apply_form',form.get('id')
     else
-      @transitionTo 'message',record.get('id')
+      @transitionTo 'message',msg.get('id')
 
   model: (params) ->
     if params.message_id != 'null'
@@ -33,6 +33,7 @@ Volant.MessageRoute = Volant.BaseRoute.extend
 
   applyTemplate: (tmpl,message,apply_form) ->
     error = (e) =>
+      debugger
       console.error e
       @flash_error e
 
@@ -59,7 +60,7 @@ Volant.MessageRoute = Volant.BaseRoute.extend
 
   _message_context: (message,apply_form) ->
     if apply_form    
-      apply_form.get('currentWorkcamp').then =>
+      apply_form.get('currentWorkcamp').then (workcamp)  =>
         @_buildContext(message,apply_form,workcamp)
     else
       empty = (resolve,reject) -> resolve()

@@ -18,9 +18,11 @@
   <fieldset>
     <div class="form-group" >
       <label class="col-md-1 control-label">From</label>
+      {{#model-field errors=errors.from}}
       <div class="col-md-5">
         {{input-or-static attr=from readonly=delivered}}
       </div>
+      {{/model-field}}      
 
       <label class="col-md-1 control-label">Action</label>
       <div class="col-md-5">
@@ -31,10 +33,12 @@
     </div>
 
     <div class="form-group" >
+      {{#model-field errors=errors.to}}
       <label class="col-md-1 control-label">To</label>
       <div class="col-md-5">
         {{input-or-static attr=to readonly=delivered}}
       </div>
+      {{/model-field}}
 
       {{#unless delivered}}
         <label class="col-md-1 control-label">Template</label>
@@ -91,10 +95,12 @@
     </div>
 
     <div class="form-group" >
+      {{#model-field errors=errors.subject}}
       <label class="col-md-1 control-label">Subject</label>
       <div class="col-md-5">
         {{input-or-static attr=subject readonly=delivered}}
       </div>
+      {{/model-field}}
 
       <label class="col-md-1 control-label">Organization</label>
       <div class="col-md-5">

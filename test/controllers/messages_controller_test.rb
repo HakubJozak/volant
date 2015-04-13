@@ -34,6 +34,14 @@ class MessagesControllerTest < ActionController::TestCase
     end
   end
 
+  test "create infosheet_all" do
+    assert_difference('Message.count') do
+      post :create, message: Factory.attributes_for(:message).merge(action: 'incoming/infosheet_all')
+      assert_response :success, response.body.to_s
+      assert_not_nil json_response['message']['id']
+    end
+  end
+
   test "create with apply_form" do
     assert_difference('Message.count') do
       attrs = Factory.attributes_for(:message)

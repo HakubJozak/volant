@@ -2,7 +2,7 @@
 form.navbar-form.navbar-left
   .form-group
     = unless delivered
-      button.btn.btn-success.navbar-btn click="save" type="button"
+      button.btn.btn-success.navbar-btn click="sendMessage" type="button"
         ' {{fa 'caret-right'}} Send
       '
       button.btn.btn-default.navbar-btn click="save" type="button"

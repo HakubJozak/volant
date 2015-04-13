@@ -18,9 +18,21 @@ namespace :adhoc do
     end
 
     task new_templates: :environment do
-      EmailTemplate.create! action: 'incoming/infosheet_all',
-                            title: 'Incoming: Send infosheet to all organizations involved',
-                            from: '{{user.email}}'
+      EmailTemplate.create!( action: 'incoming/infosheet_all',
+        title: 'INCOMING: Send infosheet to all organizations involved',
+        from: '{{user.email}}')
+
+      [ :ask, :accept, :infosheet, :submitted, :reject ].each do |action|
+        old = EmailTemplate.find_by_action!(action)
+        new = EmailTemplate.create!(action: "incoming/#{old.action}",
+                              title: "INCOMING: #{old.title}",
+                              to: old.to,
+                              cc: old.cc,
+                              bcc: old.bcc,
+                              subject: old.subject,
+                              body: old.body)
+        puts "Created #{new.action}"
+      end
     end
 
     

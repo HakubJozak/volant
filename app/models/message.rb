@@ -7,7 +7,10 @@ class Message < ActiveRecord::Base
   accepts_nested_attributes_for :attachments
 
   validates_presence_of :user
-  validates_inclusion_of :action, in: %w(ask accept reject send infosheet ltv/ask ltv/accept ltv/reject ltv/send ltv/infosheet)
+  validates_inclusion_of :action, in: %w(ask accept reject send infosheet
+                                         ltv/ask ltv/accept ltv/reject ltv/send ltv/infosheet
+                                         incoming/ask incoming/accept incoming/reject incoming/send incoming/infosheet
+                                         incoming/infosheet_all)
 
   scope :not_sent, lambda { where(sent_at: nil) }
 #  validates_presence_of :from,:to,:subject,:body, if: :sending
