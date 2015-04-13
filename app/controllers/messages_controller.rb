@@ -42,17 +42,12 @@ class MessagesController < ApplicationController
   # PATCH/PUT /messages/1/send
   def deliver
     @message.deliver!
-
-    if @message.apply_form
-      # TODO: test this branch
-      @message.apply_form.messages(false)
-      payload = Payload.new(messages: [ @message],
-                          apply_forms: [ @message.apply_form ],
-                          workcamp_assignments: @message.apply_form.workcamp_assignments)
-      render json: payload, serializer: PayloadSerializer
-    else
-      render_message
-    end
+    @message.apply_form.try(:messages,false)
+    payload = Payload.new(messages: [ @message],
+                          apply_forms: [ @message.apply_form, @message.workcamp.try(:apply_forms) ].flatten.compact,
+                          workcamp_assignments: [ @message.apply_form.try(:workcamp_assignments),
+                                                  @message.workcamp.try(:workcamp_assignments) ].flatten.compact)
+    render json: payload, serializer: PayloadSerializer
   end
 
   # DELETE /messages/1
@@ -80,7 +75,7 @@ class MessagesController < ApplicationController
     params[:message][:attachments_attributes] = params[:message][:attachments]
 
     params.require(:message).permit(:to, :from, :cc, :bcc, :subject, :body, :html_body,
-                                    :user_id, :email_template_id,  :action,
+                                    :user_id, :email_template_id,  :action, :workcamp_id,
                                     :attachments_attributes => [:id, :type, :workcamp_id, :apply_form_id])
   end
 end

@@ -36,9 +36,13 @@ class MessagesControllerTest < ActionController::TestCase
 
   test "create infosheet_all" do
     assert_difference('Message.count') do
-      post :create, message: Factory.attributes_for(:message).merge(action: 'incoming/infosheet_all')
+      wc = Factory(:incoming_workcamp)
+
+      post :create, message: Factory.attributes_for(:message).merge(action: 'infosheet_all',workcamp_id: wc.id)
+
       assert_response :success, response.body.to_s
-      assert_not_nil json_response['message']['id']
+      assert_not_nil json[:message][:id]
+      assert_equal wc.id, json[:message][:workcamp_id]
     end
   end
 
@@ -88,7 +92,7 @@ class MessagesControllerTest < ActionController::TestCase
 
     post :deliver, id: @message.id
     assert_response :success, response.body.to_s
-    assert_not_nil json_response['message']['sent_at']
+    assert_not_nil json[:messages][0][:sent_at]
   end
 
   test 'deliver' do
@@ -99,6 +103,19 @@ class MessagesControllerTest < ActionController::TestCase
     post :deliver, id: @message.id
 
     assert_response :success, response.body.to_s
+  end
+
+
+  test 'deliver infosheet_all' do
+    wc = Factory(:incoming_workcamp)
+    form = Factory(:incoming_apply_form)
+    form.assign_workcamp(wc).accept
+    @message.update_attributes(workcamp: wc,action: 'infosheet_all')
+
+    post :deliver, id: @message.id
+
+    assert_response :success, response.body.to_s
+    assert_equal :infosheeted, form.reload.state.name
   end
 
   test "destroy" do
