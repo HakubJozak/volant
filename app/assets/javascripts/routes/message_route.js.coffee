@@ -7,11 +7,7 @@ Volant.MessageRoute = Volant.BaseRoute.extend
 
   afterSave: (msg) ->
     @flash_info('Message saved.')
-
-    if form = msg.get('apply_form')
-      @transitionTo 'apply_form',form.get('id')
-    else
-      @transitionTo 'message',msg.get('id')
+    @transitionTo 'message',msg.get('id')
 
   model: (params) ->
     if params.message_id != 'null'
@@ -33,7 +29,6 @@ Volant.MessageRoute = Volant.BaseRoute.extend
 
   applyTemplate: (tmpl,message,apply_form) ->
     error = (e) =>
-      debugger
       console.error e
       @flash_error e
 
@@ -106,10 +101,10 @@ Volant.MessageRoute = Volant.BaseRoute.extend
         form = msg.get('apply_form')
         url = "/messages/#{msg.get('id')}/deliver"
         @ajax_to_store(url).then ((payload) =>
-          @transitionTo('apply_form', form) if form
           @flash_info 'Message sent.'),
+          @send 'goToApplyForms'
         =>
-          @flash_error 'Send failed'
+          @flash_error 'Send failed.'
       false
 
     showUploadDialog: ->

@@ -1,6 +1,5 @@
 Volant.NewWorkcampMessageRoute = Volant.MessageRoute.extend
   afterSave: (record) ->
-    debugger
     @transitionTo 'message',record
     @flash_info 'Message saved.'
 
