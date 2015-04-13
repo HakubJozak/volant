@@ -23,15 +23,6 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
-SET search_path = public, pg_catalog;
-
---
--- Name: czech; Type: COLLATION; Schema: public; Owner: -
---
-
-CREATE COLLATION czech (lc_collate = 'cs_CZ.utf8', lc_ctype = 'cs_CZ.utf8');
-
-
 --
 -- Name: unaccent; Type: EXTENSION; Schema: -; Owner: -
 --
@@ -45,6 +36,8 @@ CREATE EXTENSION IF NOT EXISTS unaccent WITH SCHEMA public;
 
 COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
 
+
+SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
 
@@ -1083,11 +1076,11 @@ ALTER SEQUENCE payments_id_seq OWNED BY payments.id;
 
 CREATE TABLE people (
     id integer NOT NULL,
-    firstname character varying COLLATE public.czech NOT NULL,
-    lastname character varying COLLATE public.czech NOT NULL,
+    firstname character varying(255) NOT NULL,
+    lastname character varying(255) NOT NULL,
     gender character varying(255) NOT NULL,
     old_schema_key integer,
-    email character varying COLLATE public.czech,
+    email character varying(255),
     phone character varying(255),
     birthdate date,
     birthnumber character varying(255),
