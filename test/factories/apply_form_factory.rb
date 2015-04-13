@@ -16,6 +16,7 @@ Factory.define :apply_form, parent: :abstract_form,class: Outgoing::ApplyForm do
 end
 
 Factory.define :incoming_apply_form, parent: :abstract_form,class: Incoming::ApplyForm do |f|
+  f.fee 0
   f.association :country
   f.association :organization  
 end

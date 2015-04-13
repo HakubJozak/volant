@@ -27,9 +27,12 @@ class Message < ActiveRecord::Base
           apply_form.save(validate: false)
         end
 
-        if workcamp && ALLOWED_WORKCAMP_ACTIONS.include?(action_to_perform)
-          workcamp.send(action_to_perform)
-          workcamp.save(validate: false)
+        if workcamp && action_to_perform == :infosheet_all
+          workcamp.apply_forms.each do |form|
+            if form.current_workcamp == workcamp && form.accepted?
+              form.infosheet
+            end
+          end
         end
 
         save!
@@ -47,7 +50,7 @@ class Message < ActiveRecord::Base
   # outgoing/ask       => ask
   # incoming/infosheet => infosheet
   def action_to_perform
-    self.action =~ %r{([a-z]+)\z}
+    self.action =~ %r{([a-z_]+)\z}
     $1.try(:to_sym)
   end
 
