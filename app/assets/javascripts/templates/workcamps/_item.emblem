@@ -43,8 +43,9 @@
               each wa in idleAssignments
                 tr
                   td
-                    ' {{fa 'list-ol'}}
-                    sub = wa.order
+                    | {{fa 'list-ol'}}
+                    sub
+                      ' {{wa.order}}
                   = partial 'workcamps/assignment'
             tr
               td colspan='3'

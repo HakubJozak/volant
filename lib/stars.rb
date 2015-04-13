@@ -24,12 +24,6 @@ module Stars
       }
     end
     
-    def starred?(user)
-      # user.starrings.all.find { |s| s.favorite == self }
-      # user.starrings.where(favorite: self).exists?
-      user.favorite?(self)
-    end
-
     def remove_star(user)
       starrings.where(user: user).delete_all
     end
