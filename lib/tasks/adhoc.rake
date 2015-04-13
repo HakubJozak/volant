@@ -20,6 +20,10 @@ namespace :adhoc do
     task new_templates: :environment do
       EmailTemplate.create!( action: 'incoming/infosheet_all',
         title: 'INCOMING: Send infosheet to all organizations involved',
+        subject: "Infosheet for '{{workcamp.code}} {{{workcamp.name}}}"
+        cc: '{{workcamp.allApplicationsEmails}}',
+        html_body: 'We are sending you the infosheets.'                     
+        bcc: '{{workcamp.allOrganizationsEmails}}',
         from: '{{user.email}}')
 
       [ :ask, :accept, :infosheet, :submitted, :reject ].each do |action|
