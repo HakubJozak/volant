@@ -14,16 +14,19 @@ class ApplyFormsController < ApplicationController
         }
 
         format.json {
+          # HACK: overrides the below - refactor
+          if filter[:starred]
+            search = ApplyForm.starred_by(current_user)
+            render json: search, each_serializer: ApplyFormSerializer
+            return
+          end
+
           search = apply_forms.includes(:organization,:country).page(current_page)
           search = search.order(current_order)
           search = add_year_scope(search)
 
           if v = filter[:volunteer_id]
             search = search.where(volunteer_id: v)
-          end
-
-          if filter[:starred]
-            search = search.starred_by(current_user)
           end
 
           if filter[:tag_ids]

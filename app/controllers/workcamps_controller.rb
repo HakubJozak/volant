@@ -8,6 +8,9 @@ class WorkcampsController < ApplicationController
     if ids = filter[:ids]
       search = Workcamp.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
       render json: search.find(*ids), each_serializer: WorkcampSerializer
+    elsif filter[:starred]
+      search = ApplyForm.starred_by(current_user)
+      render json: search, each_serializer: WorkcampSerializer
     else
       search = workcamps.order(current_order).page(current_page).joins(:country)
       search = search.includes(:workcamp_assignments,:organization,:tags,:intentions,:organization => [:emails])
