@@ -88,7 +88,16 @@ Volant.Workcamp = DS.Model.extend
   ).property('from','to')
 
   for_email: ->
-    hash = @_super()
+    hash = @_super('allIncomingEmails')
+        
+    console.log @get('allIncomingEmails')
     hash.begin_string = moment(@get('begin')).format('D.M.YYYY')
     hash.end_string = moment(@get('end')).format('D.M.YYYY')
     hash
+
+  allIncomingEmails: (->
+    @get('applyForms').then (forms) =>
+      a = forms.mapBy('organization.incomingEmail').compact().toArray().join(',')
+      console.log a
+      a        
+  ).property('organization.@each.incomingEmail')

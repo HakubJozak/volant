@@ -120,4 +120,12 @@ class WorkcampTest < ActiveSupport::TestCase
     assert_equal target.id,result.first.id
   end
 
+  test 'all_volunteers_emails' do
+    # TODO
+  end
+
+  test 'all_organizations_incoming_emails' do
+    # TODO
+  end
+
 end

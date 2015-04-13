@@ -16,30 +16,32 @@ Volant.MessageRoute = Volant.BaseRoute.extend
       @transitionTo 'messages'
 
   setupController: (controller,message) ->
-    @store.find('email_template').then (templates) =>
-      message.get('apply_form').then (apply_form) =>
-        tmpl = templates.findBy('action',@_templateNameFor(message,apply_form))
-        @controllerFor('email_templates').set('content',templates)
-        controller.set('selectedTemplate',tmpl)
+    data =
+      templates: @store.find('email_template')   
+      applyForm: message.get('applyForm')
+      workcamp: message.get('applyForm.currentWorkcamp')
 
-        if message.get('isNew') && tmpl
-          @applyTemplate(tmpl,message,apply_form)
+    Ember.RSVP.hash(data).then (r) =>
+      name = @_templateNameFor(message, r.applForm)
+      tmpl = r.templates.findBy('action',name)
+      workcamp = message.get('workcamp') || r.workcamp  
+      
+      @controllerFor('email_templates').set('content',r.templates)
+      controller.set('selectedTemplate',tmpl)
+
+      if message.get('isNew') && tmpl
+        @applyTemplate(tmpl,message,r.applyForm,workcamp)
 
     @_super(controller,message)
 
-  applyTemplate: (tmpl,message,apply_form) ->
-    error = (e) =>
-      console.error e
-      @flash_error e
-
-    @_message_context(message,apply_form).then ((context) =>
-      console.log 'Message context', context
-      message.set 'subject', tmpl.eval_field('subject',context,error)
-      message.set 'html_body', tmpl.eval_field('body',context,error)
-      message.set 'from', tmpl.eval_field('from',context,error)
-      message.set 'to', tmpl.eval_field('to',context,error)
-      message.set 'cc', tmpl.eval_field('cc',context,error)
-      message.set 'bcc', tmpl.eval_field('bcc',context,error)),error
+  applyTemplate: (tmpl,message,applyForm,workcamp) ->
+    context = @_message_context(message,applyForm,workcamp)
+    message.set 'subject', tmpl.eval_field('subject',context, @_evalError)
+    message.set 'html_body', tmpl.eval_field('body',context, @_evalError)
+    message.set 'from', tmpl.eval_field('from',context, @_evalError)
+    message.set 'to', tmpl.eval_field('to',context, @_evalError)
+    message.set 'cc', tmpl.eval_field('cc',context, @_evalError)
+    message.set 'bcc', tmpl.eval_field('bcc',context, @_evalError)
 
   _templateNameFor: (message,form) ->
     action = message.get('action')
@@ -53,42 +55,38 @@ Volant.MessageRoute = Volant.BaseRoute.extend
     else
       "#{type}/#{action}"            
 
-  _message_context: (message,apply_form) ->
-    if apply_form    
-      apply_form.get('currentWorkcamp').then (workcamp)  =>
-        @_buildContext(message,apply_form,workcamp)
-    else
-      empty = (resolve,reject) -> resolve()
-      new Ember.RSVP.Promise(empty).then =>
-        @_buildContext(message,apply_form,message.get('workcamp'))
-            
+  _message_context: (message,applyForm,workcamp) ->
+    context = {}
+    user = message.get('user')
 
-  _buildContext: (message,apply_form,workcamp) ->
-      context = {}
-      user = message.get('user')
+    if user
+      context.user = user.for_email()
 
-      if user
-        context.user = user.for_email()
+    if applyForm
+      context.application = applyForm.for_email()
+      # legacy aliases
+      context.applyForm = context.application
+      context.apply_form = context.application
 
-      if apply_form
-        context.application = apply_form.for_email()
-        # legacy alias
-        context.apply_form = context.application
+      if volunteer = applyForm.get('volunteer')
+        context.volunteer = volunteer.for_email()
 
-        if volunteer = apply_form.get('volunteer')
-          context.volunteer = volunteer.for_email()
+    if workcamp
+      context.workcamp = workcamp.for_email()
+      # legacy alias
+      context.wc = context.workcamp
 
-      if workcamp
-        context.workcamp = workcamp.for_email()
-        # legacy alias
-        context.wc = context.workcamp
+      if org = workcamp.get('organization')
+        context.organization = org.for_email()
 
-        if org = workcamp.get('organization')
-          context.organization = org.for_email()
+    console.debug 'Message context:',context  
+    context  
 
-      console.debug 'Message context:',context  
-      context  
 
+  _evalError: ->
+    error = (e) =>
+      console.error e
+      @flash_error e
 
   actions:
     useTemplate: (tmpl) ->

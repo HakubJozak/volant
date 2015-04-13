@@ -178,6 +178,12 @@ class Workcamp < ActiveRecord::Base
       end
     end
   end
+
+  def all_volunteers_emails
+  end
+
+  def all_organizations_emails
+  end
   
   public
 
