@@ -36,7 +36,7 @@ namespace :adhoc do
     end
 
     
-    desc 'Converts all Participants into Incoming::ApplyForm'
+    desc 'Converts all Participants into Incoming::ApplyForm and assignments'
     task participants: :environment do
       Incoming::Participant.find_each do |p|
         form = p.apply_form
@@ -44,7 +44,7 @@ namespace :adhoc do
         form.organization = p.organization
 
         if p.workcamp
-          form.workcamp_assignments.create!(workcamp: p.workcamp,order: 1, accepted: form.created_at)
+          form.workcamp_assignments.create!(workcamp: p.workcamp, accepted: form.created_at)
           form.save(validate: false)
         else
           puts "#{p.name} (#{p.id}) has no workcamp"
@@ -55,6 +55,7 @@ namespace :adhoc do
     end
 
 
+    desc 'Copies current data from volunteer into application'
     task apply_forms: :environment do
       STRINGS = [ :firstname, :lastname, :gender,
                   :email,:phone,:birthnumber,:occupation,:account,
@@ -72,7 +73,7 @@ namespace :adhoc do
         source = form.volunteer || form.participant
 
         if source
-          (TEXTS + STRINGS + [:birthdate]).flatten.each do |attr|
+          (TEXTS + STRINGS + [:birthdate,:country_id,:organization_id]).flatten.each do |attr|
             form.send "#{attr}=", source.send(attr)
           end
 

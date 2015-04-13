@@ -75,11 +75,19 @@
       </div>
 
       <div class="col-md-8 form-group">
-    {{#model-field errors=errors.organization}}
-        <label  class=" control-label">Organization</label>
-        {{partial 'inputs/organization'}}
+        {{#model-field errors=errors.organization}}
+          <label  class=" control-label">
+            {{#if organization }}
+              {{#link-to 'organization' organization}}
+                Organization
+              {{/link-to}}
+            {{else}}
+              Organization
+            {{/if}}
 
-    {{/model-field}}
+          </label>
+          {{partial 'inputs/organization'}}
+        {{/model-field}}
       </div>
   </div>
 

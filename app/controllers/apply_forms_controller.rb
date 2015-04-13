@@ -14,7 +14,7 @@ class ApplyFormsController < ApplicationController
         }
 
         format.json {
-          search = apply_forms.page(current_page)
+          search = apply_forms.includes(:organization,:country).page(current_page)
           search = search.order(current_order)
           search = add_year_scope(search)
 

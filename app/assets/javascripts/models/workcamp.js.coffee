@@ -10,6 +10,9 @@ Volant.Workcamp = DS.Model.extend
   import_changes: DS.hasMany('import_change')
   applyForms: DS.hasMany('apply_form',async: true,inverse: 'workcamps')
 
+  allOrganizationsEmails: DS.attr 'string'
+  allApplicationsEmails: DS.attr 'string'  
+
   name: DS.attr 'string'
   code: DS.attr 'string'
   state: DS.attr 'string'
@@ -88,16 +91,7 @@ Volant.Workcamp = DS.Model.extend
   ).property('from','to')
 
   for_email: ->
-    hash = @_super('allIncomingEmails')
-        
-    console.log @get('allIncomingEmails')
+    hash = @_super('allOrganizationsEmails','allApplicationsEmails')
     hash.begin_string = moment(@get('begin')).format('D.M.YYYY')
     hash.end_string = moment(@get('end')).format('D.M.YYYY')
     hash
-
-  allIncomingEmails: (->
-    @get('applyForms').then (forms) =>
-      a = forms.mapBy('organization.incomingEmail').compact().toArray().join(',')
-      console.log a
-      a        
-  ).property('organization.@each.incomingEmail')

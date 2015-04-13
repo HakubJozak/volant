@@ -5,6 +5,6 @@ class EmailContact < ActiveRecord::Base
 
   scope :outgoing, lambda { where(kind: 'OUTGOING') }
   scope :incoming, lambda { where(kind: 'INCOMING') }
-  scope :ltv, lambda { where(kind: 'LTV') }  
+  scope :ltv, lambda { where(kind: 'LTV') }
 
 end

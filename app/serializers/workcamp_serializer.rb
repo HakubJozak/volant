@@ -20,7 +20,8 @@ class WorkcampSerializer < ApplicationSerializer
       :asked_for_places, :asked_for_places_males, :asked_for_places_females,
       :free_places, :free_places_for_males, :free_places_for_females,
       :capacity, :capacity_natives, :capacity_teenagers, :capacity_males, :capacity_females,
-      :free_capacity, :free_capacity_males, :free_capacity_females
+      :free_capacity, :free_capacity_males, :free_capacity_females,
+      :all_organizations_emails, :all_applications_emails
 
 
 

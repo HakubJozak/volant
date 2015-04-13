@@ -179,10 +179,14 @@ class Workcamp < ActiveRecord::Base
     end
   end
 
-  def all_volunteers_emails
+  def all_applications_emails
+    ApplyForm.where(current_workcamp_id_cached: self.id).select(:email).map(&:email).join(', ')
   end
 
   def all_organizations_emails
+    orgs = ApplyForm.where(current_workcamp_id_cached: self.id).select(:organization_id).map(&:organization_id)
+    mails = EmailContact.incoming.where('organization_id in (?)',orgs).select(:address).map(&:address)
+    mails.join(', ')
   end
   
   public
