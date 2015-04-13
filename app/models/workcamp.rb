@@ -172,7 +172,11 @@ class Workcamp < ActiveRecord::Base
   include TaggableExtension
 
   def infosheet_all
-    # TODO
+    apply_forms.each do |form|
+      if form.current_workcamp == self && form.accepted?
+        form.infosheet
+      end
+    end
   end
   
   public
@@ -180,6 +184,7 @@ class Workcamp < ActiveRecord::Base
   def accepts_age?(age)
     (self.minimal_age <= age) and (self.maximal_age >= age)
   end
+  
 
   def capacity
     read_attribute(:capacity) || 0

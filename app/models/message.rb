@@ -22,17 +22,14 @@ class Message < ActiveRecord::Base
         mail.deliver
         self.sent_at = Time.now
 
-        if apply_form && ALLOWED_FORM_ACTIONS.include?(action_to_perform)
-          apply_form.send(action_to_perform)
-          apply_form.save(validate: false)
+        if apply_form
+          if ALLOWED_FORM_ACTIONS.include?(action_to_perform)
+            apply_form.send(action_to_perform).save(validate: false)
+          end
         end
 
-        if workcamp && action_to_perform == :infosheet_all
-          workcamp.apply_forms.each do |form|
-            if form.current_workcamp == workcamp && form.accepted?
-              form.infosheet
-            end
-          end
+        if action_to_perform == :infosheet_all
+          workcamp.try(:infosheet_all)
         end
 
         save!
