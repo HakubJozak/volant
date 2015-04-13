@@ -1,11 +1,5 @@
-each booking in arrangedContent
-  tr.apply-form
-    td
-      .btn.btn-default{ action 'removeBooking' booking }
-        ' {{fa 'minus'}}
-    td
-      ' {{fa 'bookmark'}}
-    td  
+each booking in bookings
+  tr
     td.gender
       = gender-sign booking.gender
     td
@@ -13,6 +7,3 @@ each booking in arrangedContent
     td
       link-to 'organization' booking.organization
         ' {{booking.organization.name}} Booking
-
-
-
