@@ -19,35 +19,4 @@ class Incoming::Workcamp < ::Workcamp
                         end
   end
 
-
-  # def free_places
-  #   capacity - participants.not_cancelled.count - bookings.count
-  # end
-
-  # def free_places_for_males
-  #   [ free_places, capacity_males - bookings.males.count - participants.males.not_cancelled.count ].min
-  # end
-
-  # def free_places_for_females
-  #   [ free_places, capacity_females - bookings.females.count - participants.females.not_cancelled.count ].min
-  # end
-
-  # return comma separated string listing nationalities which
-  # are not allowed for this workcamp any more
-  # def no_more_nationalities
-  #   nations = participants.not_cancelled.map { |p| p.nationality.to_s.downcase.strip }
-  #   nations.uniq.select { |x| nations.count(x) > 1}.map { |n| n.capitalize }
-  # end
-
-  protected
-
-  # avoid nils
-  [ '', '_males', '_females' ].each do |sufix|
-    attr = "capacity#{sufix}"
-    define_method(attr) do
-      read_attribute(attr) || read_attribute('capacity') || 0
-    end
-  end
-
-
 end

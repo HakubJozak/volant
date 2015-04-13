@@ -1,7 +1,14 @@
 namespace :incoming do
 
-  task all:  [ :participants, :apply_forms, :emails, :new_templates ] do
+  task all:  [ :participants, :apply_forms, :emails, :new_templates, :refresh_placement ] do
     puts 'Done.'
+  end
+
+  task refresh_placement: :environment do
+    Workcamp.year(2015).find_each do |wc|
+      wc.save(validate: false)
+      puts wc.name
+    end
   end
 
   desc 'Replaces {{volunteer.*}} by {{application.*}}'
