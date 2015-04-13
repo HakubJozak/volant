@@ -1,1 +1,4 @@
-render 'workcamp/apply_forms' applyForms
+table.table.table-condensed.sidepanel
+  tbody
+    render 'workcamp/apply_forms' applyForms
+    render 'workcamp/bookings' bookings

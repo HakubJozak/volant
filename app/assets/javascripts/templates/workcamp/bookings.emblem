@@ -1,0 +1,18 @@
+each booking in arrangedContent
+  tr.apply-form
+    td
+      .btn.btn-default{ action 'removeBooking' booking }
+        ' {{fa 'minus'}}
+    td
+      ' {{fa 'bookmark'}}
+    td  
+    td.gender
+      = gender-sign booking.gender
+    td
+      = flag booking.country
+    td
+      link-to 'organization' booking.organization
+        booking.organization.name
+
+
+

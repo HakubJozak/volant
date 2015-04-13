@@ -1,29 +1,27 @@
-table.table.table-condensed.sidepanel
-  tbody
-    each arrangedContent itemController='workcampApplyForm'
-      tr.apply-form
-        td
-          if workcampAssignment
-            .btn.btn-default{ action 'removeAssignment' workcampAssignment true bubbles='false'}
-              fa 'minus'
-          else
-            .btn.btn-default{ action 'createAssignment' workcamp this  true bubbles='false'}
-              fa 'plus'
-        td
-          if workcampAssignment
-            if isCurrent
-              apply-form-state-icon state
-            else
-              fa 'list-ol'
-              sub = workcampAssignment.order  
-        td
-          partial 'star'
-        td.gender
-          = gender-sign gender
-        td
-          = flag country
-        td
-          link-to 'apply_form' this
-            ' {{name}} ({{age}})
-          br
-            ' {{tag-list tags}}
+each arrangedContent itemController='workcampApplyForm'
+  tr.apply-form
+    td
+      if workcampAssignment
+        .btn.btn-default{ action 'removeAssignment' workcampAssignment true bubbles='false'}
+          fa 'minus'
+      else
+        .btn.btn-default{ action 'createAssignment' workcamp this  true bubbles='false'}
+          fa 'plus'
+    td
+      if workcampAssignment
+        if isCurrent
+          apply-form-state-icon state
+        else
+          fa 'list-ol'
+          sub = workcampAssignment.order  
+    td
+      partial 'star'
+    td.gender
+      = gender-sign gender
+    td
+      = flag country
+    td
+      link-to 'apply_form' this
+        ' {{name}} ({{age}})
+      br
+        ' {{tag-list tags}}

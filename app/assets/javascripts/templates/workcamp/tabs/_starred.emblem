@@ -1,1 +1,3 @@
-render 'workcamp/apply_forms' starredApplyForms
+table.table.table-condensed.sidepanel
+  tbody
+    render 'workcamp/apply_forms' starredApplyForms
