@@ -78,7 +78,7 @@ task :deploy => [ :environment ]do
 
     to :launch do
       if rails_env == 'staging'
-        invoke :'puma:start'
+        invoke :'puma:restart'
       else
         queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
         queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
