@@ -37,7 +37,7 @@ module Outgoing
       @paid = Factory.create(:paid_form)
       @paid.workcamps.clear
       ::Workcamp.limit(3).each_with_index do |wc,i|
-        @paid.workcamp_assignments << Outgoing::WorkcampAssignment.new( :order => i+1, :workcamp => wc )
+        @paid.workcamp_assignments << Outgoing::WorkcampAssignment.new(workcamp: wc)
       end
 
       @paid.reload
@@ -75,7 +75,7 @@ module Outgoing
     test "workcamp list" do
       @f = Factory.create(:paid_form)
       @f.workcamp_assignments.delete_all
-      5.times { |i| Factory.create(:workcamp_assignment, :order => i, :apply_form => @f) }
+      5.times { |i| Factory.create(:workcamp_assignment, apply_form: @f) }
       @f.reload
       assert_equal 5, @f.workcamps.size
       assert_not_empty @f.workcamps_list

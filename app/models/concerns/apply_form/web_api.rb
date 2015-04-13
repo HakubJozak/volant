@@ -35,7 +35,7 @@ module ApplyForm::WebApi
           form.save!
 
           workcamps.each_with_index do |wc,i|
-            form.workcamp_assignments.create!(workcamp: wc, order: i+1)
+            form.workcamp_assignments.create!(workcamp: wc)
           end
         end
       end

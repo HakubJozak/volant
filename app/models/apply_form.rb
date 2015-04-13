@@ -62,13 +62,6 @@ class ApplyForm < ActiveRecord::Base
   def assign_workcamp(wc)
     # don't do anything if it is already assigned
     return self if workcamp_assignments.any? { |wa| wa.workcamp == wc }
-
-    # order = if workcamp_assignments.empty?
-    #           1
-    #         else
-    #           workcamp_assignments.last.order + 1
-    #         end
-
     wa = workcamp_assignments.create!(apply_form: self, workcamp: wc)
     self.reload
     wa
