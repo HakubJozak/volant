@@ -13,7 +13,7 @@ namespace :adhoc do
           end
         end
 
-n        tmpl.save(validate: false)
+        tmpl.save(validate: false)
       end
     end
 

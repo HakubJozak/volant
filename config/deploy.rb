@@ -108,3 +108,17 @@ end
 # Stopping
 # cd /etc/apache2/
 # ln -s sites-available/volant sites-enabled/001-volant
+
+namespace :log do
+  task :app do
+    queue! "tail -f #{deploy_to}/#{shared_path}/log/#{rails_env}.log"    
+  end
+  
+  task :unicorn do
+    queue! "tail -f #{deploy_to}/#{shared_path}/log/unicorn.log"
+  end
+
+  task :nginx do
+    queue! "sudo tail -f /var/log/nginx/#{appname}-error.log"    
+  end  
+end
