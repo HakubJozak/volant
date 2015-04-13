@@ -5,6 +5,7 @@ class WorkcampSerializer < ApplicationSerializer
   has_many :workcamp_intentions, embed: :ids, include: true, serializer: WorkcampIntentionSerializer
   has_many :workcamp_assignments, embed: :ids, include: false
   has_many :import_changes, embed: :ids, include: true
+  has_many :bookings, embed: :ids, include: true
 
   attributes :apply_form_ids
 

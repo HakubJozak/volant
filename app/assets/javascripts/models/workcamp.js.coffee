@@ -9,6 +9,7 @@ Volant.Workcamp = DS.Model.extend
   workcampAssignments: DS.hasMany('workcamp_assignment',async: true)
   import_changes: DS.hasMany('import_change')
   applyForms: DS.hasMany('apply_form',async: true,inverse: 'workcamps')
+  bookings: DS.hasMany('booking')
 
   allOrganizationsEmails: DS.attr 'string'
   allApplicationsEmails: DS.attr 'string'  

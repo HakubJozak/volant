@@ -47,6 +47,7 @@ namespace :incoming do
   desc 'Converts all Participants into Incoming::ApplyForm and assignments'
   task participants: :environment do
     Incoming::Participant.find_each do |p|
+      form.fee = 0
       form = p.apply_form
       form.country = p.country
       form.organization = p.organization
