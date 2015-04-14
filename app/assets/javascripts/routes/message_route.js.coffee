@@ -17,15 +17,15 @@ Volant.MessageRoute = Volant.BaseRoute.extend
 
   setupController: (controller,message) ->
     data =
-      templates: @store.find('email_template')   
+      templates: @store.find('email_template')
       applyForm: message.get('applyForm')
       workcamp: message.get('applyForm.currentWorkcamp')
 
     Ember.RSVP.hash(data).then (r) =>
       name = @_templateNameFor(message, r.applForm)
       tmpl = r.templates.findBy('action',name)
-      workcamp = message.get('workcamp') || r.workcamp  
-      
+      workcamp = message.get('workcamp') || r.workcamp
+
       @controllerFor('email_templates').set('content',r.templates)
       controller.set('selectedTemplate',tmpl)
 
@@ -35,25 +35,29 @@ Volant.MessageRoute = Volant.BaseRoute.extend
     @_super(controller,message)
 
   applyTemplate: (tmpl,message,applyForm,workcamp) ->
+    evalError = (e) =>
+      console.error(e)
+      @flash_error(e)
+
     context = @_message_context(message,applyForm,workcamp)
-    message.set 'subject', tmpl.eval_field('subject',context, @_evalError)
-    message.set 'html_body', tmpl.eval_field('body',context, @_evalError)
-    message.set 'from', tmpl.eval_field('from',context, @_evalError)
-    message.set 'to', tmpl.eval_field('to',context, @_evalError)
-    message.set 'cc', tmpl.eval_field('cc',context, @_evalError)
-    message.set 'bcc', tmpl.eval_field('bcc',context, @_evalError)
+    message.set 'subject', tmpl.eval_field('subject',context, evalError)
+    message.set 'html_body', tmpl.eval_field('body',context, evalError)
+    message.set 'from', tmpl.eval_field('from',context, evalError)
+    message.set 'to', tmpl.eval_field('to',context, evalError)
+    message.set 'cc', tmpl.eval_field('cc',context, evalError)
+    message.set 'bcc', tmpl.eval_field('bcc',context, evalError)
 
   _templateNameFor: (message,form) ->
     action = message.get('action')
-    resource = form || message.get('workcamp')    
-    return action unless resource    
+    resource = form || message.get('workcamp')
+    return action unless resource
 
     type = resource.get('type')
 
     if type == 'outgoing'
       action
     else
-      "#{type}/#{action}"            
+      "#{type}/#{action}"
 
   _message_context: (message,applyForm,workcamp) ->
     context = {}
@@ -79,14 +83,8 @@ Volant.MessageRoute = Volant.BaseRoute.extend
       if org = workcamp.get('organization')
         context.organization = org.for_email()
 
-    console.debug 'Message context:',context  
-    context  
-
-
-  _evalError: ->
-    error = (e) =>
-      console.error e
-      @flash_error e
+    console.debug 'Message context:',context
+    context
 
   actions:
     useTemplate: (tmpl) ->
