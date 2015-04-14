@@ -7,6 +7,6 @@ class SanitizeEmailInterceptor
   end
 end
 
-if Rails.env.staging?
+if Rails.env.staging? or Rails.env.development?
   ActionMailer::Base.register_interceptor(SanitizeEmailInterceptor)
 end

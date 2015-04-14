@@ -17,5 +17,5 @@ form.navbar-form.navbar-left
 
 form.navbar-form.navbar-right
   .form-group
-    button.btn.btn-danger.navbar-btn{ action 'confirmedRemove' this }
+    button.btn.btn-danger.navbar-btn{ action 'remove' this }
       ' {{fa 'trash'}} Delete

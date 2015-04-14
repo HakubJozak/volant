@@ -98,33 +98,22 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
        )
       false
 
-    # remove: (record) ->
-    #   record ||= @currentModel
-    #   if record.get('isNew')
-    #     record.deleteRecord()
-    #   else
-    #     record.destroyRecord().then ( (record) =>
-    #       @afterRemove(record)
-    #       ), ( (e) =>
-    #        console.error e
-    #        @flash_error "Failed."
-    #       )
-    #   false
-
-    removal = (record) ->
-      return unless confirm("Do you really want to delete '#{record.get('name')}'?")
-      record.destroyRecord().then (=>
+    remove: (record) ->
+      record ||= @currentModel
+      return false unless confirm("Do you really want to delete '#{record.get('name')}'?")
+      
+      if record.get('isNew')
+        record.deleteRecord()
         @afterRemove(record)
-        @flash_info 'Deleted.'
-      ), ( (e) =>
-        console.error e
-        @flash_error "Failed."
-      )
+      else
+        record.destroyRecord().then ( (record) =>
+          @afterRemove(record)
+          ), ( (e) =>
+           console.error e
+           @flash_error "Failed."
+          )
       false
 
-    confirmedRemove: removal
-    # legacy fallback    
-    remove: removal
 
     rollback: ->
       @currentModel.get('errors').clear()
@@ -137,7 +126,7 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
     @go_to_plural_route(record)
 
   afterRemove: (record) ->
-    @go_to_plural_route()
+    @go_to_plural_route(record)
     @flash_info 'Deleted.'
 
   afterSave: (record) ->

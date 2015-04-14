@@ -89,5 +89,5 @@ table.table.table-striped.table-hover#apply-forms-list
               | No workcamps assigned.
 
         td
-          button.btn.btn-default.remove-button{ action 'confirmedRemove' this }
+          button.btn.btn-default.remove-button{ action 'remove' this }
             fa 'trash-o'

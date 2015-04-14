@@ -39,7 +39,7 @@
               ' {{fa 'plus'}} Booking
 
     .col-md-3
-      button.btn.btn-default.remove-button{ action 'confirmedRemove' this }
+      button.btn.btn-default.remove-button{ action 'remove' this }
         fa 'trash-o'
       table.table-condensed    
         tbody
