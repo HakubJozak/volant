@@ -90,12 +90,12 @@ namespace :db do
   private
 
   def only_in_development!
-    unless Rails.env == 'development'
-      puts('Available only in development')
-      exit
-    else
+    if Rails.env.development?
       require 'ruby-progressbar'
       require 'faker'
+    else
+      puts('Available only in development')
+      exit
     end
   end
 
