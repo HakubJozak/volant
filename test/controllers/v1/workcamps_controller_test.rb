@@ -124,9 +124,13 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
 
   test 'similar' do
     dummy = Factory(:outgoing_workcamp, country: countries(:IT))
+    full = Factory(:outgoing_workcamp, places: 0)    
     target = Factory(:outgoing_workcamp)
-    @workcamp.intentions.each { |i| target.intentions << i }
-    target.save
+
+    @workcamp.intentions.each { |i|
+      full.intentions << i
+      wc.intentions << i
+    }
 
     get :similar, id: @workcamp.id
 
