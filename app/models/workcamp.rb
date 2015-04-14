@@ -25,17 +25,12 @@ class Workcamp < ActiveRecord::Base
 
   scope :free, -> (at_least = 1) {
     where("free_places >= ?",at_least)
-  }
-  
+  } 
 
   scope :year, lambda { |year|
     year = year.to_i
     where '(extract(YEAR from workcamps.begin) = ? OR extract(YEAR FROM workcamps.end) = ?)', year,year
   }
-
-  scope :free, -> (at_least = 1) {
-    where("free_places >= ?",at_least)
-  }  
 
   DURATION_SQL = '(EXTRACT(epoch FROM age("end","begin"))/(3600 * 24) + 1)'
 
