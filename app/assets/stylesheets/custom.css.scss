@@ -353,6 +353,10 @@ table#apply-forms-list {
   color: white;
 }
 
-h4.free-places {
-  display: inline;
+.free-places {
+ h4 { display: inline; }
+}
+
+.btn-group.workcamp-actions {
+  margin-top: 5px;
 }

@@ -23,10 +23,21 @@
         tag-list tags
         partial 'workcamp/extra_fee'
     .col-md-2
-      h4.list-group-item-heading.free-places
-        ' {{partial 'free_places'}}
-      a.btn.btn-sm.btn-default href=createApplyFormUrl
-        ' {{fa 'plus'}}
+      .btn-group.workcamp-actions
+        a.btn-default.btn.free-places href=createApplyFormUrl
+          h4
+            ' {{partial 'free_places'}}
+
+        button.btn.btn-default.btn-sm.dropdown-toggle type='button' data-toggle='dropdown'
+          span.caret
+        ul.dropdown-menu
+          li
+            a href=createApplyFormUrl
+              ' {{fa 'plus'}} Application
+          li
+            a href=createApplyFormUrl
+              ' {{fa 'plus'}} Booking
+
     .col-md-3
       button.btn.btn-default.remove-button{ action 'confirmedRemove' this }
         fa 'trash-o'
