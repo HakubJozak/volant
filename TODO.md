@@ -1,3 +1,7 @@
+- Expiration date for booking
+
+------------------------------
+
 # Bugy
  - [x] email 'ask' nema seznam workcampu
  - [x] ve Volantu se neda vytvorit nova prihlaska
