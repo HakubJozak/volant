@@ -8,4 +8,3 @@ Ember.Handlebars.helper 'workcamp-state-icon', (state) ->
            when "cancelled" then 'times-circle-o'
            else ''
   new Handlebars.SafeString "<i title='#{state}' class='fa fa-#{name} #{state}'></i>"
-

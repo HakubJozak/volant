@@ -11,6 +11,11 @@ namespace :incoming do
     end
   end
 
+  task outgoing: :environment do
+    inex = Organization.find_by_code('SDA')
+    Outgoing::ApplyForm.update_all(country_id: inex.country, organization_id: inex)
+  end
+
   desc 'Replaces {{volunteer.*}} by {{application.*}}'
   task emails: :environment do
     EmailTemplate.find_each do |tmpl|
