@@ -82,7 +82,7 @@ class V1::WorkcampsController < V1::BaseController
   end
 
   def similar
-    search = workcamps.similar_to(@workcamp).limit(10)
+    search = workcamps.similar_to(@workcamp).free.limit(10)
     search = add_year_scope(search)
     search = search.includes(:country,:organization,:tags,:intentions)
     render json: search, each_serializer: V1::WorkcampSerializer

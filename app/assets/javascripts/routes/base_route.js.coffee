@@ -98,20 +98,20 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
        )
       false
 
-    remove: (record) ->
-      record ||= @currentModel
-      if record.get('isNew')
-        record.deleteRecord()
-      else
-        record.destroyRecord().then ( (record) =>
-          @afterRemove(record)
-          ), ( (e) =>
-           console.error e
-           @flash_error "Failed."
-          )
-      false
+    # remove: (record) ->
+    #   record ||= @currentModel
+    #   if record.get('isNew')
+    #     record.deleteRecord()
+    #   else
+    #     record.destroyRecord().then ( (record) =>
+    #       @afterRemove(record)
+    #       ), ( (e) =>
+    #        console.error e
+    #        @flash_error "Failed."
+    #       )
+    #   false
 
-    confirmedRemove: (record) ->
+    removal = (record) ->
       return unless confirm("Do you really want to delete '#{record.get('name')}'?")
       record.destroyRecord().then (=>
         @afterRemove(record)
@@ -121,6 +121,10 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
         @flash_error "Failed."
       )
       false
+
+    confirmedRemove: removal
+    # legacy fallback    
+    remove: removal
 
     rollback: ->
       @currentModel.get('errors').clear()
