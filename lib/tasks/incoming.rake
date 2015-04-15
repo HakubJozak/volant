@@ -63,6 +63,7 @@ namespace :incoming do
       form = p.apply_form
       form.country = p.country
       form.organization = p.organization
+      form.tag_list = p.tag_list
 
       if p.workcamp
         form.workcamp_assignments.create!(workcamp: p.workcamp, accepted: form.created_at)
