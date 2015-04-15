@@ -8,11 +8,11 @@ Ember.Handlebars.helper 'flag', (country) ->
   code = country.get('code').toUpperCase()
   name = country.get('name')
   url = window.image_path("flags-iso/flat/32/#{code}.png")
-  new Handlebars.SafeString "<img class='flag small-flag' src='#{url}' alt='#{name}' />"
+  new Handlebars.SafeString "<img class='flag small-flag' src='#{url}' alt='#{name}' title='#{name}'/>"
 
 Ember.Handlebars.helper 'small-flag', (country) ->
   return unless country
   code = country.get('code').toUpperCase()
   name = country.get('name')
   url = window.image_path("flags-iso/flat/24/#{code}.png")
-  new Handlebars.SafeString "<img class='flag' src='#{url}' alt='#{name}' />"
+  new Handlebars.SafeString "<img class='flag' src='#{url}' alt='#{name}' title='#{name}' />"
