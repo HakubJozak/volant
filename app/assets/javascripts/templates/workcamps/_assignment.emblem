@@ -1,7 +1,19 @@
-td
-  small-flag wa.applyForm.country
-td
-  = link-to 'apply_form' wa.applyForm
-    ' {{wa.applyForm.name}} ({{wa.applyForm.age}})
-  each wa.applyForm.tags
-    tag this
+tr
+  td
+    = stuff
+    if wa.isActive
+      | {{apply-form-state-icon wa.applyForm.state}}
+      sub = wa.position
+    else
+      | {{fa 'list-ol'}}
+      = workcamp-assignment-position-info wa wa.applyForm.currentAssignment.position
+
+  td
+    small-flag wa.applyForm.country
+  td
+    = gender-sign wa.applyForm.gender
+  td
+    = link-to 'apply_form' wa.applyForm
+      ' {{wa.applyForm.name}} ({{wa.applyForm.age}})
+    each wa.applyForm.tags
+      tag this

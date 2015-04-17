@@ -1,22 +1,7 @@
-each wa in activeAssignments
-  tr
-    td
-      | {{apply-form-state-icon wa.applyForm.state}}
-      sub = wa.position
-    = partial 'workcamps/assignment'    
+each wa in activeAssignments 
+  = partial 'workcamps/assignment'
 
-if idleAssignments    
+if idleAssignments
   if showIdleAssignments
     each wa in idleAssignments
-      tr
-        td
-          | {{fa 'list-ol'}}
-          = workcamp-assignment-position-info wa wa.applyForm.currentAssignment.position
-        = partial 'workcamps/assignment'
-  tr
-    td colspan='3'
-      button.btn.btn-default.btn-sm{ action 'toggle' 'showIdleAssignments'}
-        if showIdleAssignments
-          ' {{fa 'chevron-up'}} Hide {{idleAssignments.length}} idle
-        else  
-          ' {{fa 'chevron-right'}} Show {{idleAssignments.length}} idle
+      = partial 'workcamps/assignment'

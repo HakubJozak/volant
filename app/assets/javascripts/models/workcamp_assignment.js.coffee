@@ -9,6 +9,14 @@ Volant.WorkcampAssignment = DS.Model.extend
   asked: DS.attr 'isodate'
   infosheeted: DS.attr 'isodate'
 
-  # legacy naming fallback      
+  isActive: (->
+    @get('id') == @get('applyForm.currentAssignment.id')    
+  ).property('id','applyForm.currentAssignment.id')
+  
+  # legacy naming fallback
   order: Ember.computed.alias('position')
   apply_form: Ember.computed.alias('applyForm')
+
+
+
+

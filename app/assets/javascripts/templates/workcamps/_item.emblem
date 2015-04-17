@@ -45,3 +45,10 @@
         tbody
           partial 'workcamps/assignments'
           partial 'workcamps/bookings'
+          tr
+            td colspan='4'
+              button.btn.btn-default.btn-sm{ action 'toggle' 'showIdleAssignments'}
+                if showIdleAssignments
+                  ' {{fa 'chevron-up'}} Hide {{idleAssignments.length}} idle
+                else
+                  ' {{fa 'chevron-right'}} Show {{idleAssignments.length}} idle

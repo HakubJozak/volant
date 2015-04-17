@@ -1,4 +1,4 @@
-Volant.WorkcampAssignmentController = Ember.ObjectController.extend({
+Volant.WorkcampAssignmentController = Ember.ObjectController.extend
   needs: 'apply_form'
   apply_form: Ember.computed.alias 'controllers.apply_form'
 
@@ -35,4 +35,3 @@ Volant.WorkcampAssignmentController = Ember.ObjectController.extend({
       @get('model').destroyRecord()
       false
 
-})
