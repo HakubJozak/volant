@@ -2,6 +2,8 @@ module FreePlacesUpdater
   extend ActiveSupport::Concern
 
   def update_free_places
+    puts self.class
+
     if self.respond_to?(:workcamps)
       self.workcamps.reload.each { |wc| wc.save(validate: false) }
     elsif self.respond_to?(:workcamp)
@@ -32,6 +34,14 @@ module FreePlacesUpdater
           capacity += 1 if wa.accepted
           accepted += 1 if wa.accepted
           asked += 1 if wa.state == :asked
+        end
+      end
+
+      wc.bookings.each do |booking|
+        puts 'boooking'
+        if booking.send(condition)
+          puts 'booking'
+          capacity += 1
         end
       end
 

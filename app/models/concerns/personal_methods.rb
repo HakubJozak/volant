@@ -34,7 +34,7 @@ module PersonalMethods
   end
 
   def female?
-    not male?
+    gender == Person::FEMALE
   end
 
   # http://www.jonathansng.com/ruby-on-rails/calculate-age-in-rails-with-a-birthday/

@@ -22,8 +22,8 @@ class FreePlacesUpdaterTest < ActiveSupport::TestCase
 
 
   test "accepted" do
-    male = @wc.workcamp_assignments.create(apply_form: @ma, order: 1)
-    female = @wc.workcamp_assignments.create(apply_form: @fa, order: 1)
+    male = @wc.workcamp_assignments.create(apply_form: @ma)
+    female = @wc.workcamp_assignments.create(apply_form: @fa)
 
     male.reject(2.days.ago)
     female.accept
@@ -34,8 +34,8 @@ class FreePlacesUpdaterTest < ActiveSupport::TestCase
   end
 
   test "free_places_for_males" do
-    male = @wc.workcamp_assignments.create(apply_form: @ma, order: 1)
-    female = @wc.workcamp_assignments.create(apply_form: @fa, order: 1)
+    male = @wc.workcamp_assignments.create(apply_form: @ma)
+    female = @wc.workcamp_assignments.create(apply_form: @fa)
 
     @wc.places = 3
     @wc.places_for_males = 2
@@ -49,16 +49,16 @@ class FreePlacesUpdaterTest < ActiveSupport::TestCase
   end
 
   test "free_places_for_females" do
-    male = @wc.workcamp_assignments.create(apply_form: @ma, order: 1)
-    female = @wc.workcamp_assignments.create(apply_form: @fa, order: 1)
+    male = @wc.workcamp_assignments.create(apply_form: @ma)
+    female = @wc.workcamp_assignments.create(apply_form: @fa)
 
     @wc.workcamp_assignments[1].accept
     assert_equal 1, @wc.reload.free_places_for_females
   end
 
   test "be careful with cancelled apply forms" do
-    male = @wc.workcamp_assignments.create(apply_form: @ma, order: 1)
-    female = @wc.workcamp_assignments.create(apply_form: @fa, order: 1)
+    male = @wc.workcamp_assignments.create(apply_form: @ma)
+    female = @wc.workcamp_assignments.create(apply_form: @fa)
 
     male.accept
     assert_equal 1, @wc.reload.free_places
@@ -67,8 +67,8 @@ class FreePlacesUpdaterTest < ActiveSupport::TestCase
   end
 
   test "correctly count asked_for places" do
-    male = @wc.workcamp_assignments.create(apply_form: @ma, order: 1)
-    female = @wc.workcamp_assignments.create(apply_form: @fa, order: 1)
+    male = @wc.workcamp_assignments.create(apply_form: @ma)
+    female = @wc.workcamp_assignments.create(apply_form: @fa)
 
     male.ask(1.day.ago)
     @wc.reload
@@ -83,13 +83,16 @@ class FreePlacesUpdaterTest < ActiveSupport::TestCase
     @wc.update_attributes(capacity: 6, capacity_males: 4, capacity_females: 2)
     assign_and_accept(@wc,:incoming_female_form)
     assign_and_accept(@wc,:incoming_male_form)
+    @wc.bookings.create! country: Factory(:country),gender: 'm'
 
     @wc.reload
 
+    binding.pry
+
     assert_equal 2, @wc.free_places
     assert_equal 6, @wc.capacity
-    assert_equal 4, @wc.free_capacity
-    assert_equal 3, @wc.free_capacity_males
+    assert_equal 3, @wc.free_capacity
+    assert_equal 2, @wc.free_capacity_males
     assert_equal 1, @wc.free_capacity_females
   end
 
@@ -114,6 +117,10 @@ class FreePlacesUpdaterTest < ActiveSupport::TestCase
   private
 
   def assign_and_accept(wc,type)
-    wc.workcamp_assignments.create!(apply_form: Factory(type), order: 1).accept(1.day.ago)
+    wc.workcamp_assignments.create!(apply_form: Factory(type)).accept(1.day.ago)
+  end
+
+  def booking(wc,opts)
+
   end
 end
