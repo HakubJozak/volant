@@ -5,9 +5,9 @@ Volant.LittleWorkcampController = Ember.ObjectController.extend Volant.ToggleMix
   showIdle: false
   showBookings: false  
 
-  showActive: (->
-    @get('workcamps.showActive')
-  ).property('workcamps.showActive')
+  showActive: (->  @get('workcamps.showActive') ).property('workcamps.showActive')
+  showIdle: (->  @get('workcamps.showIdle') ).property('workcamps.showIdle')
+  showBooking: (->  @get('workcamps.showBooking') ).property('workcamps.showBooking')    
 
   createApplyFormUrl: (->
     id = @get('id')

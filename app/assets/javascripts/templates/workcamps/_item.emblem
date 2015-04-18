@@ -43,11 +43,33 @@
         tbody
           if activeAssignments
             if showActive
-              each wa in activeAssignments 
+              each wa in activeAssignments
                 = partial 'workcamps/assignment'
             else
               tr
                 td colspan='5'
-                  ' Active ({{activeAssignments.length}})
+                  view 'toggle' property='showActive'
+                    ' Active ({{activeAssignments.length}})
+
+          if bookings
+            if showBooking
+              each wa in bookings
+                = partial 'workcamps/booking'
+            else
+              tr
+                td colspan='5'
+                  view 'toggle' property='showBooking'
+                    ' Bookings ({{bookings.length}})
+
+          if idleAssignments
+            if showIdle
+              each wa in idleAssignments
+                = partial 'workcamps/assignment'
+            else
+              tr
+                td colspan='5'
+                  view 'toggle' property='showIdle'
+                    ' Idle ({{idleAssignments.length}})
+
 
   

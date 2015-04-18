@@ -4,17 +4,18 @@ p.navbar-left.navbar-text
 
 form.navbar-form.navbar-left
   .form-group
-    view 'toggle' property='editingVisible'  
-      ' {{fa 'pencil-square-o'}}
+    .btn-group
+      view 'toggle' property='editingVisible'
+        ' {{fa 'pencil-square-o'}}
 
-    view 'toggle' property='showActive'  
-      ' Active
+      view 'toggle' property='showActive'  
+        ' Active
 
-    view 'toggle' property='showIdle'  
-      ' Idle
+      view 'toggle' property='showIdle'  
+        ' Idle
 
-    view 'toggle' property='showBookings'  
-      ' Bookings
+      view 'toggle' property='showBookings'  
+        ' Bookings
 
 
     if editingVisible    
