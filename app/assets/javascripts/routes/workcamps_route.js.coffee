@@ -53,15 +53,28 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend
 
       form = @store.createRecord 'apply_form',attrs
       # @transitionTo 'new_apply_form',{ type: 'incoming', queryParams: { fee: 333 } }
-      @transitionTo '/apply_forms/incoming/new?fee=333'  
+      @transitionTo '/apply_forms/incoming/new?fee=333'
       false
 
+    rollback: ->
+      @set 'editingVisible',false
+      for wc in @currentModel.filterBy('isDirty',true)
+        wc.rollback()
+      @flash_info 'All workcamps reverted.'  
+ 
     save: ->
-      @flash_info('Saving...')
-      for wc in @modelFor('workcamps').filterBy('isDirty',true)
-        wc.save().then (=>
-          @flash_info("Saved #{wc.get('code')}.")), =>
-          @flash_error('Failed.')
+      @set 'editingVisible',false
+      msg = 'Saving...'
+      promises = @currentModel.filterBy('isDirty',true).map -> wc.save()
+      @flash_info(msg)  
+
+      Ember.RSVP.all.then (results) =>
+        for r in results
+          if r.state == 'fullfilled'
+            workcamp = r.value      
+            msg += "#{workcamp.get('code')} saved."
+          else
+            msg += "#{workcamp.get('code')} failed."
       false
 
     yearChanged: ->

@@ -3,20 +3,13 @@ form.form.form-horizontal.form-search submit='search' role='form'
     .col-md-1
       label.control-label
         | Search
-    .col-md-8
+    .col-md-7
       partial 'query'
-    .col-md-3.pull-right
-      if isDirty
-        button.btn.btn-danger type='button' click='save'
-          | Save All
-
-      button.btn.btn-default{ action 'toggle' 'editing_visible'} type='button'
-        fa 'pencil-square-o'
-      '
-      button.btn.btn-default{ action 'toggle' 'filter_visible'} type='button'
-        | Filter
-      '
-      .btn-group
+    .col-md-1
+      button.btn.btn-default.btn-block{ action 'toggle' 'filterVisible'} type='button'
+        ' {{fa 'filter'}} Filter
+    .col-md-2
+      .btn-group.btn-block
         link-to 'new_workcamp' newWorkcampType class='btn btn-success'
           | Create #{capitalize newWorkcampType}
         button.btn.btn-success.dropdown-toggle type="button" data-toggle="dropdown" aria-expanded="false"
@@ -27,7 +20,7 @@ form.form.form-horizontal.form-search submit='search' role='form'
           li
             link-to 'Import' 'imported_workcamps'
 
-  if filter_visible
+  if filterVisible
     partial 'workcamps/filter'
 
   .form-group

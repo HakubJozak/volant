@@ -8,5 +8,3 @@
      ' {{workcampToAssign.computedOrSetDuration}} days,
      ' {{age-range workcampToAssign }}, {{join workcampToAssign.workcamp_intentions 'code'}}
      ' {{tag-list workcampToAssign.tags}}
-
-

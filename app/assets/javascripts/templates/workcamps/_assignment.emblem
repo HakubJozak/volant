@@ -1,6 +1,5 @@
 tr
   td
-    = stuff
     if wa.isActive
       | {{apply-form-state-icon wa.applyForm.state}}
       sub = wa.position

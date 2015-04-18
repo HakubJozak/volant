@@ -1,7 +1,8 @@
 Ember.Handlebars.helper 'gender-sign', (gender) ->
-  if gender == 'f'
-    '♀'
-  else if gender == 'm'
-    '♂'
-  else
-    ''
+  text = if gender == 'f'
+           "<span title='Female'>♀</span>"
+         else if gender == 'm'
+           "<span title='Male'>♂</span>"
+         else
+           ''
+  new Handlebars.SafeString(text)

@@ -55,8 +55,8 @@ Volant.WorkcampsController = Volant.ListController.extend Volant.ToggleMixin,
       wc.get('isDirty')
   ).property('@each.isDirty')
 
-  filter_visible: false
-  editing_visible: false
+  filterVisible: false
+  editingVisible: false
 
   actions:
     filterOrganizationsByCountry: (country) ->

@@ -2,4 +2,15 @@ p.navbar-left.navbar-text
   a.navbar-link href=csvDownloadUrl
     ' {{fa 'download'}} CSV
 
+form.navbar-form.navbar-left
+  .form-group
+  if editingVisible    
+    button.btn.btn-success type='button' click='save' title='Save All'
+      ' Save
+    button.btn.btn-default type='button' click='rollback' title='Revert All'
+      ' Revert
+  else
+    button.btn.btn-default{ action 'toggle' 'editingVisible'} type='button'
+      ' {{fa 'pencil-square-o'}} Edit
+
 = render 'pagination'
