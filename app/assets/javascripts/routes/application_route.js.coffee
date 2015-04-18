@@ -3,7 +3,7 @@ Volant.ApplicationRoute = Ember.Route.extend
 
   setupController: (controller) ->
     @_super.call(arguments)    
-    if m = $.cookie('volant-mode')
+    if m = Volant.settings.mode
       controller.set('mode',m)
 
   actions:

@@ -3,6 +3,7 @@ Volant.PerPageSelectView = Ember.Select.extend
   classNames: ["form-control"]
 
   change: ->
+    Volant.saveSettings 'perPage',@get('value')
     @get('controller').send('search')
-    false
+    true
 

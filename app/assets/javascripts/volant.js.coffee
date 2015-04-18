@@ -55,6 +55,9 @@
 
 moment.locale('en-au')
 
+
+          
+
 Ember.Application.initializer
   name: 'setCurrentUser'
   after: "store"
@@ -82,3 +85,23 @@ Ember.Application.initializer
       # container.injection('controller', 'current_user', 'controller:currentUser')
 
 window.Volant = Ember.Application.create()
+
+window.Volant.saveSettings = (name,value) ->
+  Volant.settings[name] = value
+  console.log 'Saving settings: ', name,value
+  json = JSON.stringify(Volant.settings)
+  $.cookie('volant-settings',json)
+
+# load settings
+if s = $.cookie('volant-settings')
+  Volant.settings = JSON.parse(s)
+  console.log 'Settings loaded'
+else
+  console.log 'Using default default settings'
+  Volant.settings = {
+    mode: 'outgoing'
+    perPage: 15
+  }
+
+console.log Volant.settings
+

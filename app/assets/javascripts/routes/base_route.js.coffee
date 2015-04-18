@@ -72,7 +72,7 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash, Vol
               when 'incoming' then 'incoming_workcamps'
               when 'ltv' then 'ltv_workcamps'
               else 'index'
-      $.cookie('volant-mode',mode)
+      Volant.saveSettings('mode',mode)
       @transitionTo(route)
       false
 
