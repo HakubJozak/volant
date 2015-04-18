@@ -29,9 +29,4 @@ form.form.form-horizontal.form-search submit='search' role='form'
 if editingVisible
   = partial 'workcamps/editor'
 else
-  .row
-    .col-md-12
-      #workcamps-list.list-group
-        each arrangedContent itemController='littleWorkcamp'
-          partial 'workcamps/item'
-
+  = partial 'workcamps/_list'

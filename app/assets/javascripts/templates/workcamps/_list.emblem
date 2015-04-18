@@ -1,0 +1,41 @@
+table.table.table-condensed
+  tbody
+    each arrangedContent itemController='littleWorkcamp'
+      tr
+        td
+          = partial 'star'
+        td  
+          = small-flag country
+        td  
+          format-date from
+          br  
+          format-date to
+        td    
+          link-to 'workcamp' this
+            ' {{code}} &ndash; {{name}}
+          small
+            ' {{computedOrSetDuration}}&nbsp;days
+          br  
+            ' {{age-range this }}, {{join workcamp_intentions 'code'}}
+            ' {{tag-list tags}}
+          partial 'workcamp/extra_fee'
+        td    
+          .btn-group.workcamp-actions
+            view 'placement_info' workcamp=this
+
+            button.btn.btn-default.btn-sm.dropdown-toggle type='button' data-toggle='dropdown'
+              span.caret
+            ul.dropdown-menu
+              li
+                a href=createApplyFormUrl
+                  ' {{fa 'plus'}} Application
+              li
+                a href=createApplyFormUrl
+                  ' {{fa 'plus'}} Booking
+
+        td
+          = partial 'workcamps/placement'
+
+        td          
+          button.btn.btn-default.remove-button{ action 'remove' this }
+            = fa 'trash-o'
