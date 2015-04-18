@@ -1,0 +1,12 @@
+tr
+  td
+    if booking.expiresAt
+      span title="Expires {{from-now booking.expiresAt}}"
+        ' {{format-date booking.expiresAt}}
+  td
+    = flag booking.country
+  td.gender
+    = gender-sign booking.gender
+  td
+    link-to 'organization' booking.organization
+      ' {{booking.organization.name}} Booking

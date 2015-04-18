@@ -4,8 +4,19 @@ p.navbar-left.navbar-text
 
 form.navbar-form.navbar-left
   .form-group
-    button.btn.btn-default{ action 'toggle' 'editingVisible'} type='button'
+    view 'toggle' property='editingVisible'  
       ' {{fa 'pencil-square-o'}}
+
+    view 'toggle' property='showActive'  
+      ' Active
+
+    view 'toggle' property='showIdle'  
+      ' Idle
+
+    view 'toggle' property='showBookings'  
+      ' Bookings
+
+
     if editingVisible    
       button.btn.btn-success type='button' click='save' title='Save All'
         ' Save All

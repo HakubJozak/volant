@@ -1,7 +1,1 @@
-each wa in activeAssignments 
-  = partial 'workcamps/assignment'
 
-if idleAssignments
-  if showIdleAssignments
-    each wa in idleAssignments
-      = partial 'workcamps/assignment'
