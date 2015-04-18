@@ -64,7 +64,6 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend
       @flash_info 'All workcamps reverted.'  
  
     save: ->
-      @controllerFor(@routeName).set 'editingVisible',false
       msg = 'Saving...'
       promises = @currentModel.filterBy('isDirty',true).map (wc) -> wc.save()
       @flash_info(msg)  
