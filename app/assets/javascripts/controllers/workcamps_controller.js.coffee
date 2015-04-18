@@ -69,7 +69,7 @@ Volant.WorkcampsController = Volant.ListController.extend Volant.ToggleMixin,
         @get('controllers.organizationsSelect').set('content', all)
       false
 
-    reset: ->
+     reset: ->
       # TODO: dry by getting the default values
       @set('query','')
       @set('page',1)

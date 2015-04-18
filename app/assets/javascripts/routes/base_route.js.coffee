@@ -1,4 +1,4 @@
-Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
+Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash, Volant.SavingMixin,
 
   renderTemplate: ->
     @_super()
@@ -6,7 +6,7 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
     if tmpl = @get('toolbar')
       @render(tmpl,outlet: 'footer',into: 'application')
     else if @_paginationData()
-      @render('pagination',outlet: 'footer',into: 'application',controller: 'pagination')  
+      @render('pagination',outlet: 'footer',into: 'application',controller: 'pagination')
     else if @currentModel.save? and @currentModel.constructor != DS.RecordArray
       @render('toolbars/record_actions',outlet: 'footer',into: 'application')
     else
@@ -41,7 +41,7 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
       @ajax_to_store('/stars',data).then (payload) =>
         console.log 'Starred'
       false
-      
+
     createAssignment: (wc,form) ->
       order = form.get('workcamp_assignments.lastObject.order') + 1 || 1
       # wa = @store.createRecord('workcamp_assignment',)
@@ -85,54 +85,6 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
       @refresh()
       false
 
-    save: (redirect = true)->
-      console.log 'Saving',@currentModel
-      @currentModel.get('errors').clear()
-      @currentModel.save().then ( (saved_record) =>
-        @afterSave(saved_record, redirect: redirect)
-       ), ( (e) =>
-         if e.full_rails_message?
-           @flash_error e.full_rails_message
-         else
-           @flash_error 'Save failed.'
-       )
-      false
-
-    remove: (record) ->
-      record ||= @currentModel
-      return false unless confirm("Do you really want to delete '#{record.get('name')}'?")
-      
-      if record.get('isNew')
-        record.deleteRecord()
-        @afterRemove(record)
-      else
-        record.destroyRecord().then ( (record) =>
-          @afterRemove(record)
-          ), ( (e) =>
-           console.error e
-           @flash_error "Failed."
-          )
-      false
-
-
-    rollback: ->
-      @currentModel.get('errors').clear()
-      @currentModel.rollback()
-      @afterRollback(@currentModel)
-      false
-
-  # Override those
-  afterRollback: (record) ->
-    @go_to_plural_route(record)
-
-  afterRemove: (record) ->
-    @go_to_plural_route(record)
-    @flash_info 'Deleted.'
-
-  afterSave: (record) ->
-    @go_to_plural_route(record)
-    @flash_info('Saved.')
-
 
   # ----- Normal Methods ------
 
@@ -153,7 +105,7 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash,
 
   currentAccount: ->
     id = $('meta[name="current-account-id"]').attr('content')
-    @store.find('account',id)         
+    @store.find('account',id)
 
   _paginationData: (model = @currentModel) ->
     modelType = model.get? && model.get('type')

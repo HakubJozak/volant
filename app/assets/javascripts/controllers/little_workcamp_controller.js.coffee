@@ -1,4 +1,4 @@
-Volant.LittleWorkcampController = Ember.ObjectController.extend Volant.ToggleMixin, Volant.ModeAwareMixin,
+Volant.LittleWorkcampController = Ember.ObjectController.extend Volant.ToggleMixin, Volant.Flash, Volant.ModeAwareMixin,
   needs: [ 'workcamps','application' ]
   editing_visible: Ember.computed.alias('controllers.workcamps.editing_visible')
 
@@ -9,7 +9,6 @@ Volant.LittleWorkcampController = Ember.ObjectController.extend Volant.ToggleMix
     type = @get('mode')    
     "#/apply_forms/#{type}/new?fee=0&workcampToAssignId=#{id}"
   ).property('id')
-  
 
   activeAssignments: (->
     @get('workcampAssignments').filterBy('applyForm.currentWorkcamp.id',@get('id'))
@@ -20,3 +19,14 @@ Volant.LittleWorkcampController = Ember.ObjectController.extend Volant.ToggleMix
     @get('workcampAssignments').rejectBy('applyForm.currentWorkcamp.id',@get('id'))
   ).property('workcampAssignments.@each.applyForm.currentWorkcamp.id','id')  
   
+  actions:
+    save: ->
+      @get('model').save().then (wc) =>
+        @flash_info "'#{wc.get('name')}' saved."
+      false  
+
+    rollback: ->
+      wc = @get('model')
+      wc.rollback()
+      @flash_info "'#{wc.get('name')}' reverted."        
+      false  

@@ -1,0 +1,10 @@
+if editingVisible
+  .row
+    .col-md-12
+      #workcamps-list.list-group
+        each arrangedContent itemController='littleWorkcamp'
+          partial 'workcamps/item'
+else
+  = partial 'workcamps/editor'
+
+

@@ -360,3 +360,18 @@ table#apply-forms-list {
 .btn-group.workcamp-actions {
   margin-top: 5px;
 }
+
+
+#places-editor.table-condensed {
+  & > tbody > tr > td.placement {
+    width: 5em;
+
+    input {
+      width: 5em;  
+      padding: 0;
+    }
+  }
+
+
+  td.actions { width: 6em; }
+}

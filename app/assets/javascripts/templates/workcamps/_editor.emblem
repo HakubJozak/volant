@@ -1,0 +1,51 @@
+table.table.table-fluid.table-condensed#places-editor
+  thead
+    tr
+      th
+      th
+      th From
+      th To
+      th Code &mdash; Name
+      th 
+        if incomingMode
+          ' Free Capacity
+        else
+          ' Free Places  
+      th All
+      th Females
+      th Males
+      th
+        / Actions
+
+  tbody
+    = each wc in arrangedContent itemController='littleWorkcamp'
+      tr
+        td
+          with wc
+            = partial 'star'
+        td
+          = small-flag wc.country
+        td  
+          = format-date wc.from
+        td
+          = format-date wc.to
+        td
+          link-to 'workcamp' wc
+            = wc.code
+            ' &mdash;
+            = wc.name
+        td
+          with wc
+            partial 'free_places'
+        td.placement
+          = input value=wc.places type="number"
+        td.placement
+          = input value=wc.places_for_females type="number"
+        td.placement
+          = input value=wc.places_for_males type="number"
+        td.actions
+          if wc.isDirty
+            button.btn.btn-success{action 'save' wc} type='button'
+              ' {{fa 'check'}}
+            button.btn.btn-danger{action 'rollback' wc} type='button'
+              ' {{fa 'times'}}
