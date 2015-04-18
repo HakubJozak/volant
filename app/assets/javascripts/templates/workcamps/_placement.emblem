@@ -7,7 +7,7 @@ table.table-condensed
 
     if bookings
       if showBookings
-        each booking in bookings
+        each booking in bookings itemController='booking'
           = partial 'workcamps/booking'
 
     if idleAssignments

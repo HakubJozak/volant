@@ -1,9 +1,9 @@
 Volant.SavingMixin = Ember.Mixin.create
   actions:
-    save: (redirect = true)->
-      console.log 'Saving',@currentModel
-      @currentModel.get('errors').clear()
-      @currentModel.save().then ( (saved_record) =>
+    save: (redirect = true, record = @currentModel)->
+      console.log 'Saving',record
+      record.get('errors').clear()
+      record.save().then ( (saved_record) =>
         @afterSave(saved_record, redirect: redirect)
        ), ( (e) =>
          if e.full_rails_message?
@@ -47,4 +47,3 @@ Volant.SavingMixin = Ember.Mixin.create
   afterSave: (record) ->
     @go_to_plural_route(record)
     @flash_info('Saved.')
-

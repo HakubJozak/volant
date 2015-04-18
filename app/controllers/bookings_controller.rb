@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
   def index
     if ids = params.permit(ids: [])[:ids]
       bookings = Rails::Generators::ActiveModel.find(ids)
-    else  
+    else
       bookings = Booking.all
       render json: bookings, each_serializer: BookingSerializer, meta: { pagination: pagination_info(bookings) }
     end
@@ -50,6 +50,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit()
+    params.require(:booking).permit(:expires_at,:country_id,:organization_id,:gender,:workcamp_id)
   end
 end

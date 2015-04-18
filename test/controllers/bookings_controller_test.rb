@@ -2,8 +2,8 @@ require 'test_helper'
 
 class BookingsControllerTest < ActionController::TestCase
   setup do
-    @booking = create(:booking)
-    sign_in create(:user)
+    @booking = Factory(:booking)
+    sign_in Factory(:user)
   end
 
   test "index" do
@@ -14,7 +14,7 @@ class BookingsControllerTest < ActionController::TestCase
 
   test "create" do
     assert_difference('Booking.count') do
-      post :create, booking: attributes_for(:booking)
+      post :create, booking: Factory.attributes_for(:booking)
 
       assert_response :success, response.body.to_s
       assert_not_nil json[:booking][:id], @booking.id

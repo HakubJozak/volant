@@ -194,7 +194,14 @@
   </div>
   <div class="col-md-5">
     {{#unless isNew}}
-      <h3>Applications ({{applyForms.length}}) &amp; Bookings ({{bookings.length}})</h3>
+      <h3>Applications ({{applyForms.length}})
+        &amp;
+        Bookings
+        ({{bookings.length}})
+        <a class='btn btn-default' {{action 'addBooking'}} href='#'}}
+          {{fa 'plus'}}
+        </a>
+      </h3>
       {{view Barbecue.BsTabsView currentTab='assigned' tabs='Assigned,Starred,Search' viewPrefix='workcamp/tabs/'}}      
     {{/unless}}
   </div>

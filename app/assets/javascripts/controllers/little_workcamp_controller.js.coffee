@@ -7,7 +7,6 @@ Volant.LittleWorkcampController = Ember.ObjectController.extend Volant.ToggleMix
   showIdle: (-> @get('workcamps.showIdle') ).property('workcamps.showIdle')
   showBookings: (-> @get('workcamps.showBookings') ).property('workcamps.showBookings')
 
-
   createApplyFormUrl: (->
     id = @get('id')
     type = @get('mode')    
@@ -24,6 +23,11 @@ Volant.LittleWorkcampController = Ember.ObjectController.extend Volant.ToggleMix
   ).property('workcampAssignments.@each.applyForm.currentWorkcamp.id','id')  
   
   actions:
+    createBooking: ->
+      @get('bookings').createRecord()
+      @transitionTo 'workcamp', @get('model')
+      false  
+
     save: ->
       @get('model').save().then (wc) =>
         @flash_info "'#{wc.get('name')}' saved."

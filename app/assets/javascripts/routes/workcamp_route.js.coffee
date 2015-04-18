@@ -19,6 +19,9 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend
     @send 'goToWorkcamps' if options.redirect
 
   actions:
+    addBooking: ->
+      @currentModel.get('bookings').createRecord()      
+
     addApplyForm: (form) ->
       @send('createAssignment',@currentModel,form)
       false

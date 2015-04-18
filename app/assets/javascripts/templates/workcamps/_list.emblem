@@ -32,7 +32,7 @@ table.table.table-condensed.table-responsive
                 a href=createApplyFormUrl
                   ' {{fa 'plus'}} Application
               li
-                a href=createApplyFormUrl
+                a href='#' click='createBooking'
                   ' {{fa 'plus'}} Booking
 
         if editingVisible
