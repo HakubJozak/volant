@@ -57,24 +57,24 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend
       false
 
     rollback: ->
-      @set 'editingVisible',false
+      @controllerFor(@routeName).set 'editingVisible',false
       for wc in @currentModel.filterBy('isDirty',true)
         wc.rollback()
       @flash_info 'All workcamps reverted.'  
  
     save: ->
-      @set 'editingVisible',false
+      @controllerFor(@routeName).set 'editingVisible',false
       msg = 'Saving...'
-      promises = @currentModel.filterBy('isDirty',true).map -> wc.save()
+      promises = @currentModel.filterBy('isDirty',true).map (wc) -> wc.save()
       @flash_info(msg)  
 
-      Ember.RSVP.all.then (results) =>
+      Ember.RSVP.all(promises).then (results) =>
         for r in results
           if r.state == 'fullfilled'
             workcamp = r.value      
             msg += "#{workcamp.get('code')} saved."
           else
-            msg += "#{workcamp.get('code')} failed."
+            msg += "#{r.reason}."
       false
 
     yearChanged: ->
