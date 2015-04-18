@@ -35,14 +35,22 @@ table.table.table-fluid.table-condensed#places-editor
             ' &mdash;
             = wc.name
         td
-          with wc
-            partial 'free_places'
+          view 'placement_info' workcamp=wc
         td.placement
-          = input value=wc.places type="number"
+          if incomingMode
+            = input value=wc.capacity type="number"
+          else  
+            = input value=wc.places type="number"
         td.placement
-          = input value=wc.places_for_females type="number"
+          if incomingMode
+            = input value=wc.capacity_females type="number"
+          else  
+            = input value=wc.places_for_females type="number"
         td.placement
-          = input value=wc.places_for_males type="number"
+          if incomingMode
+            = input value=wc.capacity_males type="number"
+          else  
+            = input value=wc.places_for_males type="number"
         td.actions
           if wc.isDirty
             button.btn.btn-success.btn-sm{action 'save' wc} type='button'

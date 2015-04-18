@@ -1,12 +1,17 @@
 .button.btn.btn-default type="button" data-toggle="popover"
-  if view.relevantFreePlaces.empty
-    if view.applyForm.male
-      fa 'male'
+  if view.applyForm
+    if view.relevantFreePlaces.empty
+      if view.applyForm.male
+        fa 'male'
+      else
+        fa 'female'
+      '
+      = view.relevantFreePlaces.confirmed
+      sub = view.relevantFreePlaces.asked
     else
-      fa 'female'
-    '
-    = view.relevantFreePlaces.confirmed
-    sub = view.relevantFreePlaces.asked
+      fa 'users'
   else
-    fa 'users'
+    with view.workcamp
+      partial 'free_places'
+  
 

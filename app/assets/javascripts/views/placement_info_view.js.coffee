@@ -2,7 +2,11 @@ Volant.PlacementInfoView = Ember.View.extend
   templateName: 'placement_info'
 
   applyForm: Ember.computed.alias('controller.applyForm')
-  workcamp: Ember.computed.alias('controller.workcamp')  
+  workcamp: Ember.computed.alias('controller.workcamp')
+
+  outgoingTemplate: ->
+
+
 
   relevantFreePlaces: (->
     if @get('applyForm.male')
@@ -24,32 +28,40 @@ Volant.PlacementInfoView = Ember.View.extend
      asked = @get('workcamp.asked_for_places_males')
      asked_males = @get('workcamp.asked_for_places_males')
      asked_females = @get('workcamp.asked_for_places_females')
-    
+
+     capacity = @get('workcamp.free_capacity')
+     capacity_males = @get('workcamp.free_capacity_males')
+     capacity_females = @get('workcamp.free_capacity_females')
+
      """
-        <table class='table table-condensed free-places-popover'>
-          <tr>
-           <th></th>
-           <th>Confirmed</th>
-           <th>Asked</th>
-          </tr>
-          <tr>
-           <th><i class='fa fa-user'></i></th>
-           <td>#{free}</td>
-           <td>#{asked}</td>
-          </tr>
-          <tr>
-           <th><i class='fa fa-female'></i></th>
-           <td>#{females}</td>
-           <td>#{asked_females}</td>
-          </tr>
-          <tr>
-           <th><i class='fa fa-male'></i></th>
-           <td>#{males}</td>
-           <td>#{asked_males}</td>
-          </tr>
-        </table>
+       <table class='table table-condensed free-places-popover'>
+         <tr>
+          <th></th>
+          <th>Confirmed</th>
+          <th>Asked</th>
+          <th>Capacity</th>                  
+         </tr>
+         <tr>
+          <th><i class='fa fa-user'></i></th>
+          <td>#{free}</td>
+          <td>#{asked}</td>
+          <td>#{capacity}</td>
+         </tr>
+         <tr>
+          <th><i class='fa fa-female'></i></th>
+          <td>#{females}</td>
+          <td>#{asked_females}</td>
+          <td>#{capacity_females}</td>
+         </tr>
+         <tr>
+          <th><i class='fa fa-male'></i></th>
+          <td>#{males}</td>
+          <td>#{asked_males}</td>
+          <td>#{capacity_males}</td>
+         </tr>
+       </table>
       """
-  ).property('workcamp.free_places')
+  ).property('workcamp.free_places','workcamp.free_capacity')
 
   didInsertElement: ->
     @$('[data-toggle="popover"]').popover
@@ -57,6 +69,3 @@ Volant.PlacementInfoView = Ember.View.extend
       title: 'Free Places'
       content: =>
         @get('placementPopup')
-    
-    
-
