@@ -6,8 +6,8 @@ table.table-condensed
           = partial 'workcamps/assignment'
 
     if bookings
-      if showBooking
-        each wa in bookings
+      if showBookings
+        each booking in bookings
           = partial 'workcamps/booking'
 
     if idleAssignments
@@ -18,16 +18,16 @@ table.table-condensed
 .btn-group
   if activeAssignments
     unless showActive
-      view 'toggle' property='showActive'
+      view 'toggle' value=showActive
         ' Active ({{activeAssignments.length}})
 
   if bookings
     unless showBookings
-      view 'toggle' property='showBooking'
+      view 'toggle' value=showBooking
         ' Bookings ({{bookings.length}})
 
   if idleAssignments
     unless showIdle
-      view 'toggle' property='showIdle'
+      view 'toggle' value=showIdle
         ' Idle ({{idleAssignments.length}})
 

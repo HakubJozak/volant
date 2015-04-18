@@ -5,16 +5,16 @@ p.navbar-left.navbar-text
 form.navbar-form.navbar-left
   .form-group
     .btn-group
-      view 'toggle' property='editingVisible'
+      view 'toggle' value=editingVisible
         ' {{fa 'pencil-square-o'}}
 
-      view 'toggle' property='showActive'  
+      view 'toggle' value=showActive
         ' Active
 
-      view 'toggle' property='showIdle'  
+      view 'toggle' value=showIdle
         ' Idle
 
-      view 'toggle' property='showBookings'  
+      view 'toggle' value=showBookings
         ' Bookings
 
 

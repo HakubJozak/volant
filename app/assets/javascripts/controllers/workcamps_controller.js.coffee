@@ -1,6 +1,6 @@
 Volant.WorkcampsController = Volant.ListController.extend Volant.ToggleMixin,
-  needs: ['countriesSelect','workcampIntentionsSelect','organizationsSelect','tagsSelect','starred_workcamps']
 
+  needs: ['countriesSelect','workcampIntentionsSelect','organizationsSelect','tagsSelect','starred_workcamps']
   page: 1
   queryParams: ['query','page','year','from','to',
                 'min_duration','max_duration',
