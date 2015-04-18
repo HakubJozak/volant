@@ -58,6 +58,8 @@ Volant.WorkcampsController = Volant.ListController.extend Volant.ToggleMixin,
   filterVisible: false
   editingVisible: false
   showActive: false
+  showIdle: false
+  showBookings: false    
 
   actions:
     filterOrganizationsByCountry: (country) ->

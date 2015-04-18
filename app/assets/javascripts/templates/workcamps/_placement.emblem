@@ -23,7 +23,7 @@ table.table-condensed
 
   if bookings
     unless showBookings
-      view 'toggle' value=showBooking
+      view 'toggle' value=showBookings
         ' Bookings ({{bookings.length}})
 
   if idleAssignments

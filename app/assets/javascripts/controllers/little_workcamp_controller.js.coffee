@@ -3,11 +3,6 @@ Volant.LittleWorkcampController = Ember.ObjectController.extend Volant.ToggleMix
   workcamps: Ember.computed.alias('controllers.workcamps')
   isEditing: Ember.computed.alias('workcamps.isEditing')
   
-  anythingVisible: (->
-    console.info 'sdfdf'
-    @get('showBookings') || @get('showActive') || @get('showIdle')
-  ).property('showBookings','showActive','showIdle}')
-  
   showActive: (-> @get('workcamps.showActive') ).property('workcamps.showActive')
   showIdle: (-> @get('workcamps.showIdle') ).property('workcamps.showIdle')
   showBookings: (-> @get('workcamps.showBookings') ).property('workcamps.showBookings')
