@@ -1,13 +1,17 @@
 Volant.LittleWorkcampController = Ember.ObjectController.extend Volant.ToggleMixin, Volant.Flash, Volant.ModeAwareMixin,
   needs: [ 'workcamps','application' ]
   workcamps: Ember.computed.alias('controllers.workcamps')
+  isEditing: Ember.computed.alias('workcamps.isEditing')
+  
+  anythingVisible: (->
+    console.info 'sdfdf'
+    @get('showBookings') || @get('showActive') || @get('showIdle')
+  ).property('showBookings','showActive','showIdle}')
+  
+  showActive: (-> @get('workcamps.showActive') ).property('workcamps.showActive')
+  showIdle: (-> @get('workcamps.showIdle') ).property('workcamps.showIdle')
+  showBookings: (-> @get('workcamps.showBookings') ).property('workcamps.showBookings')
 
-  showIdle: false
-  showBookings: false  
-
-  showActive: (->  @get('workcamps.showActive') ).property('workcamps.showActive')
-  showIdle: (->  @get('workcamps.showIdle') ).property('workcamps.showIdle')
-  showBooking: (->  @get('workcamps.showBooking') ).property('workcamps.showBooking')    
 
   createApplyFormUrl: (->
     id = @get('id')

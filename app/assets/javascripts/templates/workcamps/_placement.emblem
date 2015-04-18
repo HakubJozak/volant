@@ -1,3 +1,20 @@
+table.table-condensed
+  tbody
+    if activeAssignments
+      if showActive
+        each wa in activeAssignments
+          = partial 'workcamps/assignment'
+
+    if bookings
+      if showBooking
+        each wa in bookings
+          = partial 'workcamps/booking'
+
+    if idleAssignments
+      if showIdle
+        each wa in idleAssignments
+          = partial 'workcamps/assignment'
+
 .btn-group
   if activeAssignments
     unless showActive
@@ -14,20 +31,3 @@
       view 'toggle' property='showIdle'
         ' Idle ({{idleAssignments.length}})
 
-table.table-condensed
-  tbody
-    if activeAssignments
-      if showActive
-        each wa in activeAssignments
-          = partial 'workcamps/assignment'
-
-    if bookings
-      if showBooking
-        each wa in bookings
-          = partial 'workcamps/booking'
-
-
-    if idleAssignments
-      if showIdle
-        each wa in idleAssignments
-          = partial 'workcamps/assignment'

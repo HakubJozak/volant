@@ -1,27 +1,29 @@
-table.table.table-condensed
+table.table.table-condensed.table-responsive
   tbody
-    each arrangedContent itemController='littleWorkcamp'
+    each wc in arrangedContent itemController='littleWorkcamp'
       tr
         td
-          = partial 'star'
-        td  
-          = small-flag country
-        td  
-          format-date from
-          br  
-          format-date to
-        td    
-          link-to 'workcamp' this
-            ' {{code}} &ndash; {{name}}
+          with wc
+            = partial 'star'
+        td
+          = small-flag wc.country
+        td
+          format-date wc.from
+          br
+          format-date wc.to
+        td
+          link-to 'workcamp' wc
+            ' {{wc.code}} &ndash; {{wc.name}}
+          br
+            ' {{age-range wc}}, {{join wc.workcamp_intentions 'code'}}
+            ' {{tag-list wc.tags}}
           small
-            ' {{computedOrSetDuration}}&nbsp;days
-          br  
-            ' {{age-range this }}, {{join workcamp_intentions 'code'}}
-            ' {{tag-list tags}}
-          partial 'workcamp/extra_fee'
-        td    
+            ' {{wc.computedOrSetDuration}}&nbsp;days
+          with wc  
+            partial 'workcamp/extra_fee'
+        td
           .btn-group.workcamp-actions
-            view 'placement_info' workcamp=this
+            view 'placement_info' workcamp=wc
 
             button.btn.btn-default.btn-sm.dropdown-toggle type='button' data-toggle='dropdown'
               span.caret
@@ -33,9 +35,12 @@ table.table.table-condensed
                 a href=createApplyFormUrl
                   ' {{fa 'plus'}} Booking
 
+        if editingVisible
+          = partial 'workcamps/editor'
+        else
+          td
+            with wc
+              = partial 'workcamps/placement'
         td
-          = partial 'workcamps/placement'
-
-        td          
-          button.btn.btn-default.remove-button{ action 'remove' this }
+          button.btn.btn-default.remove-button{ action 'remove' wc }
             = fa 'trash-o'

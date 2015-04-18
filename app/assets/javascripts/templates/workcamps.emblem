@@ -26,7 +26,4 @@ form.form.form-horizontal.form-search submit='search' role='form'
   .form-group
     = partial 'order_by'
 
-if editingVisible
-  = partial 'workcamps/editor'
-else
-  = partial 'workcamps/_list'
+  = partial 'workcamps/list'

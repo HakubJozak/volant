@@ -357,21 +357,24 @@ table#apply-forms-list {
  h4 { display: inline; }
 }
 
-.btn-group.workcamp-actions {
+/* buttons and table inside table */
+table.table-condensed {
+ .btn-group {
   margin-top: 5px;
+ }
 }
 
 
-#places-editor.table-condensed {
-  & > tbody > tr > td.placement {
+table.table-condensed {
+  td.placement {
     width: 5em;
 
     input {
       width: 5em;  
+      margin-top: 5px;
       padding: 0;
     }
   }
-
 
   td.actions { width: 6em; }
 }
