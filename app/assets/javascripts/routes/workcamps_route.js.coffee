@@ -61,7 +61,6 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend
       @controllerFor(@routeName).set 'editingVisible',false
       for wc in @currentModel.filterBy('isDirty',true)
         wc.rollback()
-      @flash_info 'All workcamps reverted.'  
  
     save: ->
       msg = 'Saving...'

@@ -1,5 +1,8 @@
 Volant.PlacementInfoView = Ember.View.extend
+  tagName: 'button'
   templateName: 'placement_info'
+  attributeBindings: ['type']
+  classNames: ['btn','btn-default']
 
   applyForm: Ember.computed.alias('controller.applyForm')
   workcamp: Ember.computed.alias('controller.workcamp')
@@ -64,7 +67,7 @@ Volant.PlacementInfoView = Ember.View.extend
   ).property('workcamp.free_places','workcamp.free_capacity')
 
   didInsertElement: ->
-    @$('[data-toggle="popover"]').popover
+    @$().popover
       html: true
       title: 'Free Places'
       content: =>

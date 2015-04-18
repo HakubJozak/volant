@@ -24,9 +24,7 @@
         partial 'workcamp/extra_fee'
     .col-md-2
       .btn-group.workcamp-actions
-        a.btn-default.btn.free-places href=createApplyFormUrl
-          h4
-            ' {{partial 'free_places'}}
+        view 'placement_info' workcamp=this
 
         button.btn.btn-default.btn-sm.dropdown-toggle type='button' data-toggle='dropdown'
           span.caret
