@@ -6,11 +6,11 @@ table.table.table-fluid.table-condensed#places-editor
       th From
       th To
       th Code &mdash; Name
-      th 
+      th
         if incomingMode
           ' Free Capacity
         else
-          ' Free Places  
+          ' Free Places
       th All
       th Females
       th Males
@@ -25,7 +25,7 @@ table.table.table-fluid.table-condensed#places-editor
             = partial 'star'
         td
           = small-flag wc.country
-        td  
+        td
           = format-date wc.from
         td
           = format-date wc.to
@@ -45,7 +45,7 @@ table.table.table-fluid.table-condensed#places-editor
           = input value=wc.places_for_males type="number"
         td.actions
           if wc.isDirty
-            button.btn.btn-success{action 'save' wc} type='button'
+            button.btn.btn-success.btn-sm{action 'save' wc} type='button'
               ' {{fa 'check'}}
-            button.btn.btn-danger{action 'rollback' wc} type='button'
+            button.btn.btn-danger.btn-sm{action 'rollback' wc} type='button'
               ' {{fa 'times'}}

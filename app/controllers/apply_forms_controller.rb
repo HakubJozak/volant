@@ -21,7 +21,7 @@ class ApplyFormsController < ApplicationController
             return
           end
 
-          search = apply_forms.includes(:organization,:country).page(current_page)
+          search = apply_forms.includes(:organization,:country).page(current_page).per(per_page)
           search = search.order(current_order)
           search = add_year_scope(search)
 

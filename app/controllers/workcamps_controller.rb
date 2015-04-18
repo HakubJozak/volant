@@ -12,7 +12,7 @@ class WorkcampsController < ApplicationController
       search = Workcamp.starred_by(current_user)
       render json: search, each_serializer: WorkcampSerializer
     else
-      search = workcamps.order(current_order).page(current_page).joins(:country)
+      search = workcamps.order(current_order).page(current_page).per(per_page).joins(:country)
       search = search.includes(:workcamp_assignments,:organization,:tags,:intentions,:organization => [:emails])
       search = search.filter_by_hash(filter,current_user)
       search = add_year_scope(search)

@@ -30,6 +30,8 @@ ul.nav.navbar.pagination.navbar-right
         ' &raquo;
 
 
-p.navbar-right.navbar-text.pagination-info
-  ' {{per_page}} / {{total}}
+form.navbar-form.navbar-right
+  .form-group
+    = view 'per_page_select' value=perPage
+    ' / {{total}}
 

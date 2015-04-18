@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
     }
   end
 
+  def per_page
+    params[:per_page] || params[:per] || 10
+  end
+ 
   def current_page
     params[:p] || params[:page] || 1
   end

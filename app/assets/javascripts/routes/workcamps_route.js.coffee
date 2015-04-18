@@ -14,6 +14,7 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend
     filter.order = params.order
     filter.asc = params.sortAscending
     filter.year = params.year unless params.year == 'All'
+    filter.per_page = @controllerFor('pagination').get('perPage')
 
     attrs = [ 'from','to','min_duration','max_duration','age'
               'free', 'free_males', 'free_females' ]
