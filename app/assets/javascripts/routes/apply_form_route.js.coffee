@@ -18,6 +18,7 @@ Volant.ApplyFormRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
   title: (model) -> "#{model.get('name')}"
 
   setupController: (controller,model,queryParams) ->
+    @controllerFor('workcamp_assignments').set('model',model.get('workcamp_assignments'))
     @_super(controller,model,queryParams)
     @controllerFor('payment').set('model',model.get('payment'))
 
