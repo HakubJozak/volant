@@ -18,7 +18,7 @@ class Booking < ActiveRecord::Base
   end
 
   def expired?
-    self.expires_at < Time.now
+    expires_at && expires_at < Time.now
   end
 
 end

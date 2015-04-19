@@ -13,7 +13,8 @@ Volant.ApplyFormController = Volant.ObjectController.extend
   ).property().volatile()
 
   workcampToAssign: (->
-    @store.find('workcamp',@get('model.workcampToAssignId'))      
+    if id = @get('model.workcampToAssignId')
+      @store.find('workcamp',id)
   ).property('model.workcampToAssignId')
 
   queryParams: ['anchor']
