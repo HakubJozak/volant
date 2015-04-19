@@ -3,7 +3,7 @@ class Person < ActiveRecord::Base
   FEMALE = 'f'
 
   include PersonalMethods
-  
+
   acts_as_taggable
 
 end

@@ -22,10 +22,11 @@ Factory.define :incoming_apply_form, parent: :abstract_form,class: Incoming::App
 end
 
 Factory.define :incoming_male_form, parent: :incoming_apply_form do |f|
-  f.association :volunteer, factory: :male
+  f.gender Person::MALE
 end
 
 Factory.define :incoming_female_form, parent: :incoming_apply_form do |f|
+  f.gender Person::FEMALE
   f.association :volunteer, factory: :female
 end
 
@@ -45,11 +46,13 @@ end
 
 
 Factory.define :form_male, parent: :apply_form do |f|
+  f.gender Person::MALE
   f.association :volunteer, factory: :male
 end
 
 
 Factory.define :form_female, parent: :paid_form do |f|
+  f.gender Person::FEMALE
   f.association :volunteer, factory: :female
 end
 

@@ -2,8 +2,6 @@ module FreePlacesUpdater
   extend ActiveSupport::Concern
 
   def update_free_places
-    puts self.class
-
     if self.respond_to?(:workcamps)
       self.workcamps.reload.each { |wc| wc.save(validate: false) }
     elsif self.respond_to?(:workcamp)
@@ -13,7 +11,6 @@ module FreePlacesUpdater
     end
   end
 
-  # In fact, updates accepted_* and asked_for_* attributes so that free_places_* are computed correctly.
   def update_free_places_for_workcamp(wc = self)
     kinds = [ [ "", :id ],
               [ "_males", :male? ],
@@ -22,7 +19,7 @@ module FreePlacesUpdater
     kinds.each do |sufix, condition|
       capacity = asked = accepted = 0
 
-      wc.workcamp_assignments.each do |wa|
+      wc.workcamp_assignments(true).each do |wa|
         form = wa.apply_form
         next if form.cancelled
         next unless form.send(condition)
@@ -37,10 +34,8 @@ module FreePlacesUpdater
         end
       end
 
-      wc.bookings.each do |booking|
-        puts 'boooking'
+      wc.bookings(true).each do |booking|
         if booking.send(condition)
-          puts 'booking'
           capacity += 1
         end
       end

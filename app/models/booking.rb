@@ -17,4 +17,8 @@ class Booking < ActiveRecord::Base
     gender == Person::FEMALE
   end
 
+  def expired?
+    self.expires_at < Time.now
+  end
+
 end

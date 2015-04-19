@@ -79,15 +79,11 @@ class FreePlacesUpdaterTest < ActiveSupport::TestCase
     assert_equal 0, @wc.asked_for_places_females
   end
 
-  test 'incoming' do
+  test 'incoming with booking' do
     @wc.update_attributes(capacity: 6, capacity_males: 4, capacity_females: 2)
     assign_and_accept(@wc,:incoming_female_form)
     assign_and_accept(@wc,:incoming_male_form)
-    @wc.bookings.create! country: Factory(:country),gender: 'm'
-
-    @wc.reload
-
-    binding.pry
+    b = Factory(:male_booking, workcamp: @wc)
 
     assert_equal 2, @wc.free_places
     assert_equal 6, @wc.capacity
@@ -102,15 +98,16 @@ class FreePlacesUpdaterTest < ActiveSupport::TestCase
     assign_and_accept(@wc,:incoming_male_form)
     assign_and_accept(@wc,:form_male)
     assign_and_accept(@wc,:form_female)
+    Factory(:male_booking, workcamp: @wc)
 
-    @wc.reload
+    @wc.save(validate: false)
 
     assert_equal 1, @wc.free_places
     assert_equal 1, @wc.free_places_for_males
     assert_equal 1, @wc.free_places_for_females        
 
-    assert_equal 3, @wc.free_capacity
-    assert_equal 1, @wc.free_capacity_males
+    assert_equal 2, @wc.free_capacity
+    assert_equal 0, @wc.free_capacity_males
     assert_equal 2, @wc.free_capacity_females
   end
 
@@ -120,7 +117,4 @@ class FreePlacesUpdaterTest < ActiveSupport::TestCase
     wc.workcamp_assignments.create!(apply_form: Factory(type)).accept(1.day.ago)
   end
 
-  def booking(wc,opts)
-
-  end
 end
