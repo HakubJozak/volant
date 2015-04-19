@@ -15,7 +15,7 @@ class Workcamp < ActiveRecord::Base
 
   has_many :workcamp_assignments, dependent: :destroy, class_name: 'Outgoing::WorkcampAssignment'
   has_many :apply_forms, through: :workcamp_assignments, dependent: :destroy, class_name: 'ApplyForm'
-  has_many :bookings
+  has_many :bookings, dependent: :delete_all
 
   validates_presence_of :country, :code, :name, :places, :places_for_males, :places_for_females, :organization, :publish_mode
   validates_presence_of :extra_fee_currency, :if => Proc.new {|wc| wc.extra_fee && wc.extra_fee > 0},:message => "je povinná. (Je vyplněn poplatek, ale nikoliv jeho měna. Doplňte měnu poplatku.)"

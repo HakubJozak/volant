@@ -13,6 +13,7 @@ Volant.NewApplyFormRoute = Volant.ApplyFormRoute.extend Volant.ApplyFormActions,
       @transitionTo 'apply_form', form
 
   model: (params,transition) ->
+    @store.createRecord('apply_form')
     @currentAccount().then (account) =>
       defaults = {
         fee: 2200
@@ -26,4 +27,5 @@ Volant.NewApplyFormRoute = Volant.ApplyFormRoute.extend Volant.ApplyFormActions,
 
       # like Hash#merge in JS
       opts = $.extend(defaults,transition.queryParams)
+
       @store.createRecord('apply_form', opts)

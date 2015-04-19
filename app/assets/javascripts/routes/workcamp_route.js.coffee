@@ -22,6 +22,10 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend
     addBooking: ->
       @currentModel.get('bookings').createRecord()      
 
+    removeBooking: (b) ->
+      b.deleteRecord()
+      b.save()      
+
     addApplyForm: (form) ->
       @send('createAssignment',@currentModel,form)
       false

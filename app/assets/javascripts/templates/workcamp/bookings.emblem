@@ -29,9 +29,9 @@ each booking in arrangedContent itemController='booking'
               with booking
                 = partial 'inputs/organization'
           .form-group
-            button.btn.btn-success{ action 'save' false booking }
+            button.btn.btn-success{ action 'save' booking false }
               ' {{fa 'check'}} Save
-            button.btn.btn-danger type='button'
+            button.btn.btn-danger{ action 'removeBooking' booking false } type='button'
               ' {{fa 'check'}} Cancel 
   else
     tr.apply-form

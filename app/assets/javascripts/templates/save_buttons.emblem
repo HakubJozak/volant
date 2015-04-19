@@ -3,7 +3,7 @@ form.navbar-form.navbar-left
     button.btn.btn-success.navbar-btn click="save" type="button" title='Enter'
       ' {{fa 'caret-right'}} Save &amp; Continue
     '
-    button.btn.btn-default.navbar-btn{action 'save' false} type="button" title='Ctrl + S'
+    button.btn.btn-default.navbar-btn{action 'saveOnly'} type="button" title='Ctrl + S'
       ' {{fa 'check'}} Save
     '
     button.btn.btn-default.navbar-btn click="rollback" type="button"

@@ -1,7 +1,7 @@
 Volant.SavingShortcutsMixin = Ember.Mixin.create
   keyDown: (e) ->
     if (e.ctrlKey || e.metaKey) && @_pressedKey(e) == 's'
-      @get('controller').send('save',false)
+      @get('controller').send('saveOnly')
       e.preventDefault()
       false 
 

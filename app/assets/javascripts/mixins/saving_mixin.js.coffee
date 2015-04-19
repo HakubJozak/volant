@@ -1,28 +1,22 @@
 Volant.SavingMixin = Ember.Mixin.create
   actions:
-    save: (redirect = true, record = @currentModel)->
-      console.log 'Saving',record
-      record.get('errors').clear()
-      record.save().then ( (saved_record) =>
-        @afterSave(saved_record, redirect: redirect)
-       ), ( (e) =>
-         if e.full_rails_message?
-           @flash_error e.full_rails_message
-         else
-           @flash_error 'Save failed.'
-       )
+    saveOnly: (record) ->
+      @_saveRecord(record,false)
+  
+    save: (record)->
+      @_saveRecord(record,true)
       false
 
-    remove: (record) ->
+    remove: (record,redirect = true) ->
       record ||= @currentModel
       return false unless confirm("Do you really want to delete '#{record.get('name')}'?")
 
       if record.get('isNew')
         record.deleteRecord()
-        @afterRemove(record)
+        @afterRemove(record,redirect)
       else
         record.destroyRecord().then ( (record) =>
-          @afterRemove(record)
+          @afterRemove(record,redirect)
           ), ( (e) =>
            console.error e
            @flash_error "Failed."
@@ -36,13 +30,27 @@ Volant.SavingMixin = Ember.Mixin.create
       @afterRollback(@currentModel)
       false
 
+  _saveRecord: (record,redirect) ->
+    record ||= @currentModel
+    console.log 'Saving',record
+    record.get('errors').clear()
+    record.save().then ( (saved_record) =>
+      @afterSave(saved_record, redirect: redirect)
+     ), ( (e) =>
+       if e.full_rails_message?
+         @flash_error e.full_rails_message
+       else
+         @flash_error 'Save failed.'
+     )
+  
+
   # Override those
   afterRollback: (record) ->
     @go_to_plural_route(record)
 
-  afterRemove: (record) ->
-    @go_to_plural_route(record)
-    @flash_info 'Deleted.'
+  afterRemove: (record,redirect) ->
+    @flash_info 'Deleted.'    
+    @go_to_plural_route(record) if redirect    
 
   afterSave: (record) ->
     @go_to_plural_route(record)
