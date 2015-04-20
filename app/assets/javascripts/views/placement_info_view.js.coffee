@@ -1,15 +1,15 @@
 Volant.PlacementInfoView = Ember.View.extend
-  tagName: 'button'
   templateName: 'placement_info'
+  tagName: 'button'
+  type: 'button'
   attributeBindings: ['type']
   classNames: ['btn','btn-default']
+
 
   applyForm: Ember.computed.alias('controller.applyForm')
   workcamp: Ember.computed.alias('controller.workcamp')
 
   outgoingTemplate: ->
-
-
 
   relevantFreePlaces: (->
     if @get('applyForm.male')
@@ -42,7 +42,7 @@ Volant.PlacementInfoView = Ember.View.extend
           <th></th>
           <th>Confirmed</th>
           <th>Asked</th>
-          <th>Capacity</th>                  
+          <th>Capacity</th>
          </tr>
          <tr>
           <th><i class='fa fa-user'></i></th>
@@ -70,5 +70,6 @@ Volant.PlacementInfoView = Ember.View.extend
     @$().popover
       html: true
       title: 'Free Places'
+      placement: 'left'
       content: =>
         @get('placementPopup')

@@ -29,7 +29,7 @@ table.table.table-condensed.table-responsive
               span.caret
             ul.dropdown-menu
               li
-                a href=createApplyFormUrl
+                a href=wc.createApplyFormUrl
                   ' {{fa 'plus'}} Application
               li
                 a href='#' click='createBooking'
