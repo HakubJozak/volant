@@ -1,7 +1,7 @@
 each booking in arrangedContent itemController='booking'
   if booking.isEditing
     tr.apply-form
-      td colspan='6'
+      td colspan='7'
         = partial 'workcamp/booking_editor'
   else
     tr.apply-form
@@ -16,6 +16,8 @@ each booking in arrangedContent itemController='booking'
       td
         = flag booking.country
       td
-        a{ action 'toggle' 'isEditing' } href='#'
+        link-to 'organization' booking
           ' {{booking.organization.name}} Booking
-
+      td    
+        a{ action 'toggle' 'isEditing' } href='#'
+          ' {{fa 'edit'}}

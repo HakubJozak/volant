@@ -5,9 +5,9 @@ Volant.SavingShortcutsMixin = Ember.Mixin.create
       e.preventDefault()
       false
 
-  keyPress: (e) ->
-    if e.keyCode == 13 && e.target.nodeName == 'INPUT'
-      @get('controller').send('save')
+  # keyPress: (e) ->
+  #   if e.keyCode == 13 && e.target.nodeName == 'INPUT'
+  #     @get('controller').send('save')
 
   _pressedKey: (event) ->
     String.fromCharCode(event.which).toLowerCase()
