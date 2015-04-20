@@ -5,4 +5,3 @@ Volant.Booking = DS.Model.extend
   workcamp: DS.belongsTo 'workcamp'
   expiresAt: DS.attr 'isodate'
   isExpired: DS.attr 'boolean'
-

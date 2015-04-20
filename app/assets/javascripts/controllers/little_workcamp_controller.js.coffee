@@ -24,7 +24,7 @@ Volant.LittleWorkcampController = Ember.ObjectController.extend Volant.ToggleMix
   
   actions:
     createBooking: ->
-      @get('bookings').createRecord()
+      @get('model').addBooking()
       @transitionTo 'workcamp', @get('model')
       false  
 

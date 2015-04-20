@@ -20,7 +20,7 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend
 
   actions:
     addBooking: ->
-      @currentModel.get('bookings').createRecord()      
+      @currentModel.addBooking()
 
     removeBooking: (b) ->
       b.deleteRecord()

@@ -6,7 +6,7 @@ class WorkcampsController < ApplicationController
 
   def index
     if ids = filter[:ids]
-      search = Workcamp.includes(:country,:workcamp_assignments,:organization,:tags,:intentions)
+      search = Workcamp.includes(:country,:workcamp_assignments,:organization,:tags,:intentions,:bookings)
       render json: search.find(*ids), each_serializer: WorkcampSerializer
     elsif filter[:starred]
       search = Workcamp.starred_by(current_user)
@@ -73,14 +73,14 @@ class WorkcampsController < ApplicationController
   private
 
   def find_workcamp
-    @workcamp = Workcamp.find(params[:id])
+    @workcamp = Workcamp.includes(:country,:workcamp_assignments,:organization,:tags,:intentions,:bookings).find(params[:id])
   end
 
   def workcamps
     type = params[:type] || params[:workcamp].try(:[],:type)
     workcamp_type(type)
   end
-  
+
   def filter
     params.permit(:starred,:state,:p,:order,:year,:q,:from,:to,:min_duration,:max_duration,:age,
                   :free,:free_males,:free_females,:publish_mode,
@@ -106,7 +106,7 @@ class WorkcampsController < ApplicationController
               :organization_id, :country_id, :tag_ids => [], :workcamp_intention_ids => [])
 
     replace_nil_by_empty_array(safe_params,:tag_ids)
-    replace_nil_by_empty_array(safe_params,:workcamp_intention_ids)    
+    replace_nil_by_empty_array(safe_params,:workcamp_intention_ids)
 
     safe_params
   end

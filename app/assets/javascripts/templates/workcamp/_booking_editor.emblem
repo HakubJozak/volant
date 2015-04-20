@@ -1,0 +1,31 @@
+form submit='save'
+  .form-group
+    model-field errors=booking.errors.expiresAt
+      label.control-label
+        | Expires At
+      view Volant.DateView dateBinding='booking.expiresAt' placeholder='Expires At' class='form-control'
+
+  .form-group
+    model-field errors=booking.errors.country
+      label.control-label
+        | Country
+      with booking
+        = partial 'inputs/country'
+
+  .form-group
+    model-field errors=booking.errors.gender
+      label.control-label
+        | Gender
+      view Volant.GenderSelectView value=booking.gender class="form-control" prompt='Any'
+
+  .form-group
+    model-field errors=booking.errors.gender
+      label.control-label
+        | Organization
+      with booking
+        = partial 'inputs/organization'
+  .form-group
+    button.btn.btn-success{ action 'save' }
+      ' {{fa 'check'}} Save
+    button.btn.btn-danger{ action 'rollback' } type='button'
+      ' {{fa 'check'}} Cancel

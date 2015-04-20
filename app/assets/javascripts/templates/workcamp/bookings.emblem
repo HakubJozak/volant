@@ -1,38 +1,8 @@
 each booking in arrangedContent itemController='booking'
-  if booking.isNew
+  if booking.isEditing
     tr.apply-form
       td colspan='6'
-        form submit='save'
-          .form-group
-            model-field errors=booking.errors.expiresAt
-              label.control-label
-                | Expires At
-              view Volant.DateView dateBinding='booking.expiresAt' placeholder='Expires At' class='form-control'
-
-          .form-group
-            model-field errors=booking.errors.country
-              label.control-label
-                | Country
-              with booking
-                = partial 'inputs/country'
-
-          .form-group
-            model-field errors=booking.errors.gender
-              label.control-label
-                | Gender
-              view Volant.GenderSelectView value=booking.gender class="form-control"
-
-          .form-group
-            model-field errors=booking.errors.gender
-              label.control-label
-                | Organization
-              with booking
-                = partial 'inputs/organization'
-          .form-group
-            button.btn.btn-success{ action 'save' booking false }
-              ' {{fa 'check'}} Save
-            button.btn.btn-danger{ action 'removeBooking' booking false } type='button'
-              ' {{fa 'check'}} Cancel 
+        = partial 'workcamp/booking_editor'
   else
     tr.apply-form
       td
@@ -46,5 +16,6 @@ each booking in arrangedContent itemController='booking'
       td
         = flag booking.country
       td
-        link-to 'organization' booking.organization
+        a{ action 'toggle' 'isEditing' } href='#'
           ' {{booking.organization.name}} Booking
+
