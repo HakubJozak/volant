@@ -3,7 +3,7 @@ class OrganizationsController < ApplicationController
   before_action :find_organization, except: [ :index, :create ]
 
   def index
-    orgs = organizations.joins(:country).includes(:emails,:networks)
+    orgs = organizations.includes(:country, :country => [:country_zone]).includes(:emails,:networks)
 
     if filter[:p].present?
       orgs = orgs.query(filter[:q]) if filter[:q].present?
