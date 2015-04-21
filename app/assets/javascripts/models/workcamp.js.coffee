@@ -12,7 +12,7 @@ Volant.Workcamp = DS.Model.extend
   bookings: DS.hasMany('booking')
 
   allOrganizationsEmails: DS.attr 'string'
-  allApplicationsEmails: DS.attr 'string'  
+  allApplicationsEmails: DS.attr 'string'
 
   name: DS.attr 'string'
   code: DS.attr 'string'
@@ -93,7 +93,7 @@ Volant.Workcamp = DS.Model.extend
 
   addBooking: ->
     year = moment().year()
-    # expires at 1st of June by default    
+    # expires at 1st of June by default
     expires = moment(new Date(year,5,1))
     @get('bookings').createRecord(expiresAt: expires)
 

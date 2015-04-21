@@ -6,10 +6,10 @@ class BookingsController < ApplicationController
   # GET /bookings
   def index
     if ids = params.permit(ids: [])[:ids]
-      bookings = Rails::Generators::ActiveModel.find(ids)
+      bookings = Booking.find(ids)
+      render json: bookings, each_serializer: BookingSerializer
     else
-      bookings = Booking.all
-      render json: bookings, each_serializer: BookingSerializer, meta: { pagination: pagination_info(bookings) }
+      raise 'Cannot retrieve all bookings.'
     end
   end
 
@@ -40,7 +40,11 @@ class BookingsController < ApplicationController
   # DELETE /bookings/1
   def destroy
     @booking.destroy
-    head :no_content
+    if wc = @booking.workcamp
+      render json: wc.reload, serializer: WorkcampSerializer
+    else
+      head :no_content
+    end
   end
 
   private

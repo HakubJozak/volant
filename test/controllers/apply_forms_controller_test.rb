@@ -124,7 +124,7 @@ class ApplyFormsControllerTest < ActionController::TestCase
     get :index, volunteer_id: target.volunteer_id
 
     assert_response :success
-    assert_equal 1, json[:apply_forms].size 
+    assert_equal 1, json[:apply_forms].size
     assert_equal target.id, json[:apply_forms][0][:id]
   end
 
@@ -153,7 +153,7 @@ class ApplyFormsControllerTest < ActionController::TestCase
   test 'create' do
     assert_difference 'ApplyForm.count',1 do
       post :create, apply_form: Factory.attributes_for(:paid_form)
-      assert_response :success,response.body      
+      assert_response :success,response.body
     end
   end
 
@@ -186,7 +186,7 @@ class ApplyFormsControllerTest < ActionController::TestCase
       end
     end
   end
-  
+
 
   test 'cancel' do
     post :cancel, id: @apply_form.id
