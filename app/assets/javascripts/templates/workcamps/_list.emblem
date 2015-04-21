@@ -19,7 +19,7 @@ table.table.table-condensed.table-responsive
             ' {{tag-list wc.tags}}
           small
             ' {{wc.computedOrSetDuration}}&nbsp;days
-          with wc  
+          with wc
             partial 'workcamp/extra_fee'
         td
           .btn-group.workcamp-actions

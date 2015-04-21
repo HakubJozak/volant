@@ -4,8 +4,9 @@ Volant.BookingController = Ember.ObjectController.extend Volant.ToggleMixin, Vol
 
   actions:
     save: ->
-      @get('model').save().then ( (saved_booking) =>
+      @get('model').save().then ( (booking) =>
          @set 'isEditing',false
+         booking.get('workcamp').reload()
          @flashInfo 'Saved'
        ), ( (e) =>
          @flashError 'Save failed.'
@@ -15,10 +16,14 @@ Volant.BookingController = Ember.ObjectController.extend Volant.ToggleMixin, Vol
     remove: ->
       return unless confirm('Do you really want to delete the booking?')
       booking = @get('model')
-      booking.deleteRecord()
-      booking.save()
+      wc = booking.get('workcamp')
+      if booking.get('isNew')  
+        booking.deleteRecord()
+      else
+        booking.destroyRecord().then ->
+          wc.reload()
       false
-       
+
     rollback: ->
       @set 'isEditing',false
       booking = @get('model')

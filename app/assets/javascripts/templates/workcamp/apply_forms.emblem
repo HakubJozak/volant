@@ -25,4 +25,4 @@ each arrangedContent itemController='workcampApplyForm'
         ' {{name}} ({{age}})
       br
         ' {{tag-list tags}}
-    td    
+    td

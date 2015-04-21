@@ -92,10 +92,11 @@ Volant.Workcamp = DS.Model.extend
   ).property('from','to')
 
   addBooking: ->
+    bookings = @get('bookings')
     year = moment().year()
     # expires at 1st of June by default
     expires = moment(new Date(year,5,1))
-    @get('bookings').createRecord(expiresAt: expires)
+    bookings.createRecord(expiresAt: expires)
 
   for_email: ->
     hash = @_super('allOrganizationsEmails','allApplicationsEmails')

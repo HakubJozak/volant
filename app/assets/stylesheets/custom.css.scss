@@ -294,6 +294,8 @@ table.import-changes {
 
 .free-places-popover {
   text-align: center;
+  font-size: 14px;
+  z-index: 1000;
 }
 
 .extra-fee-label {
@@ -378,3 +380,4 @@ table.table-condensed {
 
   td.actions { width: 6em; }
 }
+

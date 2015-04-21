@@ -53,18 +53,18 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash, Vol
         @flash_info "#{person} assigned to #{code}."
       false
 
-    removeAssignment: (wa,warn) ->
-      if warn
-        who = wa.get('apply_form.name')
-        wc = wa.get('workcamp.name')
-        msg = "Do you really want to remove '#{wc}' from the application of #{who}?"
-        return unless window.confirm(msg)
+    removeAssignment: (wa) ->
+      who = wa.get('apply_form')
+      wc = wa.get('workcamp')
+      msg = "Do you really want to remove '#{wc.get('name')}' from the application of #{who.get('name')}?"
+      return unless window.confirm(msg)
 
       if wa.get('isNew')
         @get('model').removeObject(wa)
       else
-        wa.destroyRecord()
-      @flash_info "Workcamp removed from the application."
+        wa.destroyRecord().then =>
+          @flash_info "Workcamp removed from the application."
+          wc.then (w) -> w.reload() 
       false
 
     userChangedMode: (mode) ->

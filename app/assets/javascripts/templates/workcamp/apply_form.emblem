@@ -19,8 +19,8 @@ tr.apply-form
 
   td
     if workcampAssignment
-      .btn.btn-default{ action 'removeAssignment' workcampAssignment true bubbles='false'}
+      .btn.btn-default{ action 'removeAssignment' workcampAssignment bubbles='false'}
         fa 'minus'
     else
-      .btn.btn-default{ action 'createAssignment' workcamp this  true bubbles='false'}
+      .btn.btn-default{ action 'createAssignment' workcamp this bubbles='false'}
         fa 'plus'

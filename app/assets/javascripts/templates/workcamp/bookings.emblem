@@ -6,7 +6,7 @@ each booking in arrangedContent itemController='booking'
   else
     tr.apply-form
       td
-        .btn.btn-default{ action 'removeBooking' booking }
+        .btn.btn-default click='remove'
           ' {{fa 'minus'}}
       td
         format-date booking.expiresAt
@@ -18,6 +18,6 @@ each booking in arrangedContent itemController='booking'
       td
         link-to 'organization' booking
           ' {{booking.organization.name}} Booking
-      td    
+      td
         a{ action 'toggle' 'isEditing' } href='#'
           ' {{fa 'edit'}}

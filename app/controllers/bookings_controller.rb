@@ -40,11 +40,7 @@ class BookingsController < ApplicationController
   # DELETE /bookings/1
   def destroy
     @booking.destroy
-    if wc = @booking.workcamp
-      render json: wc.reload, serializer: WorkcampSerializer
-    else
-      head :no_content
-    end
+    head :no_content
   end
 
   private

@@ -1,6 +1,6 @@
 Volant.WorkcampRoute = Volant.BaseRoute.extend
   toolbar: 'workcamp/toolbar'
-  
+
   model: (params) ->
     @store.find('workcamp', params.workcamp_id)
 
@@ -8,10 +8,10 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend
     "#{wc.get('name')} - #{wc.get('code')}"
 
   afterRemove: (record) ->
-    @send 'goToWorkcamps'    
+    @send 'goToWorkcamps'
     @flash_info('Deleted.')
 
-  afterRollback: (record) ->    
+  afterRollback: (record) ->
     @send 'goToWorkcamps'
 
   afterSave: (record,options = {}) ->
@@ -21,10 +21,6 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend
   actions:
     addBooking: ->
       @currentModel.addBooking()
-
-    removeBooking: (b) ->
-      b.deleteRecord()
-      b.save()      
 
     addApplyForm: (form) ->
       @send('createAssignment',@currentModel,form)
