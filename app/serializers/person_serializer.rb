@@ -8,6 +8,5 @@ class PersonSerializer < ApplicationSerializer
       :emergency_day, :emergency_night,
       :special_needs, :past_experience, :comments,
       :fax, :street, :city, :zipcode,
-      :contact_street, :contact_city, :contact_zipcode,
-      :note
+      :contact_street, :contact_city, :contact_zipcode
 end

@@ -32,7 +32,7 @@ Volant.ApplyForm = DS.Model.extend Volant.PersonalAttributesMixin,
   createdRecently: (-> moment().diff(@get('createdAt'),'day') < 2 ).property('createdAt')
   ltvType: Ember.computed.equal('type','ltv')
 
-  # transient attribute for newly created record      
+  # transient attribute for newly created record
   workcampToAssignId: null
 
   # legacy fallbacks

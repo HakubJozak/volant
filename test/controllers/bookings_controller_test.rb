@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BookingsControllerTest < Base
+class BookingsControllerTest < ActionController::TestCase
   setup do
     @booking = Factory(:booking)
     sign_in Factory(:user)

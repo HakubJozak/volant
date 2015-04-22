@@ -28,8 +28,8 @@ Volant.PersonalAttributesMixin = Ember.Mixin.create
   contact_city: DS.attr 'string'
   contact_zipcode: DS.attr 'string'
   note: DS.attr 'string'
-  age: DS.attr 'number'  
-  
+  age: DS.attr 'number'
+
   male: Ember.computed.equal('gender','m')
   female: Ember.computed.equal('gender','f')
   teenage: Ember.computed.lt('age',18)

@@ -59,11 +59,12 @@ namespace :incoming do
   desc 'Converts all Participants into Incoming::ApplyForm and assignments'
   task participants: :environment do
     Incoming::Participant.find_each do |p|
-      form.fee = 0
       form = p.apply_form
+      form.fee = 0
       form.country = p.country
       form.organization = p.organization
       form.tag_list = p.tag_list
+      form.comments = form.comments.to_s + p.note.to_s
 
       if p.workcamp
         form.workcamp_assignments.create!(workcamp: p.workcamp, accepted: form.created_at)
@@ -87,7 +88,7 @@ namespace :incoming do
                 :contact_city,:contact_zipcode,
                 :birthplace,:nationality ]
 
-    TEXTS = [ :special_needs, :past_experience, :comments, :note ]
+    TEXTS = [ :special_needs, :past_experience, :note ]
 
     #    ApplyForm.year(2015).find_each do |form|
     ApplyForm.find_each do |form|
@@ -99,6 +100,7 @@ namespace :incoming do
           form.send "#{attr}=", source.send(attr)
         end
 
+        form.comments = form.comments.to_s + source.comments.to_s
         form.save(validate: false)
       else
         puts "Skipping #{form.id}"
