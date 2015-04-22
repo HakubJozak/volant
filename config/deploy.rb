@@ -8,7 +8,7 @@ set :repository, 'git@github.com:HakubJozak/volant.git'
 
 
 task :production do
-  set :branch, 'master'
+  set :branch, 'incoming'
   set :user, 'rails'
   set :deploy_to, '/home/rails/volant'
   set :domain, 'pelican.amagical.net'
@@ -111,14 +111,14 @@ end
 
 namespace :log do
   task :app do
-    queue! "tail -f #{deploy_to}/#{shared_path}/log/#{rails_env}.log"    
+    queue! "tail -f #{deploy_to}/#{shared_path}/log/#{rails_env}.log"
   end
-  
+
   task :unicorn do
     queue! "tail -f #{deploy_to}/#{shared_path}/log/unicorn.log"
   end
 
   task :nginx do
-    queue! "sudo tail -f /var/log/nginx/#{appname}-error.log"    
-  end  
+    queue! "sudo tail -f /var/log/nginx/#{appname}-error.log"
+  end
 end
