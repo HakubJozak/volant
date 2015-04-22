@@ -1,4 +1,7 @@
-<h3>Tag</h3>
+<h3>
+  Tag
+  {{tag this symbol color textColor}}
+</h3>
 
 {{errors.messages}}
 
@@ -12,11 +15,10 @@
   <div class="form-group">
     {{#model-field errors=errors.name}}
       <label class=" control-label">Symbol</label>
-      {{view 'tag-symbol-select' selectionBinding='symbol'}}
+      {{view 'tag-symbol-select' selectionBinding='symbol' prompt='No symbol'}}
     {{/model-field}}
   </div>
-  
-    <div class="form-group">
+  <div class="form-group">
     {{#model-field errors=errors.color}}
       <label class=" control-label">Color</label>
       {{input value=color class="form-control" type='color'}}
