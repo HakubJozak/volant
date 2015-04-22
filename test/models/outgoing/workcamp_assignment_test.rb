@@ -7,12 +7,6 @@ module Outgoing
       Factory.create(:workcamp_assignment)
     end
 
-    test "parse acceptance date" do
-      assig = WorkcampAssignment.first
-      assig.accepted_string = "22.12.2009 15:50"
-      assert_equal DateTime.new(2009,12,22,15,50), assig.accepted
-    end
-
     test "state change" do
       wa = Factory.create(:workcamp_assignment)
       wa.ask

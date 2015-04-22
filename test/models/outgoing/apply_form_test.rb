@@ -47,13 +47,6 @@ module Outgoing
       assert @paid.reject.is?(:rejected)
     end
 
-    test "cancelled time parsing" do
-      form = Factory.create(:paid_form)
-      form.cancelled_string = "22.1.2009 15:50"
-      assert_equal DateTime.new(2009,1,22,15,50), form.cancelled
-    end
-
-
     test "state labelling" do
       state = Factory.create(:rejected_form).state
       assert_equal :rejected, state.name

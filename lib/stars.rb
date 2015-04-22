@@ -23,7 +23,7 @@ module Stars
         joins(:starrings).where("starrings.user_id = ?",user.id)
       }
     end
-    
+
     def remove_star(user)
       starrings.where(user: user).delete_all
     end
