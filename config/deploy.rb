@@ -106,8 +106,8 @@ task :restart => [ :environment ] do
 end
 
 # Stopping
-# cd /etc/apache2/
-# ln -s sites-available/volant sites-enabled/001-volant
+# cd /etc/apache2/sites-enabled
+# ln -s sites-available/volant ../sites-enabled/001-volant
 
 namespace :log do
   task :app do

@@ -4,7 +4,9 @@ class V1::ApplyFormsController < V1::BaseController
   skip_before_action :verify_authenticity_token
 
   def create
-    form = apply_forms.create_by_birthnumber(apply_form_params)
+    attrs = apply_form_params.merge(organization: Account.current.organization,
+                                    country: Account.current.organization.country)
+    form = apply_forms.create_by_birthnumber(attrs)
 
     if form.valid? && form.volunteer.valid?
       ApplyFormMailer.submitted(form).deliver

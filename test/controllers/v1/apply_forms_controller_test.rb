@@ -3,6 +3,10 @@ require 'test_helper'
 
 class V1::ApplyFormsControllerTest < ActionController::TestCase
   setup do
+    cz = Factory(:country, code: 'CZ')
+    inex = Factory(:organization, code: 'SDA', country: cz)
+    Factory(:account,organization: inex)
+
     Factory(:email_template,action: 'submitted')
     Factory(:email_template,action: 'ltv/submitted',body: 'LTV')
 
@@ -51,6 +55,8 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       assert_equal @form.past_experience, 'I used to shoot things 100 years ago.'
       assert_equal @form.special_needs, 'eggnog'
       assert_equal 3, @form.workcamps.reload.count
+      assert_equal @form.organization.code, 'SDA'
+      assert_equal @form.country.code, 'CZ'
     end
   end
 
@@ -68,6 +74,8 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       assert_saved_attribute '0103260424', :birthnumber
       assert_equal :not_paid, @form.state.name
       assert_equal Ltv::ApplyForm, @form.class
+      assert_equal @form.organization.code, 'SDA'
+      assert_equal @form.country.code, 'CZ'
     end
   end
 
@@ -119,7 +127,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       [ '+420/123456789','+420 123 456 789','0034-21-34-56','+420123456789', '123456789' ].each do |valid|
         post :create, apply_form: { attr => valid }
 #        refute json[:errors][:"volunteer.#{attr}"], "#{attr} should be valid (#{valid})"
-        refute json[:errors][:"#{attr}"], "#{attr} should be valid (#{valid})"        
+        refute json[:errors][:"#{attr}"], "#{attr} should be valid (#{valid})"
       end
 
       [ '+420', 'invalid', '123'].each do |invalid_number|
@@ -130,23 +138,23 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
         # assert_match /should be formatted like/,errors.first, "#{attr} does not validate against #{invalid_number}"
 
         assert_not_nil (errors = json[:errors][attr])
-        assert_match /should be formatted like/,errors.first, "#{attr} does not validate against #{invalid_number}"        
+        assert_match /should be formatted like/,errors.first, "#{attr} does not validate against #{invalid_number}"
       end
     end
   end
-  
+
   private
 
   def assert_saved_attribute(value,attr)
     assert_equal value, @form.volunteer.send(attr)
-    assert_equal value, @form.send(attr)    
+    assert_equal value, @form.send(attr)
   end
 
   def assert_form_error(attr)
     msg = "Presence of #{attr} was not validated"
-    assert_not_nil json[:errors][attr],msg    
+    assert_not_nil json[:errors][attr],msg
   end
-  
+
   def form_by_birthnumber(bn)
     ApplyForm.find_by_birthnumber(bn)
     # joins(:volunteer).where(people: { birthnumber: bn}).first
