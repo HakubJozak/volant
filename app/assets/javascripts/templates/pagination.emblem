@@ -1,3 +1,10 @@
+p.navbar-text.navbar-right.pagination-info title='Total records found.'
+  ' / {{total}}
+
+form.navbar-form.navbar-right 
+  .form-group title='Records per page.'
+    = view 'per_page_select' value=perPage
+
 ul.nav.navbar.pagination.navbar-right
   li{ bind-attr class="previous_page::disabled" }
     if previous_page
@@ -28,13 +35,5 @@ ul.nav.navbar.pagination.navbar-right
     else    
       a.navbar-link
         ' &raquo;
-
-
-p.navbar-text.navbar-right.pagination-info title='Total records found.'
-  ' / {{total}}
-
-form.navbar-form.navbar-right 
-  .form-group title='Records per page.'
-    = view 'per_page_select' value=perPage
 
 
