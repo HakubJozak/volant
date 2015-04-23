@@ -10,10 +10,10 @@ class ActiveRecord::Base
   end
 
   def self.unaccented_like(attr)
-    "unaccent(#{attr}) ILIKE unaccent(?)" 
+    "unaccent(#{attr}) ILIKE unaccent(?)"
   end
 
   def self.like_string(query)
-    "%#{query}%"
+    "%#{query.strip}%"
   end
 end

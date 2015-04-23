@@ -114,7 +114,7 @@ class WorkcampTest < ActiveSupport::TestCase
     target = Factory.create(:workcamp,code: 'MYCODE')
     dummy = Factory.create(:workcamp,code: 'XXX')
 
-    result = Workcamp.joins(:organization).query('MYCODE')
+    result = Workcamp.joins(:organization).query('  MYCODE  ')
 
     assert_equal 1,result.size
     assert_equal target.id,result.first.id

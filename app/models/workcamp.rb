@@ -2,7 +2,7 @@
 class Workcamp < ActiveRecord::Base
 
   attr_accessor :accepted_incoming_places, :accepted_incoming_places_males, :accepted_incoming_places_females
-  
+
   include AllianceExporter
   include ActiveRecord::Diff
   include Import::WorkcampExtension
@@ -25,7 +25,7 @@ class Workcamp < ActiveRecord::Base
 
   scope :free, -> (at_least = 1) {
     where("free_places >= ?",at_least)
-  } 
+  }
 
   scope :year, lambda { |year|
     year = year.to_i
@@ -188,25 +188,25 @@ class Workcamp < ActiveRecord::Base
     mails = EmailContact.incoming.where('organization_id in (?)',orgs).select(:address).map(&:address)
     mails.join(', ')
   end
-  
+
   public
 
   def accepts_age?(age)
     (self.minimal_age <= age) and (self.maximal_age >= age)
   end
-  
+
 
   def capacity
     read_attribute(:capacity) || 0
   end
-  
+
   def capacity_males
     read_attribute(:capacity_males) || capacity
   end
 
   def capacity_females
     read_attribute(:capacity_females) || capacity
-  end  
+  end
 
   def format_for_csv(field,object)
     case field
