@@ -1,4 +1,4 @@
-table.table.table-condensed.table-responsive
+table.table.table-condensed.table-responsive.workcamps
   tbody
     each wc in arrangedContent itemController='littleWorkcamp'
       tr
@@ -21,8 +21,8 @@ table.table.table-condensed.table-responsive
             ' {{wc.computedOrSetDuration}}&nbsp;days
           with wc
             partial 'workcamp/extra_fee'
-        td
-          .btn-group.workcamp-actions
+        td.workcamp-actions
+          .btn-group
             view 'placement_info' workcamp=wc
 
             button.btn.btn-default.btn-sm.dropdown-toggle type='button' data-toggle='dropdown'
@@ -37,10 +37,16 @@ table.table.table-condensed.table-responsive
 
         if editingVisible
           = partial 'workcamps/editor'
-        else
-          td
-            with wc
-              = partial 'workcamps/placement'
+          td.actions
+            if wc.isDirty
+              button.btn.btn-success.btn-sm{action 'save' wc} type='button'
+                ' {{fa 'check'}}
+              button.btn.btn-danger.btn-sm{action 'rollback' wc} type='button'
+                ' {{fa 'times'}}
         td
-          button.btn.btn-default.remove-button{ action 'remove' wc }
-            = fa 'trash-o'
+          with wc
+            = partial 'workcamps/placement'
+        unless editingVisible            
+          td
+            button.btn.btn-default.remove-button{ action 'remove' wc }
+              = fa 'trash-o'

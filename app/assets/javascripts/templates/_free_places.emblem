@@ -1,11 +1,11 @@
 if incomingMode
   span title='Free capacity'
     ' {{free_capacity}}
-  b 
+  b
     | ♀
   span title='Free capacity for females'
     ' {{free_capacity_females}}
-  b 
+  b
     | ♂
   span title='Free capacity for males'
     ' {{ free_capacity_males}}
@@ -14,13 +14,13 @@ else
     | {{free_places}}
   sub title='Asked for places'
     | {{asked_for_places}}
-  b 
+  b
     | ♀
   span title='Free places for females'
     | {{free_places_for_females}}
   sub title='Asked for places - females'
     | {{asked_for_places_females}}
-  b 
+  b
     | ♂
   span title='Free places for males'
     | {{ free_places_for_males}}

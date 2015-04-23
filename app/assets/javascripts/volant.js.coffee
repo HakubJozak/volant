@@ -56,7 +56,7 @@
 moment.locale('en-au')
 
 
-          
+
 
 Ember.Application.initializer
   name: 'setCurrentUser'
@@ -104,4 +104,3 @@ else
   }
 
 console.log Volant.settings
-

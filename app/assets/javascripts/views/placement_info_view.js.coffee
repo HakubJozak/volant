@@ -3,7 +3,7 @@ Volant.PlacementInfoView = Ember.View.extend
   tagName: 'button'
   type: 'button'
   attributeBindings: ['type']
-  classNames: ['btn','btn-default']
+  classNames: ['btn','btn-default','btn-sm']
 
 
   applyForm: Ember.computed.alias('controller.applyForm')
