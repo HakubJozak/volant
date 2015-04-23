@@ -1,6 +1,8 @@
 Volant.OrganizationsRoute = Volant.BaseRoute.extend
   model: (params) ->
-    @store.find('organization', { p: params.page,q: params.query })
+    filter = { p: params.page,q: params.query }
+    filter.per_page = @controllerFor('pagination').get('perPage')
+    @store.find('organization', filter)
 
   actions:
     search: ->

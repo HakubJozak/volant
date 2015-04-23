@@ -15,6 +15,7 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
   model: (params) ->
     filter = @default_filter()
     filter.p = params.page
+    filter.per_page = @controllerFor('pagination').get('perPage')
     filter.year = params.year
     filter.q = params.query
     filter.order = params.order

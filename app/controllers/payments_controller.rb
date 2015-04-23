@@ -3,7 +3,7 @@ class PaymentsController < ApplicationController
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
 
   def index
-    search = Payment.page(current_page).order('received desc')
+    search = Payment.page(current_page).per(per_page).order('received desc')
     search = search.includes(:apply_form).references(:apply_form)
     search = add_year_scope(search)
 

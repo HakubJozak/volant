@@ -4,7 +4,7 @@ class VolunteersController < ApplicationController
   before_action :find_volunteer, only: [ :show, :update, :destroy ]
 
   def index
-    search = Volunteer.order(:lastname,:firstname).page(current_page)
+    search = Volunteer.order(:lastname,:firstname).page(current_page).per(per_page)
 
     if q = filter[:q].presence
       search = search.query(q)

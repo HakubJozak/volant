@@ -7,7 +7,7 @@ class OrganizationsController < ApplicationController
 
     if filter[:p].present?
       orgs = orgs.query(filter[:q]) if filter[:q].present?
-      orgs = orgs.order('countries.name_en ASC, organizations.name ASC').page(current_page)
+      orgs = orgs.order('countries.name_en ASC, organizations.name ASC').page(current_page).per(per_page)
       render json: orgs, meta: { pagination: pagination_info(orgs) }, each_serializer: OrganizationSerializer
     else
       render json: orgs.all, each_serializer: OrganizationSerializer

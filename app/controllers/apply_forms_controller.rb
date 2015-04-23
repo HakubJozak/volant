@@ -78,7 +78,7 @@ class ApplyFormsController < ApplicationController
   end
 
   def create
-    attrs = apply_form_params 
+    attrs = apply_form_params
     workcamp_ids = attrs.delete(:workcamp_ids) || []
     @apply_form = apply_forms.new(attrs)
 
@@ -89,9 +89,9 @@ class ApplyFormsController < ApplicationController
         # HACK over 9000 (but tested)
         if workcamp_ids.size == 1 && @apply_form.is_a?(Incoming::ApplyForm)
           @apply_form.accept
-        end        
+        end
       end
-        
+
       render_apply_form
     else
       render_error(@apply_form)
@@ -181,7 +181,7 @@ class ApplyFormsController < ApplicationController
                                                      :contact_street, :contact_city, :contact_zipcode,
                                                      :note, :country_id, :organization_id,
                                                      tag_ids: [],
-                                                     workcamp_ids: [],                                                     
+                                                     workcamp_ids: [],
                                                      payment_attributes: PaymentSerializer.writable)
     replace_nil_by_empty_array(safe_params,:tag_ids)
   end
