@@ -6,13 +6,14 @@ class MessageMailer < ActionMailer::Base
       next unless a.has_data?
 
       attachments[a.filename] = {
-        content: a.data,
+        content: Base64.encode64(a.data),
+        transfer_encoding: :base64,
         mime_type: a.mime_type
       }
     end
 
     @body = msg.html_body.to_s.force_encoding('UTF-8')
-    
+
     mail(to: msg.to,
          from: msg.from,
          cc: msg.cc,
