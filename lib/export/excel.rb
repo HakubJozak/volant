@@ -8,11 +8,12 @@ module Export
 
       module ClassMethods
         def to_csv
-          apply_forms = joins(:volunteer).includes(:payment,taggings: [:tag], current_workcamp: [ :intentions,:organization ]).
+          apply_forms = includes(:payment,taggings: [:tag], current_workcamp: [ :intentions,:organization ]).
             references(:current_workcamp,:current_assignment,:payment)
 
           form_attrs = [ :id,:created_at, :cancelled,
                          :firstname, :lastname, :gender, :age, :birthnumber, :birthdate,
+                         :passport_number, :passport_issued_at, :passport_expires_at, 
                          :nationality, :occupation, :email, :phone,
                          :street, :city, :zipcode, :contact_street, :contact_city, :contact_zipcode,
                          :emergency_name, :emergency_day, :emergency_night,
@@ -25,18 +26,20 @@ module Export
           ::CSV.generate(:col_sep => ';') do |csv|
             h = []
             h.concat csv_header( form_attrs, 'Application')
+            h.concat csv_header( org_attrs, 'Sending Organization')            
             h.concat csv_header( payment_attrs, 'Payment')
             h.concat csv_header( wc_attrs, 'Workcamp')
-            h.concat csv_header( org_attrs, 'Organization')
+            h.concat csv_header( org_attrs, 'Receiving Organization')
             csv << h
 
             apply_forms.find_each do |form|
               d = []
               wc = form.current_workcamp
               d.concat csv_data(form_attrs, form)
+              d.concat csv_data(org_attrs, form.organization)              
               d.concat csv_data(payment_attrs, form.payment)
               d.concat csv_data(wc_attrs, wc)
-              d.concat csv_data(org_attrs, wc ? wc.organization : nil)
+              d.concat csv_data(org_attrs, wc.try(:organization))
               csv << d
             end
           end
@@ -83,7 +86,7 @@ module Export
 
         CSV_COLUMNS = [:id, :code, :name, :country_code,
                        :country_name, :org_code, :org_name,
-                       :org_networks, :language, :from,:to, :capacity,
+                       :org_networks, :language, :from,:to, :capacity, :tags,
                        :places, :places_for_males,
                        :places_for_females,
                        :free_places_for_males,
@@ -152,6 +155,8 @@ module Export
             wc.apply_forms.cancelled.count                  
           when :org_networks
             wc.organization.networks.map(&:name).join(',')
+          when :tags
+            wc.tag_list
           else
             value = wc.send(attr)
           end
