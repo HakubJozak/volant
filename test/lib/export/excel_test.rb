@@ -1,13 +1,13 @@
 require 'test_helper'
 
 module Export
-  class CsvTest < ActiveSupport::TestCase
+  class ExcelTest < ActiveSupport::TestCase
 
     setup do
       @austria = countries(:AT)
     end
 
-    test "#csv" do
+    test "ApplyForm::to_csv" do
       Factory.create(:apply_form, firstname: 'XXX', lastname: 'YYY')
       f = Factory.create(:paid_form)
       org = Factory.create(:organization,country: @austria,code: 'XYZ')
@@ -26,6 +26,18 @@ module Export
       # require 'csv'
       # parsed = CSV.parse(csv)
       # puts parsed.inspect
+    end
+
+
+    test "Workcamp::to_csv" do
+      Workcamp.destroy_all
+      Factory(:outgoing_workcamp)
+      Factory(:incoming_workcamp)
+
+      csv = Workcamp.to_csv
+      assert_equal 3,csv.lines.count
+
+      puts csv
     end
   end
 end

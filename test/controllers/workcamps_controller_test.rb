@@ -13,6 +13,12 @@ class WorkcampsControllerTest < ActionController::TestCase
     assert_equal Workcamp.count, json_response['meta']['pagination']['total']
   end
 
+  test "index.csv" do
+    get :index, format: :csv
+    assert_response :success
+    puts response.body
+  end
+
   test 'index for incoming' do
     Workcamp.destroy_all
     target = Factory(:incoming_workcamp, organization: organizations(:inex))

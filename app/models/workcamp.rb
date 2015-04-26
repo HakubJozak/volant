@@ -3,10 +3,15 @@ class Workcamp < ActiveRecord::Base
 
   attr_accessor :accepted_incoming_places, :accepted_incoming_places_males, :accepted_incoming_places_females
 
+  # `begin` and `end` are deprecated names
+  alias_attribute :from, :begin
+  alias_attribute :to, :end
+
   include AllianceExporter
   include ActiveRecord::Diff
   include Import::WorkcampExtension
   include Stars::Model
+  include Export::Excel::Workcamp
 
   create_date_time_accessors
 
@@ -151,13 +156,6 @@ class Workcamp < ActiveRecord::Base
   # TODO - fix tests and allow validation
   #  validates_inclusion_of :publish_mode, :in => [:always, :season, :never,:ltv ]
 
-  # CSV_FIELDS = %w(name code country organization)
-  # acts_as_convertible_to_csv :fields => CSV_FIELDS, :format_options => {
-  #                                                 :country => :format_for_csv,
-  #                                                 :organization => :format_for_csv
-  #                                                  :networks => :format_for_csv
-  #                                                 }
-
   belongs_to :country
   belongs_to :organization
 
@@ -206,14 +204,6 @@ class Workcamp < ActiveRecord::Base
 
   def capacity_females
     read_attribute(:capacity_females) || capacity
-  end
-
-  def format_for_csv(field,object)
-    case field
-    when 'country' then object.country.name
-    when 'organization' then self.organization.name
-      #      when 'networks' then self.organization.networks.map { |n| n.name }.join(",") if networks.size > 0
-    end || ""
   end
 
   private

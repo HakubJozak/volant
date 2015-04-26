@@ -8,15 +8,30 @@ class WorkcampsController < ApplicationController
     if ids = filter[:ids]
       search = Workcamp.includes(:country,:workcamp_assignments,:organization,:tags,:intentions,:bookings)
       render json: search.find(*ids), each_serializer: WorkcampSerializer
-    elsif filter[:starred]
-      search = Workcamp.starred_by(current_user)
-      render json: search, each_serializer: WorkcampSerializer
     else
-      search = workcamps.order(current_order).page(current_page).per(per_page).joins(:country)
-      search = search.includes(:workcamp_assignments,:organization,:tags,:intentions,:organization => [:emails])
-      search = search.filter_by_hash(filter,current_user)
-      search = add_year_scope(search)
-      render json: search, meta: { pagination: pagination_info(search) }, each_serializer: WorkcampSerializer
+      if filter[:starred]
+        search = Workcamp.starred_by(current_user)
+        render json: search, each_serializer: WorkcampSerializer
+      else
+        search = workcamps.order(current_order).joins(:country)
+        search = search.includes(:workcamp_assignments,:organization,:tags,:intentions,:organization => [:emails])
+        search = search.filter_by_hash(filter,current_user)
+        search = add_year_scope(search)
+
+        respond_to do |format|
+          format.csv  {
+            csv = search.limit(100).to_csv
+            send_data csv, filename: "#{current_year || 'all'}_workcamps.csv"
+          }
+          
+          format.json { 
+            search = search.page(current_page).per(per_page)
+            csv = csv_version(:workcamps_path)
+            render json: search, meta: { pagination: pagination_info(search), csv: csv }, each_serializer: WorkcampSerializer
+          }
+        end
+
+      end
     end
   end
 

@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
     }
   end
 
+  def csv_version(path)
+    send path,params.except(:action,:controller,:p,:per_page).merge(format: :csv)
+  end
+  
   def per_page
     params[:per_page] || params[:per] || 10
   end

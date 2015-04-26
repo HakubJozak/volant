@@ -124,7 +124,7 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
 
   test 'similar' do
     dummy = Factory(:outgoing_workcamp, country: countries(:IT))
-    full = Factory(:outgoing_workcamp, places: 0)    
+    full = Factory(:outgoing_workcamp, places: 0)
     target = Factory(:outgoing_workcamp)
 
     @workcamp.intentions.each { |i|
