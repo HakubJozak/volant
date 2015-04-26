@@ -86,15 +86,17 @@ module Export
 
         CSV_COLUMNS = [:id, :code, :name, :country_code,
                        :country_name, :org_code, :org_name,
-                       :org_networks, :language, :from,:to, :capacity, :tags,
+                       :org_networks, :language, :from,:to, :duration, :capacity, :tags, :intentions,
                        :places, :places_for_males,
                        :places_for_females,
+                       :free_places,
                        :free_places_for_males,
-                       :free_places_for_females, :project_id,
-                       :duration, :free_capacity_males,
+                       :free_places_for_females,
+                       :free_capacity_males,
                        :free_capacity_females, :free_capacity,
                        :apply_forms_total, :apply_forms_accepted,
                        :apply_forms_cancelled,
+                       :project_id,
                        :minimal_age,
                        :maximal_age, :area, :accomodation, :workdesc,
                        :notes, :description, :created_at, :updated_at,
@@ -106,7 +108,7 @@ module Export
                        :accepted_places_females, :asked_for_places,
                        :asked_for_places_males,
                        :asked_for_places_females, :type, :longitude,
-                       :latitude, :state, :requirements, :free_places ]
+                       :latitude, :state, :requirements ]
 
         def to_csv
           ::CSV.generate(:col_sep => ';') do |csv|
@@ -153,6 +155,8 @@ module Export
             wc.apply_forms.accepted.count                  
           when :apply_forms_cancelled
             wc.apply_forms.cancelled.count                  
+          when :intentions
+            wc.intentions.map(&:code).join(',')
           when :org_networks
             wc.organization.networks.map(&:name).join(',')
           when :tags
