@@ -1,4 +1,4 @@
-table.table-condensed
+table.table-condensed.little-workcamp-placement
   tbody
     if activeAssignments
       if showActive
@@ -21,12 +21,10 @@ table.table-condensed
       ' Active ({{activeAssignments.length}})
 
   if bookings
-    unless showBookings
-      view 'toggle' value=showBookings
-        ' Bookings ({{bookings.length}})
+    view 'toggle' value=showBookings
+      ' Bookings ({{bookings.length}})
 
   if idleAssignments
-    unless showIdle
-      view 'toggle' value=showIdle
-        ' Idle ({{idleAssignments.length}})
+    view 'toggle' value=showIdle
+      ' Idle ({{idleAssignments.length}})
 

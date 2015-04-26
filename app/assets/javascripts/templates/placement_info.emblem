@@ -1,9 +1,9 @@
 if view.applyForm
   if view.relevantFreePlaces.empty
     if view.applyForm.male
-      fa 'male'
+      fa 'mars'
     else
-      fa 'female'
+      fa 'venus'
     '
     = view.relevantFreePlaces.confirmed
     sub = view.relevantFreePlaces.asked
@@ -12,5 +12,3 @@ if view.applyForm
 else
   with view.workcamp
     partial 'free_places'
-  
-

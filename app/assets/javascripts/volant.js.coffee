@@ -104,3 +104,15 @@ else
   }
 
 console.log Volant.settings
+
+# Fallback to 'fallbackProperty' if 'localProperty' is null, otherwise
+# use 'localProperty'.
+Volant.toggleWithFallback = (localProperty,fallbackProperty) ->
+  ( (property,value) ->
+    if value?
+      val = if value == true  then true else null
+      @set localProperty, val
+      val  
+    else
+      @get(localProperty) || @get(fallbackProperty)
+  ).property(localProperty,fallbackProperty)

@@ -2,11 +2,11 @@ if incomingMode
   span title='Free capacity'
     ' {{free_capacity}}
   b
-    | ♀
+    ' {{fa 'venus'}}
   span title='Free capacity for females'
     ' {{free_capacity_females}}
   b
-    | ♂
+    ' {{fa 'mars'}}
   span title='Free capacity for males'
     ' {{ free_capacity_males}}
 else
@@ -15,13 +15,13 @@ else
   sub title='Asked for places'
     | {{asked_for_places}}
   b
-    | ♀
+    ' {{fa 'venus'}}
   span title='Free places for females'
     | {{free_places_for_females}}
   sub title='Asked for places - females'
-    | {{asked_for_places_females}}
+    ' {{asked_for_places_females}}
   b
-    | ♂
+    ' {{fa 'mars'}}
   span title='Free places for males'
     | {{ free_places_for_males}}
   sub title='Asked for places - males'

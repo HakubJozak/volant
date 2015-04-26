@@ -6,7 +6,7 @@ Ember.Handlebars.helper 'fa', (name) ->
   new Handlebars.SafeString "<i class='fa fa-#{name}'></i>"
 
 Ember.Handlebars.helper 'fa-stack', (bottom,top) ->
-        
+
 
 Ember.Handlebars.helper 'fa-link', (name) ->
   new Handlebars.SafeString "<a href='#'><i class='fa fa-#{name}'></i></a>"
