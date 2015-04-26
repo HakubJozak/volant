@@ -16,7 +16,6 @@ class WorkcampsControllerTest < ActionController::TestCase
   test "index.csv" do
     get :index, format: :csv
     assert_response :success
-    puts response.body
   end
 
   test 'index for incoming' do

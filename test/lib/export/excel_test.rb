@@ -36,8 +36,6 @@ module Export
 
       csv = Workcamp.to_csv
       assert_equal 3,csv.lines.count
-
-      puts csv
     end
   end
 end
