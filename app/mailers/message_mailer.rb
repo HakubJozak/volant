@@ -12,6 +12,7 @@ class MessageMailer < ActionMailer::Base
       }
     end
 
+    @action = msg.action
     @body = msg.html_body.to_s.force_encoding('UTF-8')
 
     mail(to: msg.to,

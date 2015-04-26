@@ -5,5 +5,13 @@
   </head>
   <body>
     <%= @body.html_safe %>
+    <% if @action == 'ask' %>
+      <hr/>
+      <p>
+        Sent via <a href="http://volant.github.com">Volant</a>
+        (<a href="http://volant.github.com">http://volant.github.com</a>).
+        An open source volunteer placement tool.
+      </p>
+    <% end %>
   </body>
 </html>
