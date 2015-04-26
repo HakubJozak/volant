@@ -388,3 +388,11 @@ table.table-condensed {
   td.actions { width: 6em; }
 }
 
+.btn-group.view-toggles {
+  button:active, button:focus {
+    background-color: white;  
+    &.active {
+      background-color: #EBEBEB;
+    }
+  }
+}

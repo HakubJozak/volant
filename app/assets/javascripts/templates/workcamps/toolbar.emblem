@@ -4,7 +4,7 @@ p.navbar-left.navbar-text
 
 form.navbar-form.navbar-left
   .form-group
-    .btn-group
+    .btn-group.view-toggles
       view 'toggle' value=editingVisible
         ' {{fa 'pencil-square-o'}}
 

@@ -15,11 +15,10 @@ table.table-condensed
         each wa in idleAssignments
           = partial 'workcamps/assignment'
 
-.btn-group
+.btn-group.view-toggles
   if activeAssignments
-    unless showActive
-      view 'toggle' value=showActive
-        ' Active ({{activeAssignments.length}})
+    view 'toggle' value=showActive
+      ' Active ({{activeAssignments.length}})
 
   if bookings
     unless showBookings
