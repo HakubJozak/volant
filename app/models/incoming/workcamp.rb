@@ -1,10 +1,8 @@
 require 'digest'
 
-class Incoming::Workcamp < ::Workcamp
+class Incoming::Workcamp < ::Outgoing::Workcamp
   has_many :participants, :class_name => 'Incoming::Participant', :dependent => :nullify
 
-  validates :begin, presence: true
-  validates :end, presence: true
 #   validates :project_id, uniqueness: true
 
   before_save do
