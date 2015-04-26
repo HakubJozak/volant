@@ -1,5 +1,5 @@
 p.navbar-left.navbar-text
-  a.navbar-link href=csvDownloadUrl
+  a.navbar-link{ action 'downloadCsv' } href='#'
     ' {{fa 'download'}} CSV
 
 form.navbar-form.navbar-left
@@ -18,7 +18,7 @@ form.navbar-form.navbar-left
         ' Bookings
 
 
-    if editingVisible    
+    if editingVisible
       button.btn.btn-success type='button' click='save' title='Save All'
         ' Save All
       button.btn.btn-danger type='button' click='rollback' title='Revert All'

@@ -1,4 +1,5 @@
 Volant.ApplyFormsController = Volant.ListController.extend
+  targetModel: Volant.ApplyForm
   needs: ['tagsSelect']
 
   page: 1
@@ -15,7 +16,7 @@ Volant.ApplyFormsController = Volant.ListController.extend
 
   csvDownloadUrl: (->
     year = @get('year')
-    type = @get('mode')    
+    type = @get('mode')
     "/apply_forms.csv?year=#{year}&type=#{type}"
   ).property('year','mode')
 

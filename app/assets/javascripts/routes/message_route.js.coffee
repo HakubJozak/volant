@@ -99,7 +99,7 @@ Volant.MessageRoute = Volant.BaseRoute.extend
         @ajax_to_store(url).then ((payload) =>
           @flash_info 'Message sent.'),
           @send 'goToApplyForms'
-        =>
+        (e) =>
           @flash_error 'Send failed.'
       false
 

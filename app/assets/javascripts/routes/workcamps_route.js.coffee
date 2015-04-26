@@ -61,16 +61,16 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend
       @controllerFor(@routeName).set 'editingVisible',false
       for wc in @currentModel.filterBy('isDirty',true)
         wc.rollback()
- 
+
     save: ->
       msg = 'Saving...'
       promises = @currentModel.filterBy('isDirty',true).map (wc) -> wc.save()
-      @flash_info(msg)  
+      @flash_info(msg)
 
       Ember.RSVP.all(promises).then (results) =>
         for r in results
           if r.state == 'fullfilled'
-            workcamp = r.value      
+            workcamp = r.value
             msg += "#{workcamp.get('code')} saved."
           else
             msg += "#{r.reason}."

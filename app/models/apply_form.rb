@@ -34,6 +34,10 @@ class ApplyForm < ActiveRecord::Base
 
   accepts_nested_attributes_for :payment
 
+  scope :cancelled, lambda {
+    where('cancelled IS NOT NULL')
+  }
+
   scope :accepted, lambda {
     joins(:current_assignment).where(cancelled: nil).where('workcamp_assignments.accepted IS NOT NULL')
   }

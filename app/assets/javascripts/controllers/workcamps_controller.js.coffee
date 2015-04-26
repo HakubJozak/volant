@@ -1,5 +1,6 @@
 Volant.WorkcampsController = Volant.ListController.extend Volant.ToggleMixin,
 
+  targetModel: Volant.Workcamp
   needs: ['countriesSelect','workcampIntentionsSelect','organizationsSelect','tagsSelect','starred_workcamps']
   page: 1
   queryParams: ['query','page','year','from','to',
@@ -9,12 +10,6 @@ Volant.WorkcampsController = Volant.ListController.extend Volant.ToggleMixin,
                 'sortAscending','order']
 
   query_placeholder: "part of workcamp's name, code or keyword from detailed descriptions"
-
-  csvDownloadUrl: (->
-    year = @get('year')
-    type = @get('mode')    
-    "/workcamps.csv?year=#{year}&type=#{type}"
-  ).property('year','mode')
 
   query: ''
   from: null
@@ -35,9 +30,7 @@ Volant.WorkcampsController = Volant.ListController.extend Volant.ToggleMixin,
   order: 'name'
   orderOptions: [{ id:'name', name:'Name'},{ id:'code', name:'Code'},
                  { id:'from', name:'From'},{ id:'to', name:'To'},
-                 { id:'country', name:'Country'}]
-
-
+                 { id:'country', name:'Country'} ]
 
   setSorting: (->
     props = switch @get('order')
@@ -59,7 +52,7 @@ Volant.WorkcampsController = Volant.ListController.extend Volant.ToggleMixin,
   editingVisible: false
   showActive: false
   showIdle: false
-  showBookings: false    
+  showBookings: false
 
   actions:
     filterOrganizationsByCountry: (country) ->

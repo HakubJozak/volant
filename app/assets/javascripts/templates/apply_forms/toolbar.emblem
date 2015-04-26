@@ -1,5 +1,5 @@
 p.navbar-left.navbar-text
-  a.navbar-link href=csvDownloadUrl
+  a.navbar-link{ action 'downloadCsv' } href='#'
     ' {{fa 'download'}} CSV
 
 = render 'pagination'

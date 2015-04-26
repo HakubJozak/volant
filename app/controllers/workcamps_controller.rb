@@ -20,14 +20,13 @@ class WorkcampsController < ApplicationController
 
         respond_to do |format|
           format.csv  {
-            csv = search.limit(100).to_csv
-            send_data csv, filename: "#{current_year || 'all'}_workcamps.csv"
+            send_data search.to_csv, filename: "workcamps.csv"
           }
-          
-          format.json { 
+
+          format.json {
             search = search.page(current_page).per(per_page)
-            csv = csv_version(:workcamps_path)
-            render json: search, meta: { pagination: pagination_info(search), csv: csv }, each_serializer: WorkcampSerializer
+            render json: search, meta: { pagination: pagination_info(search), csv: csv_version(:workcamps_path) },
+                   each_serializer: WorkcampSerializer
           }
         end
 
