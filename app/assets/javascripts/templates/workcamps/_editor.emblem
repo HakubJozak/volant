@@ -4,15 +4,13 @@ td.placement
   else
     = input value=wc.places type="number"
 td.placement
-  b
-    | {{fa 'venus'}}
+  b = gender-sign 'f'
   if incomingMode
     = input value=wc.capacity_females type="number"
   else
     = input value=wc.places_for_females type="number"
 td.placement
-  b
-    | {{fa 'mars'}}
+  b = gender-sign 'm'
   if incomingMode
     = input value=wc.capacity_males type="number"
   else
