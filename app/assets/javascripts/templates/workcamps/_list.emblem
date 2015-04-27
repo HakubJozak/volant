@@ -13,12 +13,8 @@ table.table.table-condensed.table-responsive.workcamps
           format-date wc.to
         td
           link-to 'workcamp' wc
-            if editingVisible
-              b
-                = wc.code
-            else
-              ' {{wc.code}} 
-
+            b
+              = wc.code
             ' &ndash; {{wc.name}}
           br
             ' {{age-range wc}}, {{join wc.workcamp_intentions 'code'}}
