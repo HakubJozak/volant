@@ -1,19 +1,19 @@
 td.placement
   if incomingMode
     = input value=wc.capacity type="number"
-  else  
+  else
     = input value=wc.places type="number"
 td.placement
   b
-    | ♀
+    | {{fa 'venus'}}
   if incomingMode
     = input value=wc.capacity_females type="number"
-  else  
+  else
     = input value=wc.places_for_females type="number"
 td.placement
   b
-    | ♂
+    | {{fa 'mars'}}
   if incomingMode
     = input value=wc.capacity_males type="number"
-  else  
+  else
     = input value=wc.places_for_males type="number"
