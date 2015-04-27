@@ -18,13 +18,17 @@ Volant.LittleWorkcampController = Ember.ObjectController.extend Volant.ToggleMix
   ).property('model.id','mode')
 
   activeAssignments: (->
-    @get('workcampAssignments').filterBy('applyForm.currentWorkcamp.id',@get('id'))
+    @get('workcampAssignments').filterBy('applyForm.currentWorkcamp.id',@get('id')).sortBy('applyForm.gender')
   ).property('workcampAssignments.@each.applyForm.currentWorkcamp.id','id')
 
   # Applications that have this workcamp on the list later or further on
   idleAssignments: (->
-    @get('workcampAssignments').rejectBy('applyForm.currentWorkcamp.id',@get('id'))
+    @get('workcampAssignments').rejectBy('applyForm.currentWorkcamp.id',@get('id')).sortBy('applyForm.gender')
   ).property('workcampAssignments.@each.applyForm.currentWorkcamp.id','id')
+
+  bookings: (->
+    @get('model.bookings').sortBy('gender')
+  ).property('model.bookings.@each.gender')
 
   actions:
     createBooking: ->

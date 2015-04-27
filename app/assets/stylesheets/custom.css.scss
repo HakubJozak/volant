@@ -408,6 +408,15 @@ table.table-condensed {
   }
 }
 
+$male-color: #6969B3;
+$female-color: #C05C5C;
+
+
 .fa-mars {
   font-size: smaller;    
+  color: $male-color;
+}
+
+.fa-venus {
+  color: $female-color;
 }

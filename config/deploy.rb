@@ -8,7 +8,7 @@ set :repository, 'git@github.com:HakubJozak/volant.git'
 
 
 task :production do
-  set :branch, 'incoming'
+  set :branch, 'master'
   set :user, 'rails'
   set :deploy_to, '/home/rails/volant'
   set :domain, 'pelican.amagical.net'
@@ -17,7 +17,7 @@ end
 
 
 task :staging do
-  set :branch, 'incoming'
+  set :branch, 'master'
   set :user, 'jakub'
   set :deploy_to, '/home/jakub/volant'
   set :domain, '128.199.36.58'
