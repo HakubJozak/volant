@@ -12,6 +12,7 @@ class Workcamp < ActiveRecord::Base
   include Import::WorkcampExtension
   include Stars::Model
   include Export::Excel::Workcamp
+  include Export::FridayList::Workcamp  
 
   create_date_time_accessors
 

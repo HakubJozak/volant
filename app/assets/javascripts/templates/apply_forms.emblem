@@ -23,7 +23,7 @@ form.form.form-horizontal.search-form submit="search" role="form"
 
     = partial 'order_by'
 
-  .form-group  
+  .form-group
     .col-md-12
       view 'labels-list' contentBinding='tags'
 
@@ -59,7 +59,7 @@ table.table.table-striped.table-hover#apply-forms-list
           link-to 'apply_form' this
             = gender-sign gender
             '
-            = name
+            b = name
             '
             | (
             = age
@@ -76,9 +76,10 @@ table.table.table-striped.table-hover#apply-forms-list
         td
           if current_workcamp
             with current_workcamp
+              ' {{small-flag country}}
               link-to 'workcamp' this
-                ' {{code}} &ndash; {{name}},
-
+                b = code
+                ' &ndash; {{name}},
               br
               ' {{format-date from}} &ndash; {{format-date to}},
               ' {{age-range this}},
