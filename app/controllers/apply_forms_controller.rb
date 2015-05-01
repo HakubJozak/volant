@@ -53,13 +53,13 @@ class ApplyFormsController < ApplicationController
           search = search.state_filter(state)
         end
       else
-        search = search.joins('LEFT OUTER JOIN workcamps ON workcamps.id = current_workcamp_id_cached')
-          .joins('LEFT OUTER JOIN workcamp_assignments ON workcamp_assignments.id = current_assignment_id_cached')
+        # search = search.joins('LEFT OUTER JOIN workcamps ON workcamps.id = current_workcamp_id_cached')
+        #   .joins('LEFT OUTER JOIN workcamp_assignments ON workcamp_assignments.id = current_assignment_id_cached')
       end
 
       respond_to do |format|
         format.csv {
-          send_data search.to_csv, filename: "applications.csv"
+          send_data Export::ApplyFormCsv.new(search).to_csv, filename: "applications.csv"
         }
 
         format.json {

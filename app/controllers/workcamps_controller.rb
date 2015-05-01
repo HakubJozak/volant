@@ -20,7 +20,7 @@ class WorkcampsController < ApplicationController
 
         respond_to do |format|
           format.csv  {
-            send_data search.to_csv, filename: "workcamps.csv"
+            send_data Export::WorkcampCsv.new(search).to_csv, filename: "workcamps.csv"
           }
 
           format.json {

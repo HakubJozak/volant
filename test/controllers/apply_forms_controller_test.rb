@@ -17,6 +17,11 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_equal wc.id, json_response['apply_forms'].first['current_workcamp_id']
   end
 
+  test "index.csv" do
+    get :index, format: :csv
+    assert_response :success
+    puts response.body
+  end
 
   # regression test for http://redmine.siven.onesim.net/issues/1430
   test 'index with assigned incoming workcamp' do
