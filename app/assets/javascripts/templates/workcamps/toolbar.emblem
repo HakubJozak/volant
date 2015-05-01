@@ -2,6 +2,10 @@ p.navbar-left.navbar-text
   a.navbar-link{ action 'downloadCsv' } href='#'
     ' {{fa 'download'}} CSV
 
+  a.navbar-link{ action 'downloadCsv' 'friday_list' } href='#'
+    ' {{fa 'download'}} Friday List
+
+
 form.navbar-form.navbar-left
   .form-group
     .btn-group.view-toggles

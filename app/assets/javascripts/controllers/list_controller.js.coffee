@@ -17,15 +17,13 @@ Volant.ListController = Ember.ArrayController.extend Volant.ModeAwareMixin,
       @set('page',1)
       true
 
-    downloadCsv: ->
+    downloadCsv: (exportType) ->
+      exportType ||= 'csv'
       total = @get('pagination.total')
       if total > 500
         return unless confirm("The number of records you wish to \
                                export (#{total}) is too big and it may choke the server
                                or timeout before you download any date. \
                                Do you wish to proceed?")
-      window.location = @store.typeMapFor(@get('targetModel')).metadata.csv
+      window.location = @store.typeMapFor(@get('targetModel')).metadata[exportType]
       false
-            
-
-      

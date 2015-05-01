@@ -34,7 +34,11 @@ class Export::FridayList
     when :capacity, :free_capacity, :free_capacity_females, :free_capacity_males
       [ 0, wc.send(attr) ].max
     when :no_more
-      format_list wc.no_more_countries, :name
+      if wc.free_capacity <= 0
+        'FULL'
+      else
+        format_list wc.no_more_countries, :name
+      end
     else
       value = wc.send(attr)
     end

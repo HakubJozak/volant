@@ -25,11 +25,13 @@ Rails.application.routes.draw do
 
   post '/workcamps/import', to: 'import#create'
   post '/workcamps/confirm_all', to: 'import#confirm_all'
-  post '/workcamps/cancel_all', to: 'import#cancel_all'    
+  post '/workcamps/cancel_all', to: 'import#cancel_all'
 
   resources :import_changes, except: [ :create ]
 
   resources :workcamps, except: [ :edit, :new ] do
+    get 'friday_list', on: :collection
+
     member do
       # Project Exchange Form - XML
       get :pef
@@ -47,7 +49,6 @@ Rails.application.routes.draw do
       post :accept
       post :reject
       post :infosheet
-      # Volunteer Exchange Form
       get :vef
     end
   end

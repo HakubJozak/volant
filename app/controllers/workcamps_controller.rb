@@ -2,54 +2,48 @@ class WorkcampsController < ApplicationController
   respond_to :json
 
   serialization_scope :current_user
-  before_action :find_workcamp, except: [ :index,:create ]
+  before_action :find_workcamp, except: [ :index,:create, :friday_list ]
 
   def index
     if ids = filter[:ids]
       search = Workcamp.includes(:country,:workcamp_assignments,:organization,:tags,:intentions,:bookings)
       render json: search.find(*ids), each_serializer: WorkcampSerializer
+    elsif filter[:starred]
+      search = Workcamp.starred_by(current_user)
+      render json: search, each_serializer: WorkcampSerializer
     else
-      if filter[:starred]
-        search = Workcamp.starred_by(current_user)
-        render json: search, each_serializer: WorkcampSerializer
-      else
-        search = workcamps.order(current_order).joins(:country)
-        search = search.includes(:workcamp_assignments,:organization,:tags,:intentions,:organization => [:emails])
-        search = search.filter_by_hash(filter,current_user)
-        search = add_year_scope(search)
+      search = apply_filter(workcamps.order(current_order).joins(:country))
 
-        respond_to do |format|
-          format.csv  {
-            send_data Export::WorkcampCsv.new(search).to_csv, filename: "workcamps.csv"
-          }
+      respond_to do |format|
+        format.csv  {
+          send_data Export::WorkcampCsv.new(search).to_csv, filename: "workcamps.csv"
+        }
 
-          format.json {
-            search = search.page(current_page).per(per_page)
-            render json: search, meta: { pagination: pagination_info(search), csv: csv_version(:workcamps_path) },
-                   each_serializer: WorkcampSerializer
-          }
-        end
-
+        format.json {
+          search = search.page(current_page).per(per_page)
+          render json: search, meta: {
+            pagination: pagination_info(search),
+            csv: csv_version(:workcamps_path),
+            friday_list: csv_version(:friday_list_workcamps_path) },
+          each_serializer: WorkcampSerializer
+        }
       end
     end
   end
 
-  def current_order
-    case filter[:order].presence
-    when 'code' then "code #{current_order_direction}"
-    when 'from' then "\"begin\" #{current_order_direction}"
-    when 'to' then "\"end\" #{current_order_direction}"
-    when 'country'then "countries.name_en #{current_order_direction}"
-    else "name #{current_order_direction}"
+  def friday_list
+    respond_to do |format|
+      format.csv {
+        search = apply_filter(workcamps.order(current_order).joins(:country))
+        send_data Export::FridayList.new(search).to_csv, filename: "friday_list.csv"
+      }
     end
   end
-
 
   def show
     render json: @workcamp, serializer: WorkcampSerializer
   end
 
-  # POST /workcamps
   def create
     @workcamp = workcamps.new(workcamp_params)
 
@@ -83,9 +77,26 @@ class WorkcampsController < ApplicationController
     render json: @workcamp
   end
 
-
   private
 
+  def apply_filter(search)
+    search = search.includes(:workcamp_assignments,:organization,:tags,:intentions,:organization => [:emails])
+    search = search.filter_by_hash(filter,current_user)
+    search = add_year_scope(search)
+    search
+  end
+
+
+  def current_order
+    case filter[:order].presence
+    when 'code' then "code #{current_order_direction}"
+    when 'from' then "\"begin\" #{current_order_direction}"
+    when 'to' then "\"end\" #{current_order_direction}"
+    when 'country'then "countries.name_en #{current_order_direction}"
+    else "name #{current_order_direction}"
+    end
+  end
+  
   def find_workcamp
     @workcamp = Workcamp.includes(:country,:workcamp_assignments,:organization,:tags,:intentions,:bookings).find(params[:id])
   end
