@@ -56,11 +56,6 @@ max-width: 30em;
 
 /* state icons 
 h2 i.fa {
-  &.accepted  { color: $green; }
-  &.cancelled, &.rejected { color: $red;   }
-  &.paid { color: $grey;   }
-  &.not_paid, &.asked, { color: $yellow;   }
-  &.infosheeted { color: $grey;   }
 }
 */
 
@@ -341,10 +336,22 @@ table#apply-forms-list {
 .state-icon {
   .fa-stack-2x {
     color: gray;
+    $yellow: #F8DF66;
+    $red: #C05C5C;
+
+    &.cancelled, &.rejected { color: $red;   }
+    &.accepted { color: $yellow;   }
+    &.confirmed { color: $green;   }
   }
+
   .fa-stack-1x {
     @include single-text-shadow(1px 1px #AAA);
   }
+
+
+
+
+
 }
 
 .pagination.navbar {
