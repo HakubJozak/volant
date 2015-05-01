@@ -5,7 +5,7 @@ class Export::FridayList
   
   def columns
     [ :code, :name, :from, :to, :minimal_age,
-      :maximal_age, :intentions, :capacity, :free_capacity,
+      :maximal_age, :intentions, :tags, :capacity, :free_capacity,
       :free_capacity_females, :free_capacity_males, :no_more ]    
   end
 
