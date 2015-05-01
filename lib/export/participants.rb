@@ -7,6 +7,10 @@ class Export::Participants
     [:organization, :country, :nationality, :passport_number, :lastname, :firstname, :gender, :age, :birthdate, :email, :phone, :emergency_name, :emergency_day, :emergency_night, :special_needs, :note, :general_remarks, :tags ]
   end
 
+  def each_record(&block)
+    @scope.order(:country_id).each(&block)
+  end
+
   private
 
   def csv_value(form,attr)

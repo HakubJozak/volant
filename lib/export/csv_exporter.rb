@@ -3,12 +3,17 @@ module Export::CsvExporter
     @scope = scope
   end
 
+  def each_record(&block)
+    @scope.find_each(&block)
+  end
+
+
   def to_csv
     ::CSV.generate(:col_sep => ';') do |csv|
       csv << columns.map { |c| csv_header(c) }
 
-      @scope.find_each do |wc|
-        csv << columns.map { |c| csv_value(wc,c) }
+      each_record do |record|
+        csv << columns.map { |c| csv_value(record,c) }
       end
     end
   end

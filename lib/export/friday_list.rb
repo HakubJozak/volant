@@ -9,16 +9,10 @@ class Export::FridayList
       :free_capacity_females, :free_capacity_males, :no_more ]    
   end
 
-  def to_csv
+  def each_record(&block)
     # HACK
     raise 'Too big friday list' if @scope.count > 500
-
-    ::CSV.generate(:col_sep => ';') do |csv|
-      csv << columns.map { |c| csv_header(c) }
-      @scope.includes(apply_forms: :country).all.each do |wc|
-        csv << columns.map { |c| csv_value(wc,c) }
-      end
-    end
+    @scope.includes(apply_forms: :country).all.each(&block)
   end
   
   private

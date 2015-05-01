@@ -70,7 +70,7 @@ class WorkcampsController < ApplicationController
   def participants
     respond_to do |f|
       f.csv {
-        send_data Export::Participants.new(@workcamp.apply_forms.accepted).to_csv,
+        send_data Export::Participants.new(@workcamp.apply_forms.accepted.order(:lastname)).to_csv,
         filename: "#{@workcamp.code} - #{@workcamp.name} participants.csv"
       }
     end
