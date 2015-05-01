@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+require Rails.root.join('app/models/workcamp')
+
+
 Factory.define :workcamp do |w|
   w.sequence(:code) { |n| "ORG#{n}" }
   w.sequence(:name) { |n| "Dummy name #{n}" }

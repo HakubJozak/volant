@@ -3,7 +3,7 @@ require 'csv'
 module Export
   module FridayList
     module Workcamp
-      extend ActiveSupport::Concern   
+      extend ActiveSupport::Concern
 
       module ClassMethods
         def friday_list
@@ -16,9 +16,9 @@ module Export
 
             find_each do |wc|
               csv << columns.map { |c| csv_value(wc,c) }
-            end          
+            end
           end
-          
+
         end
 
         private
@@ -39,7 +39,7 @@ module Export
         end
 
         def csv_header(attr)
-          attr.to_s.humanize.capitalize            
+          attr.to_s.humanize.capitalize
         end
       end
     end

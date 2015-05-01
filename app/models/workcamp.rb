@@ -11,8 +11,6 @@ class Workcamp < ActiveRecord::Base
   include ActiveRecord::Diff
   include Import::WorkcampExtension
   include Stars::Model
-  include Export::Excel::Workcamp
-  include Export::FridayList::Workcamp  
 
   create_date_time_accessors
 
@@ -26,7 +24,7 @@ class Workcamp < ActiveRecord::Base
   validates_presence_of :country, :code, :name, :places, :from,
                         :to,:places_for_males, :places_for_females,
                         :organization, :publish_mode
-  
+
   validates_presence_of :extra_fee_currency, :if => Proc.new {|wc| wc.extra_fee && wc.extra_fee > 0},:message => "je povinná. (Je vyplněn poplatek, ale nikoliv jeho měna. Doplňte měnu poplatku.)"
 
 

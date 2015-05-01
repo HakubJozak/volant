@@ -1,5 +1,7 @@
+require Rails.root.join('app/models/apply_form').to_s
+
 # do not use! it has no assignment
-Factory.define :abstract_form, class: ApplyForm do |f|
+Factory.define :abstract_form, class: ::ApplyForm do |f|
   f.firstname 'John'
   f.lastname 'Doe'
   f.gender 'm'
@@ -18,7 +20,7 @@ end
 Factory.define :incoming_apply_form, parent: :abstract_form,class: Incoming::ApplyForm do |f|
   f.fee 0
   f.association :country
-  f.association :organization  
+  f.association :organization
 end
 
 Factory.define :incoming_male_form, parent: :incoming_apply_form do |f|

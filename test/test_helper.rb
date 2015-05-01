@@ -51,7 +51,7 @@ class ActiveSupport::TestCase
   def json
     JSON.parse(response.body).deep_symbolize_keys
   end
-  
+
   # First parameter should be the object that
   # is supposed to validate presence of selected attributes.
   # Rest of the params are symbols representing those attributes.
