@@ -20,7 +20,6 @@ class ApplyFormsControllerTest < ActionController::TestCase
   test "index.csv" do
     get :index, format: :csv
     assert_response :success
-    puts response.body
   end
 
   # regression test for http://redmine.siven.onesim.net/issues/1430

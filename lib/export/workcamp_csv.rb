@@ -1,47 +1,25 @@
 require 'csv'
 
 class Export::WorkcampCsv
-
-  CSV_COLUMNS = [:id, :code, :name, :country_code,
-                 :country_name, :org_code, :org_name,
-                 :org_networks, :language, :from,:to, :duration, :capacity, :tags, :intentions,
-                 :places, :places_for_males,
-                 :places_for_females,
-                 :free_places,
-                 :free_places_for_males,
-                 :free_places_for_females,
-                 :free_capacity_males,
-                 :free_capacity_females, :free_capacity,
-                 :apply_forms_total, :apply_forms_accepted,
-                 :apply_forms_cancelled,
-                 :project_id,
-                 :minimal_age,
-                 :maximal_age, :area, :accomodation, :workdesc,
-                 :notes, :description, :created_at, :updated_at,
-                 :extra_fee, :extra_fee_currency, :region,
-                 :capacity_natives, :capacity_teenagers,
-                 :capacity_males, :capacity_females, :airport,
-                 :train, :publish_mode, :accepted_places,
-                 :accepted_places_males,
-                 :accepted_places_females, :asked_for_places,
-                 :asked_for_places_males,
-                 :asked_for_places_females, :type, :longitude,
-                 :latitude, :state, :requirements ]
-
-  def initialize(scope)
-    @scope = scope
-  end
-
-
-  def to_csv
-    ::CSV.generate(:col_sep => ';') do |csv|
-      csv << CSV_COLUMNS.map { |attr| csv_header(attr) }
-
-      @scope.find_each do |wc|
-        csv << CSV_COLUMNS.map { |attr| csv_value(wc,attr) }
-      end
-    end
-  end
+  include CsvExporter
+  
+  def columns
+    [:id, :code, :name, :country_code, :country_name, :org_code,
+     :org_name, :org_networks, :language, :from,:to, :duration,
+     :capacity, :tags, :intentions, :places, :places_for_males,
+     :places_for_females, :free_places, :free_places_for_males,
+     :free_places_for_females, :free_capacity_males,
+     :free_capacity_females, :free_capacity, :apply_forms_total,
+     :apply_forms_accepted, :apply_forms_cancelled, :project_id,
+     :minimal_age, :maximal_age, :area, :accomodation, :workdesc,
+     :notes, :description, :created_at, :updated_at, :extra_fee,
+     :extra_fee_currency, :region, :capacity_natives,
+     :capacity_teenagers, :capacity_males, :capacity_females,
+     :airport, :train, :publish_mode, :accepted_places,
+     :accepted_places_males, :accepted_places_females,
+     :asked_for_places, :asked_for_places_males,
+     :asked_for_places_females, :type, :longitude, :latitude, :state,
+     :requirements ] end
 
   protected
 
@@ -79,9 +57,9 @@ class Export::WorkcampCsv
     when :apply_forms_cancelled
       wc.apply_forms.cancelled.count
     when :intentions
-      wc.intentions.map(&:code).join(',')
+      format_list wc.intentions, :code
     when :org_networks
-      wc.organization.networks.map(&:name).join(',')
+      format_list wc.organization.networks, :name
     when :tags
       wc.tag_list
     else
@@ -90,4 +68,3 @@ class Export::WorkcampCsv
   end
 
 end
-
