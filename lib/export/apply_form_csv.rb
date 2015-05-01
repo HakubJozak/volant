@@ -1,8 +1,6 @@
 require 'csv'
 
-module Export
-  module Excel
-    class ApplyForm
+class Export::ApplyFormCsv
 
   def initialize(scope)
     @scope = scope
@@ -68,6 +66,4 @@ module Export
       end
     end
   end
-end
-end
 end

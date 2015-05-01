@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Export::Excel::ApplyFormTest < ActiveSupport::TestCase
+class Export::ApplyFormCsvTest < ActiveSupport::TestCase
 
   setup do
     @austria = countries(:AT)
@@ -14,7 +14,7 @@ class Export::Excel::ApplyFormTest < ActiveSupport::TestCase
     f.current_workcamp.save!
     f.save!
 
-    csv = Export::Excel::ApplyForm.new(Outgoing::ApplyForm).to_csv
+    csv = Export::ApplyFormCsv.new(Outgoing::ApplyForm).to_csv
     assert_equal csv.lines.count, 3
     assert_match /;Austria;/,csv
     assert_match /XYZ/,csv

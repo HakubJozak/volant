@@ -1,6 +1,6 @@
 require 'csv'
 
-class Export::Excel::Workcamp
+class Export::WorkcampCsv
 
   CSV_COLUMNS = [:id, :code, :name, :country_code,
                  :country_name, :org_code, :org_name,
