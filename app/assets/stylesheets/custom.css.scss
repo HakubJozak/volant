@@ -335,9 +335,7 @@ table#apply-forms-list {
 
 .state-icon {
   .fa-stack-2x {
-    color: gray;
-    $yellow: #F8DF66;
-    $red: #C05C5C;
+    color: $grey;
 
     &.cancelled, &.rejected { color: $red;   }
     &.accepted { color: $yellow;   }

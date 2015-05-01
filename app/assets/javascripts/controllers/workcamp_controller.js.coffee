@@ -28,6 +28,10 @@ Volant.WorkcampController = Ember.ObjectController.extend Volant.ModeAwareMixin,
   updated: Ember.computed.equal('state','updated')
   imported_or_updated: Ember.computed.or('imported','updated')
 
+  downloadParticipantsList: (exportType) ->
+    window.location = "/workcamps/#{@get('id')}/participants.csv"
+    false
+
   set_country: (->
     unless @get('country')
       if @get('organization')

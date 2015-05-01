@@ -8,13 +8,18 @@ if incomingMode
       button.btn.btn-default.btn-sm.navbar-btn.dropdown-toggle type='button' data-toggle='dropdown'
         span.caret
       ul.dropdown-menu
-        link-li        
-          link-to 'new_workcamp_message' id 'infosheet_all' 
+        link-li
+          link-to 'new_workcamp_message' id 'infosheet_all'
             ' {{fa 'file-o' }} Send Infosheets
 
+
+p.navbar-text
+  a.navbar-link{ action 'downloadParticipantsList' } href='#'
+    ' {{fa 'download'}} Participants
 
 p.navbar-text
   if organization
     link-to 'organization' organization class='navbar-link'
       ' {{fa 'institution' }} Organization's Card
+
 

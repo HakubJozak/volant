@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     member do
       # Project Exchange Form - XML
       get :pef
+      get :participants
       post :cancel_import
       post :confirm_import
     end

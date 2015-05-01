@@ -67,6 +67,15 @@ class WorkcampsController < ApplicationController
     head :no_content
   end
 
+  def participants
+    respond_to do |f|
+      f.csv {
+        send_data Export::Participants.new(@workcamp.apply_forms.accepted).to_csv,
+        filename: "#{@workcamp.code} - #{@workcamp.name} participants.csv"
+      }
+    end
+  end
+
   def cancel_import
     @workcamp.cancel_import!
     render json: @workcamp
