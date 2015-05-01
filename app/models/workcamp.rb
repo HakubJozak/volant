@@ -208,6 +208,10 @@ class Workcamp < ActiveRecord::Base
     read_attribute(:capacity_females) || capacity
   end
 
+  def no_more_countries
+    apply_forms.group_by { |f| f.country }.select { |c,v| v.size > 1 }.keys
+  end
+
   private
 
   def localize(date)

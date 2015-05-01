@@ -104,7 +104,7 @@ class FreePlacesUpdaterTest < ActiveSupport::TestCase
 
     assert_equal 1, @wc.free_places
     assert_equal 1, @wc.free_places_for_males
-    assert_equal 1, @wc.free_places_for_females        
+    assert_equal 1, @wc.free_places_for_females
 
     assert_equal 2, @wc.free_capacity
     assert_equal 0, @wc.free_capacity_males

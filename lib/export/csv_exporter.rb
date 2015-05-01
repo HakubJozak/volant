@@ -25,7 +25,7 @@ module Export::CsvExporter
     end    
   end
 
-  def format_list(list,attr = :code)
-    list.map(&:code).join(',')
+  def format_list(list,attr)
+    list.map { |r| r.send(attr) }.join(',')
   end
 end

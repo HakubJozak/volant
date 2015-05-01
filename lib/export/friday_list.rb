@@ -6,9 +6,21 @@ class Export::FridayList
   def columns
     [ :code, :name, :from, :to, :minimal_age,
       :maximal_age, :intentions, :capacity, :free_capacity,
-      :free_capacity_females, :free_capacity_males ]    
+      :free_capacity_females, :free_capacity_males, :no_more ]    
   end
 
+  def to_csv
+    # HACK
+    raise 'Too big friday list' if @scope.count > 500
+
+    ::CSV.generate(:col_sep => ';') do |csv|
+      csv << columns.map { |c| csv_header(c) }
+      @scope.includes(apply_forms: :country).all.each do |wc|
+        csv << columns.map { |c| csv_value(wc,c) }
+      end
+    end
+  end
+  
   private
   
   def csv_value(wc,attr)
@@ -16,9 +28,13 @@ class Export::FridayList
     when :from, :to
       format_date wc.send(attr)
     when :intentions
-      format_list wc.intentions
+      format_list wc.intentions, :code
     when :tags
       wc.tag_list
+    when :capacity, :free_capacity, :free_capacity_females, :free_capacity_males
+      [ 0, wc.send(attr) ].max
+    when :no_more
+      format_list wc.no_more_countries, :name
     else
       value = wc.send(attr)
     end
