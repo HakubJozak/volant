@@ -46,7 +46,7 @@ class WorkcampAssignmentsController < ApplicationController
   def workcamp_assignment_params
     wa = params.require(:workcamp_assignment)
     wa.delete(:state)
-    wa.permit(:position,:accepted,:rejected,:infosheeted,:asked,:apply_form_id,:workcamp_id)
+    wa.permit(:position,:accepted,:rejected,:confirmed,:infosheeted,:asked,:apply_form_id,:workcamp_id)
   end
 
   def render_workcamp_assignment(wa)

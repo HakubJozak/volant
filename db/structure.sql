@@ -57,7 +57,8 @@ CREATE TABLE workcamp_assignments (
     asked timestamp without time zone,
     infosheeted timestamp without time zone,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    confirmed timestamp without time zone
 );
 
 
@@ -2559,4 +2560,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150415145620');
 INSERT INTO schema_migrations (version) VALUES ('20150418212753');
 
 INSERT INTO schema_migrations (version) VALUES ('20150426113644');
+
+INSERT INTO schema_migrations (version) VALUES ('20150501172715');
 

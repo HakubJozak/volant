@@ -4,7 +4,7 @@ module Outgoing
     after_save :update_free_places
     after_destroy :update_free_places
 
-    STATE_ORDER = [ :paid, :asked, :accepted, :infosheeted, :rejected, :cancelled, :not_paid, :after].freeze
+    STATE_ORDER = [ :paid, :asked, :accepted, :infosheeted, :confirmed, :rejected, :cancelled, :not_paid, :after].freeze
 
     create_date_time_accessors
 
@@ -18,7 +18,7 @@ module Outgoing
 
     scope :not_rejected, :conditions => [ 'rejected IS NULL']
 
-    [ "accept", "reject", "ask", "infosheet" ].each do |action|
+    [ "accept", "reject", "ask", "infosheet", "confirm" ].each do |action|
       define_method(action) do |time = nil|
         time ||= Time.now
         self.update_attribute( "#{action}ed", time)
@@ -36,7 +36,7 @@ module Outgoing
     def state
       return :cancelled if self.apply_form.cancelled?
 
-      [ :rejected, :infosheeted, :accepted, :asked ].each do |attr|
+      [ :confirmed, :rejected, :infosheeted, :accepted, :asked].each do |attr|
         return attr if self.send(attr)
       end
 

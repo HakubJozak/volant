@@ -91,6 +91,11 @@ class ApplyFormsController < ApplicationController
     render_apply_form
   end
 
+  def confirm
+    @apply_form.confirm
+    render_apply_form
+  end  
+
   def infosheet
     @apply_form.infosheet
     render_apply_form

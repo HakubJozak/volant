@@ -32,6 +32,11 @@
             </div>
 
             <div class="form-group">
+              <label>Confirmed</label>
+              {{view Volant.DateView dateBinding='confirmed' }}
+            </div>
+            
+            <div class="form-group">
               {{! TODO - font awesome 'check'/'times' }}
               {{ button 'Save' 'save' 'btn-success' }}
               {{ button 'Cancel' 'rollback' 'btn' }}

@@ -8,6 +8,7 @@ Volant.WorkcampAssignment = DS.Model.extend
   rejected: DS.attr 'isodate'
   asked: DS.attr 'isodate'
   infosheeted: DS.attr 'isodate'
+  confirmed: DS.attr 'isodate'  
 
   isActive: (->
     @get('id') == @get('applyForm.currentAssignment.id')

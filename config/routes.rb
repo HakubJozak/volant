@@ -48,6 +48,7 @@ Rails.application.routes.draw do
       post :cancel
       post :ask
       post :accept
+      post :confirm      
       post :reject
       post :infosheet
       get :vef

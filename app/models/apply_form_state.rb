@@ -7,7 +7,7 @@ class ApplyFormState
   def self.create(form)
     return CancelledState.new(form) if form.cancelled
 
-    [ :infosheeted, :accepted, :rejected, :asked ].each do |field|
+    [ :confirmed, :infosheeted, :accepted, :rejected, :asked ].each do |field|
       time = form.send(field)
       return ApplyFormState.new(field, time, form) if time
     end
@@ -29,19 +29,22 @@ class ApplyFormState
                when :paid
                  [ :ask, :accept, :reject, :cancel ]
                when :accepted
-                 [ :infosheet,  :cancel ]
+                 [ :confirm, :infosheet,  :cancel ]
                when :rejected
                  [  :cancel ]
                when :not_paid
                  [ :pay,  :cancel ]
                when :infosheeted
                  [ :confirm, :cancel ]
-               else []
+               when :confirmed
+                 [ :cancel ]
+               else
+                 []
                end
 
     # remove workcamp related actions, if there is no current workcamp
     unless form.current_assignment
-      @actions.delete_if { |k,v| [ :ask,:accept,:reject,:infosheet ].include?(k) }
+      @actions.delete_if { |k,v| [ :ask,:accept,:reject,:infosheet, :confirm ].include?(k) }
     end
 
     # TODO - solve in model
