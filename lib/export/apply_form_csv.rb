@@ -10,7 +10,7 @@ class Export::ApplyFormCsv
     apply_forms = @scope.includes(:payment,taggings: [:tag], current_workcamp: [ :intentions,:organization ]).
       references(:current_workcamp,:current_assignment,:payment)
 
-    form_attrs = [ :id,:created_at, :cancelled,
+    form_attrs = [ :id,:created_at, :cancelled, :accepted,
                    :firstname, :lastname, :gender, :age, :birthnumber, :birthdate,
                    :passport_number, :passport_issued_at, :passport_expires_at,
                    :nationality, :occupation, :email, :phone,
@@ -55,14 +55,13 @@ class Export::ApplyFormCsv
     return attrs.map { nil } unless obj
 
     attrs.map do |a|
-      value = obj.send(a)
-
-      if Date === value or a == :created_at
+      if [:created_at, :accepted, :cancelled, :birthdate, :returned_date ].include?(a)
+        value = obj.send(a)
         I18n.l(value.to_date) rescue nil
       elsif [:intentions,:networks,:tags].include?(a)
-        value.join(',') rescue nil
+        obj.send(a).join(',') rescue nil
       else
-        value
+        obj.send(a)
       end
     end
   end

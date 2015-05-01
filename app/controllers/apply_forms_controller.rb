@@ -196,7 +196,7 @@ class ApplyFormsController < ApplicationController
   end
 
   def apply_forms
-    type = params.delete(:type) || params[:apply_form].try(:delete,:type)
+    type = params[:type] || params[:apply_form].try(:[],:type)
 
     case type.try(:downcase)
     when 'incoming' then Incoming::ApplyForm
