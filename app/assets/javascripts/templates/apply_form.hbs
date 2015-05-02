@@ -3,6 +3,9 @@
     <h2>
       {{partial 'star' }}
       {{partial 'apply_form/title'}}
+      <div class="pull-right">
+        {{partial 'action_buttons'}}
+      </div>
     </h2>
 
     <form class="form" role="form" {{action 'save' on="submit"}}>

@@ -13,7 +13,7 @@ Volant.StateTransform = DS.Transform.extend
     null
 
   deserialize: (hash) ->
-    Ember.Object.create(name: hash.name, info: hash.info, actions: hash.actions)
+    Ember.Object.create(name: hash.name, info: hash.info, actions: hash.actions, isState: true)
 
 
 Volant.FileTransform = DS.Transform.extend
