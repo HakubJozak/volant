@@ -19,7 +19,9 @@
           </a></li>
         {{/each}}
         <li>
-          {{mail-to-title email "<i class='fa fa-envelope-o'></i> Email"}}
+          {{#link-to 'new_message' this.id 'email'}}
+            {{fa 'envelope'}} Email
+          {{/link-to}}
         </li>
 
       </ul>

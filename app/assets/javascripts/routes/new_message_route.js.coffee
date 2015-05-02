@@ -7,7 +7,10 @@ Volant.NewMessageRoute = Volant.MessageRoute.extend
     @flash_info 'Message saved.'
 
   model: (params) ->
-    action_name = params.action_name
+    action_name = if params.action_name == 'email'
+                    null
+                  else
+                    params.action_name
 
     @store.find('user',@get('current_user.content.id')).then (user) =>
       @store.find('apply_form',params.apply_form_id).then (form) =>

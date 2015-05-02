@@ -29,16 +29,13 @@ Ember.Handlebars.helper 'apply-form-state-icon', (state) ->
 
 
 
-
-
-
 Ember.Handlebars.helper 'apply-form-action-icon', (name) ->
-
   icons = {
     accept: 'thumbs-o-up'
     reject: 'thumbs-o-down'
     ask: 'envelope-o'
-    infosheet: 'suitcase'
+    infosheet: 'file'
+    confirm: 'suitcase'    
     pay: 'money'
     email: 'envelope-o'
     cancel: 'times'

@@ -44,9 +44,10 @@
         <label class="col-md-1 control-label">Template</label>
         <div class="col-md-4">
           {{view Ember.Select
-          contentBinding='controllers.email_templates.content'
+          contentBinding='controllers.email_templates.arrangedContent'
           optionLabelPath="content.title"
           selectionBinding="selectedTemplate"
+          prompt="Choose a template..."
           class="form-control" }}
         </div>
         <div class="col-md-1">
