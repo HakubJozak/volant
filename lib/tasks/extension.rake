@@ -20,12 +20,34 @@ namespace :db do
       u.update_attributes(password: 'password')
     end
   end
-  
+
 
   desc "Mangle sensitive data!"
   task :mangle => :environment do
     only_in_development!
 
+    bar = ProgressBar.create(:title => "Applications", :total => ApplyForm.count)
+    ApplyForm.find_each do |v|
+      v.firstname = Faker::Name.first_name
+      v.lastname = Faker::Name.last_name
+      v.birthnumber = Faker::Number.number(10)
+      v.email = Faker::Internet.email
+      v.phone = Faker::PhoneNumber.phone_number
+      v.birthdate = (15 + rand(15)).years.ago
+      v.emergency_name = Faker::Name.name
+      v.emergency_day = Faker::PhoneNumber.phone_number
+      v.emergency_night = Faker::PhoneNumber.phone_number
+      v.passport_number = Faker::Number.number(10)      
+
+      [ '', 'contact_' ].each do |prefix|
+        v.send("#{prefix}street=", Faker::Address.street_name)
+        v.send("#{prefix}city=", Faker::Address.city)
+      end
+
+      v.save(validate: false)
+      bar.increment
+    end
+    
     bar = ProgressBar.create(:title => "People", :total => Person.count)
     Person.find_each do |v|
       v.firstname = Faker::Name.first_name
@@ -37,33 +59,14 @@ namespace :db do
       v.emergency_name = Faker::Name.name
       v.emergency_day = Faker::PhoneNumber.phone_number
       v.emergency_night = Faker::PhoneNumber.phone_number
+      v.passport_number = Faker::Number.number(10)
 
       [ '', 'contact_' ].each do |prefix|
         v.send("#{prefix}street=", Faker::Address.street_name)
         v.send("#{prefix}city=", Faker::Address.city)
       end
 
-
-      if v.respond_to?(:apply_forms)
-        v.apply_forms.each do |f|
-          f.firstname = v.firstname
-          f.lastname = v.lastname
-          f.birthnumber = v.birthnumber
-          f.email = v.email
-          f.phone = v.phone
-          f.birthdate = v.birthdate
-          f.emergency_name = v.emergency_name
-          f.emergency_day = v.emergency_day
-          f.emergency_night = v.emergency_night
-          f.street = v.street
-          f.city = v.city
-          f.street = v.contact_street
-          f.city = v.contact_city
-          f.save(validate: false)
-        end
-      end
-
-      v.save!
+      v.save(validate: false)
       bar.increment
     end
 

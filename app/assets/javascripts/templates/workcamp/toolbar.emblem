@@ -3,20 +3,7 @@
 if incomingMode
   form.navbar-form.navbar-left
     .btn-group.dropup
-      link-to 'new_workcamp_message' id 'email' class='btn btn-default navbar-btn'
-        ' {{fa 'envelope'}} Email All
-      button.btn.btn-default.btn-sm.navbar-btn.dropdown-toggle type='button' data-toggle='dropdown'
-        span.caret
-      ul.dropdown-menu
-        li
-          a href=createApplyFormUrl
-            ' {{fa 'plus'}} Application
-        li
-          a href='#' click='createBooking'
-            ' {{fa 'plus'}} Booking
-        link-li
-          link-to 'new_workcamp_message' id 'infosheet_all'
-            ' {{fa 'file-o' }} Send Infosheets
+      = partial 'workcamp/action_dropdown'
 
 
 p.navbar-text

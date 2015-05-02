@@ -158,7 +158,7 @@ class ApplyForm < ActiveRecord::Base
     self.state.name == state
   end
 
-  [ "accept","ask","reject","infosheet" ].each do |action|
+  [ "accept","ask","reject","infosheet","confirm" ].each do |action|
     define_method(action) do |time = Time.now|
       if self.current_assignment
         current_assignment.send(action,time)

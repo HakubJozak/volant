@@ -1,4 +1,4 @@
-Volant.ApplyFormActionPickerController = Ember.ObjectController.extend Volant.AjaxToStoreMixin,
+Volant.ApplyFormActionPickerController = Ember.ObjectController.extend Volant.Flash, Volant.AjaxToStoreMixin,
   actions:
     changeState: ->
       action = @get('action_name')
