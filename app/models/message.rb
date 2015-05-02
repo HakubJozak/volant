@@ -2,17 +2,17 @@ class Message < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :apply_form
-  belongs_to :workcamp  
+  belongs_to :workcamp
   has_many :attachments, dependent: :destroy
   accepts_nested_attributes_for :attachments
 
   validates_presence_of :user
-  validates_inclusion_of :action, in: %w(ask accept reject send infosheet submitted infosheet_all)
+  validates_inclusion_of :action, in: %w(ask accept reject send infosheet submitted infosheet_all confirm)
 
   scope :not_sent, lambda { where(sent_at: nil) }
 #  validates_presence_of :from,:to,:subject,:body, if: :sending
 
-  ALLOWED_FORM_ACTIONS = [ :accept, :reject, :ask, :infosheet ]
+  ALLOWED_FORM_ACTIONS = [ :accept, :reject, :ask, :infosheet, :confirm ]
   ALLOWED_WORKCAMP_ACTIONS = [ :infosheet_all ]
 
   def deliver!

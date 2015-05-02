@@ -61,10 +61,10 @@ h2 i.fa {
 
 
 td .apply-form-action-dropdown {
-  width: 7em;
+  width: 8em;
 
-  & > button:first-child {
-    width: 75%;
+  & > .first-action {
+      min-width: 65%;
   }  
 }
 
