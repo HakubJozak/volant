@@ -19,12 +19,12 @@ textarea.form-control {
 
 // TODO: replace by SVG rectangular icons
 // https://github.com/lipis/flag-icon-css
-.flag {
-  @include border-radius(3px);  
-  background-color: rgb(235, 235, 235);
-  padding-left: 2px;
-  padding-right: 2px;
-}
+/* .flag { */
+/*   @include border-radius(3px);   */
+/*   background-color: rgb(235, 235, 235); */
+/*   padding-left: 2px; */
+/*   padding-right: 2px; */
+/* } */
 
 .fa-star-o {
   color: gray;

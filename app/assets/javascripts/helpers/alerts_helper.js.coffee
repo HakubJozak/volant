@@ -5,7 +5,7 @@ Ember.Handlebars.helper 'apply-form-alerts', (form) ->
     alerts.push 'No response for more than 3 days.'
 
   if form.get('missingInfosheetAlert')
-    alerts.push 'Infosheet missing'
+    alerts.push 'Infosheet missing.'
 
   console.info alerts
 
