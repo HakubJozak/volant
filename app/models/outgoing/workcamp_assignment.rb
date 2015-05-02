@@ -4,8 +4,6 @@ module Outgoing
     after_save :update_free_places
     after_destroy :update_free_places
 
-    STATE_ORDER = [ :paid, :asked, :accepted, :infosheeted, :confirmed, :rejected, :cancelled, :not_paid, :after].freeze
-
     create_date_time_accessors
 
     belongs_to :apply_form, :class_name => '::ApplyForm'
@@ -40,7 +38,7 @@ module Outgoing
         return attr if self.send(attr)
       end
 
-      self.apply_form.payment ? :paid : :not_paid
+      self.apply_form.try(:paid?) ? :paid : :not_paid
     end
 
     def to_label

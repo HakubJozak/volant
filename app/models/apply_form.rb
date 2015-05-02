@@ -25,7 +25,7 @@ class ApplyForm < ActiveRecord::Base
     year = year.to_i
     where "(#{ApplyForm.table_name}.created_at >= ? AND #{ApplyForm.table_name}.created_at < ?)", Date.new(year,1,1), Date.new(year + 1,1,1)    }
 
-  delegate :asked, :accepted, :rejected, :rejected?, :infosheeted, to: :current_assignment, allow_nil: true
+  delegate :asked, :accepted, :rejected, :rejected?, :infosheeted, :confirmed, to: :current_assignment, allow_nil: true
 
   has_one :payment, dependent: :nullify # , select: 'id, apply_form_id, amount, returned_amount, received, returned_date, return_reason'
   has_many :messages, dependent: :nullify, validate: false

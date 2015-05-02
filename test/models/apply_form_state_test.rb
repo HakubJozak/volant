@@ -21,6 +21,12 @@ class ApplyFormStateTest < ActiveSupport::TestCase
     assert_equal [ :cancel ], @confirmed.actions    
   end
 
+  test "create confirmed" do
+    wa = @form.current_assignment
+    wa.confirm(1.day.ago)
+    assert_equal :confirmed, @form.reload.state.name    
+  end
+
   test "create cancelled state" do
     assert_equal :cancelled, @form.cancel.state.name
   end

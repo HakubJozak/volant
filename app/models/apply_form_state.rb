@@ -8,8 +8,9 @@ class ApplyFormState
     return CancelledState.new(form) if form.cancelled
 
     [ :confirmed, :infosheeted, :accepted, :rejected, :asked ].each do |field|
-      time = form.send(field)
-      return ApplyFormState.new(field, time, form) if time
+      if time = form.send(field)
+        return ApplyFormState.new(field, time, form)
+      end
     end
 
     if form.paid?
