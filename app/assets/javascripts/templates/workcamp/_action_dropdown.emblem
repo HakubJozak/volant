@@ -1,14 +1,17 @@
-link-to 'new_workcamp_message' id 'email' class='btn btn-default navbar-btn'
-  ' {{fa 'envelope'}} Email All
-button.btn.btn-default.btn-sm.navbar-btn.dropdown-toggle type='button' data-toggle='dropdown'
-  span.caret
 ul.dropdown-menu
   li
-    a href=createApplyFormUrl
+    a href='#' click='createApplyForm'
       ' {{fa 'plus'}} Application
   li
     a href='#' click='createBooking'
       ' {{fa 'plus'}} Booking
-  link-li
+  li
+    a href='#' click='downloadParticipantsList'
+      ' {{fa 'download'}} Participants
+
+  li    
     link-to 'new_workcamp_message' id 'infosheet_all'
       ' {{fa 'file-o' }} Send Infosheets
+  li    
+    link-to 'new_workcamp_message' id 'email'
+      ' {{fa 'envelope'}} Email

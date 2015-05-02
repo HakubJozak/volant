@@ -29,16 +29,9 @@ table.table.table-condensed.table-responsive.workcamps
 
             button.btn.btn-default.btn-sm.dropdown-toggle type='button' data-toggle='dropdown'
               span.caret
-            ul.dropdown-menu
-              li
-                a href=wc.createApplyFormUrl
-                  ' {{fa 'plus'}} Application
-              li
-                a href='#' click='createBooking'
-                  ' {{fa 'plus'}} Booking
-              li
-                link-to 'new_message' this.id 'email'
-                  ' {{fa 'envelope'}} Email
+            = with wc    
+              partial 'workcamp/action_dropdown'    
+
         if editingVisible
           = partial 'workcamps/editor'
           td.actions

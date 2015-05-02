@@ -378,6 +378,10 @@ table.table-condensed {
 .workcamps.table.table-condensed {
   td.workcamp-actions {
     min-width: 9em;
+
+    button.placement-info {
+      min-width: 6em;
+    }
   }
 
   td.placement {
