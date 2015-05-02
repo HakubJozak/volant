@@ -31,7 +31,7 @@ form.form.form-horizontal.search-form submit="search" role="form"
 
 table.table.table-striped.table-hover#apply-forms-list
   thead
-    th colspan="2"
+    th
     th
       | Submitted
     th
@@ -44,8 +44,6 @@ table.table.table-striped.table-hover#apply-forms-list
   tbody
     each itemController='apply_form'
       tr.apply-form
-        td
-          partial 'apply_form/alert'
         td
           partial 'star'
           if createdRecently
@@ -71,6 +69,7 @@ table.table.table-striped.table-hover#apply-forms-list
 
         td
           apply-form-state-icon state
+          sup {{apply-form-alerts this}}
         td
           partial 'action_buttons'
         td
