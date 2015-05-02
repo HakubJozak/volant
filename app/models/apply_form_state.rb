@@ -29,7 +29,7 @@ class ApplyFormState
                when :paid
                  [ :ask, :accept, :reject, :cancel ]
                when :accepted
-                 [ :confirm, :infosheet,  :cancel ]
+                 [ :infosheet, :confirm, :cancel ]
                when :rejected
                  [  :cancel ]
                when :not_paid
