@@ -55,7 +55,7 @@ namespace :incoming do
     end
   end
 
-  
+
   desc 'Converts all Participants into Incoming::ApplyForm and assignments'
   task participants: :environment do
     Incoming::Participant.find_each do |p|
