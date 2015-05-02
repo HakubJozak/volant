@@ -12,7 +12,7 @@ Volant.LittleWorkcampController = Ember.ObjectController.extend Volant.ToggleMix
   showBookings: Volant.toggleWithFallback('isBookingsVisible','workcamps.showBookings')
 
   activeAssignments: (->
-    @get('workcampAssignments').filterBy('applyForm.currentWorkcamp.id',@get('id')).sortBy('applyForm.gender')
+    @get('workcampAssignments').filterBy('applyForm.currentWorkcamp.id',@get('id')).sortBy('applyForm.state.priority')
   ).property('workcampAssignments.@each.applyForm.currentWorkcamp.id','id')
 
   # Applications that have this workcamp on the list later or further on

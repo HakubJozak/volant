@@ -4,8 +4,7 @@ Volant.WorkcampApplyFormsController = Ember.ArrayController.extend
 
   sortFunction: (a,b) ->
     if a && a.isState && b && b.isState
-      order = ['confirmed', 'infosheeted', 'accepted', 'asked', 'paid', 'cancelled', 'rejected'] 
-      -(order.indexOf(b.name) - order.indexOf(a.name))
+      a.priority - b.priority    
     else
       wc = @get('controllers.workcamp.id')
       aa = 0
