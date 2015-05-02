@@ -13,7 +13,8 @@ Ember.Handlebars.helper 'apply-form-state-icon', (state) ->
              when "accepted" then 'thumbs-up'
              when "rejected" then 'thumbs-down'
              when "asked" then 'envelope'
-             when "infosheeted" then 'suitcase'
+             when "infosheeted" then 'file'
+             when "confirmed" then 'suitcase'
              when "cancelled" then 'times'
              else ''
 

@@ -47,6 +47,7 @@ en:
             asked: Wating for response since %{time}
             paid: Paid %{time}
             infosheeted: Infosheet sent %{time}
+            confirmed: Confirmed %{time}
             cancelled:
               before: "Cancelled %{time} before being accepted."
               after: "Cancelled %{time}. %{after_accept_count} days after acceptation and %{to_wc_count} before beginning of the workcamp."

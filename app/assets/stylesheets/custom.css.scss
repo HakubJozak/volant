@@ -338,7 +338,7 @@ table#apply-forms-list {
     color: $grey;
 
     &.cancelled, &.rejected { color: $red;   }
-    &.accepted { color: $yellow;   }
+    &.accepted, &.infosheeted { color: $yellow;   }
     &.confirmed { color: $green;   }
   }
 
