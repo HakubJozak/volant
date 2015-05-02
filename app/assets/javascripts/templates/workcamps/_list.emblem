@@ -36,7 +36,9 @@ table.table.table-condensed.table-responsive.workcamps
               li
                 a href='#' click='createBooking'
                   ' {{fa 'plus'}} Booking
-
+              li
+                link-to 'new_message' this.id 'email'
+                  ' {{fa 'envelope'}} Email
         if editingVisible
           = partial 'workcamps/editor'
           td.actions
@@ -48,7 +50,7 @@ table.table.table-condensed.table-responsive.workcamps
         td
           with wc
             = partial 'workcamps/placement'
-        unless editingVisible            
+        unless editingVisible
           td
             button.btn.btn-default.remove-button{ action 'remove' wc }
               = fa 'trash-o'

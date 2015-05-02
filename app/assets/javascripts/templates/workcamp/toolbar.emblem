@@ -8,6 +8,12 @@ if incomingMode
       button.btn.btn-default.btn-sm.navbar-btn.dropdown-toggle type='button' data-toggle='dropdown'
         span.caret
       ul.dropdown-menu
+        li
+          a href=createApplyFormUrl
+            ' {{fa 'plus'}} Application
+        li
+          a href='#' click='createBooking'
+            ' {{fa 'plus'}} Booking
         link-li
           link-to 'new_workcamp_message' id 'infosheet_all'
             ' {{fa 'file-o' }} Send Infosheets

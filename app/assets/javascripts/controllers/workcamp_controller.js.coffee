@@ -1,4 +1,4 @@
-Volant.WorkcampController = Ember.ObjectController.extend Volant.ModeAwareMixin,
+Volant.WorkcampController = Ember.ObjectController.extend Volant.ModeAwareMixin, Volant.WorkcampActionsMixin,
   needs: ['countriesSelect','workcampIntentionsSelect','organizationsSelect','tagsSelect','starred_apply_forms']
 
   starredApplyForms: (->
@@ -23,14 +23,9 @@ Volant.WorkcampController = Ember.ObjectController.extend Volant.ModeAwareMixin,
   # ).observes('model.organization','model.country','model.tags.@each','model.workcamp_intentions.@each')
 
   tagsAndIntents: Ember.computed.union('workcamp_intentions','tags')
-
   imported: Ember.computed.equal('state','imported')
   updated: Ember.computed.equal('state','updated')
   imported_or_updated: Ember.computed.or('imported','updated')
-
-  downloadParticipantsList: (exportType) ->
-    window.location = "/workcamps/#{@get('id')}/participants.csv"
-    false
 
   set_country: (->
     unless @get('country')
