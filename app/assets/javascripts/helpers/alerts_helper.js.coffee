@@ -7,8 +7,6 @@ Ember.Handlebars.helper 'apply-form-alerts', (form) ->
   if form.get('missingInfosheetAlert')
     alerts.push 'Infosheet missing.'
 
-  console.info alerts
-
   unless Ember.empty(alerts)
     info = alerts.join(' ')    
     new Handlebars.SafeString("<i class='fa fa-bell alert' title='#{info}'></i>")

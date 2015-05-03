@@ -56,13 +56,8 @@ Volant.WorkcampsController = Volant.ListController.extend Volant.ToggleMixin,
 
   actions:
     filterOrganizationsByCountry: (country) ->
-      if country
-        id = country.get('id')
-        filtered = @store.filter('organization',{ country_id: id },(org) => org.get('country.id') == id)
-        @get('controllers.organizationsSelect').set('content', filtered)
-      else
-        all = @store.filter('organization',{ country_id: id},-> true)
-        @get('controllers.organizationsSelect').set('content', all)
+      id = if country then country.get('id') else null
+      @get('controllers.organizationsSelect').filterByCountry(id)
       false
 
      reset: ->
