@@ -209,7 +209,9 @@ class Workcamp < ActiveRecord::Base
   end
 
   def no_more_countries
-    apply_forms.group_by { |f| f.country }.select { |c,v| v.size > 1 }.keys
+    # TODO: test that only active are taken
+    active = apply_forms.accepted.select { |form| form.current_workcamp == self }
+    active.group_by { |f| f.country }.select { |c,v| v.size > 1 }.keys.compact
   end
 
   private

@@ -30,6 +30,11 @@ module Export
       assign_and_accept(wc,france)
       assign_and_accept(wc,france)
 
+      # regression test for
+      # http://redmine.siven.onesim.net/issues/1550
+      assign_and_accept(wc,nil,:apply_form)
+      assign_and_accept(wc,nil,:apply_form)      
+
       assign_and_accept(wc,germany)
       assign_and_accept(wc,germany)
       
@@ -37,7 +42,7 @@ module Export
       assert_equal 2,csv.lines.count
 
       row = parsed(csv).first
-      assert_equal 'France,Germany', row['No more']      
+      assert_equal ['France','Germany'], row['No more'].split(',').sort
     end
 
     private
@@ -46,8 +51,8 @@ module Export
       CSV.new(csv,col_sep: ';',headers: true, converters: :all)
     end
 
-    def assign_and_accept(wc,country)
-      f = Factory(:incoming_apply_form,country: country)
+    def assign_and_accept(wc,country,type = :incoming_apply_form)
+      f = Factory(type,country: country)
       wc.workcamp_assignments.create!(apply_form: f)
       f.reload.accept(1.day.ago)
     end
