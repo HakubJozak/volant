@@ -42,9 +42,9 @@ module Outgoing
 
       @paid.reload
       assert @paid.ask.is?(:asked)
-      assert @paid.reject.is?(:paid)
-      assert @paid.reject.is?(:paid)
-      assert @paid.reject.is?(:rejected)
+      assert @paid.reject.is?(:paid), @paid.state.name
+      assert @paid.reject.is?(:paid), @paid.state
+      assert @paid.reject.is?(:rejected), @paid.state
     end
 
     test "state labelling" do

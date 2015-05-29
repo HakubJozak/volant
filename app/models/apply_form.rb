@@ -158,7 +158,7 @@ class ApplyForm < ActiveRecord::Base
     self.state.name == state
   end
 
-  [ "accept","ask","reject","infosheet","confirm" ].each do |action|
+  [ "reject", "accept","ask","infosheet","confirm" ].each do |action|
     define_method(action) do |time = Time.now|
       if self.current_assignment
         current_assignment.send(action,time)
@@ -168,6 +168,7 @@ class ApplyForm < ActiveRecord::Base
       end
     end
   end
+
 
   def cancel
     self.cancelled = Time.now
@@ -195,7 +196,7 @@ class ApplyForm < ActiveRecord::Base
     filtered
   end
 
-  # called by observer
+  # TODO: transport postgres view logic into ruby
   def self.update_cache_for(id)
     stmt = "select current_workcamp_id, current_assignment_id from apply_forms_view where id=#{id}"
     result = connection.select_rows(stmt)[0]

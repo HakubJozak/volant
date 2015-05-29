@@ -18,7 +18,7 @@ module Outgoing
 
     [ "accept", "reject", "ask", "infosheet", "confirm" ].each do |action|
       define_method(action) do |time = Time.now|
-        self.update_column( "#{action}ed", time)
+        self.update_attribute( "#{action}ed", time)
         self
       end
     end
@@ -33,7 +33,7 @@ module Outgoing
     def state
       return :cancelled if self.apply_form.cancelled?
 
-      [ :confirmed, :rejected, :infosheeted, :accepted, :asked].each do |attr|
+      [ :rejected, :confirmed, :infosheeted, :accepted, :asked].each do |attr|
         return attr if self.send(attr)
       end
 
