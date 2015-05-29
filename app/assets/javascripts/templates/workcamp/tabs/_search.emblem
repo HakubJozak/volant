@@ -1,3 +1,1 @@
-table.table.table-condensed.sidepanel
-  tbody
-    render 'search_apply_forms'
+render 'search_apply_forms'

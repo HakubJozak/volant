@@ -1,4 +1,6 @@
 form.form submit='search'
   partial 'query'
 
-render 'workcamp/apply_forms' this
+table.table.table-condensed.sidepanel
+  tbody
+    render 'workcamp/apply_forms' this

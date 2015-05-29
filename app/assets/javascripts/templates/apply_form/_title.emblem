@@ -14,8 +14,8 @@ if name
 
 small
   = apply-form-state-icon state
+  sup {{apply-form-alerts this}}
 
   if ltvType
     span.label.label-default
       ' {{upcase type}}
-
