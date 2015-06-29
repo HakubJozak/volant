@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 class Workcamp < ActiveRecord::Base
+  validates_lengths_from_database
 
   attr_accessor :accepted_incoming_places, :accepted_incoming_places_males, :accepted_incoming_places_females
 

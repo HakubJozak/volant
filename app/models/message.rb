@@ -1,4 +1,5 @@
 class Message < ActiveRecord::Base
+  validates_lengths_from_database
 
   belongs_to :user
   belongs_to :apply_form
