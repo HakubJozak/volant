@@ -37,7 +37,7 @@ namespace :db do
       v.emergency_name = Faker::Name.name
       v.emergency_day = Faker::PhoneNumber.phone_number
       v.emergency_night = Faker::PhoneNumber.phone_number
-      v.passport_number = Faker::Number.number(10)      
+      v.passport_number = Faker::Number.number(10)
 
       [ '', 'contact_' ].each do |prefix|
         v.send("#{prefix}street=", Faker::Address.street_name)
@@ -47,7 +47,7 @@ namespace :db do
       v.save(validate: false)
       bar.increment
     end
-    
+
     bar = ProgressBar.create(:title => "People", :total => Person.count)
     Person.find_each do |v|
       v.firstname = Faker::Name.first_name
