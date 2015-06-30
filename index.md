@@ -10,7 +10,16 @@ layout: main
  [SCI](http://www.sciint.org/).
 
 
-<img src="images/screenshots/dashboard.png" title='Main dashboard'/>
+<a title='See all screenshots' class='gallery-toggle' href="#">
+  <img src="images/screenshots/dashboard.png" title='Dashboard'/>
+</a>
+
+<center>
+<a title='See all screenshots' class='gallery-toggle' href="#">
+  See all screenshots
+  </a>
+</center>
+
 
 
 ## Features
