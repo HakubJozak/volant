@@ -8,14 +8,19 @@ for any of them.
 
 Built on Rails 4 and Ember.
 
-## Requirements on Debian/Ubuntu
+## App Server Requirements
 
- - postgres
+ - Postgres client
 
-    sudo apt-get install libpq-dev
+    sudo apt-get install libpq-dev 
 
  - wkhtmltopdf (for PDF versions of VEFs)
 
     sudo apt-get install wkhtmltopdf xvfb
     echo 'xvfb-run --server-args="-screen 0, 1024x768x24" /usr/bin/wkhtmltopdf $*' | sudo tee --apend /usr/local/bin/wkhtmltopdf
 
+## Database Requirements
+
+- Postgres server 9.4 or higher with unaccent extension
+
+    sudo apt-get install postgresql postgresql-contrib
