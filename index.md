@@ -62,7 +62,7 @@ Ruby on Rails, web applications or just Linux in general. Good luck!
 
 You are welcome to contribute. Fork a repo, file a bug or just spread the word. All help is appreciated.
 
-## Technically...
+## Technically speaking
 
 - Rails 4.2 means robust on the server side
 - Ember.js spells swift on the browser
