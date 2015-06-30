@@ -6,11 +6,13 @@
     <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/custom.css" media="screen">    
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>Volant by HakubJozak</title>
+       <title>Volant - a volunteer placement tool</title>
   </head>
 
   <body>
@@ -19,50 +21,19 @@
 
         <header>
           <h1>Volant</h1>
-          <h2>Workcamps and volunteers database for NGOs</h2>
+          <h2>A volunteer placement tool</h2>
         </header>
 
+        <section id="main_content">
+          {{content}}
+        </section>
+        
         <section id="downloads" class="clearfix">
           <a href="https://github.com/HakubJozak/volant/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
           <a href="https://github.com/HakubJozak/volant/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
           <a href="https://github.com/HakubJozak/volant" id="view-on-github" class="button"><span>View on GitHub</span></a>
         </section>
 
-        <hr>
-
-        <section id="main_content">
-          <h1>
-<a id="volant" class="anchor" href="#volant" aria-hidden="true"><span class="octicon octicon-link"></span></a>Volant</h1>
-
-<p>A volunteer placement tool for organizations such as SCI or those united under the Alliance Network. Developed for (INEX-SDA)[<a href="http://www.inexsda.cz/en">http://www.inexsda.cz/en</a>] but can be any similar NGO with similar workflow.</p>
-
-<p>Built on Rails 4 and Ember.js</p>
-
-<h2>
-<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
-
-<h2>
-<a id="installation-on-premise" class="anchor" href="#installation-on-premise" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation on-premise</h2>
-
-<h2>
-<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
-
-<p>Those tools need to be installed on top of a normal Debian/Ubuntu server:</p>
-
-<ul>
-<li>
-<p>postgres tools</p>
-
-<p>sudo apt-get install libpq-dev</p>
-</li>
-<li>
-<p>wkhtmltopdf (for PDF versions of VEFs)</p>
-
-<p>sudo apt-get install wkhtmltopdf xvfb
-echo 'xvfb-run --server-args="-screen 0, 1024x768x24" /usr/bin/wkhtmltopdf $*' | sudo tee --apend /usr/local/bin/wkhtmltopdf</p>
-</li>
-</ul>
-        </section>
 
         <footer>
           Volant is maintained by <a href="https://github.com/HakubJozak">HakubJozak</a><br>
