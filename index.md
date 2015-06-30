@@ -2,11 +2,12 @@
 layout: main
 ---
 
- Volant is a placement tool for NGOs in the field of
+ Volant is a volunteer placement tool for NGOs in the field of
  international voluntary work. It was developed
  for [INEX-SDA](http://www.inexsda.cz/en) but
- can be used by any such organization because their workflow
- is similar.
+ can be used by any similar organization such as those joined in
+ [Alliance Network](http://www.alliance-network.eu/) or
+ [SCI](http://www.sciint.org/).
 
 
 <img src="images/screenshots/dashboard.png" title='Main dashboard'/>
