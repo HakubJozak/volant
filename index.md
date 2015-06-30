@@ -46,14 +46,31 @@ layout: main
 - countries, tags and intentions (ENVI,AGRI,CULT...)
 - users
 
+## How can I use it?
 
+Volant is open source and you can use or modify it for free. If you
+need some help to set it up, think about some adjustment or just
+wonder if it fits your organization, <a
+href="mailto:jakub.hozak@gmail.com">drop me a line.</a>
 
-## Technical
+Otherwise, install it on premise <a
+href="https://github.com/HakubJozak/volant" ><span>from the Github
+repo</span></a>. It should not be very hard if know your way around
+Ruby on Rails, web applications or just Linux in general. Good luck!
+
+## Contributing
+
+You are welcome to contribute. Fork a repo, file a bug or just spread the word. All help is appreciated.
+
+## Technically...
 
 - Rails 4.2 means robust on the server side
 - Ember.js spells swift on the browser
 - covered by automated tests [![Build Status](https://travis-ci.org/HakubJozak/volant.svg?branch=master)](https://travis-ci.org/HakubJozak/volant)
 
+## Credits
+
+&copy; 2015 <a href="mailto:jakub.hozak@gmail.com">Jakub Hozák</a>
 
 
 
