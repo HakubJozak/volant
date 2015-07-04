@@ -11,11 +11,7 @@ class Export::VefBase
   end
 
   def filename
-    if v = @form.try(:volunteer)
-      stripped = strip_cs_chars("#{v.firstname}_#{v.lastname}")
-      "VEF_SDA_#{stripped.underscore}.#{sufix}"
-    else
-      "vef.#{sufix}"
-    end
+    stripped = strip_cs_chars("#{@form.firstname}_#{@form.lastname}")
+    "VEF_SDA_#{stripped.underscore}.#{sufix}"
   end
 end
