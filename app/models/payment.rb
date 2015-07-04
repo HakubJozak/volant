@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class Payment < ActiveRecord::Base
+  validates_lengths_from_database
+  
   create_date_time_accessors #"returned_date"
 
   CSV_FIELDS = %w(amount received returned_amount returned_date return_reason)
