@@ -26,8 +26,8 @@ kytlice:
   country: CZ
   organization: seeds
   language: Čeština
-  begin: 12-15-2008
-  end: 03-01-2009
+  begin: 2008-01-01
+  end: 2008-01-02
   capacity: 6
   extra_fee_currency: CZK
   places: 2
@@ -48,8 +48,8 @@ hartenberg:
   country: CZ
   organization: seeds
   language: Čeština
-  begin: 12-15-2008
-  end: 03-01-2009
+  begin: 2008-01-01
+  end: 2008-01-02
   capacity: 6
   extra_fee_currency: CZK
   places: 2
@@ -70,8 +70,8 @@ krkonose:
   country: CZ
   organization: seeds
   language: Čeština
-  begin: 12-15-2008
-  end: 03-01-2009
+  begin: 2008-01-01
+  end: 2008-01-02
   capacity: 6
   extra_fee_currency: CZK
   places: 2

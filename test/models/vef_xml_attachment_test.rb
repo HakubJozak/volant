@@ -3,7 +3,7 @@ require 'test_helper'
 class VefXmlAttachmentTest < ActiveSupport::TestCase
 
   setup do
-    form = Factory.create(:paid_form)
+    form = Factory.create(:paid_form, firstname: 'Tom', lastname: 'Thomas')
     @attachment = VefXmlAttachment.new(apply_form: form)
   end
 
@@ -12,7 +12,7 @@ class VefXmlAttachmentTest < ActiveSupport::TestCase
   end
 
   test '#filename' do
-    assert_equal 'VEF_SDA_jakub_hozak.xml',@attachment.filename
+    assert_equal 'VEF_SDA_tom_thomas.xml',@attachment.filename
   end
 
 
