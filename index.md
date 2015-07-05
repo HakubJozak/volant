@@ -28,12 +28,10 @@ layout: main
 
 - advanced VEFs and workcamp searching and filtering
 - VEF workflow  (pay, ask, accept/reject, infosheet, confirm)
-- custom email templates
 - group mailing to workcamp participants
-- export into VEF.xml, PEF.xml and CSV files
-- interactive PEF file export
 - free places bulk editing
 - alerts
+- JSON API for VEF submission and workcamp search from your website
 
 ### Incoming
 
@@ -42,7 +40,9 @@ layout: main
 - friday list generation export
 - participants export
 
-
+### General
+- export and import VEF.xml, PEF.xml and CSV files
+- custom email templates
 - countries, tags and intentions (ENVI,AGRI,CULT...)
 - users
 
