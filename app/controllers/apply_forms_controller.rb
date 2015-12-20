@@ -6,7 +6,7 @@ class ApplyFormsController < ApplicationController
     if ids = filter[:ids]
       search = ApplyForm.includes(:volunteer)
       render json: search.find(*ids), each_serializer: ApplyFormSerializer
-    elsif filter[:starred] 
+    elsif filter[:starred]
       search = ApplyForm.starred_by(current_user)
       render json: search, each_serializer: ApplyFormSerializer
     else
@@ -41,15 +41,7 @@ class ApplyFormsController < ApplicationController
     @apply_form = apply_forms.new(attrs)
 
     if @apply_form.save
-      workcamp_ids.each_with_index do |id,i|
-        wa = @apply_form.assign_workcamp(Workcamp.find(id))
-
-        # HACK over 9000 (but tested)
-        if workcamp_ids.size == 1 && @apply_form.is_a?(Incoming::ApplyForm)
-          @apply_form.accept
-        end
-      end
-
+      @apply_form.add_workcamps_by_ids(workcamp_ids)
       render_apply_form
     else
       render_error(@apply_form)
@@ -94,7 +86,7 @@ class ApplyFormsController < ApplicationController
   def confirm
     @apply_form.confirm
     render_apply_form
-  end  
+  end
 
   def infosheet
     @apply_form.infosheet
@@ -114,7 +106,7 @@ class ApplyFormsController < ApplicationController
   private
 
   def apply_filtering(search)
-    search = search.order(current_order)
+    search = search.preset_order(current_order,current_order_direction)
     search = add_year_scope(search)
 
     if v = filter[:volunteer_id]
@@ -147,9 +139,9 @@ class ApplyFormsController < ApplicationController
         search = search.returns_between(today,today + 7.days)
 
       when 'without_payment'
-        search = search.joins('left outer join payments on payments.apply_form_id = apply_forms.id').state_filter(state)
+        search = search.joins('left outer join payments on payments.apply_form_id = apply_forms.id').state_filter(state,current_account)
       else
-        search = search.state_filter(state)
+        search = search.state_filter(state,current_account)
       end
     end
 
@@ -157,10 +149,7 @@ class ApplyFormsController < ApplicationController
   end
 
   def current_order
-    case filter[:order].presence
-    when 'createdAt' then "#{ApplyForm.table_name}.created_at #{current_order_direction}"
-    else "#{ApplyForm.table_name}.lastname #{current_order_direction},#{ApplyForm.table_name}.firstname #{current_order_direction}"
-    end
+    filter[:order].presence
   end
 
   def render_state_change

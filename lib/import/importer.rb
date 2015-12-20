@@ -5,7 +5,6 @@ module Import
 
   module Importer
 
-    include InexRules
     include IntentionsHelper
 
     def import!(&reporter)
@@ -21,7 +20,7 @@ module Import
         begin
           if wc = make_workcamp(node)
             wc.publish_mode = 'SEASON'
-            compute_free_places(wc)        
+            compute_free_places(wc)
 
             if old = find_workcamp_like(wc)
               old.import_changes.delete_all

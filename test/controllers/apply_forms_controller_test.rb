@@ -69,6 +69,20 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'index ordering' do
+    get :index, order: 'createdAt', asc: 'false'
+    assert_response :success
+
+    get :index, order: 'name', asc: 'false'
+    assert_response :success
+
+    get :index, order: 'from', asc: 'false'
+    assert_response :success        
+
+    get :index, order: 'from', asc: 'false'
+    assert_response :success        
+  end
+
   test 'filter by state' do
     ApplyForm.destroy_all
     dummy = Factory(:paid_form)

@@ -1,7 +1,6 @@
 class AbstractWorkcampHandler
 
   include XmlHelper
-  include InexRules
 
   protected
 

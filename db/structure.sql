@@ -1273,7 +1273,8 @@ CREATE TABLE users (
     remember_token_expires_at timestamp without time zone,
     firstname character varying(255),
     lastname character varying(255),
-    locale character varying(3) DEFAULT 'en'::character varying NOT NULL
+    locale character varying(3) DEFAULT 'en'::character varying NOT NULL,
+    account_id integer
 );
 
 
@@ -2563,4 +2564,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150426113644');
 INSERT INTO schema_migrations (version) VALUES ('20150501172715');
 
 INSERT INTO schema_migrations (version) VALUES ('20150629115150');
+
+INSERT INTO schema_migrations (version) VALUES ('20151220121739');
 

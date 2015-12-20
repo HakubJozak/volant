@@ -8,8 +8,8 @@ form submit="save" class="form"
     model-field errors=errors.organization
       label.control-label Organization
       partial 'inputs/organization'
-    p.help-block 
-      ' Which organization is yours? 
+    p.help-block
+      ' Which organization is yours?
       ' Incoming workcamps will have is as well as
       ' outgoing organizations.
 

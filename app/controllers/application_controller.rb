@@ -39,9 +39,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_account
+    @current_account ||= current_user.account
+  end
+
   def current_organization
-    # TODO: take the code from organization
-    @current_organization ||= Organization.find_by_code('SDA')
+    @current_organization ||= current_account.organization
   end
 
   def current_year

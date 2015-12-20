@@ -5,4 +5,6 @@ Factory.define :user do |u|
   u.password 'hesloheslo'
   u.password_confirmation 'hesloheslo'
   u.created_at 5.days.ago
+  # TODO
+  # u.account
 end

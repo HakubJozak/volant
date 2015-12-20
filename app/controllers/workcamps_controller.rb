@@ -105,7 +105,7 @@ class WorkcampsController < ApplicationController
     else "name #{current_order_direction}"
     end
   end
-  
+
   def find_workcamp
     @workcamp = Workcamp.includes(:country,:workcamp_assignments,:organization,:tags,:intentions,:bookings).find(params[:id])
   end

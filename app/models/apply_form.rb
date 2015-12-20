@@ -74,6 +74,37 @@ class ApplyForm < ActiveRecord::Base
 
   alias :add_workcamp :assign_workcamp
 
+  def self.preset_order(name,direction)
+    table = ApplyForm.table_name
+    wc_table = Workcamp.table_name
+    # org_table = Organization.table_name
+
+    case name
+    when 'createdAt'
+      order("#{table}.created_at #{direction}")
+    when 'from'
+      joins(:current_workcamp).order("#{wc_table}.begin #{direction}")
+    when 'to'
+      joins(:current_workcamp).order("#{wc_table}.end #{direction}")
+    else 
+      order("#{table}.lastname #{direction},#{table}.firstname #{direction}")
+    end
+  end
+  
+  def add_workcamps_by_ids(workcamp_ids)
+    workcamp_ids.each_with_index do |id,i|
+      add_workcamp(Workcamp.find(id))
+
+      # HACK over 9000 (but tested)
+      # When there is only one workcamp to assign, it is
+      # immediately accepted too
+      if workcamp_ids.size == 1 && is_a?(Incoming::ApplyForm)
+        accept
+      end
+    end
+  end
+
+
   # TODO - retrieve from parameter and check for other apply forms
   def after_initialize
     self.fee ||= 2200
@@ -92,7 +123,7 @@ class ApplyForm < ActiveRecord::Base
   end
 
   # TODO: replace by state column on the ApplyForm
-  def self.state_filter(state)
+  def self.state_filter(state,account)
     wa = Outgoing::WorkcampAssignment.table_name
     wc = Workcamp.table_name
     filter_sql = ''
@@ -105,8 +136,8 @@ class ApplyForm < ActiveRecord::Base
       filter_sql << ' OR '
       filter_sql << " (cancelled IS NULL AND #{wa}.accepted IS NOT NULL AND #{wa}.infosheeted IS NULL AND #{wc}.\"begin\" <= ?)"
       filter_sql << ')'
-      filter_params << InexRules.organization_response_limit
-      filter_params << InexRules.infosheet_waiting_limit
+      filter_params << account.organization_response_limit
+      filter_params << account.infosheet_waiting_limit
       joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))
 
     when "cancelled"

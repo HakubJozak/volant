@@ -2,7 +2,6 @@ module Import
   class AllianceImporter
 
     include XmlHelper
-    include InexRules
 
     def initialize(filename)
       @tag = File.basename(filename)

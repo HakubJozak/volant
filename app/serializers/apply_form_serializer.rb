@@ -29,11 +29,11 @@ class ApplyFormSerializer < PersonSerializer
   end
 
   def no_response_alert
-    object.waits_too_long?
+    object.waits_too_long?(current_account)
   end
 
   def missing_infosheet_alert
-    object.no_infosheet?
+    object.no_infosheet?(current_account)
   end
 
   def current_message
@@ -46,4 +46,5 @@ class ApplyFormSerializer < PersonSerializer
       info: s.info,
       actions: s.actions }
   end
+
 end
