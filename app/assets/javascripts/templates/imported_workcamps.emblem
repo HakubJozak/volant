@@ -10,7 +10,8 @@
             label.col-md-1.control-label PEF
             .col-md-3
               input.form-control type='file' name="pef"
-              p.help-block Projects will be imported into  {upcase mode}  section.
+              p.help-block 
+                ' Projects will be imported into #{upcase mode}  section.
             .col-md-3
               button.btn.btn-primary type="submit"  Import
             if arrangedContent

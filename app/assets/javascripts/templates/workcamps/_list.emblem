@@ -12,7 +12,7 @@ table.table.table-condensed.table-responsive.workcamps
           br
           format-date wc.to
         td
-          link-to 'workcamp' wc
+          link-to workcampRoute wc
             b
               = wc.code
             ' &ndash; {{wc.name}}
@@ -29,8 +29,8 @@ table.table.table-condensed.table-responsive.workcamps
 
             button.btn.btn-default.btn-sm.dropdown-toggle type='button' data-toggle='dropdown'
               span.caret
-            = with wc    
-              partial 'workcamp/action_dropdown'    
+            = with wc
+              partial 'workcamp/action_dropdown'
 
         if editingVisible
           = partial 'workcamps/editor'

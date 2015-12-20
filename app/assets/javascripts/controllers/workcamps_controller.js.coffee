@@ -1,5 +1,6 @@
 Volant.WorkcampsController = Volant.ListController.extend Volant.ToggleMixin,
 
+  workcampRoute: 'workcamp'
   targetModel: Volant.Workcamp
   needs: ['countriesSelect','workcampIntentionsSelect','organizationsSelect','tagsSelect','starred_workcamps']
   page: 1

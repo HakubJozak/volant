@@ -25,7 +25,7 @@ Volant.WorkcampController = Ember.ObjectController.extend Volant.ModeAwareMixin,
   tagsAndIntents: Ember.computed.union('workcamp_intentions','tags')
   imported: Ember.computed.equal('state','imported')
   updated: Ember.computed.equal('state','updated')
-  imported_or_updated: Ember.computed.or('imported','updated')
+  importedOrUpdated: Ember.computed.or('imported','updated')
 
   set_country: (->
     unless @get('country')

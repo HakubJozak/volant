@@ -22,6 +22,7 @@ Volant.ApplicationRoute = Ember.Route.extend
                 else  'apply_forms'
       @transitionTo(route)
       false
+
     yearChanged: ->
       false
 
