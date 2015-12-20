@@ -17,6 +17,7 @@ table.table.table-condensed.table-responsive.workcamps
               = wc.code
             ' &ndash; {{wc.name}}
           br
+            ' {{wc.capacity}} volunteers,
             ' {{age-range wc}}, {{join wc.workcamp_intentions 'code'}}
             ' {{tag-list wc.tags}}
           small
