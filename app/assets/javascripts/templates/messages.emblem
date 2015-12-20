@@ -24,7 +24,7 @@ table.table.table-striped.table-hover
           if msg.attachments
             = fa 'paperclip'
         td
-          link-to 'message' this
+          link-to 'message' msg
             if msg.subject
               = msg.subject
             else    
