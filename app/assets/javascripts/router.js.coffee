@@ -30,6 +30,7 @@ Volant.Router.map ->
   @resource 'new_message', {path: '/apply_forms/:apply_form_id/messages/new/:action_name'}
   @resource 'new_workcamp_message', {path: '/workcamps/:workcamp_id/messages/new/:action_name'}
   @resource 'messages'
+  @resource 'my_messages'  
 
   @resource 'users', ->
     @route 'new'

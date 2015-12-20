@@ -1,0 +1,42 @@
+h4
+  ul.nav.nav-pills
+    li{ bind-attr class="myMessages:active"}    
+      link-to 'my_messages'
+        ' My Messages
+
+    li{ bind-attr class="myMessages::active"}
+      link-to 'messages'
+        ' All Messages    
+
+table.table.table-striped.table-hover
+  thead
+    th
+    th Subject
+    th Action
+    th To
+    th Sent
+    th Application
+    th Workcamp
+  tbody
+    = each msg in model
+      tr{ bind-attr class="delivered::warning"}
+        td
+          if msg.attachments
+            = fa 'paperclip'
+        td
+          link-to 'message' this
+            if msg.subject
+              = msg.subject
+            else    
+              ' [no subject]
+        td = msg.action_name
+        td = msg.to
+        td = format-date msg.sentAt 
+        td
+          if msg.apply_form
+            = link-to 'apply_form' msg.apply_form
+              = msg.apply_form.name
+        td
+          if msg.applyForm.currentWorkcamp
+            link-to 'workcamp' msg.applyForm.currentWorkcamp
+              msg.applyForm.currentWorkcamp.name 
