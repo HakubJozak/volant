@@ -81,6 +81,8 @@ class Workcamp < ActiveRecord::Base
 
     if filter[:state]
       search = search.imported_or_updated
+    else
+      search = search.live
     end
 
     if mode = filter[:publish_mode]

@@ -14,11 +14,11 @@ Volant.NewWorkcampRoute = Volant.WorkcampRoute.extend
       @store.find('workcamp',id).then (old) ->
         old.clone()
     else
-      @createFreshWorkcamp(params)
-      
+      @createFreshWorkcamp(params,transition)
+
   # private
 
-  createFreshWorkcamp: (params) ->
+  createFreshWorkcamp: (params,transition) ->
     @currentAccount().then (account) =>
       defaults = {
         language: 'English'
@@ -39,3 +39,4 @@ Volant.NewWorkcampRoute = Volant.WorkcampRoute.extend
       # like Hash#merge in JS
       opts = $.extend(defaults,transition.queryParams)
       @store.createRecord('workcamp', opts)
+

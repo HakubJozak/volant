@@ -4,9 +4,6 @@ Volant.ImportedWorkcampsRoute = Volant.WorkcampsRoute.extend
 
   model: (params) ->
     @store.find 'workcamp', state: 'imported', p: params.page
-    # @store.filter 'workcamp', state: 'imported', (wc) ->
-    #   state = wc.get('state')
-    #   state == 'imported' or state == 'updated'
 
   actions:
     confirmAll: ->

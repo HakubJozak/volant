@@ -11,13 +11,21 @@ Volant.ApplyFormsController = Volant.ListController.extend
   query_placeholder: "by name, birth number, passport, email or phone"
 
   order: 'createdAt'
-  orderOptions: [ {id: 'createdAt', name: 'Submitted'},{id:'name', name: 'Name'}]
+  orderOptions: [
+    {id: 'createdAt', name: 'Submitted'},
+    {id:'name', name: 'Name'}
+    {id:'from', name: 'Workcamp Start Date'}
+    {id:'to', name: 'Workcamp End Date'}                                    
+  ]
+                
   sortProperties: ['createdAt']
 
   setSorting: (->
     props = switch @get('order')
       when 'createdAt' then ['createdAt']
       when 'name' then ['name']
+      when 'from' then ['currentWorkcamp.from']
+      when 'to' then ['currentWorkcamp.to']      
     @set 'sortProperties',props
   ).observes('order','sortAscending')
 
