@@ -2,7 +2,7 @@ Volant.ApplicationRoute = Ember.Route.extend
   mode: Ember.computed.alias('controller.mode')
 
   setupController: (controller) ->
-    @_super.call(arguments)    
+    @_super.call(arguments)
     if m = Volant.settings.mode
       controller.set('mode',m)
 

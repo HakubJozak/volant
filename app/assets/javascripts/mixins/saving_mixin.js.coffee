@@ -2,7 +2,7 @@ Volant.SavingMixin = Ember.Mixin.create
   actions:
     saveOnly: (record) ->
       @_saveRecord(record,false)
-  
+
     save: (record)->
       @_saveRecord(record,true)
       false
@@ -42,15 +42,15 @@ Volant.SavingMixin = Ember.Mixin.create
        else
          @flash_error 'Save failed.'
      )
-  
+
 
   # Override those
   afterRollback: (record) ->
     @go_to_plural_route(record)
 
   afterRemove: (record,redirect) ->
-    @flash_info 'Deleted.'    
-    @go_to_plural_route(record) if redirect    
+    @flash_info 'Deleted.'
+    @go_to_plural_route(record) if redirect
 
   afterSave: (record) ->
     @go_to_plural_route(record)

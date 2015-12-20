@@ -6,7 +6,7 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash, Vol
     if tmpl = @get('toolbar')
       @render(tmpl,outlet: 'footer',into: 'application')
     else if @_paginationData()
-      # default toolbar for paginated lists      
+      # default toolbar for paginated lists
       @render('pagination',outlet: 'footer',into: 'application',controller: 'pagination')
     else if @currentModel.save? and @currentModel.constructor != DS.RecordArray
       # default toolbar single record view
