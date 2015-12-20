@@ -1,4 +1,4 @@
-Volant.Workcamp = DS.Model.extend
+Volant.Workcamp = DS.Model.extend Ember.Copyable,
   starred: DS.attr 'boolean'
   type: DS.attr 'string'
 
@@ -97,6 +97,16 @@ Volant.Workcamp = DS.Model.extend
     # expires at 1st of June by default
     expires = moment(new Date(year,5,1))
     bookings.createRecord(expiresAt: expires)
+
+  clone: ->
+    copy = @get('store').createRecord('workcamp')
+    setter = (attr) =>
+      copy.set(attr, @get(attr))
+
+    @eachAttribute(setter)
+    setter('country')
+    setter('organization')    
+    copy  
 
   for_email: ->
     hash = @_super('allOrganizationsEmails','allApplicationsEmails')

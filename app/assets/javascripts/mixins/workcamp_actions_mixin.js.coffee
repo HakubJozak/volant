@@ -5,12 +5,18 @@ Volant.WorkcampActionsMixin = Ember.Mixin.create
     "#/apply_forms/#{type}/new?fee=0&workcampToAssignId=#{id}"
   ).property('id','mode')
 
-  actions: 
+  actions:
     createApplyForm: ->
       id = @get('id')
       type = @get('mode')
       window.location = "#/apply_forms/#{type}/new?fee=0&workcampToAssignId=#{id}"
       false
+
+    cloneWorkcamp: ->
+      id = @get('model.id')
+      type = @get('model.type')
+      window.location = "#/workcamps/#{type}/new?templateId=#{id}"      
+      false      
 
     createBooking: ->
       @get('model').addBooking()

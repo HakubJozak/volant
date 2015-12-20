@@ -13,7 +13,7 @@ Volant.StateTransform = DS.Transform.extend
     null
 
   deserialize: (hash) ->
-    order = ['confirmed', 'infosheeted', 'accepted', 'asked', 'paid', 'cancelled', 'rejected'] 
+    order = ['confirmed', 'infosheeted', 'accepted', 'asked', 'paid', 'cancelled', 'rejected']
     priority = order.indexOf(hash.name)
     Ember.Object.create(name: hash.name, info: hash.info, actions: hash.actions, isState: true, priority: priority)
 

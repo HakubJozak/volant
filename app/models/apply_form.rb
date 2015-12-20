@@ -2,7 +2,7 @@ require 'rexml/document'
 
 class ApplyForm < ActiveRecord::Base
   validates_lengths_from_database
-  
+
   include ::Alerts
   include Stars::Model
   include PersonalMethods

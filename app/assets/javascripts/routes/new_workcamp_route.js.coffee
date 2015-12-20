@@ -4,12 +4,21 @@ Volant.NewWorkcampRoute = Volant.WorkcampRoute.extend
 
   afterSave: (wc,opts) ->
     @flash_info 'Workcamp created.'
-    if opts.redirect    
-      @send 'goToWorkcamps'        
+    if opts.redirect
+      @send 'goToWorkcamps'
     else
       @transitionTo 'workcamp',wc
-  
+
   model: (params,transition) ->
+    if id = transition.queryParams.templateId
+      @store.find('workcamp',id).then (old) ->
+        old.clone()
+    else
+      @createFreshWorkcamp(params)
+      
+  # private
+
+  createFreshWorkcamp: (params) ->
     @currentAccount().then (account) =>
       defaults = {
         language: 'English'

@@ -2,32 +2,32 @@ fieldset
   legend Capacities
   .form-group
     label.col-md-2.control-label Capacity
-    .col-md-2  
+    .col-md-2
       = input value=capacity type="number" class="form-control"
     label.col-md-1.control-label Females
-    .col-md-2  
+    .col-md-2
       = input value=capacity_females type="number" class="form-control"
     label.col-md-1.control-label Males
-    .col-md-2  
+    .col-md-2
       = input value=capacity_males type="number" class="form-control"
 
   .form-group
     label.col-md-2.control-label Free Capacity
     .col-md-2
-      p.form-control-static  
+      p.form-control-static
         = free_capacity
     label.col-md-1.control-label Females
     .col-md-2
-      p.form-control-static  
-        = free_capacity_females 
+      p.form-control-static
+        = free_capacity_females
     label.col-md-1.control-label Males
     .col-md-2
-      p.form-control-static  
+      p.form-control-static
         = free_capacity_males
 
   .form-group
     label.col-md-2.control-label Teenagers
-    .col-md-2  
+    .col-md-2
       = input value=capacity_teenagers type="number" class="form-control"
 
     label.col-md-1.control-label Natives
@@ -40,14 +40,14 @@ fieldset
   .form-group
     model-field errors=errors.places
       label.col-md-2.control-label Places
-      .col-md-2  
+      .col-md-2
         = input value=places type="number" class="form-control col-md-1"
-    
+
     model-field errors=errors.places_for_females
       label.col-md-1.control-label Females
-      .col-md-2  
+      .col-md-2
         = input value=places_for_females type="number" class="form-control col-md-1"
-    
+
     model-field errors=errors.places_for_males
       label.col-md-1.control-label Males
       .col-md-2
@@ -56,27 +56,27 @@ fieldset
   .form-group
     label.col-md-2.control-label Free
     .col-md-2
-      p.form-control-static  
+      p.form-control-static
         = free_places
     label.col-md-1.control-label Females
     .col-md-2
-      p.form-control-static  
-        = free_places_for_females 
+      p.form-control-static
+        = free_places_for_females
     label.col-md-1.control-label Males
     .col-md-2
-      p.form-control-static  
-        = free_places_for_males 
+      p.form-control-static
+        = free_places_for_males
 
   .form-group
     label.col-md-2.control-label Asked
     .col-md-2
-      p.form-control-static  
-        = asked_for_places 
+      p.form-control-static
+        = asked_for_places
     label.col-md-1.control-label Females
     .col-md-2
-      p.form-control-static  
-        = asked_for_places_females 
+      p.form-control-static
+        = asked_for_places_females
     label.col-md-1.control-label Males
     .col-md-2
-      p.form-control-static  
-        = asked_for_places_males 
+      p.form-control-static
+        = asked_for_places_males

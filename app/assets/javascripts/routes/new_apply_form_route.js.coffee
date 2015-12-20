@@ -7,8 +7,8 @@ Volant.NewApplyFormRoute = Volant.ApplyFormRoute.extend Volant.ApplyFormActions,
 
   afterSave: (form,opts) ->
     @flash_info 'Application created.'
-    if opts.redirect    
-      @send 'goToApplyForms'        
+    if opts.redirect
+      @send 'goToApplyForms'
     else
       @transitionTo 'apply_form', form
 
@@ -20,7 +20,7 @@ Volant.NewApplyFormRoute = Volant.ApplyFormRoute.extend Volant.ApplyFormActions,
         type: params.type
       }
 
-      if params.type != 'incoming'    
+      if params.type != 'incoming'
         defaults.volunteer = @store.createRecord('volunteer')
         defaults.organization = account.get('organization')
         defaults.country = account.get('organization.country')
