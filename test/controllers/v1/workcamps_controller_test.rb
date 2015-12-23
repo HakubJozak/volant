@@ -122,6 +122,7 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     assert_equal 11,json_response['workcamps'].size
   end
 
+  # TODO: cover LTV case
   test 'similar' do
     dummy = Factory(:outgoing_workcamp, country: countries(:IT))
     full = Factory(:outgoing_workcamp, places: 0)
