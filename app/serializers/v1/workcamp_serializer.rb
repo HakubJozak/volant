@@ -10,7 +10,7 @@ class V1::WorkcampSerializer < ActiveModel::Serializer
       :airport, :train,
       :places, :places_for_males, :places_for_females,
       :free_places, :free_places_for_males, :free_places_for_females,
-      :duration,
+      :duration, :open_for_application,
       :longitude, :latitude, :requirements,
       :created_at,
       :type, :tags
@@ -25,9 +25,13 @@ class V1::WorkcampSerializer < ActiveModel::Serializer
     end
   end
 
+  def open_for_application
+    object.from >= Time.now.to_date
+  end
+  
   def duration
-    object.duration || if object.end and object.begin
-                         (object.end.to_time - object.begin.to_time).to_i / 1.day + 1
+    object.duration || if object.to and object.from
+                         (object.to.to_time - object.from.to_time).to_i / 1.day + 1
                        else
                          nil
                        end

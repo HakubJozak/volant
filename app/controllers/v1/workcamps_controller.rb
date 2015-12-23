@@ -15,9 +15,13 @@ class V1::WorkcampsController < V1::BaseController
 
     case scope = filter[:scope]
     when 'new'
-      search = search.recently_created
+      search = search.future.recently_created
     when 'urgent'
-      search = search.urgent
+      search = search.future.urgent
+    when 'archive'
+      search
+    else
+      search = search.future
     end
 
     if from = date_param(:from)
@@ -105,6 +109,7 @@ class V1::WorkcampsController < V1::BaseController
             when 'incoming' then Incoming::Workcamp
             else Outgoing::Workcamp
             end
+    
     model.order(:begin,:name).live.published(Account.current.season_end)
   end
 
