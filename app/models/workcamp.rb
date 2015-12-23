@@ -31,6 +31,14 @@ class Workcamp < ActiveRecord::Base
 
   scope :published, -> (season_end) { where %{(publish_mode = 'ALWAYS') OR (publish_mode = 'SEASON' AND "begin" <= ?  AND "begin" >= current_date)},season_end}
 
+  scope :recently_created, -> {
+    where('workcamps.created_at > ?',7.days.ago)
+  }
+
+  scope :urgent, -> {
+    free.where('"begin" >= current_date AND "begin" <= ?',14.day.from_now)
+  }
+  
   scope :free, -> (at_least = 1) {
     where("free_places >= ?",at_least)
   }

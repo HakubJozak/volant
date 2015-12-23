@@ -13,13 +13,11 @@ class V1::WorkcampsController < V1::BaseController
       search = search.query(filter[:q])
     end
 
-    if scope = filter[:scope]
-      # TODO: move to model
-      if scope == 'new'
-        search = search.where('workcamps.created_at > ?',7.days.ago)
-      elsif scope == 'urgent'
-        search = search.where('free_places > 0 AND "begin" >= current_date AND "begin" <= ?',14.day.from_now)
-      end
+    case scope = filter[:scope]
+    when 'new'
+      search = search.recently_created
+    when 'urgent'
+      search = search.urgent
     end
 
     if from = date_param(:from)
@@ -85,7 +83,7 @@ class V1::WorkcampsController < V1::BaseController
     search = workcamps.similar_to(@workcamp).free.limit(10)
     search = add_year_scope(search)
     search = search.includes(:country,:organization,:tags,:intentions)
-    render json: search, each_serializer: V1::WorkcampSerializer
+    render json: search.all, each_serializer: V1::WorkcampSerializer
   end
 
   def show
