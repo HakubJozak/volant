@@ -26,7 +26,11 @@ class V1::WorkcampSerializer < ActiveModel::Serializer
   end
 
   def open_for_application
-    object.from >= Time.now.to_date
+    if object.from
+      object.from >= Time.now.to_date
+    else
+      true
+    end
   end
   
   def duration
