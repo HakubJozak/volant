@@ -109,7 +109,7 @@ class V1::WorkcampsController < V1::BaseController
             when 'incoming' then Incoming::Workcamp
             else Outgoing::Workcamp
             end
-    
+
     model.order(:begin,:name).live.published(Account.current.season_end)
   end
 

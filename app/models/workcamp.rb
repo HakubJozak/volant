@@ -35,7 +35,7 @@ class Workcamp < ActiveRecord::Base
   scope :future, -> {
     where('"begin" >= current_date')
   }
-  
+
   scope :recently_created, -> {
     where('workcamps.created_at > ?',7.days.ago)
   }
@@ -43,7 +43,7 @@ class Workcamp < ActiveRecord::Base
   scope :urgent, -> {
     free.where('"begin" >= current_date AND "begin" <= ?',14.day.from_now)
   }
-  
+
   scope :free, -> (at_least = 1) {
     where("free_places >= ?",at_least)
   }
