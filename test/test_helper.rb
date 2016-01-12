@@ -11,7 +11,7 @@ end
 
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
-  
+
   fixtures :all
 
   setup do

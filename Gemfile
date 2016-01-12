@@ -14,6 +14,7 @@ gem 'handlebars'
 gem 'pdfkit'
 gem 'exception_notification'
 gem 'validates_lengths_from_database'
+gem 'dotenv-rails'
 
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

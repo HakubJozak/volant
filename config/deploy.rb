@@ -25,7 +25,7 @@ task :staging do
 end
 
 
-set :shared_paths, ['config/database.yml', 'config/secrets.yml','log','public/uploads']
+set :shared_paths, ['config/database.yml', 'config/secrets.yml','log','public/uploads','.env']
 
 
 

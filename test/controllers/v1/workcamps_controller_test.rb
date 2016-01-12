@@ -124,9 +124,12 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
 
   # TODO: cover LTV case
   test 'similar' do
-    dummy = Factory(:outgoing_workcamp, country: countries(:IT))
-    full = Factory(:outgoing_workcamp, places: 0)
-    target = Factory(:outgoing_workcamp)
+    # to be ignored:
+    dummy = create(:outgoing_workcamp, country: countries(:IT))
+    too_old = create(:outgoing_workcamp, begin: 1.year.ago, end: 11.months.ago)
+    full = create(:outgoing_workcamp, places: 0)
+    # to be found:
+    target = create(:outgoing_workcamp)
 
     @workcamp.intentions.each { |i|
       full.intentions << i
