@@ -36,6 +36,10 @@ class Workcamp < ActiveRecord::Base
     where('"begin" >= current_date')
   }
 
+  scope :archive, -> {
+    where('"end" < current_date')
+  }  
+
   scope :recently_created, -> {
     where('workcamps.created_at > ?',7.days.ago)
   }
