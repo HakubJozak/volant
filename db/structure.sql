@@ -541,7 +541,8 @@ CREATE TABLE devise_users (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     first_name character varying(255),
-    last_name character varying(255)
+    last_name character varying(255),
+    account_id integer
 );
 
 
@@ -1273,8 +1274,7 @@ CREATE TABLE users (
     remember_token_expires_at timestamp without time zone,
     firstname character varying(255),
     lastname character varying(255),
-    locale character varying(3) DEFAULT 'en'::character varying NOT NULL,
-    account_id integer
+    locale character varying(3) DEFAULT 'en'::character varying NOT NULL
 );
 
 

@@ -103,10 +103,16 @@ Volant.Workcamp = DS.Model.extend Ember.Copyable,
     setter = (attr) =>
       copy.set(attr, @get(attr))
 
+    hasManySetter = (attr) =>
+      @get(attr).forEach (record) ->
+        copy.get(attr).pushObject(record)
+
     @eachAttribute(setter)
     setter('country')
-    setter('organization')    
-    copy  
+    setter('organization')
+    hasManySetter('workcampIntentions')
+    hasManySetter('tags')
+    copy
 
   for_email: ->
     hash = @_super('allOrganizationsEmails','allApplicationsEmails')

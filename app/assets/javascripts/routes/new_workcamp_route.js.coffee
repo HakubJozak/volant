@@ -39,4 +39,3 @@ Volant.NewWorkcampRoute = Volant.WorkcampRoute.extend
       # like Hash#merge in JS
       opts = $.extend(defaults,transition.queryParams)
       @store.createRecord('workcamp', opts)
-
