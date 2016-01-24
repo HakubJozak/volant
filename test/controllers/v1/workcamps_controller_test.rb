@@ -115,11 +115,17 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
   end
 
   test "short" do
-    10.times { Factory(:outgoing_workcamp) }
+    Workcamp.delete_all
+
+    # dummy
+    create(:outgoing_workcamp, begin: 2.weeks.ago, end: 1.week.ago)
+    5.times { |i| create(:outgoing_workcamp, begin: i.weeks.from_now) }
+
     get :short
+
     assert_response :success
     assert_nil json_response['meta'], 'there should be no pagination present'
-    assert_equal 11,json_response['workcamps'].size
+    assert_equal 5,json_response['workcamps'].size
   end
 
   # TODO: cover LTV case

@@ -79,8 +79,8 @@ class V1::WorkcampsController < V1::BaseController
   end
 
   def short
-    search = add_year_scope(search)
-    render json: workcamps, each_serializer: V1::ShortWorkcampSerializer
+    search = add_year_scope(workcamps.future)
+    render json: search, each_serializer: V1::ShortWorkcampSerializer
   end
 
   def similar
@@ -115,10 +115,6 @@ class V1::WorkcampsController < V1::BaseController
 
   def find_workcamp
     @workcamp = Workcamp.find(params[:id])
-  end
-
-  def short_list
-    params[:short].present?
   end
 
   def ages(people)
