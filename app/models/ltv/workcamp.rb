@@ -5,5 +5,9 @@ module Ltv
     scope :future, -> {
       where('"end" >= current_date')
     }
+
+    def open_for_application
+      to.nil? || to >= Time.now.to_date
+    end
   end
 end

@@ -25,14 +25,6 @@ class V1::WorkcampSerializer < ActiveModel::Serializer
     end
   end
 
-  def open_for_application
-    if object.from
-      object.from >= Time.now.to_date
-    else
-      true
-    end
-  end
-  
   def duration
     object.duration || if object.to and object.from
                          (object.to.to_time - object.from.to_time).to_i / 1.day + 1
