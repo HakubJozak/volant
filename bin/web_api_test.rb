@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 
 require 'json'
-require 'net/http'
+# require 'net/http'
+require 'net/https'
 
 attrs = { apply_form: {
                        motivation: 'I want to be a movie star',
                        general_remarks: 'vegetarian',
                        special_needs: 'eggnog',
                        gender: 'm',
-                       firstname: 'Anton',
+                       firstname: 'TEST',
                        lastname: 'Tester',
                        birthnumber: '0103260424',
                        nationality: 'Austrian-Hungarian',
@@ -30,19 +31,26 @@ attrs = { apply_form: {
                        speak_some: 'Dojč',
                        past_experience: 'I used to shoot things 100 years ago.',
                        workcamp_ids: [47059 ] # 46858
-  }}
+          }}
 
- # host = 'volant.pelican.amagical.net'
- # port = 80
+host = 'volant.inexsda.cz'
+port = 443
 
-host = 'localhost'
-port = 9090
+# host = 'localhost'
+# port = 9090
 
 puts 'Short'
 json = JSON.generate(attrs)
-response = Net::HTTP.new(host,port).post('/v1/apply_forms', json, { 'Content-Type' =>  'application/json' })
-puts response.body
-puts response.code
+
+Net::HTTP.start(host,port, use_ssl: true) do |http|
+  request = Net::HTTP::Post.new('/v1/apply_forms')
+  request.set_form_data(json)
+  request['Content-Type'] =  'application/json'
+  response = http.request request
+  puts response.code
+end
+
+
 
 # puts 'Ltv'
 # json = JSON.generate(attrs.merge(type: 'ltv'))

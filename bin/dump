@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+SERVER = 'rails@pelican'
+APP = 'volant'
+REMOTE_FILE = '/home/rails/volant/shared/now.sql.gz'
+
+def local(cmd)
+  "Running: #{cmd}"
+  system cmd
+end
+
+def ssh(remote)
+  local "ssh #{SERVER} -C '#{remote}'"
+end
+
+# make dump
+ssh "rm #{REMOTE_FILE}"
+ssh "pg_dump -F p #{APP}_production \| gzip \> #{REMOTE_FILE}"
+
+# download and unzip
+local "sftp #{SERVER}:#{REMOTE_FILE} ./db/dump.sql.gz"
+local "gzip -d ./db/dump.sql.gz"
+
+# load to local DB
+local "rake db:drop db:create"
+local "cat db/dump.sql \| psql -d #{APP}_development"
+local "rake db:migrate"
