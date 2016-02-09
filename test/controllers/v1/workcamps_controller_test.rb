@@ -133,6 +133,8 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     # to be ignored:
     dummy = create(:outgoing_workcamp, country: countries(:IT))
     too_old = create(:outgoing_workcamp, begin: 1.year.ago, end: 11.months.ago)
+    # TODO - hardwire season
+    next_season = create(:outgoing_workcamp, publish_mode: 'SEASON')
     full = create(:outgoing_workcamp, places: 0)
     # to be found:
     target = create(:outgoing_workcamp)
@@ -145,8 +147,8 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     get :similar, id: @workcamp.id
 
     assert_response :success
-    assert_equal 1,json_response['workcamps'].size
-    assert_equal target.id,json_response['workcamps'][0]['id']
+    assert_equal 1,json[:workcamps].size
+    assert_equal target.id,json[:workcamps][0][:id]
   end
 
   test 'search by from' do

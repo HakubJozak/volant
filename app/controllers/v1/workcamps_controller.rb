@@ -84,7 +84,8 @@ class V1::WorkcampsController < V1::BaseController
   end
 
   def similar
-    search = @workcamp.class.future.similar_to(@workcamp).free.limit(10)
+    # TODO: this scope
+    search = @workcamp.class.web_default.future.similar_to(@workcamp).free.limit(10)
     search = add_year_scope(search)
     search = search.includes(:country,:organization,:tags,:intentions)
     render json: search.all, each_serializer: V1::WorkcampSerializer
@@ -110,7 +111,7 @@ class V1::WorkcampsController < V1::BaseController
             else Outgoing::Workcamp
             end
 
-    model.order(:begin,:name).live.published(Account.current.season_end)
+    model.web_default
   end
 
   def find_workcamp

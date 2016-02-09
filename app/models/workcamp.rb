@@ -28,6 +28,10 @@ class Workcamp < ActiveRecord::Base
 
   validates_presence_of :extra_fee_currency, :if => Proc.new {|wc| wc.extra_fee && wc.extra_fee > 0},:message => "je povinná. (Je vyplněn poplatek, ale nikoliv jeho měna. Doplňte měnu poplatku.)"
 
+  scope :web_default, -> {
+    order(:begin,:name).live.published(Account.current.season_end)
+  }
+
   scope :published, -> (season_end) {
     where %{(publish_mode = 'ALWAYS') OR (publish_mode = 'SEASON' AND "begin" <= ?)}, season_end
   }

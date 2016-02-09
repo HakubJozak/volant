@@ -51,7 +51,9 @@ class ActiveSupport::TestCase
   end
 
   def json
-    JSON.parse(response.body).deep_symbolize_keys
+    hash = JSON.parse(response.body).deep_symbolize_keys
+    require 'ostruct'
+    OpenStruct.new(hash)
   end
 
   # First parameter should be the object that
