@@ -32,12 +32,11 @@ class V1::WorkcampsController < V1::BaseController
       search = search.where('"end" <= ?',to)
     end
 
-    if md = filter[:min_duration]
-      search = search.min_duration(md)
-    end
-
-    if md = filter[:max_duration]
-      search = search.max_duration(md)
+    if duration = filter[:duration]
+      if duration =~ /(\d+)-(\d+)/
+        search = search.min_duration($1.to_i)
+        search = search.max_duration($2.to_i)
+      end
     end
 
     if people = people_param
@@ -98,7 +97,7 @@ class V1::WorkcampsController < V1::BaseController
   private
 
   def filter
-    params.permit(:q,:scope,:from,:to,:min_duration,:max_duration,:country_zone_id,
+    params.permit(:q,:scope,:from,:to,:duration,:country_zone_id,
                   :people => [ [:a,:g] ],
                   :tag_ids => [], :country_ids => [],
                   :workcamp_intention_ids => [], :organization_ids => [])

@@ -151,6 +151,20 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     assert_equal target.id,json[:workcamps][0][:id]
   end
 
+  test 'search by duration' do
+    Workcamp.destroy_all
+    target = create :workcamp, duration: 10
+    decoy = create :workcamp, duration: 4
+
+    get :index, duration: '8-15'
+    assert_equal 1,json[:workcamps].size
+    assert_equal target.id,json[:workcamps][0][:id]
+
+    # wrong input is ignored
+    get :index, duration: 'XXX'    
+    assert_equal 2,json[:workcamps].size
+  end
+  
   test 'search by from' do
     Workcamp.destroy_all
     target = Factory(:outgoing_workcamp, begin: 30.days.from_now)
