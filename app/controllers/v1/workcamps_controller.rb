@@ -40,7 +40,7 @@ class V1::WorkcampsController < V1::BaseController
       search = search.max_duration(md)
     end
 
-    if people = filter[:people]
+    if people = people_param
       # TODO: move to model
       search = search.where("free_places >= ?",people.count)
       search = search.where("free_places_for_females >= ?",sum_females(people))
@@ -52,24 +52,24 @@ class V1::WorkcampsController < V1::BaseController
       end
     end
 
-    if ids = filter[:tag_ids]
+    if ids = filter[:tag_ids].presence
       search = search.with_tags(*ids)
     end
 
-    if ids = filter[:workcamp_intention_ids]
+    if ids = filter[:workcamp_intention_ids].presence
       search = search.with_workcamp_intentions(*ids)
     end
 
-    if ids = filter[:country_ids]
+    if ids = country_ids_param.presence
       search = search.with_countries(*ids)
     end
 
-    if zone = filter[:country_zone_id]
+    if zone = filter[:country_zone_id].presence
       # TODO: move to model
       search = search.joins(:country).where('countries.country_zone_id = ?',zone.to_i)
     end
 
-    if ids = filter[:organization_ids]
+    if ids = filter[:organization_ids].presence
       search = search.with_organizations(*ids)
     end
 
@@ -118,8 +118,18 @@ class V1::WorkcampsController < V1::BaseController
     @workcamp = Workcamp.find(params[:id])
   end
 
+  def people_param
+    filter[:people].select { |p|
+      [ p[:a], p[:g]].any?(&:present?)
+    }
+  end
+
+  def country_ids_param
+    filter[:country_ids].presence.map(&:presence).compact
+  end
+
   def ages(people)
-    people.map { |p| p[:a].try(:to_i) }.compact
+    people.map { |p| p[:a].presence }.compact.map(&:to_i)
   end
 
   def sum_males(people)

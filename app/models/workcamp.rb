@@ -74,7 +74,7 @@ class Workcamp < ActiveRecord::Base
   scope :with_workcamp_intentions, lambda { |*ids|
     query = where('true')
 
-    ids.each_with_index do |id,i|
+    ids.select(&:present?).each_with_index do |id,i|
       name = "intentions_#{i}"
       sql = %(INNER JOIN "workcamp_intentions_workcamps" as #{name} ON "#{name}"."workcamp_id" = "workcamps"."id")
       query = query.joins(sql).where("#{name}.workcamp_intention_id = ?",id)
@@ -84,11 +84,11 @@ class Workcamp < ActiveRecord::Base
   }
 
   scope :with_countries, lambda { |*ids|
-    where("workcamps.country_id in (?)",ids)
+    where("workcamps.country_id in (?)",ids.select(&:present?))
   }
 
   scope :with_organizations, lambda { |*ids|
-    where("workcamps.organization_id in (?)",ids)
+    where("workcamps.organization_id in (?)",ids.select(&:present?))
   }
 
   # same country, same intentions
