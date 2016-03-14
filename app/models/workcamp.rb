@@ -15,6 +15,7 @@ class Workcamp < ActiveRecord::Base
 
   create_date_time_accessors
 
+  include CountryCounters
   include FreePlacesUpdater
   before_save :update_free_places_for_workcamp
 

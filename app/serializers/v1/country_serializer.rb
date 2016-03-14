@@ -14,30 +14,12 @@ class V1::CountrySerializer < ActiveModel::Serializer
 
 
   def workcamps_count
-    workcamps_scope.free.count
+    object.free_workcamps_count
   end
 
 
   def ltv_count
-    ltv_projects_scope.free.count
-  end
-
-  # def free_ltv_count
-  # end
-
-  # def free_workcamps_count
-  # end
-
-
-
-  private
-
-  def workcamps_scope
-    object.workcamps.future.published(Account.current.season_end)
-  end
-
-  def ltv_projects_scope
-    object.ltv_projects.future.published(Account.current.season_end)
+    object.free_ltvs_count
   end
 
 
