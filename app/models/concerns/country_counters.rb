@@ -1,10 +1,10 @@
 module CountryCounters
   extend ActiveSupport::Concern
 
-  include do
-    before_save :update_country_free_counts
-    after_destroy :update_country_free_counts
-  end
+  # include do
+  #   after_save :update_country_free_counts
+  #   after_destroy :update_country_free_counts
+  # end
 
   def update_country_free_counts
     return unless country

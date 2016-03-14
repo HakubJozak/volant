@@ -15,9 +15,13 @@ class Workcamp < ActiveRecord::Base
 
   create_date_time_accessors
 
-  include CountryCounters
   include FreePlacesUpdater
   before_save :update_free_places_for_workcamp
+
+  # CountryCounters should come AFTER FreePlacesUpdater
+  include CountryCounters
+  after_save :update_country_free_counts
+  after_destroy :update_country_free_counts  
 
   has_many :workcamp_assignments, dependent: :destroy, class_name: 'Outgoing::WorkcampAssignment'
   has_many :apply_forms, through: :workcamp_assignments, dependent: :destroy, class_name: 'ApplyForm'

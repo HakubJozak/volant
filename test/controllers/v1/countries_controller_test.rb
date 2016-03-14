@@ -4,7 +4,7 @@ class V1::CountriesControllerTest < ActionController::TestCase
   test 'index' do
     free = Factory(:outgoing_workcamp, publish_mode: 'ALWAYS',country: countries(:AT))
     full = Factory(:outgoing_workcamp, publish_mode: 'ALWAYS',country: countries(:AT))
-    full.update_column(:free_places, 0)
+    2.times { create :accepted_assignment, workcamp: full }
 
     get :index
 
@@ -30,14 +30,16 @@ class V1::CountriesControllerTest < ActionController::TestCase
   end
 
   test 'ltv_counts' do
-    dummy = create(:outgoing_workcamp, publish_mode: 'ALWAYS',country: countries(:AT))
-    free = create(:ltv_workcamp, publish_mode: 'ALWAYS',country: countries(:AT))
+    at = countries(:AT)
+    dummy = create(:outgoing_workcamp, publish_mode: 'ALWAYS',country:at)
+    free = create(:ltv_workcamp, publish_mode: 'ALWAYS',country: at)
     past = create(:ltv_workcamp, publish_mode: 'ALWAYS',
-                  country: countries(:AT), begin: 5.days.ago, end: 3.days.ago)
+                  country: at, begin: 5.days.ago, end: 3.days.ago)
     full = create(:ltv_workcamp, publish_mode: 'ALWAYS',
-                  country: countries(:AT))
-    full.update_column(:free_places, 0)
+                  country: at)
+    2.times { create :accepted_assignment, workcamp: full }
 
+     
     get :index
 
     assert_response :success

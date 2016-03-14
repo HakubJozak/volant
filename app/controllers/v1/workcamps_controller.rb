@@ -119,13 +119,15 @@ class V1::WorkcampsController < V1::BaseController
   end
 
   def people_param
-    filter[:people].select { |p|
-      [ p[:a], p[:g]].any?(&:present?)
-    }
+    if array = filter[:people]
+      array.select { |p|[ p[:a], p[:g]].any?(&:present?) }
+    end
   end
 
   def country_ids_param
-    filter[:country_ids].presence.map(&:presence).compact
+    if ids = filter[:country_ids].presence
+      ids.map(&:presence).compact
+    end
   end
 
   def ages(people)
