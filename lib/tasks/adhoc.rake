@@ -7,7 +7,7 @@ namespace :adhoc do
                              cc: '{{workcamp.allApplicationsEmails}}',
                              body: "Thanks for your confirmation.\n\nHave fun!\n\n{{user.firstname}}",
                              to: '{{application.email}}',
-                             from: '{{user.email}}') 
+                             from: '{{user.email}}')
     end
   end
 
@@ -20,6 +20,19 @@ namespace :adhoc do
                             bcc: old.bcc,
                             subject: old.subject,
                             body: old.body)
+    end
+  end
+
+  task continents: :environment do
+    CountryZone.all.each do |zone|
+      zone.continent = case zone.name_en.downcase
+                       when /europe/ then 'Europe'
+                       when /africa/ then 'Africa'
+                       when /asia/ then 'Asia'
+                       when /america/ then zone.name_en
+                       else 'Australia & Oceania'
+                       end
+      zone.save(validate: false)
     end
   end
 end

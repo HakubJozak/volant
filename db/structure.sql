@@ -501,7 +501,8 @@ CREATE TABLE country_zones (
     name_en character varying(255),
     name_cz character varying(255),
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    continent character varying(255)
 );
 
 
@@ -2570,4 +2571,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150629115150');
 INSERT INTO schema_migrations (version) VALUES ('20151220121739');
 
 INSERT INTO schema_migrations (version) VALUES ('20160314113503');
+
+INSERT INTO schema_migrations (version) VALUES ('20160315214056');
 
