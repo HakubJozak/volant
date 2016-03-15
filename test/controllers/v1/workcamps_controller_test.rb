@@ -33,10 +33,14 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
   end
 
   test "search by intentions" do
-    dummy = Factory(:outgoing_workcamp)
+    decoy = create :outgoing_workcamp
+    target = create :outgoing_workcamp
     agri = workcamp_intentions(:agri)
     animal = workcamp_intentions(:animal)
 
+    target.intentions << agri
+    target.save!
+    
     @workcamp.intentions << agri
     @workcamp.intentions << animal
     @workcamp.save!
@@ -44,7 +48,7 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     get :index, workcamp_intention_ids: [ agri.id, animal.id ]
 
     assert_response :success
-    assert_equal 1, json_response['meta']['pagination']['total']
+    assert_equal 2, json_response['meta']['pagination']['total']
     assert_equal @workcamp.id, json_response['workcamps'].first['id'].to_i
   end
 
@@ -79,11 +83,11 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
                              minimal_age: 90,
                              maximal_age: 100)
 
-    get :index, people: [ { a: 22, g: 'm'},{ a: 33, g: 'f'} ]
+    get :index, people: { '0' => { a: 22, g: 'm'}, '1' => { a: 33, g: 'f'} }
     assert_response :success
     assert_equal 0, json_response['meta']['pagination']['total']
 
-    get :index, people: [ { a: 95, g: 'm'},{ a: 100, g: 'f'} ]
+    get :index, people: { '0' => { a: 95, g: 'm'}, '1' => { a: 100, g: 'f'} }
     assert_response :success
     assert_equal 1, json_response['meta']['pagination']['total']
     assert_equal @workcamp.id, json_response['workcamps'].first['id'].to_i
@@ -93,7 +97,7 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     @workcamp.update_columns(free_places_for_females: 0,
                              free_places_for_males: 1,
                              free_places: 1)
-    get :index, people: [ { g: 'm'} ]
+    get :index, people: { '0' => { g: 'm'} }
     assert_response :success
     assert_equal @workcamp.id, json_response['workcamps'].first['id'].to_i
   end
@@ -101,7 +105,7 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
   test 'search by age' do
     @workcamp.update_columns(minimal_age: 90,
                              maximal_age: 100)
-    get :index, people: [ { a: 93} ]
+    get :index, people: { '0' =>  { a: 93} }
     assert_response :success
     assert_equal @workcamp.id, json_response['workcamps'].first['id'].to_i
   end

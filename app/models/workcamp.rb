@@ -21,7 +21,7 @@ class Workcamp < ActiveRecord::Base
   # CountryCounters should come AFTER FreePlacesUpdater
   include CountryCounters
   after_save :update_country_free_counts
-  after_destroy :update_country_free_counts  
+  after_destroy :update_country_free_counts
 
   has_many :workcamp_assignments, dependent: :destroy, class_name: 'Outgoing::WorkcampAssignment'
   has_many :apply_forms, through: :workcamp_assignments, dependent: :destroy, class_name: 'ApplyForm'
@@ -78,14 +78,17 @@ class Workcamp < ActiveRecord::Base
 
   scope :with_workcamp_intentions, lambda { |*ids|
     query = where('true')
+    ids = ids.map(&:presence).compact
+    conditions = []
 
-    ids.select(&:present?).each_with_index do |id,i|
-      name = "intentions_#{i}"
-      sql = %(INNER JOIN "workcamp_intentions_workcamps" as #{name} ON "#{name}"."workcamp_id" = "workcamps"."id")
-      query = query.joins(sql).where("#{name}.workcamp_intention_id = ?",id)
+    conditions = ids.map.with_index do |id,i|
+      relation_alias = "intentions_#{i}"
+      join = %(INNER JOIN "workcamp_intentions_workcamps" as #{relation_alias} ON "#{relation_alias}"."workcamp_id" = "workcamps"."id")
+      query = query.joins(join)
+      "(#{relation_alias}.workcamp_intention_id = ?)"
     end
 
-    query
+    query.where(conditions.join(' OR '), *ids).distinct!
   }
 
   scope :with_countries, lambda { |*ids|
