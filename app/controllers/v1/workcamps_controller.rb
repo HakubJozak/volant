@@ -118,8 +118,8 @@ class V1::WorkcampsController < V1::BaseController
   end
 
   def people_param
-    if array = filter[:people]
-      array.select { |p|[ p[:a], p[:g]].any?(&:present?) }
+    if hash = filter[:people]
+      hash.values.select { |p|[ p[:a], p[:g]].any?(&:present?) }
     end
   end
 
