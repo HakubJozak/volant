@@ -98,8 +98,6 @@ class Workcamp < ActiveRecord::Base
     #   "(#{relation_alias}.workcamp_intention_id = ?)"
     # end
 
-    binding.pry
-    
     where('workcamps.id in (?)',camp_ids)
   }
 
