@@ -78,17 +78,29 @@ class Workcamp < ActiveRecord::Base
 
   scope :with_workcamp_intentions, lambda { |*ids|
     query = where('true')
-    ids = ids.map(&:presence).compact
-    conditions = []
+    # TODO: check if it is really safe
+    ids_list = ids.map(&:presence).compact.map(&:to_i)
 
-    conditions = ids.map.with_index do |id,i|
-      relation_alias = "intentions_#{i}"
-      join = %(INNER JOIN "workcamp_intentions_workcamps" as #{relation_alias} ON "#{relation_alias}"."workcamp_id" = "workcamps"."id")
-      query = query.joins(join)
-      "(#{relation_alias}.workcamp_intention_id = ?)"
-    end
+    joined = if ids_list.empty?
+               'NULL'
+             else
+               ids_list.join(',')
+             end
 
-    query.where(conditions.join(' OR '), *ids).distinct!
+    sql = "SELECT workcamp_id FROM workcamp_intentions_workcamps WHERE workcamp_intention_id IN (#{joined})"
+    rows = WorkcampIntention.connection.execute(sql)
+    camp_ids = rows.values.flatten
+
+    # conditions = ids.map.with_index do |id,i|
+    #   relation_alias = "intentions_#{i}"
+    #   join = %(INNER JOIN "workcamp_intentions_workcamps" as #{relation_alias} ON "#{relation_alias}"."workcamp_id" = "workcamps"."id")
+    #   query = query.joins(join)
+    #   "(#{relation_alias}.workcamp_intention_id = ?)"
+    # end
+
+    binding.pry
+    
+    where('workcamps.id in (?)',camp_ids)
   }
 
   scope :with_countries, lambda { |*ids|
