@@ -55,7 +55,7 @@ class V1::WorkcampsController < V1::BaseController
       search = search.with_tags(*ids)
     end
 
-    if ids = filter[:workcamp_intention_ids].presence
+    if ids = filter[:intent].presence
       search = search.with_workcamp_intentions(*ids)
     end
 
@@ -99,8 +99,9 @@ class V1::WorkcampsController < V1::BaseController
   def filter
     params.permit(:q,:scope,:from,:to,:duration,:country_zone_id,
                   :people => [ [:a,:g] ],
-                  :tag_ids => [], :country_ids => [],
-                  :workcamp_intention_ids => [], :organization_ids => [])
+                  :vols => [ [:a,:g] ],                  
+                  :tag_ids => [], :country => [],
+                  :intent => [], :organization_ids => [])
   end
 
   def workcamps
@@ -124,7 +125,7 @@ class V1::WorkcampsController < V1::BaseController
   end
 
   def country_ids_param
-    if ids = filter[:country_ids].presence
+    if ids = filter[:country].presence
       ids.map(&:presence).compact
     end
   end

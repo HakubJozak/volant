@@ -40,12 +40,12 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
 
     target.intentions << agri
     target.save!
-    
+
     @workcamp.intentions << agri
     @workcamp.intentions << animal
     @workcamp.save!
 
-    get :index, workcamp_intention_ids: [ agri.id, animal.id ]
+    get :index, intent: [ agri.id, animal.id ]
 
     assert_response :success
     assert_equal 2, json_response['meta']['pagination']['total']
@@ -69,7 +69,7 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     @workcamp.country = c = Factory(:country)
     @workcamp.save!
 
-    get :index, country_ids: [ c.id ]
+    get :index, country: [ c.id ]
 
     assert_response :success
     assert_equal 1, json_response['meta']['pagination']['total']
@@ -165,10 +165,10 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     assert_equal target.id,json[:workcamps][0][:id]
 
     # wrong input is ignored
-    get :index, duration: 'XXX'    
+    get :index, duration: 'XXX'
     assert_equal 2,json[:workcamps].size
   end
-  
+
   test 'search by from' do
     Workcamp.destroy_all
     target = Factory(:outgoing_workcamp, begin: 30.days.from_now)
