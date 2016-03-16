@@ -1,4 +1,6 @@
 class Account < ActiveRecord::Base
+  include CountryFreeCounters::Account
+
   belongs_to :organization
   validates :season_end, presence: true
   validates :infosheet_waiting_limit,

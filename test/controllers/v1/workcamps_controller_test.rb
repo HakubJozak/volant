@@ -87,10 +87,16 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal 0, json_response['meta']['pagination']['total']
 
+    # hash input (i.e. from HTML form)
     get :index, people: { '0' => { a: 95, g: 'm'}, '1' => { a: 100, g: 'f'} }
     assert_response :success
     assert_equal 1, json_response['meta']['pagination']['total']
     assert_equal @workcamp.id, json_response['workcamps'].first['id'].to_i
+
+    # array input (API usage)
+    get :index, people: [{ a: 95, g: 'm'}, { a: 100, g: 'f'}]
+    assert_response :success
+    assert_equal 1, json_response['meta']['pagination']['total']    
   end
 
   test 'search by gender' do

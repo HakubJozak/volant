@@ -19,7 +19,7 @@ class Workcamp < ActiveRecord::Base
   before_save :update_free_places_for_workcamp
 
   # CountryCounters should come AFTER FreePlacesUpdater
-  include CountryCounters
+  include CountryFreeCounters::Workcamp
   after_save :update_country_free_counts
   after_destroy :update_country_free_counts
 

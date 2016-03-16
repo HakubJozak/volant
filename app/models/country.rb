@@ -1,5 +1,6 @@
 class Country < ActiveRecord::Base
-
+  include CountryFreeCounters::Country
+  
   belongs_to :country_zone
 
   validates :name_en, presence: true
@@ -12,7 +13,5 @@ class Country < ActiveRecord::Base
   def name
     self.name_en
   end
-
-
 
 end

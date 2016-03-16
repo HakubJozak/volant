@@ -44,7 +44,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: workcamp_assignments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: workcamp_assignments; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE workcamp_assignments (
@@ -75,7 +75,7 @@ CREATE VIEW accepted_assignments AS
 
 
 --
--- Name: accounts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: accounts; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE accounts (
@@ -109,7 +109,7 @@ ALTER SEQUENCE accounts_id_seq OWNED BY accounts.id;
 
 
 --
--- Name: countries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: countries; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE countries (
@@ -128,7 +128,7 @@ CREATE TABLE countries (
 
 
 --
--- Name: workcamps; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: workcamps; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE workcamps (
@@ -203,7 +203,7 @@ CREATE VIEW active_countries_view AS
 
 
 --
--- Name: apply_forms; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: apply_forms; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE apply_forms (
@@ -370,7 +370,7 @@ CREATE VIEW apply_forms_view AS
 
 
 --
--- Name: attachments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: attachments; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE attachments (
@@ -405,7 +405,7 @@ ALTER SEQUENCE attachments_id_seq OWNED BY attachments.id;
 
 
 --
--- Name: bookings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: bookings; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE bookings (
@@ -440,7 +440,7 @@ ALTER SEQUENCE bookings_id_seq OWNED BY bookings.id;
 
 
 --
--- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE comments (
@@ -493,7 +493,7 @@ ALTER SEQUENCE countries_id_seq OWNED BY countries.id;
 
 
 --
--- Name: country_zones; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: country_zones; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE country_zones (
@@ -526,7 +526,7 @@ ALTER SEQUENCE country_zones_id_seq OWNED BY country_zones.id;
 
 
 --
--- Name: devise_users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: devise_users; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE devise_users (
@@ -569,7 +569,7 @@ ALTER SEQUENCE devise_users_id_seq OWNED BY devise_users.id;
 
 
 --
--- Name: email_contacts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: email_contacts; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE email_contacts (
@@ -605,7 +605,7 @@ ALTER SEQUENCE email_contacts_id_seq OWNED BY email_contacts.id;
 
 
 --
--- Name: email_templates; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: email_templates; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE email_templates (
@@ -640,7 +640,7 @@ ALTER SEQUENCE email_templates_id_seq OWNED BY email_templates.id;
 
 
 --
--- Name: hostings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: hostings; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE hostings (
@@ -672,7 +672,7 @@ ALTER SEQUENCE hostings_id_seq OWNED BY hostings.id;
 
 
 --
--- Name: import_changes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: import_changes; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE import_changes (
@@ -706,7 +706,7 @@ ALTER SEQUENCE import_changes_id_seq OWNED BY import_changes.id;
 
 
 --
--- Name: infosheets; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: infosheets; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE infosheets (
@@ -742,7 +742,7 @@ ALTER SEQUENCE infosheets_id_seq OWNED BY infosheets.id;
 
 
 --
--- Name: languages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: languages; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE languages (
@@ -776,7 +776,7 @@ ALTER SEQUENCE languages_id_seq OWNED BY languages.id;
 
 
 --
--- Name: leaderships; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: leaderships; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE leaderships (
@@ -808,7 +808,7 @@ ALTER SEQUENCE leaderships_id_seq OWNED BY leaderships.id;
 
 
 --
--- Name: messages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: messages; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE messages (
@@ -851,7 +851,7 @@ ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
 
 
 --
--- Name: networks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: networks; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE networks (
@@ -883,7 +883,7 @@ ALTER SEQUENCE networks_id_seq OWNED BY networks.id;
 
 
 --
--- Name: new_email_templates; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: new_email_templates; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE new_email_templates (
@@ -921,7 +921,7 @@ ALTER SEQUENCE new_email_templates_id_seq OWNED BY new_email_templates.id;
 
 
 --
--- Name: organizations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: organizations; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE organizations (
@@ -960,7 +960,7 @@ ALTER SEQUENCE organizations_id_seq OWNED BY organizations.id;
 
 
 --
--- Name: partners; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: partners; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE partners (
@@ -998,7 +998,7 @@ ALTER SEQUENCE partners_id_seq OWNED BY partners.id;
 
 
 --
--- Name: partnerships; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: partnerships; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE partnerships (
@@ -1031,7 +1031,7 @@ ALTER SEQUENCE partnerships_id_seq OWNED BY partnerships.id;
 
 
 --
--- Name: payments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: payments; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE payments (
@@ -1074,7 +1074,7 @@ ALTER SEQUENCE payments_id_seq OWNED BY payments.id;
 
 
 --
--- Name: people; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: people; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE people (
@@ -1120,7 +1120,7 @@ CREATE TABLE people (
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE schema_migrations (
@@ -1129,7 +1129,7 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: sessions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sessions; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE sessions (
@@ -1161,7 +1161,7 @@ ALTER SEQUENCE sessions_id_seq OWNED BY sessions.id;
 
 
 --
--- Name: starrings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: starrings; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE starrings (
@@ -1194,7 +1194,7 @@ ALTER SEQUENCE starrings_id_seq OWNED BY starrings.id;
 
 
 --
--- Name: taggings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: taggings; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE taggings (
@@ -1229,7 +1229,7 @@ ALTER SEQUENCE taggings_id_seq OWNED BY taggings.id;
 
 
 --
--- Name: tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: tags; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE tags (
@@ -1262,7 +1262,7 @@ ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE users (
@@ -1339,7 +1339,7 @@ ALTER SEQUENCE workcamp_assignments_id_seq OWNED BY workcamp_assignments.id;
 
 
 --
--- Name: workcamp_intentions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: workcamp_intentions; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE workcamp_intentions (
@@ -1372,7 +1372,7 @@ ALTER SEQUENCE workcamp_intentions_id_seq OWNED BY workcamp_intentions.id;
 
 
 --
--- Name: workcamp_intentions_workcamps; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: workcamp_intentions_workcamps; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE workcamp_intentions_workcamps (
@@ -1618,7 +1618,7 @@ ALTER TABLE ONLY workcamps ALTER COLUMN id SET DEFAULT nextval('workcamps_id_seq
 
 
 --
--- Name: accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY accounts
@@ -1626,7 +1626,7 @@ ALTER TABLE ONLY accounts
 
 
 --
--- Name: apply_forms_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: apply_forms_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY apply_forms
@@ -1634,7 +1634,7 @@ ALTER TABLE ONLY apply_forms
 
 
 --
--- Name: attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY attachments
@@ -1642,7 +1642,7 @@ ALTER TABLE ONLY attachments
 
 
 --
--- Name: bookings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: bookings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY bookings
@@ -1650,7 +1650,7 @@ ALTER TABLE ONLY bookings
 
 
 --
--- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY comments
@@ -1658,7 +1658,7 @@ ALTER TABLE ONLY comments
 
 
 --
--- Name: countries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: countries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY countries
@@ -1666,7 +1666,7 @@ ALTER TABLE ONLY countries
 
 
 --
--- Name: country_zones_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: country_zones_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY country_zones
@@ -1674,7 +1674,7 @@ ALTER TABLE ONLY country_zones
 
 
 --
--- Name: devise_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: devise_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY devise_users
@@ -1682,7 +1682,7 @@ ALTER TABLE ONLY devise_users
 
 
 --
--- Name: email_contacts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: email_contacts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY email_contacts
@@ -1690,7 +1690,7 @@ ALTER TABLE ONLY email_contacts
 
 
 --
--- Name: email_templates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: email_templates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY email_templates
@@ -1698,7 +1698,7 @@ ALTER TABLE ONLY email_templates
 
 
 --
--- Name: hostings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: hostings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY hostings
@@ -1706,7 +1706,7 @@ ALTER TABLE ONLY hostings
 
 
 --
--- Name: import_changes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: import_changes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY import_changes
@@ -1714,7 +1714,7 @@ ALTER TABLE ONLY import_changes
 
 
 --
--- Name: infosheets_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: infosheets_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY infosheets
@@ -1722,7 +1722,7 @@ ALTER TABLE ONLY infosheets
 
 
 --
--- Name: languages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: languages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY languages
@@ -1730,7 +1730,7 @@ ALTER TABLE ONLY languages
 
 
 --
--- Name: leaderships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: leaderships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY leaderships
@@ -1738,7 +1738,7 @@ ALTER TABLE ONLY leaderships
 
 
 --
--- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY messages
@@ -1746,7 +1746,7 @@ ALTER TABLE ONLY messages
 
 
 --
--- Name: networks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: networks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY networks
@@ -1754,7 +1754,7 @@ ALTER TABLE ONLY networks
 
 
 --
--- Name: new_email_templates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: new_email_templates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY new_email_templates
@@ -1762,7 +1762,7 @@ ALTER TABLE ONLY new_email_templates
 
 
 --
--- Name: organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY organizations
@@ -1770,7 +1770,7 @@ ALTER TABLE ONLY organizations
 
 
 --
--- Name: partners_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: partners_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY partners
@@ -1778,7 +1778,7 @@ ALTER TABLE ONLY partners
 
 
 --
--- Name: partnerships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: partnerships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY partnerships
@@ -1786,7 +1786,7 @@ ALTER TABLE ONLY partnerships
 
 
 --
--- Name: payments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: payments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY payments
@@ -1794,7 +1794,7 @@ ALTER TABLE ONLY payments
 
 
 --
--- Name: sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY sessions
@@ -1802,7 +1802,7 @@ ALTER TABLE ONLY sessions
 
 
 --
--- Name: starrings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: starrings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY starrings
@@ -1810,7 +1810,7 @@ ALTER TABLE ONLY starrings
 
 
 --
--- Name: taggings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: taggings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY taggings
@@ -1818,7 +1818,7 @@ ALTER TABLE ONLY taggings
 
 
 --
--- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY tags
@@ -1826,7 +1826,7 @@ ALTER TABLE ONLY tags
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY users
@@ -1834,7 +1834,7 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: volunteers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: volunteers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY people
@@ -1842,7 +1842,7 @@ ALTER TABLE ONLY people
 
 
 --
--- Name: workcamp_assignments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: workcamp_assignments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY workcamp_assignments
@@ -1850,7 +1850,7 @@ ALTER TABLE ONLY workcamp_assignments
 
 
 --
--- Name: workcamp_intentions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: workcamp_intentions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY workcamp_intentions
@@ -1858,7 +1858,7 @@ ALTER TABLE ONLY workcamp_intentions
 
 
 --
--- Name: workcamps_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: workcamps_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY workcamps
@@ -1866,189 +1866,189 @@ ALTER TABLE ONLY workcamps
 
 
 --
--- Name: fk_comments_user; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: fk_comments_user; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX fk_comments_user ON comments USING btree (user_id);
 
 
 --
--- Name: index_apply_forms_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_apply_forms_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_apply_forms_on_id ON apply_forms USING btree (id);
 
 
 --
--- Name: index_devise_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_devise_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_devise_users_on_email ON devise_users USING btree (email);
 
 
 --
--- Name: index_devise_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_devise_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_devise_users_on_reset_password_token ON devise_users USING btree (reset_password_token);
 
 
 --
--- Name: index_infosheets_on_workcamp_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_infosheets_on_workcamp_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_infosheets_on_workcamp_id ON infosheets USING btree (workcamp_id);
 
 
 --
--- Name: index_organizations_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_organizations_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_organizations_on_id ON organizations USING btree (id);
 
 
 --
--- Name: index_sessions_on_session_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_sessions_on_session_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_sessions_on_session_id ON sessions USING btree (session_id);
 
 
 --
--- Name: index_sessions_on_updated_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_sessions_on_updated_at; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_sessions_on_updated_at ON sessions USING btree (updated_at);
 
 
 --
--- Name: index_taggings_on_taggable_id_and_taggable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_taggings_on_taggable_id_and_taggable_type; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_taggings_on_taggable_id_and_taggable_type ON taggings USING btree (taggable_id, taggable_type);
 
 
 --
--- Name: index_tags_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_tags_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_tags_on_name ON tags USING btree (name);
 
 
 --
--- Name: index_volunteers_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_volunteers_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_volunteers_on_id ON people USING btree (id);
 
 
 --
--- Name: index_workcamp_assignments_on_accepted; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_workcamp_assignments_on_accepted; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_workcamp_assignments_on_accepted ON workcamp_assignments USING btree (accepted);
 
 
 --
--- Name: index_workcamp_assignments_on_apply_form_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_workcamp_assignments_on_apply_form_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_workcamp_assignments_on_apply_form_id ON workcamp_assignments USING btree (apply_form_id);
 
 
 --
--- Name: index_workcamp_assignments_on_asked; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_workcamp_assignments_on_asked; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_workcamp_assignments_on_asked ON workcamp_assignments USING btree (asked);
 
 
 --
--- Name: index_workcamp_assignments_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_workcamp_assignments_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_workcamp_assignments_on_id ON workcamp_assignments USING btree (id);
 
 
 --
--- Name: index_workcamp_assignments_on_infosheeted; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_workcamp_assignments_on_infosheeted; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_workcamp_assignments_on_infosheeted ON workcamp_assignments USING btree (infosheeted);
 
 
 --
--- Name: index_workcamp_assignments_on_rejected; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_workcamp_assignments_on_rejected; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_workcamp_assignments_on_rejected ON workcamp_assignments USING btree (rejected);
 
 
 --
--- Name: index_workcamp_assignments_on_workcamp_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_workcamp_assignments_on_workcamp_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_workcamp_assignments_on_workcamp_id ON workcamp_assignments USING btree (workcamp_id);
 
 
 --
--- Name: index_workcamps_on_begin; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_workcamps_on_begin; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_workcamps_on_begin ON workcamps USING btree (begin);
 
 
 --
--- Name: index_workcamps_on_country_id_and_begin; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_workcamps_on_country_id_and_begin; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_workcamps_on_country_id_and_begin ON workcamps USING btree (country_id, begin);
 
 
 --
--- Name: index_workcamps_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_workcamps_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_workcamps_on_id ON workcamps USING btree (id);
 
 
 --
--- Name: index_workcamps_on_state; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_workcamps_on_state; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_workcamps_on_state ON workcamps USING btree (state);
 
 
 --
--- Name: index_workcamps_on_state_and_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_workcamps_on_state_and_type; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_workcamps_on_state_and_type ON workcamps USING btree (state, type);
 
 
 --
--- Name: index_workcamps_on_state_and_type_and_begin; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_workcamps_on_state_and_type_and_begin; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_workcamps_on_state_and_type_and_begin ON workcamps USING btree (state, type, begin);
 
 
 --
--- Name: index_workcamps_on_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_workcamps_on_type; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_workcamps_on_type ON workcamps USING btree (type);
 
 
 --
--- Name: taggings_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: taggings_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX taggings_idx ON taggings USING btree (tag_id, taggable_id, taggable_type, context, tagger_id, tagger_type);
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
@@ -2573,4 +2573,3 @@ INSERT INTO schema_migrations (version) VALUES ('20151220121739');
 INSERT INTO schema_migrations (version) VALUES ('20160314113503');
 
 INSERT INTO schema_migrations (version) VALUES ('20160315214056');
-
