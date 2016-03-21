@@ -136,9 +136,6 @@ GEM
     emblem-source (0.3.17)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    exception_notification (4.0.1)
-      actionmailer (>= 3.0.4)
-      activesupport (>= 3.0.4)
     execjs (2.2.2)
     factory_girl (2.6.4)
       activesupport (>= 2.3.9)
@@ -267,6 +264,8 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
+    rollbar (2.7.1)
+      multi_json
     ruby-progressbar (1.5.1)
     sass (3.2.19)
     sass-rails (4.0.3)
@@ -335,7 +334,6 @@ DEPENDENCIES
   ember-rails
   ember-source (= 1.7.0)
   emblem-rails
-  exception_notification
   factory_girl_rails
   faker
   font-awesome-rails
@@ -362,6 +360,7 @@ DEPENDENCIES
   puma
   rack-jsonp-middleware
   rails (= 4.1.2)
+  rollbar (~> 2.7.1)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   shoulda
@@ -371,4 +370,4 @@ DEPENDENCIES
   validates_lengths_from_database
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

@@ -12,9 +12,10 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'nokogiri'
 gem 'handlebars'
 gem 'pdfkit'
-gem 'exception_notification'
 gem 'validates_lengths_from_database'
 gem 'dotenv-rails'
+gem 'rollbar', '~> 2.7.1'
+
 
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

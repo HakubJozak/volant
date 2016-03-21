@@ -84,8 +84,8 @@ Rails.application.configure do
     domain: "samson.cb.cz",
     tls: false,
     enable_starttls_auto: false,
-  }    
-  
+  }
+
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -103,12 +103,12 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.middleware.use ExceptionNotification::Rack, {
-    email: {
-      email_prefix: "[volant-error] ",
-      sender_address: %{"Volant" <no-reply@inexsda.cz>},
-      exception_recipients: %w{jakub.hozak@gmail.com}
-    }
-  }
+  # config.middleware.use ExceptionNotification::Rack, {
+  #   email: {
+  #     email_prefix: "[volant-error] ",
+  #     sender_address: %{"Volant" <no-reply@inexsda.cz>},
+  #     exception_recipients: %w{jakub.hozak@gmail.com}
+  #   }
+  # }
 
 end
