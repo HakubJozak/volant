@@ -52,7 +52,7 @@ module Import
 
         wc.workdesc = to_text(node, 'descr_work')
         wc.area = to_text(node, 'descr_location_and_leisure')
-        wc.accomodation =to_text( node, 'descr_accomodation_and_food')
+        wc.accommodation =to_text( node, 'descr_accomodation_and_food')
 
         wc.description = to_text(node, 'description')
         add_to_field(:description, wc, node, 'descr_partner')

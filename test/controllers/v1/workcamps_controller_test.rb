@@ -96,7 +96,7 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     # array input (API usage)
     get :index, people: [{ a: 95, g: 'm'}, { a: 100, g: 'f'}]
     assert_response :success
-    assert_equal 1, json_response['meta']['pagination']['total']    
+    assert_equal 1, json_response['meta']['pagination']['total']
   end
 
   test 'search by gender' do
@@ -147,7 +147,7 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
     next_season = create(:outgoing_workcamp, publish_mode: 'SEASON')
     full = create(:outgoing_workcamp, places: 0)
     # to be found:
-    target = create(:outgoing_workcamp)
+    target = create(:outgoing_workcamp, country: @workcamp.country)
 
     @workcamp.intentions.each { |i|
       full.intentions << i

@@ -67,7 +67,7 @@ cz:
         area: Místo
         longitude: Zeměpisná délka (lng)
         latitude: Zeměpisná šířka (lat)
-        accomodation: Ubytování
+        accommodation: Ubytování
         workdesc: Popis práce
         notes: Poznámky
         en_desc: Popis v angličtině

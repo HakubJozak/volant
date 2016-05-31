@@ -131,7 +131,7 @@ class WorkcampsController < ApplicationController
       .require(:workcamp)
       .except(*readonly)
       .permit(:name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
-              :area, :accomodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,
+              :area, :accommodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,
               :region, :capacity_natives, :capacity_teenagers, :capacity_males, :capacity_females,
               :airport, :train, :publish_mode,:places, :places_for_males, :places_for_females,
               :accepted_places, :accepted_places_males, :accepted_places_females,

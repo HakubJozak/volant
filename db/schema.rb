@@ -311,7 +311,7 @@ ActiveRecord::Schema.define(:version => 20100204103640) do
     t.integer  "minimal_age",                                             :default => 18
     t.integer  "maximal_age",                                             :default => 99
     t.text     "area"
-    t.text     "accomodation"
+    t.text     "accommodation"
     t.text     "workdesc"
     t.text     "notes"
     t.text     "description"

@@ -2,7 +2,7 @@ require 'csv'
 
 class Export::WorkcampCsv
   include CsvExporter
-  
+
   def columns
     [:id, :code, :name, :country_code, :country_name, :org_code,
      :org_name, :org_networks, :language, :from,:to, :duration,
@@ -11,7 +11,7 @@ class Export::WorkcampCsv
      :free_places_for_females, :free_capacity_males,
      :free_capacity_females, :free_capacity, :apply_forms_total,
      :apply_forms_accepted, :apply_forms_cancelled, :project_id,
-     :minimal_age, :maximal_age, :area, :accomodation, :workdesc,
+     :minimal_age, :maximal_age, :area, :accommodation, :workdesc,
      :notes, :description, :created_at, :updated_at, :extra_fee,
      :extra_fee_currency, :region, :capacity_natives,
      :capacity_teenagers, :capacity_males, :capacity_females,

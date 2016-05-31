@@ -24,7 +24,7 @@ Volant.Workcamp = DS.Model.extend Ember.Copyable,
   minimal_age: DS.attr 'number'
   maximal_age: DS.attr 'number'
   area: DS.attr 'string'
-  accomodation: DS.attr 'string'
+  accommodation: DS.attr 'string'
   workdesc: DS.attr 'string'
   notes: DS.attr 'string'
   description: DS.attr 'string'

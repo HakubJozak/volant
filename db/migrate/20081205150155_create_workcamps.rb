@@ -22,7 +22,7 @@ class CreateWorkcamps < ActiveRecord::Migration
       t.column :maximal_age, :integer, :null => false, :default => 99
 
       t.column :area, :text
-      t.column :accomodation, :text
+      t.column :accommodation, :text
       t.column :workdesc, :text
       t.column :notes, :text
       t.column :description, :text

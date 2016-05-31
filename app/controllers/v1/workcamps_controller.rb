@@ -85,6 +85,7 @@ class V1::WorkcampsController < V1::BaseController
   def similar
     # TODO: this scope
     search = @workcamp.class.web_default.future.similar_to(@workcamp).free.limit(10)
+
     search = add_year_scope(search)
     search = search.includes(:country,:organization,:tags,:intentions)
     render json: search.all, each_serializer: V1::WorkcampSerializer
@@ -99,7 +100,7 @@ class V1::WorkcampsController < V1::BaseController
   def filter
     params.permit(:q,:scope,:from,:to,:duration,:country_zone_id,
                   :people => [ [:a,:g] ],
-                  :vols => [ [:a,:g] ],                  
+                  :vols => [ [:a,:g] ],
                   :tag_ids => [], :country => [],
                   :intent => [], :organization_ids => [])
   end

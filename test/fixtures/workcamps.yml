@@ -14,7 +14,7 @@ xaverov:
   minimal_age: 18
   maximal_age: 26
   area: Xaverov u Sázavy
-  accomodation: na Paloučku
+  accommodation: na Paloučku
   workdesc: pití alkoholu ve velkém
   notes: pouze abstinenti
   description: zabijačka a Silvestr
@@ -36,7 +36,7 @@ kytlice:
   minimal_age: 18
   maximal_age: 26
   area: Lužické hory
-  accomodation: Roubenka
+  accommodation: Roubenka
   workdesc: pití alkoholu ve velkém
   notes: pouze abstinenti
   description: Silvestr
@@ -58,7 +58,7 @@ hartenberg:
   minimal_age: 18
   maximal_age: 26
   area: Lužické hory
-  accomodation: Roubenka
+  accommodation: Roubenka
   workdesc: pití alkoholu ve velkém
   notes: pouze abstinenti
   description: Silvestr
@@ -80,7 +80,7 @@ krkonose:
   minimal_age: 18
   maximal_age: 26
   area: Lužické hory
-  accomodation: Roubenka
+  accommodation: Roubenka
   workdesc: pití alkoholu ve velkém
   notes: pouze abstinenti
   description: Silvestr

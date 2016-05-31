@@ -23,7 +23,7 @@ Factory.define :workcamp do |w|
   w.minimal_age 18
   w.maximal_age 26
   w.area "Xaverov u Sázavy"
-  w.accomodation "na Paloučku"
+  w.accommodation "na Paloučku"
   w.workdesc "pití alkoholu ve velkém"
   w.notes "pouze abstinenti"
   w.description "zabijačka a Silvestr"
