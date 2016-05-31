@@ -7,4 +7,5 @@ Factory.define :user do |u|
   u.created_at 5.days.ago
   # TODO
   # u.account
+  u.association :account
 end

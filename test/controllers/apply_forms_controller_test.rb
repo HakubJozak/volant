@@ -3,7 +3,7 @@ require 'test_helper'
 class ApplyFormsControllerTest < ActionController::TestCase
   setup do
     @apply_form = Factory(:apply_form)
-    sign_in users(:john)
+    sign_in create(:user)
   end
 
   test 'index' do
@@ -64,6 +64,9 @@ class ApplyFormsControllerTest < ActionController::TestCase
     get :index, state: 'on_project'
     assert_response :success
 
+    get :index, state: 'alerts'
+    assert_response :success    
+
     # regression test
     get :index, state: ''
     assert_response :success
@@ -77,10 +80,10 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_response :success
 
     get :index, order: 'from', asc: 'false'
-    assert_response :success        
+    assert_response :success
 
     get :index, order: 'from', asc: 'false'
-    assert_response :success        
+    assert_response :success
   end
 
   test 'filter by state' do

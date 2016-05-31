@@ -86,11 +86,11 @@ class ApplyForm < ActiveRecord::Base
       joins(:current_workcamp).order("#{wc_table}.begin #{direction}")
     when 'to'
       joins(:current_workcamp).order("#{wc_table}.end #{direction}")
-    else 
+    else
       order("#{table}.lastname #{direction},#{table}.firstname #{direction}")
     end
   end
-  
+
   def add_workcamps_by_ids(workcamp_ids)
     workcamp_ids.each_with_index do |id,i|
       add_workcamp(Workcamp.find(id))
@@ -136,8 +136,8 @@ class ApplyForm < ActiveRecord::Base
       filter_sql << ' OR '
       filter_sql << " (cancelled IS NULL AND #{wa}.accepted IS NOT NULL AND #{wa}.infosheeted IS NULL AND #{wc}.\"begin\" <= ?)"
       filter_sql << ')'
-      filter_params << account.organization_response_limit
-      filter_params << account.infosheet_waiting_limit
+      filter_params << account.organization_response_limit.days.ago
+      filter_params << account.infosheet_waiting_limit.days.from_now
       joins(:current_workcamp).joins(:current_assignment).where(*[ filter_sql ].concat(filter_params))
 
     when "cancelled"
