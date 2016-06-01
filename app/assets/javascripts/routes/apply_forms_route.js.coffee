@@ -12,6 +12,9 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
     @_super(controller, model,transition)
     controller.set 'newModelType',@get('newModelType')
 
+  afterRemove: (wc) ->
+    @send 'goToApplyForms'
+
   model: (params) ->
     filter = @default_filter()
     filter.p = params.page

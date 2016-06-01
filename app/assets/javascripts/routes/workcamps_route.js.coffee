@@ -7,6 +7,9 @@ Volant.WorkcampsRoute = Volant.BaseRoute.extend
     order: { refreshModel: true }
     sortAscending: { refreshModel: true }
 
+  afterRemove: (wc) ->
+    @send 'goToWorkcamps'
+
   model: (params) ->
     filter = @default_filter()
     filter.q = params.query
