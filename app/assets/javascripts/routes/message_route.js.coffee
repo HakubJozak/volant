@@ -22,7 +22,7 @@ Volant.MessageRoute = Volant.BaseRoute.extend
       workcamp: message.get('applyForm.currentWorkcamp')
 
     Ember.RSVP.hash(data).then (r) =>
-      name = @_templateNameFor(message, r.applForm)
+      name = @_templateNameFor(message, r.applyForm)
       tmpl = r.templates.findBy('action',name)
       workcamp = message.get('workcamp') || r.workcamp
 
