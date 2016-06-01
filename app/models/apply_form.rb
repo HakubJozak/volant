@@ -23,6 +23,15 @@ class ApplyForm < ActiveRecord::Base
   has_many :workcamps, -> { order 'workcamp_assignments."position" ASC' }, through: :workcamp_assignments, class_name: 'Workcamp', validate: false
   has_many :workcamp_assignments, -> { order '"position" ASC' }, dependent: :delete_all, class_name: 'Outgoing::WorkcampAssignment', validate: false
 
+  scope :query, lambda { |query|
+    columns = [ :firstname, :lastname, :email, :birthnumber,
+                :phone, :passport_number, :general_remarks].map { |attr|
+      "#{table_name}.#{attr}"
+    }
+    
+    fuzzy_like(*[query,columns].flatten)
+  }  
+
   scope :year, lambda { |year|
     year = year.to_i
     where "(#{ApplyForm.table_name}.created_at >= ? AND #{ApplyForm.table_name}.created_at < ?)", Date.new(year,1,1), Date.new(year + 1,1,1)    }

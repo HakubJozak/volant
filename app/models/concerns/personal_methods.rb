@@ -13,18 +13,11 @@ module PersonalMethods
                           :phone, :gender, :street, :city, :zipcode,
                           :emergency_name, :emergency_day, :birthnumber,
                           if: :strict_validation?
-    
-    include PhoneValidation
 
-    scope :query, lambda { |query|
-      columns = [ :firstname,:lastname,:email,:birthnumber,:phone,:passport_number].map { |attr|
-        "#{table_name}.#{attr}"
-      }
-      fuzzy_like(*[query,columns].flatten)
-    }
+    include PhoneValidation
   end
 
-  
+
   def name
     "#{lastname} #{firstname}"
   end
@@ -46,5 +39,5 @@ module PersonalMethods
     age -= 1 if birthdate > today.years_ago(age)
     age
   end
-  
+
 end
