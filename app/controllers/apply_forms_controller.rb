@@ -138,8 +138,11 @@ class ApplyFormsController < ApplicationController
         today = Date.today
         search = search.returns_between(today,today + 7.days)
 
+      when 'pending'
+        search = search.joins(:payment).state_filter(state,current_account)
       when 'without_payment'
         search = search.joins('left outer join payments on payments.apply_form_id = apply_forms.id').state_filter(state,current_account)
+
       else
         search = search.state_filter(state,current_account)
       end

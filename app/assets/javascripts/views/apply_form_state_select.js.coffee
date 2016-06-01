@@ -5,6 +5,7 @@ Volant.ApplyFormStateSelect = Ember.Select.extend
   prompt: 'Any'
 
   content: [
+            { code: 'pending', label: 'Pending'},
             { code: 'without_payment', label: 'Not paid'},
             { code: 'accepted', label: 'Accepted'},
             { code: 'rejected', label: 'Rejected'},
@@ -13,7 +14,7 @@ Volant.ApplyFormStateSelect = Ember.Select.extend
             { code: 'on_project', label: 'On Project' },
             { code: 'just_submitted', label: 'New' },
             { code: 'returns', label: 'Return in a Week' },
-            { code: 'leaves', label: 'Leaves in a Week' },    
-            { code: 'alerts', label: 'Has Alert'},            
+            { code: 'leaves', label: 'Leaves in a Week' },
+            { code: 'alerts', label: 'Has Alert'},
             { code: 'asked', label: 'Asked'},
           ]

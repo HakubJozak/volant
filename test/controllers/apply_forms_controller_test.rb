@@ -111,6 +111,19 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_equal infosheeted.id, json_response['apply_forms'][0]['id'].to_i
   end
 
+  test 'filter pending' do
+    ApplyForm.destroy_all
+    paid = Factory(:paid_form)
+    decoy = Factory(:apply_form)
+    decoy.payment.destroy
+
+    get :index, state: 'pending'
+
+    assert_response :success
+    assert_equal 1,json[:apply_forms].size
+    assert_equal paid.id, json[:apply_forms][0][:id].to_i
+  end
+  
   test 'filter unpaid' do
     ApplyForm.destroy_all
     dummy = Factory(:paid_form)
