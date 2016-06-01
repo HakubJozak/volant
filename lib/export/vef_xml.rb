@@ -15,6 +15,28 @@ class Export::VefXml < Export::VefBase
     @form.contact_zipcode
   end
 
+  ADIH_OCCUPATIONS = {
+    'STH' => 'Highschool Student',
+    'STU' => 'University Student',
+    'EMP' => 'Employed / Self-employed',
+    'UNE' => 'Unemployed',
+    'OTH' => 'Other',
+  }
+  
+  def occupation
+    o = @form.occupation.to_s
+    
+    if ADIH_OCCUPATIONS.keys.include?(o.upcase)
+      o.upcase
+    elsif o.blank?
+      'UNE'
+    elsif o =~ /student/i
+      'STU'
+    else
+      'EMP'
+    end
+  end
+
   def contact_address1
     [@form.contact_street, @form.contact_city].compact.join(',')
   end
@@ -25,9 +47,9 @@ class Export::VefXml < Export::VefBase
 
   def country
     if @form.respond_to?(:country) and @form.country
-      @form.country.name_en
+      @form.country.code
     else
-      'Czech Republic'
+      'CZ'
     end
   end
 
@@ -60,16 +82,18 @@ class Export::VefXml < Export::VefBase
         xml.tmp_city f.contact_city
         xml.tmp_country country
 
-        xml.language1 f.speak_well
-        xml.language2 f.speak_some
+        if f.speak_well.present?
+          xml.language1 f.speak_well
+          xml.langlevel1 3
+        end
 
-        xml.langlevel1 3
-        xml.langlevel2 2
+        if f.speak_some.present?
+          xml.language2 f.speak_some
+          xml.langlevel2 2
+        end
 
         xml.emergency_contact emergency_contact
-
-        xml.occupation f.occupation
-
+        xml.occupation occupation
 
         xml.special_needs f.special_needs
         xml.remarks f.general_remarks
