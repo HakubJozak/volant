@@ -20,6 +20,8 @@ class V1::WorkcampsController < V1::BaseController
       search = search.future.urgent
     when 'archive'
       search.archive
+    when 'all'
+      search
     else
       search = search.future
     end

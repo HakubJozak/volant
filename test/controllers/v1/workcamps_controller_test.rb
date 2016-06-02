@@ -122,6 +122,9 @@ class V1::WorkcampsControllerTest < ActionController::TestCase
 
     get :index, scope: 'urgent'
     assert_response :success
+
+    get :index, scope: 'all'
+    assert_response :success    
   end
 
   test "short" do
