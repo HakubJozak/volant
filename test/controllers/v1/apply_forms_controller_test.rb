@@ -87,9 +87,10 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
   end
 
   test 'create: validation' do
-    attrs = [ :firstname, :lastname, :birthnumber, :occupation, :birthdate, :email,
-              :phone, :gender, :street, :city, :zipcode, :emergency_name, :emergency_day,
-            ]
+    attrs = [ :firstname, :lastname, :birthnumber, :occupation,
+              :birthdate, :email, :phone, :gender, :street, :city,
+              :zipcode, :emergency_name, :emergency_day, :motivation ]
+
     attrs.each do |attr|
       post :create, apply_form: @attrs.merge(attr => '')
       assert_form_error attr
@@ -152,6 +153,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
 
   def assert_form_error(attr)
     msg = "Presence of #{attr} was not validated"
+    assert_response 422
     assert_not_nil json[:errors][attr],msg
   end
 

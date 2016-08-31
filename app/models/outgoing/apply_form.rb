@@ -1,5 +1,6 @@
 module Outgoing
   class ApplyForm < ::ApplyForm
-#    validates_presence_of :volunteer, :fee, :motivation
+    # validates :fee, presence: true
+    validates :motivation, presence: true, if: :strict_validation?
   end
 end

@@ -8,12 +8,12 @@ module Outgoing
     end
 
     test "rejection" do
-      rejected = Factory.create(:rejected_form)
+      rejected = create(:rejected_form)
       assert rejected.rejected?, "The application should be rejected"
     end
 
     test "payments" do
-      a = Factory.create(:paid_form)
+      a = create(:paid_form)
       assert_state a, :paid
 
       a.payment.amount -= 200
@@ -21,20 +21,20 @@ module Outgoing
     end
 
     test "current_assignment" do
-      form = Factory.create(:accepted_form)
+      form = create(:accepted_form)
       assert_not_nil form.current_assignment
       assert_not_nil form.current_workcamp
     end
 
     test "asking and acceptation" do
-      form = Factory.create(:paid_form)
+      form = create(:paid_form)
       assert form.is?(:paid), "Form should be paid"
       assert form.ask.is?(:asked), "Form should be asked"
       assert form.accept.is?(:accepted), "Form should be accepted"
     end
 
     test "assignment rejection" do
-      @paid = Factory.create(:paid_form)
+      @paid = create(:paid_form)
       @paid.workcamps.clear
       ::Workcamp.limit(3).each_with_index do |wc,i|
         @paid.workcamp_assignments << Outgoing::WorkcampAssignment.new(workcamp: wc)
@@ -48,12 +48,12 @@ module Outgoing
     end
 
     test "state labelling" do
-      state = Factory.create(:rejected_form).state
+      state = create(:rejected_form).state
       assert_equal :rejected, state.name
     end
 
     test "destroy" do
-      form = Factory.create(:paid_form)
+      form = create(:paid_form)
       payment_id = form.payment.id
       volunteer_id = form.volunteer.id
       id = form.id
@@ -66,9 +66,9 @@ module Outgoing
     end
 
     test "workcamp list" do
-      @f = Factory.create(:paid_form)
+      @f = create(:paid_form)
       @f.workcamp_assignments.delete_all
-      5.times { |i| Factory.create(:workcamp_assignment, apply_form: @f) }
+      5.times { |i| create(:workcamp_assignment, apply_form: @f) }
       @f.reload
       assert_equal 5, @f.workcamps.size
       assert_not_empty @f.workcamps_list
