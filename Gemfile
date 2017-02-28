@@ -15,6 +15,7 @@ gem 'pdfkit'
 gem 'validates_lengths_from_database'
 gem 'dotenv-rails'
 gem 'rollbar', '~> 2.7'
+gem 'whenever'
 
 
 gem 'jquery-rails'
@@ -76,8 +77,15 @@ group :development do
   gem 'letter_opener'
   gem 'faker'
   gem 'guard-livereload', '2.3.1', require: false
-  gem 'mina', '~> 0.3.3', require: false
-  gem 'mina-puma', require: false
+
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rails-console'
+  gem 'capistrano-shell'
+  gem 'capistrano-db-tasks', require: false
+  gem 'capistrano3-puma', require: false  
+  # gem 'mina', '~> 0.3.3', require: false
+  # gem 'mina-puma', require: false
 end
 
 group :test do
