@@ -14,7 +14,7 @@ gem 'handlebars'
 gem 'pdfkit'
 gem 'validates_lengths_from_database'
 gem 'dotenv-rails'
-gem 'rollbar', '~> 2.7.1'
+gem 'rollbar', '~> 2.7'
 
 
 gem 'jquery-rails'

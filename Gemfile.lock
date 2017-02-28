@@ -218,7 +218,7 @@ GEM
     modernizr-rails (2.7.1)
     momentjs-rails (2.8.3)
       railties (>= 3.1)
-    multi_json (1.10.1)
+    multi_json (1.12.1)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     open4 (1.3.4)
@@ -264,7 +264,7 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
-    rollbar (2.7.1)
+    rollbar (2.14.0)
       multi_json
     ruby-progressbar (1.5.1)
     sass (3.2.19)
@@ -360,7 +360,7 @@ DEPENDENCIES
   puma
   rack-jsonp-middleware
   rails (= 4.1.2)
-  rollbar (~> 2.7.1)
+  rollbar (~> 2.7)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   shoulda
@@ -370,4 +370,4 @@ DEPENDENCIES
   validates_lengths_from_database
 
 BUNDLED WITH
-   1.11.2
+   1.12.5
