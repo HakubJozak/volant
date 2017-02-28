@@ -28,9 +28,9 @@ class ApplyForm < ActiveRecord::Base
                 :phone, :passport_number, :general_remarks].map { |attr|
       "#{table_name}.#{attr}"
     }
-    
+
     fuzzy_like(*[query,columns].flatten)
-  }  
+  }
 
   scope :year, lambda { |year|
     year = year.to_i
