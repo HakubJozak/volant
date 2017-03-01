@@ -181,7 +181,9 @@ CREATE TABLE workcamps (
     duration integer,
     free_capacity_males integer DEFAULT 0 NOT NULL,
     free_capacity_females integer DEFAULT 0 NOT NULL,
-    free_capacity integer DEFAULT 0 NOT NULL
+    free_capacity integer DEFAULT 0 NOT NULL,
+    partner_organization character varying(4096),
+    project_summary character varying(4096)
 );
 
 
@@ -2575,4 +2577,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160314113503');
 INSERT INTO schema_migrations (version) VALUES ('20160315214056');
 
 INSERT INTO schema_migrations (version) VALUES ('20160531101148');
+
+INSERT INTO schema_migrations (version) VALUES ('20170301084210');
 

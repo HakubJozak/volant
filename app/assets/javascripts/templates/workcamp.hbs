@@ -120,7 +120,7 @@
       </fieldset>
 
       <fieldset>
-        <legend>Extra Fee</legend>
+        <legend>Participation Fee</legend>
         <div class="form-group">
           <label class="col-md-2 control-label">Amount</label>
           <div class="col-md-3">{{input value=extraFee type="decimal" class="form-control" placeholder='0' type='number' step='0.01'}}</div>
@@ -133,6 +133,16 @@
 
       <fieldset>
         <legend>Details</legend>
+
+        <div class="form-group">
+          <label class="col-md-2 control-label">Project Summary</label>
+          <div class="col-md-10">{{textarea value=projectSummary class="form-control" rows="3" }}</div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-2 control-label">Partner Organization</label>
+          <div class="col-md-10">{{textarea value=partnerOrganization class="form-control" rows="3" }}</div>
+        </div>
 
         <div class="form-group">
           <label class="col-md-2 control-label">Description</label>
@@ -174,19 +184,19 @@
         </div>
 
         <div class="form-group">
-          <label class="col-md-2 control-label">Train</label>
+          <label class="col-md-3 control-label">Train / Bus Station</label>
           <div class="col-md-4">{{input value=train type="text" class="form-control"}}</div>
 
           <label class="col-md-2 control-label">Latitude</label>
-          <div class="col-md-4">{{input value=latitude type="decimal" class="form-control"}}</div>
+          <div class="col-md-3">{{input value=latitude type="decimal" class="form-control"}}</div>
         </div>
 
         <div class="form-group">
-          <label class="col-md-2 control-label">Airport</label>
+          <label class="col-md-3 control-label">Airport</label>
           <div class="col-md-4">{{input value=airport type="text" class="form-control"}}</div>
 
           <label class="col-md-2 control-label">Longitude</label>
-          <div class="col-md-4">{{input value=longitude type="decimal" class="form-control"}}</div>
+          <div class="col-md-3">{{input value=longitude type="decimal" class="form-control"}}</div>
         </div>
       </fieldset>      
       {{hidden-save-button}}

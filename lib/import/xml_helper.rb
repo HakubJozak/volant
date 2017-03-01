@@ -6,9 +6,11 @@ module Import
     FALSE_VALS = ["false", "no", "off", "false", "0", '']
 
     def parse_fee(node, wc)
-      fnode = node.elements['extrafee']
-
-      if fnode
+      if fnode = node.elements['participation_fee']
+        wc.extra_fee = to_integer(node, 'participation_fee')
+        wc.extra_fee_currency = to_text(node, 'participation_fee_currency') if wc.extra_fee
+      elsif fnode = node.elements['extrafee']
+        # DEPRECATED - old PEF version
         wc.extra_fee = to_integer(node, 'extrafee')
         wc.extra_fee_currency = to_text(node, 'extrafee_currency') if wc.extra_fee
       end
@@ -72,12 +74,12 @@ module Import
 
       if found and found.text
         token = found.text.strip.downcase
-        return YES_VALS.include?(token)
+        YES_VALS.include?(token)
         # return false if FALSE_VALS.include?(token)
         # Rails.logger.warn("Invalid boolean value in XML: '#{token}'")
+      else
+        false
       end
-
-      false
     end
 
     protected

@@ -50,21 +50,23 @@ module Import
           warning "Workcamp '#{wc.code} - #{wc.name}' is missing project_id attribute."
         end
 
+        wc.partner_organization = to_text(node, 'ho_description')
         wc.workdesc = to_text(node, 'descr_work')
         wc.area = to_text(node, 'descr_location_and_leisure')
         wc.accommodation =to_text( node, 'descr_accomodation_and_food')
 
+        wc.project_summary = to_text(node, 'project_summary')
         wc.description = to_text(node, 'description')
         add_to_field(:description, wc, node, 'descr_partner')
-
+        
         # TODO - eliminate it from notes
         wc.requirements = to_text(node, 'descr_requirements')
         wc.notes = to_text(node, 'descr_requirements')
         add_to_field(:notes, wc, node, 'notes')
 
         wc.airport = to_text(node, 'airport')
-        wc.train = to_text(node, 'station')
         wc.region = to_text(node, 'region')
+        wc.train = train_bus_station(node)
 
         wc.language = to_text(node, 'languages')
 
@@ -88,11 +90,20 @@ module Import
         # tags
         wc.tag_list << 'vegetarian' if to_bool(node,'vegetarian')
         wc.tag_list << 'family' if to_bool(node,'family')
-        wc.tag_list << 'disabled' if to_bool(node,'disabled_vols')
+
+        # DEPRECATED - old PEFs
+        wc.tag_list << 'disabled' if to_bool(node,'disabled_vols')   
+        wc.tag_list << 'disabled' if to_bool(node,'accessibility')     
       end
     end
 
     private
+
+    def train_bus_station(node)
+      to_text(node, 'train_bus_station').presence ||
+        # DEPRECATED - old PEFs
+        to_text(node, 'train')
+    end
 
     def add_to_field(attr, wc, node, name)
       if content = to_text(node, name)
