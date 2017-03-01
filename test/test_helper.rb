@@ -41,6 +41,11 @@ class ActiveSupport::TestCase
     end
   end
 
+  def seed_countries
+    create(:country, code: 'EE', triple_code: 'EST',name_en: 'Estonia')
+    create(:country, code: 'US', triple_code: 'USA')
+    create(:country, code: 'CZ', triple_code: 'CZE', name_en: 'Czech Republic')  
+  end
 
   def assert_not_empty(object)
     assert_equal false, object.empty?, "#{object} shouldn't be empty"

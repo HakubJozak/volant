@@ -49,6 +49,8 @@ module Import
         rescue ArgumentError => e
           parsed = nil
         end
+
+        # TODO - ftw - handle this above ^
         raise "Failed to parse date #{found.text}" unless parsed
         parsed.to_date
       else

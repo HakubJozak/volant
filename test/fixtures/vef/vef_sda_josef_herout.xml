@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vef>
+  <sender>SDA</sender>
+  <version>1.0</version>
+  <application>Volant</application>
+  <date_filed>2016-03-11</date_filed>
+  <firstname>Josef</firstname>
+  <lastname>Vyšmejdil</lastname>
+  <sex>M</sex>
+  <birthdate>1977-01-12</birthdate>
+  <birthplace>Prague</birthplace>
+  <address1>Makedonská 88,Praha 9</address1>
+  <address2>19000</address2>
+  <zip>19000</zip>
+  <city>Praha 9</city>
+  <country>CZ</country>
+  <email>herout@fastmail.fm</email>
+  <telephone>+42012345678</telephone>
+  <tmp_address1>Londýnská 33,Praha 9</tmp_address1>
+  <tmp_address2>Londýnská 33,Praha 9</tmp_address2>
+  <tmp_zip>10100</tmp_zip>
+  <tmp_city>Praha 10</tmp_city>
+  <tmp_country>CZ</tmp_country>
+  <language1>czech english</language1>
+  <langlevel1>3</langlevel1>
+  <language2>german french</language2>
+  <langlevel2>2</langlevel2>
+  <emergency_contact>Ludmila Hašová,+420 234567890</emergency_contact>
+  <occupation>EMP</occupation>
+  <special_needs>no</special_needs>
+  <remarks/>
+  <nationality>czech</nationality>
+  <experience>Stuff.</experience>
+  <motivation>I am really motivated.</motivation>
+  <choice1>VFP01-16</choice1>
+</vef>

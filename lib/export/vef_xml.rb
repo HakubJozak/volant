@@ -12,7 +12,7 @@ class Export::VefXml < Export::VefBase
   end
 
   def address2
-    @form.contact_zipcode
+    @form.zipcode
   end
 
   ADIH_OCCUPATIONS = {

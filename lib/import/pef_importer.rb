@@ -6,8 +6,8 @@ module Import
     include XmlHelper
     include Import::Importer
 
-    def initialize(file,new_workcamp_class = Outgoing::Workcamp)
-      # HACK - this shold not be happening, but somehow the file comes
+    def initialize(file, new_workcamp_class = Outgoing::Workcamp)
+      # HACK - this should not be happening, but somehow the file comes
       # read in the tests
       file.rewind if file.respond_to?(:rewind)
 
@@ -58,7 +58,7 @@ module Import
         wc.project_summary = to_text(node, 'project_summary')
         wc.description = to_text(node, 'description')
         add_to_field(:description, wc, node, 'descr_partner')
-        
+
         # TODO - eliminate it from notes
         wc.requirements = to_text(node, 'descr_requirements')
         wc.notes = to_text(node, 'descr_requirements')
@@ -92,8 +92,8 @@ module Import
         wc.tag_list << 'family' if to_bool(node,'family')
 
         # DEPRECATED - old PEFs
-        wc.tag_list << 'disabled' if to_bool(node,'disabled_vols')   
-        wc.tag_list << 'disabled' if to_bool(node,'accessibility')     
+        wc.tag_list << 'disabled' if to_bool(node,'disabled_vols')
+        wc.tag_list << 'disabled' if to_bool(node,'accessibility')
       end
     end
 
