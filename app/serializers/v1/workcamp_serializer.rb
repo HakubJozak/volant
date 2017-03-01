@@ -7,7 +7,7 @@ class V1::WorkcampSerializer < ActiveModel::Serializer
   attributes :id, :name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
       :area, :accommodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,
       :region, :capacity_natives, :capacity_teenagers, :capacity_males, :capacity_females,
-      :airport, :train,
+      :airport, :train, :project_summary, :partner_organization,
       :places, :places_for_males, :places_for_females,
       :free_places, :free_places_for_males, :free_places_for_females,
       :duration, :open_for_application,
