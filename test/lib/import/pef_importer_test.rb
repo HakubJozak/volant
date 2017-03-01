@@ -30,15 +30,14 @@ module Import
     end
 
     test "missing organization" do
-      importer = PefImporter.new(File.new('test/fixtures/xml/pef2011-errors.xml'))
+      importer = PefImporter.new xml_file('pef2011-errors.xml')
       message = nil
       importer.import! {|level,msg| message = msg }
       assert_equal  "Unknown organization",message
     end
 
     test "import real-life file" do
-      file = File.new(Rails.root.join('test/fixtures/xml/pef2011.xml'))
-      wcs = Import::PefImporter.new(file).import!
+      wcs = Import::PefImporter.new(xml_file('pef2011.xml')).import!
 
       assert_equal 2, wcs.size
 
@@ -76,14 +75,13 @@ module Import
     end
 
     test 'import project_id' do
-      file = File.new(Rails.root.join('test/fixtures/xml/PEF_lunar31_20141112.xml'))
-      wc = Import::PefImporter.new(file).import!.first
+      importer = Import::PefImporter.new(xml_file('PEF_lunar31_20141112.xml'))
+      wc = importer.import!.first
       assert_equal wc.project_id, 'f9c91026d627166ce372501d4c55f690'
     end
 
     test 'report missing project_id' do
-      file = File.new(Rails.root.join('test/fixtures/xml/pef_missing_project_id.xml'))
-      importer = Import::PefImporter.new(file)
+      importer = Import::PefImporter.new(xml_file('pef_missing_project_id.xml'))
       messages = []
       importer.import! {|l,m| messages << [l,m] }
 
@@ -93,7 +91,7 @@ module Import
 
 
     test "detect duplicates" do
-      file = File.new(Rails.root.join('test/fixtures/xml/PEF_lunar31_20141112.xml'))
+      file = File.new(xml_file('PEF_lunar31_20141112.xml'))
       wcs = Import::PefImporter.new(file).import!
       assert_equal 'imported',wcs.first.state
 
@@ -104,9 +102,37 @@ module Import
     end
 
     test "import LTV" do
-      file = File.new(Rails.root.join('test/fixtures/xml/PEF_lunar31_20141112.xml'))
-      Import::PefImporter.new(file,Ltv::Workcamp).import!.first
+      Import::PefImporter.new(xml_file('PEF_lunar31_20141112.xml'), Ltv::Workcamp).import!.first
       assert_not_nil wc = Ltv::Workcamp.find_by_project_id('f9c91026d627166ce372501d4c55f690')
+    end
+
+
+    test 'pef 2016' do
+      file = xml_file('pef_2016.xml')
+      wc = Import::PefImporter.new(file).import!.first
+
+      assert_equal 'EST', wc.organization.code
+      assert_equal 'Estonia', wc.country.name
+      assert_equal 1, wc.intentions.size
+      assert_equal 'Talinn', wc.train
+      assert_equal 'ESTYES is an organization.',
+                   wc.partner_organization
+      assert_equal 'bla bla bla...', wc.project_summary
+      assert_equal 200, wc.extra_fee
+      assert_equal 'EUR', wc.extra_fee_currency      
+
+      assert wc.tag_list.include?('disabled')
+      refute wc.tag_list.include?('family')
+    end
+
+    private
+
+    def import(name)
+      
+    end
+
+    def xml_file(name)
+      File.new(Rails.root.join("test/fixtures/xml/#{name}"))      
     end
 
   end

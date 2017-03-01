@@ -135,7 +135,10 @@ class WorkcampsController < ApplicationController
               :region, :capacity_natives, :capacity_teenagers, :capacity_males, :capacity_females,
               :airport, :train, :publish_mode,:places, :places_for_males, :places_for_females,
               :accepted_places, :accepted_places_males, :accepted_places_females,
-              :asked_for_places, :asked_for_places_males, :asked_for_places_females,
+              :asked_for_places, :asked_for_places_males,
+              :asked_for_places_females,
+              :project_summary,
+              :partner_organization,              
               :longitude, :latitude, :requirements, :duration,
               :organization_id, :country_id, :tag_ids => [], :workcamp_intention_ids => [])
 

@@ -35,6 +35,8 @@ Volant.Workcamp = DS.Model.extend Ember.Copyable,
   train: DS.attr 'string'
   publish_mode: DS.attr 'string'
   requirements: DS.attr 'string'
+  projectSummary: DS.attr 'string'
+  partnerOrganization: DS.attr 'string'
   longitude: DS.attr 'number'
   latitude: DS.attr 'number'
 

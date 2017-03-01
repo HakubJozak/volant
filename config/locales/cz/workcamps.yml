@@ -45,7 +45,7 @@ cz:
         train: Vlakové nádraží
         airport: Letiště
         region: Region
-        extra_fee: Poplatek
+        extra_fee: Účastnický poplatek
         extra_fee_currency: Měna poplatku
         capacity: Celkem
         capacity_males: Muži
