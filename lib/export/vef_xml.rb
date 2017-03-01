@@ -22,10 +22,10 @@ class Export::VefXml < Export::VefBase
     'UNE' => 'Unemployed',
     'OTH' => 'Other',
   }
-  
+
   def occupation
     o = @form.occupation.to_s
-    
+
     if ADIH_OCCUPATIONS.keys.include?(o.upcase)
       o.upcase
     elsif o.blank?
@@ -55,7 +55,7 @@ class Export::VefXml < Export::VefBase
 
   def to_xml(options = {})
     f = @form
-    builder = Nokogiri::XML::Builder.new do |xml|
+    builder = Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
       xml.vef {
         xml.sender 'SDA'
         xml.version '1.0'
