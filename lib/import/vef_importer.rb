@@ -17,6 +17,7 @@ module Import
         set_address(a)
         set_address(a, 'contact_', 'tmp_')
         a.occupation = text 'occupation'
+        a.nationality = text 'nationality'
       end
     rescue ArgumentError => e
       @errors << e.message

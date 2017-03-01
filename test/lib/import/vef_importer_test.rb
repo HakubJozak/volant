@@ -19,10 +19,10 @@ module Import
       assert_equal 'Prague', apply_form.birthplace
 
       assert_equal 'Praha 9', apply_form.city
-      assert_equal 'Makedonská 88,Praha 9', apply_form.street
+      assert_equal 'Makedonská 88, Praha 9', apply_form.street
 
-      assert_equal 'Londýnská 33,Praha 9', apply_form.contact_street
-      assert_equal 10100, apply_form.zipcode
+      assert_equal 'Londýnská 33, Praha 9', apply_form.contact_street
+      assert_equal '19000', apply_form.zipcode
     end
 
     private

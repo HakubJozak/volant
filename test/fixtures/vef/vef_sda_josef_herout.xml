@@ -9,15 +9,15 @@
   <sex>M</sex>
   <birthdate>1977-01-12</birthdate>
   <birthplace>Prague</birthplace>
-  <address1>Makedonská 88,Praha 9</address1>
-  <address2>19000</address2>
+  <address1>Makedonská 88</address1>
+  <address2>Praha 9</address2>
   <zip>19000</zip>
   <city>Praha 9</city>
   <country>CZ</country>
   <email>herout@fastmail.fm</email>
   <telephone>+42012345678</telephone>
-  <tmp_address1>Londýnská 33,Praha 9</tmp_address1>
-  <tmp_address2>Londýnská 33,Praha 9</tmp_address2>
+  <tmp_address1>Londýnská 33</tmp_address1>
+  <tmp_address2>Praha 9</tmp_address2>
   <tmp_zip>10100</tmp_zip>
   <tmp_city>Praha 10</tmp_city>
   <tmp_country>CZ</tmp_country>
