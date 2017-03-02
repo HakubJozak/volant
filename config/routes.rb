@@ -32,8 +32,11 @@ Rails.application.routes.draw do
   resources :workcamps, except: [ :edit, :new ] do
     get 'friday_list', on: :collection
 
+    # Volunteer Exchange Form - upload XML
+    resources :vefs, only: :create
+
     member do
-      # Project Exchange Form - XML
+      # Project Exchange Form - download XML
       get :pef
       get :participants
       post :cancel_import
@@ -48,7 +51,7 @@ Rails.application.routes.draw do
       post :cancel
       post :ask
       post :accept
-      post :confirm      
+      post :confirm
       post :reject
       post :infosheet
       get :vef

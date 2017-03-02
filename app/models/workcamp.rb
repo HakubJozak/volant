@@ -232,6 +232,7 @@ class Workcamp < ActiveRecord::Base
     mails.join(', ')
   end
 
+
   public
 
   def accepts_age?(age)

@@ -6,8 +6,8 @@ Volant.AccountRoute = Volant.BaseRoute.extend
     @store.find('account',id)
 
   afterSave: (account,opts) ->
-    @flash_info 'Settings saved.'    
+    @flash_info 'Settings saved.'
     @transitionTo 'index' if opts.redirect
 
   afterRollback: ->
-    @transitionTo 'index'    
+    @transitionTo 'index'

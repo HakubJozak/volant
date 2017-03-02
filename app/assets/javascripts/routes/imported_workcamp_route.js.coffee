@@ -6,7 +6,7 @@ Volant.ImportedWorkcampRoute = Volant.WorkcampRoute.extend
     @transitionTo('imported_workcamps')
 
   afterRollback: (wc) ->
-    @transitionTo('imported_workcamps')    
+    @transitionTo('imported_workcamps')
 
   afterRemove: (wc) ->
     @transitionTo('imported_workcamps')

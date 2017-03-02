@@ -112,7 +112,7 @@ Volant.toggleWithFallback = (localProperty,fallbackProperty) ->
     if value?
       val = if value == true  then true else null
       @set localProperty, val
-      val  
+      val
     else
       @get(localProperty) || @get(fallbackProperty)
   ).property(localProperty,fallbackProperty)

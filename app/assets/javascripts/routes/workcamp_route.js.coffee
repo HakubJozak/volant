@@ -1,4 +1,4 @@
-Volant.WorkcampRoute = Volant.BaseRoute.extend
+Volant.WorkcampRoute = Volant.BaseRoute.extend Volant.SendFiles,
   toolbar: 'workcamp/toolbar'
 
   model: (params) ->
@@ -26,14 +26,31 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend
       @send('createAssignment',@currentModel,form)
       false
 
+    openVefDialog: ->
+      @render 'apply_form/import_vef', outlet: 'modal', controller: 'apply_form_action_picker'
+      false
+
+    uploadVef: ->
+      data  = new FormData($('#vef-upload-form')[0])
+      wc_id = @currentModel.get('id')
+      @send_files("/workcamps/#{wc_id}/vefs", data).then ((response) =>
+        @send 'closeModal'
+        @store.pushPayload(response)
+        @currentModel.reload()
+        @flashInfo('VEF imported.')
+      ), (e) =>
+        @send 'closeModal'
+        @flashError(e.responseJSON.errors)
+      false
+
     cancel_import: ->
       id = @currentModel.get('id')
       url = "/workcamps/#{id}/cancel_import"
       @ajax_to_store(url).then ((payload) =>
         @transitionTo('imported_workcamps')
-        @flash_info 'Import cancelled.'),
+        @flashInfo 'Import cancelled.'),
          =>
-        @flash_error 'Action failed'
+        @flashError 'Action failed'
       false
 
     confirm_import: ->

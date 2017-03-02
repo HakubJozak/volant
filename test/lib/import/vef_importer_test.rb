@@ -13,8 +13,18 @@ module Import
     test 'import' do
       i = VefImporter.new vef_file('vef_sda_josef_herout.xml')
       participant = i.import(@workcamp)
-      
-      assert_not_nil apply_form = participant.apply_form
+
+      assert_valid participant
+      assert_valid apply_form = participant.apply_form
+      assert_not_nil apply_form.id
+      assert_not_nil participant.id
+
+
+      wa = @workcamp.workcamp_assignments.first
+      assert_not_nil wa
+      assert_equal apply_form, wa.apply_form
+      assert_equal :accepted, wa.state
+
       assert_equal @organization, participant.organization
       assert_equal @workcamp, participant.workcamp
 
@@ -40,7 +50,7 @@ module Import
     #   i = VefImporter.new vef_file 'VEF_SJ_test.xml'
     #   assert_not_nil apply_form = i.import
     # end
-    
+
     private
 
     def vef_file(name)

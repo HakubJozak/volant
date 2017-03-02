@@ -15,7 +15,7 @@ Volant.Router.map ->
   @resource 'workcamps'
 
   @resource 'imported_workcamps'
-  @resource 'imported_workcamp', path: '/imported_workcamps/:workcamp_id'  
+  @resource 'imported_workcamp', path: '/imported_workcamps/:workcamp_id'
 
 
   @resource 'incoming_workcamps', path: '/incoming/workcamps'
@@ -30,7 +30,7 @@ Volant.Router.map ->
   @resource 'new_message', {path: '/apply_forms/:apply_form_id/messages/new/:action_name'}
   @resource 'new_workcamp_message', {path: '/workcamps/:workcamp_id/messages/new/:action_name'}
   @resource 'messages'
-  @resource 'my_messages'  
+  @resource 'my_messages'
 
   @resource 'users', ->
     @route 'new'
