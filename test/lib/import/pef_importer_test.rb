@@ -9,6 +9,7 @@ module Import
     setup do
       Factory(:country, code: 'EE', triple_code: 'EST',name_en: 'Estonia')
       Factory(:country, code: 'US', triple_code: 'USA')
+      Factory(:country, code: 'DN', triple_code: 'DNK', name_en: 'Denmark')      
     end
 
     # http://redmine.siven.onesim.net/issues/1366
@@ -95,8 +96,7 @@ module Import
       wcs = Import::PefImporter.new(file).import!
       assert_equal 'imported',wcs.first.state
 
-      file = File.new(Rails.root.join('test/fixtures/xml/pef_changed_name.xml'))
-      wcs = Import::PefImporter.new(file).import!
+      wcs = Import::PefImporter.new(xml_file('pef_changed_name.xml')).import!
       assert_equal 'updated',wcs.first.state
       assert wcs.first.import_changes.map(&:field).include?('name')
     end
@@ -105,7 +105,6 @@ module Import
       Import::PefImporter.new(xml_file('PEF_lunar31_20141112.xml'), Ltv::Workcamp).import!.first
       assert_not_nil wc = Ltv::Workcamp.find_by_project_id('f9c91026d627166ce372501d4c55f690')
     end
-
 
     test 'pef 2016' do
       file = xml_file('pef_2016.xml')
@@ -119,20 +118,35 @@ module Import
                    wc.partner_organization
       assert_equal 'bla bla bla...', wc.project_summary
       assert_equal 200, wc.extra_fee
-      assert_equal 'EUR', wc.extra_fee_currency      
+      assert_equal 'EUR', wc.extra_fee_currency
 
       assert wc.tag_list.include?('disabled')
       refute wc.tag_list.include?('family')
     end
 
-    private
 
-    def import(name)
-      
+    test 'pef 2017' do
+      create :organization, code: 'MS'
+      file = xml_file('PEF_MS_20170301.xml')
+      importer = Import::PefImporter.new(file)
+
+      # wcs = importer.import! do |e,msg|
+      #   puts e, msg
+      # end
+
+      assert_equal 12, wcs.size
+      assert_not_nil wc = Workcamp.
+                          find_by_project_id('0140bcdf2bbb4e6b9a3a2a5567984d5d')
+
+      assert_match /^Skælskør Landevej 28, 4200 Slagelse/, wc.area
+      assert_equal 18, wc.minimal_age
+      assert_equal 'Denmark', wc.country.name_en
     end
 
+    private
+
     def xml_file(name)
-      File.new(Rails.root.join("test/fixtures/xml/#{name}"))      
+      File.new(Rails.root.join("test/fixtures/pef/#{name}"))
     end
 
   end

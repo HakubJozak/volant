@@ -44,7 +44,7 @@ module Import
         wc.begin = to_date(node, 'start_date')
         wc.end = to_date(node, 'end_date')
 
-        if project_id = node.attributes['id'].try(:strip).presence
+        if project_id = find_project_id(node)
           wc.project_id = project_id
         else
           warning "Workcamp '#{wc.code} - #{wc.name}' is missing project_id attribute."
@@ -52,7 +52,7 @@ module Import
 
         wc.partner_organization = to_text(node, 'ho_description')
         wc.workdesc = to_text(node, 'descr_work')
-        wc.area = to_text(node, 'descr_location_and_leisure')
+        wc.area = location(node)
         wc.accommodation =to_text( node, 'descr_accomodation_and_food')
 
         wc.project_summary = to_text(node, 'project_summary')
@@ -98,6 +98,19 @@ module Import
     end
 
     private
+
+    def find_project_id(project_node)
+      # DEPRECATED - old PEFs
+      id = project_node.attributes['id'].presence ||
+           to_text(project_node, 'project_id')
+      id.try(:strip).presence
+    end
+
+    def location(node)
+      fields = [ to_text(node, 'location'),
+                 to_text(node, 'descr_location_and_leisure') ]
+      fields.compact.map(&:strip).join("\n\n")
+    end
 
     def train_bus_station(node)
       to_text(node, 'train_bus_station').presence ||

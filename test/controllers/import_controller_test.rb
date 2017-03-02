@@ -4,7 +4,7 @@ class ImportControllerTest < ActionController::TestCase
   setup do
     Factory(:organization, name: 'LUNARIA', code: 'LUNAR')
     sign_in users(:john)
-    path = "#{Rails.root}/test/fixtures/xml/PEF_lunar31_20141112.xml"
+    path = "#{Rails.root}/test/fixtures/pef/PEF_lunar31_20141112.xml"
     @file = Rack::Test::UploadedFile.new(path,'text/xml')
   end
 
