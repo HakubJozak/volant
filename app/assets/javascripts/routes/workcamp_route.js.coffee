@@ -26,6 +26,10 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend
       @send('createAssignment',@currentModel,form)
       false
 
+    importVEF: ->
+      @render 'apply_form/import_vef', outlet: 'modal', controller: 'apply_form_action_picker'
+      false
+
     cancel_import: ->
       id = @currentModel.get('id')
       url = "/workcamps/#{id}/cancel_import"

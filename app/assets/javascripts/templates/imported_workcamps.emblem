@@ -2,7 +2,7 @@
   .col-md-12
     .panel.panel-default
       .panel-heading
-        h3.panel-title 
+        h3.panel-title
           | Import #{capitalize mode}  Workcamps
       .panel-body
         form.form-horizontal#upload-form{ action 'import' on="submit" } enctype="multipart/form-data"
@@ -10,7 +10,7 @@
             label.col-md-1.control-label PEF
             .col-md-3
               input.form-control type='file' name="pef"
-              p.help-block 
+              p.help-block
                 ' Projects will be imported into #{upcase mode}  section.
             .col-md-3
               button.btn.btn-primary type="submit"  Import
@@ -18,7 +18,7 @@
               .col-md-5.pull-right
                 button.btn.btn-danger{action 'cancelAll'} type='submit' type='button'
                   ' Cancel All
-                button.btn.btn-success{action 'confirmAll'} type='submit' type='button' 
+                button.btn.btn-success{action 'confirmAll'} type='submit' type='button'
                   ' Confirm All
             table.table.table-hover
               thead

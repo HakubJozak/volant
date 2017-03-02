@@ -1,7 +1,7 @@
-Volant.AccountRoute = Volant.BaseRoute.extend
-  toolbar: 'account/toolbar'
+Volant.ImportVef = Volant.BaseRoute.extend
 
   model: (params) ->
+    console.info 'sdfdsf'    
     id = $('meta[name="current-account-id"]').attr('content')
     @store.find('account',id)
 

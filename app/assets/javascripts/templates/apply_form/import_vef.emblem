@@ -1,0 +1,18 @@
+#modal
+  .panel.panel-default
+    .panel-heading
+      h1.panel-title Import VEF file
+      button.close click='closeModal'
+        fa 'times'
+
+    .panel-body
+      form#upload-form.form-horizontal submit='uploadAttachment' enctype="multipart/form-data"
+        .form-group
+          label.col-md-2.control-label VEF
+          .col-md-8
+            = input type='file' name='attachment[file]' class='form-control'
+          .col-md-1
+            button.btn.btn-primary type='submit' Import
+
+
+
