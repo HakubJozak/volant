@@ -10,7 +10,6 @@ class Incoming::Participant < Person
   validates_presence_of :country
   validates_presence_of :organization
 
-
   scope :females, -> { where(gender: Person::FEMALE) }
   scope :males, -> { where(gender: Person::MALE) }
   scope :not_cancelled, -> { where('cancelled IS NULL').joins(:apply_form) }

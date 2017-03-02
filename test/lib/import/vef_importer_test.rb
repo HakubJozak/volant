@@ -4,15 +4,19 @@ require 'test_helper'
 module Import
   class VefImporterTest < ActiveSupport::TestCase
 
-    fixtures :organizations
-
     setup do
       seed_countries
+      @workcamp = create :incoming_workcamp
+      @organization = create :organization, code: 'SJ'
     end
 
     test 'import' do
       i = VefImporter.new vef_file('vef_sda_josef_herout.xml')
-      assert_not_nil apply_form = i.import
+      participant = i.import(@workcamp)
+      
+      assert_not_nil apply_form = participant.apply_form
+      assert_equal @organization, participant.organization
+      assert_equal @workcamp, participant.workcamp
 
       assert_equal 'Vyšmejdil', apply_form.lastname
       assert_equal Date.new(1977, 1, 12), apply_form.birthdate
@@ -36,7 +40,6 @@ module Import
     #   i = VefImporter.new vef_file 'VEF_SJ_test.xml'
     #   assert_not_nil apply_form = i.import
     # end
-
     
     private
 

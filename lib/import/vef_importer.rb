@@ -5,8 +5,8 @@ module Import
       @doc = File.open(file) { |f| Nokogiri::XML(f) }
     end
 
-    def import
-      Incoming::ApplyForm.create do |a|
+    def import(workcamp)
+      form = Incoming::ApplyForm.create do |a|
         a.firstname = text 'firstname'
         a.lastname = text 'lastname'
         a.gender = sex
@@ -23,6 +23,13 @@ module Import
         a.special_needs = text 'special_needs'
         a.general_remarks = text 'remarks'
       end
+
+      participant = Incoming::Participant.create do |p|
+        p.apply_form = form
+        p.organization = organization
+	p.country = organization.country
+        p.workcamp = workcamp
+      end
     rescue ArgumentError => e
       @errors << e.message
       false
@@ -30,6 +37,13 @@ module Import
 
     private
 
+    def organization
+      @org ||= begin
+                 code = text('sender')
+                 Organization.find_by_code!(code)
+               end
+    end
+    
     def text(name)
       field(name).try(:text).to_s
     end
