@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vef>
+  <version>1.0</version>
+  <application>EPLACEMENT</application>
+  <sender>SJ</sender>
+  <req_sent_by>admin</req_sent_by>
+  <req_sender_email>nobody@nowhere.com</req_sender_email>
+  <lastname>NAME</lastname>
+  <firstname>Lorraine</firstname>
+  <birthdate>1995-05-19</birthdate>
+  <birthplace>
+  </birthplace>
+  <address1>82 rue des blabla</address1>
+  <address2>
+  </address2>
+  <zip>92140</zip>
+  <city>clamart</city>
+  <prov_rgn_state>idf</prov_rgn_state>
+  <country>FRA</country>
+  <email>lorraine.name@example.com</email>
+  <telephone>01234556</telephone>
+  <language1>fra</language1>
+  <langlevel1>4</langlevel1>
+  <language2>eng</language2>
+  <langlevel2>3</langlevel2>
+  <language3>deu</language3>
+  <langlevel3>2</langlevel3>
+  <language4>
+  </language4>
+  <langlevel4>
+  </langlevel4>
+  <date_filed>2016-05-03</date_filed>
+  <sex>F</sex>
+  <emergency_contact>guyot: 0675426344</emergency_contact>
+  <occupation>STU</occupation>
+  <special_needs>
+  </special_needs>
+  <experience>germany 2013 ( festival) + iceland 2014 ( environment) </experience>
+  <motivation>meet people from everywhere, discover a new culture be part of an international project, </motivation>
+  <remarks>
+  </remarks>
+  <nationality>FRA</nationality>
+  <choice1>C.i.A 01</choice1>
+  <choice2>SDA 401</choice2>
+  <choice3>SDA 103</choice3>
+  <choice4>
+  </choice4>
+  <choice5>
+  </choice5>
+  <choice6>
+  </choice6>
+  <choice7>
+  </choice7>
+  <choice8>
+  </choice8>
+  <choice9>
+  </choice9>
+  <choice19>
+  </choice19>
+  <req_sent_by>
+  </req_sent_by>
+  <req_sender_email>
+  </req_sender_email>
+</vef>

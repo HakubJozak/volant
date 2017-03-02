@@ -19,3 +19,6 @@ config/volant.rb
 .idea
 .env
 /old.sql.gz
+/test/fixtures/vef/VEF_LUNAR_ALESSANDROMARCOMARIA.xml
+/test/fixtures/vef/VEF_LUNAR_SIMPSI.xml
+/test/fixtures/vef/VEF_SJ_TAMAGNAN.xml

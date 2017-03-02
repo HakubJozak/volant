@@ -2,7 +2,7 @@ module Import
   class VefImporter
     def initialize(file)
       @errors = []
-      @doc = File.open(file) { |f| Nokogiri::XML(f) }	      
+      @doc = File.open(file) { |f| Nokogiri::XML(f) }
     end
 
     def import
@@ -18,6 +18,10 @@ module Import
         set_address(a, 'contact_', 'tmp_')
         a.occupation = text 'occupation'
         a.nationality = text 'nationality'
+        a.motivation = text 'motivation'
+        a.past_experience = text 'experience'
+        a.special_needs = text 'special_needs'
+        a.general_remarks = text 'remarks'
       end
     rescue ArgumentError => e
       @errors << e.message
@@ -37,12 +41,13 @@ module Import
       street = [ a1, a2 ].join(', ')
       record.public_send("#{prefix}street=", street)
 
-      %i( city zipcode ).each do |attr|
-        value = text("#{xml_prefix}#{attr}")
-        record.public_send("#{prefix}#{attr}=", value)        
-      end
+      zip = text("#{xml_prefix}zip")
+      record.public_send("#{prefix}zipcode=", zip)
+
+      city = text("#{xml_prefix}city")
+      record.public_send("#{prefix}city=", city)            
     end
-    
+
     def telephone
       fields = %i( cellphone telephone telephone2 telephone3 )
       phones = fields.map { |f| text(f).presence }.compact
@@ -58,7 +63,7 @@ module Import
         Person::FEMALE
       end
     end
-    
+
     def date(name)
       DateTime.strptime(field(name).text, '%Y-%m-%d')
     end
@@ -66,6 +71,6 @@ module Import
     def field(name)
       @doc.at_xpath("//vef/#{name}")
     end
-    
+
   end
 end
