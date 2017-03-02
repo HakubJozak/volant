@@ -130,9 +130,7 @@ module Import
       file = xml_file('PEF_MS_20170301.xml')
       importer = Import::PefImporter.new(file)
 
-      # wcs = importer.import! do |e,msg|
-      #   puts e, msg
-      # end
+      wcs = importer.import!
 
       assert_equal 12, wcs.size
       assert_not_nil wc = Workcamp.
