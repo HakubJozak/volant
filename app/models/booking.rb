@@ -22,3 +22,17 @@ class Booking < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: bookings
+#
+#  id              :integer          not null, primary key
+#  workcamp_id     :integer
+#  organization_id :integer
+#  country_id      :integer
+#  gender          :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  expires_at      :date
+#

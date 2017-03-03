@@ -5,3 +5,15 @@ europe_western:
 europe_eastern:
   name_en: Europe Eastern
   name_cz: Evropa, vychodni
+
+# == Schema Information
+#
+# Table name: country_zones
+#
+#  id         :integer          not null, primary key
+#  name_en    :string(255)
+#  name_cz    :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  continent  :string(255)
+#

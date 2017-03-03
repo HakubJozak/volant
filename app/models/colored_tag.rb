@@ -20,3 +20,15 @@ class ColoredTag < ActsAsTaggableOn::Tag
      }, model.to_s])
   end
 end
+
+# == Schema Information
+#
+# Table name: tags
+#
+#  id             :integer          not null, primary key
+#  name           :string(255)      not null
+#  color          :string(7)        default("#FF0000"), not null
+#  text_color     :string(7)        default("#FFFFFF"), not null
+#  taggings_count :integer          default(0)
+#  symbol         :string(255)
+#

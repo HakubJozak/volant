@@ -51,3 +51,15 @@ duplicate:
   name: possible_duplicate
   color: "#CC9966"
   text_color: "#FFFFFF"
+
+# == Schema Information
+#
+# Table name: tags
+#
+#  id             :integer          not null, primary key
+#  name           :string(255)      not null
+#  color          :string(7)        default("#FF0000"), not null
+#  text_color     :string(7)        default("#FFFFFF"), not null
+#  taggings_count :integer          default(0)
+#  symbol         :string(255)
+#

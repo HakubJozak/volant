@@ -9,3 +9,14 @@ module Incoming
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: leaderships
+#
+#  id          :integer          not null, primary key
+#  person_id   :integer
+#  workcamp_id :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#

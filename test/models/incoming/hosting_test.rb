@@ -6,3 +6,14 @@ class Incoming::HostingTest < ActiveSupport::TestCase
     assert true
   end
 end
+
+# == Schema Information
+#
+# Table name: hostings
+#
+#  id          :integer          not null, primary key
+#  workcamp_id :integer
+#  partner_id  :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#

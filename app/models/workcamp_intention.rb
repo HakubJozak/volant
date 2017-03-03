@@ -12,3 +12,15 @@ class WorkcampIntention < ActiveRecord::Base
     code
   end
 end
+
+# == Schema Information
+#
+# Table name: workcamp_intentions
+#
+#  id             :integer          not null, primary key
+#  code           :string(255)      not null
+#  description_cz :string(255)      not null
+#  created_at     :datetime
+#  updated_at     :datetime
+#  description_en :string(255)
+#

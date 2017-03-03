@@ -6,3 +6,15 @@ class PartnershipTest < ActiveSupport::TestCase
     assert true
   end
 end
+
+# == Schema Information
+#
+# Table name: partnerships
+#
+#  id              :integer          not null, primary key
+#  description     :string(255)
+#  network_id      :integer
+#  organization_id :integer
+#  created_at      :datetime
+#  updated_at      :datetime
+#

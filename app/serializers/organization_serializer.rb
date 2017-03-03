@@ -30,3 +30,21 @@ class OrganizationSerializer < ApplicationSerializer
     object.emails.find { |a| a.kind == kind }.try(:address)
   end
 end
+
+# == Schema Information
+#
+# Table name: organizations
+#
+#  id             :integer          not null, primary key
+#  country_id     :integer          not null
+#  name           :string(255)      not null
+#  code           :string(255)      not null
+#  address        :string(255)
+#  contact_person :string(255)
+#  phone          :string(255)
+#  mobile         :string(255)
+#  fax            :string(255)
+#  website        :string(2048)
+#  created_at     :datetime
+#  updated_at     :datetime
+#

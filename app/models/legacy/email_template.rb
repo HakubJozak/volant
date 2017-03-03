@@ -51,3 +51,17 @@ class Legacy::EmailTemplate < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: email_templates
+#
+#  id                 :integer          not null, primary key
+#  action             :string(255)
+#  description        :string(255)
+#  subject            :string(255)
+#  wrap_into_template :string(255)      default("mail")
+#  body               :text
+#  created_at         :datetime
+#  updated_at         :datetime
+#
