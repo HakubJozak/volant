@@ -20,7 +20,7 @@ module Import
         p.organization = organization
 	p.country = organization.country
         p.workcamp = workcamp
-      end      
+      end
 
       if participant.valid?
         workcamp.workcamp_assignments.create!(
@@ -28,7 +28,7 @@ module Import
           accepted: Time.now
         )
       end
-      
+
       participant
     end
 
@@ -52,9 +52,10 @@ module Import
         a.nationality = text 'nationality'
         a.motivation = text 'motivation'
         a.past_experience = text 'experience'
+        a.passport_number = text 'passport'
         a.special_needs = text 'special_needs'
         a.general_remarks = text 'remarks'
-      end      
+      end
     end
 
     def organization

@@ -19,7 +19,6 @@ module Import
       assert_not_nil apply_form.id
       assert_not_nil participant.id
 
-
       wa = @workcamp.workcamp_assignments.first
       assert_not_nil wa
       assert_equal apply_form, wa.apply_form
@@ -31,6 +30,7 @@ module Import
       assert_equal 'Vyšmejdil', apply_form.lastname
       assert_equal Date.new(1977, 1, 12), apply_form.birthdate
       assert_equal 'Prague', apply_form.birthplace
+      assert_equal '123Pas', apply_form.passport_number
 
       assert_equal 'Praha 9', apply_form.city
       assert_equal 'Makedonská 88, Praha 9', apply_form.street
