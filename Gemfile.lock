@@ -58,6 +58,9 @@ GEM
     acts_as_list (0.6.0)
       activerecord (>= 3.0)
     addressable (2.3.6)
+    annotate (2.7.1)
+      activerecord (>= 3.2, < 6.0)
+      rake (>= 10.4, < 12.0)
     ansi (1.4.3)
     arel (5.0.1.20140414130214)
     barber (0.6.0)
@@ -320,6 +323,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.8.2)
   acts-as-taggable-on
   acts_as_list
+  annotate
   barbecue!
   bootstrap-generators (~> 3.2.0)
   carrierwave
