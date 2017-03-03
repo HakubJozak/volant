@@ -4,7 +4,7 @@ info = (msg) ->
 
 error = (msg) ->
   flash = Ember.Object.create(type: 'error', message: msg)
-  @controllerFor('application').set('flash',flash)  
+  @controllerFor('application').set('flash',flash)
 
 Volant.Flash = Ember.Mixin.create
   flashInfo: info

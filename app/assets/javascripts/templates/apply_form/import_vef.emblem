@@ -6,13 +6,10 @@
         fa 'times'
 
     .panel-body
-      form#upload-form.form-horizontal submit='uploadAttachment' enctype="multipart/form-data"
+      form#vef-upload-form.form-horizontal submit='uploadVef' enctype="multipart/form-data"
         .form-group
           label.col-md-2.control-label VEF
           .col-md-8
-            = input type='file' name='attachment[file]' class='form-control'
+            = input type='file' name='vef' class='form-control'
           .col-md-1
             button.btn.btn-primary type='submit' Import
-
-
-

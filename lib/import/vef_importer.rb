@@ -2,11 +2,43 @@ module Import
   class VefImporter
     def initialize(file)
       @errors = []
-      @doc = File.open(file) { |f| Nokogiri::XML(f) }
+      @doc = if file.is_a? String
+               File.open(file) { |f| Nokogiri::XML(f) }
+             else
+               Nokogiri::XML(file)
+             end
     end
 
     def import(workcamp)
-      form = Incoming::ApplyForm.create do |a|
+      participant = Incoming::Participant.create do |p|
+        p.apply_form = create_form
+
+        p.firstname = p.apply_form.firstname
+        p.lastname = p.apply_form.lastname
+        p.email = p.apply_form.email
+        p.gender = p.apply_form.gender
+        p.organization = organization
+	p.country = organization.country
+        p.workcamp = workcamp
+      end      
+
+      if participant.valid?
+        workcamp.workcamp_assignments.create!(
+          apply_form: participant.apply_form,
+          accepted: Time.now
+        )
+      end
+      
+      participant
+    end
+
+    private
+
+    def create_form
+      Incoming::ApplyForm.new do |a|
+        a.organization = organization
+        a.country = organization.country
+
         a.firstname = text 'firstname'
         a.lastname = text 'lastname'
         a.gender = sex
@@ -22,20 +54,8 @@ module Import
         a.past_experience = text 'experience'
         a.special_needs = text 'special_needs'
         a.general_remarks = text 'remarks'
-      end
-
-      participant = Incoming::Participant.create do |p|
-        p.apply_form = form
-        p.organization = organization
-	p.country = organization.country
-        p.workcamp = workcamp
-      end
-    rescue ArgumentError => e
-      @errors << e.message
-      false
+      end      
     end
-
-    private
 
     def organization
       @org ||= begin
@@ -43,7 +63,7 @@ module Import
                  Organization.find_by_code!(code)
                end
     end
-    
+
     def text(name)
       field(name).try(:text).to_s
     end
@@ -59,7 +79,7 @@ module Import
       record.public_send("#{prefix}zipcode=", zip)
 
       city = text("#{xml_prefix}city")
-      record.public_send("#{prefix}city=", city)            
+      record.public_send("#{prefix}city=", city)
     end
 
     def telephone

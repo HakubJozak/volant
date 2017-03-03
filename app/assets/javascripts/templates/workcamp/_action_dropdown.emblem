@@ -10,7 +10,7 @@ ul.dropdown-menu
     a href='#' click='createBooking'
       ' {{fa 'plus'}} Booking
   li
-    a href='#' click='importVEF'
+    a href='#' click='openVefDialog'
       ' {{fa 'upload'}} Import VEF
   li
     a href='#' click='downloadParticipantsList'
