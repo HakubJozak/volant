@@ -27,7 +27,7 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend Volant.SendFiles,
       false
 
     openVefDialog: ->
-      @render 'apply_form/import_vef', outlet: 'modal', controller: 'apply_form_action_picker'
+      @render 'apply_form/import_vef', outlet: 'modal'
       false
 
     uploadVef: ->
