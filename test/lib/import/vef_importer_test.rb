@@ -11,7 +11,7 @@ module Import
     end
 
     test 'import' do
-      i = VefImporter.new vef_file('vef_sda_josef_herout.xml')
+      i = VefImporter.new vef_file('vef_sda_josef_vysmejdil.xml')
       participant = i.import(@workcamp)
 
       assert_valid participant
@@ -41,7 +41,9 @@ module Import
       assert_equal 'czech', apply_form.nationality
       assert_equal 'I am really motivated.', apply_form.motivation
       assert_equal 'I did some stuff.', apply_form.past_experience
-
+      assert_equal 'czech english', apply_form.speak_well
+      assert_equal 'german french, Chinese', apply_form.speak_some
+      assert_equal 'Ginger Mašová,+420 234567890', apply_form.emergency_name
       assert_equal 'I can fly', apply_form.general_remarks
       assert_equal 'no fish', apply_form.special_needs
     end

@@ -55,6 +55,9 @@ module Import
         a.passport_number = text 'passport'
         a.special_needs = text 'special_needs'
         a.general_remarks = text 'remarks'
+        a.speak_well = languages { |lvl| lvl > 2 }
+        a.speak_some = languages { |lvl| lvl < 3 }
+        a.emergency_name = text 'emergency_contact'
       end
     end
 
@@ -67,6 +70,19 @@ module Import
 
     def text(name)
       field(name).try(:text).to_s
+    end
+
+    def languages(&lvl_picker)
+      (1..3).each.map do |i|
+        lang = text("language#{i}")
+        lvl  = text("langlevel#{i}").to_i
+
+        if lvl_picker.call(lvl)
+          lang
+        else
+          nil
+        end
+      end.compact.join(', ')
     end
 
     def set_address(record, prefix = '', xml_prefix = '')
