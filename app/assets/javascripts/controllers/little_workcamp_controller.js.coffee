@@ -25,6 +25,10 @@ Volant.LittleWorkcampController = Ember.ObjectController.extend Volant.ToggleMix
   ).property('model.bookings.@each.gender')
 
   actions:
+    openVefDialog: ->
+      @transitionToRoute 'workcamp', @get('model'), queryParams: { vef: true }
+      false  
+        
     save: ->
       @get('model').save().then (wc) =>
         @flash_info "'#{wc.get('name')}' saved."

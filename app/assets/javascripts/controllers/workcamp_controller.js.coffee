@@ -1,6 +1,9 @@
 Volant.WorkcampController = Ember.ObjectController.extend Volant.ModeAwareMixin, Volant.WorkcampActionsMixin,
   needs: ['countriesSelect','workcampIntentionsSelect','organizationsSelect','tagsSelect','starred_apply_forms']
 
+  queryParams: ['vef']
+  vef: false
+
   starredApplyForms: (->
     @store.find('apply_form',starred: true)
   ).property().volatile()

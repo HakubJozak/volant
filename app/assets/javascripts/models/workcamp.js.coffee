@@ -96,7 +96,7 @@ Volant.Workcamp = DS.Model.extend Ember.Copyable,
   addBooking: ->
     bookings = @get('bookings')
     year = moment().year()
-    # expires at 1st of June by default
+    # expires at 1st of May by default
     expires = moment(new Date(year,5,1))
     bookings.createRecord(expiresAt: expires)
 

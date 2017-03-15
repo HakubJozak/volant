@@ -4,6 +4,11 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend Volant.SendFiles,
   model: (params) ->
     @store.find('workcamp', params.workcamp_id)
 
+  renderTemplate: (controller, model) ->
+    @_super(controller, model)    
+    if controller.get('vef')    
+      @render 'apply_form/import_vef', outlet: 'modal'
+
   title: (wc) ->
     "#{wc.get('name')} - #{wc.get('code')}"
 
