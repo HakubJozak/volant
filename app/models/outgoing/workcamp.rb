@@ -1,6 +1,7 @@
 module Outgoing
   class Workcamp < ::Workcamp
     create_date_time_accessors
+    validate :from, :to, presence: true
 
     def open_for_application
       from.nil? || from >= Time.now.to_date

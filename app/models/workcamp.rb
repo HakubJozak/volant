@@ -27,8 +27,8 @@ class Workcamp < ActiveRecord::Base
   has_many :apply_forms, through: :workcamp_assignments, dependent: :destroy, class_name: 'ApplyForm'
   has_many :bookings, dependent: :delete_all
 
-  validates_presence_of :country, :code, :name, :places, :from,
-                        :to,:places_for_males, :places_for_females,
+  validates_presence_of :country, :code, :name, :places,
+                        :places_for_males, :places_for_females,
                         :organization, :publish_mode
 
   validates_presence_of :extra_fee_currency, :if => Proc.new {|wc| wc.extra_fee && wc.extra_fee > 0},:message => "je povinná. (Je vyplněn poplatek, ale nikoliv jeho měna. Doplňte měnu poplatku.)"
@@ -61,6 +61,14 @@ class Workcamp < ActiveRecord::Base
     where("free_places >= ?",at_least)
   }
 
+  scope :from_date, -> (date) {
+    where("begin >= ?", date)    
+  }
+  
+  scope :to_date, -> (date) {
+    where("\"end\" <= ?", date)
+  }
+  
   scope :year, lambda { |year|
     year = year.to_i
     where '(extract(YEAR from workcamps.begin) = ? OR extract(YEAR FROM workcamps.end) = ?)', year,year
@@ -138,11 +146,11 @@ class Workcamp < ActiveRecord::Base
     end
 
     if from = filter[:from]
-      search = search.where("begin >= ?",Date.parse(from))
+      search = search.from_date Date.parse(from)
     end
 
     if to = filter[:to]
-      search = search.where("\"end\" <= ?",Date.parse(to))
+      search = search.to_date Date.parse(to)
     end
 
     if md = filter[:min_duration]

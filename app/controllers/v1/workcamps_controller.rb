@@ -27,11 +27,11 @@ class V1::WorkcampsController < V1::BaseController
     end
 
     if from = date_param(:from)
-      search = search.where('"begin" >= ?',from)
+      search = search.from_date(from)
     end
 
     if to = date_param(:to)
-      search = search.where('"end" <= ?',to)
+      search = search.to_date(to)
     end
 
     if duration = filter[:duration]

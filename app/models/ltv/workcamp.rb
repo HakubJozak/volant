@@ -1,9 +1,20 @@
 module Ltv
   class Workcamp < ::Workcamp
+    validates :from, presence: true
+    validates :to, presence: true, unless: :variable_dates
+
     # TODO - cover by test
     # so that year long projects would show in the web search
     scope :future, -> {
-      where('"end" >= current_date')
+      where('variable_dates OR "end" >= current_date')
+    }
+
+    scope :from_date, -> (date) {
+      where("variable_dates OR begin >= ?", date)    
+    }
+    
+    scope :to_date, -> (date) {
+      where("variable_dates OR \"end\" <= ?", date)
     }
 
     def open_for_application

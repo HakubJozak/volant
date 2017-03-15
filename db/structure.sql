@@ -23,6 +23,15 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
+SET search_path = public, pg_catalog;
+
+--
+-- Name: czech; Type: COLLATION; Schema: public; Owner: -
+--
+
+CREATE COLLATION czech (lc_collate = 'cs_CZ.utf8', lc_ctype = 'cs_CZ.utf8');
+
+
 --
 -- Name: unaccent; Type: EXTENSION; Schema: -; Owner: -
 --
@@ -36,8 +45,6 @@ CREATE EXTENSION IF NOT EXISTS unaccent WITH SCHEMA public;
 
 COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
 
-
-SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
 
@@ -183,7 +190,8 @@ CREATE TABLE workcamps (
     free_capacity_females integer DEFAULT 0 NOT NULL,
     free_capacity integer DEFAULT 0 NOT NULL,
     partner_organization character varying(4096),
-    project_summary character varying(4096)
+    project_summary character varying(4096),
+    variable_dates boolean
 );
 
 
@@ -2581,4 +2589,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160531101148');
 INSERT INTO schema_migrations (version) VALUES ('20170301084210');
 
 INSERT INTO schema_migrations (version) VALUES ('20170302100934');
+
+INSERT INTO schema_migrations (version) VALUES ('20170315113846');
 

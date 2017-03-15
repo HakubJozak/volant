@@ -7,7 +7,7 @@ module FreePlacesUpdater
     end
 
     if self.respond_to?(:workcamp)
-      self.workcamp.save(validate: false)
+      self.workcamp.try :save, validate: false
     end
 
       #   raise "Cannot update free places. #{self.inspect} has no workcamp(s) association."

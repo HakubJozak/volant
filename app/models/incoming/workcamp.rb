@@ -5,8 +5,9 @@ class Incoming::Workcamp < ::Outgoing::Workcamp
            class_name: 'Incoming::Participant',
            dependent: :nullify
 
-#   validates :project_id, uniqueness: true
-  
+  validate :from, :to, presence: true
+  # validates :project_id, uniqueness: true
+
   before_save do
     # generate_project_id
     self.project_id ||= begin
