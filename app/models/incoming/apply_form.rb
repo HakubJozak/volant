@@ -1,11 +1,10 @@
 module Incoming
   class ApplyForm < ::ApplyForm
     belongs_to :participant, foreign_key: 'volunteer_id'
-
+    has_one :workcamp, through: :participant
     validates :country, :organization, presence: true
 
     alias :sending_organization :organization
-
   end
 end
 

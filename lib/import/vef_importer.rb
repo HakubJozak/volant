@@ -73,7 +73,7 @@ module Import
     end
 
     def languages(&lvl_picker)
-      (1..3).each.map do |i|
+      (1..4).each.map do |i|
         lang = text("language#{i}")
         lvl  = text("langlevel#{i}").to_i
 
