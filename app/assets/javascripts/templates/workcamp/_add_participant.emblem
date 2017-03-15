@@ -1,0 +1,11 @@
+.btn-group.dropdown
+  button.btn.btn-default.btn-sm.navbar-btn.dropdown-toggle type='button' data-toggle='dropdown'
+    ' {{ fa 'plus' }}
+    span.caret
+  ul.dropdown-menu
+    li
+      a href='#' click='createBooking'
+        ' {{fa 'plus'}} Booking
+    li
+      a href='#' click='openVefDialog'
+        ' {{fa 'upload'}} Import VEF

@@ -8,6 +8,7 @@ Volant.WorkcampRoute = Volant.BaseRoute.extend Volant.SendFiles,
     @_super(controller, model)    
     if controller.get('vef')    
       @render 'apply_form/import_vef', outlet: 'modal'
+      controller.set('vef', false)
 
   title: (wc) ->
     "#{wc.get('name')} - #{wc.get('code')}"
