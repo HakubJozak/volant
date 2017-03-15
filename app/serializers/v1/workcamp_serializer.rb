@@ -4,16 +4,17 @@ class V1::WorkcampSerializer < ActiveModel::Serializer
   has_many :workcamp_intentions, serializer: V1::WorkcampIntentionSerializer
 
 
-  attributes :id, :name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
-      :area, :accommodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,
-      :region, :capacity_natives, :capacity_teenagers, :capacity_males, :capacity_females,
-      :airport, :train, :project_summary, :partner_organization,
-      :places, :places_for_males, :places_for_females,
-      :free_places, :free_places_for_males, :free_places_for_females,
-      :duration, :open_for_application,
-      :longitude, :latitude, :requirements,
-      :created_at,
-      :type, :tags
+  attributes :id, :name, :code, :language, :begin, :end, :capacity,
+             :minimal_age, :maximal_age, :variable_dates,
+             :area, :accommodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,
+             :region, :capacity_natives, :capacity_teenagers, :capacity_males, :capacity_females,
+             :airport, :train, :project_summary, :partner_organization,
+             :places, :places_for_males, :places_for_females,
+             :free_places, :free_places_for_males, :free_places_for_females,
+             :duration, :open_for_application,
+             :longitude, :latitude, :requirements,
+             :created_at,
+             :type, :tags
 
 #  has_many :tags, serializer: V1::TagSerializer, embed: true, include: true
 

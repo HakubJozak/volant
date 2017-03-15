@@ -72,8 +72,17 @@
             {{view Volant.DateView class="form-control" dateBinding='to' }}
           </div>
 
+          <div class="col-md-1">
+            <div class='checkbox'>
+            <label title="Variable dates. When ticked, the dates signify when the project is 'open'.">
+              {{input checked=variableDates type="checkbox" }}
+              {{ fa 'calendar-times-o' }}
+            </label>
+          </div>
+          </div>
+
           <label class="col-md-1 control-label">Duration</label>
-          <div class="col-md-3">
+          <div class="col-md-2">
             {{input value=duration type="number" class="form-control" placeholder=computedDuration}}
           </div>
         </div>

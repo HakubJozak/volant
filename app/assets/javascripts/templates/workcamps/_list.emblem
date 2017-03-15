@@ -21,7 +21,12 @@ table.table.table-condensed.table-responsive.workcamps
             ' {{join wc.workcamp_intentions 'code'}}
             ' {{tag-list wc.tags}}
           small
-            ' {{wc.computedOrSetDuration}}&nbsp;days
+            if wc.variableDates
+              ' {{ fa 'calendar-times-o' }}
+              if wc.duration
+                ' {{wc.duration}}&nbsp;days
+            else
+              ' {{wc.computedOrSetDuration}}&nbsp;days
           with wc
             partial 'workcamp/extra_fee'
         td.workcamp-actions

@@ -20,6 +20,7 @@ Volant.Workcamp = DS.Model.extend Ember.Copyable,
   language: DS.attr 'string'
   begin: DS.attr 'isodate'
   end: DS.attr 'isodate'
+  variableDates: DS.attr 'boolean'  
   duration: DS.attr 'number'
   minimal_age: DS.attr 'number'
   maximal_age: DS.attr 'number'

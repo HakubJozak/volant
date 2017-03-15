@@ -11,6 +11,7 @@ class WorkcampSerializer < ApplicationSerializer
 
   attributes :id, :state, :duration, :type,
       :starred, :name, :code, :language, :begin, :end, :minimal_age, :maximal_age,
+      :variable_dates,
       :area, :accommodation, :workdesc, :notes, :description,
       :extra_fee, :extra_fee_currency,
       :project_summary,

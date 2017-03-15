@@ -131,6 +131,7 @@ class WorkcampsController < ApplicationController
       .require(:workcamp)
       .except(*readonly)
       .permit(:name, :code, :language, :begin, :end, :capacity, :minimal_age, :maximal_age,
+              :variable_dates,
               :area, :accommodation, :workdesc, :notes, :description, :extra_fee, :extra_fee_currency,
               :region, :capacity_natives, :capacity_teenagers, :capacity_males, :capacity_females,
               :airport, :train, :publish_mode,:places, :places_for_males, :places_for_females,
@@ -138,7 +139,7 @@ class WorkcampsController < ApplicationController
               :asked_for_places, :asked_for_places_males,
               :asked_for_places_females,
               :project_summary,
-              :partner_organization,              
+              :partner_organization,
               :longitude, :latitude, :requirements, :duration,
               :organization_id, :country_id, :tag_ids => [], :workcamp_intention_ids => [])
 
