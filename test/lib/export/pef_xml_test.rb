@@ -12,7 +12,7 @@ class Export::PefXmlTest < ActiveSupport::TestCase
 
   test '#filename' do
     wc = workcamps(:xaverov)
-    assert_equal 'PEF_XWER_.xml', Export::PefXml.new(wc).filename
+    assert_match /PEF_XWER_\d{8}.xml/, Export::PefXml.new(wc).filename
   end
   
   private

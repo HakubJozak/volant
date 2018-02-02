@@ -9,7 +9,8 @@ module Export
 
     def filename
       code = @wc.code.strip.gsub(/\s+/,'_')
-      [ "PEF", code,".xml" ].map(&:presence).compact.join('_')
+      date = Date.today.strftime("%Y%m%d")
+      "PEF_#{code}_#{date}.xml"
     end
 
     def to_xml
