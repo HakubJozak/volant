@@ -3,31 +3,37 @@ module Import
 
     INTENTIONS_COMPATIBILITY_TABLE = {
       "CONC"=>"CONS",
-      "REFU"=>"REFUGEE",
       "ENV"=>"ENVI",
-      "DIS"=>"DISA",
-      "DISABLED" => "DISA",
+
+      "REFU"    => "SOCI",
+      "REFUGEE" => "SOCI",
+      "DIS"     => "SOCI",
+      "DISA"    => "SOCI",
+      "DISABLED"=> "SOCI",
+
       "ART"=>"ARTS",
       "STUD"=>"STUDY",
       "REN"=>"RENO",
       "KID"=>"KIDS",
       "EDUC"=>"EDU",
       "MANUAL"=>"MANU",
-      "YOUTH"=>"TEEN" }.freeze
-
+      "YOUTH"=>"TEEN"
+    }.freeze
+    
     protected
 
     def import_intentions(text, wc)
       return unless text
 
-      text.upcase.split(/\/|-|,/).each do |c|
-        c = INTENTIONS_COMPATIBILITY_TABLE[c] || c
-        intention = WorkcampIntention.find_by_code(c)
+      codes = text.upcase.split(/\/|-|,/).map! do |c|
+        INTENTIONS_COMPATIBILITY_TABLE.fetch(c,c)
+      end
 
-        if intention
+      codes.uniq.each do |code|
+        if intention = WorkcampIntention.find_by_code(code)
           wc.intentions << intention
         else
-          warning "WARNING: unknown work code '#{c}' in '#{wc.code}'"
+          warning "WARNING: unknown work code '#{code}' in '#{wc.code}'"
         end
       end
     end

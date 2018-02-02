@@ -9,7 +9,7 @@ module Import
     setup do
       Factory(:country, code: 'EE', triple_code: 'EST',name_en: 'Estonia')
       Factory(:country, code: 'US', triple_code: 'USA')
-      Factory(:country, code: 'DN', triple_code: 'DNK', name_en: 'Denmark')      
+      Factory(:country, code: 'DN', triple_code: 'DNK', name_en: 'Denmark')
     end
 
     # http://redmine.siven.onesim.net/issues/1366
@@ -139,6 +139,17 @@ module Import
       assert_match /^Skælskør Landevej 28, 4200 Slagelse/, wc.area
       assert_equal 18, wc.minimal_age
       assert_equal 'Denmark', wc.country.name_en
+    end
+
+    test 'REFU and DIS(A) intentions' do
+      create :organization, code: 'LUNAR'
+      file = xml_file('pef_refu_disa_test.xml')
+      importer = Import::PefImporter.new(file)
+
+      wcs = importer.import!
+
+      assert_not_empty intents = wcs.first.intentions
+      assert_equal intents.first.code, 'SOCI'
     end
 
     private
