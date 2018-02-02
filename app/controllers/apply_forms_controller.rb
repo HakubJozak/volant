@@ -113,8 +113,8 @@ class ApplyFormsController < ApplicationController
       search = search.where(volunteer_id: v)
     end
 
-    if filter[:tag_ids]
-      search = search.joins(:tags).with_tags(*filter[:tag_ids])
+    if tag_ids = filter[:tag_ids]
+      search = search.with_tags(*tag_ids)
     end
 
     if query = filter[:q].presence
