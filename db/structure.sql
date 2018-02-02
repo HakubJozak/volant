@@ -946,7 +946,8 @@ CREATE TABLE organizations (
     fax character varying(255),
     website character varying(2048),
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    description text
 );
 
 
@@ -2591,4 +2592,6 @@ INSERT INTO schema_migrations (version) VALUES ('20170301084210');
 INSERT INTO schema_migrations (version) VALUES ('20170302100934');
 
 INSERT INTO schema_migrations (version) VALUES ('20170315113846');
+
+INSERT INTO schema_migrations (version) VALUES ('20180202143309');
 

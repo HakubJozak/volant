@@ -3,7 +3,7 @@ class OrganizationSerializer < ApplicationSerializer
   has_many :email_contacts, embed: :ids, include: true
   has_many :networks, embed: :ids, include: true, serializer: NetworkSerializer
 
-  attributes :id, :name, :code,
+  attributes :id, :name, :code, :description,
     :outgoing_email,  :incoming_email,  :ltv_email,
     :address,  :contact_person,  :phone,  :mobile,  :fax,  :website
 
@@ -22,7 +22,7 @@ class OrganizationSerializer < ApplicationSerializer
   def email_contacts
     object.emails
   end
-  
+
   private
 
   def emails(kind)

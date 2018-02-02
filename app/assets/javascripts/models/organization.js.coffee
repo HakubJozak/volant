@@ -11,6 +11,7 @@ Volant.Organization = DS.Model.extend
   mobile: DS.attr 'string'
   fax: DS.attr 'string'
   website: DS.attr 'string'
+  description: DS.attr 'string'  
 
   outgoing_email: DS.attr 'string'
   incoming_email: DS.attr 'string'

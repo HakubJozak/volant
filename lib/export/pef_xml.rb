@@ -1,61 +1,92 @@
 module Export
   class PefXml
-  def initialize(wc, user = nil)
-    @wc = wc
-    @user = user
-  end
 
-  def to_xml
-    Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
-      xml.projectform {
-        xml.network           "ALLIANCE"
-        xml.application       "Volant"
-        xml.date_filed        Date.today.to_date.strftime
-        xml.version           "1.0"
-        xml.pef_sent_by       @user.try(:name)
-        xml.pef_sender_email  @user.try(:email)
-        xml.organization      @wc.organization.code
-        xml.organization_code @wc.organization.name
-        xml.ho_description    inex
+    def initialize(wc, user = nil)
+      @wc = wc
+      @organization = wc.organization
+      @user = user
+    end
 
-        xml.projects do
-          xml.project(id: @wc.project_id) do
-	    xml.code @wc.code
-	    xml.name @wc.name
+    def to_xml
+      Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
+        xml.projectform {
+          xml.network           "ALLIANCE"
+          xml.application       "Volant"
+          xml.date_filed        Date.today.to_date.strftime
+          xml.version           "1.0"
+          xml.pef_sent_by       @user.try(:name)
+          xml.pef_sender_email  @user.try(:email)
+          xml.organization      @organization.code
+          xml.organization_code @organization.name
+          xml.ho_description    @organization.description
 
-            if @wc.latitude && @wc.longitude
-              xml.lat_project @wc.latitude
-              xml.lng_project @wc.longitude
+          xml.projects do
+            xml.project(id: @wc.project_id) do
+	      xml.code @wc.code
+	      xml.name @wc.name
+
+              xml.min_age @wc.minimal_age
+              xml.max_age @wc.maximal_age              
+
+              xml.max_vols_per_country 2
+              xml.start_date @wc.from.strftime
+              xml.end_date   @wc.to.strftime
+
+              xml.country   @wc.country.triple_code
+              xml.location @wc.area
+              xml.region @wc.region
+              xml.airport @wc.airport
+              xml.train_bus_station @wc.train
+
+              if @wc.latitude && @wc.longitude
+                xml.lat_project @wc.latitude
+                xml.lng_project @wc.longitude
+              end
+
+              xml.description @wc.description
+              xml.descr_partner @wc.partner_organization
+              xml.descr_work @wc.workdesc
+              xml.descr_requirements @wc.requirements
+              xml.descr_accomodation_and_food @wc.accomodation
+              xml.languages @wc.language
+              
+              if @wc.extra_fee.present?
+                xml.participation_fee @wc.extra_fee
+                xml.participation_fee_curency @wc.extra_fee_currency
+              end
+
+              if @wc.project_summary
+                xml.project_summary @wc.project_summary
+              end
+
+              xml.vegetarian bool(@wc.tag_list.include?('vegetarian'))
+              xml.family bool(@wc.tag_list.include?('family'))
             end
 
-            xml.start_date @wc.from.strftime
-            xml.end_date   @wc.to.strftime
-            xml.location   @wc.area
-            xml.description @wc.description
-            xml.descr_partner @wc.partner
-            xml.descr_accomodation_and_food @wc.accomodation
-
-
-
-            if @wc.project_summary
-              xml.project_summary @wc.project_summary
-            end
           end
+        }
+      end.to_xml
+    end
 
-        end
-      }
-    end.to_xml
-  end
+    private
 
-  private
+    def bool(flag)
+      if flag
+        '1'
+      else
+        '0'
+      end
+    end
+    
+    def inex
+      @organization.description
+    end
 
-  def inex
-    # TODO: use @wc.organization.description
-    "INEX-SDA is a Czech non-governmental, non-profit organisation, founded in 1991. Our primary activities are aimed at the area of international voluntary work. We believe in volunteering and individual initiative, in direct experience and critical thinking, in understanding and respect towards diversity and in personal responsibility and sustainable development."
-  end
-
-  def filename
-    code = @wc.code.strip.gsub(/\w/,'_')
-    [ "PEF", code,".xml" ].join
+    def filename
+      code = @wc.code.strip.gsub(/\w/,'_')
+      [ "PEF", code,".xml" ].join
+    end
   end
 end
+
+
