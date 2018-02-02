@@ -4,7 +4,7 @@ Volant.WorkcampActionsMixin = Ember.Mixin.create
     type = @get('mode')
     "#/apply_forms/#{type}/new?fee=0&workcampToAssignId=#{id}"
   ).property('id','mode')
-    
+
   actions:
     createApplyForm: ->
       id = @get('id')
@@ -25,4 +25,8 @@ Volant.WorkcampActionsMixin = Ember.Mixin.create
 
     downloadParticipantsList: (exportType) ->
       window.location = "/workcamps/#{@get('id')}/participants.csv"
+      false
+
+    downloadPEF: (exportType) ->
+      window.location = "/workcamps/#{@get('id')}/pef.xml"
       false

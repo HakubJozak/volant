@@ -7,6 +7,11 @@ module Export
       @user = user
     end
 
+    def filename
+      code = @wc.code.strip.gsub(/\s+/,'_')
+      [ "PEF", code,".xml" ].map(&:presence).compact.join('_')
+    end
+
     def to_xml
       Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
         xml.projectform {
@@ -19,6 +24,7 @@ module Export
           xml.organization      @organization.code
           xml.organization_code @organization.name
           xml.ho_description    @organization.description
+          xml.work @wc.intentions.map { |i| i.code }.join(',')
 
           xml.projects do
             xml.project(id: @wc.project_id) do
@@ -28,9 +34,15 @@ module Export
               xml.min_age @wc.minimal_age
               xml.max_age @wc.maximal_age              
 
+              xml.numvol @wc.capacity
+              xml.numvol_m @wc.capacity_males
+              xml.numvol_f @wc.capacity_females
+              xml.max_national_vols @wc.capacity_natives
+              xml.max_teenagers @wc.capacity_teenagers        
               xml.max_vols_per_country 2
-              xml.start_date @wc.from.strftime
-              xml.end_date   @wc.to.strftime
+
+              xml.start_date @wc.from.strftime if @wc.from
+              xml.end_date   @wc.to.strftime if @wc.to
 
               xml.country   @wc.country.triple_code
               xml.location @wc.area
@@ -47,7 +59,7 @@ module Export
               xml.descr_partner @wc.partner_organization
               xml.descr_work @wc.workdesc
               xml.descr_requirements @wc.requirements
-              xml.descr_accomodation_and_food @wc.accomodation
+              xml.descr_accomodation_and_food @wc.accommodation
               xml.languages @wc.language
               
               if @wc.extra_fee.present?
@@ -62,7 +74,6 @@ module Export
               xml.vegetarian bool(@wc.tag_list.include?('vegetarian'))
               xml.family bool(@wc.tag_list.include?('family'))
             end
-
           end
         }
       end.to_xml
@@ -80,11 +91,6 @@ module Export
     
     def inex
       @organization.description
-    end
-
-    def filename
-      code = @wc.code.strip.gsub(/\w/,'_')
-      [ "PEF", code,".xml" ].join
     end
   end
 end

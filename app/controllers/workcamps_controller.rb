@@ -76,6 +76,15 @@ class WorkcampsController < ApplicationController
     end
   end
 
+  def pef
+    respond_to do |f|
+      f.xml {
+        export = Export::PefXml.new(@workcamp, current_user)
+        send_data export.to_xml, filename: export.filename
+      }
+    end
+  end
+
   def cancel_import
     @workcamp.cancel_import!
     render json: @workcamp

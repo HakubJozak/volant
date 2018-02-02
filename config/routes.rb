@@ -36,7 +36,6 @@ Rails.application.routes.draw do
     resources :vefs, only: :create
 
     member do
-      # Project Exchange Form - download XML
       get :pef
       get :participants
       post :cancel_import

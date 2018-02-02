@@ -2,7 +2,9 @@ ul.dropdown-menu
   li
     a href='#' click='cloneWorkcamp'
       ' {{fa 'clone'}} Clone
+
   li.divider role="separator"
+
   li
     a href='#' click='createApplyForm'
       ' {{fa 'plus'}} Application
@@ -12,9 +14,18 @@ ul.dropdown-menu
   li
     a href='#' click='openVefDialog'
       ' {{fa 'upload'}} Import VEF
+
+  li.divider role="separator"
+
   li
     a href='#' click='downloadParticipantsList'
-      ' {{fa 'download'}} Participants
+      ' {{fa 'download'}} Participants CSV
+  li
+    a href='#' click='downloadPEF'
+      ' {{fa 'download'}} Export PEF
+
+  li.divider role="separator"
+
   li
     link-to 'new_workcamp_message' id 'infosheet_all'
       ' {{fa 'file-o' }} Send Infosheets
