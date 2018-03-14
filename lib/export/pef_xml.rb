@@ -86,10 +86,10 @@ module Export
         xml.end_date   wc.to.strftime if wc.to
 
         xml.country   wc.country.triple_code
-        xml.location wc.area
         xml.region wc.region
         xml.airport wc.airport
         xml.train_bus_station wc.train
+        xml.location wc.train
 
         if wc.latitude && wc.longitude
           xml.lat_project wc.latitude
@@ -98,6 +98,7 @@ module Export
 
         xml.description wc.description
         xml.descr_partner wc.partner_organization
+        xml.descr_location_and_leisure wc.area
         xml.descr_work wc.workdesc
         xml.descr_requirements wc.requirements
         xml.descr_accomodation_and_food wc.accommodation

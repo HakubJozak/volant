@@ -26,6 +26,7 @@ class Export::PefXmlTest < ActiveSupport::TestCase
                 places_for_males: 2,
                 minimal_age: 18,
                 maximal_age: 26,
+                train: 'Xaverov',
                 area: 'Xaverov u Sázavy',
                 accommodation: 'na Paloučku',
                 workdesc: 'pití alkoholu ve velkém',
@@ -42,6 +43,9 @@ class Export::PefXmlTest < ActiveSupport::TestCase
     assert_equal '10', xml.css('projectform project numvol').text
     assert_equal 'STV', xml.css('projectform project project_type').text    
     assert_equal 'eng,rus,chv,epo,fre,ita', xml.css('projectform project languages').text    
+
+    assert_equal 'Xaverov', xml.css('projectform project location').text
+    assert_equal 'Xaverov u Sázavy', xml.css('projectform project descr_location_and_leisure').text
   end
 
   test '#iso_language_codes' do
