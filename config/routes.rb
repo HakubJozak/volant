@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   resources :email_contacts, only: [ :create, :update, :destroy ]
   resources :countries, except: [ :edit, :new ]
   resources :country_zones, except: [ :edit, :new ]
-  resources :organizations, except: [ :edit, :new ]
   resources :networks, except: [ :edit, :new ]
   resources :workcamp_intentions, except: [ :edit, :new ]
   resources :volunteers, except: [ :edit, :new ]
@@ -41,6 +40,10 @@ Rails.application.routes.draw do
       post :cancel_import
       post :confirm_import
     end
+  end
+
+  resources :organizations, except: [ :edit, :new ] do
+    get 'pef', on: :member      
   end
 
   resources :stars, only: [ :create ]

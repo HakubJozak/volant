@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
     }
   end
 
+  def xml_version(path)
+    send path,params.except(:action,:controller,:p,:per_page).merge(format: :xml)
+  end
+
   def csv_version(path)
     send path,params.except(:action,:controller,:p,:per_page).merge(format: :csv)
   end

@@ -5,7 +5,7 @@ module Export
       if subject.is_a? Workcamp
         @workcamps = [ subject ]
         @organization = subject.organization
-      elsif subject.is_a? Array
+      elsif subject.respond_to? :each
         @workcamps = subject
         @organization = subject.first.organization
       else
@@ -50,8 +50,8 @@ module Export
           xml.version           "1.0"
           xml.pef_sent_by       @user.try(:name)
           xml.pef_sender_email  @user.try(:email)
-          xml.organization      @organization.name
-          xml.organization_code @organization.code
+          xml.organization      @organization.name.strip
+          xml.organization_code @organization.code.strip
           xml.ho_description    @organization.description
 
           xml.projects do

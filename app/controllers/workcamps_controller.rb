@@ -14,17 +14,27 @@ class WorkcampsController < ApplicationController
     else
       search = apply_filter(workcamps.order(current_order).joins(:country))
 
-      respond_to do |format|
-        format.csv  {
+      respond_to do |f|
+        f.csv  {
           send_data Export::WorkcampCsv.new(search).to_csv, filename: "workcamps.csv"
         }
 
-        format.json {
+        f.xml {
+          export = Export::PefXml.new(search.all, current_user)
+          send_data export.to_xml, filename: export.filename
+        }
+        
+        f.json {
           search = search.page(current_page).per(per_page)
-          render json: search, meta: {
+
+          meta = {
             pagination: pagination_info(search),
             csv: csv_version(:workcamps_path),
-            friday_list: csv_version(:friday_list_workcamps_path) },
+            pef: xml_version(:workcamps_path),            
+            friday_list: csv_version(:friday_list_workcamps_path)
+          }
+
+          render json: search, meta: meta,
           each_serializer: WorkcampSerializer
         }
       end

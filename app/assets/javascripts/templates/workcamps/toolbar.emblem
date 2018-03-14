@@ -1,4 +1,7 @@
 p.navbar-left.navbar-text
+  a.navbar-link{ action 'downloadCsv' 'pef' } href='#'
+    ' {{fa 'download'}} PEF
+
   a.navbar-link{ action 'downloadCsv' } href='#'
     ' {{fa 'download'}} CSV
 
