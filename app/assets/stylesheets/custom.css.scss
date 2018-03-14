@@ -14,7 +14,9 @@ body {
 
 
 textarea.form-control {
-  min-width: 85%;
+    min-width: 85%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 // TODO: replace by SVG rectangular icons
@@ -46,8 +48,8 @@ textarea.form-control {
 
 
 
-i.fa-bell.alert { 
-  color: $red; 
+i.fa-bell.alert {
+  color: $red;
   padding: 0;
   font-size: 125%;
   @include rotate(-35deg);
@@ -57,7 +59,7 @@ i.fa-bell.alert {
 
 
 
-/* state icons 
+/* state icons
 h2 i.fa {
 }
 */
@@ -68,7 +70,7 @@ td .apply-form-action-dropdown {
 
   & > .first-action {
       min-width: 65%;
-  }  
+  }
 }
 
 tr.workcamp_assignment {
@@ -285,8 +287,8 @@ table.import-changes {
 
 .vef-download-button {
   position: relative;
-  top: -3px;   
-  font-size: small;  
+  top: -3px;
+  font-size: small;
   margin-right: 0.05em;
 }
 
@@ -302,13 +304,13 @@ table.import-changes {
 
 @mixin remove-button-hover {
   .remove-button {
-    border: 1px solid transparent; 
+    border: 1px solid transparent;
     background-color: transparent;
-    &:hover { 
-      border: 1px solid $border-color; 
+    &:hover {
+      border: 1px solid $border-color;
       background-color: white;
     }
-  }  
+  }
 }
 
 table#apply-forms-list {
@@ -319,7 +321,7 @@ table#apply-forms-list {
   .row { position: relative; }
   .remove-button { position: absolute; top: 0; right: 5px; }
   @include remove-button-hover;
-  img.flag { height: 1.5em; background-color: none; }  
+  img.flag { height: 1.5em; background-color: none; }
 }
 
 .volunteer-card-icon .fa-user {
@@ -328,8 +330,8 @@ table#apply-forms-list {
 }
 
 .org-card-icon .fa-institution {
-  color: $grey;  
-  font-size: 90%;  
+  color: $grey;
+  font-size: 90%;
   position: relative;
   top: 2px;
 }
@@ -391,7 +393,7 @@ table.table-condensed {
     width: 6em;
 
     input {
-      width: 4em;  
+      width: 4em;
       margin-top: 5px;
       padding: 0;
     }
@@ -402,7 +404,7 @@ table.table-condensed {
 
 .btn-group.view-toggles {
   button:active, button:focus {
-    background-color: white;  
+    background-color: white;
     &.active {
       background-color: #EBEBEB;
     }
@@ -412,11 +414,11 @@ table.table-condensed {
 .little-workcamp-placement {
   .fa-venus, .fa-mars {
     font-weight: bolder;
-    font-size: 16px;  
-  } 
+    font-size: 16px;
+  }
 
   .fa-mars {
-    font-size: 14px;  
+    font-size: 14px;
   }
 }
 
@@ -425,7 +427,7 @@ $female-color: #C05C5C;
 
 
 .fa-mars {
-  font-size: smaller;    
+  font-size: smaller;
   color: $male-color;
 }
 

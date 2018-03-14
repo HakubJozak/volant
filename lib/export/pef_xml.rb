@@ -1,16 +1,30 @@
 module Export
   class PefXml
 
-    def initialize(wc, user = nil)
-      @wc = wc
-      @organization = wc.organization
+    def initialize(subject, user = nil)
+      if subject.is_a? Workcamp
+        @workcamps = [ subject ]
+        @organization = subject.organization
+      elsif subject.is_a? Array
+        @workcamps = subject
+        @organization = subject.first.organization
+      else
+        fail "Unsupported subject type #{subject.inspect}"
+      end
+        
       @user = user
     end
 
     def filename
-      code = @wc.code.strip.gsub(/\s+/,'_')
       date = Date.today.strftime("%Y%m%d")
-      "PEF_#{code}_#{date}.xml"
+      
+      if @workcamps.size == 1
+        code = @workcamps.first.code.strip.gsub(/\s+/,'_')
+      else
+        code = @organization.code.strip.gsub(/\s+/,'_')
+      end
+
+      "PEF_#{code}_#{date}.xml"        
     end
 
     # public for testing
@@ -39,55 +53,10 @@ module Export
           xml.organization      @organization.name
           xml.organization_code @organization.code
           xml.ho_description    @organization.description
-          xml.work @wc.intentions.map { |i| i.code }.join(',')
 
           xml.projects do
-            xml.project(id: @wc.project_id) do
-	      xml.code @wc.code
-	      xml.name @wc.name
-
-              xml.min_age @wc.minimal_age
-              xml.max_age @wc.maximal_age
-
-              xml.numvol @wc.capacity
-              xml.numvol_m @wc.capacity_males
-              xml.numvol_f @wc.capacity_females
-              xml.max_national_vols @wc.capacity_natives
-              xml.max_teenagers @wc.capacity_teenagers
-              xml.max_vols_per_country 2
-
-              xml.start_date @wc.from.strftime if @wc.from
-              xml.end_date   @wc.to.strftime if @wc.to
-
-              xml.country   @wc.country.triple_code
-              xml.location @wc.area
-              xml.region @wc.region
-              xml.airport @wc.airport
-              xml.train_bus_station @wc.train
-
-              if @wc.latitude && @wc.longitude
-                xml.lat_project @wc.latitude
-                xml.lng_project @wc.longitude
-              end
-
-              xml.description @wc.description
-              xml.descr_partner @wc.partner_organization
-              xml.descr_work @wc.workdesc
-              xml.descr_requirements @wc.requirements
-              xml.descr_accomodation_and_food @wc.accommodation
-              xml.languages iso_language_codes(@wc)
-
-              if @wc.extra_fee.present?
-                xml.participation_fee @wc.extra_fee
-                xml.participation_fee_curency @wc.extra_fee_currency
-              end
-
-              if @wc.project_summary
-                xml.project_summary @wc.project_summary
-              end
-
-              xml.vegetarian bool(@wc.tag_list.include?('vegetarian'))
-              xml.family bool(@wc.tag_list.include?('family'))
+            @workcamps.each do |wc|
+              export_one_workcamp(xml, wc)              
             end
           end
         }
@@ -95,6 +64,57 @@ module Export
     end
 
     private
+
+    def export_one_workcamp(xml, wc)
+      xml.project(id: wc.project_id) do
+	xml.code wc.code
+	xml.name wc.name
+        xml.work wc.intentions.map { |i| i.code }.join(',')
+
+        xml.min_age wc.minimal_age
+        xml.max_age wc.maximal_age
+
+        xml.numvol wc.capacity
+        xml.numvol_m wc.capacity_males
+        xml.numvol_f wc.capacity_females
+        xml.max_national_vols wc.capacity_natives
+        xml.max_teenagers wc.capacity_teenagers
+        xml.max_vols_per_country 2
+
+        xml.start_date wc.from.strftime if wc.from
+        xml.end_date   wc.to.strftime if wc.to
+
+        xml.country   wc.country.triple_code
+        xml.location wc.area
+        xml.region wc.region
+        xml.airport wc.airport
+        xml.train_bus_station wc.train
+
+        if wc.latitude && wc.longitude
+          xml.lat_project wc.latitude
+          xml.lng_project wc.longitude
+        end
+
+        xml.description wc.description
+        xml.descr_partner wc.partner_organization
+        xml.descr_work wc.workdesc
+        xml.descr_requirements wc.requirements
+        xml.descr_accomodation_and_food wc.accommodation
+        xml.languages iso_language_codes(wc.language).join(',')
+
+        if wc.extra_fee.present?
+          xml.participation_fee wc.extra_fee
+          xml.participation_fee_curency wc.extra_fee_currency
+        end
+
+        if wc.project_summary
+          xml.project_summary wc.project_summary
+        end
+
+        xml.vegetarian bool(wc.tag_list.include?('vegetarian'))
+        xml.family bool(wc.tag_list.include?('family'))
+      end
+    end
 
     def project_type
       # 'TEEN', 'EVS'

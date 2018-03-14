@@ -40,7 +40,10 @@ class Export::PefXmlTest < ActiveSupport::TestCase
     assert_equal 'SEEDS', xml.css('projectform organization_code').text    
 
     assert_equal '10', xml.css('projectform project numvol').text
-    assert_equal 'eng,rus,chv,epo,fra,ita', xml.css('projectform project languages').text    
+    assert_equal 'eng,rus,chv,epo,fre,ita', xml.css('projectform project languages').text    
+  end
+
+  test '#project_type' do
   end
 
   test '#iso_language_codes' do
