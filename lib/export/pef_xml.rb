@@ -13,6 +13,20 @@ module Export
       "PEF_#{code}_#{date}.xml"
     end
 
+    # public for testing
+    def iso_language_codes(str)
+      str.split(%r{and|,|\.|/}).map do |lang|
+        name = lang.strip.downcase
+        definition =
+          ISO_639.find_by_english_name(name.capitalize).presence ||
+          ISO_639.find(name).presence ||
+          ISO_639.find_by_code(name.downcase).presence ||
+          ISO_639.search(name.downcase).first
+        
+        definition.try :alpha3
+      end.compact
+    end
+
     def to_xml
       Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
         xml.projectform {
@@ -22,8 +36,8 @@ module Export
           xml.version           "1.0"
           xml.pef_sent_by       @user.try(:name)
           xml.pef_sender_email  @user.try(:email)
-          xml.organization      @organization.code
-          xml.organization_code @organization.name
+          xml.organization      @organization.name
+          xml.organization_code @organization.code
           xml.ho_description    @organization.description
           xml.work @wc.intentions.map { |i| i.code }.join(',')
 
@@ -33,13 +47,13 @@ module Export
 	      xml.name @wc.name
 
               xml.min_age @wc.minimal_age
-              xml.max_age @wc.maximal_age              
+              xml.max_age @wc.maximal_age
 
               xml.numvol @wc.capacity
               xml.numvol_m @wc.capacity_males
               xml.numvol_f @wc.capacity_females
               xml.max_national_vols @wc.capacity_natives
-              xml.max_teenagers @wc.capacity_teenagers        
+              xml.max_teenagers @wc.capacity_teenagers
               xml.max_vols_per_country 2
 
               xml.start_date @wc.from.strftime if @wc.from
@@ -61,8 +75,8 @@ module Export
               xml.descr_work @wc.workdesc
               xml.descr_requirements @wc.requirements
               xml.descr_accomodation_and_food @wc.accommodation
-              xml.languages @wc.language
-              
+              xml.languages iso_language_codes(@wc)
+
               if @wc.extra_fee.present?
                 xml.participation_fee @wc.extra_fee
                 xml.participation_fee_curency @wc.extra_fee_currency
@@ -82,6 +96,10 @@ module Export
 
     private
 
+    def project_type
+      # 'TEEN', 'EVS'
+    end
+
     def bool(flag)
       if flag
         '1'
@@ -89,11 +107,9 @@ module Export
         '0'
       end
     end
-    
+
     def inex
       @organization.description
     end
   end
 end
-
-

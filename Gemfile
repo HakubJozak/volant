@@ -17,6 +17,9 @@ gem 'dotenv-rails'
 gem 'rollbar', '~> 2.7'
 gem 'annotate'
 
+# Language codes
+gem 'iso-639'
+
 
 
 gem 'jquery-rails'
