@@ -266,6 +266,11 @@ class Workcamp < ActiveRecord::Base
     active.group_by { |f| f.country }.select { |c,v| v.size > 1 }.keys.compact
   end
 
+  # Overrided in subclasses
+  def adih_project_type
+    'STV'
+  end
+
   private
 
   def localize(date)

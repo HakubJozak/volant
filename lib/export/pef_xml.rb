@@ -70,6 +70,7 @@ module Export
 	xml.code wc.code
 	xml.name wc.name
         xml.work wc.intentions.map { |i| i.code }.join(',')
+        xml.project_type wc.adih_project_type
 
         xml.min_age wc.minimal_age
         xml.max_age wc.maximal_age
@@ -114,10 +115,6 @@ module Export
         xml.vegetarian bool(wc.tag_list.include?('vegetarian'))
         xml.family bool(wc.tag_list.include?('family'))
       end
-    end
-
-    def project_type
-      # 'TEEN', 'EVS'
     end
 
     def bool(flag)

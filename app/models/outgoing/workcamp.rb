@@ -7,6 +7,9 @@ module Outgoing
       from.nil? || from >= Time.now.to_date
     end
 
+    def adih_project_type
+      'STV' # Short term (workcamp)      '
+    end
   end
 end
 

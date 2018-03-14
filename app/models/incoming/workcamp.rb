@@ -20,6 +20,17 @@ class Incoming::Workcamp < ::Outgoing::Workcamp
                         end
   end
 
+  def adih_project_type
+    if (tag_list & [ 'teenage', 'teen' ]).present?
+      'TEEN'
+    elsif tag_list.include? 'senior'
+      'SEN'
+    else
+      'STV'
+    end
+  end
+
+
 end
 
 # == Schema Information

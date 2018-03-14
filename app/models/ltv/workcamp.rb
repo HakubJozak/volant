@@ -9,9 +9,9 @@ module Ltv
     }
 
     scope :from_date, -> (date) {
-      where('variable_dates OR "begin" >= ?', date)    
+      where('variable_dates OR "begin" >= ?', date)
     }
-    
+
     scope :to_date, -> (date) {
       where('variable_dates OR "end" <= ?', date)
     }
@@ -19,6 +19,14 @@ module Ltv
     def open_for_application
       to.nil? || to >= Time.now.to_date
     end
+
+    def adih_project_type
+      if duration && duration > 90
+        'LTV' # Long term
+      else
+        'MTV' # Mid term
+      end
+    end    
   end
 end
 
