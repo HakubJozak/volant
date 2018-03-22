@@ -11,20 +11,20 @@ module Export
       else
         fail "Unsupported subject type #{subject.inspect}"
       end
-        
+
       @user = user
     end
 
     def filename
       date = Date.today.strftime("%Y%m%d")
-      
+
       if @workcamps.size == 1
         code = @workcamps.first.code.strip.gsub(/\s+/,'_')
       else
         code = @organization.code.strip.gsub(/\s+/,'_')
       end
 
-      "PEF_#{code}_#{date}.xml"        
+      "PEF_#{code}_#{date}.xml"
     end
 
     # public for testing
@@ -36,7 +36,7 @@ module Export
           ISO_639.find(name).presence ||
           ISO_639.find_by_code(name.downcase).presence ||
           ISO_639.search(name.downcase).first
-        
+
         definition.try :alpha3
       end.compact
     end
@@ -56,7 +56,7 @@ module Export
 
           xml.projects do
             @workcamps.each do |wc|
-              export_one_workcamp(xml, wc)              
+              export_one_workcamp(xml, wc)
             end
           end
         }
@@ -96,8 +96,7 @@ module Export
           xml.lng_project wc.longitude
         end
 
-        xml.description wc.description
-        xml.descr_partner wc.partner_organization
+        xml.descr_partner wc.description 
         xml.descr_location_and_leisure wc.area
         xml.descr_work wc.workdesc
         xml.descr_requirements wc.requirements

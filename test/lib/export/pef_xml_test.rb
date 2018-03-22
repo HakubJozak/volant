@@ -38,13 +38,14 @@ class Export::PefXmlTest < ActiveSupport::TestCase
     assert_equal 'XWER', xml.css('projectform project code').text
     assert_equal 'Xaverov', xml.css('projectform project name').text
     assert_equal 'Seeds', xml.css('projectform organization').text
-    assert_equal 'SEEDS', xml.css('projectform organization_code').text    
+    assert_equal 'SEEDS', xml.css('projectform organization_code').text
 
     assert_equal '10', xml.css('projectform project numvol').text
-    assert_equal 'STV', xml.css('projectform project project_type').text    
-    assert_equal 'eng,rus,chv,epo,fre,ita', xml.css('projectform project languages').text    
+    assert_equal 'STV', xml.css('projectform project project_type').text
+    assert_equal 'eng,rus,chv,epo,fre,ita', xml.css('projectform project languages').text
 
     assert_equal 'Xaverov', xml.css('projectform project location').text
+    assert_equal 'zabijačka a Silvestr.', xml.css('projectform project descr_partner').text
     assert_equal 'Xaverov u Sázavy', xml.css('projectform project descr_location_and_leisure').text
   end
 
@@ -58,10 +59,10 @@ class Export::PefXmlTest < ActiveSupport::TestCase
     assert_equal %w( eng fre ), export.iso_language_codes(str)
 
     str = "English, es"
-    assert_equal %w( eng spa ), export.iso_language_codes(str)        
+    assert_equal %w( eng spa ), export.iso_language_codes(str)
 
     str = "French/ /Russian/Turkish/Azerbaijani/Georgian"
-    assert_equal %w( fre rus tur aze geo ), export.iso_language_codes(str)    
+    assert_equal %w( fre rus tur aze geo ), export.iso_language_codes(str)
   end
 
   test '#filename' do
