@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # FIXME - move to Outgoing module
 class Volunteer < Person
+
   CSV_FIELDS = %w(firstname lastname age gender email phone birthdate birthnumber nationality occupation city contact_city)
 
   include CzechUtils

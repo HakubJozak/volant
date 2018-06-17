@@ -1,4 +1,30 @@
 namespace :adhoc do
+  task emergency_emails: :environment do
+    # EmailTemplate.all.each { |t|
+    #   unless t.title =~ (/^INCOMING|LTV/)
+    #     t.update_column(:title, "OUTGOING: #{t.title}")
+    #   end
+    # }
+
+    common = {
+      subject: "Are You OK with that?",
+      body: "Please let us know.",
+      to: '{{application.emergency_email}}',
+      cc: '{{application.email}}'
+    }
+
+    EmailTemplate.create! common.merge(
+                action: "emergency_confirmation",
+                title:  'OUTGOING: Emergency contact confirmation',
+                from: 'workcamp@inexsda.cz')
+
+    EmailTemplate.create! common.merge(
+                action: "ltv/emergency_confirmation",
+                title: 'LTV: Emergency contact confirmation',
+                from: 'ltv@inexsda.cz')
+  end
+
+
   task confirmed_emails: :environment do
     [ 'incoming/', 'ltv/', '' ].each do |prefix|
       EmailTemplate.create!( action: "#{prefix}confirm",

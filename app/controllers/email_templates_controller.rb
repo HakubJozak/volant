@@ -5,7 +5,7 @@ class EmailTemplatesController < ApplicationController
 
   # GET /email_templates
   def index
-    @email_templates = EmailTemplate.all
+    @email_templates = EmailTemplate.order(:title).all
     respond_with(@email_templates)
   end
 

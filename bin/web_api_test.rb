@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 
-require 'json'
-# require 'net/http'
-require 'net/https'
 
 attrs = { apply_form: {
                        motivation: 'I want to be a movie star',
@@ -25,7 +22,7 @@ attrs = { apply_form: {
                        contact_city: '',
                        contact_zipcode: '',
                        emergency_day: '+420 777 999 999',
-                       emergency_email: '+420 777 999 999',
+                       emergency_email: 'john@doe.com',
                        emergency_name: 'Yo Mama',
                        speak_well: 'Český a Maďarský',
                        speak_some: 'Dojč',
@@ -33,22 +30,15 @@ attrs = { apply_form: {
                        workcamp_ids: [47059 ] # 46858
           }}
 
-host = 'volant.inexsda.cz'
-port = 443
+# host = 'volant.inexsda.cz'
+# port = 443
 
-# host = 'localhost'
-# port = 9090
+require 'json'
+require 'http'
 
-puts 'Short'
-json = JSON.generate(attrs)
-
-Net::HTTP.start(host,port, use_ssl: true) do |http|
-  request = Net::HTTP::Post.new('/v1/apply_forms')
-  request.set_form_data(json)
-  request['Content-Type'] =  'application/json'
-  response = http.request request
-  puts response.code
-end
+r = HTTP.post("http://localhost:9090/v1/apply_forms", json: attrs) 
+puts r.code
+puts r.body
 
 
 
