@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 # ruby '2.1.5'
 
-gem 'rails', '4.1.2'
+gem 'rails', '4.2.10'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
 gem 'compass-rails'
@@ -15,7 +15,7 @@ gem 'pdfkit'
 gem 'validates_lengths_from_database'
 gem 'dotenv-rails'
 gem 'rollbar', '~> 2.7'
-gem 'annotate'
+
 
 # Language codes
 gem 'iso-639'
@@ -83,6 +83,8 @@ group :development do
   gem 'guard-livereload', '2.3.1', require: false
   gem 'mina', '~> 0.3.3', require: false
   gem 'mina-puma', require: false
+  gem 'annotate'
+  gem 'spring'
 end
 
 group :test do

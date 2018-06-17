@@ -10,7 +10,7 @@ class Country < ActiveRecord::Base
   has_many :workcamps, -> {
     where("type in (?)", ['Outgoing::Workcamp','Incoming::Workcamp'])
   }, validate: false
-           
+
   has_many :ltv_projects, class_name: 'Ltv::Workcamp', validate: false
 
   def name

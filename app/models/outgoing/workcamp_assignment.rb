@@ -14,7 +14,7 @@ module Outgoing
     after_save :update_apply_form_cache
     after_destroy :update_apply_form_cache
 
-    scope :not_rejected, :conditions => [ 'rejected IS NULL']
+    scope :not_rejected, -> { where('rejected IS NULL') } 
 
     [ "accept", "reject", "ask", "infosheet", "confirm" ].each do |action|
       define_method(action) do |time = Time.now|

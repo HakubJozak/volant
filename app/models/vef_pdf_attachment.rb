@@ -5,7 +5,7 @@ class VefPdfAttachment < Attachment
   def has_data?
     true
   end
-  
+
   def mime_type
     'application/pdf'
   end

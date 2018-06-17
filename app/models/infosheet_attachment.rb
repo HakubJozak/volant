@@ -12,7 +12,7 @@ class InfosheetAttachment < Attachment
 
   def filename
     raise NotImplemented
-  end  
+  end
 end
 
 # == Schema Information

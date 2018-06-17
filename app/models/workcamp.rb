@@ -62,13 +62,13 @@ class Workcamp < ActiveRecord::Base
   }
 
   scope :from_date, -> (date) {
-    where("begin >= ?", date)    
+    where("begin >= ?", date)
   }
-  
+
   scope :to_date, -> (date) {
     where("\"end\" <= ?", date)
   }
-  
+
   scope :year, lambda { |year|
     year = year.to_i
     where '(extract(YEAR from workcamps.begin) = ? OR extract(YEAR FROM workcamps.end) = ?)', year,year

@@ -11,7 +11,6 @@ class Message < ActiveRecord::Base
   validates_inclusion_of :action, in: %w(ask accept reject send infosheet submitted infosheet_all confirm)
 
   scope :not_sent, lambda { where(sent_at: nil) }
-#  validates_presence_of :from,:to,:subject,:body, if: :sending
 
   ALLOWED_FORM_ACTIONS = [ :accept, :reject, :ask, :infosheet, :confirm ]
   ALLOWED_WORKCAMP_ACTIONS = [ :infosheet_all ]
