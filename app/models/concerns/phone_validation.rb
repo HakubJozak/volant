@@ -5,14 +5,7 @@ module PhoneValidation
   extend ActiveSupport::Concern
 
   included do
-    validates :phone,:emergency_day, :emergency_night, format: { with: FORMAT, message: MESSAGE }, if: :strict_validation?
+    validates :phone,:emergency_day, :emergency_email, format: { with: FORMAT, message: MESSAGE }, if: :strict_validation?
   end
 
-  def strict_validation?
-    @strict_validation
-  end
-
-  def strict_validation_on!
-    @strict_validation = true
-  end
 end

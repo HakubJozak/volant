@@ -1,10 +1,10 @@
 Factory.define :person do |f|
-  f.firstname "Jakub"
-  f.lastname "Hozak"
-  f.email "jakub.hozak@gmail.com"
+  f.firstname "Jim"
+  f.lastname "Doe"
+  f.email "jim@example.com"
   f.gender "m"
-  f.phone "+420 777 855 359"
-  f.birthnumber "8203270438"
+  f.phone "+420 777 123 456"
+  f.birthnumber "1234560789"
   f.nationality "Czech"
   f.occupation "Programator"
   f.city "Praha"
@@ -13,7 +13,7 @@ Factory.define :person do |f|
   f.birthdate 20.years.ago
   f.past_experience 'Rich'
   f.emergency_day "+420 777 855 359"
-  f.emergency_night "+420 777 855 359"  
+  f.emergency_email "sos@example.com"
   f.emergency_name 'Tony'
 end
 

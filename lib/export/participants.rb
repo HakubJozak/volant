@@ -4,7 +4,7 @@ class Export::Participants
   include CsvExporter
 
   def columns
-    [:organization, :country, :nationality, :passport_number, :lastname, :firstname, :gender, :age, :birthdate, :email, :phone, :emergency_name, :emergency_day, :emergency_night, :special_needs, :note, :general_remarks, :tags ]
+    [:organization, :country, :nationality, :passport_number, :lastname, :firstname, :gender, :age, :birthdate, :email, :phone, :emergency_name, :emergency_day, :emergency_email, :special_needs, :note, :general_remarks, :tags ]
   end
 
   def each_record(&block)
@@ -26,7 +26,7 @@ class Export::Participants
     when :organization
       form.organization.name
     when :country
-      form.country.name      
+      form.country.name
     when :tags
       form.tag_list
     else

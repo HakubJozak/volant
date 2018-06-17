@@ -6,7 +6,7 @@ Volant.EmailContactController = Ember.ObjectController.extend({
   kinds: [
     {label: "Outgoing",  id: 'OUTGOING'},
     {label: "Incoming",  id: 'INCOMING'},
-    {label: "LTV",  id: 'LTV'},    
+    {label: "LTV",  id: 'LTV'},
     {label: "Don't use", id: ''}
    ]
 

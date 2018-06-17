@@ -6,7 +6,7 @@ module ApplyForm::WebApi
       :birthdate, :birthplace, :occupation, :email, :phone, :fax,
       :street, :city, :zipcode,
       :contact_street, :contact_city, :contact_zipcode,
-      :emergency_day, :emergency_night, :emergency_name,
+      :emergency_day, :emergency_email, :emergency_name,
       :special_needs, :speak_well, :speak_some, :past_experience
     ].each do |attr|
       self.volunteer.send("#{attr}=", self.send(attr))
@@ -16,7 +16,7 @@ module ApplyForm::WebApi
   end
 
 
-  
+
   module ClassMethods
     def create_by_birthnumber(attrs)
       form = nil
@@ -27,9 +27,8 @@ module ApplyForm::WebApi
 
       ApplyForm.transaction do
         form = self.new(attrs)
-        form.strict_validation_on!
 
-        if form.save
+        if form.with_strict_validation.save
           form.volunteer = Volunteer.find_by_birthnumber(form.birthnumber) || Volunteer.new
           form.update_volunteer_data!
           form.save!

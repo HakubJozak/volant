@@ -82,7 +82,7 @@ namespace :incoming do
   task apply_forms: :environment do
     STRINGS = [ :firstname, :lastname, :gender,
                 :email,:phone,:birthnumber,:occupation,:account,
-                :emergency_name,:emergency_day,:emergency_night,
+                :emergency_name,:emergency_day,:emergency_email,
                 :speak_well,:speak_some,:fax,:street,
                 :city,:zipcode,:contact_street,
                 :contact_city,:contact_zipcode,

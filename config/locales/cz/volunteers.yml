@@ -55,8 +55,8 @@ cz:
         account: Číslo účtu
         emergency: Pohotovostní kontakt
         emergency_name: Jméno
-        emergency_day: Telefon ve dne
-        emergency_night: Telefon v noci
+        emergency_day: Telefon 
+        emergency_email: Email
         languages: Jazyky
         speak_well: Mluvím dobře
         speak_some: Mluvím trochu

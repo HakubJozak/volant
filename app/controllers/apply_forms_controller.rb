@@ -172,7 +172,7 @@ class ApplyFormsController < ApplicationController
                                                      :speak_well, :speak_some,
                                                      :birthdate, :birthnumber, :birthplace,
                                                      :nationality, :occupation, :account, :emergency_name,
-                                                     :emergency_day, :emergency_night,
+                                                     :emergency_day, :emergency_email,
                                                      :special_needs, :past_experience, :comments,
                                                      :fax, :street, :city, :zipcode,
                                                      :passport_expires_at, :passport_issued_at, :passport_number,

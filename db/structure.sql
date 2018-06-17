@@ -241,7 +241,7 @@ CREATE TABLE apply_forms (
     account character varying(255),
     emergency_name character varying(255),
     emergency_day character varying(255),
-    emergency_night character varying(255),
+    emergency_email character varying(255),
     speak_well character varying(255),
     speak_some character varying(255),
     fax character varying(255),
@@ -1103,7 +1103,7 @@ CREATE TABLE people (
     account character varying(255),
     emergency_name character varying(255),
     emergency_day character varying(255),
-    emergency_night character varying(255),
+    emergency_email character varying(255),
     speak_well character varying(255),
     speak_some character varying(255),
     special_needs text,
@@ -2594,4 +2594,6 @@ INSERT INTO schema_migrations (version) VALUES ('20170302100934');
 INSERT INTO schema_migrations (version) VALUES ('20170315113846');
 
 INSERT INTO schema_migrations (version) VALUES ('20180202143309');
+
+INSERT INTO schema_migrations (version) VALUES ('20180617173056');
 

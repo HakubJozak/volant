@@ -23,7 +23,7 @@ class V1::ApplyFormsController < V1::BaseController
                                        :birthplace, :occupation, :email, :phone, :fax,
                                        :street, :city, :zipcode,
                                        :contact_street, :contact_city, :contact_zipcode,
-                                       :emergency_day, :emergency_night, :emergency_name,
+                                       :emergency_day, :emergency_email, :emergency_name,
                                        :speak_well, :speak_some, :past_experience, :special_needs,
                                        :motivation, :general_remarks, workcamp_ids: [])
 

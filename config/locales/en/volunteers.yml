@@ -53,8 +53,8 @@ en:
         account: Account Number
         emergency: Emergency contact
         emergency_name: Name
-        emergency_day: Emergency contact - day
-        emergency_night: Emergency contact - night
+        emergency_day: Emergency contact - phone
+        emergency_night: Emergency contact - email
         languages: Languages
         speak_well: Speak Well
         speak_some: Speak Some

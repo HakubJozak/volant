@@ -15,9 +15,10 @@ class Export::ApplyFormCsv
                    :passport_number, :passport_issued_at, :passport_expires_at,
                    :nationality, :occupation, :email, :phone,
                    :street, :city, :zipcode, :contact_street, :contact_city, :contact_zipcode,
-                   :emergency_name, :emergency_day, :emergency_night,
+                   :emergency_name, :emergency_day, :emergency_email,
                    :special_needs, :past_experience, :tags,
                    :general_remarks, :motivation, :fee ]
+
     payment_attrs = [ :amount, :received, :description, :returned_date, :returned_amount, :return_reason ]
     org_attrs = [ :country_name, :country_region, :country_zone, :name, :code, :networks, :phone, :mobile ]
     wc_attrs = [ :code, :name, :begin, :end, :intentions, :extra_fee ]

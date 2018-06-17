@@ -6,12 +6,13 @@ module PersonalMethods
 
     validates_inclusion_of :gender, :in => %w( m f )
     validates :birthnumber, format: { with: /\A[0-9]+\z/, allow_blank: true}
-    validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+    validates :email, :emergency_email,
+              format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 
     # strict validation only when using web interface
     validates_presence_of :occupation, :birthdate, :email,
                           :phone, :gender, :street, :city, :zipcode,
-                          :emergency_name, :emergency_day, :birthnumber,
+                          :emergency_name, :emergency_day, :emergency_email, :birthnumber,
                           if: :strict_validation?
 
     include PhoneValidation
@@ -38,6 +39,16 @@ module PersonalMethods
     age = today.year - birthdate.year
     age -= 1 if birthdate > today.years_ago(age)
     age
+  end
+
+  def with_strict_validation
+    tap { @strict_validation = true }
+  end
+
+  private
+
+  def strict_validation?
+    @strict_validation
   end
 
 end

@@ -25,7 +25,7 @@ attrs = { apply_form: {
                        contact_city: '',
                        contact_zipcode: '',
                        emergency_day: '+420 777 999 999',
-                       emergency_night: '+420 777 999 999',
+                       emergency_email: '+420 777 999 999',
                        emergency_name: 'Yo Mama',
                        speak_well: 'Český a Maďarský',
                        speak_some: 'Dojč',

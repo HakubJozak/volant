@@ -26,7 +26,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
       phone: '+420 777 123 456',
       fax: "I do not own such device",
       emergency_day: '+420 777 999 999',
-      emergency_night: '+420 777 999 999',
+      emergency_email: 'mayday@example.com',
       emergency_name: 'Yo Mama',
       speak_well: 'Český a Maďarský',
       speak_some: 'Dojč',
@@ -124,7 +124,7 @@ class V1::ApplyFormsControllerTest < ActionController::TestCase
   end
 
   test 'phone numbers validation' do
-    [ :phone, :emergency_day, :emergency_night ].each do |attr|
+    [ :phone, :emergency_day ].each do |attr|
       [ '+420/123456789','+420 123 456 789','0034-21-34-56','+420123456789', '123456789' ].each do |valid|
         post :create, apply_form: { attr => valid }
 #        refute json[:errors][:"volunteer.#{attr}"], "#{attr} should be valid (#{valid})"

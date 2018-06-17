@@ -16,7 +16,7 @@ Volant.PersonalAttributesMixin = Ember.Mixin.create
   occupation: DS.attr 'string'
   emergency_name: DS.attr 'string'
   emergency_day: DS.attr 'string'
-  emergency_night: DS.attr 'string'
+  emergency_email: DS.attr 'string'
   special_needs: DS.attr 'string'
   past_experience: DS.attr 'string'
   comments: DS.attr 'string'
