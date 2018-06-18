@@ -27,7 +27,7 @@ attrs = { apply_form: {
                        speak_well: 'Český a Maďarský',
                        speak_some: 'Dojč',
                        past_experience: 'I used to shoot things 100 years ago.',
-                       workcamp_ids: [47059 ] # 46858
+                       workcamp_ids: [ 59890 ] # 46858
           }}
 
 # host = 'volant.inexsda.cz'
@@ -36,7 +36,7 @@ attrs = { apply_form: {
 require 'json'
 require 'http'
 
-r = HTTP.post("http://localhost:9090/v1/apply_forms", json: attrs) 
+r = HTTP.post("http://localhost:9090/v1/apply_forms", json: attrs)
 puts r.code
  # puts r.body
 
