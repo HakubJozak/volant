@@ -84,13 +84,11 @@ group :development do
   gem 'mina', '~> 0.3.3', require: false
   gem 'mina-puma', require: false
   gem 'annotate'
-  gem 'spring'
 end
 
 group :test do
   gem "shoulda"
   gem "factory_girl_rails" #, "~> 1.0"
-  gem 'minitest-reporters'
   gem 'mocha'
 end
 

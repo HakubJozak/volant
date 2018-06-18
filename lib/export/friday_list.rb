@@ -1,12 +1,13 @@
 require 'csv'
 
 class Export::FridayList
-  include CsvExporter
-  
+
+  include ::Export::CsvExporter
+
   def columns
     [ :code, :name, :from, :to, :minimal_age,
       :maximal_age, :intentions, :tags, :capacity, :free_capacity,
-      :free_capacity_females, :free_capacity_males, :no_more ]    
+      :free_capacity_females, :free_capacity_males, :no_more ]
   end
 
   def each_record(&block)
@@ -14,9 +15,9 @@ class Export::FridayList
     raise 'Too big friday list' if @scope.count > 500
     @scope.includes(apply_forms: :country).all.each(&block)
   end
-  
+
   private
-  
+
   def csv_value(wc,attr)
     case attr
     when :from, :to
@@ -39,4 +40,3 @@ class Export::FridayList
   end
 
 end
-

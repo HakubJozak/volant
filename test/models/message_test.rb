@@ -1,4 +1,8 @@
 require 'test_helper'
+require 'mocha/minitest'
+
+
+
 
 class MessageTest < ActiveSupport::TestCase
   test 'deliver!' do
@@ -34,7 +38,7 @@ class MessageTest < ActiveSupport::TestCase
     Factory(:message, workcamp: wc, action: 'infosheet_all').deliver!
 
     assert_equal :infosheeted, form.state.name
-    assert_equal :accepted, dummy.state.name    
+    assert_equal :accepted, dummy.state.name
     assert_equal :paid, dummy2.state.name
   end
 

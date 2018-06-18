@@ -1,5 +1,6 @@
 module Import
   class VefImporter
+
     def initialize(file)
       @errors = []
       @doc = if file.is_a? String
@@ -82,7 +83,7 @@ module Import
         else
           nil
         end
-      end.compact.join(', ')
+      end.map(&:presence).compact.join(', ')
     end
 
     def set_address(record, prefix = '', xml_prefix = '')

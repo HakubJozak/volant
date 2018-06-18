@@ -1,7 +1,8 @@
 require 'csv'
 
 class Export::WorkcampCsv
-  include CsvExporter
+
+  include ::Export::CsvExporter
 
   def columns
     [:id, :code, :name, :country_code, :country_name, :org_code,

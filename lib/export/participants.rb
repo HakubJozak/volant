@@ -1,7 +1,8 @@
 require 'csv'
 
 class Export::Participants
-  include CsvExporter
+
+  include ::Export::CsvExporter
 
   def columns
     [:organization, :country, :nationality, :passport_number, :lastname, :firstname, :gender, :age, :birthdate, :email, :phone, :emergency_name, :emergency_day, :emergency_email, :special_needs, :note, :general_remarks, :tags ]

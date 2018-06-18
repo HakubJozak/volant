@@ -27,7 +27,7 @@ module Export::CsvExporter
   def format_date(val)
     if val
       I18n.l(val.to_date)
-    end    
+    end
   end
 
   def format_list(list,attr)

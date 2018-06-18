@@ -2,11 +2,11 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
-require "minitest/reporters"
-Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new # Minitest::Reporters::ProgressReporter.new
+#Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new # Minitest::Reporters::ProgressReporter.new
+
 
 class ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 end
 
 class ActiveSupport::TestCase
@@ -44,7 +44,7 @@ class ActiveSupport::TestCase
   def seed_countries
     create(:country, code: 'EE', triple_code: 'EST',name_en: 'Estonia')
     create(:country, code: 'US', triple_code: 'USA')
-    create(:country, code: 'CZ', triple_code: 'CZE', name_en: 'Czech Republic')  
+    create(:country, code: 'CZ', triple_code: 'CZE', name_en: 'Czech Republic')
   end
 
   def assert_not_empty(object)

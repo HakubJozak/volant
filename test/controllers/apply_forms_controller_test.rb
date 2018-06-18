@@ -65,7 +65,7 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_response :success
 
     get :index, state: 'alerts'
-    assert_response :success    
+    assert_response :success
 
     # regression test
     get :index, state: ''
@@ -123,7 +123,7 @@ class ApplyFormsControllerTest < ActionController::TestCase
     assert_equal 1,json[:apply_forms].size
     assert_equal paid.id, json[:apply_forms][0][:id].to_i
   end
-  
+
   test 'filter unpaid' do
     ApplyForm.destroy_all
     dummy = Factory(:paid_form)
