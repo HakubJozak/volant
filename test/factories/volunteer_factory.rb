@@ -17,7 +17,7 @@ Factory.define :person do |f|
   f.emergency_name 'Tony'
 end
 
-Factory.define :volunteer, :class => Volunteer, :parent => :person do |f|
+Factory.define :volunteer, :class => ::Volunteer, :parent => :person do |f|
 end
 
 Factory.define :male, :parent => :volunteer do |m|

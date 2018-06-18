@@ -6,7 +6,7 @@ module PersonalMethods
 
     validates_inclusion_of :gender, :in => %w( m f )
     validates :birthnumber, format: { with: /\A[0-9]+\z/, allow_blank: true}
-    validates :email, :emergency_email,
+    validates :email,
               format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 
     # strict validation only when using web interface

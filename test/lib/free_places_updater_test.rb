@@ -6,11 +6,11 @@ class FreePlacesUpdaterTest < ActiveSupport::TestCase
     @wc = Factory.create(:outgoing_workcamp, places: 2)
     @wc.workcamp_assignments.destroy_all
 
-    @male = Factory.create(:male)
-    @female = Factory.create(:female)
+    @male = create(:male)
+    @female = create(:female)
 
-    @ma = Factory.create(:apply_form, volunteer: @male)
-    @fa = Factory.create(:apply_form, volunteer: @female)
+    @ma = create(:apply_form, volunteer: @male)
+    @fa = create(:apply_form, volunteer: @female)
   end
 
   test "free places in empty workcamp with" do

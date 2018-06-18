@@ -9,9 +9,10 @@ Factory.define :abstract_form, class: ::ApplyForm do |f|
   f.email 'john.doe@example.com'
   f.general_remarks "nothing to say"
   f.motivation "i WANT to go there"
+  f.emergency_email "may.day@example.com"
 end
 
-Factory.define :apply_form, parent: :abstract_form,class: Outgoing::ApplyForm do |f|
+Factory.define :apply_form, parent: :abstract_form, class: Outgoing::ApplyForm do |f|
   f.fee 2200
   f.association :volunteer
   f.association :payment

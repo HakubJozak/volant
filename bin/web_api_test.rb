@@ -38,7 +38,7 @@ require 'http'
 
 r = HTTP.post("http://localhost:9090/v1/apply_forms", json: attrs) 
 puts r.code
-puts r.body
+ # puts r.body
 
 
 

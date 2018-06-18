@@ -1,20 +1,30 @@
 class ApplyFormMailer < ActionMailer::Base
 
-  def submitted(apply_form)
-    data = template_for(apply_form).call(apply_form)
+  def emergency_confirmation(application)
+    send_custom_template application, 'emergency_confirmation'
+  end
+
+  def submitted(application)
+    send_custom_template application, 'submitted'
+  end
+
+  private
+
+  def send_custom_template(application, action)
+    data = template_for(application, action).call(application)
 
     mail(data.serializable_hash) do |format|
       format.html { render text: data.body }
     end
   end
 
-  private
-
-  def template_for(form)
-    code = case form
-           when Ltv::ApplyForm then 'ltv/submitted'
-           else 'submitted'
+  def template_for(application, name)
+    code = if application.is_a? Ltv::ApplyForm
+             "ltv/#{name}"
+           else
+             name
            end
+    
     EmailTemplate.find_by_action!(code)
   end
 

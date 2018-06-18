@@ -1,5 +1,6 @@
 class Ltv::ApplyForm < ::ApplyForm
   validates_presence_of :fee
+  validates :emergency_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 end
 
 # == Schema Information

@@ -2,6 +2,7 @@ module Outgoing
   class ApplyForm < ::ApplyForm
     # validates :fee, presence: true
     validates :motivation, presence: true, if: :strict_validation?
+    validates :emergency_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   end
 end
 

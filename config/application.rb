@@ -29,6 +29,7 @@ module Volant
 
     config.i18n.default_locale = :en
     config.active_record.schema_format = :sql
+    config.active_record.raise_in_transactional_callbacks = true                                                        
 
     # Deprecated options?
     # config.action_mailer.default_charset = 'utf-8'
