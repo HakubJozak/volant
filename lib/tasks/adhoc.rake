@@ -1,10 +1,10 @@
 namespace :adhoc do
   task emergency_emails: :environment do
-    # EmailTemplate.all.each { |t|
-    #   unless t.title =~ (/^INCOMING|LTV/)
-    #     t.update_column(:title, "OUTGOING: #{t.title}")
-    #   end
-    # }
+     EmailTemplate.all.each { |t|
+       unless t.title =~ (/^INCOMING|LTV/)
+         t.update_column(:title, "OUTGOING: #{t.title}")
+       end
+     }
 
     common = {
       subject: "Are You OK with that?",
