@@ -5,8 +5,7 @@ class Export::VefXml < Export::VefBase
 
   def emergency_contact
     [ @form.emergency_name,
-      @form.emergency_day,
-      @form.emergency_email ].compact.join(',')
+      @form.emergency_day ].compact.join(',')
   end
 
   def address1

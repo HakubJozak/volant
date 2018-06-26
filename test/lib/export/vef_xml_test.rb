@@ -9,8 +9,11 @@ class Export::VefXmlTest < ActiveSupport::TestCase
                   volunteer: v,
                   speak_some: 'spanish, french',
                   speak_well: 'english',
-                  occupation: 'student'
-    
+                  occupation: 'student',
+                  emergency_email: 'john@doe.com',
+                  emergency_name: 'John Doe',
+                  emergency_day: '+420 124 445 666'
+
     2.times { |i| form.add_workcamp(create(:outgoing_workcamp,code: "CODE#{i}")) }
 
     @result = Export::VefXml.new(form).to_xml
@@ -23,6 +26,8 @@ class Export::VefXmlTest < ActiveSupport::TestCase
     assert_equal 'spanish, french', xml.css('vef language2').text
     assert_equal '3', xml.css('vef langlevel1').text
     assert_equal '2', xml.css('vef langlevel2').text
+    assert_equal "John Doe,+420 124 445 666",
+                 xml.css('vef emergency_contact').text
   end
 
   test '#to_xml (occupation)' do
@@ -36,7 +41,7 @@ class Export::VefXmlTest < ActiveSupport::TestCase
     assert_css 'vef occupation', 'STU'
 
     export_apply_form occupation: ''
-    assert_css 'vef occupation', 'UNE'    
+    assert_css 'vef occupation', 'UNE'
   end
 
   test '#to_xml (incoming)' do
@@ -49,20 +54,20 @@ class Export::VefXmlTest < ActiveSupport::TestCase
     form = build :apply_form, speak_some: '', speak_well: ''
     @result = Export::VefXml.new(form).to_xml
     assert_empty xml.css('vef language1')
-    assert_empty xml.css('vef language2')    
+    assert_empty xml.css('vef language2')
   end
 
   private
 
   def export_apply_form(opts)
     form = build :apply_form, opts
-    @result = Export::VefXml.new(form).to_xml    
+    @result = Export::VefXml.new(form).to_xml
   end
 
   def assert_css(css,value)
     assert_equal value, xml.css(css).text
   end
-  
+
   def xml
     assert_not_nil @result
     Nokogiri.parse(@result)
