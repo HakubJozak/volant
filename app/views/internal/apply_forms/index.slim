@@ -1,0 +1,88 @@
+form.form.form-horizontal.search-form submit="search" role="form"
+  .form-group
+    .col-md-1
+      label.control-label Search
+    .col-md-9
+      partial 'query'
+    .col-md-2.text-right
+
+      = link_to new_internal_apply_form_path, class: 'btn btn-success'
+        = fa('plus') 
+        ' Create        
+
+
+  .form-group
+    .col-md-1
+      label.control-label State
+    .col-md-2
+      view Volant.ApplyFormStateSelect value=state
+
+    .col-md-1
+      label.control-label Tags
+    .col-md-2
+      / = partial 'inputs/tag_picker'
+
+    / = partial 'order_by'
+
+  .form-group
+    .col-md-12
+      / view 'labels-list' contentBinding='tags'
+
+
+
+table.table.table-striped.table-hover#apply-forms-list
+  thead
+    th
+    th Submitted
+    th Payment
+    th Name
+    th colspan="3"
+      ' Workcamp and Actions
+    th
+  tbody
+    - @apply_forms.each do |apply_form|
+      tr.apply-form
+        td
+          / partial 'apply_form_checkbox'
+        td
+          / partial 'star'
+          .label.label-success title='Submitted today or yesterday' 
+            ' New
+        td
+          = l(apply_form.created_at)
+        td
+          payment.amount
+        td
+          = link_to internal_apply_form_path(apply_form) do
+            = gender_sign apply_form
+            '
+            b = apply_form.name
+            = "(#{ apply_form.age })"
+          '
+          - if apply_form.tags.present?
+            br
+            = tag_list(apply_form)
+
+        td
+          / apply-form-state-icon state
+          / sup {{apply-form-alerts this}}
+        td
+          partial 'action_buttons'
+        td
+          - if wc = apply_form.current_workcamp.presence
+              = small_flag(wc.country)
+               / link_to 'workcamp' this
+                b = code
+                ' &ndash; {{name}},
+                br
+                ' {{format-date from}} &ndash; {{format-date to}},
+                ' {{age-range this}},
+                partial 'workcamp/extra_fee'
+              = tag_list(wc)
+          else
+            span.text-muted
+              | No workcamps assigned.
+
+        td
+          button.btn.btn-default.remove-button
+            = fa 'trash-o'

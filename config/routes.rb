@@ -10,6 +10,20 @@ Rails.application.routes.draw do
     resources :apply_forms, only: [ :create ]
   end
 
+  namespace :internal do
+    resources :apply_forms do
+      member do
+        post :cancel
+        post :ask
+        post :accept
+        post :confirm
+        post :reject
+        post :infosheet
+        get :vef
+      end
+    end
+  end
+
   resources :workcamp_assignments, only: [ :index, :create, :update, :destroy, :show ]
   resources :email_contacts, only: [ :create, :update, :destroy ]
   resources :countries, except: [ :edit, :new ]
@@ -43,7 +57,7 @@ Rails.application.routes.draw do
   end
 
   resources :organizations, except: [ :edit, :new ] do
-    get 'pef', on: :member      
+    get 'pef', on: :member
   end
 
   resources :stars, only: [ :create ]
