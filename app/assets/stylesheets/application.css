@@ -16,4 +16,6 @@
  *= require_self
  *= require date-polyfill/date-polyfill
  *= require jquery.ui.all
+ *= require firefox
+
  */
