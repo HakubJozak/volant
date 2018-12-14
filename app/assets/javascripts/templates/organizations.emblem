@@ -30,4 +30,3 @@ table.table.table-striped.table-hover
           join-emails email_contacts 'address'
         td
           join networks 'name'
-

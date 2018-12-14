@@ -2,4 +2,14 @@ p.navbar-left.navbar-text
   a.navbar-link{ action 'downloadCsv' } href='#'
     ' {{fa 'download'}} CSV
 
+form.navbar-form.navbar-left
+  .btn-group.dropup
+    button.btn.btn-default.btn-sm.navbar-btn.dropdown-toggle type='button' data-toggle='dropdown'
+      ' Actions
+      span.caret
+    ul.dropdown-menu
+      li
+        a href='#' click='emailSelected'
+          ' {{fa 'envelope'}} Email
+
 = render 'pagination'

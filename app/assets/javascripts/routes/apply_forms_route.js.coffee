@@ -33,6 +33,10 @@ Volant.ApplyFormsRoute = Volant.BaseRoute.extend Volant.ApplyFormActions,
     pay: (form) ->
       @transitionTo('apply_form',form,{ queryParams: { anchor: 'payment-fields'}})
 
+    emailSelected: (form) ->    
+      @console.info @model.map  
+      @render 'apply_form/action_picker',outlet: 'modal', controller: 'apply_form_action_picker'
+      
     search: ->
       @refresh()
       false

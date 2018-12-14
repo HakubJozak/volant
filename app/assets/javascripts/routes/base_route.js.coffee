@@ -44,6 +44,12 @@ Volant.BaseRoute = Ember.Route.extend Volant.AjaxToStoreMixin, Volant.Flash, Vol
         console.log 'Starred'
       false
 
+    toggle_starred: (model) ->
+      data = { star: { id: model.get('id'), model: model.constructor.typeKey.decamelize(), value: !model.get('starred') }}
+      @ajax_to_store('/stars',data).then (payload) =>
+        console.log 'Starred'
+      false      
+
     createAssignment: (wc,form) ->
       order = form.get('workcamp_assignments.lastObject.order') + 1 || 1
       # wa = @store.createRecord('workcamp_assignment',)

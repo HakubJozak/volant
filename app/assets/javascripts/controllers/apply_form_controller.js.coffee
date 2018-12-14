@@ -8,6 +8,15 @@ Volant.ApplyFormController = Volant.ObjectController.extend
     Ember.Object.create(label: "Bank", id: 'BANK')
    ]
 
+  selected: true
+
+  actions:
+    select: ( ->
+      @set('selected', !@get('selected'))
+      console.info @get('id'), @get('selected')
+      false
+    )
+
   starredWorkcamps: (->
     @store.find('workcamp',starred: true)
   ).property().volatile()

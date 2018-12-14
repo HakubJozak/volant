@@ -1,0 +1,26 @@
+#modal
+  .panel.panel-default
+    .panel-heading
+      h1.panel-title
+        ' Email to Selected Applicants
+
+      button.close click='closeModal'
+        fa 'times'
+
+    .panel-body
+      p Do you want to send an email too?
+      .row
+        .col-md-4
+          .btn.huge.green click='openMessage'
+            fa 'envelope'
+            p.text-center Yes, let's send an email
+
+        .col-md-4
+          .btn.huge.green click='changeState'
+            fa 'bolt'
+            p.text-center No, just mark it as done
+
+        .col-md-4
+          .btn.huge.red click='closeModal'
+            fa 'times'
+            p.text-center Cancel
