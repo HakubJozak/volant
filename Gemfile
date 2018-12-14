@@ -61,7 +61,7 @@ gem 'chart-js-rails'
 
 
 # All Things Bootstrap
-gem 'therubyracer'
+gem 'therubyracer', '0.12.3'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
 
@@ -80,7 +80,7 @@ gem 'font-awesome-rails'
 group :development do
   gem 'letter_opener'
   gem 'faker'
-  gem 'guard-livereload', '2.3.1', require: false
+#  gem 'guard-livereload', '2.3.1', require: false
   gem 'mina', '~> 0.3.3', require: false
   gem 'mina-puma', require: false
   gem 'annotate'
