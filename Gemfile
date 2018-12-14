@@ -20,8 +20,6 @@ gem 'rollbar', '~> 2.7'
 # Language codes
 gem 'iso-639'
 
-
-
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.0'
@@ -68,7 +66,7 @@ gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branc
 # Bonus
 gem 'devise-bootstrap-views'
 gem 'bootstrap-generators', '~> 3.2.0'
-gem 'barbecue', github: 'HakubJozak/barbecue', tag: 'v0.1', branch: '0.1'
+gem 'barbecue', path: 'vendor/gems/barbecue-a63b281fb82a'
 gem 'rack-jsonp-middleware'
 
 gem 'font-awesome-rails'
