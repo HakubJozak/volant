@@ -7,8 +7,8 @@ form.form.form-horizontal.search-form submit="search" role="form"
     .col-md-2.text-right
 
       = link_to new_internal_apply_form_path, class: 'btn btn-success'
-        = fa('plus') 
-        ' Create        
+        = fa('plus')
+        ' Create
 
 
   .form-group
@@ -46,7 +46,7 @@ table.table.table-striped.table-hover#apply-forms-list
           / partial 'apply_form_checkbox'
         td
           / partial 'star'
-          .label.label-success title='Submitted today or yesterday' 
+          .label.label-success title='Submitted today or yesterday'
             ' New
         td
           = l(apply_form.created_at)

@@ -78,6 +78,7 @@ gem 'font-awesome-rails'
 
 group :development do
   gem 'letter_opener'
+  gem 'ruby-progressbar'
   gem 'faker'
 #  gem 'guard-livereload', '2.3.1', require: false
   gem 'mina', '~> 0.3.3', require: false
