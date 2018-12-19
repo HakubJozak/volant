@@ -1,0 +1,9 @@
+- placeholder = '' unless defined? placeholder
+
+.input-group
+  = text_field_tag name: 'query', value: @query, class: "form-control", placeholder: placeholder
+  span.input-group-btn
+    button.btn.btn-default.reset click='reset' type='button'
+      = fa 'times'
+    button.btn.btn-primary type="submit"
+      ' Search

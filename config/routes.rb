@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   namespace :internal do
+    resources :workcamp_intentions
     resources :apply_forms do
       member do
         post :cancel

@@ -1,0 +1,9 @@
+- if flash[:notice]
+  .alert.alert-info role="alert" 
+    = flash[:notice]
+    
+          
+- if flash[:alert]
+  .alert.alert-danger role="alert" 
+    = flash[:alert] %
+

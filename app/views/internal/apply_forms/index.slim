@@ -3,7 +3,7 @@ form.form.form-horizontal.search-form submit="search" role="form"
     .col-md-1
       label.control-label Search
     .col-md-9
-      partial 'query'
+      = render 'query'
     .col-md-2.text-right
 
       = link_to new_internal_apply_form_path, class: 'btn btn-success'
