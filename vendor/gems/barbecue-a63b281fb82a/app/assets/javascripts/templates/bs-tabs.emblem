@@ -1,0 +1,13 @@
+ul.nav.nav-tabs
+  each view.tabList
+    if selected
+      li.active
+        a
+          = title
+    else
+      li
+        a{action 'selectTab' id target='view'} href='#'
+          = title
+
+.tab-panel
+  partial view.currentTabView

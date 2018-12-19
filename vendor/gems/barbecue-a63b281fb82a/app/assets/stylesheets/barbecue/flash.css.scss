@@ -1,0 +1,47 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+$brown: #AD7624;
+$green: #87B64B;
+$yellow: #F3D70C;
+$red: #E76363;
+$grey: grey;
+
+
+.flash {
+  display: none;
+
+  // TODO: use Bootstrap constants
+  position: fixed;
+  left: 0;
+  top: 41px;
+  color: black;
+
+  &.info { background-color: transparentize($brown,0.5);  }
+  &.success {  background-color: transparentize($green,0.7); }
+  &.error {  background-color: transparentize($red,0.6); }
+  &.warning {  background-color: transparentize($yellow,0.5); }
+
+  width: 100%;
+  text-align: center;
+  padding:0.3em;
+  vertical-align: middle;
+
+  button.close {
+    position: relative;
+    top: -0.8em;
+  }
+}

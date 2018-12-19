@@ -1,0 +1,24 @@
+@mixin has-remove-button {
+    &:hover {
+      .remove {
+        display: block;
+
+        background-color: transparent;
+        color: grey;
+        border: none;
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        font-size: 155%;
+
+        &:hover {
+          i.fa-times { color: #E76363; }
+          i.fa-check { color: #87B64B; }
+        }
+      }
+    }
+
+    button.remove {
+      display: none;
+    }
+}

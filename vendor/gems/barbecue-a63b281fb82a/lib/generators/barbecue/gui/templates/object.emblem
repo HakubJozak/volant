@@ -1,0 +1,17 @@
+h3
+  | <%= class_name %> &nbsp;
+  = name
+
+form submit="save" class="form"
+  <%- attributes.each do |attr| -%>
+  view 'form-group' attr="<%= attr.name %>"
+    label.control-label <%= attr.name.humanize %>
+    = input value=<%= attr.name %> class="form-control"
+  <%- end -%>
+
+  .button-group
+    button.btn.btn-primary type="submit" Save
+    button.btn.btn-default{action "rollback"} type="button" Cancel
+
+    unless isNew
+      button.btn.btn-danger.pull-right{action "remove"} type="button" Delete

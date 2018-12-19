@@ -1,0 +1,5 @@
+a.close{ action 'close' target=view } href='#'
+  fa 'times'
+
+span
+  = flash.message
