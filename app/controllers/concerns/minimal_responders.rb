@@ -54,7 +54,7 @@ module MinimalResponders
 
     private
       def return_url_param
-        params.scalar(:ru)
+        params.dig(:ru)
       end
 
       def return_url(record, location)

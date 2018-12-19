@@ -1,19 +1,20 @@
 h3 
   ' Workcamp Intentions
-  .pull-right
-    = link_to new_internal_workcamp_intention_path, class: 'btn btn-success'
-      = fa 'plus'
-      ' New
 
 table.table.table-striped.table-hover
   thead
     th Code
     th Description EN
     th Description CZ
+    th
+      = link_to new_internal_workcamp_intention_path, class: 'btn btn-success'
+        = fa 'plus'
+        ' New
   tbody
-    - @workcamp_intentions.each do |intention|
+    - @intentions.each do |intention|
       tr
-        td = link_to intention.code, polymorphic_path([ :internal, intention ])
+        td = link_to intention.code, polymorphic_path([ :edit, :internal, intention ])
         td = intention.description_en
         td = intention.description_cz
+        td = delete_button(intention)  
 

@@ -5,45 +5,43 @@ class Internal::WorkcampIntentionsController < Internal::BaseController
   before_action :set_workcamp_intention,
                 only: [:show, :edit, :update, :destroy]
 
-  # GET /workcamp_intentions
   def index
-    @workcamp_intentions = WorkcampIntention.order(:code)
+    @intentions = WorkcampIntention.order(:code)
   end
 
-  # GET /workcamp_intentions/1
+  def new
+    @intention = WorkcampIntention.new
+  end
+
   def show
-    render json: @workcamp_intention, serializer: WorkcampIntentionSerializer
   end
 
-  # POST /workcamp_intentions
   def create
-    @workcamp_intention = WorkcampIntention.new(workcamp_intention_params)
-    if @workcamp_intention.save
-      render json: @workcamp_intention, serializer: WorkcampIntentionSerializer
-    else
-      render_error(@workcamp_intention)
-    end
+    @intention = WorkcampIntention.new(workcamp_intention_params)
+    @intention.save
+    respond_with @intention, location: index_path
   end
 
-  # PATCH/PUT /workcamp_intentions/1
   def update
-    @workcamp_intention.update(workcamp_intention_params)
-    respond_with @workcamp_intention
+    @intention.update(workcamp_intention_params)
+    respond_with @intention, location: index_path
   end
 
-  # DELETE /workcamp_intentions/1
   def destroy
-    @workcamp_intention.destroy
-    head :no_content
+    respond_with @intention.tap(&:destroy), location: index_path
   end
 
   private
 
-  def set_workcamp_intention
-    @workcamp_intention = WorkcampIntention.find(params[:id])
-  end
+    def set_workcamp_intention
+      @intention = WorkcampIntention.find(params[:id])
+    end
 
-  def workcamp_intention_params
-    params.require(:workcamp_intention).permit(:code, :description_en, :description_cz)
-  end
+    def index_path
+      internal_workcamp_intentions_path
+    end
+
+    def workcamp_intention_params
+      params.require(:workcamp_intention).permit(:code, :description_en, :description_cz)
+    end
 end

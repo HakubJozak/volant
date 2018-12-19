@@ -6,8 +6,7 @@ html
     = stylesheet_link_tag    'application', media: 'all'
     = csrf_meta_tags
   body
-    .container
-      #content.container-fluid
-        = render 'menu'
-        = yield
-        = render 'footer'
+    #content.container-fluid
+      = render 'menu'
+      = yield
+      = render 'footer'
