@@ -15,7 +15,7 @@
       tbody
         - @tags.each do |tag|
           tr
-            td = link_to tag.name, link_to(tag), remote: true  
+            td = link_to tag.name, polymorphic_path([ :edit, :internal, tag]), remote: true
             td = tag_span(tag) 
             td = delete_button(tag)  
 

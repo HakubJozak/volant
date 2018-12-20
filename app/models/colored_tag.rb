@@ -10,6 +10,11 @@ class ColoredTag < ActsAsTaggableOn::Tag
     name
   end
 
+  # fix problems (not only) with the polymorphic_path
+  def self.model_name
+    ActiveModel::Name.new(self, nil, "Tag")
+  end
+  
   def self.find_by_model(model)
     Tag.find_by_sql([%{
          SELECT DISTINCT tags.*

@@ -9,6 +9,14 @@ class Internal::TagsController < Internal::BaseController
     @tags = ColoredTag.order(:name).all
   end
 
+  def new
+    @tag = ColoredTag.new
+  end
+
+  def edit
+    render :edit, format: :js, layout: false
+  end
+
   # POST /tags
   def create
     @tag = ColoredTag.new(tag_params)
