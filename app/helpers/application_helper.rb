@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def fa(name)
-    "<i class='fa fa-#{name}'>".html_safe
+    "<i class='fa fa-#{name}'></i>".html_safe
   end
 
   def gender_sign(record)
@@ -14,12 +14,19 @@ module ApplicationHelper
 
   def tag_list(record)
     record.tags.map do |tag|
-      style = "color:#{tag.text_color}; background-color:#{tag.color};"
-
-      content_tag :span, class: 'label label-default', style: style do
-	h(tag.name)
-      end
+      tag_span(tag)  
     end.join(' ').html_safe
+  end
+
+  def tag_span(tag)
+    style = "color:#{tag.text_color}; background-color:#{tag.color};"
+    content_tag :span, class: 'label label-default', style: style do 
+      if tag.symbol
+        fa(tag.symbol) + " " + h(tag.name)
+      else
+        h(tag.name)
+      end
+    end
   end
 
   def small_flag(country)
