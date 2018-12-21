@@ -1,6 +1,6 @@
 = simple_form_for [ :internal, @tag ] do |f|
   = f.input :name
-  = f.input :symbol, collection: fa_icon_names()
+  = f.input :symbol, collection: fa_icon_names(), prompt: "No symbol"
   = f.input :color, input_html: { type: 'color' }
   = f.input :text_color,  input_html: { type: 'color' }
   = f.submit class: 'btn btn-primary'
