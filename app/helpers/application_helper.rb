@@ -1,9 +1,4 @@
 module ApplicationHelper
-
-  def fa(name)
-    "<i class='fa fa-#{name}'></i>".html_safe
-  end
-
   def gender_sign(record)
     if record.gender == 'f'
       fa('venus')
