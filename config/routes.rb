@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :tags
     resources :countries
     resources :accounts, defaults: { id: Account.current.id }
+    resources :users
     resources :apply_forms do
       member do
         post :cancel

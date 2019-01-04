@@ -1,0 +1,20 @@
+.col-md-6
+  h3
+    ' Users
+
+  table.table.table-striped.table-hover
+    thead
+      th Name
+      th Email
+      th
+        = link_to new_internal_user_path, class: 'btn btn-success'
+          = fa 'plus'
+          ' New
+    tbody
+      - @users.each do |user|
+        tr
+          td = link_to user.name, polymorphic_path([ :edit, :internal, user]), remote: true
+          td = user.email
+          td = delete_button(user)  
+
+.col-md-6.right-side-edit#user-detail    
