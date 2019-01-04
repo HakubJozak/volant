@@ -4,5 +4,5 @@
   = f.input :code
   = f.input :triple_code
   = f.input :region, collection: 1..2
-  = f.association :country_zone, collection: CountryZone.order(:name_en), label_method: :name_en, value_method: :id
+  = f.association :country_zone, collection: CountryZone.order(:name_en), label_method: :name_en
   = f.submit class: 'btn btn-primary'
