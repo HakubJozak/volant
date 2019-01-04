@@ -28,7 +28,10 @@ class Internal::CountriesController < Internal::BaseController
   # PATCH/PUT /countries/1
   def update
     @country.update(country_params)
-    respond_with @country, location: index_path
+    
+    respond_to do |f|
+      f.js { render layout: false }
+    end
   end
 
   # DELETE /countries/1

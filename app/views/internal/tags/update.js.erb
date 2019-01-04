@@ -1,0 +1,7 @@
+<% if @tag.valid? %>
+  window.location = '<%= internal_tags_path %>'
+<% else %>
+  $('#tag-detail').html('<%= j render "edit" %>');
+<% end %>
+
+

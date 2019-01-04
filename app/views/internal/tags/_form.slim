@@ -1,4 +1,4 @@
-= simple_form_for [ :internal, @tag ] do |f|
+= simple_form_for [ :internal, @tag ], remote: true do |f|
   = f.input :name
   = f.input :symbol, collection: fa_icon_names(), prompt: "No symbol"
   = f.input :color, input_html: { type: 'color' }

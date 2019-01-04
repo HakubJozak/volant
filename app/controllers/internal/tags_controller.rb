@@ -27,7 +27,9 @@ class Internal::TagsController < Internal::BaseController
   # PATCH/PUT /tags/1
   def update
     @tag.update(tag_params)
-    respond_with @tag, location: index_path
+    respond_to do |f|
+      f.js { render layout: false }
+    end
   end
 
   # DELETE /tags/1

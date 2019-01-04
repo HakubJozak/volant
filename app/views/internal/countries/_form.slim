@@ -1,4 +1,4 @@
-= simple_form_for [ :internal, @country ] do |f|
+= simple_form_for [ :internal, @country ], remote: true do |f|
   = f.input :name_en
   = f.input :name_cz
   = f.input :code

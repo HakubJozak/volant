@@ -1,0 +1,7 @@
+<% if @country.valid? %>
+  window.location = '<%= internal_countries_path %>'
+<% else %>
+  $('#country-detail').html('<%= j render "edit" %>');
+<% end %>
+
+
