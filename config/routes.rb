@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :workcamp_intentions
     resources :tags
     resources :countries
+    resources :accounts, defaults: { id: Account.current.id }
     resources :apply_forms do
       member do
         post :cancel
