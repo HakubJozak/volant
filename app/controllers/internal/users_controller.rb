@@ -24,7 +24,10 @@ class Internal::UsersController < Internal::BaseController
 
   def update
     @user.update(user_params)
-    respond_with @user, location: index_path
+    
+    respond_to do |f|
+      f.js { render layout: false }
+    end
   end
 
   def destroy

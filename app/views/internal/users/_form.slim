@@ -1,4 +1,4 @@
-= simple_form_for [ :internal, @user ] do |f|
+= simple_form_for [ :internal, @user ], remote: true do |f|
   = f.input :first_name
   = f.input :last_name
   = f.input :email
