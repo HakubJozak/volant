@@ -11,6 +11,10 @@ class Account < ActiveRecord::Base
   def self.current
     Account.first
   end
+
+  def to_label
+    "Account Settings"
+  end
 end
 
 # == Schema Information
