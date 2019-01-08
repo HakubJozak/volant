@@ -1,0 +1,5 @@
+= simple_form_for [ :internal, @intention ], remote: true do |f|
+  = f.input :code
+  = f.input :description_en
+  = f.input :description_cz
+  = f.submit class: 'btn btn-primary'

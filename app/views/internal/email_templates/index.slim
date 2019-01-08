@@ -1,0 +1,20 @@
+.col-md-12
+  h3 
+    ' Email Templates
+
+  table.table.table-striped.table-hover
+    thead
+      th Title
+      th Action
+      th Subject
+      th
+        = link_to new_internal_email_template_path, class: 'btn btn-success'
+          = fa 'plus'
+          ' New
+    tbody
+      - @email_templates.each do |email_template|
+        tr
+          td = link_to email_template.title, polymorphic_path([ :edit, :internal, email_template ])
+          td = email_template.action
+          td = email_template.subject
+          td = delete_button(email_template)  
