@@ -3,6 +3,12 @@
 
 ------------------------------
 
+# No Ebmer
+- [ ] add date time picker
+- [ ] allow user details to be saved even without provided password (password won't change then)
+
+------------------------------
+
 # Bugy
  - [x] email 'ask' nema seznam workcampu
  - [x] ve Volantu se neda vytvorit nova prihlaska
