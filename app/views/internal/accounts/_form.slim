@@ -1,5 +1,5 @@
 = simple_form_for [ :internal, @account ] do |f|
-  = f.input :organization_id, collection: Organization.order(:name), label_method: :name, value_method: :id, prompt: 'Choose an organization'
+  = f.association :organization, prompt: 'Choose an organization'
   p.help-block
       ' Which organization is yours?
       ' Incoming workcamps will have is as well as

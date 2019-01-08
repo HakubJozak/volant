@@ -11,6 +11,8 @@ class Organization < ActiveRecord::Base
 
   accepts_nested_attributes_for :networks
 
+  default_scope { order(name: :asc) }
+
   # TODO: same as Workcamp.query - merge?
   scope :query, lambda { |query|
     fuzzy_like(query,'organizations.name','organizations.code','countries.name_en')
@@ -32,6 +34,10 @@ class Organization < ActiveRecord::Base
   ## TODO - cache
   def self.default_organization
     Organization.find_by_code(Rails.application.config.default_organization_code)
+  end
+
+  def to_label()
+    "#{name} (#{country_name})"
   end
 
 end
