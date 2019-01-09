@@ -1,5 +1,5 @@
 .col-md-8
-	= simple_form_for [ :internal, @email_template ], remote: true do |f|
+	= simple_form_for [ :internal, @email_template ] do |f|
 	  = f.input :title
 	  = f.input :from
 	  = f.input :to
