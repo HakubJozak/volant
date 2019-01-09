@@ -12,6 +12,10 @@ class Internal::EmailTemplatesController < Internal::BaseController
   def show
   end
 
+  def new
+    @email_template = EmailTemplate.new
+  end
+
   # POST /email_templates
   def create
     @email_template = EmailTemplate.new(email_template_params)

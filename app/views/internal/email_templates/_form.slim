@@ -1,5 +1,12 @@
-= simple_form_for [ :internal, @intention ], remote: true do |f|
-  = f.input :code
-  = f.input :description_en
-  = f.input :description_cz
-  = f.submit class: 'btn btn-primary'
+.col-md-8
+	= simple_form_for [ :internal, @email_template ], remote: true do |f|
+	  = f.input :title
+	  = f.input :from
+	  = f.input :to
+	  = f.input :cc
+	  = f.input :bcc
+	  = f.input :subject
+	  = f.input :body, :input_html => {:rows => 30}
+	  = f.submit class: 'btn btn-primary'
+.col-md-4
+	= render 'help'
