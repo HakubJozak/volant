@@ -30,7 +30,7 @@ class ImportController < ApplicationController
   def clazz
     workcamp_type(params[:type])
   end
-  
+
   def messages
     @messages ||= []
   end

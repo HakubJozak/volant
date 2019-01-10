@@ -13,21 +13,33 @@ Rails.application.routes.draw do
   namespace :internal do
     resources :workcamp_intentions
     resources :tags
+    resources :payments    
     resources :countries
     resources :accounts, defaults: { id: Account.current.id }
     resources :users
     resources :email_templates
-    resources :apply_forms do
-      member do
-        post :cancel
-        post :ask
-        post :accept
-        post :confirm
-        post :reject
-        post :infosheet
-        get :vef
+    resources :volunteers
+    resources :organizations
+    resources :networks    
+
+    ProjectScope::MODES.each do |mode|
+      namespace mode do
+	resources :workcamps, controller: 'workcamps', type: mode
+	resources :apply_forms, controller: 'apply_forms', type: mode
       end
     end
+
+    # resources :apply_forms do
+    #   member do
+    #     post :cancel
+    #     post :ask
+    #     post :accept
+    #     post :confirm
+    #     post :reject
+    #     post :infosheet
+    #     get :vef
+    #   end
+    # end
   end
 
   resources :workcamp_assignments, only: [ :index, :create, :update, :destroy, :show ]
