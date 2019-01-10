@@ -10,15 +10,16 @@ namespace :db do
 
   desc "Import data about czech vocatives for firstnames and surnames"
   namespace :import do
-  	task :import_vocatives do
+  	task import_vocatives: :environment do
   		data = SmarterCSV.process( './db/vocatives/krestni_muzi.csv', :headers_in_file => false, user_provided_headers: %i[freq n v], )
+
   		bar = ProgressBar.create(:title => "Import vocatives", :total => data.count)
 	    data.each do |d|
-          v = Vocative.new
+    	  v = Vocative.new
 	      v.type = 'f'
 	      v.gender = 'm'
-	      v.nomintive = d.n
-	      v.vocative =  d.v
+	      v.nominative = d[:n]
+	      v.vocative =  d[:v]
 	      v.save(validate: false)
 	      bar.increment
 	    end
