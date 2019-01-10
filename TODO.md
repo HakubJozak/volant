@@ -5,3 +5,5 @@
 - [ ] filter unwanted fields from the email template help section
 - [ ] add helpers onto email template help section
 - [ ] add vokativ for names - maybe by adapting https://github.com/honzaskypala/osloveni and creating ruby definition for the function
+- [ ] white list attrs for replacing
+ 
