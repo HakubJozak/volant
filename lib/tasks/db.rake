@@ -11,17 +11,28 @@ namespace :db do
   desc "Import data about czech vocatives for firstnames and surnames"
   namespace :import do
   	task import_vocatives: :environment do
-  		data = SmarterCSV.process( './db/vocatives/krestni_muzi.csv', :headers_in_file => false, user_provided_headers: %i[freq n v], )
+  		ImportDef = [
+  						{ :desc => "Krestni jmena - muzi", :file => "krestni_muzi.csv", :gender => "m", :type => "f"},
+  						{ :desc => "Krestni jmena - zeny", :file => "krestni_zeny.csv", :gender => "f", :type => "f"},
+  						{ :desc => "Prijmeni - muzi", :file => "prijmeni_muzi_1.csv", :gender => "m", :type => "s"},
+  						{ :desc => "Prijmeni (ridka) - muzi", :file => "prijmeni_muzi_2.csv", :gender => "m", :type => "s"},
+  						{ :desc => "Prijmeni - zeny", :file => "prijmeni_zeny_1.csv", :gender => "f", :type => "s"},
+  						{ :desc => "Prijmeni (ridka) - zeny", :file => "prijmeni_zeny_2.csv", :gender => "f", :type => "s"},
+  					]
+		
+		ImportDef.each do |i|  					
+	  		data = SmarterCSV.process( "./db/vocatives/#{i[:file]}", :headers_in_file => false, user_provided_headers: %i[freq n v], )
 
-  		bar = ProgressBar.create(:title => "Import vocatives", :total => data.count)
-	    data.each do |d|
-    	  v = Vocative.new
-	      v.type = 'f'
-	      v.gender = 'm'
-	      v.nominative = d[:n]
-	      v.vocative =  d[:v]
-	      v.save(validate: false)
-	      bar.increment
+	  		bar = ProgressBar.create(:title => i[:desc], :total => data.count)
+		    data.each do |d|
+	    	  v = Vocative.new
+		      v.type = i[:type]
+		      v.gender = i[:gender]
+		      v.nominative = d[:n].downcase
+		      v.vocative =  d[:v]
+		      v.save(validate: false)
+		      bar.increment
+		    end
 	    end
   	end
   end
