@@ -38,36 +38,11 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
               li = link_to internal_organizations_path
               li = link_to internal_networks_path
 
-        /!
-          | {{partial modeMenuTemplate}}
-          
-          | {{#menu-dropdown title="Contacts"}}
-          | {{#link-li}}{{#link-to 'volunteers'}}Volunteers{{/link-to}}{{/link-li}}
-          | {{#link-li}}{{#link-to 'organizations' }}Organizations{{/link-to}}{{/link-li}}
-          | {{#link-li}}{{#link-to 'networks' }}Networks{{/link-to}}{{/link-li}}
-          | {{/menu-dropdown}}
       ul.nav.navbar-nav.navbar-right.right-icons
-        /!
-          | {{#link-li}}
-          | {{#link-to 'my_messages'}}
-          | {{fa 'send'}}
-          | {{badge-count current_user.unsent_messages_count}}
-          | </a
-          | {{/link-to}}
-          | {{/link-li}}
-          
-          | {{#menu-dropdown icon="cog" }}
-          | {{#link-li}}{{#link-to 'users'}}Users{{/link-to}}{{/link-li}}
-          | {{#link-li}}{{#link-to 'email_templates'}}Email Templates{{/link-to}}{{/link-li}}
-          | {{#link-li}}{{#link-to 'countries'}}Countries{{/link-to}}{{/link-li}}
-          | {{#link-li}}{{#link-to 'workcamp_intentions'}}Workcamp Intentions{{/link-to}}{{/link-li}}
-          | {{#link-li}}{{#link-to 'tags'}}Tags{{/link-to}}{{/link-li}}
-          | {{#link-li}}{{#link-to 'account'}}Account Settings{{/link-to}}{{/link-li}}
-          | {{/menu-dropdown}}
-          
-          | {{#menu-dropdown title=current_user.first_name }}
-          | <li class="divider"></li
-          | <li><a href="/accounts/sign_out">Logout</a></li
-          | {{/menu-dropdown}}
-    /! /.navbar-collapse
-  /! /.container-fluid
+        li.dropdown    
+          a.dropdown-toggle data-toggle="dropdown"    
+            = fa 'cog'
+            span.caret
+            ul.dropdown-menu
+              li = link_to 'Users', internal_users_path
+              li = link_to 'Tags', internal_tags_path
