@@ -1,0 +1,48 @@
+nav.navbar.navbar-default.navbar-fixed-top role="navigation" 
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" 
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      = link_to 'Volant', internal_tags_path, class: 'navbar-brand'
+    #navbar-collapse-1.collapse.navbar-collapse
+      form.navbar-form.navbar-left.col-md-1
+        = default_year_select
+        '
+        = default_mode_select
+
+      ul.nav.navbar-nav
+        - case project_scope.mode
+        - when :outgoing
+          li = link_to 'Workcamps', internal_outgoing_workcamps_path
+          li = link_to 'Applications', internal_outgoing_apply_forms_path
+          li = link_to 'Payments', internal_payments_path
+
+        - when :incoming
+          li = link_to 'Our Workcamps', internal_incoming_workcamps_path
+          li = link_to 'VEFs', internal_incoming_apply_forms_path
+
+        - when :ltv
+          li = link_to 'Projects', internal_ltv_workcamps_path
+          li = link_to 'VEFs', internal_ltv_apply_forms_path
+          li = link_to 'Applications', internal_payments_path
+            
+        li.dropdown    
+          a.dropdown-toggle data-toggle="dropdown"    
+            ' Contacts
+            span.caret
+            ul.dropdown-menu
+              li = link_to internal_volunteers_path
+              li = link_to internal_organizations_path
+              li = link_to internal_networks_path
+
+      ul.nav.navbar-nav.navbar-right.right-icons
+        li.dropdown    
+          a.dropdown-toggle data-toggle="dropdown"    
+            = fa 'cog'
+            span.caret
+            ul.dropdown-menu
+              li = link_to 'Users', internal_users_path
+              li = link_to 'Tags', internal_tags_path

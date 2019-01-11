@@ -23,14 +23,14 @@ class WorkcampsController < ApplicationController
           export = Export::PefXml.new(search.all, current_user)
           send_data export.to_xml, filename: export.filename
         }
-        
+
         f.json {
           search = search.page(current_page).per(per_page)
 
           meta = {
             pagination: pagination_info(search),
             csv: csv_version(:workcamps_path),
-            pef: xml_version(:workcamps_path),            
+            pef: xml_version(:workcamps_path),
             friday_list: csv_version(:friday_list_workcamps_path)
           }
 

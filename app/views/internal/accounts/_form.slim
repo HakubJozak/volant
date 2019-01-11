@@ -1,10 +1,12 @@
 = simple_form_for [ :internal, @account ] do |f|
   = f.association :organization, prompt: 'Choose an organization'
+
   p.help-block
       ' Which organization is yours?
       ' Incoming workcamps will have is as well as
       ' outgoing organizations.
   = f.input :season_end
+
   span.help-block Workcamps with publish mode SEASON that start beyond this date are hidden.
   = f.input :organization_response_limit
   = f.input :infosheet_waiting_limit
