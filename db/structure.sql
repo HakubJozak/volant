@@ -1314,7 +1314,7 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 CREATE TABLE public.vocatives (
     id integer NOT NULL,
-    type character varying(1),
+    name_type character varying(1),
     nominative character varying,
     vocative character varying,
     created_at timestamp without time zone NOT NULL,
@@ -1994,10 +1994,10 @@ CREATE UNIQUE INDEX index_tags_on_name ON public.tags USING btree (name);
 
 
 --
--- Name: index_vocatives_on_type_and_gender_and_nominative; Type: INDEX; Schema: public; Owner: -
+-- Name: index_vocatives_on_name_type_and_gender_and_nominative; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_vocatives_on_type_and_gender_and_nominative ON public.vocatives USING btree (type, gender, nominative);
+CREATE UNIQUE INDEX index_vocatives_on_name_type_and_gender_and_nominative ON public.vocatives USING btree (name_type, gender, nominative);
 
 
 --
@@ -2654,4 +2654,6 @@ INSERT INTO schema_migrations (version) VALUES ('20180617173056');
 INSERT INTO schema_migrations (version) VALUES ('20190110101750');
 
 INSERT INTO schema_migrations (version) VALUES ('20190110104513');
+
+INSERT INTO schema_migrations (version) VALUES ('20190111152206');
 
