@@ -13,14 +13,14 @@ Rails.application.routes.draw do
   namespace :internal do
     resources :workcamp_intentions
     resources :tags
-    resources :payments    
+    resources :payments
     resources :countries
-    resources :accounts, defaults: { id: Account.current.id }
+    resources :accounts, defaults: { id: Account.current.try(:id) }
     resources :users
     resources :email_templates
     resources :volunteers
     resources :organizations
-    resources :networks    
+    resources :networks
 
     ProjectScope::MODES.each do |mode|
       namespace mode do

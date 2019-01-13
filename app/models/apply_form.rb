@@ -7,7 +7,7 @@ class ApplyForm < ActiveRecord::Base
   include Stars::Model
   include PersonalMethods
   include ApplyForm::WebApi
-  include StringWithVocative
+  include NamesWithVocative
 
   acts_as_taggable
   include TaggableExtension

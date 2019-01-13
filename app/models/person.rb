@@ -3,7 +3,6 @@ class Person < ActiveRecord::Base
   FEMALE = 'f'
 
   include PersonalMethods
-  include StringWithVocative
 
   scope :query, lambda { |query|
     columns = [ :firstname,:lastname,:email,:birthnumber,
