@@ -7,10 +7,6 @@ class Internal::AccountsController < Internal::BaseController
     render action: "edit"
   end
 
-  def edit
-
-  end
-
   # PATCH/PUT /accounts/1
   def update
     @account.update(account_params)

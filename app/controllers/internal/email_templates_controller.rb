@@ -9,9 +9,6 @@ class Internal::EmailTemplatesController < Internal::BaseController
     @email_templates = EmailTemplate.order(:title).all
   end
 
-  def show
-  end
-
   def new
     @email_template = EmailTemplate.new
   end
@@ -22,9 +19,6 @@ class Internal::EmailTemplatesController < Internal::BaseController
 
     @email_template.save
     respond_with @email_template, location: index_path
-  end
-
-  def edit    
   end
 
   # PATCH/PUT /email_templates/1

@@ -19,10 +19,6 @@ class Internal::NetworksController < Internal::BaseController
     respond_with @network, location: index_path
   end
 
-  def edit
-
-  end
-
   # PATCH/PUT /networks/1
   def update
     @network.update(network_params)

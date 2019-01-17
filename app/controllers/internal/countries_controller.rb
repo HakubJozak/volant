@@ -20,10 +20,6 @@ class Internal::CountriesController < Internal::BaseController
     respond_with @country, location: index_path      
   end
 
-  def edit
-    
-  end
-
   # PATCH/PUT /countries/1
   def update
     @country.update(country_params)

@@ -13,10 +13,6 @@ class Internal::TagsController < Internal::BaseController
     @tag = ColoredTag.new
   end
 
-  def edit
-    
-  end
-
   # POST /tags
   def create
     @tag = ColoredTag.new(tag_params)
