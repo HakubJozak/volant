@@ -1,24 +1,21 @@
-.col-md-6
-  h3
-    ' Countries
+h3
+  ' Countries
 
-  table.table.table-striped.table-hover
-    thead
-      th English
-      th Czech
-      th XY
-      th XYZ
-      th
-        = link_to new_internal_country_path, class: 'btn btn-success'
-          = fa 'plus'
-          ' New
-    tbody
-      - @countries.each do |country|
-        tr
-          td = link_to country.name_en, polymorphic_path([ :edit, :internal, country]), remote: true
-          td = country.name_cz
-          td = country.code
-          td = country.triple_code
-          td = delete_button(country)  
-
-.col-md-6.right-side-edit#country-detail
+table.table.table-striped.table-hover
+  thead
+    th English
+    th Czech
+    th XY
+    th XYZ
+    th
+      = link_to new_internal_country_path, class: 'btn btn-success'
+        = fa 'plus'
+        ' New
+  tbody
+    - @countries.each do |country|
+      tr
+        td = link_to country.name_en, polymorphic_path([ :edit, :internal, country])
+        td = country.name_cz
+        td = country.code
+        td = country.triple_code
+        td = delete_button(country)  

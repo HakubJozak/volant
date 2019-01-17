@@ -17,21 +17,17 @@ class Internal::CountriesController < Internal::BaseController
   def create
     @country = Country.new(country_params)
     @country.save
-
     respond_with @country, location: index_path      
   end
 
   def edit
-    render :edit, format: :js, layout: false
+    
   end
 
   # PATCH/PUT /countries/1
   def update
     @country.update(country_params)
-    
-    respond_to do |f|
-      f.js { render layout: false }
-    end
+    respond_with @country, location: index_path          
   end
 
   # DELETE /countries/1
