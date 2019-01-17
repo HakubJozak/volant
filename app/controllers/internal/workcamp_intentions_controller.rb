@@ -13,10 +13,6 @@ class Internal::WorkcampIntentionsController < Internal::BaseController
     @intention = WorkcampIntention.new
   end
 
-  def edit
-    render :edit, format: :js, layout: false
-  end
-
   def create
     @intention = WorkcampIntention.new(workcamp_intention_params)
     @intention.save
@@ -25,10 +21,7 @@ class Internal::WorkcampIntentionsController < Internal::BaseController
 
   def update
     @intention.update(workcamp_intention_params)
-
-    respond_to do |f|
-      f.js { render layout: false }
-    end
+    respond_with @intention, location: index_path
   end
 
   def destroy

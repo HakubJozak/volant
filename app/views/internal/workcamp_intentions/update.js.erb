@@ -1,7 +1,0 @@
-<% if @intention.valid? %>
-  window.location = '<%= internal_workcamp_intentions_path %>'
-<% else %>
-  $('#intention-detail').html('<%= j render "edit" %>');
-<% end %>
-
-
