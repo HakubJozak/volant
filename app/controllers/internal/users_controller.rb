@@ -18,16 +18,9 @@ class Internal::UsersController < Internal::BaseController
     respond_with @user, location: index_path      
   end
 
-  def edit
-    render :edit, format: :js, layout: false
-  end
-
   def update
     @user.update(user_params)
-    
-    respond_to do |f|
-      f.js { render layout: false }
-    end
+    respond_with @user, location: index_path      
   end
 
   def destroy

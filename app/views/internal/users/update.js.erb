@@ -1,7 +1,0 @@
-<% if @user.valid? %>
-  window.location = '<%= internal_users_path %>'
-<% else %>
-  $('#user-detail').html('<%= j render "edit" %>');
-<% end %>
-
-
