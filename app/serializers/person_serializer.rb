@@ -9,6 +9,14 @@ class PersonSerializer < ApplicationSerializer
       :special_needs, :past_experience, :comments,
       :fax, :street, :city, :zipcode,
       :contact_street, :contact_city, :contact_zipcode
+
+  def firstname
+    object.firstname.to_s
+  end
+
+  def lastname
+    object.lastname.to_s
+  end
 end
 
 # == Schema Information
