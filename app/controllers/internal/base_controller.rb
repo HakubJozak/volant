@@ -61,6 +61,16 @@ class Internal::BaseController < ActionController::Base
       params[:year] || nil
     end
 
+    def add_year_scope(search)
+      if year = params[:year]
+        if year.to_i > 0
+          search = search.year(year)
+        end
+    end
+
+    search
+  end
+
     def render_error(model)
       full = model.errors.full_messages.join('. ')
       render json: { errors: model.errors, full_message: "#{full}." }, status: 422
