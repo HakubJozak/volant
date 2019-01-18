@@ -1,0 +1,30 @@
+form.form.form-horizontal.search-form submit="search" role="form"
+  .form-group
+    .col-md-1
+      label.control-label Search
+    .col-md-9
+      = render 'query'
+
+table.table.table-striped.table-hover
+  thead
+    th Application
+    th Received
+    th Amount
+    th Account
+    th colspan="3"
+      | Returned
+    th Description
+
+  tbody
+    - @search.each do |payment|
+      tr
+        td xxx
+        td = payment.received
+        td = payment.amount
+        td yyy
+        td = payment.returned_date
+        td = payment.returned_amount
+        td = payment.return_reason
+        td = payment.description
+
+= paginate @search
