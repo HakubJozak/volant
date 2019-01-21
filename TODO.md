@@ -1,6 +1,7 @@
 # No Ember
 
-- [ ] holomajzny - networks & payments & organizations
+- [ ] holomajzny - networks (done) & payments (done) & organizations
+- [ ] prettify pagination
 - [ ] add date time picker
 - [ ] allow user details to be saved even without provided password (password won't change then)
 - [ ] filter unwanted fields from the email template help section
