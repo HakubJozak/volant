@@ -1,0 +1,20 @@
+- if apply_form.country
+  = link_to small_flag(apply_form.country), polymorphic_path([ :edit, :internal, apply_form]) 
+  = ' '
+
+- if apply_form.lastname
+  = link_to apply_form.name, polymorphic_path([ :edit, :internal, apply_form]) 
+  = ' '
+-else
+  ' New Application
+
+- if apply_form.lastname
+  = gender_sign apply_form
+
+span.small
+  = form_state_icon apply_form.state
+  - if apply_form.type =='ltv'
+    span.label.label-default
+      = apply_form.type.upcase
+/ TODO: implement apply-form-alerts 
+  check if apply_form.type

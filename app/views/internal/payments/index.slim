@@ -18,10 +18,14 @@ table.table.table-striped.table-hover
   tbody
     - @search.each do |payment|
       tr
-        td xxx
+        td
+          - if payment.apply_form 
+            = render 'title', apply_form: payment.apply_form
+          - else
+            ' -
         td = payment.received
         td = payment.amount
-        td yyy
+        td = payment.mean == 'BANK' ? payment.account << '/' << payment.bank_code : 'Cash'
         td = payment.returned_date
         td = payment.returned_amount
         td = payment.return_reason
