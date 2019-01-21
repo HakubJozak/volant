@@ -25,7 +25,7 @@ table.table.table-striped.table-hover
             ' -
         td = payment.received
         td = payment.amount
-        td = payment.mean == 'BANK' ? payment.account << '/' << payment.bank_code : 'Cash'
+        td = payment.used_account_details
         td = payment.returned_date
         td = payment.returned_amount
         td = payment.return_reason
