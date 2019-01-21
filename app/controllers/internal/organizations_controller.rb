@@ -1,5 +1,7 @@
 class Internal::OrganizationsController < Internal::BaseController
 
+  include MinimalResponders
+
   before_action :find_organization, except: [ :index, :create, :new ]
 
   def index
