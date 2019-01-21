@@ -9,8 +9,8 @@ class Internal::PaymentsController < Internal::BaseController
     @search = @search.includes(:apply_form).references(:apply_form)
     @search = add_year_scope(@search)
 
-    if query = filter[:query].presence
-      @search = @search.query(query)
+    if @query = filter[:query].presence
+      @search = @search.query(@query)
     end    
   end
 
