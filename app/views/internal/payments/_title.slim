@@ -8,6 +8,10 @@
 -else
   ' New Application
 
+- if apply_form.age
+  = "(#{apply_form.age})"
+  = ' '
+
 - if apply_form.lastname
   = gender_sign apply_form
 
