@@ -17,6 +17,7 @@ gem 'dotenv-rails'
 gem 'rollbar', '~> 2.7'
 gem 'slim-rails'
 gem 'simple_form'
+gem 'smarter_csv'
 
 # Language codes
 gem 'iso-639'

@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   self.table_name = 'devise_users'
 
   def name
-    "#{first_name} #{last_name}"
+    "#{first_name} #{last_name}".presence || "[No Name]"
   end
 
 end

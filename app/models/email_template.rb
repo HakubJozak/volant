@@ -5,6 +5,10 @@ class EmailTemplate < ActiveRecord::Base
 
   validates_presence_of :from
 
+  def to_label
+    "#{title}"
+  end
+
   # used only for apply form submission
   def call(apply_form)
     @apply_form = apply_form

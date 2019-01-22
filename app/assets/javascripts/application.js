@@ -13,6 +13,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 
-//= require_tree .
-//= require ember
+//= require bootstrap.js.coffee
+//= require fa_icon_names.js
+//= require images.js.coffee
+//= require router.js.coffee
+//= require store.js.coffee

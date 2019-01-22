@@ -22,3 +22,4 @@ config/volant.rb
 /test/fixtures/vef/VEF_LUNAR_ALESSANDROMARCOMARIA.xml
 /test/fixtures/vef/VEF_LUNAR_SIMPSI.xml
 /test/fixtures/vef/VEF_SJ_TAMAGNAN.xml
+.editorconfig

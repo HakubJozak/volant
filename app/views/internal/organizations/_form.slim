@@ -1,0 +1,26 @@
+.col-md-7
+  = simple_form_for [ :internal, @org ] do |f|
+    fieldset
+      .row
+        .form-group.col-md-4
+          = f.input :name
+        .form-group.col-md-4
+          = f.input :code
+        .form-group.col-md-4
+          = f.input :contact_person
+      .row
+        .form-group.col-md-12
+          = f.input :description
+      .row
+        .form-group.col-md-4
+          = f.input :phone
+        .form-group.col-md-4
+          = f.input :mobile
+        .form-group.col-md-4
+          = f.input :website
+      .row
+        .form-group.col-md-4
+          = f.association :country, collection: Country.order(:name_en), label_method: :name_en, prompt: 'Choose a country'
+        .form-group.col-md-8
+          = f.association :networks, collection: Network.order(:name), label_method: :name
+      = f.submit class: 'btn btn-primary'

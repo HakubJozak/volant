@@ -1,0 +1,8 @@
+= simple_form_for [ :internal, @country ] do |f|
+  = f.input :name_en
+  = f.input :name_cz
+  = f.input :code
+  = f.input :triple_code
+  = f.input :region, collection: 1..2
+  = f.association :country_zone, collection: CountryZone.order(:name_en), label_method: :name_en
+  = f.submit class: 'btn btn-primary'

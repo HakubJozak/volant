@@ -12,10 +12,8 @@
  *
  *= require bootstrap_and_overrides
  *= require font-awesome
- *= require_tree .
- *= require_self
+
+ *= require_tree ./modules
  *= require date-polyfill/date-polyfill
- *= require jquery.ui.all
- *= require firefox
 
  */

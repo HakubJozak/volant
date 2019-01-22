@@ -40,6 +40,10 @@ class Payment < ActiveRecord::Base
     mean == 'CASH'
   end
 
+  def used_account_details
+    self.bank? ? ((self.account || '') << '/' << ( self.bank_code || '')): 'Cash'
+  end
+
   def amount
     cash = read_attribute(:amount)
     return nil unless cash

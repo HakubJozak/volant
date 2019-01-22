@@ -13,10 +13,6 @@ class Internal::WorkcampIntentionsController < Internal::BaseController
     @intention = WorkcampIntention.new
   end
 
-  def edit
-    render :edit, format: :js, layout: false
-  end
-
   def create
     @intention = WorkcampIntention.new(workcamp_intention_params)
     @intention.save

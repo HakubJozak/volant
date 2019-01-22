@@ -1,0 +1,6 @@
+h1 
+  | Organization 
+  = (@org.name)
+
+= render 'form'
+= render 'workcamp_list', wks: @org.workcamps.year(2018)
