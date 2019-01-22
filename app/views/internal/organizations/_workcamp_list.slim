@@ -1,0 +1,13 @@
+.col-md-5
+  h3
+    | Workcamps in XYZ
+  table.table.table-condensed.table-hover.col-md-12.sidepanel
+    tbody
+      - wks.each do |wk|
+        tr
+          td = wk.begin
+          td = wk.end 
+          td = wk.code
+          td = link_to wk.name, polymorphic_path([ :edit, :internal, wk])
+
+
