@@ -1,5 +1,5 @@
 = simple_form_for [ :internal, @account ] do |f|
-  = f.association :organization, prompt: 'Choose an organization'
+  = f.association :organization, collection: Organization.order_by_name,  prompt: 'Choose an organization'
 
   p.help-block
       ' Which organization is yours?

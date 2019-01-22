@@ -11,7 +11,7 @@ class Organization < ActiveRecord::Base
 
   accepts_nested_attributes_for :networks
 
-  default_scope { order(name: :asc) }
+  scope :order_by_name, -> {order(name: :asc)}
 
   # TODO: same as Workcamp.query - merge?
   scope :query, lambda { |query|
