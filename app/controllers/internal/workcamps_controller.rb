@@ -1,7 +1,5 @@
-class WorkcampsController < ApplicationController
-  respond_to :json
+class Internal::WorkcampsController < Internal::BaseController
 
-  serialization_scope :current_user
   before_action :find_workcamp, except: [ :index,:create, :friday_list ]
 
   def index
@@ -21,18 +19,18 @@ class WorkcampsController < ApplicationController
           send_data export.to_xml, filename: export.filename
         }
 
-        f.json {
-          search = search.page(current_page).per(per_page)
+        f.html {
+          @workcamps = search.page(current_page).per(per_page)
 
-          meta = {
-            pagination: pagination_info(search),
-            csv: csv_version(:workcamps_path),
-            pef: xml_version(:workcamps_path),
-            friday_list: csv_version(:friday_list_workcamps_path)
-          }
+          # meta = {
+          #   pagination: pagination_info(search),
+          #   csv: csv_version(:workcamps_path),
+          #   pef: xml_version(:workcamps_path),
+          #   friday_list: csv_version(:friday_list_workcamps_path)
+          # }
 
-          render json: search, meta: meta,
-          each_serializer: WorkcampSerializer
+          #render json: search, meta: meta,
+          #each_serializer: WorkcampSerializer
         }
       end
     end
@@ -111,7 +109,13 @@ class WorkcampsController < ApplicationController
 
   def workcamps
     type = params[:type] || params[:workcamp].try(:[],:type)
-    workcamp_type(type)
+
+    case type.try(:downcase)
+    when 'incoming' then Incoming::Workcamp
+    when 'ltv' then Ltv::Workcamp
+    when 'outgoing' then Outgoing::Workcamp
+    else Workcamp
+    end
   end
 
   def filter

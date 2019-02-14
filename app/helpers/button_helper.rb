@@ -1,5 +1,28 @@
 module ButtonHelper
-    def delete_button(record,
+
+  def create_button(klass, params: {}, css: nil, &block)
+    route = "new_internal_#{klass.name.underscore}_path"
+    url   = public_send(route, params)
+    css   = "btn btn-success #{css}"
+
+    icon     = fa('plus')
+    i18n_key = klass.model_name.i18n_key
+    title    = [ t('common.new'), klass.model_name ]
+
+    label = if block_given?
+              capture(&block)
+            else
+              [ icon, title ].join(' ').html_safe
+            end
+
+    link_to label,
+            url,
+            class: css,
+            title: I18n.t("activerecord.models.#{i18n_key}.new")
+  end
+
+
+  def delete_button(record,
                     url: nil,
                     remote: false,
                     confirm: nil,
@@ -23,7 +46,7 @@ module ButtonHelper
             'data-confirm': confirm,
             method: :delete,
             remote: remote,
-            class: 'btn kdm-btn-delete',
+            class: 'btn btn-danger',
             title: title
 
   end

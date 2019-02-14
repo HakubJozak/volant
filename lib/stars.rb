@@ -24,6 +24,10 @@ module Stars
       }
     end
 
+    def starred_by?(user)
+      starrings.where(user: user).count > 0
+    end
+
     def remove_star(user)
       starrings.where(user: user).delete_all
     end

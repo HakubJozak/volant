@@ -1,4 +1,5 @@
 class WorkcampSerializer < ApplicationSerializer
+
   has_one :organization, embed: :ids, include: true, serializer: OrganizationSerializer
   has_one :country, embed: :ids, include: true
   has_many :tags, embed: :ids, include: true, serializer: TagSerializer
@@ -27,8 +28,6 @@ class WorkcampSerializer < ApplicationSerializer
       :capacity, :capacity_natives, :capacity_teenagers, :capacity_males, :capacity_females,
       :free_capacity, :free_capacity_males, :free_capacity_females,
       :all_organizations_emails, :all_applications_emails
-
-
 
   def type
     case object

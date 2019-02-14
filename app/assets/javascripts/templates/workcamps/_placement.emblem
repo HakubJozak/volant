@@ -27,4 +27,3 @@ table.table-condensed.little-workcamp-placement
   if idleAssignments
     view 'toggle' value=showIdle
       ' Idle ({{idleAssignments.length}})
-

@@ -27,15 +27,17 @@ Rails.application.routes.draw do
     resources :volunteers
     resources :organizations
     resources :networks
+    resources :workcamps
+    resources :apply_forms
 
     ProjectScope::MODES.each do |mode|
       namespace mode do
-	resources :workcamps, controller: 'workcamps', type: mode
-	resources :apply_forms, controller: 'apply_forms', type: mode
+	resources :workcamps, controller: '/internal/workcamps', type: mode
+	resources :apply_forms, controller: 'internal/apply_forms', type: mode
       end
     end
 
-    resources :friday_lists, only: index
+    resources :friday_lists, only: :index
 
     # resources :apply_forms do
     #   member do

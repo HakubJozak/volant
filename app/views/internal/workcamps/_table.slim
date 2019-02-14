@@ -1,0 +1,56 @@
+table.table.table-condensed.table-responsive.workcamps
+  tbody
+    - @workcamps.each do |workcamp|
+      tr
+        td
+          = star_for(workcamp)
+        td
+          = flag(workcamp, size: :small)
+        td
+          = l(workcamp.from)
+          br
+          = l(workcamp.to)
+      /
+        td
+          link-to workcampRoute wc
+            b
+              = wc.code
+            ' &ndash; {{wc.name}}
+          br
+            ' {{wc.capacity}} volunteers, {{age-range wc}},
+            ' {{join wc.workcamp_intentions 'code'}}
+            ' {{tag-list wc.tags}}
+          small
+            if wc.variableDates
+              ' {{ fa 'calendar-times-o' }}
+              if wc.duration
+                ' {{wc.duration}}&nbsp;days
+            else
+              ' {{wc.computedOrSetDuration}}&nbsp;days
+          with wc
+            partial 'workcamp/extra_fee'
+        td.workcamp-actions
+          .btn-group
+            view 'placement_info' workcamp=wc
+
+            button.btn.btn-default.btn-sm.dropdown-toggle type='button' data-toggle='dropdown'
+              span.caret
+            = with wc
+              partial 'workcamp/action_dropdown'
+
+        if editingVisible
+          = partial 'workcamps/editor'
+          td.actions
+            if wc.isDirty
+              button.btn.btn-success.btn-sm{action 'save' wc} type='button'
+                ' {{fa 'check'}}
+              button.btn.btn-danger.btn-sm{action 'rollback' wc} type='button'
+                ' {{fa 'times'}}
+        td
+          with wc
+            = partial 'workcamps/placement'
+        unless editingVisible
+          td
+            button.btn.btn-default.remove-button{ action 'remove' wc }
+              = fa 'trash-o'
+
