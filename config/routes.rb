@@ -3,12 +3,18 @@ Rails.application.routes.draw do
   namespace :v1 do
     resources :countries, only: [ :index ]
     resources :workcamp_intentions, only: [ :index ]
+
     resources :workcamps, only: [ :index, :show ] do
       get 'short', on: :collection
       get 'similar', on: :member
     end
     resources :apply_forms, only: [ :create ]
   end
+
+  root 'internal/home#index'
+  get '/ember', to: 'dashboard#index', as: :ember_dashboard
+
+
 
   namespace :internal do
     resources :workcamp_intentions
@@ -101,9 +107,6 @@ Rails.application.routes.draw do
   resources :email_templates, except: [ :edit, :new ]
 
   get '/stats/:name', to: 'statistics#show'
-
-  root 'dashboard#index'
-  get 'dashboard/index'
 
   devise_for :users, path: 'accounts'
 

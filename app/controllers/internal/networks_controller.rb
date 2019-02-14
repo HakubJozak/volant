@@ -5,7 +5,7 @@ class Internal::NetworksController < Internal::BaseController
 
   # GET /networks
   def index
-    @networks = Network.all
+    @networks = Network.order(:name).page(current_page)
   end
 
   def new
@@ -27,7 +27,7 @@ class Internal::NetworksController < Internal::BaseController
 
   # DELETE /networks/1
   def destroy
-    respond_with @network.tap(&:destroy), location: index_path  
+    respond_with @network.tap(&:destroy), location: index_path
   end
 
   private

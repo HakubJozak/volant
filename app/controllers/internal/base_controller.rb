@@ -14,7 +14,7 @@ class Internal::BaseController < ActionController::Base
     end
 
     helper_method :project_scope
-    
+
     def pagination_info(scope)
       {
         total: scope.total_count,
