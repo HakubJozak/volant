@@ -35,6 +35,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :friday_lists, only: index
+
     # resources :apply_forms do
     #   member do
     #     post :cancel
