@@ -1,4 +1,4 @@
-h3 
+h3
   ' Networks
 
 table.table.table-striped.table-hover
@@ -16,3 +16,8 @@ table.table.table-striped.table-hover
         td = link_to network.name, polymorphic_path([ :edit, :internal, network])
         td = network.web
         td = delete_button(network)
+
+= render 'pagination', records: @networks
+
+
+

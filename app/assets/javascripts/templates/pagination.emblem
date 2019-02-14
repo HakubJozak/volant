@@ -1,7 +1,7 @@
 p.navbar-text.navbar-right.pagination-info title='Total records found.'
   ' / {{total}}
 
-form.navbar-form.navbar-right 
+form.navbar-form.navbar-right
   .form-group title='Records per page.'
     = view 'per_page_select' value=perPage
 
@@ -10,7 +10,7 @@ ul.nav.navbar.pagination.navbar-right
     if previous_page
       a.navbar-link{ action "set_page" previous_page } href='#'
         ' &laquo;
-    else    
+    else
       a.navbar-link
         ' &laquo;
   each pagination_bits itemController='pagination_bit'
@@ -32,8 +32,6 @@ ul.nav.navbar.pagination.navbar-right
     if next_page
       a.navbar-link{ action "set_page" next_page } href='#'
         ' &raquo;
-    else    
+    else
       a.navbar-link
         ' &raquo;
-
-

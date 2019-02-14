@@ -1,0 +1,9 @@
+= content_for :pagination
+  p.navbar-text.navbar-right.pagination-info title='Total records found.'
+    ' / 33
+
+  form.navbar-form.navbar-right
+    .form-group title='Records per page.'
+      select.form-control name="per_page" value="25"
+
+  = paginate records

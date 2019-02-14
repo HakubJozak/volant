@@ -1,4 +1,13 @@
 nav.navbar.navbar-default.navbar-fixed-bottom#toolbar
   .container-fluid
     .collapse.navbar-collapse
+      .navbar-form.navbar-right      
+        = yield :footer_left
+        p left
+
+      .navbar-form.navbar-right
+        = yield :footer_right
+        p right
+
+      = yield :pagination    
 

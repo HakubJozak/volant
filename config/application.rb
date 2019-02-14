@@ -29,7 +29,7 @@ module Volant
 
     config.i18n.default_locale = :en
     config.active_record.schema_format = :sql
-    config.active_record.raise_in_transactional_callbacks = true                                                        
+    config.active_record.raise_in_transactional_callbacks = true
 
     # Deprecated options?
     # config.action_mailer.default_charset = 'utf-8'
@@ -39,7 +39,7 @@ module Volant
 
     config.generators do |g|
       g.orm             :active_record
-      g.template_engine false # :erb
+      g.template_engine :slim
       g.helper false
       g.test_framework  :test_unit, fixture: false
       g.stylesheets     false
