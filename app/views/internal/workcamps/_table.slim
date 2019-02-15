@@ -42,7 +42,7 @@ table.table.table-condensed.table-responsive.workcamps
         / td
         /   with wc
         /     = partial 'workcamps/placement'
-        / unless editingVisible
-        /   td
-        /     button.btn.btn-default.remove-button{ action 'remove' wc }
-        /       = fa 'trash-o'
+        td = delete_button(workcamp, icon_only: true )
+
+
+= render 'pagination', records: @workcamps

@@ -1,4 +1,5 @@
 module ApplyFormsHelper
+
   def apply_form_state_icon(state)
     return unless state.present?
     key = state.downcase

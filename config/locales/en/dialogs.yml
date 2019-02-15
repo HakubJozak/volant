@@ -1,0 +1,3 @@
+en:
+  dialog:
+    delete: "Do you really want to delete '%{name}?'"

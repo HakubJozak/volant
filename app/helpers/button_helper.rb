@@ -27,6 +27,7 @@ module ButtonHelper
                     remote: false,
                     confirm: nil,
                     label: nil,
+                    icon_only: false,
                     params: {})
 
     type    = record.class.model_name.human
@@ -37,11 +38,15 @@ module ButtonHelper
 
     title = [ I18n.t('common.delete'), name ].join(' ')
     url   = url   || polymorphic_path([:internal, record ], params)
-    short = label || I18n.t('common.delete')
+
+    unless icon_only
+      short = label || I18n.t('common.delete')
+    end
+     
     icon  = fa('trash-o')
 
 
-    link_to "#{icon} Delete".html_safe,
+    link_to "#{icon} #{label}".html_safe,
             url,
             'data-confirm': confirm,
             method: :delete,

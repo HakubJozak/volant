@@ -1,6 +1,6 @@
 module FlagsHelper
 
-  def flag(value, size: :normal)
+  def flag(value, size: :medium)
     if value.is_a? String
        name = value
        code = value.upcase
@@ -13,6 +13,7 @@ module FlagsHelper
 
     w_h = case size
           when :small then 16
+          when :medium then 24
           when :big then 32
           when :huge then 64
           else 24
@@ -24,5 +25,5 @@ module FlagsHelper
   rescue
     ''
   end
-  
+
 end

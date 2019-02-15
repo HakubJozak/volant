@@ -10,7 +10,6 @@ form.form.form-horizontal.search-form submit="search" role="form"
         = fa('plus')
         ' Create
 
-
   .form-group
     .col-md-1
       label.control-label State
@@ -70,7 +69,7 @@ table.table.table-striped.table-hover#apply-forms-list
           partial 'action_buttons'
         td
           - if wc = apply_form.current_workcamp.presence
-              = small_flag(wc.country)
+              = flag(wc.country)
                / link_to 'workcamp' this
                 b = code
                 ' &ndash; {{name}},
@@ -79,9 +78,8 @@ table.table.table-striped.table-hover#apply-forms-list
                 ' {{age-range this}},
                 partial 'workcamp/extra_fee'
               = tag_list(wc)
-          else
-            span.text-muted
-              | No workcamps assigned.
+          - else
+            span.text-muted No workcamps assigned.
 
         td
           button.btn.btn-default.remove-button

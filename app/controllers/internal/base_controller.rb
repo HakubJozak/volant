@@ -1,5 +1,8 @@
 class Internal::BaseController < ActionController::Base
 
+  # overrides responders gem (which is DEPRECATED)
+  include MinimalResponders
+
   protect_from_forgery with: :exception
 
   before_action :authenticate_user!
