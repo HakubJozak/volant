@@ -3,3 +3,4 @@
 //= require twitter/bootstrap
 //= require bootstrap
 
+//= require internal/workcamps

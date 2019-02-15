@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-class Workcamp < ActiveRecord::Base
+class Workcamp < ApplicationRecord
   validates_lengths_from_database
 
   attr_accessor :accepted_incoming_places, :accepted_incoming_places_males, :accepted_incoming_places_females
@@ -32,6 +32,10 @@ class Workcamp < ActiveRecord::Base
                         :organization, :publish_mode
 
   validates_presence_of :extra_fee_currency, :if => Proc.new {|wc| wc.extra_fee && wc.extra_fee > 0},:message => "je povinná. (Je vyplněn poplatek, ale nikoliv jeho měna. Doplňte měnu poplatku.)"
+
+  filter_scope :by_year, -> (year_param) {
+    year(year_param)
+  }
 
   scope :web_default, -> {
     order(:begin,:name).live.published(Account.current.season_end)
@@ -124,8 +128,16 @@ class Workcamp < ActiveRecord::Base
       with_workcamp_intentions(*same_intentions)
   }
 
-  scope :filter_by_hash, lambda { |filter,current_user|
-    search = where('TRUE')
+  
+
+  scope :filter, lambda { |filter,current_user|
+    search = joins(:country)
+               .includes(:workcamp_assignments,
+                         :organization,
+                         :tags,
+                         :intentions,
+                         organization: [ :emails ])
+    
 
     if filter[:state]
       search = search.imported_or_updated

@@ -8,7 +8,7 @@ module MenuHelper
     end
 
     opts = options_for_select(data, selected: project_scope.mode)
-    select_tag 'default_mode', opts, class: 'form-control'    
+    select_tag 'default_mode', opts, class: 'form-control'
   end
 
   def default_year_select
@@ -16,8 +16,9 @@ module MenuHelper
       [ year, 'data-url': root_path ]
     end
 
+    data.unshift [ 'All', nil]
     opts = options_for_select(data, selected: project_scope.year)
     select_tag 'default_year', opts, class: 'form-control'
-  end  
+  end
 
 end

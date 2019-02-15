@@ -1,17 +1,19 @@
-nav.navbar.navbar-default.navbar-fixed-top role="navigation" 
+nav.navbar.navbar-default.navbar-fixed-top role="navigation"
   .container-fluid
     .navbar-header
-      button.navbar-toggle data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" 
+      button.navbar-toggle data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
         span.sr-only Toggle navigation
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      = link_to 'Volant', internal_tags_path, class: 'navbar-brand'
+      = link_to 'Volant', internal_workcamps_path, class: 'navbar-brand'
+
     #navbar-collapse-1.collapse.navbar-collapse
-      form.navbar-form.navbar-left.col-md-1
-        = default_year_select
-        '
+      form.navbar-form.navbar-left.col-md-1#vt-year-selector
         = default_mode_select
+        '
+        = default_year_select
+
 
       ul.nav.navbar-nav
         - case project_scope.mode
@@ -28,9 +30,9 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
           li = link_to 'Projects', internal_ltv_workcamps_path
           li = link_to 'VEFs', internal_ltv_apply_forms_path
           li = link_to 'Applications', internal_payments_path
-            
-        li.dropdown    
-          a.dropdown-toggle data-toggle="dropdown"    
+
+        li.dropdown
+          a.dropdown-toggle data-toggle="dropdown"
             ' Contacts
             span.caret
             ul.dropdown-menu
@@ -39,8 +41,8 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
               li = link_to 'Networks', internal_networks_path
 
       ul.nav.navbar-nav.navbar-right.right-icons
-        li.dropdown    
-          a.dropdown-toggle data-toggle="dropdown"    
+        li.dropdown
+          a.dropdown-toggle data-toggle="dropdown"
             = fa 'cog'
             span.caret
             ul.dropdown-menu

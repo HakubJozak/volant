@@ -9,7 +9,11 @@ class Internal::WorkcampsController < Internal::BaseController
       search = Workcamp.starred_by(current_user)
       render json: search, each_serializer: WorkcampSerializer
     else
-      search = apply_filter(workcamps.order(current_order).joins(:country))
+      search = workcamps
+                 .by_year(project_scope.year)
+                 .filter(filter, current_user)
+                 .order(current_order)
+
 
       respond_to do |f|
         f.csv  {
@@ -86,13 +90,7 @@ class Internal::WorkcampsController < Internal::BaseController
 
   private
 
-  # TODO: change to model scope
-  def apply_filter(search)
-    search = search.includes(:workcamp_assignments,:organization,:tags,:intentions,:organization => [:emails])
-    search = search.filter_by_hash(filter,current_user)
-    search = add_year_scope(search)
-    search
-  end
+
 
 
   # TODO: change to model scope
