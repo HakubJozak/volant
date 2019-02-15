@@ -16,15 +16,15 @@ module WorkcampsHelper
   end
 
 
-  def workcamp_dates(wc)
-    if workcamp.variable_dates
-      if workcamp.duration
+  def duration_info(wc)
+    if wc.variable_dates
+      if wc.duration
         [ fa('calendar-times-o'),
-          workcamp.duration,
+          wc.duration,
           "&nbsp;days" ].join.html_safe
       end
     else
-       "#{ workcamp.duration_info }&nbsp;days"
+       "#{ wc.duration_info }&nbsp;days"
     end
   end
 

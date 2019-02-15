@@ -16,10 +16,10 @@ table.table.table-condensed.table-responsive.workcamps
             ' &ndash; #{ workcamp.name }
           br
             ' #{ workcamp.capacity } volunteers, #{ age_range workcamp },
-            ' #{ workcamp.intentions.map(&:code).join }
+            ' #{ workcamp.intentions.map(&:code).join(' ') }
             / ' #{tag-list workcamp.tags}
           small
-
+          == duration_info workcamp  
           = render 'extra_fee', workcamp: workcamp
               
         / td.workcamp-actions

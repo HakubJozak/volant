@@ -11,7 +11,7 @@ class Internal::WorkcampsController < Internal::BaseController
     else
       search = workcamps
                  .by_year(project_scope.year)
-                 .filter(filter, current_user)
+                 .filter_by_hash(filter, current_user)
                  .order(current_order)
 
 

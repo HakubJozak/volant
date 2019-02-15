@@ -130,7 +130,7 @@ class Workcamp < ApplicationRecord
 
   
 
-  scope :filter, lambda { |filter,current_user|
+  scope :filter_by_hash, lambda { |filter,current_user|
     search = joins(:country)
                .includes(:workcamp_assignments,
                          :organization,
@@ -262,7 +262,7 @@ class Workcamp < ApplicationRecord
   def duration_info
     duration ||
       if from.present? && to.present?
-        (to - from).to_i
+        (to - from).to_i + 1
       end
   end
 
