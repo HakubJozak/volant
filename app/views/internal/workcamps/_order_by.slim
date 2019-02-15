@@ -1,0 +1,5 @@
+.col-md-1
+  label.control-label Order by
+.col-md-2
+  = f.input :order, collection: [ 'Name', 'Code', 'From', 'To', 'Country' ], label: false
+  = f.input :asc, collection: [ [ 'Ascending', 'ASC' ], [ 'Descending', '' ] ], label: false

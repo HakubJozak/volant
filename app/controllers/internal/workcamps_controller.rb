@@ -3,6 +3,8 @@ class Internal::WorkcampsController < Internal::BaseController
   before_action :find_workcamp, except: [ :index,:create, :friday_list ]
 
   def index
+    @query = WorkcampQuery.new(filter)
+
     if filter[:starred]
       search = Workcamp.starred_by(current_user)
       render json: search, each_serializer: WorkcampSerializer
@@ -84,7 +86,7 @@ class Internal::WorkcampsController < Internal::BaseController
 
   private
 
-  # TODO: change to a scope
+  # TODO: change to model scope
   def apply_filter(search)
     search = search.includes(:workcamp_assignments,:organization,:tags,:intentions,:organization => [:emails])
     search = search.filter_by_hash(filter,current_user)
@@ -93,6 +95,7 @@ class Internal::WorkcampsController < Internal::BaseController
   end
 
 
+  # TODO: change to model scope
   def current_order
     case filter[:order].presence
     when 'code' then "code #{current_order_direction}"

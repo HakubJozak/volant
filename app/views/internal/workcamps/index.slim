@@ -1,4 +1,4 @@
-form.form.form-horizontal.form-search submit='search' role='form'
+= simple_form_for @query, url: '', class: 'form-horizontal form-search' do |f|
   .form-group
     .col-md-1
       label.control-label Search
@@ -21,5 +21,5 @@ form.form.form-horizontal.form-search submit='search' role='form'
           li = link_to 'Import'
 
   /= render 'workcamps/filter'
-  /= render 'order_by'
+  = render 'order_by', f: f
   = render 'table'
