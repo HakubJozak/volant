@@ -27,4 +27,15 @@ module WorkcampsHelper
     end
   end
 
+  def placement_popup_button(wc)
+    data = {
+      popover: true,
+      content: render('placement_popup', workcamp: wc)
+    }
+
+    content_tag :button, data: data, class: 'btn btn-default btn-sm placement-info' do
+      render 'free_places', workcamp: wc
+    end
+  end
+
 end

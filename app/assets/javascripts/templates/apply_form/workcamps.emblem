@@ -20,4 +20,3 @@ table.table.table-condensed.sidepanel
           = name
           br
           ' {{tag-list tags}}
-          

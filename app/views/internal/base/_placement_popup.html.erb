@@ -1,0 +1,26 @@
+ <table class='table table-condensed free-places-popover'>
+   <tr>
+    <th></th>
+    <th>Confirmed</th>
+    <th>Asked</th>
+    <th>Capacity</th>
+   </tr>
+   <tr>
+    <th><i class='fa fa-user'></i></th>
+    <td><%= workcamp.free_places %></td>
+    <td><%= workcamp.asked_for_places %></td>
+    <td><%= workcamp.capacity %></td>
+   </tr>
+   <tr>
+    <th><%= female_icon %></th>
+    <td><%= workcamp.free_places_for_females %></td>
+    <td><%= workcamp.asked_for_places_females %></td>
+    <td><%= workcamp.capacity_females %></td>
+   </tr>
+   <tr>
+    <th><%= male_icon %></th>
+    <td><%= workcamp.free_places_for_males %></td>
+    <td><%= workcamp.asked_for_places_males %></td>
+    <td><%= workcamp.capacity_males %></td>
+   </tr>
+ </table>

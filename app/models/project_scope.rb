@@ -7,6 +7,14 @@ class ProjectScope
     @session = session
   end
 
+  def incoming?
+    mode == :incoming
+  end
+
+  def outgoing?
+    mode == :outgoing?
+  end
+
   def mode=(val)
     @session[:project_mode] = val
   end

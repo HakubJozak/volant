@@ -1,0 +1,24 @@
+- if project_scope.incoming?
+  span title='Free capacity'
+    = workcamp.free_capacity
+  b = female_icon
+  span title='Free capacity for females'
+    = workcamp.free_capacity_females
+  b = male_icon
+  span title='Free capacity for males'
+    = workcamp.free_capacity_males
+- else
+  span title='Free places'
+    = workcamp.free_places
+  sub title='Asked for places'
+    = workcamp.asked_for_places
+  b = female_icon
+  span title='Free places for females'
+    = workcamp.free_places_for_females
+  sub title='Asked for places - females'
+    = workcamp.asked_for_places_females
+  b = male_icon
+  span title='Free places for males'
+    = workcamp.free_places_for_males
+  sub title='Asked for places - males'
+    = workcamp.asked_for_places_males

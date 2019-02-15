@@ -17,7 +17,8 @@ module MenuHelper
     end
 
     data.unshift [ 'All', nil]
-    opts = options_for_select(data, selected: project_scope.year)
+
+    opts = options_for_select(data, selected: project_scope.year.to_i)
     select_tag 'default_year', opts, class: 'form-control'
   end
 
