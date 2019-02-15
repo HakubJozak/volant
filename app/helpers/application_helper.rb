@@ -7,23 +7,6 @@ module ApplicationHelper
     end
   end
 
-  def tag_list(record)
-    record.tags.map do |tag|
-      tag_span(tag)
-    end.join(' ').html_safe
-  end
-
-  def tag_span(tag)
-    style = "color:#{tag.text_color}; background-color:#{tag.color};"
-    content_tag :span, class: 'label label-default', style: style do
-      if tag.symbol
-        fa(tag.symbol) + " " + h(tag.name)
-      else
-        h(tag.name)
-      end
-    end
-  end
-
   def form_state_icon(state)
     key = state.name
     icon = case key

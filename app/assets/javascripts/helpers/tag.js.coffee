@@ -7,8 +7,8 @@ makeTagMarkup = (tag) ->
   text = if symbol
            "<i class='fa fa-#{symbol}'></i> #{name}"
          else
-           name      
-          
+           name
+
   "<span class='label label-default' style='color:#{text_color}; background-color:#{color};' >#{text}</span>"
 
 

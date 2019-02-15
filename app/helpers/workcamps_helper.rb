@@ -15,7 +15,6 @@ module WorkcampsHelper
     end
   end
 
-
   def duration_info(wc)
     if wc.variable_dates
       if wc.duration

@@ -1,4 +1,4 @@
-h3 
+h3
   ' Tags
 
 table.table.table-striped.table-hover
@@ -14,5 +14,5 @@ table.table.table-striped.table-hover
     - @tags.each do |tag|
       tr
         td = link_to tag.name, polymorphic_path([ :edit, :internal, tag])
-        td = tag_span(tag) 
-        td = delete_button(tag)  
+        td = tag_span(tag)
+        td = delete_button(tag)

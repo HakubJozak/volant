@@ -14,10 +14,10 @@ table.table.table-condensed.table-responsive.workcamps
           = link_to internal_workcamp_path(workcamp) do
             b = workcamp.code
             ' &ndash; #{ workcamp.name }
-          br
+            br
             ' #{ workcamp.capacity } volunteers, #{ age_range workcamp },
             ' #{ workcamp.intentions.map(&:code).join(' ') }
-            / ' #{tag-list workcamp.tags}
+            = tag_list workcamp
           small
           == duration_info workcamp  
           = render 'extra_fee', workcamp: workcamp
