@@ -70,6 +70,7 @@ gem 'devise-bootstrap-views'
 gem 'bootstrap-generators', '~> 3.2.0'
 gem 'barbecue', github: 'HakubJozak/barbecue', tag: 'v0.1', branch: '0.1'
 gem 'rack-jsonp-middleware'
+gem 'rack-cors', require: 'rack/cors'
 
 gem 'font-awesome-rails'
 

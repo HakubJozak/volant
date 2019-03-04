@@ -37,6 +37,14 @@ module Volant
     require 'rack/jsonp'
     config.middleware.use Rack::JSONP
 
+    config.middleware.insert_before 0, 'Rack::Cors' do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: %i[get post options]
+      end
+    end
+
+
     config.generators do |g|
       g.orm             :active_record
       g.template_engine false # :erb
