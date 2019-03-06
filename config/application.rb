@@ -29,7 +29,7 @@ module Volant
 
     config.i18n.default_locale = :en
     config.active_record.schema_format = :sql
-    config.active_record.raise_in_transactional_callbacks = true                                                        
+    config.active_record.raise_in_transactional_callbacks = true
 
     # Deprecated options?
     # config.action_mailer.default_charset = 'utf-8'
@@ -40,10 +40,9 @@ module Volant
     config.middleware.insert_before 0, 'Rack::Cors' do
       allow do
         origins '*'
-        resource '*', headers: :any, methods: %i[get post options]
+        resource '/v1/*', headers: :any, methods: %i[get post options]
       end
     end
-
 
     config.generators do |g|
       g.orm             :active_record
