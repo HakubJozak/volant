@@ -37,7 +37,8 @@ require 'json'
 require 'http'
 
 # r = HTTP.post("http://localhost:9090/v1/apply_forms", json: attrs)
-r = HTTP.post("https://volant.inexsda.cz/v1/apply_forms", json: attrs)
+# r = HTTP.post("https://volant.inexsda.cz/v1/apply_forms", json: attrs)
+r = HTTP.post("https://volant.dev/v1/apply_forms", json: attrs)
 puts r.code
  # puts r.body
 

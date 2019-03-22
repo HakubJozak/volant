@@ -6,8 +6,10 @@ class ApplyFormMailerTest < ActionMailer::TestCase
     tmpl = Factory(:email_template,action: 'submitted')
 
     mail = ApplyFormMailer.submitted(form)
-    assert_equal mail.mime_type, 'text/html'
-    assert_equal mail.body, 'Body is not important'
+    assert_equal 'multipart/mixed', mail.mime_type
+
+    text = mail.body.parts.first.decoded
+    assert_equal 'Body is not important', text
   end
 
   test 'submitted LTV' do
@@ -15,7 +17,7 @@ class ApplyFormMailerTest < ActionMailer::TestCase
     tmpl = Factory(:email_template,action: 'ltv/submitted',body: 'LTV')
 
     mail = ApplyFormMailer.submitted(form)
-    assert_equal mail.mime_type, 'text/html'
-    assert_equal mail.body, 'LTV'    
+    assert_equal 'multipart/mixed', mail.mime_type
+    assert_equal 'LTV', mail.body.parts.first.decoded
   end
 end

@@ -5,6 +5,14 @@ class ApplyFormMailer < ActionMailer::Base
   end
 
   def submitted(application)
+    vef = Export::VefPdf.new(application)
+    
+    attachments[vef.filename] = {
+      content: Base64.encode64(vef.to_pdf),
+      transfer_encoding: :base64,
+      mime_type: 'application/pdf'
+    }
+    
     send_custom_template application, 'submitted'
   end
 
