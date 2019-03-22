@@ -230,16 +230,17 @@ class Workcamp < ActiveRecord::Base
     end
   end
 
+  # TODO: Move to Email Templates Bounded Context
   def all_applications_emails
     apply_forms.accepted.select(:email).map(&:email).join(', ')
   end
 
+  # TODO: Move to Email Templates Bounded Context
   def all_organizations_emails
     orgs = apply_forms.accepted.select(:organization_id).map(&:organization_id)
     mails = EmailContact.incoming.where('organization_id in (?)',orgs).select(:address).map(&:address)
     mails.join(', ')
   end
-
 
   public
 

@@ -6,7 +6,8 @@ Volant.EmailTemplateController = Volant.ObjectController.extend
   applicationAttributes: (-> @_attributes(Volant.ApplyForm) ).property()
   volunteerAttributes: (-> @_attributes(Volant.Volunteer) ).property()
   userAttributes: (-> @_attributes(Volant.User) ).property()
-  organizationAttributes: (-> @_attributes(Volant.Organization) ).property()        
+  organizationAttributes: (-> @_attributes(Volant.Organization) ).property()
+  countryAttributes: (-> @_attributes(Volant.Country) ).property()          
   helpers: ( -> Object.keys(Volant.EmailTemplate.helpers) ).property()
 
   _attributes: (model) ->

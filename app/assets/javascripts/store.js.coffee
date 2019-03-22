@@ -41,6 +41,18 @@ DS.Model.reopen
     if tags = @get('tags')
       hash.tags = {}
       tags.forEach (tag) ->
-        hash.tags[tag.get('name')] = true
+        escaped = tag.get('name').replace(/\./,'_').toLowerCase()
+        hash.tags[escaped] = true
+
+    if c = @get('country')
+      region = parseInt(c.get('region'))
+
+      hash.country = {}
+      hash.country['name'] = c.get('name_en')  
+      hash.country['is_region_1'] = (region == 1)
+      hash.country['is_region_2'] = (region == 2)
+
+      c.eachAttribute (attr) =>
+        hash.country[attr] = c.get(attr)
 
     hash

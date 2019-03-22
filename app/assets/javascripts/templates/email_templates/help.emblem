@@ -32,16 +32,20 @@
     ul
       = each attr in applicationAttributes
         li application.#{attr}
+      li application.country    
+
     h4 Workcamp
     ul
       = each attr in workcampAttributes
         li workcamp.#{attr}
+      li workcamp.country    
 
     h4 Organization
     ul
       = each attr in organizationAttributes
         li organization.#{attr}
-
+      li organization.country
+    
     h4 Volunteer
     ul
       = each attr in volunteerAttributes
@@ -51,6 +55,13 @@
     ul
       = each attr in userAttributes
         li user.#{attr}
+
+    h4 Country
+    ul
+      = each attr in countryAttributes
+        li user.#{attr}
+      li country.is_region_1
+      li country.is_region_2
 
 .panel.panel-default
   .panel-heading
