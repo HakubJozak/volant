@@ -6,30 +6,67 @@ require 'http'
 require 'json'
 require 'pathname'
 require 'nokogiri'
+require 'active_support'
+require 'active_support/core_ext'
 
 
 
-path = Pathname.new(ENV['HOME']).join('Private/jakub.hozak/fio-token')
-$token = File.read(path).strip
 
-def url(format)
-  u = "https://www.fio.cz/ib_api/rest/periods/#{$token}/2019-04-01/2019-04-2/transactions.#{format}"
-  puts u
-  u
+
+class FioAPI
+  def initialize
+    path = Pathname.new(ENV['HOME']).join('Private/jakub.hozak/fio-token')
+    @token = File.read(path).strip
+
+  end
+
+  def transactions
+    get transactions_in_term_url(from: 3.days.ago, to: Date.today, format: :json)
+
+  end
+
+
+  private
+    def get(url)
+      
+      @response = HTTP.use(logging: log_options).get(url)      
+
+      require 'pry' ; binding.pry
+      
+      if @response.status.success?
+        require 'pry' ; binding.pry
+        File.open('a.json','w') { |f| f.write(r.body) }
+      else
+        puts @response.status
+      end        
+    end
+
+    def last_transactions_url(format: :json)
+      "https://www.fio.cz/ib_api/rest/last/#{$token}/transactions.#{format}"  
+    end
+
+    def log_options
+      @log_options ||= {
+        logger: Logger.new(STDOUT),
+        level: 'INFO'
+      }.freeze
+    end
+
+
+    def transactions_in_term_url(format: :json, from: Date.yesterday, to: Date.today)
+      from = from.to_date.to_s
+      to = to.to_date.to_s
+      "https://www.fio.cz/ib_api/rest/periods/#{$token}/#{from}/#{to}/transactions.#{format}"
+    end
+
+    def log_url
+      
+    end
+  
 end
 
-# r = HTTP.get(url(:xml))
-# puts Nokogiri::XML.parse(r.body)
 
-
-# r = HTTP.get(url(:json))
-# h = JSON.parse(r.body)
-
-
-
-r = HTTP.get(url(:json))
-require 'pry' ; binding.pry
-puts JSON.parse(r.body)
+FioAPI.new.transactions
 
 
  # {"info"=>
@@ -68,3 +105,5 @@ puts JSON.parse(r.body)
  #        "column25"=>{"value"=>"sporeni", "name"=>"Komentář", "id"=>25},
  #        "column26"=>nil,
  #        "column17"=>{"value"=>24204563081, "name"=>"ID pokynu", "id"=>17}}
+
+
