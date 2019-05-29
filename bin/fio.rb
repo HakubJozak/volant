@@ -11,58 +11,52 @@ require 'active_support/core_ext'
 
 
 
-
-
 class FioAPI
+
+  attr_reader :format
+
   def initialize
     path = Pathname.new(ENV['HOME']).join('Private/jakub.hozak/fio-token')
     @token = File.read(path).strip
-
+    @format = :xml
   end
 
   def transactions
-    get transactions_in_term_url(from: 3.days.ago, to: Date.today, format: :json)
-
+    get transactions_in_term_url(from: 7.days.ago, to: Date.today)
   end
 
 
   private
     def get(url)
-      
-      @response = HTTP.use(logging: log_options).get(url)      
+      @response = HTTP.use(logging: log_options).get(url)
 
-      require 'pry' ; binding.pry
-      
       if @response.status.success?
-        require 'pry' ; binding.pry
-        File.open('a.json','w') { |f| f.write(r.body) }
+        File.open("a.#{format}",'w') { |f| f.write(@response.body) }
       else
         puts @response.status
-      end        
+      end
     end
 
-    def last_transactions_url(format: :json)
-      "https://www.fio.cz/ib_api/rest/last/#{$token}/transactions.#{format}"  
+    def last_transactions_url
+      "https://www.fio.cz/ib_api/rest/last/#{@token}/transactions.#{format}"
     end
 
     def log_options
       @log_options ||= {
-        logger: Logger.new(STDOUT),
-        level: 'INFO'
+        logger: Logger.new(STDOUT)
       }.freeze
     end
 
-
-    def transactions_in_term_url(format: :json, from: Date.yesterday, to: Date.today)
+    def transactions_in_term_url(from: Date.yesterday, to: Date.today)
       from = from.to_date.to_s
       to = to.to_date.to_s
-      "https://www.fio.cz/ib_api/rest/periods/#{$token}/#{from}/#{to}/transactions.#{format}"
+      "https://www.fio.cz/ib_api/rest/periods/#{@token}/#{from}/#{to}/transactions.#{format}"
     end
 
     def log_url
-      
+
     end
-  
+
 end
 
 
@@ -105,5 +99,3 @@ FioAPI.new.transactions
  #        "column25"=>{"value"=>"sporeni", "name"=>"Komentář", "id"=>25},
  #        "column26"=>nil,
  #        "column17"=>{"value"=>24204563081, "name"=>"ID pokynu", "id"=>17}}
-
-
