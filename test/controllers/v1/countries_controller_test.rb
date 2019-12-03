@@ -39,7 +39,7 @@ class V1::CountriesControllerTest < ActionController::TestCase
                   country: at)
     2.times { create :accepted_assignment, workcamp: full }
 
-     
+
     get :index
 
     assert_response :success
