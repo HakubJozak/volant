@@ -20,6 +20,10 @@ class Incoming::Workcamp < ::Outgoing::Workcamp
                         end
   end
 
+  def price
+    read_attribute(:price) || 1000
+  end
+  
   def adih_project_type
     if (tag_list & [ 'teenage', 'teen' ]).present?
       'TEEN'

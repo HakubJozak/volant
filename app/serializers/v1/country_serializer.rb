@@ -17,7 +17,6 @@ class V1::CountrySerializer < ActiveModel::Serializer
     object.country_zone.try(:name_en)
   end
 
-
   def workcamps_count
     object.free_workcamps_count
   end

@@ -248,7 +248,6 @@ class Workcamp < ActiveRecord::Base
     (self.minimal_age <= age) and (self.maximal_age >= age)
   end
 
-
   def capacity
     read_attribute(:capacity) || 0
   end

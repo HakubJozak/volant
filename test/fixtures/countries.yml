@@ -19,6 +19,14 @@ AT:
   country_zone: europe_western
   region: 1
 
+AF:
+  code: AF
+  triple_code: AFG
+  name_cz: Afghanistan
+  name_en: Afghanistan
+  country_zone: asia_southern
+  region: 2
+
 # == Schema Information
 #
 # Table name: countries

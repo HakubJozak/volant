@@ -120,6 +120,24 @@ class WorkcampTest < ActiveSupport::TestCase
     assert_equal target.id,result.first.id
   end
 
+  test '#price' do
+    # incoming workcamp is for 1000
+    wc = Factory.create(:incoming_workcamp, country: countries(:CZ))
+    assert_equal 1000, wc.price
+
+    # region 2 default
+    wc = Factory.create(:outgoing_workcamp, country: countries(:AF))
+    assert_equal 2500, wc.price
+
+    # region 1 default
+    wc = Factory.create(:outgoing_workcamp, country: countries(:AT))
+    assert_equal 2200, wc.price
+    
+    # overrided by DB
+    wc = Factory.create(:outgoing_workcamp, country: countries(:AF), price: 400)
+    assert_equal 400, wc.price
+  end
+
 end
 
 # == Schema Information

@@ -16,6 +16,15 @@ module Ltv
       where('variable_dates OR "end" <= ?', date)
     }
 
+    def price
+      read_attribute(:price) ||
+        if (country.region.to_i == 2)
+          3300
+        else
+          3000
+        end
+    end
+
     def open_for_application
       to.nil? || to >= Time.now.to_date
     end
@@ -26,7 +35,7 @@ module Ltv
       else
         'MTV' # Mid term
       end
-    end    
+    end
   end
 end
 
