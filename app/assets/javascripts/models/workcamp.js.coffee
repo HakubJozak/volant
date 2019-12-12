@@ -30,6 +30,7 @@ Volant.Workcamp = DS.Model.extend Ember.Copyable,
   notes: DS.attr 'string'
   description: DS.attr 'string'
   price: DS.attr 'number'
+  defaultPrice: DS.attr 'number'  
   extraFee: DS.attr 'number'
   extraFeeCurrency: DS.attr 'string'
   region: DS.attr 'string'

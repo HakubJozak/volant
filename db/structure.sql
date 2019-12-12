@@ -2,35 +2,19 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 11.5 (Ubuntu 11.5-0ubuntu0.19.04.1)
+-- Dumped by pg_dump version 11.5 (Ubuntu 11.5-0ubuntu0.19.04.1)
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
+SET xmloption = content;
 SET client_min_messages = warning;
-
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
-SET search_path = public, pg_catalog;
-
---
--- Name: czech; Type: COLLATION; Schema: public; Owner: -
---
-
-CREATE COLLATION czech (lc_collate = 'cs_CZ.utf8', lc_ctype = 'cs_CZ.utf8');
-
+SET row_security = off;
 
 --
 -- Name: unaccent; Type: EXTENSION; Schema: -; Owner: -
@@ -51,10 +35,10 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: workcamp_assignments; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: workcamp_assignments; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE workcamp_assignments (
+CREATE TABLE public.workcamp_assignments (
     id integer NOT NULL,
     apply_form_id integer,
     workcamp_id integer,
@@ -73,19 +57,19 @@ CREATE TABLE workcamp_assignments (
 -- Name: accepted_assignments; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW accepted_assignments AS
+CREATE VIEW public.accepted_assignments AS
  SELECT a.apply_form_id,
     min(a."position") AS "order"
-   FROM workcamp_assignments a
+   FROM public.workcamp_assignments a
   WHERE ((a.accepted IS NOT NULL) AND (a.rejected IS NULL))
   GROUP BY a.apply_form_id;
 
 
 --
--- Name: accounts; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: accounts; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE accounts (
+CREATE TABLE public.accounts (
     id integer NOT NULL,
     organization_id integer NOT NULL,
     season_end date DEFAULT '2015-03-15'::date NOT NULL,
@@ -100,7 +84,7 @@ CREATE TABLE accounts (
 -- Name: accounts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE accounts_id_seq
+CREATE SEQUENCE public.accounts_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -112,14 +96,14 @@ CREATE SEQUENCE accounts_id_seq
 -- Name: accounts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE accounts_id_seq OWNED BY accounts.id;
+ALTER SEQUENCE public.accounts_id_seq OWNED BY public.accounts.id;
 
 
 --
--- Name: countries; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: countries; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE countries (
+CREATE TABLE public.countries (
     id integer NOT NULL,
     code character varying(2) NOT NULL,
     name_cz character varying(255),
@@ -135,10 +119,10 @@ CREATE TABLE countries (
 
 
 --
--- Name: workcamps; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: workcamps; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE workcamps (
+CREATE TABLE public.workcamps (
     id integer NOT NULL,
     code character varying(255) NOT NULL,
     name character varying(255) NOT NULL,
@@ -191,7 +175,8 @@ CREATE TABLE workcamps (
     free_capacity integer DEFAULT 0 NOT NULL,
     partner_organization character varying(4096),
     project_summary character varying(4096),
-    variable_dates boolean
+    variable_dates boolean,
+    price numeric(10,2)
 );
 
 
@@ -199,7 +184,7 @@ CREATE TABLE workcamps (
 -- Name: active_countries_view; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW active_countries_view AS
+CREATE VIEW public.active_countries_view AS
  SELECT DISTINCT c.id,
     c.code,
     c.name_cz,
@@ -207,16 +192,16 @@ CREATE VIEW active_countries_view AS
     c.created_at,
     c.updated_at,
     c.triple_code
-   FROM (countries c
-     JOIN workcamps w ON ((c.id = w.country_id)))
+   FROM (public.countries c
+     JOIN public.workcamps w ON ((c.id = w.country_id)))
   ORDER BY c.id, c.code, c.name_cz, c.name_en, c.created_at, c.updated_at, c.triple_code;
 
 
 --
--- Name: apply_forms; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: apply_forms; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE apply_forms (
+CREATE TABLE public.apply_forms (
     id integer NOT NULL,
     volunteer_id integer,
     fee numeric(10,2) DEFAULT 2200 NOT NULL,
@@ -268,7 +253,7 @@ CREATE TABLE apply_forms (
 -- Name: apply_forms_cached_view; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW apply_forms_cached_view AS
+CREATE VIEW public.apply_forms_cached_view AS
  SELECT application.id,
     application.volunteer_id,
     application.fee,
@@ -283,15 +268,15 @@ CREATE VIEW apply_forms_cached_view AS
     workcamp_assignments.rejected,
     workcamp_assignments.asked,
     workcamp_assignments.infosheeted
-   FROM (apply_forms application
-     LEFT JOIN workcamp_assignments ON ((application.current_assignment_id_cached = workcamp_assignments.id)));
+   FROM (public.apply_forms application
+     LEFT JOIN public.workcamp_assignments ON ((application.current_assignment_id_cached = workcamp_assignments.id)));
 
 
 --
 -- Name: apply_forms_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE apply_forms_id_seq
+CREATE SEQUENCE public.apply_forms_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -303,18 +288,18 @@ CREATE SEQUENCE apply_forms_id_seq
 -- Name: apply_forms_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE apply_forms_id_seq OWNED BY apply_forms.id;
+ALTER SEQUENCE public.apply_forms_id_seq OWNED BY public.apply_forms.id;
 
 
 --
 -- Name: pending_assignments; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW pending_assignments AS
+CREATE VIEW public.pending_assignments AS
  SELECT a.apply_form_id,
     min(a."position") AS "order"
-   FROM workcamp_assignments a
-  WHERE ((((a.accepted IS NULL) AND (a.asked IS NULL)) AND (a.rejected IS NULL)) OR ((a.asked IS NOT NULL) AND (a.rejected IS NULL)))
+   FROM public.workcamp_assignments a
+  WHERE (((a.accepted IS NULL) AND (a.asked IS NULL) AND (a.rejected IS NULL)) OR ((a.asked IS NOT NULL) AND (a.rejected IS NULL)))
   GROUP BY a.apply_form_id;
 
 
@@ -322,13 +307,13 @@ CREATE VIEW pending_assignments AS
 -- Name: rejected_assignments; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW rejected_assignments AS
+CREATE VIEW public.rejected_assignments AS
  SELECT a.apply_form_id,
     a."position" AS "order"
-   FROM (workcamp_assignments a
+   FROM (public.workcamp_assignments a
      JOIN ( SELECT c.apply_form_id,
             max(c."position") AS maximum
-           FROM workcamp_assignments c
+           FROM public.workcamp_assignments c
           GROUP BY c.apply_form_id) b USING (apply_form_id))
   WHERE ((a."position" = b.maximum) AND (a.rejected IS NOT NULL));
 
@@ -337,7 +322,7 @@ CREATE VIEW rejected_assignments AS
 -- Name: apply_forms_view; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW apply_forms_view AS
+CREATE VIEW public.apply_forms_view AS
  SELECT application.id,
     application.volunteer_id,
     application.fee,
@@ -354,7 +339,7 @@ CREATE VIEW apply_forms_view AS
     workcamp.rejected,
     workcamp.asked,
     workcamp.infosheeted
-   FROM (apply_forms application
+   FROM (public.apply_forms application
      LEFT JOIN ( SELECT assignment.id AS current_assignment_id,
             assignment.apply_form_id,
             assignment.workcamp_id,
@@ -362,28 +347,28 @@ CREATE VIEW apply_forms_view AS
             assignment.rejected,
             assignment.asked,
             assignment.infosheeted
-           FROM (workcamp_assignments assignment
+           FROM (public.workcamp_assignments assignment
              JOIN ( SELECT assignments.apply_form_id,
                     min(assignments."order") AS "order"
                    FROM ( SELECT pending_assignments.apply_form_id,
                             pending_assignments."order"
-                           FROM pending_assignments
+                           FROM public.pending_assignments
                         UNION
                          SELECT accepted_assignments.apply_form_id,
                             accepted_assignments."order"
-                           FROM accepted_assignments
+                           FROM public.accepted_assignments
                         UNION
                          SELECT rejected_assignments.apply_form_id,
                             rejected_assignments."order"
-                           FROM rejected_assignments) assignments
+                           FROM public.rejected_assignments) assignments
                   GROUP BY assignments.apply_form_id) latest ON (((assignment.apply_form_id = latest.apply_form_id) AND (assignment."position" = latest."order"))))) workcamp ON ((workcamp.apply_form_id = application.id)));
 
 
 --
--- Name: attachments; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: attachments; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE attachments (
+CREATE TABLE public.attachments (
     id integer NOT NULL,
     file character varying(255),
     type character varying(255) DEFAULT 'Attachment'::character varying NOT NULL,
@@ -399,7 +384,7 @@ CREATE TABLE attachments (
 -- Name: attachments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE attachments_id_seq
+CREATE SEQUENCE public.attachments_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -411,14 +396,14 @@ CREATE SEQUENCE attachments_id_seq
 -- Name: attachments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE attachments_id_seq OWNED BY attachments.id;
+ALTER SEQUENCE public.attachments_id_seq OWNED BY public.attachments.id;
 
 
 --
--- Name: bookings; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: bookings; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE bookings (
+CREATE TABLE public.bookings (
     id integer NOT NULL,
     workcamp_id integer,
     organization_id integer,
@@ -434,7 +419,7 @@ CREATE TABLE bookings (
 -- Name: bookings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE bookings_id_seq
+CREATE SEQUENCE public.bookings_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -446,14 +431,14 @@ CREATE SEQUENCE bookings_id_seq
 -- Name: bookings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE bookings_id_seq OWNED BY bookings.id;
+ALTER SEQUENCE public.bookings_id_seq OWNED BY public.bookings.id;
 
 
 --
--- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: comments; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE comments (
+CREATE TABLE public.comments (
     id integer NOT NULL,
     title character varying(50) DEFAULT ''::character varying,
     comment text DEFAULT ''::text,
@@ -468,7 +453,7 @@ CREATE TABLE comments (
 -- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE comments_id_seq
+CREATE SEQUENCE public.comments_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -480,14 +465,14 @@ CREATE SEQUENCE comments_id_seq
 -- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
+ALTER SEQUENCE public.comments_id_seq OWNED BY public.comments.id;
 
 
 --
 -- Name: countries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE countries_id_seq
+CREATE SEQUENCE public.countries_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -499,14 +484,14 @@ CREATE SEQUENCE countries_id_seq
 -- Name: countries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE countries_id_seq OWNED BY countries.id;
+ALTER SEQUENCE public.countries_id_seq OWNED BY public.countries.id;
 
 
 --
--- Name: country_zones; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: country_zones; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE country_zones (
+CREATE TABLE public.country_zones (
     id integer NOT NULL,
     name_en character varying(255),
     name_cz character varying(255),
@@ -520,7 +505,7 @@ CREATE TABLE country_zones (
 -- Name: country_zones_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE country_zones_id_seq
+CREATE SEQUENCE public.country_zones_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -532,14 +517,14 @@ CREATE SEQUENCE country_zones_id_seq
 -- Name: country_zones_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE country_zones_id_seq OWNED BY country_zones.id;
+ALTER SEQUENCE public.country_zones_id_seq OWNED BY public.country_zones.id;
 
 
 --
--- Name: devise_users; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: devise_users; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE devise_users (
+CREATE TABLE public.devise_users (
     id integer NOT NULL,
     email character varying(255) DEFAULT ''::character varying NOT NULL,
     encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
@@ -563,7 +548,7 @@ CREATE TABLE devise_users (
 -- Name: devise_users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE devise_users_id_seq
+CREATE SEQUENCE public.devise_users_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -575,14 +560,14 @@ CREATE SEQUENCE devise_users_id_seq
 -- Name: devise_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE devise_users_id_seq OWNED BY devise_users.id;
+ALTER SEQUENCE public.devise_users_id_seq OWNED BY public.devise_users.id;
 
 
 --
--- Name: email_contacts; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: email_contacts; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE email_contacts (
+CREATE TABLE public.email_contacts (
     id integer NOT NULL,
     active boolean DEFAULT false,
     address character varying(255) NOT NULL,
@@ -599,7 +584,7 @@ CREATE TABLE email_contacts (
 -- Name: email_contacts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE email_contacts_id_seq
+CREATE SEQUENCE public.email_contacts_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -611,14 +596,14 @@ CREATE SEQUENCE email_contacts_id_seq
 -- Name: email_contacts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE email_contacts_id_seq OWNED BY email_contacts.id;
+ALTER SEQUENCE public.email_contacts_id_seq OWNED BY public.email_contacts.id;
 
 
 --
--- Name: email_templates; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: email_templates; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE email_templates (
+CREATE TABLE public.email_templates (
     id integer NOT NULL,
     action character varying(255),
     description character varying(255),
@@ -634,7 +619,7 @@ CREATE TABLE email_templates (
 -- Name: email_templates_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE email_templates_id_seq
+CREATE SEQUENCE public.email_templates_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -646,14 +631,14 @@ CREATE SEQUENCE email_templates_id_seq
 -- Name: email_templates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE email_templates_id_seq OWNED BY email_templates.id;
+ALTER SEQUENCE public.email_templates_id_seq OWNED BY public.email_templates.id;
 
 
 --
--- Name: hostings; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: hostings; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE hostings (
+CREATE TABLE public.hostings (
     id integer NOT NULL,
     workcamp_id integer,
     partner_id integer,
@@ -666,7 +651,7 @@ CREATE TABLE hostings (
 -- Name: hostings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE hostings_id_seq
+CREATE SEQUENCE public.hostings_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -678,14 +663,14 @@ CREATE SEQUENCE hostings_id_seq
 -- Name: hostings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE hostings_id_seq OWNED BY hostings.id;
+ALTER SEQUENCE public.hostings_id_seq OWNED BY public.hostings.id;
 
 
 --
--- Name: import_changes; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: import_changes; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE import_changes (
+CREATE TABLE public.import_changes (
     id integer NOT NULL,
     field character varying(255) NOT NULL,
     value text NOT NULL,
@@ -700,7 +685,7 @@ CREATE TABLE import_changes (
 -- Name: import_changes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE import_changes_id_seq
+CREATE SEQUENCE public.import_changes_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -712,14 +697,14 @@ CREATE SEQUENCE import_changes_id_seq
 -- Name: import_changes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE import_changes_id_seq OWNED BY import_changes.id;
+ALTER SEQUENCE public.import_changes_id_seq OWNED BY public.import_changes.id;
 
 
 --
--- Name: infosheets; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: infosheets; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE infosheets (
+CREATE TABLE public.infosheets (
     id integer NOT NULL,
     workcamp_id integer,
     document_file_name character varying(255),
@@ -736,7 +721,7 @@ CREATE TABLE infosheets (
 -- Name: infosheets_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE infosheets_id_seq
+CREATE SEQUENCE public.infosheets_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -748,14 +733,14 @@ CREATE SEQUENCE infosheets_id_seq
 -- Name: infosheets_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE infosheets_id_seq OWNED BY infosheets.id;
+ALTER SEQUENCE public.infosheets_id_seq OWNED BY public.infosheets.id;
 
 
 --
--- Name: languages; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: languages; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE languages (
+CREATE TABLE public.languages (
     id integer NOT NULL,
     code character varying(2),
     triple_code character varying(3) NOT NULL,
@@ -770,7 +755,7 @@ CREATE TABLE languages (
 -- Name: languages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE languages_id_seq
+CREATE SEQUENCE public.languages_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -782,14 +767,14 @@ CREATE SEQUENCE languages_id_seq
 -- Name: languages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE languages_id_seq OWNED BY languages.id;
+ALTER SEQUENCE public.languages_id_seq OWNED BY public.languages.id;
 
 
 --
--- Name: leaderships; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: leaderships; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE leaderships (
+CREATE TABLE public.leaderships (
     id integer NOT NULL,
     person_id integer,
     workcamp_id integer,
@@ -802,7 +787,7 @@ CREATE TABLE leaderships (
 -- Name: leaderships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE leaderships_id_seq
+CREATE SEQUENCE public.leaderships_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -814,14 +799,14 @@ CREATE SEQUENCE leaderships_id_seq
 -- Name: leaderships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE leaderships_id_seq OWNED BY leaderships.id;
+ALTER SEQUENCE public.leaderships_id_seq OWNED BY public.leaderships.id;
 
 
 --
--- Name: messages; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: messages; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE messages (
+CREATE TABLE public.messages (
     id integer NOT NULL,
     "to" character varying(65536),
     "from" character varying(65536),
@@ -845,7 +830,7 @@ CREATE TABLE messages (
 -- Name: messages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE messages_id_seq
+CREATE SEQUENCE public.messages_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -857,14 +842,14 @@ CREATE SEQUENCE messages_id_seq
 -- Name: messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
+ALTER SEQUENCE public.messages_id_seq OWNED BY public.messages.id;
 
 
 --
--- Name: networks; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: networks; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE networks (
+CREATE TABLE public.networks (
     id integer NOT NULL,
     name character varying(255),
     web character varying(255),
@@ -877,7 +862,7 @@ CREATE TABLE networks (
 -- Name: networks_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE networks_id_seq
+CREATE SEQUENCE public.networks_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -889,14 +874,14 @@ CREATE SEQUENCE networks_id_seq
 -- Name: networks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE networks_id_seq OWNED BY networks.id;
+ALTER SEQUENCE public.networks_id_seq OWNED BY public.networks.id;
 
 
 --
--- Name: new_email_templates; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: new_email_templates; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE new_email_templates (
+CREATE TABLE public.new_email_templates (
     id integer NOT NULL,
     action character varying(255),
     title character varying(255),
@@ -915,7 +900,7 @@ CREATE TABLE new_email_templates (
 -- Name: new_email_templates_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE new_email_templates_id_seq
+CREATE SEQUENCE public.new_email_templates_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -927,14 +912,14 @@ CREATE SEQUENCE new_email_templates_id_seq
 -- Name: new_email_templates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE new_email_templates_id_seq OWNED BY new_email_templates.id;
+ALTER SEQUENCE public.new_email_templates_id_seq OWNED BY public.new_email_templates.id;
 
 
 --
--- Name: organizations; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: organizations; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE organizations (
+CREATE TABLE public.organizations (
     id integer NOT NULL,
     country_id integer NOT NULL,
     name character varying(255) NOT NULL,
@@ -955,7 +940,7 @@ CREATE TABLE organizations (
 -- Name: organizations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE organizations_id_seq
+CREATE SEQUENCE public.organizations_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -967,14 +952,14 @@ CREATE SEQUENCE organizations_id_seq
 -- Name: organizations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE organizations_id_seq OWNED BY organizations.id;
+ALTER SEQUENCE public.organizations_id_seq OWNED BY public.organizations.id;
 
 
 --
--- Name: partners; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: partners; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE partners (
+CREATE TABLE public.partners (
     id integer NOT NULL,
     name character varying(255) NOT NULL,
     contact_person character varying(255),
@@ -993,7 +978,7 @@ CREATE TABLE partners (
 -- Name: partners_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE partners_id_seq
+CREATE SEQUENCE public.partners_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1005,14 +990,14 @@ CREATE SEQUENCE partners_id_seq
 -- Name: partners_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE partners_id_seq OWNED BY partners.id;
+ALTER SEQUENCE public.partners_id_seq OWNED BY public.partners.id;
 
 
 --
--- Name: partnerships; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: partnerships; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE partnerships (
+CREATE TABLE public.partnerships (
     id integer NOT NULL,
     description character varying(255),
     network_id integer,
@@ -1026,7 +1011,7 @@ CREATE TABLE partnerships (
 -- Name: partnerships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE partnerships_id_seq
+CREATE SEQUENCE public.partnerships_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1038,14 +1023,14 @@ CREATE SEQUENCE partnerships_id_seq
 -- Name: partnerships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE partnerships_id_seq OWNED BY partnerships.id;
+ALTER SEQUENCE public.partnerships_id_seq OWNED BY public.partnerships.id;
 
 
 --
--- Name: payments; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: payments; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE payments (
+CREATE TABLE public.payments (
     id integer NOT NULL,
     apply_form_id integer,
     old_schema_key integer,
@@ -1069,7 +1054,7 @@ CREATE TABLE payments (
 -- Name: payments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE payments_id_seq
+CREATE SEQUENCE public.payments_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1081,14 +1066,14 @@ CREATE SEQUENCE payments_id_seq
 -- Name: payments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE payments_id_seq OWNED BY payments.id;
+ALTER SEQUENCE public.payments_id_seq OWNED BY public.payments.id;
 
 
 --
--- Name: people; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: people; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE people (
+CREATE TABLE public.people (
     id integer NOT NULL,
     firstname character varying(255) NOT NULL,
     lastname character varying(255) NOT NULL,
@@ -1131,19 +1116,19 @@ CREATE TABLE people (
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE schema_migrations (
+CREATE TABLE public.schema_migrations (
     version character varying(255) NOT NULL
 );
 
 
 --
--- Name: sessions; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: sessions; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE sessions (
+CREATE TABLE public.sessions (
     id integer NOT NULL,
     session_id character varying(255) NOT NULL,
     data text,
@@ -1156,7 +1141,7 @@ CREATE TABLE sessions (
 -- Name: sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE sessions_id_seq
+CREATE SEQUENCE public.sessions_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1168,14 +1153,14 @@ CREATE SEQUENCE sessions_id_seq
 -- Name: sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE sessions_id_seq OWNED BY sessions.id;
+ALTER SEQUENCE public.sessions_id_seq OWNED BY public.sessions.id;
 
 
 --
--- Name: starrings; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: starrings; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE starrings (
+CREATE TABLE public.starrings (
     id integer NOT NULL,
     user_id integer NOT NULL,
     favorite_id integer NOT NULL,
@@ -1189,7 +1174,7 @@ CREATE TABLE starrings (
 -- Name: starrings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE starrings_id_seq
+CREATE SEQUENCE public.starrings_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1201,14 +1186,14 @@ CREATE SEQUENCE starrings_id_seq
 -- Name: starrings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE starrings_id_seq OWNED BY starrings.id;
+ALTER SEQUENCE public.starrings_id_seq OWNED BY public.starrings.id;
 
 
 --
--- Name: taggings; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: taggings; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE taggings (
+CREATE TABLE public.taggings (
     id integer NOT NULL,
     tag_id integer,
     taggable_id integer,
@@ -1224,7 +1209,7 @@ CREATE TABLE taggings (
 -- Name: taggings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE taggings_id_seq
+CREATE SEQUENCE public.taggings_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1236,14 +1221,14 @@ CREATE SEQUENCE taggings_id_seq
 -- Name: taggings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE taggings_id_seq OWNED BY taggings.id;
+ALTER SEQUENCE public.taggings_id_seq OWNED BY public.taggings.id;
 
 
 --
--- Name: tags; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: tags; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE tags (
+CREATE TABLE public.tags (
     id integer NOT NULL,
     name character varying(255) NOT NULL,
     color character varying(7) DEFAULT '#FF0000'::character varying NOT NULL,
@@ -1257,7 +1242,7 @@ CREATE TABLE tags (
 -- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE tags_id_seq
+CREATE SEQUENCE public.tags_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1269,14 +1254,14 @@ CREATE SEQUENCE tags_id_seq
 -- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
+ALTER SEQUENCE public.tags_id_seq OWNED BY public.tags.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE users (
+CREATE TABLE public.users (
     id integer NOT NULL,
     login character varying(255) NOT NULL,
     email character varying(255) NOT NULL,
@@ -1296,7 +1281,7 @@ CREATE TABLE users (
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE users_id_seq
+CREATE SEQUENCE public.users_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1308,14 +1293,14 @@ CREATE SEQUENCE users_id_seq
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE users_id_seq OWNED BY users.id;
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
 -- Name: volunteers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE volunteers_id_seq
+CREATE SEQUENCE public.volunteers_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1327,14 +1312,14 @@ CREATE SEQUENCE volunteers_id_seq
 -- Name: volunteers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE volunteers_id_seq OWNED BY people.id;
+ALTER SEQUENCE public.volunteers_id_seq OWNED BY public.people.id;
 
 
 --
 -- Name: workcamp_assignments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE workcamp_assignments_id_seq
+CREATE SEQUENCE public.workcamp_assignments_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1346,14 +1331,14 @@ CREATE SEQUENCE workcamp_assignments_id_seq
 -- Name: workcamp_assignments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE workcamp_assignments_id_seq OWNED BY workcamp_assignments.id;
+ALTER SEQUENCE public.workcamp_assignments_id_seq OWNED BY public.workcamp_assignments.id;
 
 
 --
--- Name: workcamp_intentions; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: workcamp_intentions; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE workcamp_intentions (
+CREATE TABLE public.workcamp_intentions (
     id integer NOT NULL,
     code character varying(255) NOT NULL,
     description_cz character varying(255) NOT NULL,
@@ -1367,7 +1352,7 @@ CREATE TABLE workcamp_intentions (
 -- Name: workcamp_intentions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE workcamp_intentions_id_seq
+CREATE SEQUENCE public.workcamp_intentions_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1379,14 +1364,14 @@ CREATE SEQUENCE workcamp_intentions_id_seq
 -- Name: workcamp_intentions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE workcamp_intentions_id_seq OWNED BY workcamp_intentions.id;
+ALTER SEQUENCE public.workcamp_intentions_id_seq OWNED BY public.workcamp_intentions.id;
 
 
 --
--- Name: workcamp_intentions_workcamps; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: workcamp_intentions_workcamps; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE workcamp_intentions_workcamps (
+CREATE TABLE public.workcamp_intentions_workcamps (
     workcamp_id integer,
     workcamp_intention_id integer
 );
@@ -1396,7 +1381,7 @@ CREATE TABLE workcamp_intentions_workcamps (
 -- Name: workcamps_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE workcamps_id_seq
+CREATE SEQUENCE public.workcamps_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1408,678 +1393,678 @@ CREATE SEQUENCE workcamps_id_seq
 -- Name: workcamps_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE workcamps_id_seq OWNED BY workcamps.id;
+ALTER SEQUENCE public.workcamps_id_seq OWNED BY public.workcamps.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: accounts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY accounts ALTER COLUMN id SET DEFAULT nextval('accounts_id_seq'::regclass);
+ALTER TABLE ONLY public.accounts ALTER COLUMN id SET DEFAULT nextval('public.accounts_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: apply_forms id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY apply_forms ALTER COLUMN id SET DEFAULT nextval('apply_forms_id_seq'::regclass);
+ALTER TABLE ONLY public.apply_forms ALTER COLUMN id SET DEFAULT nextval('public.apply_forms_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: attachments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY attachments ALTER COLUMN id SET DEFAULT nextval('attachments_id_seq'::regclass);
+ALTER TABLE ONLY public.attachments ALTER COLUMN id SET DEFAULT nextval('public.attachments_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: bookings id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY bookings ALTER COLUMN id SET DEFAULT nextval('bookings_id_seq'::regclass);
+ALTER TABLE ONLY public.bookings ALTER COLUMN id SET DEFAULT nextval('public.bookings_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: comments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
+ALTER TABLE ONLY public.comments ALTER COLUMN id SET DEFAULT nextval('public.comments_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: countries id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY countries ALTER COLUMN id SET DEFAULT nextval('countries_id_seq'::regclass);
+ALTER TABLE ONLY public.countries ALTER COLUMN id SET DEFAULT nextval('public.countries_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: country_zones id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY country_zones ALTER COLUMN id SET DEFAULT nextval('country_zones_id_seq'::regclass);
+ALTER TABLE ONLY public.country_zones ALTER COLUMN id SET DEFAULT nextval('public.country_zones_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: devise_users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY devise_users ALTER COLUMN id SET DEFAULT nextval('devise_users_id_seq'::regclass);
+ALTER TABLE ONLY public.devise_users ALTER COLUMN id SET DEFAULT nextval('public.devise_users_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: email_contacts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY email_contacts ALTER COLUMN id SET DEFAULT nextval('email_contacts_id_seq'::regclass);
+ALTER TABLE ONLY public.email_contacts ALTER COLUMN id SET DEFAULT nextval('public.email_contacts_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: email_templates id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY email_templates ALTER COLUMN id SET DEFAULT nextval('email_templates_id_seq'::regclass);
+ALTER TABLE ONLY public.email_templates ALTER COLUMN id SET DEFAULT nextval('public.email_templates_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: hostings id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY hostings ALTER COLUMN id SET DEFAULT nextval('hostings_id_seq'::regclass);
+ALTER TABLE ONLY public.hostings ALTER COLUMN id SET DEFAULT nextval('public.hostings_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: import_changes id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY import_changes ALTER COLUMN id SET DEFAULT nextval('import_changes_id_seq'::regclass);
+ALTER TABLE ONLY public.import_changes ALTER COLUMN id SET DEFAULT nextval('public.import_changes_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: infosheets id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY infosheets ALTER COLUMN id SET DEFAULT nextval('infosheets_id_seq'::regclass);
+ALTER TABLE ONLY public.infosheets ALTER COLUMN id SET DEFAULT nextval('public.infosheets_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: languages id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY languages ALTER COLUMN id SET DEFAULT nextval('languages_id_seq'::regclass);
+ALTER TABLE ONLY public.languages ALTER COLUMN id SET DEFAULT nextval('public.languages_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: leaderships id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY leaderships ALTER COLUMN id SET DEFAULT nextval('leaderships_id_seq'::regclass);
+ALTER TABLE ONLY public.leaderships ALTER COLUMN id SET DEFAULT nextval('public.leaderships_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: messages id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq'::regclass);
+ALTER TABLE ONLY public.messages ALTER COLUMN id SET DEFAULT nextval('public.messages_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: networks id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY networks ALTER COLUMN id SET DEFAULT nextval('networks_id_seq'::regclass);
+ALTER TABLE ONLY public.networks ALTER COLUMN id SET DEFAULT nextval('public.networks_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: new_email_templates id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY new_email_templates ALTER COLUMN id SET DEFAULT nextval('new_email_templates_id_seq'::regclass);
+ALTER TABLE ONLY public.new_email_templates ALTER COLUMN id SET DEFAULT nextval('public.new_email_templates_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: organizations id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY organizations ALTER COLUMN id SET DEFAULT nextval('organizations_id_seq'::regclass);
+ALTER TABLE ONLY public.organizations ALTER COLUMN id SET DEFAULT nextval('public.organizations_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: partners id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY partners ALTER COLUMN id SET DEFAULT nextval('partners_id_seq'::regclass);
+ALTER TABLE ONLY public.partners ALTER COLUMN id SET DEFAULT nextval('public.partners_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: partnerships id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY partnerships ALTER COLUMN id SET DEFAULT nextval('partnerships_id_seq'::regclass);
+ALTER TABLE ONLY public.partnerships ALTER COLUMN id SET DEFAULT nextval('public.partnerships_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: payments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY payments ALTER COLUMN id SET DEFAULT nextval('payments_id_seq'::regclass);
+ALTER TABLE ONLY public.payments ALTER COLUMN id SET DEFAULT nextval('public.payments_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: people id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY people ALTER COLUMN id SET DEFAULT nextval('volunteers_id_seq'::regclass);
+ALTER TABLE ONLY public.people ALTER COLUMN id SET DEFAULT nextval('public.volunteers_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: sessions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY sessions ALTER COLUMN id SET DEFAULT nextval('sessions_id_seq'::regclass);
+ALTER TABLE ONLY public.sessions ALTER COLUMN id SET DEFAULT nextval('public.sessions_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: starrings id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY starrings ALTER COLUMN id SET DEFAULT nextval('starrings_id_seq'::regclass);
+ALTER TABLE ONLY public.starrings ALTER COLUMN id SET DEFAULT nextval('public.starrings_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: taggings id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY taggings ALTER COLUMN id SET DEFAULT nextval('taggings_id_seq'::regclass);
+ALTER TABLE ONLY public.taggings ALTER COLUMN id SET DEFAULT nextval('public.taggings_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: tags id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
+ALTER TABLE ONLY public.tags ALTER COLUMN id SET DEFAULT nextval('public.tags_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: workcamp_assignments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY workcamp_assignments ALTER COLUMN id SET DEFAULT nextval('workcamp_assignments_id_seq'::regclass);
+ALTER TABLE ONLY public.workcamp_assignments ALTER COLUMN id SET DEFAULT nextval('public.workcamp_assignments_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: workcamp_intentions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY workcamp_intentions ALTER COLUMN id SET DEFAULT nextval('workcamp_intentions_id_seq'::regclass);
+ALTER TABLE ONLY public.workcamp_intentions ALTER COLUMN id SET DEFAULT nextval('public.workcamp_intentions_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: workcamps id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY workcamps ALTER COLUMN id SET DEFAULT nextval('workcamps_id_seq'::regclass);
+ALTER TABLE ONLY public.workcamps ALTER COLUMN id SET DEFAULT nextval('public.workcamps_id_seq'::regclass);
 
 
 --
--- Name: accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: accounts accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY accounts
+ALTER TABLE ONLY public.accounts
     ADD CONSTRAINT accounts_pkey PRIMARY KEY (id);
 
 
 --
--- Name: apply_forms_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: apply_forms apply_forms_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY apply_forms
+ALTER TABLE ONLY public.apply_forms
     ADD CONSTRAINT apply_forms_pkey PRIMARY KEY (id);
 
 
 --
--- Name: attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: attachments attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY attachments
+ALTER TABLE ONLY public.attachments
     ADD CONSTRAINT attachments_pkey PRIMARY KEY (id);
 
 
 --
--- Name: bookings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: bookings bookings_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY bookings
+ALTER TABLE ONLY public.bookings
     ADD CONSTRAINT bookings_pkey PRIMARY KEY (id);
 
 
 --
--- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY comments
+ALTER TABLE ONLY public.comments
     ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
 
 
 --
--- Name: countries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: countries countries_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY countries
+ALTER TABLE ONLY public.countries
     ADD CONSTRAINT countries_pkey PRIMARY KEY (id);
 
 
 --
--- Name: country_zones_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: country_zones country_zones_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY country_zones
+ALTER TABLE ONLY public.country_zones
     ADD CONSTRAINT country_zones_pkey PRIMARY KEY (id);
 
 
 --
--- Name: devise_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: devise_users devise_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY devise_users
+ALTER TABLE ONLY public.devise_users
     ADD CONSTRAINT devise_users_pkey PRIMARY KEY (id);
 
 
 --
--- Name: email_contacts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: email_contacts email_contacts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY email_contacts
+ALTER TABLE ONLY public.email_contacts
     ADD CONSTRAINT email_contacts_pkey PRIMARY KEY (id);
 
 
 --
--- Name: email_templates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: email_templates email_templates_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY email_templates
+ALTER TABLE ONLY public.email_templates
     ADD CONSTRAINT email_templates_pkey PRIMARY KEY (id);
 
 
 --
--- Name: hostings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: hostings hostings_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY hostings
+ALTER TABLE ONLY public.hostings
     ADD CONSTRAINT hostings_pkey PRIMARY KEY (id);
 
 
 --
--- Name: import_changes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: import_changes import_changes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY import_changes
+ALTER TABLE ONLY public.import_changes
     ADD CONSTRAINT import_changes_pkey PRIMARY KEY (id);
 
 
 --
--- Name: infosheets_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: infosheets infosheets_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY infosheets
+ALTER TABLE ONLY public.infosheets
     ADD CONSTRAINT infosheets_pkey PRIMARY KEY (id);
 
 
 --
--- Name: languages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: languages languages_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY languages
+ALTER TABLE ONLY public.languages
     ADD CONSTRAINT languages_pkey PRIMARY KEY (id);
 
 
 --
--- Name: leaderships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: leaderships leaderships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY leaderships
+ALTER TABLE ONLY public.leaderships
     ADD CONSTRAINT leaderships_pkey PRIMARY KEY (id);
 
 
 --
--- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: messages messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY messages
+ALTER TABLE ONLY public.messages
     ADD CONSTRAINT messages_pkey PRIMARY KEY (id);
 
 
 --
--- Name: networks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: networks networks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY networks
+ALTER TABLE ONLY public.networks
     ADD CONSTRAINT networks_pkey PRIMARY KEY (id);
 
 
 --
--- Name: new_email_templates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: new_email_templates new_email_templates_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY new_email_templates
+ALTER TABLE ONLY public.new_email_templates
     ADD CONSTRAINT new_email_templates_pkey PRIMARY KEY (id);
 
 
 --
--- Name: organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: organizations organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY organizations
+ALTER TABLE ONLY public.organizations
     ADD CONSTRAINT organizations_pkey PRIMARY KEY (id);
 
 
 --
--- Name: partners_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: partners partners_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY partners
+ALTER TABLE ONLY public.partners
     ADD CONSTRAINT partners_pkey PRIMARY KEY (id);
 
 
 --
--- Name: partnerships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: partnerships partnerships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY partnerships
+ALTER TABLE ONLY public.partnerships
     ADD CONSTRAINT partnerships_pkey PRIMARY KEY (id);
 
 
 --
--- Name: payments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: payments payments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY payments
+ALTER TABLE ONLY public.payments
     ADD CONSTRAINT payments_pkey PRIMARY KEY (id);
 
 
 --
--- Name: sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: sessions sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY sessions
+ALTER TABLE ONLY public.sessions
     ADD CONSTRAINT sessions_pkey PRIMARY KEY (id);
 
 
 --
--- Name: starrings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: starrings starrings_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY starrings
+ALTER TABLE ONLY public.starrings
     ADD CONSTRAINT starrings_pkey PRIMARY KEY (id);
 
 
 --
--- Name: taggings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: taggings taggings_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY taggings
+ALTER TABLE ONLY public.taggings
     ADD CONSTRAINT taggings_pkey PRIMARY KEY (id);
 
 
 --
--- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: tags tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY tags
+ALTER TABLE ONLY public.tags
     ADD CONSTRAINT tags_pkey PRIMARY KEY (id);
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY users
+ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 
 
 --
--- Name: volunteers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: people volunteers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY people
+ALTER TABLE ONLY public.people
     ADD CONSTRAINT volunteers_pkey PRIMARY KEY (id);
 
 
 --
--- Name: workcamp_assignments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: workcamp_assignments workcamp_assignments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY workcamp_assignments
+ALTER TABLE ONLY public.workcamp_assignments
     ADD CONSTRAINT workcamp_assignments_pkey PRIMARY KEY (id);
 
 
 --
--- Name: workcamp_intentions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: workcamp_intentions workcamp_intentions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY workcamp_intentions
+ALTER TABLE ONLY public.workcamp_intentions
     ADD CONSTRAINT workcamp_intentions_pkey PRIMARY KEY (id);
 
 
 --
--- Name: workcamps_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: workcamps workcamps_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY workcamps
+ALTER TABLE ONLY public.workcamps
     ADD CONSTRAINT workcamps_pkey PRIMARY KEY (id);
 
 
 --
--- Name: fk_comments_user; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: fk_comments_user; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX fk_comments_user ON comments USING btree (user_id);
-
-
---
--- Name: index_apply_forms_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
---
-
-CREATE INDEX index_apply_forms_on_id ON apply_forms USING btree (id);
+CREATE INDEX fk_comments_user ON public.comments USING btree (user_id);
 
 
 --
--- Name: index_devise_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_apply_forms_on_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_devise_users_on_email ON devise_users USING btree (email);
-
-
---
--- Name: index_devise_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace:
---
-
-CREATE UNIQUE INDEX index_devise_users_on_reset_password_token ON devise_users USING btree (reset_password_token);
+CREATE INDEX index_apply_forms_on_id ON public.apply_forms USING btree (id);
 
 
 --
--- Name: index_infosheets_on_workcamp_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_devise_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_infosheets_on_workcamp_id ON infosheets USING btree (workcamp_id);
-
-
---
--- Name: index_organizations_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
---
-
-CREATE INDEX index_organizations_on_id ON organizations USING btree (id);
+CREATE UNIQUE INDEX index_devise_users_on_email ON public.devise_users USING btree (email);
 
 
 --
--- Name: index_sessions_on_session_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_devise_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_sessions_on_session_id ON sessions USING btree (session_id);
-
-
---
--- Name: index_sessions_on_updated_at; Type: INDEX; Schema: public; Owner: -; Tablespace:
---
-
-CREATE INDEX index_sessions_on_updated_at ON sessions USING btree (updated_at);
+CREATE UNIQUE INDEX index_devise_users_on_reset_password_token ON public.devise_users USING btree (reset_password_token);
 
 
 --
--- Name: index_taggings_on_taggable_id_and_taggable_type; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_infosheets_on_workcamp_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_taggings_on_taggable_id_and_taggable_type ON taggings USING btree (taggable_id, taggable_type);
-
-
---
--- Name: index_tags_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace:
---
-
-CREATE UNIQUE INDEX index_tags_on_name ON tags USING btree (name);
+CREATE INDEX index_infosheets_on_workcamp_id ON public.infosheets USING btree (workcamp_id);
 
 
 --
--- Name: index_volunteers_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_organizations_on_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_volunteers_on_id ON people USING btree (id);
-
-
---
--- Name: index_workcamp_assignments_on_accepted; Type: INDEX; Schema: public; Owner: -; Tablespace:
---
-
-CREATE INDEX index_workcamp_assignments_on_accepted ON workcamp_assignments USING btree (accepted);
+CREATE INDEX index_organizations_on_id ON public.organizations USING btree (id);
 
 
 --
--- Name: index_workcamp_assignments_on_apply_form_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_sessions_on_session_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_workcamp_assignments_on_apply_form_id ON workcamp_assignments USING btree (apply_form_id);
-
-
---
--- Name: index_workcamp_assignments_on_asked; Type: INDEX; Schema: public; Owner: -; Tablespace:
---
-
-CREATE INDEX index_workcamp_assignments_on_asked ON workcamp_assignments USING btree (asked);
+CREATE INDEX index_sessions_on_session_id ON public.sessions USING btree (session_id);
 
 
 --
--- Name: index_workcamp_assignments_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_sessions_on_updated_at; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_workcamp_assignments_on_id ON workcamp_assignments USING btree (id);
-
-
---
--- Name: index_workcamp_assignments_on_infosheeted; Type: INDEX; Schema: public; Owner: -; Tablespace:
---
-
-CREATE INDEX index_workcamp_assignments_on_infosheeted ON workcamp_assignments USING btree (infosheeted);
+CREATE INDEX index_sessions_on_updated_at ON public.sessions USING btree (updated_at);
 
 
 --
--- Name: index_workcamp_assignments_on_rejected; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_taggings_on_taggable_id_and_taggable_type; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_workcamp_assignments_on_rejected ON workcamp_assignments USING btree (rejected);
-
-
---
--- Name: index_workcamp_assignments_on_workcamp_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
---
-
-CREATE INDEX index_workcamp_assignments_on_workcamp_id ON workcamp_assignments USING btree (workcamp_id);
+CREATE INDEX index_taggings_on_taggable_id_and_taggable_type ON public.taggings USING btree (taggable_id, taggable_type);
 
 
 --
--- Name: index_workcamps_on_begin; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_tags_on_name; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_workcamps_on_begin ON workcamps USING btree (begin);
-
-
---
--- Name: index_workcamps_on_country_id_and_begin; Type: INDEX; Schema: public; Owner: -; Tablespace:
---
-
-CREATE INDEX index_workcamps_on_country_id_and_begin ON workcamps USING btree (country_id, begin);
+CREATE UNIQUE INDEX index_tags_on_name ON public.tags USING btree (name);
 
 
 --
--- Name: index_workcamps_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_volunteers_on_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_workcamps_on_id ON workcamps USING btree (id);
-
-
---
--- Name: index_workcamps_on_state; Type: INDEX; Schema: public; Owner: -; Tablespace:
---
-
-CREATE INDEX index_workcamps_on_state ON workcamps USING btree (state);
+CREATE INDEX index_volunteers_on_id ON public.people USING btree (id);
 
 
 --
--- Name: index_workcamps_on_state_and_type; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_workcamp_assignments_on_accepted; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_workcamps_on_state_and_type ON workcamps USING btree (state, type);
-
-
---
--- Name: index_workcamps_on_state_and_type_and_begin; Type: INDEX; Schema: public; Owner: -; Tablespace:
---
-
-CREATE INDEX index_workcamps_on_state_and_type_and_begin ON workcamps USING btree (state, type, begin);
+CREATE INDEX index_workcamp_assignments_on_accepted ON public.workcamp_assignments USING btree (accepted);
 
 
 --
--- Name: index_workcamps_on_type; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_workcamp_assignments_on_apply_form_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_workcamps_on_type ON workcamps USING btree (type);
-
-
---
--- Name: taggings_idx; Type: INDEX; Schema: public; Owner: -; Tablespace:
---
-
-CREATE UNIQUE INDEX taggings_idx ON taggings USING btree (tag_id, taggable_id, taggable_type, context, tagger_id, tagger_type);
+CREATE INDEX index_workcamp_assignments_on_apply_form_id ON public.workcamp_assignments USING btree (apply_form_id);
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_workcamp_assignments_on_asked; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+CREATE INDEX index_workcamp_assignments_on_asked ON public.workcamp_assignments USING btree (asked);
 
 
 --
--- Name: apply_forms_cached_view_delete; Type: RULE; Schema: public; Owner: -
+-- Name: index_workcamp_assignments_on_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_workcamp_assignments_on_id ON public.workcamp_assignments USING btree (id);
+
+
+--
+-- Name: index_workcamp_assignments_on_infosheeted; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_workcamp_assignments_on_infosheeted ON public.workcamp_assignments USING btree (infosheeted);
+
+
+--
+-- Name: index_workcamp_assignments_on_rejected; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_workcamp_assignments_on_rejected ON public.workcamp_assignments USING btree (rejected);
+
+
+--
+-- Name: index_workcamp_assignments_on_workcamp_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_workcamp_assignments_on_workcamp_id ON public.workcamp_assignments USING btree (workcamp_id);
+
+
+--
+-- Name: index_workcamps_on_begin; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_workcamps_on_begin ON public.workcamps USING btree (begin);
+
+
+--
+-- Name: index_workcamps_on_country_id_and_begin; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_workcamps_on_country_id_and_begin ON public.workcamps USING btree (country_id, begin);
+
+
+--
+-- Name: index_workcamps_on_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_workcamps_on_id ON public.workcamps USING btree (id);
+
+
+--
+-- Name: index_workcamps_on_state; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_workcamps_on_state ON public.workcamps USING btree (state);
+
+
+--
+-- Name: index_workcamps_on_state_and_type; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_workcamps_on_state_and_type ON public.workcamps USING btree (state, type);
+
+
+--
+-- Name: index_workcamps_on_state_and_type_and_begin; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_workcamps_on_state_and_type_and_begin ON public.workcamps USING btree (state, type, begin);
+
+
+--
+-- Name: index_workcamps_on_type; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_workcamps_on_type ON public.workcamps USING btree (type);
+
+
+--
+-- Name: taggings_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX taggings_idx ON public.taggings USING btree (tag_id, taggable_id, taggable_type, context, tagger_id, tagger_type);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON public.schema_migrations USING btree (version);
+
+
+--
+-- Name: apply_forms_cached_view apply_forms_cached_view_delete; Type: RULE; Schema: public; Owner: -
 --
 
 CREATE RULE apply_forms_cached_view_delete AS
-    ON DELETE TO apply_forms_cached_view DO INSTEAD  DELETE FROM apply_forms
+    ON DELETE TO public.apply_forms_cached_view DO INSTEAD  DELETE FROM public.apply_forms
   WHERE (apply_forms.id = old.id);
 
 
 --
--- Name: apply_forms_cached_view_insert; Type: RULE; Schema: public; Owner: -
+-- Name: apply_forms_cached_view apply_forms_cached_view_insert; Type: RULE; Schema: public; Owner: -
 --
 
 CREATE RULE apply_forms_cached_view_insert AS
-    ON INSERT TO apply_forms_cached_view DO INSTEAD  INSERT INTO apply_forms (volunteer_id, fee, cancelled, general_remarks, motivation, created_at, updated_at, current_workcamp_id_cached, current_assignment_id_cached)
+    ON INSERT TO public.apply_forms_cached_view DO INSTEAD  INSERT INTO public.apply_forms (volunteer_id, fee, cancelled, general_remarks, motivation, created_at, updated_at, current_workcamp_id_cached, current_assignment_id_cached)
   VALUES (new.volunteer_id, new.fee, new.cancelled, new.general_remarks, new.motivation, new.created_at, new.updated_at, new.current_workcamp_id_cached, new.current_assignment_id_cached)
   RETURNING apply_forms.id,
     apply_forms.volunteer_id,
@@ -2098,29 +2083,29 @@ CREATE RULE apply_forms_cached_view_insert AS
 
 
 --
--- Name: apply_forms_cached_view_update; Type: RULE; Schema: public; Owner: -
+-- Name: apply_forms_cached_view apply_forms_cached_view_update; Type: RULE; Schema: public; Owner: -
 --
 
 CREATE RULE apply_forms_cached_view_update AS
-    ON UPDATE TO apply_forms_cached_view DO INSTEAD  UPDATE apply_forms SET volunteer_id = new.volunteer_id, fee = new.fee, cancelled = new.cancelled, general_remarks = new.general_remarks, motivation = new.motivation, created_at = new.created_at, updated_at = new.updated_at, current_workcamp_id_cached = new.current_workcamp_id_cached, current_assignment_id_cached = new.current_assignment_id_cached
+    ON UPDATE TO public.apply_forms_cached_view DO INSTEAD  UPDATE public.apply_forms SET volunteer_id = new.volunteer_id, fee = new.fee, cancelled = new.cancelled, general_remarks = new.general_remarks, motivation = new.motivation, created_at = new.created_at, updated_at = new.updated_at, current_workcamp_id_cached = new.current_workcamp_id_cached, current_assignment_id_cached = new.current_assignment_id_cached
   WHERE (apply_forms.id = old.id);
 
 
 --
--- Name: apply_forms_view_delete; Type: RULE; Schema: public; Owner: -
+-- Name: apply_forms_view apply_forms_view_delete; Type: RULE; Schema: public; Owner: -
 --
 
 CREATE RULE apply_forms_view_delete AS
-    ON DELETE TO apply_forms_view DO INSTEAD  DELETE FROM apply_forms
+    ON DELETE TO public.apply_forms_view DO INSTEAD  DELETE FROM public.apply_forms
   WHERE (apply_forms.id = old.id);
 
 
 --
--- Name: apply_forms_view_insert; Type: RULE; Schema: public; Owner: -
+-- Name: apply_forms_view apply_forms_view_insert; Type: RULE; Schema: public; Owner: -
 --
 
 CREATE RULE apply_forms_view_insert AS
-    ON INSERT TO apply_forms_view DO INSTEAD  INSERT INTO apply_forms (volunteer_id, fee, cancelled, general_remarks, motivation, created_at, updated_at)
+    ON INSERT TO public.apply_forms_view DO INSTEAD  INSERT INTO public.apply_forms (volunteer_id, fee, cancelled, general_remarks, motivation, created_at, updated_at)
   VALUES (new.volunteer_id, new.fee, new.cancelled, new.general_remarks, new.motivation, new.created_at, new.updated_at)
   RETURNING apply_forms.id,
     apply_forms.volunteer_id,
@@ -2141,227 +2126,227 @@ CREATE RULE apply_forms_view_insert AS
 
 
 --
--- Name: apply_forms_view_update; Type: RULE; Schema: public; Owner: -
+-- Name: apply_forms_view apply_forms_view_update; Type: RULE; Schema: public; Owner: -
 --
 
 CREATE RULE apply_forms_view_update AS
-    ON UPDATE TO apply_forms_view DO INSTEAD  UPDATE apply_forms SET volunteer_id = new.volunteer_id, fee = new.fee, cancelled = new.cancelled, general_remarks = new.general_remarks, motivation = new.motivation, created_at = new.created_at, updated_at = new.updated_at
+    ON UPDATE TO public.apply_forms_view DO INSTEAD  UPDATE public.apply_forms SET volunteer_id = new.volunteer_id, fee = new.fee, cancelled = new.cancelled, general_remarks = new.general_remarks, motivation = new.motivation, created_at = new.created_at, updated_at = new.updated_at
   WHERE (apply_forms.id = old.id);
 
 
 --
--- Name: apply_forms_volunteer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: apply_forms apply_forms_volunteer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY apply_forms
-    ADD CONSTRAINT apply_forms_volunteer_id_fkey FOREIGN KEY (volunteer_id) REFERENCES people(id);
-
-
---
--- Name: bookings_country_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY bookings
-    ADD CONSTRAINT bookings_country_id_fkey FOREIGN KEY (country_id) REFERENCES countries(id);
+ALTER TABLE ONLY public.apply_forms
+    ADD CONSTRAINT apply_forms_volunteer_id_fkey FOREIGN KEY (volunteer_id) REFERENCES public.people(id);
 
 
 --
--- Name: bookings_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: bookings bookings_country_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY bookings
-    ADD CONSTRAINT bookings_organization_id_fkey FOREIGN KEY (organization_id) REFERENCES organizations(id);
-
-
---
--- Name: bookings_workcamp_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY bookings
-    ADD CONSTRAINT bookings_workcamp_id_fkey FOREIGN KEY (workcamp_id) REFERENCES workcamps(id);
+ALTER TABLE ONLY public.bookings
+    ADD CONSTRAINT bookings_country_id_fkey FOREIGN KEY (country_id) REFERENCES public.countries(id);
 
 
 --
--- Name: comments_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: bookings bookings_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY comments
-    ADD CONSTRAINT comments_user_id_fkey FOREIGN KEY (user_id) REFERENCES users(id);
-
-
---
--- Name: email_contacts_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY email_contacts
-    ADD CONSTRAINT email_contacts_organization_id_fkey FOREIGN KEY (organization_id) REFERENCES organizations(id);
+ALTER TABLE ONLY public.bookings
+    ADD CONSTRAINT bookings_organization_id_fkey FOREIGN KEY (organization_id) REFERENCES public.organizations(id);
 
 
 --
--- Name: hostings_partner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: bookings bookings_workcamp_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY hostings
-    ADD CONSTRAINT hostings_partner_id_fkey FOREIGN KEY (partner_id) REFERENCES partners(id);
-
-
---
--- Name: hostings_workcamp_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY hostings
-    ADD CONSTRAINT hostings_workcamp_id_fkey FOREIGN KEY (workcamp_id) REFERENCES workcamps(id);
+ALTER TABLE ONLY public.bookings
+    ADD CONSTRAINT bookings_workcamp_id_fkey FOREIGN KEY (workcamp_id) REFERENCES public.workcamps(id);
 
 
 --
--- Name: import_changes_workcamp_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: comments comments_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY import_changes
-    ADD CONSTRAINT import_changes_workcamp_id_fkey FOREIGN KEY (workcamp_id) REFERENCES workcamps(id);
-
-
---
--- Name: infosheets_workcamp_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY infosheets
-    ADD CONSTRAINT infosheets_workcamp_id_fkey FOREIGN KEY (workcamp_id) REFERENCES workcamps(id);
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT comments_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
 --
--- Name: leaderships_person_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: email_contacts email_contacts_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY leaderships
-    ADD CONSTRAINT leaderships_person_id_fkey FOREIGN KEY (person_id) REFERENCES people(id);
-
-
---
--- Name: leaderships_workcamp_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY leaderships
-    ADD CONSTRAINT leaderships_workcamp_id_fkey FOREIGN KEY (workcamp_id) REFERENCES workcamps(id);
+ALTER TABLE ONLY public.email_contacts
+    ADD CONSTRAINT email_contacts_organization_id_fkey FOREIGN KEY (organization_id) REFERENCES public.organizations(id);
 
 
 --
--- Name: organizations_country_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: hostings hostings_partner_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY organizations
-    ADD CONSTRAINT organizations_country_id_fkey FOREIGN KEY (country_id) REFERENCES countries(id);
-
-
---
--- Name: partnerships_network_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY partnerships
-    ADD CONSTRAINT partnerships_network_id_fkey FOREIGN KEY (network_id) REFERENCES networks(id);
+ALTER TABLE ONLY public.hostings
+    ADD CONSTRAINT hostings_partner_id_fkey FOREIGN KEY (partner_id) REFERENCES public.partners(id);
 
 
 --
--- Name: partnerships_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: hostings hostings_workcamp_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY partnerships
-    ADD CONSTRAINT partnerships_organization_id_fkey FOREIGN KEY (organization_id) REFERENCES organizations(id);
-
-
---
--- Name: payments_apply_form_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY payments
-    ADD CONSTRAINT payments_apply_form_id_fkey FOREIGN KEY (apply_form_id) REFERENCES apply_forms(id);
+ALTER TABLE ONLY public.hostings
+    ADD CONSTRAINT hostings_workcamp_id_fkey FOREIGN KEY (workcamp_id) REFERENCES public.workcamps(id);
 
 
 --
--- Name: people_country_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: import_changes import_changes_workcamp_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY people
-    ADD CONSTRAINT people_country_id_fkey FOREIGN KEY (country_id) REFERENCES countries(id);
-
-
---
--- Name: people_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY people
-    ADD CONSTRAINT people_organization_id_fkey FOREIGN KEY (organization_id) REFERENCES organizations(id);
+ALTER TABLE ONLY public.import_changes
+    ADD CONSTRAINT import_changes_workcamp_id_fkey FOREIGN KEY (workcamp_id) REFERENCES public.workcamps(id);
 
 
 --
--- Name: people_workcamp_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: infosheets infosheets_workcamp_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY people
-    ADD CONSTRAINT people_workcamp_id_fkey FOREIGN KEY (workcamp_id) REFERENCES workcamps(id);
-
-
---
--- Name: taggings_tag_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY taggings
-    ADD CONSTRAINT taggings_tag_id_fkey FOREIGN KEY (tag_id) REFERENCES tags(id);
+ALTER TABLE ONLY public.infosheets
+    ADD CONSTRAINT infosheets_workcamp_id_fkey FOREIGN KEY (workcamp_id) REFERENCES public.workcamps(id);
 
 
 --
--- Name: workcamp_assignments_apply_form_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: leaderships leaderships_person_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY workcamp_assignments
-    ADD CONSTRAINT workcamp_assignments_apply_form_id_fkey FOREIGN KEY (apply_form_id) REFERENCES apply_forms(id);
-
-
---
--- Name: workcamp_assignments_workcamp_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY workcamp_assignments
-    ADD CONSTRAINT workcamp_assignments_workcamp_id_fkey FOREIGN KEY (workcamp_id) REFERENCES workcamps(id);
+ALTER TABLE ONLY public.leaderships
+    ADD CONSTRAINT leaderships_person_id_fkey FOREIGN KEY (person_id) REFERENCES public.people(id);
 
 
 --
--- Name: workcamp_intentions_workcamps_workcamp_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: leaderships leaderships_workcamp_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY workcamp_intentions_workcamps
-    ADD CONSTRAINT workcamp_intentions_workcamps_workcamp_id_fkey FOREIGN KEY (workcamp_id) REFERENCES workcamps(id);
-
-
---
--- Name: workcamp_intentions_workcamps_workcamp_intention_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY workcamp_intentions_workcamps
-    ADD CONSTRAINT workcamp_intentions_workcamps_workcamp_intention_id_fkey FOREIGN KEY (workcamp_intention_id) REFERENCES workcamp_intentions(id);
+ALTER TABLE ONLY public.leaderships
+    ADD CONSTRAINT leaderships_workcamp_id_fkey FOREIGN KEY (workcamp_id) REFERENCES public.workcamps(id);
 
 
 --
--- Name: workcamps_country_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: organizations organizations_country_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY workcamps
-    ADD CONSTRAINT workcamps_country_id_fkey FOREIGN KEY (country_id) REFERENCES countries(id);
+ALTER TABLE ONLY public.organizations
+    ADD CONSTRAINT organizations_country_id_fkey FOREIGN KEY (country_id) REFERENCES public.countries(id);
 
 
 --
--- Name: workcamps_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: partnerships partnerships_network_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY workcamps
-    ADD CONSTRAINT workcamps_organization_id_fkey FOREIGN KEY (organization_id) REFERENCES organizations(id);
+ALTER TABLE ONLY public.partnerships
+    ADD CONSTRAINT partnerships_network_id_fkey FOREIGN KEY (network_id) REFERENCES public.networks(id);
+
+
+--
+-- Name: partnerships partnerships_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.partnerships
+    ADD CONSTRAINT partnerships_organization_id_fkey FOREIGN KEY (organization_id) REFERENCES public.organizations(id);
+
+
+--
+-- Name: payments payments_apply_form_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.payments
+    ADD CONSTRAINT payments_apply_form_id_fkey FOREIGN KEY (apply_form_id) REFERENCES public.apply_forms(id);
+
+
+--
+-- Name: people people_country_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.people
+    ADD CONSTRAINT people_country_id_fkey FOREIGN KEY (country_id) REFERENCES public.countries(id);
+
+
+--
+-- Name: people people_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.people
+    ADD CONSTRAINT people_organization_id_fkey FOREIGN KEY (organization_id) REFERENCES public.organizations(id);
+
+
+--
+-- Name: people people_workcamp_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.people
+    ADD CONSTRAINT people_workcamp_id_fkey FOREIGN KEY (workcamp_id) REFERENCES public.workcamps(id);
+
+
+--
+-- Name: taggings taggings_tag_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.taggings
+    ADD CONSTRAINT taggings_tag_id_fkey FOREIGN KEY (tag_id) REFERENCES public.tags(id);
+
+
+--
+-- Name: workcamp_assignments workcamp_assignments_apply_form_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.workcamp_assignments
+    ADD CONSTRAINT workcamp_assignments_apply_form_id_fkey FOREIGN KEY (apply_form_id) REFERENCES public.apply_forms(id);
+
+
+--
+-- Name: workcamp_assignments workcamp_assignments_workcamp_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.workcamp_assignments
+    ADD CONSTRAINT workcamp_assignments_workcamp_id_fkey FOREIGN KEY (workcamp_id) REFERENCES public.workcamps(id);
+
+
+--
+-- Name: workcamp_intentions_workcamps workcamp_intentions_workcamps_workcamp_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.workcamp_intentions_workcamps
+    ADD CONSTRAINT workcamp_intentions_workcamps_workcamp_id_fkey FOREIGN KEY (workcamp_id) REFERENCES public.workcamps(id);
+
+
+--
+-- Name: workcamp_intentions_workcamps workcamp_intentions_workcamps_workcamp_intention_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.workcamp_intentions_workcamps
+    ADD CONSTRAINT workcamp_intentions_workcamps_workcamp_intention_id_fkey FOREIGN KEY (workcamp_intention_id) REFERENCES public.workcamp_intentions(id);
+
+
+--
+-- Name: workcamps workcamps_country_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.workcamps
+    ADD CONSTRAINT workcamps_country_id_fkey FOREIGN KEY (country_id) REFERENCES public.countries(id);
+
+
+--
+-- Name: workcamps workcamps_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.workcamps
+    ADD CONSTRAINT workcamps_organization_id_fkey FOREIGN KEY (organization_id) REFERENCES public.organizations(id);
 
 
 --
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user",public;
+SET search_path TO "$user", public;
 
 INSERT INTO schema_migrations (version) VALUES ('20071205150145');
 
@@ -2596,3 +2581,6 @@ INSERT INTO schema_migrations (version) VALUES ('20170315113846');
 INSERT INTO schema_migrations (version) VALUES ('20180202143309');
 
 INSERT INTO schema_migrations (version) VALUES ('20180617173056');
+
+INSERT INTO schema_migrations (version) VALUES ('20191203151355');
+

@@ -271,6 +271,14 @@ class Workcamp < ActiveRecord::Base
     'STV'
   end
 
+  def price(fallback: true)
+    if fallback
+      read_attribute(:price) || default_price
+    else
+      read_attribute(:price)
+    end
+  end
+
   private
 
   def localize(date)

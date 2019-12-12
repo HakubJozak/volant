@@ -10,5 +10,5 @@ class MiniOrganizationSerializer < ApplicationSerializer
   has_one :country, embed: :ids, include: true
 
 
-  
+
 end

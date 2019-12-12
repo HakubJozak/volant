@@ -13,7 +13,8 @@ class WorkcampSerializer < ApplicationSerializer
       :starred, :name, :code, :language, :begin, :end, :minimal_age, :maximal_age,
       :variable_dates,
       :area, :accommodation, :workdesc, :notes, :description,
-      :price, :extra_fee, :extra_fee_currency,
+      :extra_fee, :extra_fee_currency,
+      :price, :default_price,
       :project_summary,
       :partner_organization,
       :region,
@@ -29,7 +30,6 @@ class WorkcampSerializer < ApplicationSerializer
       :all_organizations_emails, :all_applications_emails
 
 
-
   def type
     case object
     when Ltv::Workcamp
@@ -39,6 +39,10 @@ class WorkcampSerializer < ApplicationSerializer
     else
       'outgoing'
     end
+  end
+
+  def price
+    object.price(fallback: false)
   end
 
   def apply_form_ids

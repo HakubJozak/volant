@@ -8,17 +8,17 @@ module Outgoing
     end
 
     def adih_project_type
-      'STV' # Short term (workcamp)      '
+      'STV' # Short term (workcamp)
     end
 
-    def price
-      read_attribute(:price) ||
-        if (country.region.to_i == 2)
-          2500
-        else
-          2200
-        end
+    def default_price
+      if (country.region.to_i == 2)
+        2500
+      else
+        2200
+      end      
     end
+ 
   end
 end
 
