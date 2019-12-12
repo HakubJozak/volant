@@ -1,3 +1,12 @@
+server 'pelican.amagical.net', user: 'rails', roles: %w{ app db web }
+
+
+set :branch, 'master'
+set :deploy_to, '/home/rails/volant_production'
+set :rails_env, 'production'
+
+
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.

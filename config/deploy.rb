@@ -1,8 +1,17 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.2"
 
-set :application, "my_app_name"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :application, "volant"
+
+set :repo_url, 'git@github.com:HakubJozak/volant.git'
+
+set :ssh_options, { forward_agent: true }
+
+set :passenger_restart_with_touch, true
+
+append :linked_files, ".env", "config/database.yml",  "config/secrets.yml"
+
+append :linked_dirs, "log", "public/uploads"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
