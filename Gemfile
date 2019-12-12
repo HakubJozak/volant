@@ -14,13 +14,12 @@ gem 'handlebars'
 gem 'pdfkit'
 gem 'validates_lengths_from_database'
 gem 'dotenv-rails'
-gem 'rollbar', '~> 2.7'
+gem 'capistrano-rails-console', require: false
+gem "sentry-raven"
 
 
 # Language codes
 gem 'iso-639'
-
-
 
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -82,8 +81,13 @@ group :development do
   gem 'letter_opener'
   gem 'faker'
 #  gem 'guard-livereload', '2.3.1', require: false
-  gem 'mina', '~> 0.3.3', require: false
-  gem 'mina-puma', require: false
+#  gem 'mina', '~> 0.3.3', require: false
+  #  gem 'mina-puma', require: false
+  gem 'capistrano', require: false
+  gem 'capistrano-passenger', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rails-console', require: false
+
   gem 'annotate'
 end
 
