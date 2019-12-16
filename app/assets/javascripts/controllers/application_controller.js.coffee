@@ -1,6 +1,12 @@
+range = [ (moment().year() + 5)..2010 ]
+
 Volant.ApplicationController = Ember.ObjectController.extend
-  # TODO - dynamically generate this      
-  years: [ 'All','2020','2019','2018','2017','2016','2015','2014','2013','2012','2011','2010']
+
+  years: [ 'All' ].concat(range).map (a) -> a.toString()
+
+
+          
+
   year: moment().year().toString()
 
   mode: 'outgoing'
