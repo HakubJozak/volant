@@ -14,7 +14,7 @@ class V1::WorkcampSerializer < ActiveModel::Serializer
              :duration, :open_for_application,
              :longitude, :latitude, :requirements,
              :created_at,
-             :type, :tags
+             :type, :tags, :price
 
 #  has_many :tags, serializer: V1::TagSerializer, embed: true, include: true
 
@@ -36,5 +36,9 @@ class V1::WorkcampSerializer < ActiveModel::Serializer
 
   def workcamp_intentions
     object.intentions
+  end
+
+  def price
+    object.price.to_f
   end
 end
