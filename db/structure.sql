@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 11.5 (Ubuntu 11.5-0ubuntu0.19.04.1)
--- Dumped by pg_dump version 11.5 (Ubuntu 11.5-0ubuntu0.19.04.1)
+-- Dumped from database version 11.2
+-- Dumped by pg_dump version 11.2
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -12,7 +12,6 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
-SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
@@ -245,7 +244,8 @@ CREATE TABLE public.apply_forms (
     birthdate date,
     passport_number character varying(255),
     passport_issued_at date,
-    passport_expires_at date
+    passport_expires_at date,
+    slug character varying
 );
 
 
@@ -1297,6 +1297,41 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
+-- Name: vocatives; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.vocatives (
+    id integer NOT NULL,
+    name_type character varying(1),
+    nominative character varying,
+    vocative character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    gender character varying(1)
+);
+
+
+--
+-- Name: vocatives_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.vocatives_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vocatives_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.vocatives_id_seq OWNED BY public.vocatives.id;
+
+
+--
 -- Name: volunteers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1593,6 +1628,13 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
+-- Name: vocatives id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.vocatives ALTER COLUMN id SET DEFAULT nextval('public.vocatives_id_seq'::regclass);
+
+
+--
 -- Name: workcamp_assignments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1830,6 +1872,14 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- Name: vocatives vocatives_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.vocatives
+    ADD CONSTRAINT vocatives_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: people volunteers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1866,6 +1916,13 @@ ALTER TABLE ONLY public.workcamps
 --
 
 CREATE INDEX fk_comments_user ON public.comments USING btree (user_id);
+
+
+--
+-- Name: index_apply_forms_on_slug; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_apply_forms_on_slug ON public.apply_forms USING btree (slug);
 
 
 --
@@ -1929,6 +1986,13 @@ CREATE INDEX index_taggings_on_taggable_id_and_taggable_type ON public.taggings 
 --
 
 CREATE UNIQUE INDEX index_tags_on_name ON public.tags USING btree (name);
+
+
+--
+-- Name: index_vocatives_on_name_type_and_nominative; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_vocatives_on_name_type_and_nominative ON public.vocatives USING btree (name_type, nominative);
 
 
 --
@@ -2582,5 +2646,13 @@ INSERT INTO schema_migrations (version) VALUES ('20180202143309');
 
 INSERT INTO schema_migrations (version) VALUES ('20180617173056');
 
+INSERT INTO schema_migrations (version) VALUES ('20190110101750');
+
+INSERT INTO schema_migrations (version) VALUES ('20190110104513');
+
+INSERT INTO schema_migrations (version) VALUES ('20190111152206');
+
 INSERT INTO schema_migrations (version) VALUES ('20191203151355');
+
+INSERT INTO schema_migrations (version) VALUES ('20200211155156');
 

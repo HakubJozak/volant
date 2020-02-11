@@ -5,7 +5,8 @@ Volant.ApplyFormController = Volant.ObjectController.extend
 
   means: [
     Ember.Object.create(label: "Cash", id: 'CASH'),
-    Ember.Object.create(label: "Bank", id: 'BANK')
+    Ember.Object.create(label: "Bank", id: 'BANK'),
+    Ember.Object.create(label: "Card", id: 'CARD')
    ]
 
   starredWorkcamps: (->

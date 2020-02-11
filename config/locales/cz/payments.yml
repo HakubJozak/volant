@@ -21,6 +21,7 @@ cz:
         mean: Způsob platby
         cash: Hotově
         bank: Bankovním převodem
+        card: Kartou
         post: Poštou
         payment_return_group: Vráceno?
         returned_amount: Vrácená suma

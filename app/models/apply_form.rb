@@ -13,6 +13,7 @@ class ApplyForm < ActiveRecord::Base
   include FreePlacesUpdater
   after_save :update_free_places
   after_destroy :update_free_places
+  before_create :generate_unique_slug
 
   create_date_time_accessors
 
@@ -245,6 +246,13 @@ class ApplyForm < ActiveRecord::Base
     ApplyForm.where(id: id).update_all(current_workcamp_id_cached: result[0], current_assignment_id_cached: result[1])
   end
 
+  def generate_unique_slug
+    self.slug = loop do
+      random_hash = SecureRandom.urlsafe_base64(nil, false)
+      break random_hash unless ApplyForm.exists?(slug: random_hash)
+    end
+  end
+
 end
 
 # == Schema Information
@@ -295,4 +303,5 @@ end
 #  passport_number              :string(255)
 #  passport_issued_at           :date
 #  passport_expires_at          :date
+#  slug                         :string
 #

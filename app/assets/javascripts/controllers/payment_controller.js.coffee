@@ -1,7 +1,8 @@
 Volant.PaymentController = Volant.ObjectController.extend
   means: [
     {label: "Cash", id: 'CASH'},
-    {label: "Bank", id: 'BANK'}
+    {label: "Bank", id: 'BANK'},
+    {label: "Card", id: 'CARD'}
    ]
 
   show_return: false
