@@ -14,7 +14,7 @@ class Payment < ActiveRecord::Base
   validates_presence_of :amount, :received, :mean
 
   validates_presence_of :account, :if => proc { |p| p.bank? }
-  validates_inclusion_of :mean, :in => %w( CASH BANK )
+  validates_inclusion_of :mean, :in => %w( CASH BANK CARD )
 
   scope :year, lambda { |year|
     year = year.to_i

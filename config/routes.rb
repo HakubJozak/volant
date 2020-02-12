@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       get 'similar', on: :member
     end
     resources :apply_forms, only: [ :create ]
-    resources :card_payments, only: [:show]
+    resources :card_payments, only: [ :show, :create ]
   end
 
   resources :workcamp_assignments, only: [ :index, :create, :update, :destroy, :show ]

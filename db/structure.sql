@@ -1046,7 +1046,8 @@ CREATE TABLE public.payments (
     spec_symbol character varying(255),
     var_symbol character varying(255),
     const_symbol character varying(255),
-    name character varying(255)
+    name character varying(255),
+    external_id character varying
 );
 
 
@@ -1919,10 +1920,10 @@ CREATE INDEX fk_comments_user ON public.comments USING btree (user_id);
 
 
 --
--- Name: index_apply_forms_on_slug; Type: INDEX; Schema: public; Owner: -
+-- Name: index_apply_forms_on_hash; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_apply_forms_on_slug ON public.apply_forms USING btree (slug);
+CREATE UNIQUE INDEX index_apply_forms_on_hash ON public.apply_forms USING btree (slug);
 
 
 --
@@ -2655,4 +2656,6 @@ INSERT INTO schema_migrations (version) VALUES ('20190111152206');
 INSERT INTO schema_migrations (version) VALUES ('20191203151355');
 
 INSERT INTO schema_migrations (version) VALUES ('20200211155156');
+
+INSERT INTO schema_migrations (version) VALUES ('20200211163205');
 
