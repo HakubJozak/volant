@@ -31,6 +31,8 @@ table.table.table-striped.table-hover
         td
           if by_bank
             | {{account}}/{{bank_code}}
+          if by_card
+            ' Card
           else
             ' Cash
         td

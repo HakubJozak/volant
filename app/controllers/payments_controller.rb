@@ -51,7 +51,7 @@ class PaymentsController < ApplicationController
   end
 
   def payment_params
-    params[:payment].permit(:amount, :received, :description, :account, :mean, :returned_date, :returned_amount, :return_reason, :bank_code, :spec_symbol, :var_symbol, :const_symbol)
+    params[:payment].permit(:amount, :received, :description, :account, :mean, :returned_date, :returned_amount, :return_reason, :bank_code, :spec_symbol, :var_symbol, :const_symbol, :external_id)
   end
 
 

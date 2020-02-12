@@ -13,6 +13,10 @@ Volant.PaymentController = Volant.ObjectController.extend
     @get('mean') == 'BANK'
   ).property('mean')
 
+  by_card: (->
+    @get('mean') == 'CARD'
+  ).property('mean')
+
   actions:
     clear_return_fields: ->
       @set('returned_amount',null)

@@ -3,10 +3,10 @@
 <div class='row'>
   <div class="form-group col-md-3">
     {{#if apply_form}}
-      <label class=" control-label">Fee</label>
-      {{input type='number' value=apply_form.fee class='form-control'}}
+    <label class=" control-label">Fee</label>
+    {{input type='number' value=apply_form.fee class='form-control'}}
     {{else}}
-      <p class='static-text'>No application assigned.</p>
+    <p class='static-text'>No application assigned.</p>
     {{/if}}
   </div>
 
@@ -24,7 +24,7 @@
 
   <div class="form-group col-md-3">
     <label class=" control-label">Mean</label>
-     {{view Ember.Select
+    {{view Ember.Select
             value=mean
             content=means
             optionValuePath="content.id"
@@ -34,28 +34,28 @@
 </div>
 
 {{#if return_visible }}
-  <div class='row'>
-    <div class="form-group col-md-3">
-      {{#model-field errors=errors.returned_amount}}
-      <label class=" control-label">Returned amount</label>
-      {{input value=returned_amount class="form-control" type='number'}}
-      {{/model-field}}
-    </div>
-
-    <div class="form-group col-md-3">
-      {{#model-field errors=errors.returned_date}}
-      <label class=" control-label">Returned date</label>
-      {{view Volant.DateView dateBinding='returned_date' }}
-      {{/model-field}}
-    </div>
-
-    <div class="form-group col-md-6">
-      {{#model-field errors=errors.return_reason}}
-      <label class=" control-label">Return reason</label>
-      {{input value=return_reason class="form-control" }}
-      {{/model-field}}
-    </div>
+<div class='row'>
+  <div class="form-group col-md-3">
+    {{#model-field errors=errors.returned_amount}}
+    <label class=" control-label">Returned amount</label>
+    {{input value=returned_amount class="form-control" type='number'}}
+    {{/model-field}}
   </div>
+
+  <div class="form-group col-md-3">
+    {{#model-field errors=errors.returned_date}}
+    <label class=" control-label">Returned date</label>
+    {{view Volant.DateView dateBinding='returned_date' }}
+    {{/model-field}}
+  </div>
+
+  <div class="form-group col-md-6">
+    {{#model-field errors=errors.return_reason}}
+    <label class=" control-label">Return reason</label>
+    {{input value=return_reason class="form-control" }}
+    {{/model-field}}
+  </div>
+</div>
 {{/if}}
 
 {{#if by_bank}}
@@ -87,25 +87,33 @@
 </div>
 {{/if}}
 
+{{#if by_card}}
+<div class='row'>
+  <div class="form-group col-md-3">
+    <label class=" control-label">External ID</label>
+    {{input value=external_id class="form-control" }}
+  </div>
+</div>
+{{/if}}
+
 <div class='row'>
   <div class="form-group col-md-6">
     <p>
-    {{#unless return_visible }}
-    <a title='Show return fields' class='btn'
-      {{ action 'force_show_return' }} >
-      {{ fa 'undo' }} Set return fields
-    </a>
-    {{else}}
+      {{#unless return_visible }}
+      <a title='Show return fields' class='btn' {{ action 'force_show_return' }}>
+        {{ fa 'undo' }} Set return fields
+      </a>
+      {{else}}
       <button type='button' class='btn btn-default' {{action 'clear_return_fields'}}>
         {{ fa 'times' }} Clear return fields
       </button>
-    {{/unless}}
+      {{/unless}}
 
-    {{#if isNew}}
+      {{#if isNew}}
       <button type='button' class='btn btn-primary' {{action 'save' false}}>
         Save
       </button>
-    {{/if}}
-  </p>
+      {{/if}}
+    </p>
   </div>
 </div>

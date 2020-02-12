@@ -13,9 +13,14 @@ Volant.Payment = DS.Model.extend({
   spec_symbol: DS.attr 'string'
   var_symbol: DS.attr 'string'
   const_symbol: DS.attr 'string'
+  external_id: DS.attr 'string'
 
   by_bank: (->
     @get('mean') == 'BANK'
+  ).property('mean')
+
+  by_card: (->
+    @get('mean') == 'CARD'
   ).property('mean')
 
   returned: Ember.computed.or('returned_date','return_reason','returned_amount')
