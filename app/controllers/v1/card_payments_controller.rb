@@ -5,7 +5,11 @@ class V1::CardPaymentsController < V1::BaseController
 	def create
 		if params[:status] == "PAID"
 			apply_form = ApplyForm.select(:id).find_by_slug(params[:refId])
-			Payment.create(apply_form_id: apply_form.id, amount: params[:price], received: DateTime.now.to_date, description: "Platba kartou", mean: "CARD", external_id: params[:transId])
+			if apply_form
+				Payment.create(apply_form_id: apply_form.id, amount: params[:price].to_f / 100, received: DateTime.now.to_date, description: "Platba kartou", mean: "CARD", external_id: params[:transId])
+			else
+				render json: { message: "No apply form found" }, status: :not_found
+			end
 		end
 
 		render json: { message: "OK" }, status: :ok

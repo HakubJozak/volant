@@ -11,7 +11,7 @@ class V1::ApplyFormsController < V1::BaseController
     if form.valid? && form.volunteer.valid?
       ApplyFormMailer.submitted(form).deliver_now
       ApplyFormMailer.emergency_confirmation(form).deliver_now
-      render nothing: true, status: :accepted
+      render json: { ref_id: form[:slug] }, status: :accepted
     else
       render json: { errors:  form.errors }, status: :unprocessable_entity
     end
