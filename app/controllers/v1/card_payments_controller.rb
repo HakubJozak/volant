@@ -1,6 +1,7 @@
 class V1::CardPaymentsController < V1::BaseController
 	respond_to :json
 	skip_before_action :verify_authenticity_token
+	before_action :authenticate_paygate, only: [:create]
 
 	def create
 		if params[:status] == "PAID"
@@ -21,6 +22,14 @@ class V1::CardPaymentsController < V1::BaseController
 			render json: { fee: apply_form.fee.to_f }
 		else
 			render json: { message: "No apply form found" }, status: :not_found
+		end
+	end
+
+	private
+
+	def authenticate_paygate
+		unless ENV['PAYMENT_GATEWAY_SECRET'] == params[:secret]
+			render json: { error: 'Not Authorized' }, status: 401
 		end
 	end
 end
