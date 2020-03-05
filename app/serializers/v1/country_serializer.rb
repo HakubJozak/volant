@@ -1,5 +1,5 @@
 class V1::CountrySerializer < ActiveModel::Serializer
-  attributes :id, :name, :code, :triple_code, :region,
+  attributes :id, :name, :name_cz, :code, :triple_code, :region,
              :country_zone_id, :country_zone_name,
              :continent,
              :workcamps_count, :ltv_count
