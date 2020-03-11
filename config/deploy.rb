@@ -8,7 +8,7 @@ set :repository, 'git@github.com:HakubJozak/volant.git'
 
 
 task :production do
-  set :branch, 'master'
+  set :branch, 'card-payment' # 'master'
   set :user, 'rails'
   set :deploy_to, '/home/rails/volant'
   set :domain, 'pelican.amagical.net'
