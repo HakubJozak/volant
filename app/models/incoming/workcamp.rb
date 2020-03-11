@@ -39,7 +39,7 @@ class Incoming::Workcamp < ::Outgoing::Workcamp
   end
 
   def default_price
-    1000
+    500
   end
   
 end

@@ -114,12 +114,6 @@ class ApplyForm < ActiveRecord::Base
     end
   end
 
-
-  # TODO - retrieve from parameter and check for other apply forms
-  def after_initialize
-    self.fee ||= 2200
-  end
-
   # FIXME - this is a hack to overcome new template system difficulties
   def workcamps_list
     result = ''

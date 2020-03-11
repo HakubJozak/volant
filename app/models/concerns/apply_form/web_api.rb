@@ -31,6 +31,7 @@ module ApplyForm::WebApi
         if form.with_strict_validation.save
           form.volunteer = Volunteer.find_by_birthnumber(form.birthnumber) || Volunteer.new
           form.update_volunteer_data!
+          form.fee = workcamps.first.price
           form.save!
 
           workcamps.each_with_index do |wc,i|
