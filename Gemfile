@@ -85,6 +85,7 @@ group :development do
   gem 'mina', '~> 0.3.3', require: false
   gem 'mina-puma', require: false
   gem 'annotate'
+  gem 'left_joins'
 end
 
 group :test do
